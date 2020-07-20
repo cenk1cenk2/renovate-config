@@ -5,6 +5,9 @@
 Forked from [vidavidorra/github-renovate](https://github.com/vidavidorra/github-renovate).
 
 <!-- toc -->
+
+- [Description](#description)
+
 <!-- tocstop -->
 
 ## Description
