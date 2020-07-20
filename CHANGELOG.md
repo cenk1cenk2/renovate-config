@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/cenk1cenk2/renovate/compare/v1.0.0...v1.0.1) (2020-07-20)
+
+
+### Bug Fixes
+
+* **package.json:** remove private ([d7cfd40](https://github.com/cenk1cenk2/renovate/commit/d7cfd4045daab0950f64de8b428dc93e77195189))
+
 # 1.0.0 (2020-07-20)
 
 
