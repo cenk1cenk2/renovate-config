@@ -5,8 +5,9 @@ module.exports = {
   logLevel: 'info',
   masterIssueTitle: '[renovate-bot] Update Dependencies',
   onboarding: true,
+  onboardingPrTitle: '[renovate-bot] Configure',
   onboardingConfig: {
-    extends: [ '@cenk1cenk2/renovate/dist/index' ]
+    extends: [ '@cenk1cenk2/renovate' ]
   },
   repositories: [
     'cenk1cenk2/renovate',

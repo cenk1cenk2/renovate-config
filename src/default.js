@@ -1,6 +1,7 @@
 const config = {
-  extends: [ 'config:base', ':masterIssue', ':timezone(Europe/Vienna)' ],
+  extends: [ 'config:base', ':masterIssue', ':semanticPrefixFix' ],
   ignorePresets: [ ':prHourlyLimit2' ],
+  timezone: 'Europe/Vienna',
   lockFileMaintenance: {
     enabled: true
   },
