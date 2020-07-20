@@ -35,7 +35,7 @@ jobs:
     strategy:
       matrix:
         configuration:
-          - cenk1cenk2_boilerplate-oclif
+          - cenk1cenk2/boilerplate-oclif
 
     steps:
       - name: checkout
