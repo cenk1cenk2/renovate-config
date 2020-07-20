@@ -38,6 +38,7 @@ jobs:
       matrix:
         configuration:
           - cenk1cenk2/boilerplate-oclif
+          - cenk1cenk2/renovate
 
     steps:
       - name: checkout
