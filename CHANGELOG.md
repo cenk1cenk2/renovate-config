@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/cenk1cenk2/renovate/compare/v1.0.2...v1.0.3) (2020-07-20)
+
+
+### Bug Fixes
+
+* **package.json:** publish config ([ecf4e79](https://github.com/cenk1cenk2/renovate/commit/ecf4e7910758afd46610fff407fffe69367ea53c))
+
 ## [1.0.2](https://github.com/cenk1cenk2/renovate/compare/v1.0.1...v1.0.2) (2020-07-20)
 
 
