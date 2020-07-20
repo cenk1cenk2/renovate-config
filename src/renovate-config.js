@@ -1,30 +1,29 @@
-const branchName = 'github-renovate';
-
 module.exports = {
-  branchPrefix: `${branchName}/`,
-  enabledManagers: ['github-actions', 'regex'],
-  gitAuthor: 'Renovate Bot <bot@renovateapp.com>',
-  logLevel: 'debug',
-  masterIssueTitle: 'Update Dependencies (Renovate Bot - GitHub)',
-  onboarding: true,
-  onboardingBranch: `${branchName}/configure`,
+  repositories: [ 'cenk1cenk2/renovate', 'cenk1cenk2/boilerplate-oclif' ],
+  extends: [ 'config:base', ':masterIssue', ':pinDependencies', ':timezone(Europe/Vienna)' ],
+  ignorePresets: [ ':prHourlyLimit2' ],
   platform: 'github',
-  regexManagers: [
+  gitAuthor: 'renovate-bot <renovate@kilic.dev>',
+  enabledManagers: [ 'github-actions', 'ansible', 'ansible-galaxy', 'docker-compose', 'dockerfile', 'droneci', 'git-submodules', 'gomod', 'kubernetes', 'npm', 'nvm' ],
+  logLevel: 'debug',
+  masterIssueTitle: 'Update Dependencies (renovate-bot)',
+  onboarding: true,
+  lockFileMaintenance: {
+    enabled: true
+  },
+  major: {
+    stabilityDays: 3
+  },
+  packageRules: [
     {
-      datasourceTemplate: 'github-tags',
-      fileMatch: ['^\\.github/workflows/[^/]+\\.ya?ml$'],
-      matchStrings: ['uses: (?<depName>.*?)@(?<currentValue>.*?)\\s'],
+      updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
+      automerge: true
     },
+    {
+      depTypeList: [ 'devDependencies' ],
+      extends: [ 'schedule:daily' ]
+    }
   ],
-  repositories: [
-    'vidavidorra/coap',
-    'vidavidorra/docker-linux-images',
-    'vidavidorra/github-renovate',
-    'vidavidorra/global-linters',
-    'vidavidorra/homebrew-caboodle',
-    'vidavidorra/next-standard-version',
-    'vidavidorra/repo-template',
-    'vidavidorra/rigol-csv-analyser',
-    'vidavidorra/tools',
-  ],
-};
+  prCreation: 'not-pending',
+  baseBranches: [ 'master', 'develop', 'beta', 'alpha', 'rc' ]
+}
