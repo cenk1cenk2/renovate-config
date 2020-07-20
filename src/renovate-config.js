@@ -24,6 +24,6 @@ module.exports = {
       extends: [ 'schedule:daily' ]
     }
   ],
-  prCreation: 'not-pending',
-  baseBranches: [ 'master', 'develop', 'beta', 'alpha', 'rc' ]
+  prCreation: 'not-pending'
+  // baseBranches: [ 'master', 'develop', 'beta', 'alpha', 'rc' ]
 }

@@ -8,7 +8,7 @@
   "repository": "https://github.com/cenk1cenk2/renovate",
   "scripts": {
     "lint": "prettier --write ./ && eslint --ext .ts,.js,.tsx,.jsx --fix ./",
-    "lint:check": "prettier --check ./ && eslint --ext .ts,.js,.tsx,.jsx ./"
+    "lint:check": "eslint --ext .ts,.js,.tsx,.jsx ./"
   },
   "husky": {
     "hooks": {

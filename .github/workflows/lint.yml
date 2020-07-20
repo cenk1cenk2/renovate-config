@@ -18,4 +18,4 @@ jobs:
       - name: install
         run: yarn
       - name: check formatting
-        run: npm run lint:check
+        run: yarn lint:check
