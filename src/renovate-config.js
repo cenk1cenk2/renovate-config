@@ -5,7 +5,7 @@ module.exports = {
   platform: 'github',
   gitAuthor: 'renovate-bot <renovate@kilic.dev>',
   enabledManagers: [ 'github-actions', 'ansible', 'ansible-galaxy', 'docker-compose', 'dockerfile', 'droneci', 'git-submodules', 'gomod', 'kubernetes', 'npm', 'nvm' ],
-  logLevel: 'debug',
+  logLevel: 'info',
   masterIssueTitle: 'Update Dependencies (renovate-bot)',
   onboarding: true,
   lockFileMaintenance: {
@@ -21,7 +21,7 @@ module.exports = {
     },
     {
       depTypeList: [ 'devDependencies' ],
-      extends: [ 'schedule:daily' ]
+      automerge: true
     }
   ],
   prCreation: 'not-pending'
