@@ -7,12 +7,8 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "checkJs": true,
-    "baseUrl": "./",
-    "paths": {
-      "@shared/*": ["shared/*"],
-      "@settings/*": ["shared/config/*"],
-      "@create-config": ["shared/create-config"]
-    }
+    "baseUrl": "src",
+    "paths": {}
   },
   "exclude": ["node_modules"]
 }

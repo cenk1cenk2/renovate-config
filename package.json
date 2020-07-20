@@ -1,6 +1,6 @@
 {
-  "name": "@cenk1cenk2/github-renovate",
-  "version": "1.0.0",
+  "name": "@cenk1cenk2/renovate",
+  "version": "1.0.0-development",
   "description": "Self-hosted instance of Renovate to update GitHub Actions workflows.",
   "private": true,
   "author": "Cenk Kilic, Jeroen de Bruijn",
@@ -13,7 +13,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "lint-staged": {
@@ -34,11 +35,17 @@
     "@babel/preset-env": "^7.10.4",
     "@cenk1cenk2/eslint-config": "*",
     "babel-plugin-module-resolver": "^4.0.0",
+    "cz-conventional-changelog": "3.2.0",
     "eslint": "7.5.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
     "prettier": "2.0.5",
     "rimraf": "^3.0.2",
     "typescript": "^3.9.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

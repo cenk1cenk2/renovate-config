@@ -5,40 +5,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2.3.1
-
-      - name: setup node
-        uses: actions/setup-node@v1.4.2
-        with:
-          node-version: '14.x'
-
-      - name: install
-        run: yarn --frozen-lockfile
-
-      - name: build
-        run: yarn build
-
-      - name: upload-artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: dist
-          path: |
-            dist/
-
   renovate:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     needs:
       - build
-    strategy:
-      matrix:
-        configuration:
-          - cenk1cenk2/boilerplate-oclif
-          - cenk1cenk2/renovate
 
     steps:
       - name: checkout
@@ -49,17 +20,8 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: download-artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist/
-
-      - name: install
-        run: yarn --frozen-lockfile --production
-
       - name: renovate
         uses: renovatebot/github-action@v21.33.2
         with:
-          configurationFile: dist/${{ matrix.configuration }}.js
+          configurationFile: renovate.config.js
           token: ${{ secrets.RENOVATE_TOKEN }}
