@@ -10,8 +10,8 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
-        configuration: 
-          - cenk1cenk2_boilerplate-oclif 
+        configuration:
+          - cenk1cenk2_boilerplate-oclif
 
     steps:
       - name: Checkout
@@ -31,5 +31,5 @@ jobs:
       - name: renovate
         uses: renovatebot/github-action@v21.33.2
         with:
-          configurationFile: dist/${{ matrix.config }}.js
+          configurationFile: dist/${{ matrix.configuration }}.js
           token: ${{ secrets.RENOVATE_TOKEN }}
