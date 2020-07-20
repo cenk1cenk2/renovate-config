@@ -25,7 +25,9 @@
       "prettier --write"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "deepmerge": "^4.2.2"
+  },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",

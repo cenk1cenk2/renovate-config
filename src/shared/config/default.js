@@ -16,13 +16,15 @@ export const defaultOptions = {
   prCreation: 'not-pending'
 }
 
-export const defaultPackageRules = [
-  {
-    updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
-    automerge: true
-  },
-  {
-    depTypeList: [ 'devDependencies' ],
-    automerge: true
-  }
-]
+export const defaultPackageRules = {
+  packageRules: [
+    {
+      updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
+      automerge: true
+    },
+    {
+      depTypeList: [ 'devDependencies' ],
+      automerge: true
+    }
+  ]
+}
