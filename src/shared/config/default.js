@@ -1,4 +1,4 @@
-export const sharedOptions = {
+export const defaultOptions = {
   extends: [ 'config:base', ':masterIssue', ':timezone(Europe/Vienna)' ],
   ignorePresets: [ ':prHourlyLimit2' ],
   platform: 'github',

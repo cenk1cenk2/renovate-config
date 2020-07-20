@@ -8,5 +8,18 @@
         }
       }
     ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./dist"],
+        "alias": {
+          "@shared": "./dist/shared",
+          "@settings": "./dist/shared/config",
+          "@create-config": "./dist/shared/create-config"
+        }
+      }
+    ]
   ]
 }
