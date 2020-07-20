@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/cenk1cenk2/renovate/compare/v1.0.1...v1.0.2) (2020-07-20)
+
+
+### Bug Fixes
+
+* npm publish fix ([c4396c1](https://github.com/cenk1cenk2/renovate/commit/c4396c1e02341aa69d0d3a8450f9f7ddc6d3c952))
+
 ## [1.0.1](https://github.com/cenk1cenk2/renovate/compare/v1.0.0...v1.0.1) (2020-07-20)
 
 
