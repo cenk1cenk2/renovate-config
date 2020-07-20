@@ -1,6 +1,5 @@
-module.exports = {
-  repositories: [ 'cenk1cenk2/renovate', 'cenk1cenk2/boilerplate-oclif' ],
-  extends: [ 'config:base', ':masterIssue', ':pinDependencies', ':timezone(Europe/Vienna)' ],
+export const sharedOptions = {
+  extends: [ 'config:base', ':masterIssue', ':timezone(Europe/Vienna)' ],
   ignorePresets: [ ':prHourlyLimit2' ],
   platform: 'github',
   gitAuthor: 'renovate-bot <renovate@kilic.dev>',
@@ -14,16 +13,16 @@ module.exports = {
   major: {
     stabilityDays: 3
   },
-  packageRules: [
-    {
-      updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
-      automerge: true
-    },
-    {
-      depTypeList: [ 'devDependencies' ],
-      automerge: true
-    }
-  ],
   prCreation: 'not-pending'
-  // baseBranches: [ 'master', 'develop', 'beta', 'alpha', 'rc' ]
 }
+
+export const defaultPackageRules = [
+  {
+    updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
+    automerge: true
+  },
+  {
+    depTypeList: [ 'devDependencies' ],
+    automerge: true
+  }
+]
