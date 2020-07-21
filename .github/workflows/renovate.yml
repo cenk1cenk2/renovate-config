@@ -1,13 +1,13 @@
 name: renovate
 on:
   schedule:
-    - cron: '0/30 * * * *'
+    - cron: '0/15 * * * *'
   workflow_dispatch:
 
 jobs:
   renovate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: checkout
