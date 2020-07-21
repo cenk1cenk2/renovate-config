@@ -69,6 +69,9 @@
       "timezone": "Europe/Vienna",
       "semanticCommits": true,
       "rangeStrategy": "update-lockfile",
+      "labels": [
+        "deps"
+      ],
       "lockFileMaintenance": {
         "enabled": true,
         "schedule": [
@@ -88,6 +91,7 @@
         "@cenk1cenk2:base",
         "@cenk1cenk2:devDependencies",
         "@cenk1cenk2:minorDependencies",
+        "@cenk1cenk2:groupTogether",
         "@cenk1cenk2:monthly"
       ]
     },
@@ -105,19 +109,58 @@
         }
       ]
     },
+    "groupTogether": {
+      "packageRules": [
+        {
+          "packagePatterns": [
+            "*"
+          ],
+          "depTypeList": [
+            "devDependencies"
+          ],
+          "groupName": "all development packages",
+          "groupSlug": "all-dev"
+        },
+        {
+          "packagePatterns": [
+            "*"
+          ],
+          "depTypeList": [
+            "peerDependencies"
+          ],
+          "groupName": "all peer packages",
+          "groupSlug": "all-peer"
+        },
+        {
+          "packagePatterns": [
+            "*"
+          ],
+          "depTypeList": [
+            "dependencies"
+          ],
+          "updateTypes": [
+            "minor",
+            "patch",
+            "pin",
+            "digest"
+          ],
+          "groupName": "all minor package updates",
+          "groupSlug": "all"
+        }
+      ]
+    },
     "minorDependencies": {
-      "minor": {
-        "automerge": true
-      },
-      "path": {
-        "automerge": true
-      },
-      "pin": {
-        "automerge": true
-      },
-      "digest": {
-        "automerge": true
-      }
+      "packageRules": [
+        {
+          "updateTypes": [
+            "minor",
+            "patch",
+            "pin",
+            "digest"
+          ],
+          "automerge": true
+        }
+      ]
     },
     "monthly": {
       "packageRules": [

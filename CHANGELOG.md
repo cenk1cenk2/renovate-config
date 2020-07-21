@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/cenk1cenk2/renovate/compare/v1.0.20...v1.1.0) (2020-07-21)
+
+
+### Bug Fixes
+
+* fixed linting ([88010a9](https://github.com/cenk1cenk2/renovate/commit/88010a90a081ab616908a6406757454975e7d815))
+
+
+### Features
+
+* added group together prs ([81f2fde](https://github.com/cenk1cenk2/renovate/commit/81f2fde82d228ae0e1e20309e7e86be5917a8dd3))
+
 ## [1.0.20](https://github.com/cenk1cenk2/renovate/compare/v1.0.19...v1.0.20) (2020-07-21)
 
 
