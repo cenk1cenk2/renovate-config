@@ -1,4 +1,6 @@
 import base from '@presets/base'
+import branchBeta from '@presets/branch-beta'
+import branchDevelop from '@presets/branch-develop'
 import _default from '@presets/default'
 import devDependencies from '@presets/dev-dependencies'
 import groupTogether from '@presets/group-together'
@@ -12,5 +14,7 @@ export default {
   devDependencies,
   minorDependencies,
   slowring,
-  groupTogether
+  groupTogether,
+  branchDevelop,
+  branchBeta
 } as Record<string, RenovateConfig>
