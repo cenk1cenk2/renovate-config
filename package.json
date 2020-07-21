@@ -90,7 +90,8 @@
         "@cenk1cenk2:base",
         "@cenk1cenk2:devDependencies",
         "@cenk1cenk2:minorDependencies",
-        "@cenk1cenk2:monthly"
+        "@cenk1cenk2:monthly",
+        "@cenk1cenk2:ignore"
       ]
     },
     "devDependencies": {
@@ -100,6 +101,16 @@
             "devDependencies"
           ],
           "automerge": true
+        }
+      ]
+    },
+    "ignore": {
+      "packageRules": [
+        {
+          "packageNames": [
+            "node"
+          ],
+          "enabled": false
         }
       ]
     },
