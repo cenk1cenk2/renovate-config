@@ -1,3 +1,10 @@
+## [1.0.19](https://github.com/cenk1cenk2/renovate/compare/v1.0.18...v1.0.19) (2020-07-21)
+
+
+### Bug Fixes
+
+* delete ignore scope ([3b5f16d](https://github.com/cenk1cenk2/renovate/commit/3b5f16d72381fa506ed78531ed17a6961a2f9beb))
+
 ## [1.0.18](https://github.com/cenk1cenk2/renovate/compare/v1.0.17...v1.0.18) (2020-07-21)
 
 
