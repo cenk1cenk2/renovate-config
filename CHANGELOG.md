@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/cenk1cenk2/renovate/compare/v1.1.3...v1.1.4) (2020-07-21)
+
+
+### Bug Fixes
+
+* **assignees:** added assignees ([d68e4d9](https://github.com/cenk1cenk2/renovate/commit/d68e4d9f1b12b7391541fdab758db54fa0e0c926))
+
 ## [1.1.3](https://github.com/cenk1cenk2/renovate/compare/v1.1.2...v1.1.3) (2020-07-21)
 
 
