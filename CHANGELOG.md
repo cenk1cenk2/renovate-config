@@ -1,3 +1,11 @@
+## [1.1.5](https://github.com/cenk1cenk2/renovate/compare/v1.1.4...v1.1.5) (2020-07-21)
+
+
+### Bug Fixes
+
+* fix conflict ([2fba498](https://github.com/cenk1cenk2/renovate/commit/2fba49854a103793c0cf5e00cc56e6db4bed6b65))
+* **lint:** compiling to new linting rules ([593d8df](https://github.com/cenk1cenk2/renovate/commit/593d8dfc324f84dcc1cc74492674255befd0df7f))
+
 ## [1.1.4](https://github.com/cenk1cenk2/renovate/compare/v1.1.3...v1.1.4) (2020-07-21)
 
 ### Bug Fixes
