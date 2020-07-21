@@ -14,7 +14,7 @@ export default createPreset({
   lockFileMaintenance: {
     enabled: true,
     automerge: true,
-    schedule: [ SCHEDULE.WEEKLY ]
+    schedule: [ SCHEDULE.DAILY ]
   },
   major: {
     stabilityDays: 3
