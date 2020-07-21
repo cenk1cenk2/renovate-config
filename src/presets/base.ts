@@ -11,11 +11,11 @@ export default createPreset({
   rangeStrategy: 'update-lockfile',
   lockFileMaintenance: {
     enabled: true,
-    schedule: [ SCHEDULE.EVERY_MONDAY ]
+    schedule: [ SCHEDULE.WEEKLY ]
   },
   major: {
     stabilityDays: 3
   },
-  schedule: [ SCHEDULE.ANY ],
+  schedule: [ SCHEDULE.DAILY ],
   prCreation: 'not-pending'
 })
