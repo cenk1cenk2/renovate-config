@@ -1,4 +1,3 @@
-import { SCHEDULE } from '@constants/renovate'
 import { createPreset } from '@lib/preset-factory'
 
 /**
@@ -8,25 +7,19 @@ import { createPreset } from '@lib/preset-factory'
 export default createPreset({
   packageRules: [
     {
-      packagePatterns: [
-        '*'
-      ],
+      packagePatterns: [ '*' ],
       depTypeList: [ 'devDependencies' ],
       groupName: 'all development packages',
       groupSlug: 'all-dev'
     },
     {
-      packagePatterns: [
-        '*'
-      ],
+      packagePatterns: [ '*' ],
       depTypeList: [ 'peerDependencies' ],
       groupName: 'all peer packages',
       groupSlug: 'all-peer'
     },
     {
-      packagePatterns: [
-        '*'
-      ],
+      packagePatterns: [ '*' ],
       depTypeList: [ 'dependencies' ],
       updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
       groupName: 'all minor package updates',
