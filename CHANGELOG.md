@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/cenk1cenk2/renovate/compare/v1.0.5...v1.0.6) (2020-07-21)
+
+
+### Bug Fixes
+
+* change package name ([3a5da7e](https://github.com/cenk1cenk2/renovate/commit/3a5da7e0dd1e7566ed5d1fed709f1ebd9e340c56))
+
 ## [1.0.5](https://github.com/cenk1cenk2/renovate/compare/v1.0.4...v1.0.5) (2020-07-21)
 
 
