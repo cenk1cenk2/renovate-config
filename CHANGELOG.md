@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/cenk1cenk2/renovate/compare/v1.1.5...v1.1.6) (2020-07-21)
+
+
+### Bug Fixes
+
+* **asignees:** fix assigness ([2953587](https://github.com/cenk1cenk2/renovate/commit/2953587ce4c35d1bfae9b251c0ddd37a8f21af88))
+
 ## [1.1.5](https://github.com/cenk1cenk2/renovate/compare/v1.1.4...v1.1.5) (2020-07-21)
 
 
