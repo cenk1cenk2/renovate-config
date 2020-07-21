@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/cenk1cenk2/renovate/compare/v1.1.7...v1.1.8) (2020-07-21)
+
+
+### Bug Fixes
+
+* **slowring:** added slowring and grouped slowring items together, added more labels ([00e5710](https://github.com/cenk1cenk2/renovate/commit/00e57102c013ecb6d730f58f5bce42d1abe62122))
+
 ## [1.1.7](https://github.com/cenk1cenk2/renovate/compare/v1.1.6...v1.1.7) (2020-07-21)
 
 
