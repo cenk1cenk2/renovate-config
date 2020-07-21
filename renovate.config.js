@@ -12,6 +12,9 @@ module.exports = {
   repositories: [
     'cenk1cenk2/renovate',
     'cenk1cenk2/eslint-config',
-    'cenk1cenk2/boilerplate-oclif'
+    'cenk1cenk2/boilerplate-oclif',
+    'cenk1cenk2/listr2',
+    'cenk1cenk2/servicecmd',
+    'cenk1cenk2/drone-track-repository'
   ]
 }
