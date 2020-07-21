@@ -70,12 +70,8 @@
       "semanticCommits": true,
       "semanticCommitType": "fix",
       "rangeStrategy": "update-lockfile",
-      "assignees": [
-        "cenk1cenk2cenk3@gmail.com"
-      ],
       "lockFileMaintenance": {
         "enabled": true,
-        "automerge": true,
         "schedule": [
           "before 1am on Monday"
         ]
@@ -86,7 +82,7 @@
       "schedule": [
         "before 1am"
       ],
-      "prCreation": "not-pending"
+      "prCreation": "immediate"
     },
     "default": {
       "extends": [
