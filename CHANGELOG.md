@@ -1,3 +1,10 @@
+## [1.0.18](https://github.com/cenk1cenk2/renovate/compare/v1.0.17...v1.0.18) (2020-07-21)
+
+
+### Bug Fixes
+
+* test immediate ([f9c30f0](https://github.com/cenk1cenk2/renovate/commit/f9c30f084d33530495f580ca0108cc3af1ba786b))
+
 ## [1.0.17](https://github.com/cenk1cenk2/renovate/compare/v1.0.16...v1.0.17) (2020-07-21)
 
 
