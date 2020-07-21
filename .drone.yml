@@ -14,10 +14,10 @@ steps:
       - yarn --frozen-lockfile
       - yarn lint:check
 
-  - name: build
+  - name: execute
     image: node:current-alpine
     commands:
-      - yarn build
+      - yarn start
 
   - name: semantic-release
     image: cenk1cenk2/drone-semantic-release

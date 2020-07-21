@@ -1,5 +1,1 @@
 **
-!dist/*
-!*.js
-.eslintrc.js
-release.config.js
