@@ -5,14 +5,14 @@ export default createPreset({
     {
       packagePatterns: [ '*' ],
       depTypeList: [ 'devDependencies', 'peerDependencies' ],
-      labels: [ 'devDependencies' ],
+      labels: [ 'renovate', 'dev-deps', 'automerge' ],
       groupName: 'all development packages',
       groupSlug: 'all-dev'
     },
     {
       packagePatterns: [ '*' ],
       depTypeList: [ 'dependencies' ],
-      labels: [ 'dependencies' ],
+      labels: [ 'renovate', 'deps', 'automerge' ],
       updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
       groupName: 'all minor package updates',
       groupSlug: 'all'

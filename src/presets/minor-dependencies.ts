@@ -5,7 +5,7 @@ export default createPreset({
   packageRules: [
     {
       updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
-      labels: [ 'automerge' ],
+      labels: [ 'renovate', 'minor', 'automerge' ],
       schedule: [ SCHEDULE.DAILY ],
       automerge: true
     }
