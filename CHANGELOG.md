@@ -1,3 +1,10 @@
+## [1.0.20](https://github.com/cenk1cenk2/renovate/compare/v1.0.19...v1.0.20) (2020-07-21)
+
+
+### Bug Fixes
+
+* update message for dev deps ([21abd9e](https://github.com/cenk1cenk2/renovate/commit/21abd9e6cd24e50db77d2aad1d3feee4e892ed7a))
+
 ## [1.0.19](https://github.com/cenk1cenk2/renovate/compare/v1.0.18...v1.0.19) (2020-07-21)
 
 

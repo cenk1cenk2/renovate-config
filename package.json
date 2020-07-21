@@ -79,7 +79,7 @@
         "stabilityDays": 3
       },
       "schedule": [
-        "at any time"
+        "before 1am"
       ],
       "prCreation": "immediate"
     },
@@ -98,6 +98,7 @@
             "devDependencies"
           ],
           "automerge": true,
+          "commitMessageSuffix": "[skip ci]",
           "schedule": [
             "at any time"
           ]
@@ -105,17 +106,18 @@
       ]
     },
     "minorDependencies": {
-      "packageRules": [
-        {
-          "updateTypes": [
-            "minor",
-            "patch",
-            "pin",
-            "digest"
-          ],
-          "automerge": true
-        }
-      ]
+      "minor": {
+        "automerge": true
+      },
+      "path": {
+        "automerge": true
+      },
+      "pin": {
+        "automerge": true
+      },
+      "digest": {
+        "automerge": true
+      }
     },
     "monthly": {
       "packageRules": [
