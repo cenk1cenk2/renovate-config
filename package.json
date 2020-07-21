@@ -1,5 +1,5 @@
 {
-  "name": "@cenk1cenk2/renovate",
+  "name": "@cenk1cenk2/renovate-config",
   "version": "1.0.0-development",
   "description": "Self-hosted instance of Renovate to update GitHub Actions workflows.",
   "author": "Cenk Kilic, Jeroen de Bruijn",
