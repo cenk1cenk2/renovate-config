@@ -115,6 +115,8 @@
           "automerge": true,
           "commitMessageSuffix": "[skip ci]",
           "labels": [
+            "renovate",
+            "dev-deps",
             "automerge"
           ],
           "schedule": [
@@ -134,7 +136,9 @@
             "peerDependencies"
           ],
           "labels": [
-            "devDependencies"
+            "renovate",
+            "dev-deps",
+            "automerge"
           ],
           "groupName": "all development packages",
           "groupSlug": "all-dev"
@@ -147,7 +151,9 @@
             "dependencies"
           ],
           "labels": [
-            "dependencies"
+            "renovate",
+            "deps",
+            "automerge"
           ],
           "updateTypes": [
             "minor",
@@ -170,6 +176,8 @@
             "digest"
           ],
           "labels": [
+            "renovate",
+            "minor",
             "automerge"
           ],
           "schedule": [

@@ -1,3 +1,10 @@
+## [1.1.11](https://github.com/cenk1cenk2/renovate/compare/v1.1.10...v1.1.11) (2020-07-21)
+
+
+### Bug Fixes
+
+* **labels:** fix label overwrite issue ([93205e8](https://github.com/cenk1cenk2/renovate/commit/93205e851f5b245e1f7c96d246890e0b767079ff))
+
 ## [1.1.10](https://github.com/cenk1cenk2/renovate/compare/v1.1.9...v1.1.10) (2020-07-21)
 
 
