@@ -1,5 +1,6 @@
 import { TIMEZONE } from '@constants/constants'
 import { SCHEDULE } from '@constants/renovate'
+import { assignees } from '@constants/users'
 import { createPreset } from '@lib/preset-factory'
 
 export default createPreset({
@@ -8,6 +9,7 @@ export default createPreset({
   timezone: TIMEZONE,
   semanticCommits: true,
   rangeStrategy: 'update-lockfile',
+  assignees,
   labels: [ 'deps' ],
   lockFileMaintenance: {
     enabled: true,
