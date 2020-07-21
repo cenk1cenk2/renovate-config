@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/cenk1cenk2/renovate/compare/v1.0.7...v1.0.8) (2020-07-21)
+
+
+### Bug Fixes
+
+* index to default ([2b4d6d2](https://github.com/cenk1cenk2/renovate/commit/2b4d6d2d95fc703f407c75aa7dca2a4e67d5313e))
+
 ## [1.0.7](https://github.com/cenk1cenk2/renovate/compare/v1.0.6...v1.0.7) (2020-07-21)
 
 
