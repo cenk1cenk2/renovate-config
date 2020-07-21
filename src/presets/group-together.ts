@@ -8,15 +8,9 @@ export default createPreset({
   packageRules: [
     {
       packagePatterns: [ '*' ],
-      depTypeList: [ 'devDependencies' ],
+      depTypeList: [ 'devDependencies', 'peerDependencies' ],
       groupName: 'all development packages',
       groupSlug: 'all-dev'
-    },
-    {
-      packagePatterns: [ '*' ],
-      depTypeList: [ 'peerDependencies' ],
-      groupName: 'all peer packages',
-      groupSlug: 'all-peer'
     },
     {
       packagePatterns: [ '*' ],
