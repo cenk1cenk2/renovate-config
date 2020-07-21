@@ -75,10 +75,7 @@
       "major": {
         "stabilityDays": 3
       },
-      "prCreation": "not-pending",
-      "schedule": [
-        "before 1am"
-      ]
+      "prCreation": "not-pending"
     },
     "default": {
       "extends": [
@@ -122,7 +119,7 @@
             "^@aws-cdk/"
           ],
           "schedule": [
-            "before 1am on the first day of the month"
+            "before 1am on Monday"
           ]
         },
         {
@@ -130,7 +127,7 @@
             "@types/node"
           ],
           "schedule": [
-            "before 1am on the first day of the month"
+            "before 1am on Monday"
           ]
         }
       ]
