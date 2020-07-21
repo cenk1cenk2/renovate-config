@@ -11,6 +11,7 @@ export default createPreset({
   labels: [ 'deps' ],
   lockFileMaintenance: {
     enabled: true,
+    automerge: true,
     schedule: [ SCHEDULE.WEEKLY ]
   },
   major: {
