@@ -9,6 +9,9 @@ export default createPreset({
   semanticCommits: true,
   semanticCommitType: 'fix',
   rangeStrategy: 'update-lockfile',
+  assignees: [
+    'cenk1cenk2cenk3@gmail.com'
+  ],
   lockFileMaintenance: {
     enabled: true,
     automerge: true,
