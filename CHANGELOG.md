@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/cenk1cenk2/renovate/compare/v1.1.9...v1.1.10) (2020-07-21)
+
+
+### Bug Fixes
+
+* **configs:** added branches as configs ([c4eabae](https://github.com/cenk1cenk2/renovate/commit/c4eabae3a01a2f91e1e294f795b5f439173e60fa))
+
 ## [1.1.9](https://github.com/cenk1cenk2/renovate/compare/v1.1.8...v1.1.9) (2020-07-21)
 
 

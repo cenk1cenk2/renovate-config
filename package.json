@@ -87,6 +87,16 @@
       },
       "prCreation": "immediate"
     },
+    "branchBeta": {
+      "baseBranches": [
+        "beta"
+      ]
+    },
+    "branchDevelop": {
+      "baseBranches": [
+        "develop"
+      ]
+    },
     "default": {
       "extends": [
         "@cenk1cenk2:base",
