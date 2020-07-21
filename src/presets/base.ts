@@ -7,7 +7,6 @@ export default createPreset({
   ignorePresets: [ ':prHourlyLimit2' ],
   timezone: TIMEZONE,
   semanticCommits: true,
-  semanticCommitType: 'fix',
   rangeStrategy: 'update-lockfile',
   lockFileMaintenance: {
     enabled: true,
@@ -16,6 +15,6 @@ export default createPreset({
   major: {
     stabilityDays: 3
   },
-  schedule: [ SCHEDULE.DAILY ],
+  schedule: [ SCHEDULE.ANY ],
   prCreation: 'immediate'
 })
