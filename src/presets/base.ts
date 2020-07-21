@@ -15,6 +15,6 @@ export default createPreset({
   major: {
     stabilityDays: 3
   },
-  schedule: [ SCHEDULE.ANY ],
+  schedule: [ SCHEDULE.DAILY ],
   prCreation: 'immediate'
 })

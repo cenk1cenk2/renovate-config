@@ -5,10 +5,16 @@ import { createPreset } from '@lib/preset-factory'
  */
 
 export default createPreset({
-  packageRules: [
-    {
-      updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
-      automerge: true
-    }
-  ]
+  minor: {
+    automerge: true
+  },
+  path: {
+    automerge: true
+  },
+  pin: {
+    automerge: true
+  },
+  digest: {
+    automerge: true
+  }
 })
