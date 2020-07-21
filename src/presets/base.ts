@@ -8,6 +8,7 @@ export default createPreset({
   timezone: TIMEZONE,
   semanticCommits: true,
   rangeStrategy: 'update-lockfile',
+  labels: [ 'deps' ],
   lockFileMaintenance: {
     enabled: true,
     schedule: [ SCHEDULE.WEEKLY ]
