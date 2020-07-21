@@ -1,3 +1,11 @@
+## [1.0.11](https://github.com/cenk1cenk2/renovate/compare/v1.0.10...v1.0.11) (2020-07-21)
+
+
+### Bug Fixes
+
+* made it run much more, limited by schedule instead of ci ([75d2f83](https://github.com/cenk1cenk2/renovate/commit/75d2f836c08247b7b158827c10808393ea1d8f78))
+* updated lock file ([19cb638](https://github.com/cenk1cenk2/renovate/commit/19cb63883dd1f77c57d5de176584159d1693c338))
+
 ## [1.0.10](https://github.com/cenk1cenk2/renovate/compare/v1.0.9...v1.0.10) (2020-07-21)
 
 

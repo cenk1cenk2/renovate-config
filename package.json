@@ -80,7 +80,7 @@
         "stabilityDays": 3
       },
       "schedule": [
-        "at any time"
+        "before 1am"
       ],
       "prCreation": "not-pending"
     },
@@ -120,10 +120,7 @@
         {
           "packagePatterns": [
             "^@typescript-eslint/",
-            "jest",
-            "^aws-sdk$",
-            "^aws-cdk",
-            "^@aws-cdk/"
+            "jest"
           ],
           "schedule": [
             "before 1am on Monday"
@@ -131,7 +128,12 @@
         },
         {
           "packageNames": [
-            "@types/node"
+            "@types/node",
+            "eslint",
+            "husky",
+            "prettier",
+            "lint-staged",
+            "cz-conventional-changelog"
           ],
           "schedule": [
             "before 1am on Monday"
