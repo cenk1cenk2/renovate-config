@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/cenk1cenk2/renovate/compare/v1.0.12...v1.0.13) (2020-07-21)
+
+
+### Bug Fixes
+
+* **lockfile-maintenance:** switched lock file maintenance to auto-merge ([1dfbdcb](https://github.com/cenk1cenk2/renovate/commit/1dfbdcb437cbb3871c0a24acfee34ada98c88e48))
+
 ## [1.0.12](https://github.com/cenk1cenk2/renovate/compare/v1.0.11...v1.0.12) (2020-07-21)
 
 
