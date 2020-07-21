@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/cenk1cenk2/renovate/compare/v1.1.8...v1.1.9) (2020-07-21)
+
+
+### Bug Fixes
+
+* **slow-ring:** minor update ([838f81a](https://github.com/cenk1cenk2/renovate/commit/838f81ac85f38a278b845e26ab2db3bbc9d56ea0))
+
 ## [1.1.8](https://github.com/cenk1cenk2/renovate/compare/v1.1.7...v1.1.8) (2020-07-21)
 
 
