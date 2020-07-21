@@ -1,3 +1,11 @@
+## [1.0.15](https://github.com/cenk1cenk2/renovate/compare/v1.0.14...v1.0.15) (2020-07-21)
+
+
+### Bug Fixes
+
+* assign self as assignee ([7bcee7f](https://github.com/cenk1cenk2/renovate/commit/7bcee7f1ef00c226ab40dffa9ba9c87729993f6c))
+* export assigness to constat ([b142660](https://github.com/cenk1cenk2/renovate/commit/b14266073835d8eff163416812ce8926f0418a19))
+
 ## [1.0.14](https://github.com/cenk1cenk2/renovate/compare/v1.0.13...v1.0.14) (2020-07-21)
 
 
