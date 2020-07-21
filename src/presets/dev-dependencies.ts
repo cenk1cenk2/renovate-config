@@ -7,6 +7,7 @@ export default createPreset({
       depTypeList: [ 'devDependencies' ],
       automerge: true,
       commitMessageSuffix: '[skip ci]',
+      labels: [ 'automerge' ],
       schedule: [ SCHEDULE.ANY ]
     }
   ]

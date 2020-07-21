@@ -10,7 +10,7 @@ export default createPreset({
   semanticCommits: true,
   rangeStrategy: 'update-lockfile',
   assignees: ASSIGNEES,
-  labels: [ 'deps' ],
+  labels: [ 'renovate' ],
   lockFileMaintenance: {
     enabled: true,
     automerge: true,
@@ -19,6 +19,5 @@ export default createPreset({
   major: {
     stabilityDays: 3
   },
-  schedule: [ SCHEDULE.DAILY ],
   prCreation: 'immediate'
 })

@@ -3,7 +3,7 @@ import _default from '@presets/default'
 import devDependencies from '@presets/dev-dependencies'
 import groupTogether from '@presets/group-together'
 import minorDependencies from '@presets/minor-dependencies'
-import monthly from '@presets/weekly'
+import slowring from '@root/presets/slow-ring'
 import { RenovateConfig } from 'renovate/dist/config/common'
 
 export default {
@@ -11,6 +11,6 @@ export default {
   default: _default,
   devDependencies,
   minorDependencies,
-  monthly,
+  slowring,
   groupTogether
 } as Record<string, RenovateConfig>
