@@ -1,5 +1,6 @@
 import { TIMEZONE } from '@constants/constants'
 import { SCHEDULE } from '@constants/renovate'
+import { assignees } from '@constants/users'
 import { createPreset } from '@lib/preset-factory'
 
 export default createPreset({
@@ -9,9 +10,7 @@ export default createPreset({
   semanticCommits: true,
   semanticCommitType: 'fix',
   rangeStrategy: 'update-lockfile',
-  assignees: [
-    'cenk1cenk2cenk3@gmail.com'
-  ],
+  assignees,
   lockFileMaintenance: {
     enabled: true,
     automerge: true,
