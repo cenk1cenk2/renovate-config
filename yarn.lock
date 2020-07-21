@@ -23,7 +23,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@cenk1cenk2/eslint-config@*":
+"@cenk1cenk2/eslint-config@^0.2.6":
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/@cenk1cenk2/eslint-config/-/eslint-config-0.2.6.tgz#d22a444ecf8bafe605152628bb728b88440b515b"
   integrity sha512-eBDlHjYKisjiS4pSfTfMTT84fry3RZnu6R2tPhxp9y5RF2MIX/0/bfWxGzWGYMVIPa6wkaeig6c0L7ZXx1MZBQ==
