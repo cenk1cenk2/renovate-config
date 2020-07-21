@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   extends: [ 'config:base', ':masterIssue', ':semanticPrefixFix' ],
   ignorePresets: [ ':prHourlyLimit2' ],
   timezone: 'Europe/Vienna',
@@ -20,3 +20,5 @@ module.exports = {
     }
   ]
 }
+
+export default config
