@@ -23,10 +23,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@cenk1cenk2/eslint-config@^0.2.6":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@cenk1cenk2/eslint-config/-/eslint-config-0.2.10.tgz#50b35ecb9b5193d0f1a45cd35eedc72ffaed8de8"
-  integrity sha512-uDD915D3H08eWQRO4vyRpoA85R9Gl4q5KVVO6jS/S5noQV9fB8/DWUoRB/hK5Fe9CtGf4tBWpcoOQ03+Be6piw==
+"@cenk1cenk2/eslint-config@^0.3.0":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@cenk1cenk2/eslint-config/-/eslint-config-0.3.1.tgz#1c6402f9bc6c6c43d15ffe99ba3be58e0da56bd3"
+  integrity sha512-UPjZSOByVa8xEA+Mg3+oRWfVntbYCs6Ga+QzJ5EjYo/flKX/377GA2Cske2KT9I61ut91pLLNswL0nS11pyKsQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^3.0.0"
     "@typescript-eslint/parser" "^3.0.0"
