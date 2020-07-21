@@ -18,7 +18,6 @@
     "rootDir": "./src/",
     "baseUrl": "./src/",
     "paths": {
-      "@root/*": ["./*"],
       "@constants/*": ["./constants/*"],
       "@lib/*": ["./lib/*"],
       "@utils/*": ["./utils/*"],
