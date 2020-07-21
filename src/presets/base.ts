@@ -11,6 +11,7 @@ export default createPreset({
   rangeStrategy: 'update-lockfile',
   lockFileMaintenance: {
     enabled: true,
+    automerge: true,
     schedule: [ SCHEDULE.WEEKLY ]
   },
   major: {
