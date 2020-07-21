@@ -69,6 +69,9 @@
       "timezone": "Europe/Vienna",
       "semanticCommits": true,
       "rangeStrategy": "update-lockfile",
+      "assignees": [
+        "cenk1cenk2"
+      ],
       "labels": [
         "deps"
       ],
