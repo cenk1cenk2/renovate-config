@@ -68,7 +68,6 @@
       ],
       "timezone": "Europe/Vienna",
       "semanticCommits": true,
-      "semanticCommitType": "fix",
       "rangeStrategy": "update-lockfile",
       "lockFileMaintenance": {
         "enabled": true,
@@ -80,7 +79,7 @@
         "stabilityDays": 3
       },
       "schedule": [
-        "before 1am"
+        "at any time"
       ],
       "prCreation": "immediate"
     },
