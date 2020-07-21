@@ -1,3 +1,4 @@
+import { SCHEDULE } from '@constants/renovate'
 import { createPreset } from '@lib/preset-factory'
 
 /**
@@ -8,7 +9,8 @@ export default createPreset({
   packageRules: [
     {
       depTypeList: [ 'devDependencies' ],
-      automerge: true
+      automerge: true,
+      schedule: [ SCHEDULE.ANY ]
     }
   ]
 })

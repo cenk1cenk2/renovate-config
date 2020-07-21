@@ -15,6 +15,10 @@ export default createPreset({
     {
       packageNames: [ '@types/node', 'eslint', 'husky', 'prettier', 'lint-staged', 'cz-conventional-changelog' ],
       schedule: [ SCHEDULE.WEEKLY ]
+    },
+    {
+      packageNames: [ 'node' ],
+      enabled: false
     }
   ]
 })
