@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/cenk1cenk2/renovate/compare/v1.0.8...v1.0.9) (2020-07-21)
+
+
+### Bug Fixes
+
+* change build procedure ([1e625a4](https://github.com/cenk1cenk2/renovate/commit/1e625a41d2a25db58938beca48acd664c786eb20))
+
 ## [1.0.8](https://github.com/cenk1cenk2/renovate/compare/v1.0.7...v1.0.8) (2020-07-21)
 
 
