@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/cenk1cenk2/renovate/compare/v1.1.0...v1.1.1) (2020-07-21)
+
+
+### Bug Fixes
+
+* group dev and peer together ([334c46a](https://github.com/cenk1cenk2/renovate/commit/334c46aae5dce95343bfd158399e06c28591063f))
+
 # [1.1.0](https://github.com/cenk1cenk2/renovate/compare/v1.0.20...v1.1.0) (2020-07-21)
 
 

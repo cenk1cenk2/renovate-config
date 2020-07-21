@@ -116,20 +116,11 @@
             "*"
           ],
           "depTypeList": [
-            "devDependencies"
+            "devDependencies",
+            "peerDependencies"
           ],
           "groupName": "all development packages",
           "groupSlug": "all-dev"
-        },
-        {
-          "packagePatterns": [
-            "*"
-          ],
-          "depTypeList": [
-            "peerDependencies"
-          ],
-          "groupName": "all peer packages",
-          "groupSlug": "all-peer"
         },
         {
           "packagePatterns": [
