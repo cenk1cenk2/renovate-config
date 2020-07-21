@@ -1,3 +1,10 @@
+## [1.0.17](https://github.com/cenk1cenk2/renovate/compare/v1.0.16...v1.0.17) (2020-07-21)
+
+
+### Bug Fixes
+
+* moved ignore to weekly ([7b608db](https://github.com/cenk1cenk2/renovate/commit/7b608dbf4f55e6a11ab43dfd7c0f944912d967be))
+
 ## [1.0.16](https://github.com/cenk1cenk2/renovate/compare/v1.0.15...v1.0.16) (2020-07-21)
 
 
