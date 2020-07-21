@@ -1,3 +1,10 @@
+## [1.0.16](https://github.com/cenk1cenk2/renovate/compare/v1.0.15...v1.0.16) (2020-07-21)
+
+
+### Bug Fixes
+
+* **pr-request:** pending status to immediate ([4eabf20](https://github.com/cenk1cenk2/renovate/commit/4eabf20f794b1f6ad2a0114cd3c5a1e3888212d8))
+
 ## [1.0.15](https://github.com/cenk1cenk2/renovate/compare/v1.0.14...v1.0.15) (2020-07-21)
 
 
