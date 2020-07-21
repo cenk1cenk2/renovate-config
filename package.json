@@ -74,6 +74,7 @@
       ],
       "lockFileMaintenance": {
         "enabled": true,
+        "automerge": true,
         "schedule": [
           "before 1am on Monday"
         ]
