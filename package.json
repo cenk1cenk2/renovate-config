@@ -175,6 +175,7 @@
           "packagePatterns": [
             "^@typescript-eslint/",
             "jest",
+            "@types/jest",
             "^@types/node$",
             "^eslint$",
             "^husky$",
