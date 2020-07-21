@@ -7,7 +7,7 @@ module.exports = {
   onboarding: true,
   onboardingPrTitle: '[renovate-bot] Configure',
   onboardingConfig: {
-    extends: [ '@cenk1cenk2' ]
+    extends: [ 'github>cenk1cenk2/renovate:src/index' ]
   },
   repositories: [
     'cenk1cenk2/renovate',

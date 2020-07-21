@@ -5,8 +5,8 @@
   "author": "Cenk Kilic, Jeroen de Bruijn",
   "license": "GPL-3.0-or-later",
   "repository": "https://github.com/cenk1cenk2/renovate",
+  "private": false,
   "scripts": {
-    "build": "rimraf dist/ && babel ./src --out-dir ./ --copy-files",
     "lint": "prettier --write ./ && eslint --ext .ts,.js,.tsx,.jsx --fix ./",
     "lint:check": "eslint --ext .ts,.js,.tsx,.jsx ./"
   },
@@ -44,8 +44,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
