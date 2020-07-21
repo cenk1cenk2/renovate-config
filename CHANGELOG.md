@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/cenk1cenk2/renovate/compare/v1.0.4...v1.0.5) (2020-07-21)
+
+
+### Bug Fixes
+
+* **src:** fix file name ([2f8f141](https://github.com/cenk1cenk2/renovate/commit/2f8f14100471944e8e8aecc2afa82a2f075937dd))
+
 ## [1.0.4](https://github.com/cenk1cenk2/renovate/compare/v1.0.3...v1.0.4) (2020-07-20)
 
 
