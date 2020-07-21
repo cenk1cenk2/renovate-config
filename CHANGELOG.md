@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/cenk1cenk2/renovate/compare/v1.0.3...v1.0.4) (2020-07-20)
+
+
+### Bug Fixes
+
+* retry ([cebbf41](https://github.com/cenk1cenk2/renovate/commit/cebbf41e74194437e293ecafa977499198464b2e))
+
 ## [1.0.3](https://github.com/cenk1cenk2/renovate/compare/v1.0.2...v1.0.3) (2020-07-20)
 
 
