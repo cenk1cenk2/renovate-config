@@ -1,3 +1,11 @@
+## [1.0.7](https://github.com/cenk1cenk2/renovate/compare/v1.0.6...v1.0.7) (2020-07-21)
+
+
+### Bug Fixes
+
+* **revert:** revert back ([65c6b9d](https://github.com/cenk1cenk2/renovate/commit/65c6b9d748cf7ef65516473488d5d131729bb2fc))
+* scrap babel and semantic release ([fdab353](https://github.com/cenk1cenk2/renovate/commit/fdab3531e1d52734eedaff2faaf87516e7458fc2))
+
 ## [1.0.6](https://github.com/cenk1cenk2/renovate/compare/v1.0.5...v1.0.6) (2020-07-21)
 
 
