@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/cenk1cenk2/renovate/compare/v1.1.6...v1.1.7) (2020-07-21)
+
+
+### Bug Fixes
+
+* **lockfile-maintenance:** fix lockfile maintenance to daily ([66c43ad](https://github.com/cenk1cenk2/renovate/commit/66c43adde4d1a440fd9729df33bb17aa28b7a195))
+
 ## [1.1.6](https://github.com/cenk1cenk2/renovate/compare/v1.1.5...v1.1.6) (2020-07-21)
 
 

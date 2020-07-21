@@ -79,7 +79,7 @@
         "enabled": true,
         "automerge": true,
         "schedule": [
-          "before 1am on Monday"
+          "before 1am"
         ]
       },
       "major": {
