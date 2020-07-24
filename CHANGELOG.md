@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/cenk1cenk2/renovate/compare/v1.3.0...v1.3.1) (2020-07-24)
+
+
+### Bug Fixes
+
+* pr hourlylimit none ([c9a11d2](https://github.com/cenk1cenk2/renovate/commit/c9a11d2ab82c04329162ff31a87397ad6ffbd725))
+
 # [1.3.0](https://github.com/cenk1cenk2/renovate/compare/v1.2.0...v1.3.0) (2020-07-24)
 
 
