@@ -62,7 +62,8 @@
       "extends": [
         "config:base",
         ":masterIssue",
-        ":prHourlyLimitNone"
+        ":prHourlyLimitNone",
+        ":prConcurrentLimitNone"
       ],
       "timezone": "Europe/Vienna",
       "semanticCommits": true,
@@ -73,6 +74,7 @@
       "labels": [
         "renovate"
       ],
+      "requiredStatusChecks": null,
       "major": {
         "stabilityDays": 3
       },
@@ -94,7 +96,6 @@
         "@cenk1cenk2:lockFile",
         "@cenk1cenk2:groupMinorDependencies",
         "@cenk1cenk2:groupDevDependencies",
-        "@cenk1cenk2:groupPeerDependencies",
         "@cenk1cenk2:slowring"
       ]
     },
@@ -147,31 +148,7 @@
           ],
           "automerge": true,
           "schedule": [
-            "before 1am"
-          ]
-        }
-      ]
-    },
-    "groupPeerDependencies": {
-      "packageRules": [
-        {
-          "packagePatterns": [
-            "*"
-          ],
-          "depTypeList": [
-            "peerDependencies"
-          ],
-          "groupName": "all peer dependencies",
-          "groupSlug": "all-peer",
-          "commitMessageSuffix": "[skip ci]",
-          "labels": [
-            "renovate",
-            "peer-deps",
-            "automerge"
-          ],
-          "automerge": true,
-          "schedule": [
-            "at any time"
+            "before 1 am and before 13 am"
           ]
         }
       ]
@@ -185,7 +162,7 @@
           "lock"
         ],
         "schedule": [
-          "before 1am"
+          "before 1 am and before 13 am"
         ]
       }
     },
