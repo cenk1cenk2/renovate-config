@@ -61,10 +61,8 @@
     "base": {
       "extends": [
         "config:base",
-        ":masterIssue"
-      ],
-      "ignorePresets": [
-        ":prHourlyLimit2"
+        ":masterIssue",
+        ":prHourlyLimitNone"
       ],
       "timezone": "Europe/Vienna",
       "semanticCommits": true,
