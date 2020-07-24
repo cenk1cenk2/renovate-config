@@ -1,5 +1,4 @@
 import { TIMEZONE } from '@constants/constants'
-import { SCHEDULE } from '@constants/renovate'
 import { ASSIGNEES } from '@constants/users'
 import { createPreset } from '@lib/preset-factory'
 
@@ -11,11 +10,6 @@ export default createPreset({
   rangeStrategy: 'update-lockfile',
   assignees: ASSIGNEES,
   labels: [ 'renovate' ],
-  lockFileMaintenance: {
-    enabled: true,
-    automerge: true,
-    schedule: [ SCHEDULE.DAILY ]
-  },
   major: {
     stabilityDays: 3
   },

@@ -1,20 +1,20 @@
 import base from '@presets/base'
-import branchBeta from '@presets/branch-beta'
-import branchDevelop from '@presets/branch-develop'
+import branchBeta from '@presets/branches/branch-beta'
+import branchDevelop from '@presets/branches/branch-develop'
 import _default from '@presets/default'
-import devDependencies from '@presets/dev-dependencies'
-import groupTogether from '@presets/group-together'
-import minorDependencies from '@presets/minor-dependencies'
+import groupDevDependencies from '@presets/group-dev-dependencies'
+import groupMinorDependencies from '@presets/group-minor-dependencies'
+import lockFile from '@presets/lock-file'
 import slowring from '@presets/slow-ring'
 import { RenovateConfig } from 'renovate/dist/config/common'
 
 export default {
   base,
   default: _default,
-  devDependencies,
-  minorDependencies,
+  lockFile,
   slowring,
-  groupTogether,
+  groupDevDependencies,
+  groupMinorDependencies,
   branchDevelop,
   branchBeta
 } as Record<string, RenovateConfig>
