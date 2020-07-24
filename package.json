@@ -148,7 +148,7 @@
           ],
           "automerge": true,
           "schedule": [
-            "before 1 am and before 13 am"
+            "before 1 am and before 1 pm"
           ]
         }
       ]
@@ -187,7 +187,7 @@
           "lock"
         ],
         "schedule": [
-          "before 1 am and before 13 am"
+          "before 1 am and before 1 pm"
         ]
       }
     },
