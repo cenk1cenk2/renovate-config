@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/cenk1cenk2/renovate/compare/v1.3.1...v1.3.2) (2020-07-24)
+
+
+### Bug Fixes
+
+* **status-checks:** disable status check requirement ([e856282](https://github.com/cenk1cenk2/renovate/commit/e85628251acd548c8dae24bb485c2cb9f92db17f))
+
 ## [1.3.1](https://github.com/cenk1cenk2/renovate/compare/v1.3.0...v1.3.1) (2020-07-24)
 
 
