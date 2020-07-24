@@ -3,8 +3,7 @@ import { ASSIGNEES } from '@constants/users'
 import { createPreset } from '@lib/preset-factory'
 
 export default createPreset({
-  extends: [ 'config:base', ':masterIssue' ],
-  ignorePresets: [ ':prHourlyLimit2' ],
+  extends: [ 'config:base', ':masterIssue', ':prHourlyLimitNone' ],
   timezone: TIMEZONE,
   semanticCommits: true,
   rangeStrategy: 'update-lockfile',
