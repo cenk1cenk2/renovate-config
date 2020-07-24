@@ -70,18 +70,11 @@
       "semanticCommits": true,
       "rangeStrategy": "update-lockfile",
       "assignees": [
-        "cenk1cenk2cenk3@gmail.com"
+        "cenk1cenk2"
       ],
       "labels": [
         "renovate"
       ],
-      "lockFileMaintenance": {
-        "enabled": true,
-        "automerge": true,
-        "schedule": [
-          "before 1am"
-        ]
-      },
       "major": {
         "stabilityDays": 3
       },
@@ -100,32 +93,13 @@
     "default": {
       "extends": [
         "@cenk1cenk2:base",
-        "@cenk1cenk2:devDependencies",
-        "@cenk1cenk2:minorDependencies",
-        "@cenk1cenk2:groupTogether",
+        "@cenk1cenk2:lockFile",
+        "@cenk1cenk2:groupMinorDependencies",
+        "@cenk1cenk2:groupDevDependencies",
         "@cenk1cenk2:slowring"
       ]
     },
-    "devDependencies": {
-      "packageRules": [
-        {
-          "depTypeList": [
-            "devDependencies"
-          ],
-          "automerge": true,
-          "commitMessageSuffix": "[skip ci]",
-          "labels": [
-            "renovate",
-            "dev-deps",
-            "automerge"
-          ],
-          "schedule": [
-            "at any time"
-          ]
-        }
-      ]
-    },
-    "groupTogether": {
+    "groupDevDependencies": {
       "packageRules": [
         {
           "packagePatterns": [
@@ -135,25 +109,29 @@
             "devDependencies",
             "peerDependencies"
           ],
+          "groupName": "all development packages",
+          "groupSlug": "all-dev",
+          "commitMessageSuffix": "[skip ci]",
           "labels": [
             "renovate",
             "dev-deps",
             "automerge"
           ],
-          "groupName": "all development packages",
-          "groupSlug": "all-dev"
-        },
+          "automerge": true,
+          "schedule": [
+            "at any time"
+          ]
+        }
+      ]
+    },
+    "groupMinorDependencies": {
+      "packageRules": [
         {
           "packagePatterns": [
             "*"
           ],
           "depTypeList": [
             "dependencies"
-          ],
-          "labels": [
-            "renovate",
-            "deps",
-            "automerge"
           ],
           "updateTypes": [
             "minor",
@@ -162,30 +140,31 @@
             "digest"
           ],
           "groupName": "all minor package updates",
-          "groupSlug": "all"
-        }
-      ]
-    },
-    "minorDependencies": {
-      "packageRules": [
-        {
-          "updateTypes": [
-            "minor",
-            "patch",
-            "pin",
-            "digest"
-          ],
+          "groupSlug": "all",
           "labels": [
             "renovate",
             "minor",
             "automerge"
           ],
+          "automerge": true,
           "schedule": [
             "before 1am"
-          ],
-          "automerge": true
+          ]
         }
       ]
+    },
+    "lockFile": {
+      "lockFileMaintenance": {
+        "enabled": true,
+        "automerge": true,
+        "labels": [
+          "renovate",
+          "lock"
+        ],
+        "schedule": [
+          "before 1am"
+        ]
+      }
     },
     "slowring": {
       "packageRules": [

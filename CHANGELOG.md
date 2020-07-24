@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/cenk1cenk2/renovate/compare/v1.1.13...v1.2.0) (2020-07-24)
+
+
+### Features
+
+* changed grouping setup ([1bf1be4](https://github.com/cenk1cenk2/renovate/commit/1bf1be4a9e2519c879fb811f9140f19abe0f6963))
+
 ## [1.1.13](https://github.com/cenk1cenk2/renovate/compare/v1.1.12...v1.1.13) (2020-07-23)
 
 
