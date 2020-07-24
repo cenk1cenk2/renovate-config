@@ -5,11 +5,11 @@ export default createPreset({
   packageRules: [
     {
       packagePatterns: [ '*' ],
-      depTypeList: [ 'devDependencies', 'peerDependencies' ],
-      groupName: 'all development dependency updates',
-      groupSlug: 'all-dev',
+      depTypeList: [ 'peerDependencies' ],
+      groupName: 'all peer dependencies',
+      groupSlug: 'all-peer',
       commitMessageSuffix: '[skip ci]',
-      labels: [ 'renovate', 'dev-deps', 'automerge' ],
+      labels: [ 'renovate', 'peer-deps', 'automerge' ],
       automerge: true,
       schedule: [ SCHEDULE.ANY ]
     }

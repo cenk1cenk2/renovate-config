@@ -7,7 +7,7 @@ export default createPreset({
       packagePatterns: [ '*' ],
       depTypeList: [ 'dependencies' ],
       updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
-      groupName: 'all minor package updates',
+      groupName: 'all minor dependency updates',
       groupSlug: 'all',
       labels: [ 'renovate', 'minor', 'automerge' ],
       automerge: true,
