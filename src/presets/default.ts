@@ -7,6 +7,7 @@ export default createPreset({
     createScope('lockFile'),
     createScope('groupMinorDependencies'),
     createScope('groupDevDependencies'),
+    createScope('groupPeerDependencies'),
     createScope('slowring')
   ]
 })
