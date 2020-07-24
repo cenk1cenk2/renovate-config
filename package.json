@@ -96,6 +96,7 @@
         "@cenk1cenk2:lockFile",
         "@cenk1cenk2:groupMinorDependencies",
         "@cenk1cenk2:groupDevDependencies",
+        "@cenk1cenk2:groupPeerDependencies",
         "@cenk1cenk2:slowring"
       ]
     },
@@ -109,7 +110,7 @@
             "devDependencies",
             "peerDependencies"
           ],
-          "groupName": "all development packages",
+          "groupName": "all development dependency updates",
           "groupSlug": "all-dev",
           "commitMessageSuffix": "[skip ci]",
           "labels": [
@@ -139,7 +140,7 @@
             "pin",
             "digest"
           ],
-          "groupName": "all minor package updates",
+          "groupName": "all minor dependency updates",
           "groupSlug": "all",
           "labels": [
             "renovate",
@@ -149,6 +150,30 @@
           "automerge": true,
           "schedule": [
             "before 1am"
+          ]
+        }
+      ]
+    },
+    "groupPeerDependencies": {
+      "packageRules": [
+        {
+          "packagePatterns": [
+            "*"
+          ],
+          "depTypeList": [
+            "peerDependencies"
+          ],
+          "groupName": "all peer dependencies",
+          "groupSlug": "all-peer",
+          "commitMessageSuffix": "[skip ci]",
+          "labels": [
+            "renovate",
+            "peer-deps",
+            "automerge"
+          ],
+          "automerge": true,
+          "schedule": [
+            "at any time"
           ]
         }
       ]

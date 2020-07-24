@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/cenk1cenk2/renovate/compare/v1.2.0...v1.3.0) (2020-07-24)
+
+
+### Features
+
+* seperate dev and peer ([b30175d](https://github.com/cenk1cenk2/renovate/commit/b30175da613ab82e2cd65b2e794a71d5d07b7b26))
+
 # [1.2.0](https://github.com/cenk1cenk2/renovate/compare/v1.1.13...v1.2.0) (2020-07-24)
 
 
