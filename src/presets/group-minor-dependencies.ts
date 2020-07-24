@@ -11,7 +11,7 @@ export default createPreset({
       groupSlug: 'all',
       labels: [ 'renovate', 'minor', 'automerge' ],
       automerge: true,
-      schedule: [ SCHEDULE.DAILY ]
+      schedule: [ SCHEDULE.TWICE_A_DAY ]
     }
   ]
 })

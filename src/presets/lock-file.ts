@@ -6,6 +6,6 @@ export default createPreset({
     enabled: true,
     automerge: true,
     labels: [ 'renovate', 'lock' ],
-    schedule: [ SCHEDULE.DAILY ]
+    schedule: [ SCHEDULE.TWICE_A_DAY ]
   }
 })
