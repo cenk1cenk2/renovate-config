@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/cenk1cenk2/renovate/compare/v1.3.4...v1.4.0) (2020-07-25)
+
+
+### Features
+
+* added notests option ([f35851f](https://github.com/cenk1cenk2/renovate/commit/f35851f106d579c3fd90991aceb1cf08017d2b87))
+
 ## [1.3.4](https://github.com/cenk1cenk2/renovate/compare/v1.3.3...v1.3.4) (2020-07-24)
 
 
