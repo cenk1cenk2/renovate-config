@@ -1,3 +1,18 @@
+## [1.3.4](https://github.com/cenk1cenk2/renovate/compare/v1.3.3...v1.3.4) (2020-07-24)
+
+
+### Bug Fixes
+
+* schedule ([e6db8b2](https://github.com/cenk1cenk2/renovate/commit/e6db8b2f381ae9d151479d336d1238654c6fcae1))
+
+## [1.3.3](https://github.com/cenk1cenk2/renovate/compare/v1.3.2...v1.3.3) (2020-07-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to v22.3.1 ([6eb2452](https://github.com/cenk1cenk2/renovate/commit/6eb245267c5d1b0445b5921dd565dbb0f2c4fecf))
+* update split dev peer again ([f226d41](https://github.com/cenk1cenk2/renovate/commit/f226d41921cb8185e3302d02a581768424522513))
+
 ## [1.3.2](https://github.com/cenk1cenk2/renovate/compare/v1.3.1...v1.3.2) (2020-07-24)
 
 
