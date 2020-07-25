@@ -73,6 +73,7 @@
       "labels": [
         "renovate"
       ],
+      "rangeStrategy": "update-lockfile",
       "major": {
         "stabilityDays": 3
       },
