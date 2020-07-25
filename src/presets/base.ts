@@ -6,10 +6,8 @@ export default createPreset({
   extends: [ 'config:base', ':masterIssue', ':prHourlyLimitNone', ':prConcurrentLimitNone' ],
   timezone: TIMEZONE,
   semanticCommits: true,
-  rangeStrategy: 'update-lockfile',
   assignees: ASSIGNEES,
   labels: [ 'renovate' ],
-  requiredStatusChecks: null,
   major: {
     stabilityDays: 3
   },

@@ -8,6 +8,7 @@ export default createPreset({
       depTypeList: [ 'devDependencies' ],
       groupName: 'all development dependency updates',
       groupSlug: 'all-dev',
+      rangeStrategy: 'update-lockfile',
       commitMessageSuffix: '[skip ci]',
       labels: [ 'renovate', 'dev-deps', 'automerge' ],
       automerge: true,

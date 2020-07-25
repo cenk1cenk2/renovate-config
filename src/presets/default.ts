@@ -5,6 +5,7 @@ export default createPreset({
   extends: [
     createScope('base'),
     createScope('lockFile'),
+    createScope('noTests'),
     createScope('groupMinorDependencies'),
     createScope('groupDevDependencies'),
     createScope('groupPeerDependencies'),

@@ -6,6 +6,7 @@ import groupDevDependencies from '@presets/group-dev-dependencies'
 import groupMinorDependencies from '@presets/group-minor-dependencies'
 import groupPeerDependencies from '@presets/group-peer-dependencies'
 import lockFile from '@presets/lock-file'
+import noTests from '@presets/no-tests'
 import slowring from '@presets/slow-ring'
 import { RenovateConfig } from 'renovate/dist/config/common'
 
@@ -13,6 +14,7 @@ export default {
   base,
   default: _default,
   lockFile,
+  noTests,
   slowring,
   groupDevDependencies,
   groupMinorDependencies,
