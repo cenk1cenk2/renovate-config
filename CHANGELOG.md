@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/cenk1cenk2/renovate/compare/v1.4.4...v1.4.5) (2020-07-26)
+
+
+### Bug Fixes
+
+* **lock-file:** added skip ci to lock file ([0307ee7](https://github.com/cenk1cenk2/renovate/commit/0307ee78a59c65732a99725cdd12a772825f82a7))
+
 ## [1.4.4](https://github.com/cenk1cenk2/renovate/compare/v1.4.3...v1.4.4) (2020-07-26)
 
 

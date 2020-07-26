@@ -184,6 +184,7 @@
       "lockFileMaintenance": {
         "enabled": true,
         "automerge": true,
+        "commitMessageSuffix": "[skip ci]",
         "labels": [
           "renovate",
           "lock"
