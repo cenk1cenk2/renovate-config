@@ -1,3 +1,25 @@
+## [1.4.3](https://github.com/cenk1cenk2/renovate/compare/v1.4.2...v1.4.3) (2020-07-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to v22.3.3 ([5af05d2](https://github.com/cenk1cenk2/renovate/commit/5af05d2aff680bfa28e61cbb329c31abe949fc74))
+
+## [1.4.2](https://github.com/cenk1cenk2/renovate/compare/v1.4.1...v1.4.2) (2020-07-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to v22.3.2 ([94def94](https://github.com/cenk1cenk2/renovate/commit/94def94d196c3c32d739f4098df5e4a90ea08469))
+
+## [1.4.1](https://github.com/cenk1cenk2/renovate/compare/v1.4.0...v1.4.1) (2020-07-25)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([69f6e74](https://github.com/cenk1cenk2/renovate/commit/69f6e746079bec1e72b2f0ddfcba071e16a45cdd))
+* **range-strategy:** add default to be sure to not pin ([151a105](https://github.com/cenk1cenk2/renovate/commit/151a1052c1ef1c96d6a9815ead245bad58c0f900))
+
 # [1.4.0](https://github.com/cenk1cenk2/renovate/compare/v1.3.4...v1.4.0) (2020-07-25)
 
 
