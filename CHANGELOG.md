@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/cenk1cenk2/renovate/compare/v1.4.1...v1.4.2) (2020-07-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to v22.3.2 ([94def94](https://github.com/cenk1cenk2/renovate/commit/94def94d196c3c32d739f4098df5e4a90ea08469))
+
 ## [1.4.1](https://github.com/cenk1cenk2/renovate/compare/v1.4.0...v1.4.1) (2020-07-25)
 
 
