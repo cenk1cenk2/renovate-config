@@ -8,7 +8,7 @@ export default createPreset({
   semanticCommits: true,
   assignees: ASSIGNEES,
   labels: [ 'renovate' ],
-  rangeStrategy: 'update-lockfile',
+  rangeStrategy: 'bump',
   major: {
     stabilityDays: 3
   },

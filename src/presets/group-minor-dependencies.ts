@@ -9,7 +9,7 @@ export default createPreset({
       updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
       groupName: 'all minor dependency updates',
       groupSlug: 'all',
-      rangeStrategy: 'update-lockfile',
+      rangeStrategy: 'bump',
       labels: [ 'renovate', 'minor', 'automerge' ],
       automerge: true,
       schedule: [ SCHEDULE.TWICE_A_DAY ]
