@@ -73,7 +73,7 @@
       "labels": [
         "renovate"
       ],
-      "rangeStrategy": "update-lockfile",
+      "rangeStrategy": "bump",
       "major": {
         "stabilityDays": 3
       },
@@ -111,7 +111,7 @@
           ],
           "groupName": "all development dependency updates",
           "groupSlug": "all-dev",
-          "rangeStrategy": "update-lockfile",
+          "rangeStrategy": "bump",
           "commitMessageSuffix": "[skip ci]",
           "labels": [
             "renovate",
@@ -142,7 +142,7 @@
           ],
           "groupName": "all minor dependency updates",
           "groupSlug": "all",
-          "rangeStrategy": "update-lockfile",
+          "rangeStrategy": "bump",
           "labels": [
             "renovate",
             "minor",

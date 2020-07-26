@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/cenk1cenk2/renovate/compare/v1.4.3...v1.4.4) (2020-07-26)
+
+
+### Bug Fixes
+
+* changed range strategy to bump. ([ed03061](https://github.com/cenk1cenk2/renovate/commit/ed03061dac8aa4c8040668ad4991963f01952305))
+
 ## [1.4.3](https://github.com/cenk1cenk2/renovate/compare/v1.4.2...v1.4.3) (2020-07-26)
 
 
