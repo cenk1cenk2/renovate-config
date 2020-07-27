@@ -6,7 +6,7 @@ export default createPreset({
     {
       updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
       labels: [ 'renovate', 'minor', 'automerge' ],
-      schedule: [ SCHEDULE.TWICE_A_DAY ],
+      schedule: [ SCHEDULE.DAILY ],
       automerge: true
     }
   ]

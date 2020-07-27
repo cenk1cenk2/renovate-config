@@ -9,6 +9,7 @@ export default createPreset({
     createScope('groupMinorDependencies'),
     createScope('groupDevDependencies'),
     createScope('groupPeerDependencies'),
-    createScope('slowring')
+    createScope('slowring'),
+    createScope('fastring')
   ]
 })

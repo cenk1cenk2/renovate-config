@@ -7,6 +7,6 @@ export default createPreset({
     automerge: true,
     commitMessageSuffix: '[skip ci]',
     labels: [ 'renovate', 'lock' ],
-    schedule: [ SCHEDULE.TWICE_A_DAY ]
+    schedule: [ SCHEDULE.DAILY ]
   }
 })
