@@ -97,7 +97,83 @@
         "@cenk1cenk2:groupMinorDependencies",
         "@cenk1cenk2:groupDevDependencies",
         "@cenk1cenk2:groupPeerDependencies",
-        "@cenk1cenk2:slowring"
+        "@cenk1cenk2:slowring",
+        "@cenk1cenk2:fastring"
+      ]
+    },
+    "fastring": {
+      "packageRules": [
+        {
+          "packagePatterns": [
+            "^@cenk1cenk2/",
+            "listr2"
+          ],
+          "groupName": "all fast ring minor dependencies",
+          "groupSlug": "fast-ring",
+          "depTypeList": [
+            "dependencies"
+          ],
+          "updateTypes": [
+            "minor",
+            "patch",
+            "pin",
+            "digest"
+          ],
+          "rangeStrategy": "bump",
+          "labels": [
+            "renovate",
+            "minor",
+            "automerge"
+          ],
+          "automerge": true,
+          "schedule": [
+            "at any time"
+          ]
+        },
+        {
+          "packagePatterns": [
+            "^@cenk1cenk2/",
+            "listr2"
+          ],
+          "groupName": "all fast ring dev dependencies",
+          "groupSlug": "fast-ring-dev",
+          "depTypeList": [
+            "devDependencies"
+          ],
+          "rangeStrategy": "bump",
+          "commitMessageSuffix": "[skip ci]",
+          "labels": [
+            "renovate",
+            "dev-deps",
+            "automerge"
+          ],
+          "automerge": true,
+          "schedule": [
+            "at any time"
+          ]
+        },
+        {
+          "packagePatterns": [
+            "^@cenk1cenk2/",
+            "listr2"
+          ],
+          "groupName": "all fast ring peer dependencies",
+          "groupSlug": "fast-ring-peer",
+          "depTypeList": [
+            "peerDependencies"
+          ],
+          "rangeStrategy": "widen",
+          "commitMessageSuffix": "[skip ci]",
+          "labels": [
+            "renovate",
+            "peer-deps",
+            "automerge"
+          ],
+          "automerge": true,
+          "schedule": [
+            "at any time"
+          ]
+        }
       ]
     },
     "groupDevDependencies": {
@@ -106,11 +182,11 @@
           "packagePatterns": [
             "*"
           ],
+          "groupName": "all development dependency updates",
+          "groupSlug": "all-dev",
           "depTypeList": [
             "devDependencies"
           ],
-          "groupName": "all development dependency updates",
-          "groupSlug": "all-dev",
           "rangeStrategy": "bump",
           "commitMessageSuffix": "[skip ci]",
           "labels": [
@@ -131,6 +207,8 @@
           "packagePatterns": [
             "*"
           ],
+          "groupName": "all minor dependency updates",
+          "groupSlug": "all",
           "depTypeList": [
             "dependencies"
           ],
@@ -140,8 +218,6 @@
             "pin",
             "digest"
           ],
-          "groupName": "all minor dependency updates",
-          "groupSlug": "all",
           "rangeStrategy": "bump",
           "labels": [
             "renovate",
@@ -150,7 +226,7 @@
           ],
           "automerge": true,
           "schedule": [
-            "before 1 am and before 1 pm"
+            "before 1am"
           ]
         }
       ]
@@ -161,11 +237,11 @@
           "packagePatterns": [
             "*"
           ],
+          "groupName": "all peer dependency updates",
+          "groupSlug": "all-peer",
           "depTypeList": [
             "peerDependencies"
           ],
-          "groupName": "all peer dependency updates",
-          "groupSlug": "all-peer",
           "rangeStrategy": "widen",
           "commitMessageSuffix": "[skip ci]",
           "labels": [
@@ -190,7 +266,7 @@
           "lock"
         ],
         "schedule": [
-          "before 1 am and before 1 pm"
+          "before 1am"
         ]
       }
     },

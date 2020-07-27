@@ -1,3 +1,10 @@
+## [1.4.8](https://github.com/cenk1cenk2/renovate/compare/v1.4.7...v1.4.8) (2020-07-27)
+
+
+### Bug Fixes
+
+* **fast-ring:** added fast ring ([1112f39](https://github.com/cenk1cenk2/renovate/commit/1112f397751b609d5fe9567b99d70a53940b7961))
+
 ## [1.4.7](https://github.com/cenk1cenk2/renovate/compare/v1.4.6...v1.4.7) (2020-07-27)
 
 
