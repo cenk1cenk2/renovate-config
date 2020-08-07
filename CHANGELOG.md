@@ -1,3 +1,15 @@
+## [1.4.9](https://github.com/cenk1cenk2/renovate/compare/v1.4.8...v1.4.9) (2020-08-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to v22.10.0 ([7821dbe](https://github.com/cenk1cenk2/renovate/commit/7821dbe1bbcdcf4293e5396797b20d64facb0aa1))
+* **deps:** update dependency renovate to v22.11.1 ([6b665d4](https://github.com/cenk1cenk2/renovate/commit/6b665d4889986ab6c12fe20f63fca2e0e70616a4))
+* **deps:** update dependency renovate to v22.13.1 ([befd11f](https://github.com/cenk1cenk2/renovate/commit/befd11f73f8511ae0bf87d3df5992ea71e237389))
+* **deps:** update dependency renovate to v22.6.3 ([d9fb5a7](https://github.com/cenk1cenk2/renovate/commit/d9fb5a716ac832455f62a452ecf5face6b48f824))
+* **deps:** update dependency renovate to v22.7.0 ([ff04d6d](https://github.com/cenk1cenk2/renovate/commit/ff04d6d53ca85184f93fdbd43225d9c64ac941b2))
+* **deps:** update dependency renovate to v22.8.1 ([18594cf](https://github.com/cenk1cenk2/renovate/commit/18594cf95b9845ce93cdbd8abf344eae9801c70d))
+
 ## [1.4.8](https://github.com/cenk1cenk2/renovate/compare/v1.4.7...v1.4.8) (2020-07-27)
 
 
