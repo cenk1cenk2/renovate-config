@@ -1,3 +1,10 @@
+## [1.4.13](https://github.com/cenk1cenk2/renovate/compare/v1.4.12...v1.4.13) (2020-08-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to v22.22.2 ([2dba3dd](https://github.com/cenk1cenk2/renovate/commit/2dba3dd377cc1b102df86071e5279133218a7ca9))
+
 ## [1.4.12](https://github.com/cenk1cenk2/renovate/compare/v1.4.11...v1.4.12) (2020-08-19)
 
 
