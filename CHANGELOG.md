@@ -1,3 +1,10 @@
+## [1.4.14](https://github.com/cenk1cenk2/renovate/compare/v1.4.13...v1.4.14) (2020-08-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v4 ([5e8ad95](https://github.com/cenk1cenk2/renovate/commit/5e8ad951c9fe030394975e060ab27e72bbb30647))
+
 ## [1.4.13](https://github.com/cenk1cenk2/renovate/compare/v1.4.12...v1.4.13) (2020-08-20)
 
 
