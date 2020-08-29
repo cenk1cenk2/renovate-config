@@ -1,3 +1,14 @@
+## [1.4.15](https://github.com/cenk1cenk2/renovate/compare/v1.4.14...v1.4.15) (2020-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to v22.23.0 ([8dc6e06](https://github.com/cenk1cenk2/renovate/commit/8dc6e061c38c3545824097d50ac7b61e693b91e2))
+* **deps:** update dependency renovate to v22.23.1 ([e5ef878](https://github.com/cenk1cenk2/renovate/commit/e5ef878f9151a07973ee57c7074a3334af31e110))
+* **deps:** update dependency renovate to v22.25.1 ([ae60c00](https://github.com/cenk1cenk2/renovate/commit/ae60c007db90cde7bbb97d5316dbba06eef8b582))
+* **deps:** update dependency renovate to v22.25.6 ([b261b8f](https://github.com/cenk1cenk2/renovate/commit/b261b8ffc28ede9d5e4043cee0aacdc5773c5945))
+* **deps:** update dependency ts-node to v9 ([5e7a015](https://github.com/cenk1cenk2/renovate/commit/5e7a01587e29815adbd12de5d9cc29d7dd5a1cbf))
+
 ## [1.4.14](https://github.com/cenk1cenk2/renovate/compare/v1.4.13...v1.4.14) (2020-08-21)
 
 
