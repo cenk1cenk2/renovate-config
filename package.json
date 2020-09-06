@@ -44,9 +44,9 @@
     "@types/config": "^0.0.36",
     "@types/figures": "^3.0.1",
     "@types/fs-extra": "^9.0.1",
-    "eslint": "^7.7.0",
+    "eslint": "^7.8.1",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.13",
+    "lint-staged": "^10.3.0",
     "prettier": "^2.1.1"
   },
   "config": {
