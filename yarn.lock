@@ -250,9 +250,9 @@
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
 "@types/node@*":
-  version "14.11.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.1.tgz#56af902ad157e763f9ba63d671c39cda3193c835"
-  integrity sha512-oTQgnd0hblfLsJ6BvJzzSL+Inogp3lq9fGgqRkMB/ziKMgEUaFl801OncOzUmalfzt14N0oPHMK47ipl+wbTIw==
+  version "14.11.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.2.tgz#2de1ed6670439387da1c9f549a2ade2b0a799256"
+  integrity sha512-jiE3QIxJ8JLNcb1Ps6rDbysDhN4xa8DJJvuC9prr6w+1tIh+QAbYyNF3tyiZNLDBIuBCf4KEcV2UvQm/V60xfA==
 
 "@types/node@10.12.21":
   version "10.12.21"
@@ -1061,9 +1061,9 @@ cli-width@^2.0.0:
   integrity sha512-GRMWDxpOB6Dgk2E5Uo+3eEBvtOOlimMmpbFiKuLFnQzYDavtLFY3K5ona41jgN/WdRZtG7utuVSVTL4HbZHGkw==
 
 clipanion@^2.4.4:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/clipanion/-/clipanion-2.6.0.tgz#0324ba24ec8f20fca665070700102c2198352d75"
-  integrity sha512-INA0DNluCziYrpCbcn3f449W2nyhbL/7q67QI557A7Or1VoCRf1TK+RAMdwSPKi6fvLhWyKlZbqG+/OA2q3ezw==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/clipanion/-/clipanion-2.6.1.tgz#2152b9745aa35cfb0353605c262f68a02257bde7"
+  integrity sha512-G03gaywe142VKNptEvr583Ju69p/O9QiwAKMYXKRAoU/ibN38KI1D/y0qwRxez3FWwO1GCxcXUWwHl4iG7GRXw==
 
 clone-response@^1.0.2:
   version "1.0.2"
@@ -3597,10 +3597,15 @@ moment-timezone@0.5.31:
   dependencies:
     moment ">= 2.9.0"
 
-moment@2.28.0, "moment@>= 2.9.0", moment@^2.19.3:
+moment@2.28.0:
   version "2.28.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.28.0.tgz#cdfe73ce01327cee6537b0fafac2e0f21a237d75"
   integrity sha512-Z5KOjYmnHyd/ukynmFd/WwyXHd7L4J9vTI/nn5Ap9AVUgaAE15VvQ9MOGmJJygEUklupqIrFnor/tjTwRU+tQw==
+
+"moment@>= 2.9.0", moment@^2.19.3:
+  version "2.29.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.0.tgz#fcbef955844d91deb55438613ddcec56e86a3425"
+  integrity sha512-z6IJ5HXYiuxvFTI6eiQ9dm77uE0gyy1yXNApVHqTcnIKfY9tIwEjlzsZ6u1LQXvVgKeTnv9Xm7NDvJ7lso3MtA==
 
 ms@2.0.0:
   version "2.0.0"
