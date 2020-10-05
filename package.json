@@ -32,7 +32,7 @@
     "figures": "3.2.0",
     "fs-extra": "9.0.1",
     "pkg-dir": "4.2.0",
-    "renovate": "23.41.0",
+    "renovate": "23.41.2",
     "ts-node": "9.0.0",
     "tsconfig-paths": "3.9.0",
     "typescript": "4.0.3",
