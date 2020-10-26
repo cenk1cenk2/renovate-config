@@ -5,7 +5,7 @@ import { createPreset } from '@lib/preset-factory'
 export default createPreset({
   extends: [ 'config:base', ':masterIssue', ':prHourlyLimitNone', ':prConcurrentLimitNone' ],
   timezone: TIMEZONE,
-  semanticCommits: true,
+  semanticCommits: 'enabled',
   assignees: ASSIGNEES,
   labels: [ 'renovate' ],
   rangeStrategy: 'bump',
