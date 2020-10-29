@@ -1,3 +1,13 @@
+## [1.4.19](https://github.com/cenk1cenk2/renovate/compare/v1.4.18...v1.4.19) (2020-10-29)
+
+
+### Bug Fixes
+
+* **deps:** update all minor dependency updates ([4306830](https://github.com/cenk1cenk2/renovate/commit/4306830853a20fbccebe0296d3ffdcb5b7e37824))
+* **deps:** update dependency renovate to v23.61.0 ([2d53e5d](https://github.com/cenk1cenk2/renovate/commit/2d53e5d0e2cb9100039ac173921b050019638de9))
+* **deps:** update dependency renovate to v23.61.6 ([5f85f1a](https://github.com/cenk1cenk2/renovate/commit/5f85f1a33241999a8623638501fc257f05b8062a))
+* **deps:** update dependency renovate to v23.66.1 ([004176e](https://github.com/cenk1cenk2/renovate/commit/004176e705f9f3aaf0ae1f598e960c6e74ef72b2))
+
 ## [1.4.18](https://github.com/cenk1cenk2/renovate/compare/v1.4.17...v1.4.18) (2020-10-26)
 
 
