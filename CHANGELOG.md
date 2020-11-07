@@ -1,3 +1,14 @@
+## [1.4.20](https://github.com/cenk1cenk2/renovate/compare/v1.4.19...v1.4.20) (2020-11-07)
+
+
+### Bug Fixes
+
+* remove webpack update since 5 is breaking ([c0cf4e7](https://github.com/cenk1cenk2/renovate/commit/c0cf4e7bea089fe17db813cbce6a97e9d3632179))
+* **deps:** update dependency renovate to v23.66.2 ([0c8fe14](https://github.com/cenk1cenk2/renovate/commit/0c8fe147d418299445d4f9fcf0fe967103813ebc))
+* **deps:** update dependency renovate to v23.67.0 ([069a2ca](https://github.com/cenk1cenk2/renovate/commit/069a2ca52f447b99907fc74c200183387b05fb4e))
+* **deps:** update dependency renovate to v23.72.0 ([1c8b2d9](https://github.com/cenk1cenk2/renovate/commit/1c8b2d92f4cac742a1682c320911224558a6a49c))
+* **deps:** update dependency renovate to v23.73.2 ([daccc8f](https://github.com/cenk1cenk2/renovate/commit/daccc8f3dd025065f2e8d052a6bf44c6f930e5d4))
+
 ## [1.4.19](https://github.com/cenk1cenk2/renovate/compare/v1.4.18...v1.4.19) (2020-10-29)
 
 

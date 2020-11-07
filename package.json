@@ -295,7 +295,8 @@
         },
         {
           "packageNames": [
-            "node"
+            "node",
+            "webpack"
           ],
           "enabled": false
         }
