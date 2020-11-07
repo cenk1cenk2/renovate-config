@@ -12,4 +12,4 @@ export const SLOW_RING_PACKAGES = [
   '^cz-conventional-changelog$'
 ]
 
-export const DISABLED_PACKAGES = [ 'node' ]
+export const DISABLED_PACKAGES = [ 'node', 'webpack' ]
