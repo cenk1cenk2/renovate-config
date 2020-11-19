@@ -1,3 +1,10 @@
+## [1.4.23](https://github.com/cenk1cenk2/renovate/compare/v1.4.22...v1.4.23) (2020-11-19)
+
+
+### Bug Fixes
+
+* **deps:** update all minor dependency updates ([27aabca](https://github.com/cenk1cenk2/renovate/commit/27aabca1ca9e24ba04573d5a9d037f7913c18c88))
+
 ## [1.4.22](https://github.com/cenk1cenk2/renovate/compare/v1.4.21...v1.4.22) (2020-11-18)
 
 
