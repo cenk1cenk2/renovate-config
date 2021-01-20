@@ -1,3 +1,26 @@
+## [1.4.31](https://github.com/cenk1cenk2/renovate/compare/v1.4.30...v1.4.31) (2021-01-20)
+
+
+### Bug Fixes
+
+* **deps:** update all minor dependency updates ([ac99f36](https://github.com/cenk1cenk2/renovate/commit/ac99f36bf8c42c1343d4f17af185e0ade9e17858))
+* **deps:** update dependency renovate to v24.10.4 ([903a9c3](https://github.com/cenk1cenk2/renovate/commit/903a9c30b65a8ef5eaf2217e5fb2df81c7c5abbb))
+* **deps:** update dependency renovate to v24.11.2 ([80ff554](https://github.com/cenk1cenk2/renovate/commit/80ff554f19c47206e538160747d4057b27126cbf))
+* **deps:** update dependency renovate to v24.11.3 ([f84ceaa](https://github.com/cenk1cenk2/renovate/commit/f84ceaafa63a625c63a1c8ba68306c7cd247a938))
+* **deps:** update dependency renovate to v24.11.4 ([07571fc](https://github.com/cenk1cenk2/renovate/commit/07571fc1ac8397b46c20d26f18dbb897d1c75dc5))
+* **deps:** update dependency renovate to v24.11.5 ([5226fda](https://github.com/cenk1cenk2/renovate/commit/5226fda4abfb086d5b25fb1d3279d4f173f36eeb))
+* **deps:** update dependency renovate to v24.11.6 ([e2c2f08](https://github.com/cenk1cenk2/renovate/commit/e2c2f08be138422a645c2b4b764bb2a2869cbd34))
+* **deps:** update dependency renovate to v24.12.3 ([1d08fae](https://github.com/cenk1cenk2/renovate/commit/1d08faef875092c173bd9068db2646bdb2b19647))
+* **deps:** update dependency renovate to v24.12.4 ([bc98892](https://github.com/cenk1cenk2/renovate/commit/bc988925c313a43f3577f2b6b8d9c71f3a29adee))
+* **deps:** update dependency renovate to v24.14.0 ([aa7281d](https://github.com/cenk1cenk2/renovate/commit/aa7281d041bfd8e85d8ee7e00a90a50540732450))
+* **deps:** update dependency renovate to v24.15.1 ([590f44d](https://github.com/cenk1cenk2/renovate/commit/590f44dcffb1670cf6a0fb45dd6b80e7f585cae8))
+* **deps:** update dependency renovate to v24.16.2 ([e3e66c0](https://github.com/cenk1cenk2/renovate/commit/e3e66c0b7a0c2e2f3d6ccb503354898121b1506e))
+* **deps:** update dependency renovate to v24.16.3 ([ab3e00d](https://github.com/cenk1cenk2/renovate/commit/ab3e00d262dda9a1bd59305f768e7e9ef59ff92a))
+* **deps:** update dependency renovate to v24.17.2 ([f1a462a](https://github.com/cenk1cenk2/renovate/commit/f1a462a04a03531831aa80037579cf886dbcdfab))
+* **deps:** update dependency renovate to v24.19.0 ([c173498](https://github.com/cenk1cenk2/renovate/commit/c17349819820869f1f8f6da4bb298ad670fd6fd6))
+* **deps:** update dependency renovate to v24.22.0 ([68df923](https://github.com/cenk1cenk2/renovate/commit/68df923f07b3bb06e16982621f21c7c26536dd77))
+* **deps:** update dependency renovate to v24.22.3 ([142b121](https://github.com/cenk1cenk2/renovate/commit/142b1217a2befc047a12940e01c291c301643238))
+
 ## [1.4.30](https://github.com/cenk1cenk2/renovate/compare/v1.4.29...v1.4.30) (2020-12-26)
 
 
