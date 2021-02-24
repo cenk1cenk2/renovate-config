@@ -2884,10 +2884,10 @@ grapheme-splitter@^1.0.4:
   resolved "https://registry.yarnpkg.com/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
 
-handlebars@4.7.6:
-  version "4.7.6"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.6.tgz#d4c05c1baf90e9945f77aa68a7a219aa4a7df74e"
-  integrity sha512-1f2BACcBfiwAfStCKZNrUCgqNZkGsAT7UM3kkYtXuLo0KnaVfjKOyf7PRzB6++aK9STyT1Pd2ZCPe3EGOXleXA==
+handlebars@4.7.7:
+  version "4.7.7"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
+  integrity sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==
   dependencies:
     minimist "^1.2.5"
     neo-async "^2.6.0"
@@ -3824,10 +3824,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-luxon@1.25.0:
-  version "1.25.0"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.25.0.tgz#d86219e90bc0102c0eb299d65b2f5e95efe1fe72"
-  integrity sha512-hEgLurSH8kQRjY6i4YLey+mcKVAWXbDNlZRmM6AgWDJ1cY3atl8Ztf5wEY7VBReFbmGnwQPz7KYJblL8B2k0jQ==
+luxon@1.26.0:
+  version "1.26.0"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.26.0.tgz#d3692361fda51473948252061d0f8561df02b578"
+  integrity sha512-+V5QIQ5f6CDXQpWNICELwjwuHdqeJM1UenlZWx5ujcRMc9venvluCjFb4t5NYLhb6IhkbMVOxzVuOqkgMxee2A==
 
 make-error@^1.1.1:
   version "1.3.6"
@@ -5079,10 +5079,10 @@ remark@^9.0.0:
     remark-stringify "^5.0.0"
     unified "^6.0.0"
 
-renovate@24.60.0:
-  version "24.60.0"
-  resolved "https://registry.yarnpkg.com/renovate/-/renovate-24.60.0.tgz#91f428c1034f5c09311ab2e08a3705fb84449b67"
-  integrity sha512-n+OvFjJmHb1bk/rpxFqHPkUcKdzQZjuNumAYvsRnrfZV6ZamvXcrrdpsgZ9Z+7eVfWjKfrZBQJp+ahuETNlQSw==
+renovate@24.64.1:
+  version "24.64.1"
+  resolved "https://registry.yarnpkg.com/renovate/-/renovate-24.64.1.tgz#e0fb02ec2f2c212fbfa2fba257a1eb99f4b3e4d6"
+  integrity sha512-A6c1LUUGQXMKEXmuYnhUrFxly+KLdkaOcJnjZ7Wo3y2ayJeI+lhNSz+SulZRiw7z3Q2UMA+t1dHI+P5IWiPAIA==
   dependencies:
     "@aws-sdk/client-ecr" "3.5.0"
     "@breejs/later" "4.0.2"
@@ -5113,7 +5113,7 @@ renovate@24.60.0:
     github-url-from-git "1.5.0"
     global-agent "2.1.12"
     got "11.8.1"
-    handlebars "4.7.6"
+    handlebars "4.7.7"
     handy-redis "2.2.1"
     hasha "5.2.2"
     ignore "5.1.8"
@@ -5124,7 +5124,7 @@ renovate@24.60.0:
     json-stringify-pretty-compact "2.0.0"
     json5 "2.2.0"
     linkify-markdown "1.0.0"
-    luxon "1.25.0"
+    luxon "1.26.0"
     markdown-it "12.0.3"
     markdown-table "2.0.0"
     minimatch "3.0.4"
@@ -6167,10 +6167,10 @@ typed-rest-client@^1.8.0:
     tunnel "0.0.6"
     underscore "1.8.3"
 
-typescript@4.1.5:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.5.tgz#123a3b214aaff3be32926f0d8f1f6e704eb89a72"
-  integrity sha512-6OSu9PTIzmn9TCDiovULTnET6BgXtDYL4Gg4szY+cGsc3JP1dQL8qvE8kShTRx1NIw4Q9IBHlwODjkjWEtMUyA==
+typescript@4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.2.tgz#1450f020618f872db0ea17317d16d8da8ddb8c4c"
+  integrity sha512-tbb+NVrLfnsJy3M59lsDgrzWIflR4d4TIUjz+heUnHZwdF7YsrMTKoRERiIvI2lvBG95dfpLxB21WZhys1bgaQ==
 
 uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.6"
