@@ -1,4 +1,4 @@
-import { RenovateConfig } from 'renovate/dist/config/common'
+import { RenovateConfig } from 'renovate/dist/config'
 
 export const GROUP_MINOR: RenovateConfig = {
   depTypeList: [ 'dependencies' ],
