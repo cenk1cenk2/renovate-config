@@ -1681,10 +1681,10 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-config@3.3.4:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/config/-/config-3.3.4.tgz#55811abc2752b38a7b806cbdbc2da79c428312b7"
-  integrity sha512-URO0m6z+rtENGHqtzO7W7C35iF+H9KVe7JJFps+3TIqZEOHl83NqTAgp5h8ah96m4NPQnx08nPBfbtDU+PgjVA==
+config@3.3.6:
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/config/-/config-3.3.6.tgz#b87799db7399cc34988f55379b5f43465b1b065c"
+  integrity sha512-Hj5916C5HFawjYJat1epbyY2PlAgLpBtDUlr0MxGLgo3p5+7kylyvnRY18PqJHgnNWXcdd0eWDemT7eYWuFgwg==
   dependencies:
     json5 "^2.1.1"
 
@@ -5007,10 +5007,10 @@ remark@^9.0.0:
     remark-stringify "^5.0.0"
     unified "^6.0.0"
 
-renovate@24.76.0:
-  version "24.76.0"
-  resolved "https://registry.yarnpkg.com/renovate/-/renovate-24.76.0.tgz#b91656b7edee22ad1db5e34ea77d2c2ed21537a9"
-  integrity sha512-P/ihMZ+LEzabMk9dX3BZAXuxJpWf47sOvAJkPzNLVaVWijpskFU9k/oMkb86YjDvMcDLT7+j3w+42Sy8NvvkfA==
+renovate@24.77.3:
+  version "24.77.3"
+  resolved "https://registry.yarnpkg.com/renovate/-/renovate-24.77.3.tgz#f085b377b3fa96c2ff9c5c08baa7b4c1f311e0f4"
+  integrity sha512-dZKPcx0H8woGe52rS7LZuKWocBZayUeleREah2jOGlWMn0q/GQKykCN4ekZS2q2HXk42J+hrgcWSEVMODFraSQ==
   dependencies:
     "@aws-sdk/client-ecr" "3.5.0"
     "@breejs/later" "4.0.2"
