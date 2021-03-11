@@ -1939,6 +1939,11 @@ denque@^1.4.1:
   resolved "https://registry.yarnpkg.com/denque/-/denque-1.5.0.tgz#773de0686ff2d8ec2ff92914316a47b73b1c73de"
   integrity sha512-CYiCSgIF1p6EUByQPlGkKnP1M9g0ZV3qMIrqMqZqdwazygIA/YP2vrbcyl1h/WppKJTdl1F85cXIle+394iDAQ==
 
+dequal@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/dequal/-/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
+  integrity sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==
+
 detect-file@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/detect-file/-/detect-file-1.0.0.tgz#f0d66d03672a825cb1b73bdb3fe62310c8e552b7"
@@ -2408,7 +2413,7 @@ fast-base64-decode@^1.0.0:
   resolved "https://registry.yarnpkg.com/fast-base64-decode/-/fast-base64-decode-1.0.0.tgz#b434a0dd7d92b12b43f26819300d2dafb83ee418"
   integrity sha512-qwaScUgUGBYeDNRnbc/KyllVU88Jk1pRHPStuF/lO7B0/RTRLj7U0lkdTAutlBblY08rwZDff6tNU9cjv6j//Q==
 
-fast-deep-equal@3.1.3, fast-deep-equal@^3.1.1:
+fast-deep-equal@^3.1.1:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
@@ -4992,10 +4997,10 @@ remark@^9.0.0:
     remark-stringify "^5.0.0"
     unified "^6.0.0"
 
-renovate@24.78.1:
-  version "24.78.1"
-  resolved "https://registry.yarnpkg.com/renovate/-/renovate-24.78.1.tgz#d216a185e0e4f7ea6e293223485f247d385ebaab"
-  integrity sha512-JT1n/FuzsJUCl4EboqbDpPARI30qNNN1gu+iN2Z1MzxGeg+MZa8DN2YYqoR7v8HZLTqR7GMe0nlPFl462+Pkpw==
+renovate@24.79.0:
+  version "24.79.0"
+  resolved "https://registry.yarnpkg.com/renovate/-/renovate-24.79.0.tgz#83d61d53f0ddeeedf4c80e9b0ca670106a3c94b3"
+  integrity sha512-jqW6ravbq57K60+GVJIN/qOBGWJEr3tak81yCzASIqP5QkcyjlDnb+5YY/Tbb6h59EvImWwvZ87dmt5HXd15oA==
   dependencies:
     "@aws-sdk/client-ecr" "3.5.0"
     "@breejs/later" "4.0.2"
@@ -5016,9 +5021,9 @@ renovate@24.78.1:
     crypto-random-string "3.3.1"
     deepmerge "4.2.2"
     delay "5.0.0"
+    dequal "2.0.2"
     detect-indent "6.0.0"
     email-addresses "3.1.0"
-    fast-deep-equal "3.1.3"
     fast-safe-stringify "2.0.7"
     find-up "5.0.0"
     fs-extra "9.1.0"
