@@ -351,9 +351,9 @@
   integrity sha512-HqDPRdMzseVD4I/8Bb8TBAzg2X0U7oDiPfvYcvZt8fpVO2SwBOiLMh9tiEnRin48uRBbQMAw8D8wmCpyU78Dvg==
 
 "@aws-sdk/types@^3.1.0":
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.10.0.tgz#15b839a59a9348eda7de110ccc6bd0aa44fbccb2"
-  integrity sha512-ARGM7IdqPcPU7Fdk9Vj7oGd/W10Q/GUp2CDLzEXVjPxFo6a1h9b6XaxwVW4PvfzQlf+MoJFUkUuyi3BqTPRKkA==
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.12.0.tgz#9d8f7d931c0b4ee9d7af7ffc546591ccdeb7f796"
+  integrity sha512-7vnVBV0IdNQ+yyCQFkyLkRohvr7PHj//nGcth9RXG+VmQfp4+8CgBlMuXoeEWvDntrRgdh5lzDO0CliVRquxkw==
 
 "@aws-sdk/url-parser-native@3.4.1":
   version "3.4.1"
@@ -419,9 +419,9 @@
     tslib "^1.8.0"
 
 "@aws-sdk/util-locate-window@^3.0.0":
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/util-locate-window/-/util-locate-window-3.10.0.tgz#87287d43d9401bf1ad4a60f61e85f97104ece018"
-  integrity sha512-dGEOv5KVlfV2kRVQf+jKB2UEaIUXCoays5C9TAwB/7GM+E2ZJIqRUlhh5japyVJIUJmY6s9zqgua/LFUWD5nAA==
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-locate-window/-/util-locate-window-3.12.0.tgz#5917ebdc8c18209e3e3ddb47790a6f62dcab1fde"
+  integrity sha512-hon4/fx/MKdDbajQGK/RVn9k+wtLtwIlJnys/yZs9swq4m7B1/JnlDqSwClxjiVnsbDlu95UcYclospSkHIWUw==
   dependencies:
     tslib "^1.8.0"
 
@@ -458,9 +458,9 @@
     tslib "^1.8.0"
 
 "@aws-sdk/util-utf8-browser@^3.0.0":
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/util-utf8-browser/-/util-utf8-browser-3.10.0.tgz#b30737600dffc9592f803b4af523819772cdb2b4"
-  integrity sha512-RdhsUkspIrovjPOIhk/mxiuSevV8uOeFxdoepwIfmN5yoULqSHdAqdDVGyghgJm4/yPPpNq0Mt4cdQMHqn/FGQ==
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-utf8-browser/-/util-utf8-browser-3.12.0.tgz#2288bcc980d9642be340167ddfa14d72f4ac8e0f"
+  integrity sha512-gfchf9e1qbpYgxgEcUV6+KpVBNJjdqLAPMYHLytCLeMh/Mr5NY+xXefnQz0FhAqhz8lJ/vuDvtTWHodSofArEw==
   dependencies:
     tslib "^1.8.0"
 
@@ -3955,12 +3955,12 @@ micromatch@^3.0.4:
     to-regex "^3.0.2"
 
 micromatch@^4.0.2:
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.3.tgz#fdad8352bf0cbeb89b391b5d244bc22ff3dd4ec8"
-  integrity sha512-ueuSaP4i67F/FAUac9zzZ0Dz/5KeKDkITYIS/k4fps+9qeh1SkeH6gbljcqz97mNBOsaWZ+iv2UobMKK/yD+aw==
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.4.tgz#896d519dfe9db25fce94ceb7a500919bf881ebf9"
+  integrity sha512-pRmzw/XUcwXGpD9aI9q/0XOwLNygjETJ8y0ao0wdqprrzDa4YnxLcz7fQRZr8voh8V10kGhABbNcHVk5wHgWwg==
   dependencies:
     braces "^3.0.1"
-    picomatch "^2.2.1"
+    picomatch "^2.2.3"
 
 mime-db@1.47.0:
   version "1.47.0"
@@ -4616,10 +4616,10 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-picomatch@^2.2.1:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
-  integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
+picomatch@^2.2.1, picomatch@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.3.tgz#465547f359ccc206d3c48e46a1bcb89bf7ee619d"
+  integrity sha512-KpELjfwcCDUb9PeigTs2mBJzXUPzAuP2oPcA989He8Rte0+YUAjw1JVedDhuTKPkHjSYzMN3npC9luThGYEKdg==
 
 pify@^2.0.0:
   version "2.3.0"
