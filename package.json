@@ -29,7 +29,7 @@
   "dependencies": {
     "chalk": "4.1.1",
     "config": "3.3.6",
-    "figures": "3.2.0",
+    "figures": "4.0.0",
     "fs-extra": "9.1.0",
     "pkg-dir": "5.0.0",
     "renovate": "25.52.1",
