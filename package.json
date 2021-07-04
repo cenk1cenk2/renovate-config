@@ -44,10 +44,10 @@
     "@types/config": "^0.0.38",
     "@types/figures": "^3.0.1",
     "@types/fs-extra": "^9.0.11",
-    "eslint": "^7.29.0",
+    "eslint": "^7.30.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.3.1"
+    "prettier": "^2.3.2"
   },
   "config": {
     "commitizen": {
