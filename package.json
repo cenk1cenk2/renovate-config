@@ -45,7 +45,7 @@
     "@types/figures": "^3.0.1",
     "@types/fs-extra": "^9.0.12",
     "eslint": "^7.30.0",
-    "husky": "^7.0.0",
+    "husky": "^7.0.1",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.2"
   },
