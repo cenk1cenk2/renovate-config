@@ -819,9 +819,9 @@
   integrity sha512-509r2+yARFfHHE7T6Puu2jjkoycftovhXRqW328PDXTVGKihlb1P8Z9mMZH04ebyajfRY7dedfGynlrFHJUQCg==
 
 "@tsconfig/node16@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.1.tgz#a6ca6a9a0ff366af433f42f5f0e124794ff6b8f1"
-  integrity sha512-FTgBI767POY/lKNDNbIzgAX6miIDBs6NTCbdlDb8TrWovHsSvaVIZDlTqym29C6UqhzwcJx4CYr+AlrMywA0cA==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.2.tgz#423c77877d0569db20e1fc80885ac4118314010e"
+  integrity sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==
 
 "@types/cacheable-request@^6.0.1":
   version "6.0.2"
@@ -4659,9 +4659,9 @@ require-from-string@^2.0.2:
   integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
 
 resolve-alpn@^1.0.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/resolve-alpn/-/resolve-alpn-1.1.2.tgz#30b60cfbb0c0b8dc897940fe13fe255afcdd4d28"
-  integrity sha512-8OyfzhAtA32LVUsJSke3auIyINcwdh5l3cvYKdKO0nvsYSKuiLfTM5i78PJswFPT8y6cPW+L1v6/hE95chcpDA==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/resolve-alpn/-/resolve-alpn-1.2.0.tgz#058bb0888d1cd4d12474e9a4b6eb17bdd5addc44"
+  integrity sha512-e4FNQs+9cINYMO5NMFc6kOUCdohjqFPSgMuwuZAOUWqrfWsen+Yjy5qZFkV5K7VO7tFSLKcUL97olkED7sCBHA==
 
 resolve-dir@^1.0.0, resolve-dir@^1.0.1:
   version "1.0.1"
