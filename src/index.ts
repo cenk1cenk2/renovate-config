@@ -29,7 +29,7 @@ async function bootstrap (): Promise<void> {
 
     logger.success(`Wrote configuration to package.json@"${pkg.path}".`)
   } else {
-    logger.success('A dry run has compeleted. Not writing changes.')
+    logger.success('A dry run has completed. Not writing changes.')
   }
 }
 

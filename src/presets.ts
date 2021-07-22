@@ -9,7 +9,7 @@ import groupPeerDependencies from '@presets/group-peer-dependencies'
 import lockFile from '@presets/lock-file'
 import noTests from '@presets/no-tests'
 import slowring from '@presets/slow-ring'
-import { RenovateConfig } from 'renovate/dist/config'
+import { RenovateConfig } from 'renovate/dist/config/types'
 
 export default {
   base,

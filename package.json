@@ -12,8 +12,8 @@
     "lint:check": "eslint --ext .ts,.js,.tsx,.jsx ./"
   },
   "simple-git-hooks": {
-    "pre-commit": "lint-staged",
-    "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    "pre-commit": "yarn exec lint-staged",
+    "prepare-commit-msg": "[ -t 1 ] && exec < /dev/tty && git cz --hook || true"
   },
   "lint-staged": {
     "./src/*.{ts,js,tsx,jsx}": [
@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "@cenk1cenk2/boilerplate-oclif": "^1.10.2",
     "chalk": "4.1.1",
     "config": "3.3.6",
     "figures": "4.0.0",

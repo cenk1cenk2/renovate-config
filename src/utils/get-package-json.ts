@@ -9,7 +9,7 @@ export function readPackageJson (pathOnly?: boolean): { pkg?: Record<string, any
   const root = pkgDir.sync(__dirname)
 
   if (!root) {
-    logger.critical('Can not find the root of the project.')
+    logger.fatal('Can not find the root of the project.')
     process.exit(127)
   }
 
@@ -24,7 +24,7 @@ export function readPackageJson (pathOnly?: boolean): { pkg?: Record<string, any
   try {
     return { pkg: fs.readJsonSync(pkgJsonPath), path: pkgJsonPath }
   } catch {
-    logger.critical(`Can not read package.json at project root at "${pkgJsonPath}".`)
+    logger.fatal(`Can not read package.json at project root at "${pkgJsonPath}".`)
     process.exit(127)
   }
 }
