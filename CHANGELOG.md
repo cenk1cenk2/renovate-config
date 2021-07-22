@@ -1,3 +1,9 @@
+## [1.4.42](https://github.com/cenk1cenk2/renovate/compare/v1.4.41...v1.4.42) (2021-07-22)
+
+### Bug Fixes
+
+- **deps:** update dependency @cenk1cenk2/boilerplate-oclif to ^1.10.3 ([bb6fe92](https://github.com/cenk1cenk2/renovate/commit/bb6fe92f1c5a921b78cea00296e8309f47452c7d))
+
 ## [1.4.41](https://github.com/cenk1cenk2/renovate/compare/v1.4.40...v1.4.41) (2021-07-22)
 
 ### Bug Fixes
