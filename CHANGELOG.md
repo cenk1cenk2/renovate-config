@@ -1,3 +1,10 @@
+## [1.4.45](https://github.com/cenk1cenk2/renovate/compare/v1.4.44...v1.4.45) (2021-07-30)
+
+### Bug Fixes
+
+- **deps:** update all minor dependency updates ([886ea43](https://github.com/cenk1cenk2/renovate/commit/886ea43509846c24431fbe330640a9eda5d8b3a4))
+- **deps:** update dependency renovate to v25.61.2 ([6ede537](https://github.com/cenk1cenk2/renovate/commit/6ede53770a4f173cfa37a83df86333d14fc06826))
+
 ## [1.4.44](https://github.com/cenk1cenk2/renovate/compare/v1.4.43...v1.4.44) (2021-07-27)
 
 ### Bug Fixes
