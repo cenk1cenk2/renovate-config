@@ -1128,15 +1128,7 @@
     "@types/emscripten" "^1.38.0"
     tslib "^1.13.0"
 
-"@yarnpkg/parsers@2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@yarnpkg/parsers/-/parsers-2.3.0.tgz#7b9564c6df02f4921d5cfe8287c4b648e93ea84b"
-  integrity sha512-qgz0QUgOvnhtF92kaluIhIIKBUHlYlHUBQxqh5v9+sxEQvUeF6G6PKiFlzo3E6O99XwvNEGpVu1xZPoSGyGscQ==
-  dependencies:
-    js-yaml "^3.10.0"
-    tslib "^1.13.0"
-
-"@yarnpkg/parsers@^2.3.0":
+"@yarnpkg/parsers@2.4.0", "@yarnpkg/parsers@^2.3.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@yarnpkg/parsers/-/parsers-2.4.0.tgz#5d092939022c96b256eaea461816ef2b7d77fa1b"
   integrity sha512-XWgiNGh4MkhdBTJVEbXEqzk66JKjvxTtKGeLPqo3rnJ7JiJnRaK2n9MLTKQB0uoRMWYzPlISdIlok6H9OdlOVQ==
@@ -4645,10 +4637,10 @@ remark@13.0.0:
     remark-stringify "^9.0.0"
     unified "^9.1.0"
 
-renovate@25.64.0:
-  version "25.64.0"
-  resolved "https://registry.yarnpkg.com/renovate/-/renovate-25.64.0.tgz#01533da86e67cba5c9a1543d565b4c9f6bdf132a"
-  integrity sha512-l+qiAx9b1b74i/jVL92guhozGmM9Hv8Nrww5tgEK0TfswGmQUz+/zZv8UZ5vi1eWFgIg33AZHweRjn7UshMgdQ==
+renovate@25.69.0:
+  version "25.69.0"
+  resolved "https://registry.yarnpkg.com/renovate/-/renovate-25.69.0.tgz#55549e420422bde4f413e9e52d2a0b1685f377c7"
+  integrity sha512-FDOu58nE3stOI7BqZ9WI/S8sP+9V4HZTxUAZ/WoKsyzs+8mER17OJtRL3/UpQPpUm/ZbZqqufLeuPQcWT0fL1w==
   dependencies:
     "@aws-sdk/client-ecr" "3.18.0"
     "@breejs/later" "4.0.2"
@@ -4657,7 +4649,7 @@ renovate@25.64.0:
     "@renovatebot/ruby-semver" "1.0.0"
     "@sindresorhus/is" "4.0.1"
     "@yarnpkg/core" "2.4.0"
-    "@yarnpkg/parsers" "2.3.0"
+    "@yarnpkg/parsers" "2.4.0"
     azure-devops-node-api "10.2.2"
     bunyan "1.8.15"
     cacache "15.2.0"
@@ -4712,7 +4704,7 @@ renovate@25.64.0:
     semver-utils "1.1.4"
     shlex "2.1.0"
     shortid "2.2.16"
-    simple-git "2.41.1"
+    simple-git "2.41.2"
     slugify "1.6.0"
     traverse "0.6.6"
     upath "2.0.1"
@@ -4963,10 +4955,10 @@ simple-git-hooks@^2.5.1:
   resolved "https://registry.yarnpkg.com/simple-git-hooks/-/simple-git-hooks-2.5.1.tgz#78ed9cfa552843bc45cd36ad5b7424567119c2f4"
   integrity sha512-iI/MEEVObv45slsxz+BT+5NCS2UDgVIqfQKmNjL4/XnEfacpdYAHd71Imc5Nw/FY100A+i1PIXdIdkLHYcC2Bg==
 
-simple-git@2.41.1:
-  version "2.41.1"
-  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-2.41.1.tgz#f7fe8a6183401a2cca36a2f6773db25bf78473ae"
-  integrity sha512-n1STz1tfnemvYndzWakgKa0JB4s/LrUG4btXMetWB9N9ZoIAJQd0ZtWj9sBwWxIZ/X/tYdA/tq+KHfFNAGzZhQ==
+simple-git@2.41.2:
+  version "2.41.2"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-2.41.2.tgz#e95560519ff0ba49ec167098694b80617d7f1cd9"
+  integrity sha512-rrsqu3w6TNCwe7McW7Uany7pmz5TMteOTCu5Wfc0vVUdKJP94m+587pbEB6Kj4IsBM/vl85nGXZJ3XRSQ9ucLg==
   dependencies:
     "@kwsites/file-exists" "^1.1.1"
     "@kwsites/promise-deferred" "^1.1.1"
