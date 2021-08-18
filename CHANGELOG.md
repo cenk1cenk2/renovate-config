@@ -1,3 +1,17 @@
+## [1.4.47](https://github.com/cenk1cenk2/renovate/compare/v1.4.46...v1.4.47) (2021-08-18)
+
+### Bug Fixes
+
+- **deps:** update all minor dependency updates ([ff83624](https://github.com/cenk1cenk2/renovate/commit/ff8362487b0899e70045d573a54bbde862c1a5da))
+- **deps:** update all minor dependency updates ([2787e53](https://github.com/cenk1cenk2/renovate/commit/2787e535f8543f86a2de5eb23de84857197ff341))
+- **deps:** update dependency renovate to v25.69.0 ([b23490a](https://github.com/cenk1cenk2/renovate/commit/b23490af7aa76da8977dbb9b435f8b7e86a3455c))
+- **deps:** update dependency renovate to v25.69.1 ([df8a491](https://github.com/cenk1cenk2/renovate/commit/df8a4915a1c8cd1cee867499c477b98eae4a7422))
+- **deps:** update dependency renovate to v25.69.4 ([1508739](https://github.com/cenk1cenk2/renovate/commit/15087394ba1660a77506cdc027dbc02c931e0b61))
+- **deps:** update dependency renovate to v25.70.2 ([f31b4c5](https://github.com/cenk1cenk2/renovate/commit/f31b4c56cc8dd3b8b028f3fd593dfb3967c85f23))
+- **deps:** update dependency renovate to v25.70.4 ([cdadc54](https://github.com/cenk1cenk2/renovate/commit/cdadc545daf31ae7b7a225a28e44ff5c5a18479e))
+- **deps:** update dependency renovate to v25.72.2 ([7009da4](https://github.com/cenk1cenk2/renovate/commit/7009da421bfb86d9c3790ef9db10ef179800f9ac))
+- **deps:** update dependency renovate to v25.74.0 ([a62e06e](https://github.com/cenk1cenk2/renovate/commit/a62e06e6986d02d3176d50b77e1ba7b134bdb657))
+
 ## [1.4.46](https://github.com/cenk1cenk2/renovate/compare/v1.4.45...v1.4.46) (2021-08-02)
 
 ### Bug Fixes
