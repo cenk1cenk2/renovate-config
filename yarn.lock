@@ -460,10 +460,15 @@
     "@aws-sdk/types" "3.25.0"
     tslib "^2.3.0"
 
-"@aws-sdk/types@3.25.0", "@aws-sdk/types@^3.1.0":
+"@aws-sdk/types@3.25.0":
   version "3.25.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.25.0.tgz#981210272dae2d259130f6dca8429522d9a564bb"
   integrity sha512-vS0+cTKwj6CujlR07HmeEBxzWPWSrdmZMYnxn/QC9KW9dFu0lsyCGSCqWsFluI6GI0flsnYYWNkP5y4bfD9tqg==
+
+"@aws-sdk/types@^3.1.0":
+  version "3.29.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.29.0.tgz#792050dfd4ff97fca448160ca9f652d5f33514b0"
+  integrity sha512-8ilWQU5ZTdiRfblmmjl38+6JZKKM8EqA5Sbn8djgDLShCLeVJ2TsL2guzNi+WHcL7BHdv1pI/NNmTcgRUo6yOw==
 
 "@aws-sdk/url-parser@3.25.0":
   version "3.25.0"
@@ -527,9 +532,9 @@
     tslib "^2.3.0"
 
 "@aws-sdk/util-locate-window@^3.0.0":
-  version "3.23.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/util-locate-window/-/util-locate-window-3.23.0.tgz#e9bf2a023dce2ea1d13ec2e8c7c92abb333a1442"
-  integrity sha512-mM8kWW7SWIxCshkNllpYqCQi5SzwJ+sv5nURhtquOB5/H3qGqZm0V5lUE3qpE1AYmqKwk6qbGUy1woFn1T5nrw==
+  version "3.29.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-locate-window/-/util-locate-window-3.29.0.tgz#a87bd77234864c2fffa98d33b58808e3553a9a18"
+  integrity sha512-gvcbl9UdTOvuCCzgbtTTsKnL1l/cnT/CFl0f6ZCQ6qubUTRCuL/aK8DvgWa1n9p/ddCiVKPLmHu/L1xtX4gc0A==
   dependencies:
     tslib "^2.3.0"
 
@@ -558,10 +563,17 @@
     "@aws-sdk/types" "3.25.0"
     tslib "^2.3.0"
 
-"@aws-sdk/util-utf8-browser@3.23.0", "@aws-sdk/util-utf8-browser@^3.0.0":
+"@aws-sdk/util-utf8-browser@3.23.0":
   version "3.23.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/util-utf8-browser/-/util-utf8-browser-3.23.0.tgz#dff7e891c67936de677b7d7a6c796e5c2e1b1510"
   integrity sha512-fSB95AKnvCnAbCd7o0xLbErfAgD9wnLCaEu23AgfGAiaG3nFF8Z2+wtjebU/9Z4RI9d/x83Ho/yguRnJdkMsPA==
+  dependencies:
+    tslib "^2.3.0"
+
+"@aws-sdk/util-utf8-browser@^3.0.0":
+  version "3.29.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-utf8-browser/-/util-utf8-browser-3.29.0.tgz#8d04f4159763c2dccaad4eb09bf2a6118dbfea12"
+  integrity sha512-ZIHbBYByMq5vadQ1SZOQTHVtrkGAFiuypATYF5ST8YB3j7XKvflv+fiBX2xQ8xpqb28noEg6dNPnvqkQQ1n/aw==
   dependencies:
     tslib "^2.3.0"
 
@@ -1134,9 +1146,9 @@
     tunnel "^0.0.6"
 
 "@yarnpkg/fslib@^2.4.0", "@yarnpkg/fslib@^2.5.0":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@yarnpkg/fslib/-/fslib-2.5.1.tgz#3e99dccf48790697d52f1b1ac133dce218424521"
-  integrity sha512-Y360rwoaUBCF8i9nRepyuFQFNF5OybHafO4PQ5Pf68sT3H6ulmT2t/KjdtMey8zyJkDu5qrC3IgHk0c7zWRIrg==
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/fslib/-/fslib-2.5.2.tgz#6dcfbe12fe2d1bce14cb6e4518054abb1dd7c48d"
+  integrity sha512-Tonb3jXsxsGB+uTlzG6r2zcAUekIG0FfCZV/kM14fPvTE3Z1wC0cMtiD4IUzxSqyhC/zR+T1pLaTPT3xDzSvqg==
   dependencies:
     "@yarnpkg/libzip" "^2.2.2"
     tslib "^1.13.0"
