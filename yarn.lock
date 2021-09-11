@@ -873,10 +873,15 @@
   dependencies:
     tslib "2.1.0"
 
-"@sindresorhus/is@4.0.1", "@sindresorhus/is@^4.0.0":
+"@sindresorhus/is@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.0.1.tgz#d26729db850fa327b7cacc5522252194404226f5"
   integrity sha512-Qm9hBEBu18wt1PO2flE7LPb30BHMQt1eQgbV76YntdNk73XZGpn3izvGTYxbGgzXKgbCjiia0uxTd3aTNQrY/g==
+
+"@sindresorhus/is@^4.0.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-4.1.0.tgz#3853c0c48b47f0ebcdd3cd9a66fdd0d277173e78"
+  integrity sha512-Cgva8HxclecUCmAImsWsbZGUh6p5DSzQ8l2Uzxuj9ANiD7LVhLM1UJ2hX/R2Y+ILpvqgW9QjmTCaBkXtj8+UOg==
 
 "@szmarczak/http-timer@^4.0.5":
   version "4.0.6"
@@ -2523,9 +2528,9 @@ fast-xml-parser@3.19.0:
   integrity sha512-4pXwmBplsCPv8FOY1WRakF970TjNGnGnfbOnLqjlYvMiF1SR3yOHyxMR/YCXpPTOspNF5gwudqktIP4VsWkvBg==
 
 fastq@^1.6.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.12.0.tgz#ed7b6ab5d62393fb2cc591c853652a5c318bf794"
-  integrity sha512-VNX0QkHK3RsXVKr9KrlUv/FoTa0NdbYoHHl7uXHv2rzyHSlxjdNAKug2twd9luJxpcyNeAgf5iPPMutJO67Dfg==
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.13.0.tgz#616760f88a7526bdfc596b7cab8c18938c36b98c"
+  integrity sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==
   dependencies:
     reusify "^1.0.4"
 
