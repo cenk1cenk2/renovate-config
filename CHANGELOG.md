@@ -1,3 +1,10 @@
+## [1.4.49](https://github.com/cenk1cenk2/renovate/compare/v1.4.48...v1.4.49) (2021-09-23)
+
+### Bug Fixes
+
+- **deps:** update dependency @cenk1cenk2/boilerplate-oclif to ^1.10.5 ([9b3abaf](https://github.com/cenk1cenk2/renovate/commit/9b3abaff0d5af12deb47a862172db3fa23e6417a))
+- **deps:** update dependency typescript to v4.4.3 ([58c6c5d](https://github.com/cenk1cenk2/renovate/commit/58c6c5db474b210bfa1ed22acc3135fce9206716))
+
 ## [1.4.48](https://github.com/cenk1cenk2/renovate/compare/v1.4.47...v1.4.48) (2021-08-31)
 
 ### Bug Fixes
