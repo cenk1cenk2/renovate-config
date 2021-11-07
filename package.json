@@ -43,9 +43,9 @@
     "@types/config": "^0.0.40",
     "@types/figures": "^3.0.1",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^16.4.0",
-    "eslint": "^8.0.0",
-    "lint-staged": "^11.2.3",
+    "@types/node": "^16.11.6",
+    "eslint": "^8.2.0",
+    "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
     "simple-git-hooks": "^2.7.0"
   },
