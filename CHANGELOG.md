@@ -1,3 +1,12 @@
+## [1.4.50](https://github.com/cenk1cenk2/renovate/compare/v1.4.49...v1.4.50) (2021-11-17)
+
+### Bug Fixes
+
+- **deps:** update dependency ts-node to v10.3.0 ([a62eb9e](https://github.com/cenk1cenk2/renovate/commit/a62eb9e35a2552177330eb4a24d0c54136739a44))
+- **deps:** update dependency ts-node to v10.4.0 ([c880e03](https://github.com/cenk1cenk2/renovate/commit/c880e034fa5481adbe85f4374f27d83d299ba911))
+- **deps:** update dependency typescript to v4.4.4 ([d400004](https://github.com/cenk1cenk2/renovate/commit/d40000466de24dcc73bcf7c16acc8e6aa65cd407))
+- **deps:** update dependency typescript to v4.5.2 ([e686abb](https://github.com/cenk1cenk2/renovate/commit/e686abbcce7c2fe4b1925510e0ab0ef353e9c094))
+
 ## [1.4.49](https://github.com/cenk1cenk2/renovate/compare/v1.4.48...v1.4.49) (2021-09-23)
 
 ### Bug Fixes
