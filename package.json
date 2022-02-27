@@ -43,8 +43,8 @@
     "@types/config": "^0.0.41",
     "@types/figures": "^3.0.1",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^16.11.24",
-    "eslint": "^8.9.0",
+    "@types/node": "^16.11.26",
+    "eslint": "^8.10.0",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
     "simple-git-hooks": "^2.7.0"
