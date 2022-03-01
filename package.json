@@ -32,9 +32,9 @@
     "fs-extra": "10.0.1",
     "pkg-dir": "5.0.0",
     "renovate": "25.77.0",
-    "ts-node": "10.5.0",
+    "ts-node": "10.6.0",
     "tsconfig-paths": "3.12.0",
-    "typescript": "4.5.5",
+    "typescript": "4.6.2",
     "winston": "3.6.0"
   },
   "devDependencies": {
