@@ -45,7 +45,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^16.11.26",
     "eslint": "^8.10.0",
-    "lint-staged": "^12.3.4",
+    "lint-staged": "^12.3.5",
     "prettier": "^2.5.1",
     "simple-git-hooks": "^2.7.0"
   },
