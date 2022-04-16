@@ -6,8 +6,8 @@
   "license": "GPL-3.0-or-later",
   "repository": "https://github.com/cenk1cenk2/renovate",
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register src/index.ts",
-    "dev:start": "NODE_ENV=develop yarn start",
+    "build": "ts-node -r tsconfig-paths/register src/index.ts",
+    "dev:start": "NODE_ENV=develop yarn build",
     "lint": "prettier --loglevel warn --write ./ && eslint --ext .ts,.js,.tsx,.jsx --fix ./",
     "lint:check": "eslint --ext .ts,.js,.tsx,.jsx ./"
   },
