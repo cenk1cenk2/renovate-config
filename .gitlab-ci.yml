@@ -10,7 +10,6 @@ include:
     file: /templates/node-build.gitlab-ci.yml
     ref: main
 
-include:
   - project: devops/gitlab-pipes
     file: /templates/semantic-release.gitlab-ci.yml
     ref: main
