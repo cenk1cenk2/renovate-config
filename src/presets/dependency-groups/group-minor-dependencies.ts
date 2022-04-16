@@ -1,6 +1,7 @@
+import { createPreset } from '@lib/preset-factory'
+
 import { GROUP_MINOR } from '@constants/patterns'
 import { SCHEDULE } from '@constants/renovate'
-import { createPreset } from '@lib/preset-factory'
 
 export default createPreset({
   packageRules: [

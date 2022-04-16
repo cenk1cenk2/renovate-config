@@ -1,7 +1,8 @@
+import { createPreset } from '@lib/preset-factory'
+
 import { GROUP_MINOR, GROUP_DEV, GROUP_PEER } from '@constants/patterns'
 import { SCHEDULE } from '@constants/renovate'
 import { FAST_RING_PACKAGES } from '@constants/rings'
-import { createPreset } from '@lib/preset-factory'
 
 export default createPreset({
   packageRules: [

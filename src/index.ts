@@ -1,8 +1,8 @@
-import { readPackageJson } from '@utils/get-package-json'
-import { Logger } from '@utils/logger'
 import fs from 'fs-extra'
 
 import presets from './presets'
+import { readPackageJson } from '@utils/get-package-json'
+import { Logger } from '@utils/logger'
 
 async function bootstrap (): Promise<void> {
   const logger = Logger.prototype.getInstance()
@@ -13,14 +13,12 @@ async function bootstrap (): Promise<void> {
 
   const pkgRenovateConfig: Record<string, unknown> = {}
 
-  Object.keys(presets)
-    .sort()
-    .forEach((key) => {
-      logger.info(`Processing preset: ${key}`)
-      logger.debug(JSON.stringify(presets[key], null, 2))
+  Object.entries(presets).forEach(([ name, preset ]) => {
+    logger.info(`Processing preset: ${name}`)
+    logger.debug(JSON.stringify(preset, null, 2))
 
-      pkgRenovateConfig[key] = presets[key]
-    })
+    pkgRenovateConfig[name] = preset
+  })
 
   if (process.env.NODE_ENV !== 'develop') {
     pkg.pkg['renovate-config'] = pkgRenovateConfig

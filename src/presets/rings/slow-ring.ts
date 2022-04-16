@@ -1,6 +1,7 @@
+import { createPreset } from '@lib/preset-factory'
+
 import { SCHEDULE } from '@constants/renovate'
 import { SLOW_RING_PACKAGES, DISABLED_PACKAGES } from '@constants/rings'
-import { createPreset } from '@lib/preset-factory'
 
 export default createPreset({
   packageRules: [

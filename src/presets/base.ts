@@ -1,6 +1,7 @@
+import { createPreset } from '@lib/preset-factory'
+
 import { TIMEZONE } from '@constants/constants'
 import { ASSIGNEES } from '@constants/users'
-import { createPreset } from '@lib/preset-factory'
 
 export default createPreset({
   extends: [ 'config:base', ':masterIssue', ':prHourlyLimitNone', ':prConcurrentLimitNone' ],

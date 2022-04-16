@@ -1,12 +1,12 @@
-import { Logger } from '@utils/logger'
 import fs from 'fs-extra'
 import { join } from 'path'
-import pkgDir from 'pkg-dir'
+
+import { Logger } from '@utils/logger'
 
 export function readPackageJson (pathOnly?: boolean): { pkg?: Record<string, any>, path: string } {
   const logger = Logger.prototype.getInstance()
 
-  const root = pkgDir.sync(__dirname)
+  const root = process.cwd()
 
   if (!root) {
     logger.fatal('Can not find the root of the project.')
