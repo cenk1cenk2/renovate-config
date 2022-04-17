@@ -22,8 +22,7 @@ module.exports = {
     [
       '@semantic-release/git',
       {
-        assets: [ 'CHANGELOG.md', 'README.md', 'yarn.lock', 'package.json' ],
-        message: 'chore(release): <%= nextRelease.version %> - <%= new Date().toISOString().slice(0,10).replace(/-/g,\'\') %> [skip ci]\n\n<%= nextRelease.notes %>'
+        assets: [ 'CHANGELOG.md', 'README.md', 'yarn.lock', 'package.json' ]
       }
     ],
     '@semantic-release/gitlab'
