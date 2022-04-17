@@ -4,7 +4,7 @@
   "description": "Renovate configuration generator for repositories.",
   "author": "Cenk Kilic, Jeroen de Bruijn, Scale Leap",
   "license": "GPL-3.0-or-later",
-  "repository": "https://github.com/cenk1cenk2/renovate",
+  "repository": "https://gitlab.kilic.dev/renovate/renovate-config",
   "scripts": {
     "build": "ts-node -r tsconfig-paths/register src/index.ts",
     "dev:start": "NODE_ENV=develop yarn build",
