@@ -1,3 +1,12 @@
+## [2.0.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.0.2...v2.0.3) (2022-04-17)
+
+
+### Bug Fixes
+
+* issue with publish ([405132e](https://gitlab.kilic.dev/renovate/renovate-config/commit/405132e1ef03d64277f455f263d01f23b0c56798))
+* update publish ([cdc35ef](https://gitlab.kilic.dev/renovate/renovate-config/commit/cdc35ef29e964531900e6bf1ecec362b4d23c105))
+* update slow ring packages ([9afa435](https://gitlab.kilic.dev/renovate/renovate-config/commit/9afa4352f21ee3a86627c21dc1a729178ace941d))
+
 # [2.0.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v1.4.50...v2.0.0) (2022-04-17)
 
 
