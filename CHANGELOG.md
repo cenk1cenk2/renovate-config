@@ -1,3 +1,39 @@
+# [2.0.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v1.4.50...v2.0.0) (2022-04-17)
+
+
+### Bug Fixes
+
+* add build cocmmand ([39ec14e](https://gitlab.kilic.dev/renovate/renovate-config/commit/39ec14e49b8b294081ef6313cafea431a75a4ab0))
+* **deps:** update all minor dependency updates ([df32913](https://gitlab.kilic.dev/renovate/renovate-config/commit/df32913b1d2fb86448166d536f6e873aa92bd93a))
+* **deps:** update all minor dependency updates ([fd4c536](https://gitlab.kilic.dev/renovate/renovate-config/commit/fd4c536b063df15b8cb8862788851c89d2ed1d0d))
+* **deps:** update dependency @cenk1cenk2/boilerplate-oclif to ^1.10.6 ([fe50d62](https://gitlab.kilic.dev/renovate/renovate-config/commit/fe50d622007cfb24f242f916821dea9295dd79fb))
+* **deps:** update dependency figures to v4.0.1 ([fa92b79](https://gitlab.kilic.dev/renovate/renovate-config/commit/fa92b796836d6d549da89a458724272855cad852))
+* **deps:** update dependency fs-extra to v10.0.1 ([601b643](https://gitlab.kilic.dev/renovate/renovate-config/commit/601b643783fa33d1806afd3b923a5eec545a9479))
+* **deps:** update dependency ts-node to v10.5.0 ([98bb67c](https://gitlab.kilic.dev/renovate/renovate-config/commit/98bb67c9e0caa30cbf28c0bb3fd84a218859b18b))
+* **deps:** update dependency ts-node to v10.7.0 ([149c08c](https://gitlab.kilic.dev/renovate/renovate-config/commit/149c08c8eac3899b67ea2356936a67ac6a0a2be1))
+* **deps:** update dependency tsconfig-paths to v3.12.0 ([9bcbed2](https://gitlab.kilic.dev/renovate/renovate-config/commit/9bcbed2be10dd216f694b7c939d73c700adc6a2d))
+* **deps:** update dependency tsconfig-paths to v3.13.0 ([4c870de](https://gitlab.kilic.dev/renovate/renovate-config/commit/4c870debe8809a1d827324a7fdeda1b144d0e831))
+* **deps:** update dependency tsconfig-paths to v3.14.0 ([3eea846](https://gitlab.kilic.dev/renovate/renovate-config/commit/3eea8461967ca525cd33f53c65b9ff6ef989bec2))
+* **deps:** update dependency tsconfig-paths to v3.14.1 ([36f4162](https://gitlab.kilic.dev/renovate/renovate-config/commit/36f41621d339dd36da83b22713f36a919420a9d9))
+* **deps:** update dependency typescript to v4.5.3 ([5f20a13](https://gitlab.kilic.dev/renovate/renovate-config/commit/5f20a134f001fd2483fe194a974757677c92a449))
+* **deps:** update dependency typescript to v4.5.4 ([5d8c9a5](https://gitlab.kilic.dev/renovate/renovate-config/commit/5d8c9a5db7c0518a138c7d4352d20d7643f696de))
+* **deps:** update dependency typescript to v4.5.5 ([8c3ecbb](https://gitlab.kilic.dev/renovate/renovate-config/commit/8c3ecbb6597b497ce20f649d8b0a59424592c2ec))
+* **deps:** update dependency typescript to v4.6.3 ([37c3f38](https://gitlab.kilic.dev/renovate/renovate-config/commit/37c3f38de7d3f4790c01ca3a81a6ba13f5f2f24d))
+* **deps:** update dependency winston to v3.5.0 ([ff23cfb](https://gitlab.kilic.dev/renovate/renovate-config/commit/ff23cfb3a5c503da0976c7e589da064449e42100))
+* **deps:** update dependency winston to v3.5.1 ([eac3899](https://gitlab.kilic.dev/renovate/renovate-config/commit/eac38999fc757d7a485c4954b46bf72838172439))
+* **deps:** update dependency winston to v3.6.0 ([b8cb1d9](https://gitlab.kilic.dev/renovate/renovate-config/commit/b8cb1d9f96596c3add8e1110a5cb9a83fe10c630))
+* **deps:** update dependency winston to v3.7.2 ([0f44928](https://gitlab.kilic.dev/renovate/renovate-config/commit/0f449282b7d30655f90d9e0f95c8953c5c897fd2))
+
+
+### Performance Improvements
+
+* update to esm ([d184893](https://gitlab.kilic.dev/renovate/renovate-config/commit/d184893d9d834644a8ffd3d29ea3063bf1365df1))
+
+
+### BREAKING CHANGES
+
+* this package is pure esm
+
 ## [1.4.50](https://github.com/cenk1cenk2/renovate/compare/v1.4.49...v1.4.50) (2021-11-17)
 
 ### Bug Fixes
