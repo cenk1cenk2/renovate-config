@@ -1,12 +1,19 @@
 module.exports = {
   branches: [
+    'main',
     'master',
+    'next',
+    'next-major',
     {
       name: 'alpha',
       prerelease: true
     },
     {
       name: 'beta',
+      prerelease: true
+    },
+    {
+      name: 'rc',
       prerelease: true
     },
     {
