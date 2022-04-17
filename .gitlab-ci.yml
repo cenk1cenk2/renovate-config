@@ -6,10 +6,10 @@ stages:
 variables: {}
 
 include:
-  - project: devops/gitlab-pipes
+  - project: devops/pipes
     file: /templates/node-build.gitlab-ci.yml
     ref: main
 
-  - project: devops/gitlab-pipes
+  - project: devops/pipes
     file: /templates/semantic-release.gitlab-ci.yml
     ref: main
