@@ -9,7 +9,8 @@ export const SLOW_RING_PACKAGES = [
   '^husky$',
   '^prettier$',
   '^lint-staged$',
-  '^cz-conventional-changelog$'
+  '^cz-conventional-changelog$',
+  '^simple-git-hooks$'
 ]
 
 export const DISABLED_PACKAGES = [ 'node', 'webpack' ]
