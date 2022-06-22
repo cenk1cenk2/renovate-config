@@ -1,9 +1,14 @@
-## [2.0.58](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.0.57...v2.0.58) (2022-06-22)
+# [2.1.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.0.58...v2.1.0) (2022-06-22)
 
+### Features
+
+- update key names to new convention ([857b6c5](https://gitlab.kilic.dev/renovate/renovate-config/commit/857b6c5b5956fa9dd1beec9fe9c8b71411556ca6))
+
+## [2.0.58](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.0.57...v2.0.58) (2022-06-22)
 
 ### Bug Fixes
 
-* update patterns ([0b716c3](https://gitlab.kilic.dev/renovate/renovate-config/commit/0b716c326526f0def4cf6e7fd62aaedb50638e7f))
+- update patterns ([0b716c3](https://gitlab.kilic.dev/renovate/renovate-config/commit/0b716c326526f0def4cf6e7fd62aaedb50638e7f))
 
 ## [2.0.57](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.0.56...v2.0.57) (2022-06-21)
 
