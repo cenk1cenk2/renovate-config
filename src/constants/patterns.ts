@@ -1,15 +1,15 @@
 import { RenovateConfig } from 'renovate/dist/config/types'
 
 export const GROUP_MINOR: RenovateConfig = {
-  depTypeList: [ 'dependencies' ],
-  updateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
+  matchDepTypes: [ 'dependencies', 'require' ],
+  matchUpdateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
   rangeStrategy: 'bump',
   labels: [ 'renovate', 'minor', 'automerge' ],
   automerge: true
 }
 
 export const GROUP_DEV: RenovateConfig = {
-  depTypeList: [ 'devDependencies' ],
+  matchDepTypes: [ 'devDependencies' ],
   rangeStrategy: 'bump',
   commitMessageSuffix: '[skip ci]',
   labels: [ 'renovate', 'dev-deps', 'automerge' ],
@@ -17,7 +17,7 @@ export const GROUP_DEV: RenovateConfig = {
 }
 
 export const GROUP_PEER: RenovateConfig = {
-  depTypeList: [ 'peerDependencies' ],
+  matchDepTypes: [ 'peerDependencies' ],
   rangeStrategy: 'widen',
   commitMessageSuffix: '[skip ci]',
   labels: [ 'renovate', 'peer-deps', 'automerge' ],
