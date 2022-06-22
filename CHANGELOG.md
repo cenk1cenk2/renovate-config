@@ -1,3 +1,10 @@
+## [2.0.58](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.0.57...v2.0.58) (2022-06-22)
+
+
+### Bug Fixes
+
+* update patterns ([0b716c3](https://gitlab.kilic.dev/renovate/renovate-config/commit/0b716c326526f0def4cf6e7fd62aaedb50638e7f))
+
 ## [2.0.57](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.0.56...v2.0.57) (2022-06-21)
 
 ### Bug Fixes
