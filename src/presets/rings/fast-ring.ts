@@ -7,7 +7,7 @@ import { FAST_RING_PACKAGES } from '@constants/rings'
 export default createPreset({
   packageRules: [
     {
-      packagePatterns: FAST_RING_PACKAGES,
+      matchPackagePatterns: FAST_RING_PACKAGES,
       groupName: 'all fast ring minor dependencies',
       groupSlug: 'fast-ring',
       ...GROUP_MINOR,
@@ -15,7 +15,7 @@ export default createPreset({
     },
 
     {
-      packagePatterns: FAST_RING_PACKAGES,
+      matchPackagePatterns: FAST_RING_PACKAGES,
       groupName: 'all fast ring dev dependencies',
       groupSlug: 'fast-ring-dev',
       ...GROUP_DEV,
@@ -23,7 +23,7 @@ export default createPreset({
     },
 
     {
-      packagePatterns: FAST_RING_PACKAGES,
+      matchPackagePatterns: FAST_RING_PACKAGES,
       groupName: 'all fast ring peer dependencies',
       groupSlug: 'fast-ring-peer',
       ...GROUP_PEER,
