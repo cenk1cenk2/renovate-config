@@ -28,11 +28,11 @@
     "@cenk1cenk2/boilerplate-oclif": "^1.10.6",
     "config": "^3.3.7",
     "fs-extra": "^9",
-    "renovate": "^32.94.0",
+    "renovate": "^32.96.0",
     "ts-node": "^10.8.1",
     "tsconfig-paths": "^3.14.1",
     "typescript": "^4.7.4",
-    "winston": "^3.7.2"
+    "winston": "^3.8.0"
   },
   "devDependencies": {
     "@cenk1cenk2/cz-cc": "^1.5.3",
