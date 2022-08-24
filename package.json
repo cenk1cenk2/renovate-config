@@ -30,7 +30,7 @@
     "fs-extra": "^9",
     "renovate": "^32.173.0",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^3.14.1",
+    "tsconfig-paths": "^4.1.0",
     "typescript": "^4.7.4",
     "winston": "^3.8.1"
   },
