@@ -1,3 +1,9 @@
+## [2.1.53](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.1.52...v2.1.53) (2022-08-24)
+
+### Bug Fixes
+
+- **deps:** update dependency tsconfig-paths to v4 ([1bafeaf](https://gitlab.kilic.dev/renovate/renovate-config/commit/1bafeaf79ad56bd8bbb6787f70c9b6c9f50d1a03))
+
 ## [2.1.52](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.1.51...v2.1.52) (2022-08-23)
 
 ### Bug Fixes
