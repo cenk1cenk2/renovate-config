@@ -4590,6 +4590,11 @@ luxon@3.0.1:
   resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.0.1.tgz#6901111d10ad06fd267ad4e4128a84bef8a77299"
   integrity sha512-hF3kv0e5gwHQZKz4wtm4c+inDtyc7elkanAsBq+fundaCdUBNJB1dHEGUZIM6SfSBUlbVFduPwEtNjFK8wLtcw==
 
+luxon@3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.0.3.tgz#573e65531efd3d92265feb640f02ba7a192e2388"
+  integrity sha512-+EfHWnF+UT7GgTnq5zXg3ldnTKL2zdv7QJgsU5bjjpbH17E3qi/puMhQyJVYuCq+FRkogvB5WB6iVvUr+E4a7w==
+
 make-error@^1.1.1:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.6.tgz#2eb2e37ea9b67c4891f684a1394799af484cf7a2"
@@ -5601,10 +5606,10 @@ remark@13.0.0:
     remark-stringify "^9.0.0"
     unified "^9.1.0"
 
-renovate@^32.190.3:
-  version "32.190.3"
-  resolved "https://registry.yarnpkg.com/renovate/-/renovate-32.190.3.tgz#7dd23e20ff56ff31d06e9904a75aeac953825033"
-  integrity sha512-r3sL1UjpuDciN/UMs90LPN3B6HF39czoY+WFOAtPLph/ChUkYRsaVrlvjYNl5+pur7IdcSjOAplwuySk4Jsmbg==
+renovate@^32.190.6:
+  version "32.190.6"
+  resolved "https://registry.yarnpkg.com/renovate/-/renovate-32.190.6.tgz#2bf9eccb9d65e485d29a89547655f9f79f898543"
+  integrity sha512-GNA+pYvsGeymwXdOe39JDjXth1uT75yewQUbsF4SxYzgbozUIoXdXxtNjxxp2bp1XGXEZKI/rKdzfxtoYncygA==
   dependencies:
     "@aws-sdk/client-ec2" "3.155.0"
     "@aws-sdk/client-ecr" "3.154.0"
@@ -5659,7 +5664,7 @@ renovate@^32.190.3:
     json-dup-key-validator "1.0.3"
     json-stringify-pretty-compact "3.0.0"
     json5 "2.2.1"
-    luxon "3.0.1"
+    luxon "3.0.3"
     markdown-it "13.0.1"
     markdown-table "2.0.0"
     marshal "0.5.4"
