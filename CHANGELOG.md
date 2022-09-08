@@ -1,3 +1,9 @@
+## [2.1.68](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.1.67...v2.1.68) (2022-09-08)
+
+### Bug Fixes
+
+- **deps:** update all minor dependency updates ([698885f](https://gitlab.kilic.dev/renovate/renovate-config/commit/698885f8f82d8f31dca0a52e1af022e0d0d767af))
+
 ## [2.1.67](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.1.66...v2.1.67) (2022-09-07)
 
 ### Bug Fixes
