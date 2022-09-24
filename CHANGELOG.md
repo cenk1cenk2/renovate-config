@@ -1,3 +1,10 @@
+## [2.2.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.0...v2.2.1) (2022-09-24)
+
+### Bug Fixes
+
+- **deps:** update dependency renovate to ^32.202.4 ([d7bf50c](https://gitlab.kilic.dev/renovate/renovate-config/commit/d7bf50c3b2b1def197b95221681904737183acee))
+- update digest for go ([f44c417](https://gitlab.kilic.dev/renovate/renovate-config/commit/f44c417244a61b5287c152af66604eb2267c6c73))
+
 # [2.2.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.1.81...v2.2.0) (2022-09-24)
 
 ### Features
