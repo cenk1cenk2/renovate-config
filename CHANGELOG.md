@@ -1,3 +1,9 @@
+# [2.2.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.1.81...v2.2.0) (2022-09-24)
+
+### Features
+
+- update with golang configuration ([9523a4d](https://gitlab.kilic.dev/renovate/renovate-config/commit/9523a4d79720a6f34a749e8585c070f2def7e589))
+
 ## [2.1.81](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.1.80...v2.1.81) (2022-09-23)
 
 ### Bug Fixes
