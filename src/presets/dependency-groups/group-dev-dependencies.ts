@@ -1,6 +1,6 @@
 import { createPreset } from '@lib/preset-factory'
 
-import { GROUP_DEV } from '@constants/patterns'
+import { NODE_GROUP_DEV } from '@constants/patterns'
 import { SCHEDULE } from '@constants/renovate'
 
 export default createPreset({
@@ -9,7 +9,7 @@ export default createPreset({
       packagePatterns: [ '*' ],
       groupName: 'all development dependency updates',
       groupSlug: 'all-dev',
-      ...GROUP_DEV,
+      ...NODE_GROUP_DEV,
       schedule: [ SCHEDULE.ANY ]
     }
   ]

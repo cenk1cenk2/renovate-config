@@ -1,6 +1,6 @@
 import { createPreset } from '@lib/preset-factory'
 
-import { GROUP_PEER } from '@constants/patterns'
+import { NODE_GROUP_PEER } from '@constants/patterns'
 import { SCHEDULE } from '@constants/renovate'
 
 export default createPreset({
@@ -9,7 +9,7 @@ export default createPreset({
       packagePatterns: [ '*' ],
       groupName: 'all peer dependency updates',
       groupSlug: 'all-peer',
-      ...GROUP_PEER,
+      ...NODE_GROUP_PEER,
       schedule: [ SCHEDULE.ANY ]
     }
   ]

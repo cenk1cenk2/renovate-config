@@ -1,19 +1,22 @@
 import { createPreset } from '@lib/preset-factory'
 
+import { Managers } from '@constants/managers'
 import { SCHEDULE } from '@constants/renovate'
-import { SLOW_RING_PACKAGES, DISABLED_PACKAGES } from '@constants/rings'
+import { NODE_SLOW_RING_PACKAGES, NODE_DISABLED_PACKAGES } from '@constants/rings'
 
 export default createPreset({
   packageRules: [
     {
-      matchPackagePatterns: SLOW_RING_PACKAGES,
+      matchPackagePatterns: NODE_SLOW_RING_PACKAGES,
       groupName: 'all slow ring @weekly',
       groupSlug: 'slow-ring-weekly',
-      schedule: [ SCHEDULE.WEEKLY ]
+      schedule: [ SCHEDULE.WEEKLY ],
+      matchManagers: [ Managers.NODE ]
     },
     {
-      matchPackageNames: DISABLED_PACKAGES,
-      enabled: false
+      matchPackageNames: NODE_DISABLED_PACKAGES,
+      enabled: false,
+      matchManagers: [ Managers.NODE ]
     }
   ]
 })

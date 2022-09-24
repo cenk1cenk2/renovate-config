@@ -1,6 +1,8 @@
-export const FAST_RING_PACKAGES = [ '^@cenk1cenk2/', 'listr2' ]
+export const NODE_FAST_RING_PACKAGES = [ '^@cenk1cenk2/', 'listr2' ]
 
-export const SLOW_RING_PACKAGES = [
+export const GO_FAST_RING_PACKAGES = [ '^gitlab.kilic.dev/' ]
+
+export const NODE_SLOW_RING_PACKAGES = [
   '^@typescript-eslint/',
   'jest',
   '@types/jest',
@@ -13,4 +15,4 @@ export const SLOW_RING_PACKAGES = [
   '^simple-git-hooks$'
 ]
 
-export const DISABLED_PACKAGES = [ 'node', 'webpack' ]
+export const NODE_DISABLED_PACKAGES = [ 'node', 'webpack' ]

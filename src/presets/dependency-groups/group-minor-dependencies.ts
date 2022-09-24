@@ -1,6 +1,6 @@
 import { createPreset } from '@lib/preset-factory'
 
-import { GROUP_MINOR } from '@constants/patterns'
+import { GO_GROUP_MINOR, NODE_GROUP_MINOR } from '@constants/patterns'
 import { SCHEDULE } from '@constants/renovate'
 
 export default createPreset({
@@ -9,7 +9,14 @@ export default createPreset({
       packagePatterns: [ '*' ],
       groupName: 'all minor dependency updates',
       groupSlug: 'all',
-      ...GROUP_MINOR,
+      ...NODE_GROUP_MINOR,
+      schedule: [ SCHEDULE.DAILY ]
+    },
+    {
+      packagePatterns: [ '*' ],
+      groupName: 'all minor dependency updates',
+      groupSlug: 'all',
+      ...GO_GROUP_MINOR,
       schedule: [ SCHEDULE.DAILY ]
     }
   ]
