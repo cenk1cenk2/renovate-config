@@ -55,6 +55,10 @@
   },
   "renovate-config": {
     "base": {
+      "enabledManagers": [
+        "npm",
+        "gomod"
+      ],
       "extends": [
         "config:base",
         ":masterIssue",
@@ -73,7 +77,11 @@
       "major": {
         "stabilityDays": 3
       },
-      "prCreation": "immediate"
+      "prCreation": "immediate",
+      "postUpdateOptions": [
+        "gomodTidy",
+        "gomodUpdateImportPaths"
+      ]
     },
     "default": {
       "extends": [
@@ -107,7 +115,7 @@
     "slowring": {
       "packageRules": [
         {
-          "packagePatterns": [
+          "matchPackagePatterns": [
             "^@typescript-eslint/",
             "jest",
             "@types/jest",
@@ -116,36 +124,43 @@
             "^husky$",
             "^prettier$",
             "^lint-staged$",
-            "^cz-conventional-changelog$"
+            "^cz-conventional-changelog$",
+            "^simple-git-hooks$"
           ],
           "groupName": "all slow ring @weekly",
           "groupSlug": "slow-ring-weekly",
           "schedule": [
             "before 1am on Monday"
+          ],
+          "matchManagers": [
+            "npm"
           ]
         },
         {
-          "packageNames": [
+          "matchPackageNames": [
             "node",
             "webpack"
           ],
-          "enabled": false
+          "enabled": false,
+          "matchManagers": [
+            "npm"
+          ]
         }
       ]
     },
     "fastring": {
       "packageRules": [
         {
-          "packagePatterns": [
+          "matchPackagePatterns": [
             "^@cenk1cenk2/",
             "listr2"
           ],
           "groupName": "all fast ring minor dependencies",
           "groupSlug": "fast-ring",
-          "depTypeList": [
+          "matchDepTypes": [
             "dependencies"
           ],
-          "updateTypes": [
+          "matchUpdateTypes": [
             "minor",
             "patch",
             "pin",
@@ -158,18 +173,45 @@
             "automerge"
           ],
           "automerge": true,
+          "matchManagers": [
+            "npm"
+          ],
           "schedule": [
             "at any time"
           ]
         },
         {
-          "packagePatterns": [
+          "matchPackagePatterns": [
+            "^gitlab.kilic.dev/"
+          ],
+          "groupName": "all fast ring minor dependencies",
+          "groupSlug": "fast-ring",
+          "matchUpdateTypes": [
+            "minor",
+            "patch",
+            "digest"
+          ],
+          "labels": [
+            "renovate",
+            "minor",
+            "automerge"
+          ],
+          "automerge": true,
+          "matchManagers": [
+            "gomod"
+          ],
+          "schedule": [
+            "at any time"
+          ]
+        },
+        {
+          "matchPackagePatterns": [
             "^@cenk1cenk2/",
             "listr2"
           ],
           "groupName": "all fast ring dev dependencies",
           "groupSlug": "fast-ring-dev",
-          "depTypeList": [
+          "matchDepTypes": [
             "devDependencies"
           ],
           "rangeStrategy": "bump",
@@ -180,18 +222,21 @@
             "automerge"
           ],
           "automerge": true,
+          "matchManagers": [
+            "npm"
+          ],
           "schedule": [
             "at any time"
           ]
         },
         {
-          "packagePatterns": [
+          "matchPackagePatterns": [
             "^@cenk1cenk2/",
             "listr2"
           ],
           "groupName": "all fast ring peer dependencies",
           "groupSlug": "fast-ring-peer",
-          "depTypeList": [
+          "matchDepTypes": [
             "peerDependencies"
           ],
           "rangeStrategy": "widen",
@@ -202,6 +247,9 @@
             "automerge"
           ],
           "automerge": true,
+          "matchManagers": [
+            "npm"
+          ],
           "schedule": [
             "at any time"
           ]
@@ -216,7 +264,7 @@
           ],
           "groupName": "all development dependency updates",
           "groupSlug": "all-dev",
-          "depTypeList": [
+          "matchDepTypes": [
             "devDependencies"
           ],
           "rangeStrategy": "bump",
@@ -227,6 +275,9 @@
             "automerge"
           ],
           "automerge": true,
+          "matchManagers": [
+            "npm"
+          ],
           "schedule": [
             "at any time"
           ]
@@ -241,10 +292,10 @@
           ],
           "groupName": "all minor dependency updates",
           "groupSlug": "all",
-          "depTypeList": [
+          "matchDepTypes": [
             "dependencies"
           ],
-          "updateTypes": [
+          "matchUpdateTypes": [
             "minor",
             "patch",
             "pin",
@@ -257,6 +308,33 @@
             "automerge"
           ],
           "automerge": true,
+          "matchManagers": [
+            "npm"
+          ],
+          "schedule": [
+            "before 1am"
+          ]
+        },
+        {
+          "packagePatterns": [
+            "*"
+          ],
+          "groupName": "all minor dependency updates",
+          "groupSlug": "all",
+          "matchUpdateTypes": [
+            "minor",
+            "patch",
+            "digest"
+          ],
+          "labels": [
+            "renovate",
+            "minor",
+            "automerge"
+          ],
+          "automerge": true,
+          "matchManagers": [
+            "gomod"
+          ],
           "schedule": [
             "before 1am"
           ]
@@ -271,7 +349,7 @@
           ],
           "groupName": "all peer dependency updates",
           "groupSlug": "all-peer",
-          "depTypeList": [
+          "matchDepTypes": [
             "peerDependencies"
           ],
           "rangeStrategy": "widen",
@@ -282,6 +360,9 @@
             "automerge"
           ],
           "automerge": true,
+          "matchManagers": [
+            "npm"
+          ],
           "schedule": [
             "at any time"
           ]
