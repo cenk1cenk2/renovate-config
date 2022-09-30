@@ -1,9 +1,14 @@
-## [2.2.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.6...v2.2.7) (2022-09-30)
-
+## [2.2.8](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.7...v2.2.8) (2022-09-30)
 
 ### Bug Fixes
 
-* update build mechansim ([8d262d5](https://gitlab.kilic.dev/renovate/renovate-config/commit/8d262d5bf908045ebefa82b36d6d56320f0035ec))
+- **deps:** update dependency renovate to ^32.211.0 ([9171409](https://gitlab.kilic.dev/renovate/renovate-config/commit/9171409b397e9331b33134d3d2259755c5a1be8a))
+
+## [2.2.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.6...v2.2.7) (2022-09-30)
+
+### Bug Fixes
+
+- update build mechansim ([8d262d5](https://gitlab.kilic.dev/renovate/renovate-config/commit/8d262d5bf908045ebefa82b36d6d56320f0035ec))
 
 ## [2.2.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.5...v2.2.6) (2022-09-29)
 
