@@ -1,3 +1,9 @@
+## [2.2.10](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.9...v2.2.10) (2022-10-02)
+
+### Bug Fixes
+
+- **deps:** update dependency renovate to ^32.213.0 ([7f4c2b8](https://gitlab.kilic.dev/renovate/renovate-config/commit/7f4c2b819e6f0642fb081e019941ade876085b23))
+
 ## [2.2.9](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.8...v2.2.9) (2022-10-01)
 
 ### Bug Fixes
