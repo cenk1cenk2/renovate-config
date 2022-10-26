@@ -1,6 +1,6 @@
 {
   "name": "@cenk1cenk2/renovate-config",
-  "version": "2.2.30",
+  "version": "2.2.31",
   "description": "Renovate configuration generator for repositories.",
   "author": "Cenk Kilic, Scale Leap",
   "license": "GPL-3.0-or-later",
@@ -144,6 +144,19 @@
           "enabled": false,
           "matchManagers": [
             "npm"
+          ]
+        },
+        {
+          "matchPackagePatterns": [
+            "^golang.org/x/"
+          ],
+          "groupName": "all slow ring @weekly",
+          "groupSlug": "slow-ring-weekly",
+          "schedule": [
+            "before 1am on Monday"
+          ],
+          "matchManagers": [
+            "gomod"
           ]
         }
       ]

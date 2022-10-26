@@ -1,3 +1,9 @@
+## [2.2.31](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.30...v2.2.31) (2022-10-26)
+
+### Bug Fixes
+
+- add go slow ring ([9189785](https://gitlab.kilic.dev/renovate/renovate-config/commit/91897853bbe42a8ec90a864673d9a2da117bc56e))
+
 ## [2.2.30](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.29...v2.2.30) (2022-10-23)
 
 ### Bug Fixes
