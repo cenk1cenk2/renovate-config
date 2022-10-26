@@ -15,4 +15,6 @@ export const NODE_SLOW_RING_PACKAGES = [
   '^simple-git-hooks$'
 ]
 
+export const GO_SLOW_RING_PACKAGES = [ '^golang.org/x/' ]
+
 export const NODE_DISABLED_PACKAGES = [ 'node', 'webpack' ]
