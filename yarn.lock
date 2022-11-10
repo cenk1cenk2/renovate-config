@@ -864,9 +864,9 @@
   integrity sha512-e0wtx2IkOl7rwfKfLH5pPTzQ+d45V7b1WrjeL0WDI8kOu6w+sXmhNxI6uM2kf0k4NiTLN84lW290AEWupey9Og==
 
 "@aws-sdk/types@^3.1.0", "@aws-sdk/types@^3.110.0":
-  version "3.201.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.201.0.tgz#c248106b7a780360d6bca876036e65ca2a4e240d"
-  integrity sha512-RCQj2pQyHD330Jd4c5CHJ87k2ZqC3Mmtl6nhwH1dy3vbnGUpc3q+3yinOKoTAY934kIa7ia32Y/2EjuyHxaj1A==
+  version "3.208.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.208.0.tgz#b674c31d6ebd34f970102b96bb128b7c2e28a670"
+  integrity sha512-5AuOPtY1Hdf4xoEo+voRijl3OnFm8IB+oITXl+SN2iASJv+XPnRNw/QVbIxfGeWgWhmK31F+XdjTYsjT2rx8Qw==
 
 "@aws-sdk/url-parser@3.127.0":
   version "3.127.0"
@@ -967,9 +967,9 @@
     tslib "^2.3.1"
 
 "@aws-sdk/util-locate-window@^3.0.0":
-  version "3.201.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/util-locate-window/-/util-locate-window-3.201.0.tgz#39eb8b7e09a1ff64f635e2f39f69ddce2c828d96"
-  integrity sha512-hPJgifWh/rADabLAk1C9xXA2B3O4NUmbU58KgBRgC1HksiiHGFVZObB5fkBH8US/XV2jwORkpSf4OhretXQuKg==
+  version "3.208.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-locate-window/-/util-locate-window-3.208.0.tgz#0f598fc238a1256e4bcb64d01459f03a922dd4c3"
+  integrity sha512-iua1A2+P7JJEDHVgvXrRJSvsnzG7stYSGQnBVphIUlemwl6nN5D+QrgbjECtrbxRz8asYFHSzhdhECqN+tFiBg==
   dependencies:
     tslib "^2.3.1"
 
