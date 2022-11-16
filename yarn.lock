@@ -864,9 +864,9 @@
   integrity sha512-e0wtx2IkOl7rwfKfLH5pPTzQ+d45V7b1WrjeL0WDI8kOu6w+sXmhNxI6uM2kf0k4NiTLN84lW290AEWupey9Og==
 
 "@aws-sdk/types@^3.1.0", "@aws-sdk/types@^3.110.0":
-  version "3.208.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.208.0.tgz#b674c31d6ebd34f970102b96bb128b7c2e28a670"
-  integrity sha512-5AuOPtY1Hdf4xoEo+voRijl3OnFm8IB+oITXl+SN2iASJv+XPnRNw/QVbIxfGeWgWhmK31F+XdjTYsjT2rx8Qw==
+  version "3.212.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.212.0.tgz#199ceafa82c9c14ed31a3f25992042287d804ca9"
+  integrity sha512-uXBXB1PBYxfPyIvgmjbGdYBlS7rdeMG58uCaY3Ga5scY2xQnj7HU7knATKuIKk2DH1lLT0inqtsRVJS25zRK5w==
 
 "@aws-sdk/url-parser@3.127.0":
   version "3.127.0"
@@ -1922,10 +1922,10 @@
     tslib "^1.13.0"
     tunnel "^0.0.6"
 
-"@yarnpkg/fslib@^2.5.0", "@yarnpkg/fslib@^2.7.1", "@yarnpkg/fslib@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@yarnpkg/fslib/-/fslib-2.8.0.tgz#a20641a09b6edddd32ee98a80d76e1c4ddd99010"
-  integrity sha512-Goo8vFEVfVLdumceSd/K7p4Em5lqo8/PSvXE56XOrkaXmp1hQfjHcKtgtFO3UsVhq2JgM7MChQigDQLPXTCvzw==
+"@yarnpkg/fslib@^2.5.0", "@yarnpkg/fslib@^2.8.0", "@yarnpkg/fslib@^2.9.0":
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/fslib/-/fslib-2.9.0.tgz#aaa338f624defbef29031617b8884c3d831760ea"
+  integrity sha512-PIdwI2z1HFl6aUkketbgUJK3FGRVWVwH1vgHltNe+snJzjlKHMavyIR0fipkAJuHVcac+hzWI1/eMr90rVyMHw==
   dependencies:
     "@yarnpkg/libzip" "^2.2.4"
     tslib "^1.13.0"
@@ -1955,19 +1955,19 @@
     tslib "^1.13.0"
 
 "@yarnpkg/pnp@^3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@yarnpkg/pnp/-/pnp-3.2.4.tgz#cfbf43ae2dcb8fb31172baed4f3f28e495e8f9a2"
-  integrity sha512-ucQb6W/wm5civ9fPWWB06DWcd3Qqw/fm48dyMMO4YVF87dIbJpKP2uI2IqNWQbul2GaM63efIb2sk3kf7MAHtg==
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/pnp/-/pnp-3.2.5.tgz#676d2eed81e8f48bcf00ea8646776a48d1a56454"
+  integrity sha512-9TIy6BSJ0pu2Yj7KBG+CW4dnWijOdKZ8VO7yEC7fuL63I98oZHxuS9AcVSCNqNdrX8eZKxvSLtWgOaiGL0Eizw==
   dependencies:
     "@types/node" "^13.7.0"
-    "@yarnpkg/fslib" "^2.8.0"
+    "@yarnpkg/fslib" "^2.9.0"
 
 "@yarnpkg/shell@^3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@yarnpkg/shell/-/shell-3.2.4.tgz#98fbed82bdf31a9278e80e79783a6c6f183a7558"
-  integrity sha512-mCxB1N+onHynM2zcuvdb73y1njzqxKnpIu6hy+eFyxC6qyPDTT17w5gCdGDHWCs025I95jk2vPWbzhXJBiCEHw==
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/shell/-/shell-3.2.5.tgz#536c7d8e927c538db23fd6ae953ba0494d06a50d"
+  integrity sha512-QLQNDgUatiXWs47ULRAyliFt4/gQbGwprvgBVRF9OJw0aNY1DO7rnmebB3wDg927uy4Oj1uKVRfGAGAgAVQHWg==
   dependencies:
-    "@yarnpkg/fslib" "^2.7.1"
+    "@yarnpkg/fslib" "^2.9.0"
     "@yarnpkg/parsers" "^2.5.1"
     chalk "^3.0.0"
     clipanion "3.2.0-rc.4"
