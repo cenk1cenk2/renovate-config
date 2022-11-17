@@ -1,9 +1,14 @@
-## [2.2.32](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.31...v2.2.32) (2022-11-15)
-
+## [2.2.33](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.32...v2.2.33) (2022-11-17)
 
 ### Bug Fixes
 
-* **deps:** update dependency typescript to ^4.9.3 ([2df2687](https://gitlab.kilic.dev/renovate/renovate-config/commit/2df2687cb673f08ff6b190f6d1741ac736a7f1c9))
+- **deps:** update dependency renovate to v34 ([c1487a7](https://gitlab.kilic.dev/renovate/renovate-config/commit/c1487a7622fd22bf70b1eadf846c96711e137ae5))
+
+## [2.2.32](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.31...v2.2.32) (2022-11-15)
+
+### Bug Fixes
+
+- **deps:** update dependency typescript to ^4.9.3 ([2df2687](https://gitlab.kilic.dev/renovate/renovate-config/commit/2df2687cb673f08ff6b190f6d1741ac736a7f1c9))
 
 ## [2.2.31](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.30...v2.2.31) (2022-10-26)
 
