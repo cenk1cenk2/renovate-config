@@ -13,6 +13,7 @@ export const NODE_GROUP_MINOR: PackageRule = {
 
 export const NODE_GROUP_DEV: PackageRule = {
   matchDepTypes: [ 'devDependencies' ],
+  matchUpdateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
   rangeStrategy: 'bump',
   commitMessageSuffix: '[skip ci]',
   labels: [ 'renovate', 'dev-deps', 'automerge' ],
@@ -21,7 +22,7 @@ export const NODE_GROUP_DEV: PackageRule = {
 }
 
 export const NODE_GROUP_PEER: PackageRule = {
-  matchDepTypes: [ 'peerDependencies' ],
+  matchDepTypes: [ 'peerDependencies', 'optionalDependencies' ],
   rangeStrategy: 'widen',
   commitMessageSuffix: '[skip ci]',
   labels: [ 'renovate', 'peer-deps', 'automerge' ],
