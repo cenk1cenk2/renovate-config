@@ -1,6 +1,6 @@
 {
   "name": "@cenk1cenk2/renovate-config",
-  "version": "2.2.40",
+  "version": "2.3.0",
   "description": "Renovate configuration generator for repositories.",
   "author": "Cenk Kilic, Scale Leap",
   "license": "GPL-3.0-or-later",
@@ -227,6 +227,12 @@
           "matchDepTypes": [
             "devDependencies"
           ],
+          "matchUpdateTypes": [
+            "minor",
+            "patch",
+            "pin",
+            "digest"
+          ],
           "rangeStrategy": "bump",
           "commitMessageSuffix": "[skip ci]",
           "labels": [
@@ -250,7 +256,8 @@
           "groupName": "all fast ring peer dependencies",
           "groupSlug": "fast-ring-peer",
           "matchDepTypes": [
-            "peerDependencies"
+            "peerDependencies",
+            "optionalDependencies"
           ],
           "rangeStrategy": "widen",
           "commitMessageSuffix": "[skip ci]",
@@ -279,6 +286,12 @@
           "groupSlug": "all-dev",
           "matchDepTypes": [
             "devDependencies"
+          ],
+          "matchUpdateTypes": [
+            "minor",
+            "patch",
+            "pin",
+            "digest"
           ],
           "rangeStrategy": "bump",
           "commitMessageSuffix": "[skip ci]",
@@ -363,7 +376,8 @@
           "groupName": "all peer dependency updates",
           "groupSlug": "all-peer",
           "matchDepTypes": [
-            "peerDependencies"
+            "peerDependencies",
+            "optionalDependencies"
           ],
           "rangeStrategy": "widen",
           "commitMessageSuffix": "[skip ci]",

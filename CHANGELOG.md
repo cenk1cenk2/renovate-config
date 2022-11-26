@@ -1,3 +1,9 @@
+# [2.3.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.40...v2.3.0) (2022-11-26)
+
+### Features
+
+- dont automerge major dev dependencies ([fcf02ae](https://gitlab.kilic.dev/renovate/renovate-config/commit/fcf02ae4db02748bf62328ef4ef0e8a3e407cb37))
+
 ## [2.2.40](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.2.39...v2.2.40) (2022-11-25)
 
 ### Bug Fixes
