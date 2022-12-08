@@ -5863,10 +5863,10 @@ remark@13.0.0:
     remark-stringify "^9.0.0"
     unified "^9.1.0"
 
-renovate@^34.51.0:
-  version "34.51.0"
-  resolved "https://registry.yarnpkg.com/renovate/-/renovate-34.51.0.tgz#91fbe9941719e1051cd11b8212127a8c8f4354e7"
-  integrity sha512-FHdCdq6RLarV6U5TLbrqChovjma0W0agdLTcDd4/2eQHUfxBx/NC0VNaBsFM/+bq2XdMbtyddEJlVQ5AndeqDQ==
+renovate@^34.52.0:
+  version "34.52.0"
+  resolved "https://registry.yarnpkg.com/renovate/-/renovate-34.52.0.tgz#337f452a24f5597ad937e68d24b4b9e29beb3c05"
+  integrity sha512-OFKbYr0uUlRqCp9MbOu9gP5Iqm1zYWpt4hr3ExIDOeCJdgP//0b0O3x+AFrjDkTYxwau/YOhz9Zz23laVWmlSA==
   dependencies:
     "@aws-sdk/client-codecommit" "3.154.0"
     "@aws-sdk/client-ec2" "3.155.0"
@@ -6753,10 +6753,15 @@ types@^0.1.1:
   resolved "https://registry.yarnpkg.com/types/-/types-0.1.1.tgz#860c6859d11366293f835d8c95aebcf95029838e"
   integrity sha512-JuntZtJj4MKLE9x/XBs7IjsznYhzETwr34pw3XJTKvgYtAMdeMG+o8x8U85E5Lm6eCPa1DdOdGVsHMwq4ZnZAg==
 
-typescript@^4.6.4, typescript@^4.9.3:
+typescript@^4.6.4:
   version "4.9.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.3.tgz#3aea307c1746b8c384435d8ac36b8a2e580d85db"
   integrity sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==
+
+typescript@^4.9.4:
+  version "4.9.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
+  integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
 
 uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.6"
