@@ -1,3 +1,10 @@
+## [2.3.15](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.14...v2.3.15) (2022-12-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to ^34.58.0 ([81f6386](https://gitlab.kilic.dev/renovate/renovate-config/commit/81f6386a6c3a6cf6b7b0d407a2613fd5bb694b7f))
+
 ## [2.3.14](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.13...v2.3.14) (2022-12-14)
 
 
