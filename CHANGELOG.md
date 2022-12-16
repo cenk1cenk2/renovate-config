@@ -1,3 +1,10 @@
+## [2.3.16](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.15...v2.3.16) (2022-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency fs-extra to v11 ([33707ca](https://gitlab.kilic.dev/renovate/renovate-config/commit/33707cada107c7821d8c8eb434cc531889414884))
+
 ## [2.3.15](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.14...v2.3.15) (2022-12-15)
 
 
