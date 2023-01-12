@@ -1270,14 +1270,14 @@
   optionalDependencies:
     "@commitlint/load" "^17.3.0"
 
-"@cenk1cenk2/eslint-config@^2.5.42":
-  version "2.5.42"
-  resolved "https://registry.yarnpkg.com/@cenk1cenk2/eslint-config/-/eslint-config-2.5.42.tgz#1723baa76c5a8bd2cd83b6f5eca0eb2523ce57fa"
-  integrity sha512-P9tfO3KZl42bGf+DgJ7SsBtyQ/3XUqNhDKz6wn9fNGdGfCpQtzXglFHZYdAWQa5cuUH3jDRTzZ3eU7fDTd2q6A==
+"@cenk1cenk2/eslint-config@^2.5.43":
+  version "2.5.43"
+  resolved "https://registry.yarnpkg.com/@cenk1cenk2/eslint-config/-/eslint-config-2.5.43.tgz#6dd6fba396282871e45c4f78716ee902bdd10e27"
+  integrity sha512-pMUNbyC95VotxSODF0bHrOgVDGT64lA6JAIwmITUDKgzw7mJbxFEsJMlEKyUbz8VOzPOKdZ4wd2vj20uRGLIwQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.48.0"
     "@typescript-eslint/parser" "^5.48.0"
-    eslint-plugin-import "^2.26.0"
+    eslint-plugin-import "^2.27.0"
     load-tsconfig "^0.2.3"
 
 "@cheap-glitch/mi-cron@1.0.1":
@@ -3427,7 +3427,7 @@ eslint-module-utils@^2.7.4:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-import@^2.26.0:
+eslint-plugin-import@^2.27.0:
   version "2.27.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.27.0.tgz#29824226ae1c14965af445e4f71769ef1e3fe365"
   integrity sha512-g+25RejC0uMcimFhm55XGPkbXR5qJMZ8KRN9hEJrQ+9U1VLrt76IjHD3/+QKu/0h1Wm6S2a73DFK8UYZRmfnYg==
