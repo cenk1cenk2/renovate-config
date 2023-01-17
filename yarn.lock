@@ -2937,12 +2937,19 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
-config@^3.3.6, config@^3.3.8:
+config@^3.3.6:
   version "3.3.8"
   resolved "https://registry.yarnpkg.com/config/-/config-3.3.8.tgz#14ef7aef22af25877fdaee696ec64d761feb7be0"
   integrity sha512-rFzF6VESOdp7wAXFlB9IOZI4ouL05g3A03v2eRcTHj2JBQaTNJ40zhAUl5wRbWHqLZ+uqp/7OE0BWWtAVgrong==
   dependencies:
     json5 "^2.2.1"
+
+config@^3.3.9:
+  version "3.3.9"
+  resolved "https://registry.yarnpkg.com/config/-/config-3.3.9.tgz#27fae95b43e0e1d5723e54143c090954d8e49572"
+  integrity sha512-G17nfe+cY7kR0wVpc49NCYvNtelm/pPy8czHoFkAgtV1lkmcp7DHtWCdDu+C9Z7gb2WVqa9Tm3uF9aKaPbCfhg==
+  dependencies:
+    json5 "^2.2.3"
 
 console-control-strings@^1.1.0:
   version "1.1.0"
@@ -4691,7 +4698,7 @@ json-stringify-safe@^5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==
 
-json5@2.2.3, json5@^2.2.1, json5@^2.2.2:
+json5@2.2.3, json5@^2.2.1, json5@^2.2.2, json5@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
@@ -5965,10 +5972,10 @@ remark@13.0.0:
     remark-stringify "^9.0.0"
     unified "^9.1.0"
 
-renovate@^34.104.0:
-  version "34.104.0"
-  resolved "https://registry.yarnpkg.com/renovate/-/renovate-34.104.0.tgz#6c15e9ed7b2e6b40692cf0ae719458a89e5a40fc"
-  integrity sha512-UqsYP4mTsl+ugQuv2D3Brw4ajwI3+Y34Z2XU/Hk0OvQmFBPsDBRPiqQ7YRfteM9HyU3XUcor7WMjr4Z4Zz9gkg==
+renovate@^34.105.3:
+  version "34.105.3"
+  resolved "https://registry.yarnpkg.com/renovate/-/renovate-34.105.3.tgz#14b2574d9339d5d88345b1b520dd715f94488552"
+  integrity sha512-C6MEbzv0aBUJ5MYtClSiWdEllL6yObQqCb58kb/0d/Yoyiy6vQrgvCEJviQpUaQU2+Vlv1hZMY2te5kKYqHtHw==
   dependencies:
     "@aws-sdk/client-codecommit" "3.226.0"
     "@aws-sdk/client-ec2" "3.226.0"
