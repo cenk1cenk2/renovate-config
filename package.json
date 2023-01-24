@@ -28,7 +28,7 @@
     "@cenk1cenk2/boilerplate-oclif": "^1.10.6",
     "config": "^3.3.9",
     "fs-extra": "^11",
-    "renovate": "^34.111.1",
+    "renovate": "^34.112.4",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
     "typescript": "^4.9.4",
