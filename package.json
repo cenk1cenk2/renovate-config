@@ -1,6 +1,6 @@
 {
   "name": "@cenk1cenk2/renovate-config",
-  "version": "2.3.61",
+  "version": "2.3.62",
   "description": "Renovate configuration generator for repositories.",
   "author": "Cenk Kilic, Scale Leap",
   "license": "GPL-3.0-or-later",
