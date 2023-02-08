@@ -1027,9 +1027,9 @@
     tslib "^2.3.1"
 
 "@aws-sdk/types@^3.222.0":
-  version "3.266.1"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.266.1.tgz#1b03465c5109a4009f1e25387772217cdb533fc2"
-  integrity sha512-OVg3CjHKT3/Ws33jx3TUYYkbFOv/CLb9m3P4gZQDvgKPsOagp96LOsG8ZWdcVZCvSorAUqSb5kuc1utsjJxDTw==
+  version "3.267.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.267.0.tgz#fe543d1a1977c4e9e7ca6c32c837fcfd87b32441"
+  integrity sha512-fICTbSeIfXlTHnciQgDt37R0kXoKxgh0a3prnLWVvTcmf7NFujdZmg5YTAZT3KJJ7SuKsIgnI8azBYioVY8BVQ==
   dependencies:
     tslib "^2.3.1"
 
@@ -1923,9 +1923,9 @@
   integrity sha512-qv3jnwoakeax2razYaMsGI/luWdliBLHTdC6jU55hQt1hcFqzauH/HsBollQ7IR4ySTtYhT+xyHoijpA16C+tA==
 
 "@seald-io/nedb@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@seald-io/nedb/-/nedb-4.0.0.tgz#875595cbdf3e5b781bb15190e40b6e0606159b04"
-  integrity sha512-2hIBCoXn2O6fkUd7CeevtLdiK4WbAsE2wVhM6+CVG0Ub45aoyCC83P9ikUNcL5HytZA6gLRWc+1Eseio9ctfCQ==
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@seald-io/nedb/-/nedb-4.0.1.tgz#bfd62b5468e6b03e4f3a16dabd12c9d55aab8856"
+  integrity sha512-E2l7EUEMkSO3WLydRxRWjVWzijzWehzKmy/q9ekbgaOOQjYD7zHdS8z3KsM8+aQ910agfREZCR+3YCc5Xuc9dg==
   dependencies:
     "@seald-io/binary-search-tree" "^1.0.3"
     localforage "^1.9.0"
@@ -5786,10 +5786,15 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prettier@2.8.3, prettier@^2.8.3:
+prettier@2.8.3:
   version "2.8.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.3.tgz#ab697b1d3dd46fb4626fbe2f543afe0cc98d8632"
   integrity sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==
+
+prettier@^2.8.3:
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.4.tgz#34dd2595629bfbb79d344ac4a91ff948694463c3"
+  integrity sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==
 
 pretty-bytes@^5.1.0:
   version "5.6.0"
