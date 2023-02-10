@@ -1,9 +1,14 @@
-## [2.3.66](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.65...v2.3.66) (2023-02-09)
-
+## [2.3.67](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.66...v2.3.67) (2023-02-10)
 
 ### Bug Fixes
 
-* **deps:** update dependency renovate to ^34.128.3 ([e69dc61](https://gitlab.kilic.dev/renovate/renovate-config/commit/e69dc6166ad559aa04809232603dffce1a7ce5c5))
+- **deps:** update dependency renovate to ^34.130.0 ([da9b1f6](https://gitlab.kilic.dev/renovate/renovate-config/commit/da9b1f6ca9ad5913ba9f66b0523b247ddb3105a0))
+
+## [2.3.66](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.65...v2.3.66) (2023-02-09)
+
+### Bug Fixes
+
+- **deps:** update dependency renovate to ^34.128.3 ([e69dc61](https://gitlab.kilic.dev/renovate/renovate-config/commit/e69dc6166ad559aa04809232603dffce1a7ce5c5))
 
 ## [2.3.65](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.64...v2.3.65) (2023-02-08)
 
