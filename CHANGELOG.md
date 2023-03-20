@@ -1,17 +1,21 @@
-## [2.3.92](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.91...v2.3.92) (2023-03-10)
-
+## [2.3.93](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.92...v2.3.93) (2023-03-20)
 
 ### Bug Fixes
 
-* **deps:** update all minor dependency updates ([214c900](https://gitlab.kilic.dev/renovate/renovate-config/commit/214c900ff2fef401d94ad6ed644ad3f8aeca3efc))
-* **deps:** update dependency renovate to ^34.159.2 ([ff738de](https://gitlab.kilic.dev/renovate/renovate-config/commit/ff738dea671b869dcc5701c183bed3f077846e3a))
+- **deps:** update dependency fs-extra to ^11.1.1 ([0714871](https://gitlab.kilic.dev/renovate/renovate-config/commit/0714871c3d34be6cf3db68f7268a75e377694117))
+
+## [2.3.92](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.91...v2.3.92) (2023-03-10)
+
+### Bug Fixes
+
+- **deps:** update all minor dependency updates ([214c900](https://gitlab.kilic.dev/renovate/renovate-config/commit/214c900ff2fef401d94ad6ed644ad3f8aeca3efc))
+- **deps:** update dependency renovate to ^34.159.2 ([ff738de](https://gitlab.kilic.dev/renovate/renovate-config/commit/ff738dea671b869dcc5701c183bed3f077846e3a))
 
 ## [2.3.91](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.90...v2.3.91) (2023-03-08)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency renovate to ^34.159.1 ([9fa8350](https://gitlab.kilic.dev/renovate/renovate-config/commit/9fa8350429e0fb2f68ae67e3bad4f283f5bfeab8))
+- **deps:** update dependency renovate to ^34.159.1 ([9fa8350](https://gitlab.kilic.dev/renovate/renovate-config/commit/9fa8350429e0fb2f68ae67e3bad4f283f5bfeab8))
 
 ## [2.3.90](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.89...v2.3.90) (2023-03-07)
 
