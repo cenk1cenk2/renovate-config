@@ -1,3 +1,11 @@
+## [2.3.95](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.94...v2.3.95) (2023-04-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to v35 ([364a645](https://gitlab.kilic.dev/renovate/renovate-config/commit/364a645eeadf379da1dc9320516159725d8ff824))
+* **deps:** update dependency typescript to v5 ([dbf6c88](https://gitlab.kilic.dev/renovate/renovate-config/commit/dbf6c8875a07af27d697c12c31b3dd51d72a27ec))
+
 ## [2.3.94](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.93...v2.3.94) (2023-03-29)
 
 ### Bug Fixes
