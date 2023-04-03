@@ -1,17 +1,21 @@
-## [2.3.96](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.95...v2.3.96) (2023-04-02)
-
+## [2.3.97](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.96...v2.3.97) (2023-04-03)
 
 ### Bug Fixes
 
-* **deps:** update all minor dependency updates ([e4bb4da](https://gitlab.kilic.dev/renovate/renovate-config/commit/e4bb4da5d154ac152270cdcfb023af35dc7d9c2f))
+- **deps:** update dependency renovate to ^35.32.0 ([e8daa9d](https://gitlab.kilic.dev/renovate/renovate-config/commit/e8daa9dae766cf9beda96d970c7da087ae1960de))
+
+## [2.3.96](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.95...v2.3.96) (2023-04-02)
+
+### Bug Fixes
+
+- **deps:** update all minor dependency updates ([e4bb4da](https://gitlab.kilic.dev/renovate/renovate-config/commit/e4bb4da5d154ac152270cdcfb023af35dc7d9c2f))
 
 ## [2.3.95](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.94...v2.3.95) (2023-04-02)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency renovate to v35 ([364a645](https://gitlab.kilic.dev/renovate/renovate-config/commit/364a645eeadf379da1dc9320516159725d8ff824))
-* **deps:** update dependency typescript to v5 ([dbf6c88](https://gitlab.kilic.dev/renovate/renovate-config/commit/dbf6c8875a07af27d697c12c31b3dd51d72a27ec))
+- **deps:** update dependency renovate to v35 ([364a645](https://gitlab.kilic.dev/renovate/renovate-config/commit/364a645eeadf379da1dc9320516159725d8ff824))
+- **deps:** update dependency typescript to v5 ([dbf6c88](https://gitlab.kilic.dev/renovate/renovate-config/commit/dbf6c8875a07af27d697c12c31b3dd51d72a27ec))
 
 ## [2.3.94](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.93...v2.3.94) (2023-03-29)
 
