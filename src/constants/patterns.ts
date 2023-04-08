@@ -21,6 +21,15 @@ export const NODE_GROUP_DEV: PackageRule = {
   matchManagers: [ Managers.NODE ]
 }
 
+export const NODE_GROUP_BUILD: PackageRule = {
+  matchDepTypes: [ 'devDependencies' ],
+  matchUpdateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
+  rangeStrategy: 'bump',
+  labels: [ 'renovate', 'build-deps', 'automerge' ],
+  automerge: true,
+  matchManagers: [ Managers.NODE ]
+}
+
 export const NODE_GROUP_PEER: PackageRule = {
   matchDepTypes: [ 'peerDependencies', 'optionalDependencies' ],
   rangeStrategy: 'widen',

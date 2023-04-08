@@ -1,11 +1,10 @@
-import fs from 'fs-extra'
-
 import presets from './presets'
+import { fs } from '@cenk1cenk2/oclif-common'
 import { readPackageJson } from '@utils/get-package-json'
 import { Logger } from '@utils/logger'
 
 async function bootstrap (): Promise<void> {
-  const logger = Logger.prototype.getInstance()
+  const logger = new Logger()
 
   logger.direct('Renovate Config Creator')
 
@@ -15,7 +14,7 @@ async function bootstrap (): Promise<void> {
 
   Object.entries(presets).forEach(([ name, preset ]) => {
     logger.info(`Processing preset: ${name}`)
-    logger.debug(JSON.stringify(preset, null, 2))
+    logger.info(JSON.stringify(preset, null, 2))
 
     pkgRenovateConfig[name] = preset
   })
@@ -25,9 +24,9 @@ async function bootstrap (): Promise<void> {
 
     await fs.writeFile(pkg.path, JSON.stringify(pkg.pkg, null, 2), { encoding: 'utf8' })
 
-    logger.success(`Wrote configuration to package.json@"${pkg.path}".`)
+    logger.end(`Wrote configuration to package.json@"${pkg.path}".`)
   } else {
-    logger.success('A dry run has completed. Not writing changes.')
+    logger.end('A dry run has completed. Not writing changes.')
   }
 }
 

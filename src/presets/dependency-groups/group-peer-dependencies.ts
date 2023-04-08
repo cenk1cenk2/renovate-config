@@ -6,7 +6,7 @@ import { SCHEDULE } from '@constants/renovate'
 export default createPreset({
   packageRules: [
     {
-      packagePatterns: [ '*' ],
+      matchPackagePatterns: [ '*' ],
       groupName: 'all peer dependency updates',
       groupSlug: 'all-peer',
       ...NODE_GROUP_PEER,

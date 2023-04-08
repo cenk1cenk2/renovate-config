@@ -7,12 +7,12 @@
   "repository": "https://gitlab.kilic.dev/renovate/renovate-config",
   "scripts": {
     "build": "ts-node -r tsconfig-paths/register src/index.ts",
-    "dev:start": "NODE_ENV=develop yarn build",
-    "lint": "prettier --loglevel warn --write ./ && eslint --ext .ts,.js,.tsx,.jsx --fix ./",
-    "lint:check": "eslint --ext .ts,.js,.tsx,.jsx ./"
+    "dev:start": "LOG_LEVEL=debug NODE_ENV=develop pnpm run build",
+    "format": "prettier --loglevel warn --write ./ && eslint --ext .ts,.js,.tsx,.jsx --fix ./",
+    "lint": "eslint --ext .ts,.js,.tsx,.jsx ./"
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn exec lint-staged",
+    "pre-commit": "pnpm exec lint-staged",
     "prepare-commit-msg": "[ -t 1 ] && exec < /dev/tty && git cz --hook || true"
   },
   "lint-staged": {
@@ -25,14 +25,8 @@
     ]
   },
   "dependencies": {
-    "@cenk1cenk2/boilerplate-oclif": "^1.10.6",
-    "config": "^3.3.9",
-    "fs-extra": "^11.1.1",
-    "renovate": "^35.37.0",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.0.4",
-    "winston": "^3.8.2"
+    "@cenk1cenk2/oclif-common": "^5.0.4",
+    "renovate": "^35.38.0"
   },
   "devDependencies": {
     "@cenk1cenk2/cz-cc": "^1.6.0",
@@ -40,10 +34,13 @@
     "@types/config": "^3.3.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.15.11",
-    "eslint": "^8.37.0",
-    "lint-staged": "^13.2.0",
+    "eslint": "^8.38.0",
+    "lint-staged": "^13.2.1",
     "prettier": "^2.8.7",
-    "simple-git-hooks": "^2.8.1"
+    "simple-git-hooks": "^2.8.1",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.0.4"
   },
   "config": {
     "commitizen": {

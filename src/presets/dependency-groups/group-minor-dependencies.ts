@@ -6,14 +6,14 @@ import { SCHEDULE } from '@constants/renovate'
 export default createPreset({
   packageRules: [
     {
-      packagePatterns: [ '*' ],
+      matchPackagePatterns: [ '*' ],
       groupName: 'all minor dependency updates',
       groupSlug: 'all',
       ...NODE_GROUP_MINOR,
       schedule: [ SCHEDULE.DAILY ]
     },
     {
-      packagePatterns: [ '*' ],
+      matchPackagePatterns: [ '*' ],
       groupName: 'all minor dependency updates',
       groupSlug: 'all',
       ...GO_GROUP_MINOR,

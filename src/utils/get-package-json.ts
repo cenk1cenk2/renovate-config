@@ -1,10 +1,10 @@
-import fs from 'fs-extra'
 import { join } from 'path'
 
+import { fs } from '@cenk1cenk2/oclif-common'
 import { Logger } from '@utils/logger'
 
 export function readPackageJson (pathOnly?: boolean): { pkg?: Record<string, any>, path: string } {
-  const logger = Logger.prototype.getInstance()
+  const logger = new Logger()
 
   const root = process.cwd()
 
@@ -19,7 +19,7 @@ export function readPackageJson (pathOnly?: boolean): { pkg?: Record<string, any
     return { path: pkgJsonPath }
   }
 
-  logger.debug(`Root directory of the project: ${root}`)
+  logger.info(`Root directory of the project: ${root}`)
 
   try {
     return { pkg: fs.readJsonSync(pkgJsonPath), path: pkgJsonPath }
