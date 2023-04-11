@@ -3,7 +3,7 @@ lockfileVersion: '6.0'
 dependencies:
   '@cenk1cenk2/oclif-common':
     specifier: ^5.0.4
-    version: 5.0.4(@oclif/core@2.8.0)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.2.0)
+    version: 5.0.4(@oclif/core@2.8.1)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.2.0)
   renovate:
     specifier: ^35.40.3
     version: 35.40.3(typanion@3.12.1)
@@ -1355,7 +1355,7 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/oclif-common@5.0.4(@oclif/core@2.8.0)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.2.0):
+  /@cenk1cenk2/oclif-common@5.0.4(@oclif/core@2.8.1)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.2.0):
     resolution: {integrity: sha512-gsIh1969yr0p3vMnRbFm4Fj+S1MmFEdxmdk2eLery6YgptFZrQztvylr5lk6KC/msS2K0OPniIt88cDxByN9dQ==}
     engines: {node: '>= 16'}
     peerDependencies:
@@ -1373,7 +1373,7 @@ packages:
       update-notifier:
         optional: true
     dependencies:
-      '@oclif/core': 2.8.0(@types/node@18.15.11)(typescript@5.0.4)
+      '@oclif/core': 2.8.1(@types/node@18.15.11)(typescript@5.0.4)
       class-transformer: 0.5.1
       class-validator: 0.14.0
       deepmerge: 4.3.1
@@ -1619,8 +1619,8 @@ packages:
     dev: false
     optional: true
 
-  /@oclif/core@2.8.0(@types/node@18.15.11)(typescript@5.0.4):
-    resolution: {integrity: sha512-A2wHItFrD/WOw5bJ6Mtv9MD7If0bsKNR0pwEY0me+fo4HSXlJOtgYGqmzb8t8akX3DUUT7XsjPajsoHLkIJyvg==}
+  /@oclif/core@2.8.1(@types/node@18.15.11)(typescript@5.0.4):
+    resolution: {integrity: sha512-GnJNTR6+TmrvBBHTXFPV7oqhEbJ6Rv+pnG6XVag6MUwzKjIrhotyT2DH2/QkIQ+J2wgsqQvo2hcB9QuoBC3Ipg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.0
@@ -2948,13 +2948,13 @@ packages:
       fs-minipass: 3.0.1
       glob: 9.3.5
       lru-cache: 7.18.3
-      minipass: 4.2.7
+      minipass: 4.2.8
       minipass-collect: 1.0.2
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
       p-map: 4.0.0
       promise-inflight: 1.0.1
-      ssri: 10.0.2
+      ssri: 10.0.3
       tar: 6.1.13
       unique-filename: 3.0.0
     transitivePeerDependencies:
@@ -4143,7 +4143,7 @@ packages:
     resolution: {integrity: sha512-MhaJDcFRTuLidHrIttu0RDGyyXs/IYHVmlcxfLAEFIWjc1vdLAkdwT7Ace2u7DbitWC0toKMl5eJZRYNVreIMw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 4.2.7
+      minipass: 4.2.8
     dev: false
 
   /fs.realpath@1.0.0:
@@ -4299,7 +4299,7 @@ packages:
     dependencies:
       fs.realpath: 1.0.0
       minimatch: 8.0.4
-      minipass: 4.2.7
+      minipass: 4.2.8
       path-scurry: 1.6.4
     dev: false
 
@@ -5528,8 +5528,8 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /minipass@4.2.7:
-    resolution: {integrity: sha512-ScVIgqHcXRMyfflqHmEW0bm8z8rb5McHyOY3ewX9JBgZaR77G7nxq9L/mtV96/QbAAwtbCAHVVLzD1kkyfFQEw==}
+  /minipass@4.2.8:
+    resolution: {integrity: sha512-fNzuVyifolSLFL4NzpF+wEF4qrgqaaKX0haXPQEdQ7NKAN+WecoKMHV09YcuL/DHxrUsYQOK3MiuDf7Ip2OXfQ==}
     engines: {node: '>=8'}
     dev: false
 
@@ -6821,11 +6821,11 @@ packages:
     resolution: {integrity: sha512-VE0SOVEHCk7Qc8ulkWw3ntAzXuqf7S2lvwQaDLRnUeIEaKNQJzV6BwmLKhOqT61aGhfUMrXeaBk+oDGCzvhcug==}
     dev: false
 
-  /ssri@10.0.2:
-    resolution: {integrity: sha512-LWMXUSh7fEfCXNBq4UnRzC4Qc5Y1PPg5ogmb+6HX837i2cKzjB133aYmQ4lgO0shVTcTQHquKp3v5bn898q3Sw==}
+  /ssri@10.0.3:
+    resolution: {integrity: sha512-lJtX/BFPI/VEtxZmLfeh7pzisIs6micwZ3eruD3+ds9aPsXKlYpwDS2Q7omD6WC42WO9+bnUSzlMmfv8uK8meg==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 4.2.7
+      minipass: 4.2.8
     dev: false
 
   /ssri@9.0.1:
@@ -6998,7 +6998,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 4.2.7
+      minipass: 4.2.8
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
