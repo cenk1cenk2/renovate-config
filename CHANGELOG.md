@@ -1,3 +1,12 @@
+## [2.3.103](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.102...v2.3.103) (2023-04-11)
+
+
+### Bug Fixes
+
+* change the semantic commit type for build deps ([54dad3c](https://gitlab.kilic.dev/renovate/renovate-config/commit/54dad3c5ba8bd37237af99f45b2fc1481e48ea4e))
+* **deps:** update dependency renovate to ^35.40.0 ([bcae673](https://gitlab.kilic.dev/renovate/renovate-config/commit/bcae6735b581b8eb1976b798fdecc6481a921b18))
+* **deps:** update dependency renovate to ^35.40.3 ([c0bdf34](https://gitlab.kilic.dev/renovate/renovate-config/commit/c0bdf3481486589b4c2e9425d601452b9312c5a0))
+
 ## [2.3.102](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.101...v2.3.102) (2023-04-09)
 
 ### Bug Fixes
