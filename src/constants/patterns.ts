@@ -25,8 +25,17 @@ export const NODE_GROUP_BUILD: PackageRule = {
   matchDepTypes: [ 'devDependencies' ],
   matchUpdateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
   rangeStrategy: 'bump',
-  commitMessageSuffix: '',
   semanticCommitType: 'build',
+  labels: [ 'renovate', 'build-deps', 'automerge' ],
+  automerge: true,
+  matchManagers: [ Managers.NODE ]
+}
+
+export const NODE_GROUP_DOCS: PackageRule = {
+  matchDepTypes: [ 'devDependencies' ],
+  matchUpdateTypes: [ 'minor', 'patch', 'pin', 'digest' ],
+  rangeStrategy: 'bump',
+  semanticCommitType: 'docs',
   labels: [ 'renovate', 'build-deps', 'automerge' ],
   automerge: true,
   matchManagers: [ Managers.NODE ]
