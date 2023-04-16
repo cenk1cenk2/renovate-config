@@ -1,6 +1,6 @@
 {
   "name": "@cenk1cenk2/renovate-config",
-  "version": "2.3.104",
+  "version": "2.3.105",
   "description": "Renovate configuration generator for repositories.",
   "author": "Cenk Kilic, Scale Leap",
   "license": "GPL-3.0-or-later",
@@ -315,13 +315,10 @@
             "@swc/core",
             "@types/jest",
             "jest",
-            "ts-jest",
-            "vue"
+            "ts-jest"
           ],
           "matchPackagePatterns": [
             "^eslint-plugin-",
-            "^vuepress",
-            "^@vuepress/",
             "^jest"
           ],
           "groupName": "all build dependency updates",
@@ -336,8 +333,43 @@
             "digest"
           ],
           "rangeStrategy": "bump",
-          "commitMessageSuffix": "",
           "semanticCommitType": "build",
+          "labels": [
+            "renovate",
+            "build-deps",
+            "automerge"
+          ],
+          "automerge": true,
+          "matchManagers": [
+            "npm"
+          ],
+          "schedule": [
+            "at any time"
+          ]
+        },
+        {
+          "matchPackageNames": [
+            "typedoc",
+            "typedoc-plugin-markdown",
+            "vue"
+          ],
+          "matchPackagePatterns": [
+            "^vuepress",
+            "^@vuepress/"
+          ],
+          "groupName": "all docs dependency updates",
+          "groupSlug": "all-docs",
+          "matchDepTypes": [
+            "devDependencies"
+          ],
+          "matchUpdateTypes": [
+            "minor",
+            "patch",
+            "pin",
+            "digest"
+          ],
+          "rangeStrategy": "bump",
+          "semanticCommitType": "docs",
           "labels": [
             "renovate",
             "build-deps",
