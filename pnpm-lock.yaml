@@ -3,15 +3,15 @@ lockfileVersion: '6.0'
 dependencies:
   '@cenk1cenk2/oclif-common':
     specifier: ^5.0.4
-    version: 5.0.4(@oclif/core@2.8.2)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.3.0)
+    version: 5.0.4(@oclif/core@2.8.2)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.3.1)
   renovate:
     specifier: ^35.48.2
     version: 35.48.2(typanion@3.12.1)
 
 devDependencies:
   '@cenk1cenk2/cz-cc':
-    specifier: ^1.6.3
-    version: 1.6.3
+    specifier: ^1.6.4
+    version: 1.6.4
   '@cenk1cenk2/eslint-config':
     specifier: ^2.6.6
     version: 2.6.6(eslint@8.38.0)(typescript@5.0.4)
@@ -1308,8 +1308,8 @@ packages:
     engines: {node: '>= 10'}
     dev: false
 
-  /@cenk1cenk2/cz-cc@1.6.3:
-    resolution: {integrity: sha512-SGOqOnZfpF3EHyAiZrupwUqGri5Sp1w2GrxEBOp9i3foC9S+iVS8Z0p7Z25OmrDi+MEJh2t5VZFpnlvuJNxG3Q==}
+  /@cenk1cenk2/cz-cc@1.6.4:
+    resolution: {integrity: sha512-Wp8me0WaEYxXO9I3E6pTjPyRVJQkNq/w3wxjT6VBQrY9sf2LGs62ZOnul5K6Ys5GpDEh81bD/dgh4Vf7aQoBZQ==}
     engines: {node: '>= 16'}
     dependencies:
       commitizen: 4.3.0
@@ -1317,7 +1317,7 @@ packages:
       enquirer: 2.3.6
       external-editor: 3.1.0
       find-git-root: 1.0.4
-      listr2: 6.3.0(enquirer@2.3.6)
+      listr2: 6.3.1(enquirer@2.3.6)
     optionalDependencies:
       '@commitlint/load': 17.5.0
     transitivePeerDependencies:
@@ -1355,7 +1355,7 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/oclif-common@5.0.4(@oclif/core@2.8.2)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.3.0):
+  /@cenk1cenk2/oclif-common@5.0.4(@oclif/core@2.8.2)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.3.1):
     resolution: {integrity: sha512-gsIh1969yr0p3vMnRbFm4Fj+S1MmFEdxmdk2eLery6YgptFZrQztvylr5lk6KC/msS2K0OPniIt88cDxByN9dQ==}
     engines: {node: '>= 16'}
     peerDependencies:
@@ -1379,7 +1379,7 @@ packages:
       deepmerge: 4.3.1
       enquirer: 2.3.6
       fs-extra: 11.1.1
-      listr2: 6.3.0(enquirer@2.3.6)
+      listr2: 6.3.1(enquirer@2.3.6)
       object-path-immutable: 4.1.2
       reflect-metadata: 0.1.13
       through: 2.3.8
@@ -5107,8 +5107,8 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
-  /listr2@6.3.0(enquirer@2.3.6):
-    resolution: {integrity: sha512-HAOozqyjWRFjojlV2XTBA0E7zvjkAU78ktRBXhfT64lr5eGFnJ13uePXzGz9zb97/7K47mo/iRHFVBfPfFAuyw==}
+  /listr2@6.3.1(enquirer@2.3.6):
+    resolution: {integrity: sha512-FOTLAjWKYpfONygQ4DQiOFxQRD+YV9fzW7MKcHBSa9E6QD4POnrEkfGMNy4ND0KiUDO/mQcHzxmuZKlbrkOpiw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       enquirer: '>= 2.3.0 < 3'
