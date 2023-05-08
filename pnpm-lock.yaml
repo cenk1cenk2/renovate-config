@@ -5,8 +5,8 @@ dependencies:
     specifier: ^5.0.4
     version: 5.0.4(@oclif/core@2.8.5)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.4.2)
   renovate:
-    specifier: ^35.73.0
-    version: 35.73.0(typanion@3.12.1)
+    specifier: ^35.74.1
+    version: 35.74.1(typanion@3.12.1)
 
 devDependencies:
   '@cenk1cenk2/cz-cc':
@@ -2478,8 +2478,8 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
-  /@yarnpkg/core@3.4.0(typanion@3.12.1):
-    resolution: {integrity: sha512-EwkRU7TjZrpAPA2cqVBtMD95unti9uSXefGJbhCVANOfuY6tjBoqSt8uSf6BSXUUoJkxBWwewjTn0v0tgoLBkQ==}
+  /@yarnpkg/core@3.5.1(typanion@3.12.1):
+    resolution: {integrity: sha512-BkbqhE7Ti/Kk2zl0MF2TPosUSh7yS9iaZWnmcXfzKPcPatY0NTg1wX+OuW/eXMFAHudXXmMMte9Ve2f6Kj7itQ==}
     engines: {node: '>=12 <14 || 14.2 - 14.9 || >14.10.0'}
     dependencies:
       '@arcanis/slice-ansi': 1.1.1
@@ -6299,8 +6299,8 @@ packages:
       - supports-color
     dev: false
 
-  /renovate@35.73.0(typanion@3.12.1):
-    resolution: {integrity: sha512-kAxsLh77NF2H/dDu20I8XdEPmq2WI5T743lZO2lePeaI3qh8sON1q5IZe5H0O5dsEwZGQdxWVtx5FyrmJhi+TA==}
+  /renovate@35.74.1(typanion@3.12.1):
+    resolution: {integrity: sha512-miM/hoqjiUuC/p4PBAzniS77mLeZSbOKNBBqIoix+HpB8OcDZwLf31wcP76/pELgB39sK1LiEBkqPwTdiOIDgw==}
     engines: {node: '>=18.12.0', yarn: ^1.17.0}
     hasBin: true
     dependencies:
@@ -6331,7 +6331,7 @@ packages:
       '@sindresorhus/is': 4.6.0
       '@types/ms': 0.7.31
       '@types/tmp': 0.2.3
-      '@yarnpkg/core': 3.4.0(typanion@3.12.1)
+      '@yarnpkg/core': 3.5.1(typanion@3.12.1)
       '@yarnpkg/parsers': 2.5.1
       agentkeepalive: 4.3.0
       aggregate-error: 3.1.0
