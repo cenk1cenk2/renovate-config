@@ -1281,8 +1281,8 @@ packages:
       chalk: 2.4.2
       js-tokens: 4.0.0
 
-  /@babel/runtime-corejs3@7.22.0:
-    resolution: {integrity: sha512-H7/M8iVfk3gCcKBNQHFqHcUWt7ZVKGqC/IhsY7mfomQJJ6GXpSlNkGRiOvKwE5x18tDhIh7JopVbe1QeEu4udw==}
+  /@babel/runtime-corejs3@7.22.3:
+    resolution: {integrity: sha512-6bdmknScYKmt8I9VjsJuKKGr+TwUb555FTf6tT1P/ANlCjTHCiYLhiQ4X/O7J731w5NOqu8c1aYHEVuOwPz7jA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       core-js-pure: 3.30.2
@@ -2070,7 +2070,7 @@ packages:
   /@qnighy/marshal@0.1.3:
     resolution: {integrity: sha512-uaDZTJYtD2UgQTGemmgWeth+e2WapZm+GkAq8UU8AJ55PKRFaf1GkH7X/uzA+Ygu8iInzIlM2FGyCUnruyMKMg==}
     dependencies:
-      '@babel/runtime-corejs3': 7.22.0
+      '@babel/runtime-corejs3': 7.22.3
     dev: false
 
   /@redis/bloom@1.2.0(@redis/client@1.5.7):
@@ -3599,7 +3599,7 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
     dependencies:
-      jake: 10.8.6
+      jake: 10.8.7
     dev: false
 
   /email-addresses@5.0.0:
@@ -4955,8 +4955,8 @@ packages:
       '@pkgjs/parseargs': 0.11.0
     dev: false
 
-  /jake@10.8.6:
-    resolution: {integrity: sha512-G43Ub9IYEFfu72sua6rzooi8V8Gz2lkfk48rW20vEWCGizeaEPlKB1Kh8JIA84yQbiAEfqlPmSpGgCKKxH3rDA==}
+  /jake@10.8.7:
+    resolution: {integrity: sha512-ZDi3aP+fG/LchyBzUM804VjddnwfSfsdeYkwt8NcbKRvo4rFkjhs456iLFn3k2ZUWvNe4i48WACDbza8fhq2+w==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
