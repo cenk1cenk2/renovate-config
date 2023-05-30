@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@cenk1cenk2/oclif-common':
-    specifier: ^5.0.6
-    version: 5.0.6(@oclif/core@2.8.5)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0)
+    specifier: ^5.0.7
+    version: 5.0.7(@oclif/core@2.8.5)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0)
   renovate:
     specifier: ^35.105.0
     version: 35.105.0(typanion@3.12.1)
@@ -1357,8 +1357,8 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/oclif-common@5.0.6(@oclif/core@2.8.5)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0):
-    resolution: {integrity: sha512-C2nB4j5apQE115LSdm855llkTY1HPSOgyXlvCV8ySrznHfbM08WDjoE1Qy+fJvvyNaqY9VaP3prAKHijc7vFRQ==}
+  /@cenk1cenk2/oclif-common@5.0.7(@oclif/core@2.8.5)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0):
+    resolution: {integrity: sha512-w80WThR3SdNbR8H0VRFWLuPwGWv5v1WUWO/6lPyNjoL6Tlit1y1AY4iWny2M29ftDnoWFv5odHx06DWHFS874w==}
     engines: {node: '>= 16'}
     peerDependencies:
       '@oclif/core': '>= 1'
