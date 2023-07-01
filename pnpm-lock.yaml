@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@cenk1cenk2/oclif-common':
     specifier: ^5.0.7
-    version: 5.0.7(@oclif/core@2.8.10)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0)
+    version: 5.0.7(@oclif/core@2.8.11)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0)
   renovate:
     specifier: ^35.151.0
     version: 35.151.0(typanion@3.13.0)
@@ -1326,7 +1326,7 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/oclif-common@5.0.7(@oclif/core@2.8.10)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0):
+  /@cenk1cenk2/oclif-common@5.0.7(@oclif/core@2.8.11)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0):
     resolution: {integrity: sha512-w80WThR3SdNbR8H0VRFWLuPwGWv5v1WUWO/6lPyNjoL6Tlit1y1AY4iWny2M29ftDnoWFv5odHx06DWHFS874w==}
     engines: {node: '>= 16'}
     peerDependencies:
@@ -1344,7 +1344,7 @@ packages:
       update-notifier:
         optional: true
     dependencies:
-      '@oclif/core': 2.8.10(@types/node@18.16.18)(typescript@5.1.6)
+      '@oclif/core': 2.8.11(@types/node@18.16.18)(typescript@5.1.6)
       class-transformer: 0.5.1
       class-validator: 0.14.0
       deepmerge: 4.3.1
@@ -1578,8 +1578,8 @@ packages:
       semver: 7.5.3
     dev: false
 
-  /@oclif/core@2.8.10(@types/node@18.16.18)(typescript@5.1.6):
-    resolution: {integrity: sha512-coRn9vYDEnoE8Vg20aavts9+Bt5QrHhbdh0cDkImopV0MgT8i/VmgL04D33+qoHQH20XzBOMqrjk+bqQzqyaHg==}
+  /@oclif/core@2.8.11(@types/node@18.16.18)(typescript@5.1.6):
+    resolution: {integrity: sha512-9wYW6KRSWfB/D+tqeyl/jxmEz/xPXkFJGVWfKaptqHz6FPWNJREjAM945MuJL2Y8NRhMe+ScRlZ3WpdToX5aVQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.0
