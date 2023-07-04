@@ -9,8 +9,8 @@ dependencies:
     specifier: ^5.0.7
     version: 5.0.7(@oclif/core@2.8.11)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0)
   renovate:
-    specifier: ^35.159.3
-    version: 35.159.3(typanion@3.13.0)
+    specifier: ^35.159.5
+    version: 35.159.5(typanion@3.13.0)
 
 devDependencies:
   '@cenk1cenk2/cz-cc':
@@ -6257,8 +6257,8 @@ packages:
       - supports-color
     dev: false
 
-  /renovate@35.159.3(typanion@3.13.0):
-    resolution: {integrity: sha512-4EkxpJAZb/KYDtJode+u6hkMawqTPg8252y7q918ZApEYGfdFcf5uVTaVlJeDAIc7i6Q6tctGTPpE0ibH0l/9A==}
+  /renovate@35.159.5(typanion@3.13.0):
+    resolution: {integrity: sha512-8/GKq59ys8z01wyzOJSZ3CdORHt685j3slXp0vpz0Wt28OaPERV5ulARwZLzgPORfAvy7uADDFhb7LKk8QSzAw==}
     engines: {node: '>=18.12.0', yarn: ^1.17.0}
     hasBin: true
     dependencies:
@@ -6360,7 +6360,7 @@ packages:
       slugify: 1.6.6
       source-map-support: 0.5.21
       traverse: 0.6.7
-      tslib: 2.5.3
+      tslib: 2.6.0
       upath: 2.0.1
       url-join: 4.0.1
       validate-npm-package-name: 5.0.0
@@ -7073,10 +7073,6 @@ packages:
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
-
-  /tslib@2.5.3:
-    resolution: {integrity: sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==}
-    dev: false
 
   /tslib@2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
