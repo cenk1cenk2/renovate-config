@@ -9,8 +9,8 @@ dependencies:
     specifier: ^5.0.7
     version: 5.0.7(@oclif/core@2.8.11)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0)
   renovate:
-    specifier: ^35.159.5
-    version: 35.159.5(typanion@3.13.0)
+    specifier: ^35.159.7
+    version: 35.159.7(typanion@3.13.0)
 
 devDependencies:
   '@cenk1cenk2/cz-cc':
@@ -6257,8 +6257,8 @@ packages:
       - supports-color
     dev: false
 
-  /renovate@35.159.5(typanion@3.13.0):
-    resolution: {integrity: sha512-8/GKq59ys8z01wyzOJSZ3CdORHt685j3slXp0vpz0Wt28OaPERV5ulARwZLzgPORfAvy7uADDFhb7LKk8QSzAw==}
+  /renovate@35.159.7(typanion@3.13.0):
+    resolution: {integrity: sha512-O1LCnyqa1cxa12eMYk16YcETNoFoOwmRAv8S+FTha+iJLR8FdNxLVooFnUbxcmwlpn20GUgnjKV+w8hJFAKnbA==}
     engines: {node: '>=18.12.0', yarn: ^1.17.0}
     hasBin: true
     dependencies:
