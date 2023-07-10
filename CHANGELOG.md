@@ -1,3 +1,13 @@
+## [2.3.131](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.130...v2.3.131) (2023-07-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @cenk1cenk2/oclif-common to ^5.0.8 ([e2bc45f](https://gitlab.kilic.dev/renovate/renovate-config/commit/e2bc45fcc53eb82f338232b194bde7c86a23e9e9))
+* **deps:** update dependency renovate to ^35.159.3 ([df45d75](https://gitlab.kilic.dev/renovate/renovate-config/commit/df45d75118fe7fefc1cfef2b96495d943913079f))
+* **deps:** update dependency renovate to ^35.159.5 ([2eb66e5](https://gitlab.kilic.dev/renovate/renovate-config/commit/2eb66e5d6a730362795ced2d50eb44bdad908ece))
+* **deps:** update dependency renovate to ^35.159.7 ([42f5f21](https://gitlab.kilic.dev/renovate/renovate-config/commit/42f5f216044d914e2e7d084c347b6884c761e9e0))
+
 ## [2.3.130](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.129...v2.3.130) (2023-07-02)
 
 
