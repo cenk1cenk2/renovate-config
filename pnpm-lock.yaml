@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@cenk1cenk2/oclif-common':
     specifier: ^5.0.8
-    version: 5.0.8(@oclif/core@2.9.1)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0)
+    version: 5.0.8(@oclif/core@2.9.3)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0)
   renovate:
     specifier: ^35.159.7
     version: 35.159.7(typanion@3.13.0)
@@ -1326,7 +1326,7 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/oclif-common@5.0.8(@oclif/core@2.9.1)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0):
+  /@cenk1cenk2/oclif-common@5.0.8(@oclif/core@2.9.3)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.3.6)(fs-extra@11.1.1)(listr2@6.6.0):
     resolution: {integrity: sha512-z8wYXz49ajdBrjAbrK1jyrrQ8mQJ0TKzM8ws38E8IQS5aH1mR8tEjkE1uKeSu7LvQMcFO7qJVGtpuWKQD7bH0Q==}
     engines: {node: '>= 16'}
     peerDependencies:
@@ -1344,7 +1344,7 @@ packages:
       update-notifier:
         optional: true
     dependencies:
-      '@oclif/core': 2.9.1(@types/node@18.16.19)(typescript@5.1.6)
+      '@oclif/core': 2.9.3(@types/node@18.16.19)(typescript@5.1.6)
       class-transformer: 0.5.1
       class-validator: 0.14.0
       deepmerge: 4.3.1
@@ -1578,8 +1578,8 @@ packages:
       semver: 7.5.3
     dev: false
 
-  /@oclif/core@2.9.1(@types/node@18.16.19)(typescript@5.1.6):
-    resolution: {integrity: sha512-S9yHM+7VslNnN1i2sNVH82h5f+jJNqx43urFRTb+VvOX2AzBThUGIsSRJ7mJ5opQ2oP+vRtrMtedS/mCXs4zOg==}
+  /@oclif/core@2.9.3(@types/node@18.16.19)(typescript@5.1.6):
+    resolution: {integrity: sha512-0KLiVpXCJivAjLoj/LAXQf85MtGzyforyPkgNJQEP6QQugnuq2kHcG+DojWEQYz0sADXT2259EdPibslEThUMg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.0
@@ -1829,7 +1829,7 @@ packages:
       '@opentelemetry/api': 1.4.1
       '@types/shimmer': 1.0.2
       import-in-the-middle: 1.3.5
-      require-in-the-middle: 7.1.1
+      require-in-the-middle: 7.2.0
       semver: 7.5.3
       shimmer: 1.2.1
     transitivePeerDependencies:
@@ -6389,8 +6389,8 @@ packages:
     dev: true
     optional: true
 
-  /require-in-the-middle@7.1.1:
-    resolution: {integrity: sha512-OScOjQjrrjhAdFpQmnkE/qbIBGCRFhQB/YaJhcC3CPOlmhe7llnW46Ac1J5+EjcNXOTnDdpF96Erw/yedsGksQ==}
+  /require-in-the-middle@7.2.0:
+    resolution: {integrity: sha512-3TLx5TGyAY6AOqLBoXmHkNql0HIf2RGbuMgCDT2WO/uGVAPJs6h7Kl+bN6TIZGd9bWhWPwnDnTHGtW8Iu77sdw==}
     engines: {node: '>=8.6.0'}
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
