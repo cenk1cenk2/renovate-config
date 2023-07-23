@@ -33,11 +33,11 @@
     "@cenk1cenk2/eslint-config": "^2.7.11",
     "@types/config": "^3.3.0",
     "@types/fs-extra": "^11.0.1",
-    "@types/node": "^18.16.19",
+    "@types/node": "^18.17.0",
     "eslint": "^8.45.0",
     "lint-staged": "^13.2.3",
     "prettier": "^2.8.8",
-    "simple-git-hooks": "^2.8.1",
+    "simple-git-hooks": "^2.9.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6"
