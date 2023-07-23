@@ -36,7 +36,7 @@
     "@types/node": "^18.17.0",
     "eslint": "^8.45.0",
     "lint-staged": "^13.2.3",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.0",
     "simple-git-hooks": "^2.9.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
