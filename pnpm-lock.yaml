@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@cenk1cenk2/oclif-common':
     specifier: ^5.0.8
-    version: 5.0.8(@oclif/core@2.11.6)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(fs-extra@11.1.1)(listr2@6.6.1)
+    version: 5.0.8(@oclif/core@2.11.7)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(fs-extra@11.1.1)(listr2@6.6.1)
   renovate:
     specifier: ^36.31.0
     version: 36.31.0(typanion@3.13.0)
@@ -998,7 +998,7 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/oclif-common@5.0.8(@oclif/core@2.11.6)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(fs-extra@11.1.1)(listr2@6.6.1):
+  /@cenk1cenk2/oclif-common@5.0.8(@oclif/core@2.11.7)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(fs-extra@11.1.1)(listr2@6.6.1):
     resolution: {integrity: sha512-z8wYXz49ajdBrjAbrK1jyrrQ8mQJ0TKzM8ws38E8IQS5aH1mR8tEjkE1uKeSu7LvQMcFO7qJVGtpuWKQD7bH0Q==}
     engines: {node: '>= 16'}
     peerDependencies:
@@ -1016,7 +1016,7 @@ packages:
       update-notifier:
         optional: true
     dependencies:
-      '@oclif/core': 2.11.6(@types/node@18.17.1)(typescript@5.1.6)
+      '@oclif/core': 2.11.7(@types/node@18.17.1)(typescript@5.1.6)
       class-transformer: 0.5.1
       class-validator: 0.14.0
       deepmerge: 4.3.1
@@ -1250,8 +1250,8 @@ packages:
       semver: 7.5.4
     dev: false
 
-  /@oclif/core@2.11.6(@types/node@18.17.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-i5LXd+VCjoidlVWD1AF9ZWP7S3iP5WoeUNYXnJGoBeZcgqaAYVdONkBoIann0zFpdImuxNrkdHYnAhfLlPvdzQ==}
+  /@oclif/core@2.11.7(@types/node@18.17.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-0jbHePVekndUTd+Wee0+pnCpRhuHJrKiG9OtMqf4JSBCxp5Q8V+ACf8QKN4gNH9ppbGORfnTIYtXWh60+DcIiw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.0
@@ -3137,7 +3137,7 @@ packages:
     resolution: {integrity: sha512-ct3ltplN8I9fOwUd8GrP8UQixwff129BkEtuWDKL5W45cQuLd19xqmTLu5ge78YDm/fdje6FMt0hGOhl0lii3A==}
     dependencies:
       '@types/validator': 13.9.0
-      libphonenumber-js: 1.10.38
+      libphonenumber-js: 1.10.39
       validator: 13.9.0
     dev: false
 
@@ -5106,8 +5106,8 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /libphonenumber-js@1.10.38:
-    resolution: {integrity: sha512-4NjVXVUmpZ9Zsqq6FXa2+MKI+KAI3tOqA0pxXgXGluhpj4ge5didmbWJpMBqGB3AVGv1SnEtKdGTbxjSEG1kCQ==}
+  /libphonenumber-js@1.10.39:
+    resolution: {integrity: sha512-iPMM/NbSNIrdwbr94rAOos6krB7snhfzEptmk/DJUtTPs+P9gOhZ1YXVPcRgjpp3jJByclfm/Igvz45spfJK7g==}
     dev: false
 
   /lie@3.1.1:
