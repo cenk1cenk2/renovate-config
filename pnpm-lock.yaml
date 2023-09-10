@@ -26,10 +26,10 @@ devDependencies:
     specifier: ^11.0.1
     version: 11.0.1
   '@types/node':
-    specifier: ^18.17.14
+    specifier: ^18.17.15
     version: 18.17.15
   eslint:
-    specifier: ^8.48.0
+    specifier: ^8.49.0
     version: 8.49.0
   lint-staged:
     specifier: ^14.0.1
