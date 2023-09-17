@@ -10,7 +10,7 @@ dependencies:
     version: 5.0.8(@oclif/core@2.15.0)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(fs-extra@11.1.1)(listr2@6.6.1)
   renovate:
     specifier: ^36.96.0
-    version: 36.96.0(typanion@3.14.0)
+    version: 36.96.3(typanion@3.14.0)
 
 devDependencies:
   '@cenk1cenk2/cz-cc':
@@ -3728,7 +3728,6 @@ packages:
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
-    requiresBuild: true
 
   /emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
@@ -4301,7 +4300,6 @@ packages:
 
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
-    requiresBuild: true
 
   /function-bind@1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
@@ -4763,7 +4761,6 @@ packages:
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
-    requiresBuild: true
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -6169,7 +6166,6 @@ packages:
   /path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
-    requiresBuild: true
 
   /path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
@@ -6444,8 +6440,8 @@ packages:
       - supports-color
     dev: false
 
-  /renovate@36.96.0(typanion@3.14.0):
-    resolution: {integrity: sha512-p2J01MEvDMc0Jb+GyiSpjTDamEHD94Q/iqoVt809ASi7GJc64z7YFI9U3SiRVJEpGystT1p3zVlYBLfAHCyYEA==}
+  /renovate@36.96.3(typanion@3.14.0):
+    resolution: {integrity: sha512-PqJR+18KI2H+7I0D3w+HDIgQVmKt1ZeqfxWfsCuYvtn8CDQVu34VbjxEW1h1huP55vSNUg3hs9Jkvh35Ws8fvA==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^8.0.0}
     hasBin: true
     dependencies:
