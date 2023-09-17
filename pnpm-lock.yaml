@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^1.6.7
     version: 1.6.7
   '@cenk1cenk2/eslint-config':
-    specifier: ^2.7.19
-    version: 2.7.19(eslint@8.49.0)(typescript@5.2.2)
+    specifier: ^2.7.20
+    version: 2.7.20(eslint@8.49.0)(typescript@5.2.2)
   '@types/config':
     specifier: ^3.3.1
     version: 3.3.1
@@ -1043,8 +1043,8 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /@cenk1cenk2/eslint-config@2.7.19(eslint@8.49.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-Hfu6ih+WeNYnrvtB/Ae5YGM9KsfIXlyBKsReJ9333MqUQzYe2S0zFk7Bnu+MAeXs4L2X/JIxGW8s7eFSlD3X0A==}
+  /@cenk1cenk2/eslint-config@2.7.20(eslint@8.49.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-VRyHeaDGRClQRu02k4/ACg1QrDBj2d2jcEIlax85/TCLmMqYwhWDkRx5kl/crs9eQHjjLTM/NxsLKtTr09br/Q==}
     peerDependencies:
       '@nuxtjs/eslint-config': '>= 7'
       '@nuxtjs/eslint-config-typescript': '>= 7'
@@ -4300,6 +4300,7 @@ packages:
 
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+    requiresBuild: true
 
   /function-bind@1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
@@ -4761,6 +4762,7 @@ packages:
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    requiresBuild: true
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -6166,6 +6168,7 @@ packages:
   /path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
 
   /path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
