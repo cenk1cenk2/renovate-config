@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@cenk1cenk2/oclif-common": "^5.0.8",
-    "renovate": "^36.97.3"
+    "renovate": "^36.99.0"
   },
   "devDependencies": {
     "@cenk1cenk2/cz-cc": "^1.7.1",
