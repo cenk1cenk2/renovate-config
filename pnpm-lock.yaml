@@ -6836,8 +6836,8 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rimraf@5.0.2:
-    resolution: {integrity: sha512-SeHT0IRkQNIhWL7O5qrCt8MfJagJ2ZOemGMIx2NXS7MP1GldYpWSw3mCLbnjA0Ac6eadZMcDFZjynCWGJmwO6A==}
+  /rimraf@5.0.4:
+    resolution: {integrity: sha512-rizQI/o/YAMM1us0Zyax0uRfIK39XR52EAjjOi0fzMolpGp0onj6CWzBAXuOx6+6Xi9Rgi0d9tUZojhJerLUmQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -7304,7 +7304,7 @@ packages:
       glob: 10.3.4
       mkdirp: 3.0.1
       path-scurry: 1.10.1
-      rimraf: 5.0.2
+      rimraf: 5.0.4
     dev: false
 
   /tar@6.2.0:
@@ -7493,7 +7493,7 @@ packages:
       foreground-child: 3.1.1
       mkdirp: 3.0.1
       resolve-import: 1.4.1
-      rimraf: 5.0.2
+      rimraf: 5.0.4
       sync-content: 1.0.2
       typescript: 5.2.2
       walk-up-path: 3.0.1
