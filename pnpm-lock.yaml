@@ -26,8 +26,8 @@ devDependencies:
     specifier: ^11.0.2
     version: 11.0.2
   '@types/node':
-    specifier: ^18.17.19
-    version: 18.18.0
+    specifier: ^18.18.1
+    version: 18.18.1
   eslint:
     specifier: ^8.50.0
     version: 8.50.0
@@ -42,7 +42,7 @@ devDependencies:
     version: 2.9.0
   ts-node:
     specifier: ^10.9.1
-    version: 10.9.1(@types/node@18.18.0)(typescript@5.2.2)
+    version: 10.9.1(@types/node@18.18.1)(typescript@5.2.2)
   tsconfig-paths:
     specifier: ^4.2.0
     version: 4.2.0
@@ -1098,7 +1098,7 @@ packages:
       update-notifier:
         optional: true
     dependencies:
-      '@oclif/core': 2.15.0(@types/node@18.18.0)(typescript@5.2.2)
+      '@oclif/core': 2.15.0(@types/node@18.18.1)(typescript@5.2.2)
       class-transformer: 0.5.1
       class-validator: 0.14.0
       deepmerge: 4.3.1
@@ -1341,7 +1341,7 @@ packages:
       semver: 7.5.4
     dev: false
 
-  /@oclif/core@2.15.0(@types/node@18.18.0)(typescript@5.2.2):
+  /@oclif/core@2.15.0(@types/node@18.18.1)(typescript@5.2.2):
     resolution: {integrity: sha512-fNEMG5DzJHhYmI3MgpByTvltBOMyFcnRIUMxbiz2ai8rhaYgaTHMG3Q38HcosfIvtw9nCjxpcQtC8MN8QtVCcA==}
     engines: {node: '>=14.0.0'}
     dependencies:
@@ -1368,7 +1368,7 @@ packages:
       strip-ansi: 6.0.1
       supports-color: 8.1.1
       supports-hyperlinks: 2.3.0
-      ts-node: 10.9.1(@types/node@18.18.0)(typescript@5.2.2)
+      ts-node: 10.9.1(@types/node@18.18.1)(typescript@5.2.2)
       tslib: 2.6.2
       widest-line: 3.1.0
       wordwrap: 1.0.0
@@ -2364,7 +2364,7 @@ packages:
   /@types/bunyan@1.8.8:
     resolution: {integrity: sha512-Cblq+Yydg3u+sGiz2mjHjC5MPmdjY+No4qvHrF+BUhblsmSfMvsHLbOG62tPbonsqBj6sbWv1LHcsoe5Jw+/Ow==}
     dependencies:
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
     dev: false
 
   /@types/cacheable-request@6.0.3:
@@ -2372,14 +2372,14 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.2
       '@types/keyv': 3.1.4
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
       '@types/responselike': 1.0.0
     dev: false
 
   /@types/cli-progress@3.11.2:
     resolution: {integrity: sha512-Yt/8rEJalfa9ve2SbfQnwFHrc9QF52JIZYHW3FDaTMpkCvnns26ueKiPHDxyJ0CS//IqjMINTx7R5Xa7k7uFHQ==}
     dependencies:
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
     dev: false
 
   /@types/config@3.3.1:
@@ -2394,7 +2394,7 @@ packages:
     resolution: {integrity: sha512-c0hrgAOVYr21EX8J0jBMXGLMgJqVf/v6yxi0dLaJboW9aQPh16Id+z6w2Tx1hm+piJOLv8xPfVKZCLfjPw/IMQ==}
     dependencies:
       '@types/jsonfile': 6.1.2
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
     dev: true
 
   /@types/http-cache-semantics@4.0.2:
@@ -2412,13 +2412,13 @@ packages:
   /@types/jsonfile@6.1.2:
     resolution: {integrity: sha512-8t92P+oeW4d/CRQfJaSqEwXujrhH4OEeHRjGU3v1Q8mUS8GPF3yiX26sw4svv6faL2HfBtGTe2xWIoVgN3dy9w==}
     dependencies:
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
     dev: true
 
   /@types/keyv@3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
     dev: false
 
   /@types/mdast@3.0.12:
@@ -2443,8 +2443,8 @@ packages:
     resolution: {integrity: sha512-s3nugnZumCC//n4moGGe6tkNMyYEdaDBitVjwPxXmR5lnMG5dHePinH2EdxkG3Rh1ghFHHixAG4NJhpJW1rthQ==}
     dev: false
 
-  /@types/node@18.18.0:
-    resolution: {integrity: sha512-3xA4X31gHT1F1l38ATDIL9GpRLdwVhnEFC8Uikv5ZLlXATwrCYyPq7ZWHxzxc3J/30SUiwiYT+bQe0/XvKlWbw==}
+  /@types/node@18.18.1:
+    resolution: {integrity: sha512-3G42sxmm0fF2+Vtb9TJQpnjmP+uKlWvFa8KoEGquh4gqRmoUG/N0ufuhikw6HEsdG2G2oIKhog1GCTfz9v5NdQ==}
 
   /@types/node@20.4.7:
     resolution: {integrity: sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==}
@@ -2459,7 +2459,7 @@ packages:
   /@types/responselike@1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
     dev: false
 
   /@types/semver@7.5.3:
@@ -2493,7 +2493,7 @@ packages:
     resolution: {integrity: sha512-CHzgNU3qYBnp/O4S3yv2tXPlvMTq0YWSTVg2/JYLqWZGHwwgJGAwd00poay/11asPq8wLFwHzubyInqHIFmmiw==}
     requiresBuild: true
     dependencies:
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
     dev: false
     optional: true
 
@@ -7367,7 +7367,7 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /ts-node@10.9.1(@types/node@18.18.0)(typescript@5.2.2):
+  /ts-node@10.9.1(@types/node@18.18.1)(typescript@5.2.2):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -7386,7 +7386,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 18.18.0
+      '@types/node': 18.18.1
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3
