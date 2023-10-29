@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@cenk1cenk2/cz-cc": "^1.7.2",
-    "@cenk1cenk2/eslint-config": "^2.7.24",
+    "@cenk1cenk2/eslint-config": "^2.7.25",
     "@types/config": "^3.3.2",
     "@types/fs-extra": "^11.0.3",
     "@types/node": "^18.18.7",
