@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^1.7.2
     version: 1.7.2
   '@cenk1cenk2/eslint-config':
-    specifier: ^2.7.26
-    version: 2.7.26(eslint@8.54.0)(typescript@5.2.2)
+    specifier: ^2.7.27
+    version: 2.7.27(eslint@8.54.0)(typescript@5.2.2)
   '@types/config':
     specifier: ^3.3.3
     version: 3.3.3
@@ -1044,8 +1044,8 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /@cenk1cenk2/eslint-config@2.7.26(eslint@8.54.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-wE8WDuYMY0PZlLsrnpEJQm3kRzMUQc42nXAGjXy0fooPWHlm77GSYnhx2kyh0PfrlBowQW1Iz8b/Nx1u3MpkDA==}
+  /@cenk1cenk2/eslint-config@2.7.27(eslint@8.54.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-mAVaqOS1c2GwTKeY9+OR28cZs60SpkbhEr9EF/XAsEoL6VmaWsEhDbAQE+X+DFOIDcSEowoKIP9LlUeNLMZm2w==}
     peerDependencies:
       '@nuxtjs/eslint-config': '>= 7'
       '@nuxtjs/eslint-config-typescript': '>= 7'
@@ -3826,6 +3826,7 @@ packages:
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
+    requiresBuild: true
 
   /emoji-regex@9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
@@ -4399,6 +4400,7 @@ packages:
 
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+    requiresBuild: true
 
   /function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
@@ -4945,6 +4947,7 @@ packages:
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    requiresBuild: true
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -6388,6 +6391,7 @@ packages:
   /path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
 
   /path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
