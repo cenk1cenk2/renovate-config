@@ -26,7 +26,7 @@ devDependencies:
     specifier: ^11.0.4
     version: 11.0.4
   '@types/node':
-    specifier: ^20.9.2
+    specifier: ^20.10.0
     version: 20.10.0
   eslint:
     specifier: ^8.54.0
