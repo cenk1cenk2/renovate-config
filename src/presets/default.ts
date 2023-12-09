@@ -8,8 +8,6 @@ export default createPreset({
     createScope(Preset.NO_TESTS),
     createScope(Preset.GROUP_MINOR_DEPENDENCIES),
     createScope(Preset.GROUP_DEV_DEPENDENCIES),
-    createScope(Preset.GROUP_PEER_DEPENDENCIES),
-    createScope(Preset.BRANCH_DEVELOP),
-    createScope(Preset.BRANCH_BETA)
+    createScope(Preset.GROUP_PEER_DEPENDENCIES)
   ]
 })
