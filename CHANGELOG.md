@@ -1,3 +1,21 @@
+# [3.0.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.148...v3.0.0) (2023-12-09)
+
+
+### Bug Fixes
+
+* update lock ([1f02047](https://gitlab.kilic.dev/renovate/renovate-config/commit/1f0204703045e0880078f21f6fc8a48cbff0b32f))
+
+
+### Performance Improvements
+
+* fix lockfile ([e35cc26](https://gitlab.kilic.dev/renovate/renovate-config/commit/e35cc26d8f9b9e5001fac570994af906c4073554))
+* refactor to use the repository preset ([480f24f](https://gitlab.kilic.dev/renovate/renovate-config/commit/480f24f5f9b99bb2ecd6190daac3532f999e4a90))
+
+
+### BREAKING CHANGES
+
+* deprecates the npm method
+
 ## [2.3.148](https://gitlab.kilic.dev/renovate/renovate-config/compare/v2.3.147...v2.3.148) (2023-09-27)
 
 ### Bug Fixes
