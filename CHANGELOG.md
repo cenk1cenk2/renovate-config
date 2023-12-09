@@ -1,3 +1,10 @@
+## [3.0.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.0.1...v3.0.2) (2023-12-09)
+
+
+### Bug Fixes
+
+* remove non-default base branch configuration ([7242266](https://gitlab.kilic.dev/renovate/renovate-config/commit/724226699f7b481562902e3a38f41a68a5d0f9b7))
+
 ## [3.0.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.0.0...v3.0.1) (2023-12-09)
 
 

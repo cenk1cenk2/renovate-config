@@ -6,9 +6,7 @@
       "local>renovate/renovate-config:default/no-tests",
       "local>renovate/renovate-config:default/group-minor-dependencies",
       "local>renovate/renovate-config:default/group-dev-dependencies",
-      "local>renovate/renovate-config:default/group-peer-dependencies",
-      "local>renovate/renovate-config:default/branch-develop",
-      "local>renovate/renovate-config:default/branch-beta"
+      "local>renovate/renovate-config:default/group-peer-dependencies"
     ]
   },
   "base": {
