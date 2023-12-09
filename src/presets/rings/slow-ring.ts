@@ -19,6 +19,13 @@ export default createPreset({
     },
 
     {
+      matchPackageNames: [ 'node', 'npm', 'pnpm', 'yarn' ],
+      matchManagers: [ Managers.NODE ],
+      matchDepTypes: [ 'engines' ],
+      enabled: false
+    },
+
+    {
       matchPackagePatterns: GO_SLOW_RING_PACKAGES,
       groupName: 'all slow ring @weekly',
       groupSlug: 'slow-ring-weekly',
