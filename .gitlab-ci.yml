@@ -1,16 +1,19 @@
 stages:
   - install
   - build
+  - generate
   - publish
 
 variables:
-  NODE_VERSION: 18-alpine
-  NODE_PACKAGE_MANAGER: pnpm
-  NODE_LINT_COMMAND: lint
+  NODE_VERSION: 20-alpine
 
 include:
   - project: devops/pipes
     file: /templates/node.gitlab-ci.yml
+    ref: main
+
+  - project: devops/pipes
+    file: /templates/v2/node-run.gitlab-ci.yml
     ref: main
 
   - project: devops/pipes
@@ -20,4 +23,14 @@ include:
 build:
   artifacts:
     paths:
-      - package.json
+      - dist/**
+      - oclif.manifest.json
+
+generate:
+  extends: .node-run
+  stage: generate
+  variables:
+    NODE_COMMAND_SCRIPT: start
+  artifacts:
+    paths:
+      - default.json

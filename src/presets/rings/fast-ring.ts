@@ -1,8 +1,6 @@
-import { createPreset } from '@lib/preset-factory'
+import { createPreset } from '@lib'
 
-import { GO_GROUP_MINOR, NODE_GROUP_DEV, NODE_GROUP_MINOR, NODE_GROUP_PEER } from '@constants/patterns'
-import { SCHEDULE } from '@constants/renovate'
-import { GO_FAST_RING_PACKAGES, NODE_FAST_RING_PACKAGES } from '@constants/rings'
+import { GO_GROUP_MINOR, NODE_GROUP_DEV, NODE_GROUP_MINOR, NODE_GROUP_PEER, SCHEDULE, GO_FAST_RING_PACKAGES, NODE_FAST_RING_PACKAGES } from '@constants'
 
 export default createPreset({
   packageRules: [

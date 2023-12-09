@@ -29,7 +29,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
 #####################################################
 # Linux                                             #
 # Source: https://www.gitignore.io                  #
@@ -47,7 +46,6 @@ Temporary Items
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-
 
 #####################################################
 # Windows                                           #
@@ -78,12 +76,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-
 #####################################################
 # dotenv                                            #
 #####################################################
 .env
-
 
 #####################################################
 # CMake                                             #
@@ -104,7 +100,6 @@ _deps
 ### CMake Patch ###
 # External projects
 *-prefix/
-
 
 #####################################################
 # Node                                              #
@@ -187,7 +182,7 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# react / gatsby 
+# react / gatsby
 public/
 
 # vuepress build output
@@ -204,7 +199,6 @@ public/
 
 # Typescript output directories
 dist/
-
 
 #####################################################
 # C                                                 #
@@ -263,7 +257,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-
 #####################################################
 # C++                                               #
 # Source: https://www.gitignore.io                  #
@@ -300,3 +293,5 @@ dkms.conf
 *.exe
 *.out
 *.app
+
+oclif.manifest.json

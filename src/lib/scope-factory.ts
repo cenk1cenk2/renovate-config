@@ -1,8 +1,7 @@
-import { readPackageJson } from '@utils/get-package-json'
+import type { Preset } from '@presets'
 
-const pkg = readPackageJson()
-const presetPrefix = pkg.pkg.name.split('/')[0]
+import { SCOPE } from '@constants'
 
-export function createScope (name: string): string {
-  return `${presetPrefix}:${name}`
+export function createScope (name: Preset): string {
+  return (SCOPE + name.toString()) as string
 }

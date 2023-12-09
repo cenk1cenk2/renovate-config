@@ -1,7 +1,6 @@
-import { createPreset } from '@lib/preset-factory'
+import { createPreset } from '@lib'
 
-import { NODE_GROUP_PEER } from '@constants/patterns'
-import { SCHEDULE } from '@constants/renovate'
+import { NODE_GROUP_PEER, SCHEDULE } from '@constants'
 
 export default createPreset({
   packageRules: [

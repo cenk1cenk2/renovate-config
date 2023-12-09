@@ -1,0 +1,220 @@
+{
+  "default": {
+    "extends": [
+      "local>renovate/renovate-config/default/base",
+      "local>renovate/renovate-config/default/lock-file",
+      "local>renovate/renovate-config/default/no-tests",
+      "local>renovate/renovate-config/default/group-minor-dependencies",
+      "local>renovate/renovate-config/default/group-dev-dependencies",
+      "local>renovate/renovate-config/default/group-peer-dependencies",
+      "local>renovate/renovate-config/default/branch-develop",
+      "local>renovate/renovate-config/default/branch-beta"
+    ]
+  },
+  "base": {
+    "enabledManagers": ["npm", "gomod"],
+    "extends": ["config:base", ":masterIssue", ":prHourlyLimitNone", ":prConcurrentLimitNone"],
+    "timezone": "Europe/Vienna",
+    "semanticCommits": "enabled",
+    "assignees": ["cenk1cenk2"],
+    "labels": ["renovate"],
+    "rangeStrategy": "bump",
+    "major": {
+      "stabilityDays": 3
+    },
+    "prCreation": "immediate",
+    "postUpdateOptions": ["gomodTidy", "gomodUpdateImportPaths"]
+  },
+  "lock-file": {
+    "lockFileMaintenance": {
+      "enabled": true,
+      "automerge": true,
+      "commitMessageSuffix": "[skip ci]",
+      "labels": ["renovate", "lock"],
+      "schedule": ["before 1am"]
+    }
+  },
+  "no-tests": {
+    "requiredStatusChecks": null
+  },
+  "slow-ring": {
+    "packageRules": [
+      {
+        "matchPackagePatterns": [
+          "^@typescript-eslint/",
+          "jest",
+          "@types/jest",
+          "^@types/node$",
+          "^eslint$",
+          "^husky$",
+          "^prettier$",
+          "^lint-staged$",
+          "^cz-conventional-changelog$",
+          "^simple-git-hooks$"
+        ],
+        "groupName": "all slow ring @weekly",
+        "groupSlug": "slow-ring-weekly",
+        "schedule": ["before 1am on Monday"],
+        "matchManagers": ["npm"]
+      },
+      {
+        "matchPackageNames": ["node", "webpack"],
+        "enabled": false,
+        "matchManagers": ["npm"]
+      },
+      {
+        "matchPackagePatterns": ["^golang.org/x/"],
+        "groupName": "all slow ring @weekly",
+        "groupSlug": "slow-ring-weekly",
+        "schedule": ["before 1am on Monday"],
+        "matchManagers": ["gomod"]
+      }
+    ]
+  },
+  "fast-ring": {
+    "packageRules": [
+      {
+        "matchPackagePatterns": ["^@cenk1cenk2/", "listr2"],
+        "groupName": "all fast ring minor dependencies",
+        "groupSlug": "fast-ring",
+        "matchDepTypes": ["dependencies"],
+        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+        "rangeStrategy": "bump",
+        "labels": ["renovate", "minor", "automerge"],
+        "automerge": true,
+        "matchManagers": ["npm"],
+        "schedule": ["at any time"]
+      },
+      {
+        "matchPackagePatterns": ["^gitlab.kilic.dev/"],
+        "groupName": "all fast ring minor dependencies",
+        "groupSlug": "fast-ring",
+        "matchUpdateTypes": ["minor", "patch", "digest"],
+        "labels": ["renovate", "minor", "automerge"],
+        "automerge": true,
+        "matchManagers": ["gomod"],
+        "schedule": ["at any time"]
+      },
+      {
+        "matchPackagePatterns": ["^@cenk1cenk2/", "listr2"],
+        "groupName": "all fast ring dev dependencies",
+        "groupSlug": "fast-ring-dev",
+        "matchDepTypes": ["devDependencies"],
+        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+        "rangeStrategy": "bump",
+        "commitMessageSuffix": "[skip ci]",
+        "labels": ["renovate", "dev-deps", "automerge"],
+        "automerge": true,
+        "matchManagers": ["npm"],
+        "schedule": ["at any time"]
+      },
+      {
+        "matchPackagePatterns": ["^@cenk1cenk2/", "listr2"],
+        "groupName": "all fast ring peer dependencies",
+        "groupSlug": "fast-ring-peer",
+        "matchDepTypes": ["peerDependencies", "optionalDependencies"],
+        "rangeStrategy": "widen",
+        "commitMessageSuffix": "[skip ci]",
+        "labels": ["renovate", "peer-deps", "automerge"],
+        "automerge": true,
+        "matchManagers": ["npm"],
+        "schedule": ["at any time"]
+      }
+    ]
+  },
+  "group-dev-dependencies": {
+    "packageRules": [
+      {
+        "matchPackagePatterns": ["*"],
+        "groupName": "all development dependency updates",
+        "groupSlug": "all-dev",
+        "matchDepTypes": ["devDependencies"],
+        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+        "rangeStrategy": "bump",
+        "commitMessageSuffix": "[skip ci]",
+        "labels": ["renovate", "dev-deps", "automerge"],
+        "automerge": true,
+        "matchManagers": ["npm"],
+        "schedule": ["at any time"]
+      },
+      {
+        "matchPackageNames": ["typescript", "tsup", "prettier", "eslint", "@cenk1cenk2/eslint-config", "@swc/core", "@types/jest", "jest", "ts-jest"],
+        "matchPackagePatterns": ["^eslint-plugin-", "^jest"],
+        "groupName": "all build dependency updates",
+        "groupSlug": "all-build",
+        "matchDepTypes": ["devDependencies"],
+        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+        "rangeStrategy": "bump",
+        "semanticCommitType": "build",
+        "commitMessageSuffix": "",
+        "labels": ["renovate", "build-deps", "automerge"],
+        "automerge": true,
+        "matchManagers": ["npm"],
+        "schedule": ["at any time"]
+      },
+      {
+        "matchPackageNames": ["typedoc", "typedoc-plugin-markdown"],
+        "matchPackagePatterns": ["^vuepress", "^@vuepress/"],
+        "groupName": "all docs dependency updates",
+        "groupSlug": "all-docs",
+        "matchDepTypes": ["devDependencies"],
+        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+        "rangeStrategy": "bump",
+        "semanticCommitType": "docs",
+        "commitMessageSuffix": "",
+        "labels": ["renovate", "build-deps", "automerge"],
+        "automerge": true,
+        "matchManagers": ["npm"],
+        "schedule": ["at any time"]
+      }
+    ]
+  },
+  "group-minor-dependencies": {
+    "packageRules": [
+      {
+        "matchPackagePatterns": ["*"],
+        "groupName": "all minor dependency updates",
+        "groupSlug": "all",
+        "matchDepTypes": ["dependencies"],
+        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+        "rangeStrategy": "bump",
+        "labels": ["renovate", "minor", "automerge"],
+        "automerge": true,
+        "matchManagers": ["npm"],
+        "schedule": ["before 1am"]
+      },
+      {
+        "matchPackagePatterns": ["*"],
+        "groupName": "all minor dependency updates",
+        "groupSlug": "all",
+        "matchUpdateTypes": ["minor", "patch", "digest"],
+        "labels": ["renovate", "minor", "automerge"],
+        "automerge": true,
+        "matchManagers": ["gomod"],
+        "schedule": ["before 1am"]
+      }
+    ]
+  },
+  "group-peer-dependencies": {
+    "packageRules": [
+      {
+        "matchPackagePatterns": ["*"],
+        "groupName": "all peer dependency updates",
+        "groupSlug": "all-peer",
+        "matchDepTypes": ["peerDependencies", "optionalDependencies"],
+        "rangeStrategy": "widen",
+        "commitMessageSuffix": "[skip ci]",
+        "labels": ["renovate", "peer-deps", "automerge"],
+        "automerge": true,
+        "matchManagers": ["npm"],
+        "schedule": ["at any time"]
+      }
+    ]
+  },
+  "branch-develop": {
+    "baseBranches": ["develop"]
+  },
+  "branch-beta": {
+    "baseBranches": ["beta"]
+  }
+}

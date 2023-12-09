@@ -1,8 +1,6 @@
-import { createPreset } from '@lib/preset-factory'
+import { createPreset } from '@lib'
 
-import { TIMEZONE } from '@constants/constants'
-import { Managers } from '@constants/managers'
-import { ASSIGNEES } from '@constants/users'
+import { TIMEZONE, Managers, ASSIGNEES } from '@constants'
 
 export default createPreset({
   enabledManagers: Object.values(Managers),

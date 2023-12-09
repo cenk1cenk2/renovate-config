@@ -1,7 +1,6 @@
-import { createPreset } from '@lib/preset-factory'
+import { createPreset } from '@lib'
 
-import { GO_GROUP_MINOR, NODE_GROUP_MINOR } from '@constants/patterns'
-import { SCHEDULE } from '@constants/renovate'
+import { GO_GROUP_MINOR, NODE_GROUP_MINOR, SCHEDULE } from '@constants'
 
 export default createPreset({
   packageRules: [

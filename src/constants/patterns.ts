@@ -1,6 +1,6 @@
-import { PackageRule } from 'renovate/dist/config/types'
+import { PackageRule } from 'renovate/dist/config/types.js'
 
-import { Managers } from './managers'
+import { Managers } from './managers.js'
 
 export const NODE_GROUP_MINOR: PackageRule = {
   matchDepTypes: [ 'dependencies' ],

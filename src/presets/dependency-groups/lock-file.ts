@@ -1,6 +1,6 @@
-import { createPreset } from '@lib/preset-factory'
+import { createPreset } from '@lib'
 
-import { SCHEDULE } from '@constants/renovate'
+import { SCHEDULE } from '@constants'
 
 export default createPreset({
   lockFileMaintenance: {

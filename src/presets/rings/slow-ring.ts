@@ -1,8 +1,6 @@
-import { createPreset } from '@lib/preset-factory'
+import { createPreset } from '@lib'
 
-import { Managers } from '@constants/managers'
-import { SCHEDULE } from '@constants/renovate'
-import { NODE_SLOW_RING_PACKAGES, NODE_DISABLED_PACKAGES, GO_SLOW_RING_PACKAGES } from '@constants/rings'
+import { Managers, SCHEDULE, NODE_SLOW_RING_PACKAGES, NODE_DISABLED_PACKAGES, GO_SLOW_RING_PACKAGES } from '@constants'
 
 export default createPreset({
   packageRules: [

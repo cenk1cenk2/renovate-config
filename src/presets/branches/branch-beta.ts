@@ -1,4 +1,4 @@
-import { createPreset } from '@lib/preset-factory'
+import { createPreset } from '@lib'
 
 export default createPreset({
   baseBranches: [ 'beta' ]
