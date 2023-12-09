@@ -1,1 +1,1 @@
-export const SCOPE = 'local>renovate/renovate-config/default/'
+export const SCOPE = 'local>renovate/renovate-config:default/'
