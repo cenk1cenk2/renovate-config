@@ -1,3 +1,11 @@
+## [3.0.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.0.2...v3.0.3) (2023-12-09)
+
+
+### Bug Fixes
+
+* ignore engines ([427e170](https://gitlab.kilic.dev/renovate/renovate-config/commit/427e170e2a635542848a816228a9fdf1f1f61392))
+* remove from defautl ([0ea110d](https://gitlab.kilic.dev/renovate/renovate-config/commit/0ea110dae783dbf071c07e08d7648fc3c459ec9a))
+
 ## [3.0.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.0.1...v3.0.2) (2023-12-09)
 
 
