@@ -1,3 +1,10 @@
+# [3.1.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.0.5...v3.1.0) (2023-12-11)
+
+
+### Features
+
+* update renovate groups and split them up more ([e3d2621](https://gitlab.kilic.dev/renovate/renovate-config/commit/e3d26210f0466047f0c94657fdc7d6137c268455))
+
 ## [3.0.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.0.4...v3.0.5) (2023-12-11)
 
 
