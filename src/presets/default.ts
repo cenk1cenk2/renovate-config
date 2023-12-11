@@ -1,12 +1,9 @@
 import { createPreset, createScope } from '@lib'
 import { Preset } from '@presets'
 
+import { Managers } from '@constants'
+
 export default createPreset({
-  extends: [
-    createScope(Preset.BASE),
-    createScope(Preset.LOCK_FILE),
-    createScope(Preset.GROUP_MINOR_DEPENDENCIES),
-    createScope(Preset.GROUP_DEV_DEPENDENCIES),
-    createScope(Preset.GROUP_PEER_DEPENDENCIES)
-  ]
+  enabledManagers: Object.values(Managers),
+  extends: [ createScope(Preset.BASE), createScope(Preset.LOCK_FILE), createScope(Preset.NO_TESTS), createScope(Preset.NODE), createScope(Preset.GO) ]
 })

@@ -1,9 +1,8 @@
 import { createPreset } from '@lib'
 
-import { TIMEZONE, Managers, ASSIGNEES } from '@constants'
+import { ASSIGNEES, TIMEZONE } from '@constants'
 
 export default createPreset({
-  enabledManagers: Object.values(Managers),
   extends: [ 'config:base', ':masterIssue', ':prHourlyLimitNone', ':prConcurrentLimitNone' ],
   timezone: TIMEZONE,
   semanticCommits: 'enabled',
@@ -13,6 +12,5 @@ export default createPreset({
   major: {
     stabilityDays: 3
   },
-  prCreation: 'immediate',
-  postUpdateOptions: [ 'gomodTidy', 'gomodUpdateImportPaths' ]
+  prCreation: 'immediate'
 })

@@ -23,7 +23,7 @@ export default createPreset({
 
     {
       matchPackageNames: [ 'typedoc', 'typedoc-plugin-markdown' ],
-      matchPackagePatterns: [ '^vuepress', '^@vuepress/' ],
+      matchPackagePatterns: [ '^vitepress', '^markdown-it' ],
       groupName: 'all docs dependency updates',
       groupSlug: 'all-docs',
       ...NODE_GROUP_DOCS,

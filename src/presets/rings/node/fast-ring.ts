@@ -1,29 +1,21 @@
 import { createPreset } from '@lib'
 
-import { GO_GROUP_MINOR, NODE_GROUP_DEV, NODE_GROUP_MINOR, NODE_GROUP_PEER, SCHEDULE, GO_FAST_RING_PACKAGES, NODE_FAST_RING_PACKAGES } from '@constants'
+import { NODE_FAST_RING_PACKAGES, NODE_GROUP_DEV, NODE_GROUP_MINOR, NODE_GROUP_PEER, RingSlug, SCHEDULE } from '@constants'
 
 export default createPreset({
   packageRules: [
     {
       matchPackagePatterns: NODE_FAST_RING_PACKAGES,
       groupName: 'all fast ring minor dependencies',
-      groupSlug: 'fast-ring',
+      groupSlug: RingSlug.FAST_RING,
       ...NODE_GROUP_MINOR,
-      schedule: [ SCHEDULE.ANY ]
-    },
-
-    {
-      matchPackagePatterns: GO_FAST_RING_PACKAGES,
-      groupName: 'all fast ring minor dependencies',
-      groupSlug: 'fast-ring',
-      ...GO_GROUP_MINOR,
       schedule: [ SCHEDULE.ANY ]
     },
 
     {
       matchPackagePatterns: NODE_FAST_RING_PACKAGES,
       groupName: 'all fast ring dev dependencies',
-      groupSlug: 'fast-ring-dev',
+      groupSlug: RingSlug.FAST_RING_DEV,
       ...NODE_GROUP_DEV,
       schedule: [ SCHEDULE.ANY ]
     },
@@ -31,7 +23,7 @@ export default createPreset({
     {
       matchPackagePatterns: NODE_FAST_RING_PACKAGES,
       groupName: 'all fast ring peer dependencies',
-      groupSlug: 'fast-ring-peer',
+      groupSlug: RingSlug.FAST_RING_PEER,
       ...NODE_GROUP_PEER,
       schedule: [ SCHEDULE.ANY ]
     }
