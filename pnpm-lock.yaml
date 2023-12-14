@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@cenk1cenk2/oclif-common':
-    specifier: ^6.3.6
-    version: 6.3.6(@listr2/manager@2.0.0)(@oclif/core@3.14.1)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(execa@8.0.1)(fs-extra@11.2.0)(listr2@8.0.0)(rxjs@7.8.1)
+    specifier: ^6.3.7
+    version: 6.3.7(@listr2/manager@2.0.0)(@oclif/core@3.14.1)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(execa@8.0.1)(fs-extra@11.2.0)(listr2@8.0.0)(rxjs@7.8.1)
   '@listr2/manager':
     specifier: ^2.0.0
     version: 2.0.0
@@ -21,8 +21,8 @@ dependencies:
     specifier: ^8.0.0
     version: 8.0.0
   renovate:
-    specifier: ^37.92.4
-    version: 37.92.4(typanion@3.14.0)
+    specifier: ^37.98.1
+    version: 37.98.1(typanion@3.14.0)
   source-map-support:
     specifier: ^0.5.21
     version: 0.5.21
@@ -1112,8 +1112,8 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/oclif-common@6.3.6(@listr2/manager@2.0.0)(@oclif/core@3.14.1)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(execa@8.0.1)(fs-extra@11.2.0)(listr2@8.0.0)(rxjs@7.8.1):
-    resolution: {integrity: sha512-V4eRKVoJqLCC2nPnRcblbK7FMWQq4MfQlc+wWoSUoIIzYSrEFEvtnkhZER0LS46lQxMnxNX4AlRPRMweTWFfWg==}
+  /@cenk1cenk2/oclif-common@6.3.7(@listr2/manager@2.0.0)(@oclif/core@3.14.1)(class-transformer@0.5.1)(class-validator@0.14.0)(enquirer@2.4.1)(execa@8.0.1)(fs-extra@11.2.0)(listr2@8.0.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-Un1ODCZHsYmZhZohARrhpDssjTFAgh5AN5MohCGB1dDwNKeZbgaL6CL20Ga0ZyZucnOXEG9wzV45+YLQN1+8zg==}
     engines: {node: '>= 16'}
     peerDependencies:
       '@listr2/manager': '>= 1'
@@ -1135,8 +1135,8 @@ packages:
         optional: true
     dependencies:
       '@listr2/manager': 2.0.0
-      '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.14)(rxjs@7.8.1)
-      '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.2.1)(rxjs@7.8.1)
+      '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(reflect-metadata@0.2.1)(rxjs@7.8.1)
       '@oclif/core': 3.14.1(typescript@5.3.3)
       class-transformer: 0.5.1
       class-validator: 0.14.0
@@ -1146,7 +1146,7 @@ packages:
       fs-extra: 11.2.0
       listr2: 8.0.0
       object-path-immutable: 4.1.2
-      reflect-metadata: 0.1.14
+      reflect-metadata: 0.2.1
       winston: 3.11.0
     transitivePeerDependencies:
       - '@nestjs/microservices'
@@ -1585,7 +1585,7 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /@nestjs/common@10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.14)(rxjs@7.8.1):
+  /@nestjs/common@10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.2.1)(rxjs@7.8.1):
     resolution: {integrity: sha512-fwAk931rjW8CNH2Mgwawq/7HWHH1dxkOLdcgs7U52ddLk8CtHXjejm1cbNahewlSbNhvlOl7y1STLHutE6sUqw==}
     peerDependencies:
       class-transformer: '*'
@@ -1601,13 +1601,13 @@ packages:
       class-transformer: 0.5.1
       class-validator: 0.14.0
       iterare: 1.2.1
-      reflect-metadata: 0.1.14
+      reflect-metadata: 0.2.1
       rxjs: 7.8.1
       tslib: 2.6.2
       uid: 2.0.2
     dev: false
 
-  /@nestjs/core@10.2.10(@nestjs/common@10.2.10)(reflect-metadata@0.1.14)(rxjs@7.8.1):
+  /@nestjs/core@10.2.10(@nestjs/common@10.2.10)(reflect-metadata@0.2.1)(rxjs@7.8.1):
     resolution: {integrity: sha512-+ckOI6BPi2ZMHikT9MCG4ctHDc4OnjhoIytrn7f2AYMMXI4bnutJhqyQKc30VDka5x3Wq6QAD57pgSP7y+JjJg==}
     requiresBuild: true
     peerDependencies:
@@ -1625,12 +1625,12 @@ packages:
       '@nestjs/websockets':
         optional: true
     dependencies:
-      '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/common': 10.2.10(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.2.1)(rxjs@7.8.1)
       '@nuxtjs/opencollective': 0.3.2
       fast-safe-stringify: 2.1.1
       iterare: 1.2.1
       path-to-regexp: 3.2.0
-      reflect-metadata: 0.1.14
+      reflect-metadata: 0.2.1
       rxjs: 7.8.1
       tslib: 2.6.2
       uid: 2.0.2
@@ -2266,13 +2266,14 @@ packages:
       '@opentelemetry/sdk-trace-base': 1.18.1(@opentelemetry/api@1.7.0)
     dev: false
 
-  /@opentelemetry/instrumentation-bunyan@0.33.0(@opentelemetry/api@1.7.0):
-    resolution: {integrity: sha512-i3xfmhajtOEuFO+9yMU/wJiH0tY4VtIlbJKGIKVHFOsoNqPQpG7iUQP01p0FRoje+UB+ZUvs4hU7fCZzwtnC1g==}
+  /@opentelemetry/instrumentation-bunyan@0.34.0(@opentelemetry/api@1.7.0):
+    resolution: {integrity: sha512-UjuvggGrclyn6avTcMAdqLyrrTV26ufB73vPBPlEmA3a2dtYCS07zW82Kacxi5emZDpmHIk6zQE18DqCb/xfpA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@opentelemetry/api': ^1.3.0
     dependencies:
       '@opentelemetry/api': 1.7.0
+      '@opentelemetry/api-logs': 0.45.1
       '@opentelemetry/instrumentation': 0.45.1(@opentelemetry/api@1.7.0)
       '@types/bunyan': 1.8.9
     transitivePeerDependencies:
@@ -8766,8 +8767,8 @@ packages:
       '@redis/time-series': 1.0.5(@redis/client@1.5.12)
     dev: false
 
-  /reflect-metadata@0.1.14:
-    resolution: {integrity: sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==}
+  /reflect-metadata@0.2.1:
+    resolution: {integrity: sha512-i5lLI6iw9AU3Uu4szRNPPEkomnkjRTaVt9hy/bn5g/oSzekBSMeLZblcjP74AW0vBabqERLLIrz+gR8QYR54Tw==}
     dev: false
 
   /regenerator-runtime@0.14.0:
@@ -8819,8 +8820,8 @@ packages:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
     dev: true
 
-  /renovate@37.92.4(typanion@3.14.0):
-    resolution: {integrity: sha512-8EUVae1SroAkUr3t1FzFYzRNchUd5Cy1Lx0SM6J5ZvHAt5iltevjRHRp3L9GEqlNnTTOvNWjyhtbWL8eNdGrsg==}
+  /renovate@37.98.1(typanion@3.14.0):
+    resolution: {integrity: sha512-8fZ9kkJ2arCTk2/fiSirllrFC01KiwyF9JQt7Prsrx4J5yRsprED8Mo6rVDriD0iYQdLTg5vOPLdddX+fHXI+Q==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^8.0.0}
     hasBin: true
     dependencies:
@@ -8836,7 +8837,7 @@ packages:
       '@opentelemetry/context-async-hooks': 1.18.1(@opentelemetry/api@1.7.0)
       '@opentelemetry/exporter-trace-otlp-http': 0.45.1(@opentelemetry/api@1.7.0)
       '@opentelemetry/instrumentation': 0.45.1(@opentelemetry/api@1.7.0)
-      '@opentelemetry/instrumentation-bunyan': 0.33.0(@opentelemetry/api@1.7.0)
+      '@opentelemetry/instrumentation-bunyan': 0.34.0(@opentelemetry/api@1.7.0)
       '@opentelemetry/instrumentation-http': 0.45.1(@opentelemetry/api@1.7.0)
       '@opentelemetry/resources': 1.18.1(@opentelemetry/api@1.7.0)
       '@opentelemetry/sdk-trace-base': 1.18.1(@opentelemetry/api@1.7.0)
