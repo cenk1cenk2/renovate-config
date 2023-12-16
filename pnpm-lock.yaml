@@ -21,8 +21,8 @@ dependencies:
     specifier: ^8.0.0
     version: 8.0.0
   renovate:
-    specifier: ^37.100.0
-    version: 37.100.0(typanion@3.14.0)
+    specifier: ^37.101.0
+    version: 37.101.0(typanion@3.14.0)
   source-map-support:
     specifier: ^0.5.21
     version: 0.5.21
@@ -3831,6 +3831,7 @@ packages:
   /ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dependencies:
       color-convert: 1.9.3
 
@@ -6153,6 +6154,7 @@ packages:
   /has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
+    requiresBuild: true
 
   /has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -8821,8 +8823,8 @@ packages:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
     dev: true
 
-  /renovate@37.100.0(typanion@3.14.0):
-    resolution: {integrity: sha512-i41y8+wuMl4kNlU5W//x7C6zW9/6ToTbXDjN3HRKr2sqZ1gsOJRkcCFugACgIi6Um/6JXoY75sR4QsD3SJuIdQ==}
+  /renovate@37.101.0(typanion@3.14.0):
+    resolution: {integrity: sha512-oeSadBURt0wNt9ROc2zOjYvd0Y4PNbl6BQX845safINocTkwnpZfIzR+FDYqhafPkcE5mf6cZTZ8PaG7Ra0fTw==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^8.0.0}
     hasBin: true
     dependencies:
@@ -9627,6 +9629,7 @@ packages:
   /supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dependencies:
       has-flag: 3.0.0
 
