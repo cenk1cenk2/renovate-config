@@ -1063,7 +1063,7 @@ packages:
     resolution: {integrity: sha512-VDPPwR8F9Likq5cJ5pPZAENiIJpddgrMh6pTb9WnWug8HR7E6j30UIRhstIqu1ktvpuXGqO2cpv07BSAEiaPaw==}
     engines: {node: '>= 16'}
     dependencies:
-      '@listr2/prompt-adapter-enquirer': 2.0.0(enquirer@2.4.1)
+      '@listr2/prompt-adapter-enquirer': 2.0.1(enquirer@2.4.1)
       commitizen: 4.3.0(typescript@5.3.3)
       conventional-commit-types: 3.0.0
       enquirer: 2.4.1
@@ -1580,8 +1580,8 @@ packages:
     engines: {node: '>=18.0.0'}
     dev: false
 
-  /@listr2/prompt-adapter-enquirer@2.0.0(enquirer@2.4.1):
-    resolution: {integrity: sha512-041w06I7nubqKzH6L3DAAlPJRtdA2ygl+OuajMIuClK+kKN+Bu3sFplG6oTN6Gv4WDtZDXqhj3vPCSAc5pg7MA==}
+  /@listr2/prompt-adapter-enquirer@2.0.1(enquirer@2.4.1):
+    resolution: {integrity: sha512-vRAa2raxKfpcUkh4ihszcb6vNb931sfz7af85zQn7oyJxQOffqr2QRwk0T2nBmKAk3dRD48b8nl3v0qoZ4sbyA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       enquirer: '>= 2.3.0 < 3'
@@ -4030,8 +4030,8 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-sdk@2.1522.0:
-    resolution: {integrity: sha512-jQ3a7IiJm2g7ko5q7a/PzyFhdSDDTR2j5sv37hU+lBprHYq5xL+JTS5aO7yJDpZKo9syUaykmUkmgBD0qVSp5A==}
+  /aws-sdk@2.1523.0:
+    resolution: {integrity: sha512-Zodeu0h4NfpYs8B+5+OFEhkY5MJlhzAns8oocMQc2aZTiMx178qcxqD3FFltTUyLc0FFlY7ZGjoVfPnuky1MQg==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
@@ -5113,7 +5113,6 @@ packages:
 
   /err-code@2.0.3:
     resolution: {integrity: sha512-2bmlRpNKBxT/CRmPOlyISQpNj+qSeYvcym/uT0Jx2bMOlKLtSy1ZmLuVxSEKKyor/N5yhvp/ZiG1oE3DEYMSFA==}
-    requiresBuild: true
 
   /error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
@@ -6495,7 +6494,6 @@ packages:
 
   /ip@2.0.0:
     resolution: {integrity: sha512-WKa+XuLG1A1R0UWhl2+1XQSi+fZWMsYKffMZTTYsiZaUD8k2yDAj5atimTUD2TZkyCkNEeYE5NhFZmupOGtjYQ==}
-    requiresBuild: true
 
   /is-alphabetical@1.0.4:
     resolution: {integrity: sha512-DwzsA04LQ10FHTZuL0/grVDk4rFoVH1pjAToYwBrHSxcrBIGQuXrQMtD5U1b0U2XVgKZCTLLP8u2Qxqhy3l2Vg==}
@@ -6525,6 +6523,7 @@ packages:
 
   /is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
+    requiresBuild: true
 
   /is-arrayish@0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
@@ -8121,7 +8120,7 @@ packages:
       '@oclif/plugin-not-found': 2.4.3(@swc/core@1.3.101)(@types/node@20.10.5)(typescript@5.3.3)
       '@oclif/plugin-warn-if-update-available': 3.0.7(typescript@5.3.3)
       async-retry: 1.3.3
-      aws-sdk: 2.1522.0
+      aws-sdk: 2.1523.0
       change-case: 4.1.2
       debug: 4.3.4(supports-color@8.1.1)
       eslint-plugin-perfectionist: 2.5.0(eslint@8.56.0)(typescript@5.3.3)
@@ -9062,7 +9061,6 @@ packages:
   /retry@0.12.0:
     resolution: {integrity: sha512-9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==}
     engines: {node: '>= 4'}
-    requiresBuild: true
 
   /retry@0.13.1:
     resolution: {integrity: sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==}
@@ -9374,7 +9372,6 @@ packages:
   /smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
-    requiresBuild: true
 
   /snake-case@3.0.4:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
