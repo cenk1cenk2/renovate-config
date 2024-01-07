@@ -21,8 +21,8 @@ dependencies:
     specifier: ^8.0.1
     version: 8.0.1
   renovate:
-    specifier: ^37.126.1
-    version: 37.126.1(typanion@3.14.0)
+    specifier: ^37.126.2
+    version: 37.126.2(typanion@3.14.0)
   source-map-support:
     specifier: ^0.5.21
     version: 0.5.21
@@ -8820,8 +8820,8 @@ packages:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
     dev: true
 
-  /renovate@37.126.1(typanion@3.14.0):
-    resolution: {integrity: sha512-Igxx/CKlsOJ0huDq2/cz8mM3B3QJNxvyy+NWkg3bW6HxfahPfjbxqp+HqB6NJOngntHMejgp4N/Vf6tTs9NVog==}
+  /renovate@37.126.2(typanion@3.14.0):
+    resolution: {integrity: sha512-9juRpB2H9ofA13hJ4HiNyKW5LR26NYZyWYACfyUhzYEf1/1Ui9Gk88CZBpbYPAdtbxNM4pvLzNrRcuOXhvuiig==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^8.0.0}
     hasBin: true
     dependencies:
@@ -9154,7 +9154,6 @@ packages:
 
   /sax@1.3.0:
     resolution: {integrity: sha512-0s+oAmw9zLl1V1cS9BtZN7JAd0cW5e0QH4W3LWEK6a4LaLEA2OTpGYWDY+6XasBLtz6wkm3u1xRw95mRuJ59WA==}
-    dev: false
 
   /scoped-regex@2.1.0:
     resolution: {integrity: sha512-g3WxHrqSWCZHGHlSrF51VXFdjImhwvH8ZO/pryFH56Qi0cDsZfylQa/t0jCzVQFNbNvM00HfHjkDPEuarKDSWQ==}
@@ -10500,7 +10499,7 @@ packages:
     resolution: {integrity: sha512-drPFnkQJik/O+uPKpqSgr22mpuFHqKdbS835iAQrUC73L2F5WkboIRd63ai/2Yg6I1jzifPFKH2NTK+cfglkIA==}
     engines: {node: '>=4.0.0'}
     dependencies:
-      sax: 1.2.1
+      sax: 1.3.0
       xmlbuilder: 11.0.1
     dev: true
 
