@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^15.2.0
     version: 15.2.0
   oclif:
-    specifier: ^4.1.4
-    version: 4.1.4(eslint@8.56.0)(typescript@5.3.3)
+    specifier: ^4.2.0
+    version: 4.2.0(eslint@8.56.0)(typescript@5.3.3)
   prettier:
     specifier: ^3.1.1
     version: 3.1.1
@@ -4127,7 +4127,7 @@ packages:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
     dev: true
 
@@ -8082,8 +8082,8 @@ packages:
       es-abstract: 1.22.3
     dev: true
 
-  /oclif@4.1.4(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-tgZTmJqwakJAU+7FokbhaYcj6Eaj/mVvCfeuitP6qQOzAC1s8yhkY7gZ7DsAzAEh9VqT4h4xZmTJxV21Lc8CLQ==}
+  /oclif@4.2.0(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-pqfc1R+tDNxlViQ6xYf79lGwMr7Erq2Bo4A5p5jMwJrbpHpIunsZXGifZV6V2f4wUTo1dcqjxP6Be8LmeI3Czw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
@@ -9154,7 +9154,6 @@ packages:
 
   /sax@1.3.0:
     resolution: {integrity: sha512-0s+oAmw9zLl1V1cS9BtZN7JAd0cW5e0QH4W3LWEK6a4LaLEA2OTpGYWDY+6XasBLtz6wkm3u1xRw95mRuJ59WA==}
-    dev: false
 
   /scoped-regex@2.1.0:
     resolution: {integrity: sha512-g3WxHrqSWCZHGHlSrF51VXFdjImhwvH8ZO/pryFH56Qi0cDsZfylQa/t0jCzVQFNbNvM00HfHjkDPEuarKDSWQ==}
@@ -10500,7 +10499,7 @@ packages:
     resolution: {integrity: sha512-drPFnkQJik/O+uPKpqSgr22mpuFHqKdbS835iAQrUC73L2F5WkboIRd63ai/2Yg6I1jzifPFKH2NTK+cfglkIA==}
     engines: {node: '>=4.0.0'}
     dependencies:
-      sax: 1.2.1
+      sax: 1.3.0
       xmlbuilder: 11.0.1
     dev: true
 
