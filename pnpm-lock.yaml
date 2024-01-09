@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^1.7.3
     version: 1.7.3(@types/node@20.10.7)(typescript@5.3.3)
   '@cenk1cenk2/eslint-config':
-    specifier: ^2.7.34
-    version: 2.7.34(eslint@8.56.0)(typescript@5.3.3)
+    specifier: ^2.7.35
+    version: 2.7.35(eslint@8.56.0)(typescript@5.3.3)
   '@swc/core':
     specifier: ^1.3.102
     version: 1.3.102
@@ -1077,8 +1077,8 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/eslint-config@2.7.34(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-VsMwwRSWORscOlRSWa42oANvOQ4Y/7hgrRE5OCGNpcgKjDfv9z+aD2wagBmWVmpw3F/ssUYKFaGWmxHP7ACnJw==}
+  /@cenk1cenk2/eslint-config@2.7.35(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-TqMWdcGdtr/6hq9EcfxKKSH31g+acmLWlEw1rF+F67G6h9dt+qFgIzW1E7rtDBCxJ3r6l675XpVsix7R4Zp5Mg==}
     peerDependencies:
       '@nuxtjs/eslint-config': '>= 7'
       '@nuxtjs/eslint-config-typescript': '>= 7'
@@ -5085,6 +5085,7 @@ packages:
 
   /err-code@2.0.3:
     resolution: {integrity: sha512-2bmlRpNKBxT/CRmPOlyISQpNj+qSeYvcym/uT0Jx2bMOlKLtSy1ZmLuVxSEKKyor/N5yhvp/ZiG1oE3DEYMSFA==}
+    requiresBuild: true
 
   /error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
@@ -9029,6 +9030,7 @@ packages:
   /retry@0.12.0:
     resolution: {integrity: sha512-9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==}
     engines: {node: '>= 4'}
+    requiresBuild: true
 
   /retry@0.13.1:
     resolution: {integrity: sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==}
