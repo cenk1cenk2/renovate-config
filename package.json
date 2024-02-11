@@ -63,7 +63,7 @@
     "@types/node": "^20.11.17",
     "eslint": "^8.56.0",
     "execa": "^8.0.1",
-    "globby": "^14.0.0",
+    "globby": "^14.0.1",
     "lint-staged": "^15.2.2",
     "oclif": "^4.4.9",
     "prettier": "^3.2.5",
