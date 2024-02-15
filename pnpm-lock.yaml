@@ -21,8 +21,8 @@ dependencies:
     specifier: ^8.0.2
     version: 8.0.2
   renovate:
-    specifier: ^37.191.0
-    version: 37.191.0(typanion@3.14.0)
+    specifier: ^37.192.2
+    version: 37.192.2(typanion@3.14.0)
   source-map-support:
     specifier: ^0.5.21
     version: 0.5.21
@@ -2838,7 +2838,7 @@ packages:
       '@opentelemetry/core': 1.21.0(@opentelemetry/api@1.7.0)
       '@opentelemetry/instrumentation': 0.48.0(@opentelemetry/api@1.7.0)
       '@opentelemetry/semantic-conventions': 1.21.0
-      semver: 7.5.4
+      semver: 7.6.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2853,7 +2853,7 @@ packages:
       '@types/shimmer': 1.0.5
       import-in-the-middle: 1.7.1
       require-in-the-middle: 7.2.0
-      semver: 7.5.4
+      semver: 7.6.0
       shimmer: 1.2.1
     transitivePeerDependencies:
       - supports-color
@@ -2964,7 +2964,7 @@ packages:
       '@opentelemetry/propagator-b3': 1.21.0(@opentelemetry/api@1.7.0)
       '@opentelemetry/propagator-jaeger': 1.21.0(@opentelemetry/api@1.7.0)
       '@opentelemetry/sdk-trace-base': 1.21.0(@opentelemetry/api@1.7.0)
-      semver: 7.5.4
+      semver: 7.6.0
     dev: false
 
   /@opentelemetry/semantic-conventions@1.21.0:
@@ -4664,7 +4664,7 @@ packages:
       lodash: 4.17.21
       micromatch: 4.0.5
       p-limit: 2.3.0
-      semver: 7.5.4
+      semver: 7.6.0
       strip-ansi: 6.0.1
       tar: 6.2.0
       tinylogic: 2.0.0
@@ -6058,7 +6058,7 @@ packages:
       '@one-ini/wasm': 0.1.1
       commander: 11.1.0
       minimatch: 9.0.2
-      semver: 7.5.4
+      semver: 7.6.0
     dev: false
 
   /ejs@3.1.9:
@@ -6995,7 +6995,7 @@ packages:
       es6-error: 4.1.1
       matcher: 3.0.0
       roarr: 2.15.4
-      semver: 7.5.4
+      semver: 7.6.0
       serialize-error: 7.0.1
     dev: false
 
@@ -9889,8 +9889,8 @@ packages:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
     dev: true
 
-  /renovate@37.191.0(typanion@3.14.0):
-    resolution: {integrity: sha512-2kCpfiXs2EgUCaCq+mdALAJjx+viWiOjv1gE2auFO5ZWHl39X5R3GrfXIKywJ0FYedk5AQGB3GENb1A+trSJcg==}
+  /renovate@37.192.2(typanion@3.14.0):
+    resolution: {integrity: sha512-F3nOusUTPXhyILQ8M7Fo+StSg1l73ukSAh22PqkxWlrOKh6+uraHJZPM1XAVuV5+cI9/IBlubXNe5sdMXSSkFw==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^8.0.0}
     hasBin: true
     dependencies:
