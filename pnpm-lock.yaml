@@ -21,8 +21,8 @@ dependencies:
     specifier: ^8.0.2
     version: 8.0.2
   renovate:
-    specifier: ^37.213.0
-    version: 37.213.0(typanion@3.14.0)
+    specifier: ^37.214.0
+    version: 37.214.0(typanion@3.14.0)
   source-map-support:
     specifier: ^0.5.21
     version: 0.5.21
@@ -9890,8 +9890,8 @@ packages:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
     dev: true
 
-  /renovate@37.213.0(typanion@3.14.0):
-    resolution: {integrity: sha512-11tfQnMYUnqWAvT+8z2+Un+MVrYPi5vN5E6nRgJY1o9pvhX/BD4alLW+xXvE+s2/PlZ3103q822QlPlXZfuaLQ==}
+  /renovate@37.214.0(typanion@3.14.0):
+    resolution: {integrity: sha512-UOWjeH5t3v1AEkMKsuuUq45uzYMdCW7Hw7tZZ+wg74jhHIri459ZwLQRjZZzpijUTD3eLrz3g1wAZlHQ2FgWhQ==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^8.0.0}
     hasBin: true
     dependencies:
