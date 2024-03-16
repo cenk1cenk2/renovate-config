@@ -67,7 +67,7 @@
     "lint-staged": "^15.2.2",
     "oclif": "^4.5.4",
     "prettier": "^3.2.5",
-    "simple-git-hooks": "^2.10.0",
+    "simple-git-hooks": "^2.11.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsconfig-replace-paths": "^0.0.14",
