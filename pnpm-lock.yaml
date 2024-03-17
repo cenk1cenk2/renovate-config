@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^15.2.2
     version: 15.2.2
   oclif:
-    specifier: ^4.5.5
-    version: 4.5.5
+    specifier: ^4.5.6
+    version: 4.5.6
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -4803,6 +4803,7 @@ packages:
   /agent-base@7.1.0:
     resolution: {integrity: sha512-o/zjMZRhJxny7OyEF+Op8X+efiELC7k7yOjMzgfzVqOzXqkBkWI79YoTdOtsuWd5BWhAGAuOY/Xa6xpiaWXiNg==}
     engines: {node: '>= 14'}
+    requiresBuild: true
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
@@ -5353,6 +5354,7 @@ packages:
   /callsites@3.1.0:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
+    requiresBuild: true
     dev: true
 
   /camel-case@4.1.2:
@@ -9194,8 +9196,8 @@ packages:
       es-abstract: 1.22.5
     dev: true
 
-  /oclif@4.5.5:
-    resolution: {integrity: sha512-SCE73AioYF3a4I4hIc0VhE5KQb80ijXhdwxIoD0HAU49lipJ2YWOxTLfHudDUdPyZHOGNqwU4/wmEkMPhWjf1Q==}
+  /oclif@4.5.6:
+    resolution: {integrity: sha512-RhmZVC1wCgBrULNMvPwpiFvkXwZ6uAJu7M7rURLCW3T/9lRHh8l9CV5TpXElypnHphw9cEIElRwtvnCOhlhVhg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
@@ -9445,6 +9447,7 @@ packages:
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
+    requiresBuild: true
     dependencies:
       callsites: 3.1.0
     dev: true
@@ -10118,6 +10121,7 @@ packages:
   /resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dev: true
 
   /resolve-from@5.0.0:
