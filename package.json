@@ -48,10 +48,10 @@
   "dependencies": {
     "@cenk1cenk2/oclif-common": "^6.3.11",
     "@listr2/manager": "^2.0.2",
-    "@oclif/core": "^3.25.2",
+    "@oclif/core": "^3.25.3",
     "fs-extra": "^11.2.0",
     "listr2": "^8.0.2",
-    "renovate": "^37.256.0",
+    "renovate": "^37.261.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
