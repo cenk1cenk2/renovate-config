@@ -51,7 +51,7 @@
     "@oclif/core": "^3.26.0",
     "fs-extra": "^11.2.0",
     "listr2": "^8.1.2",
-    "renovate": "^37.276.0",
+    "renovate": "^37.278.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
