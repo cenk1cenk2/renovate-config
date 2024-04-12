@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^15.2.2
     version: 15.2.2
   oclif:
-    specifier: ^4.8.1
-    version: 4.8.1
+    specifier: ^4.8.2
+    version: 4.8.2
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -4797,6 +4797,7 @@ packages:
   /ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dependencies:
       color-convert: 1.9.3
 
@@ -5403,6 +5404,7 @@ packages:
 
   /color-name@1.1.3:
     resolution: {integrity: sha512-72fSenhMw2HZMTVHeCA9KCmpEIbzWiQsjN+BHcBbS9vr1mtt+vJjPdksIBNUmKAW8TFUDPJK5SUU3QhE9NEXDw==}
+    requiresBuild: true
 
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
@@ -6964,6 +6966,7 @@ packages:
   /has-flag@3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
+    requiresBuild: true
 
   /has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -8486,8 +8489,8 @@ packages:
       es-object-atoms: 1.0.0
     dev: true
 
-  /oclif@4.8.1:
-    resolution: {integrity: sha512-2UcxQFQOTRC6OsBHR1DnrnCZRfxsER3IfJY2SeA/mVbfYoLCH3l6JohjoTL6HTjpZG8ojZ/igZ3bv1xvYDDy8w==}
+  /oclif@4.8.2:
+    resolution: {integrity: sha512-Z2QCRQsEfCoz1nvZLZ+e9fb8menIZd/flAzr/dFeYdgM+ZABSLdlku1wNX0nK7kD88bYHOe21LvTMmB3UvHWtg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
@@ -9848,6 +9851,7 @@ packages:
   /supports-color@5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dependencies:
       has-flag: 3.0.0
 
