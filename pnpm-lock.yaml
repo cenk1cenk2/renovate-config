@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^1.7.6
     version: 1.7.6(@types/node@20.12.7)(typescript@5.4.5)
   '@cenk1cenk2/eslint-config':
-    specifier: ^2.7.42
-    version: 2.7.42(eslint@8.57.0)(typescript@5.4.5)
+    specifier: ^2.7.43
+    version: 2.7.43(eslint@8.57.0)(typescript@5.4.5)
   '@swc/core':
     specifier: ^1.4.13
     version: 1.4.13
@@ -1666,8 +1666,8 @@ packages:
       - typescript
     dev: true
 
-  /@cenk1cenk2/eslint-config@2.7.42(eslint@8.57.0)(typescript@5.4.5):
-    resolution: {integrity: sha512-0Aa8S/lWoiXOlMYOpFVmuEz6EVk5SmnMAFXhJTt/IzA6I4nEfR4UIucHlx+kj4HxP6sq3tgz5NZ5kZYSK4mL3w==}
+  /@cenk1cenk2/eslint-config@2.7.43(eslint@8.57.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-OHW4ffMF8jJaVR3CVw+fWUbz2j6El8TlbAWHckMa38aN03Z/omiRsR/MFMK3KkyMwpkplsGjSLMXmgOl6SVxew==}
     peerDependencies:
       '@nuxtjs/eslint-config': '>= 7'
       '@nuxtjs/eslint-config-typescript': '>= 7'
