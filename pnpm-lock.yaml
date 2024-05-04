@@ -24,8 +24,8 @@ importers:
         specifier: ^8.2.1
         version: 8.2.1
       renovate:
-        specifier: ^37.340.5
-        version: 37.340.5(@aws-sdk/client-sso-oidc@3.569.0)(@aws-sdk/client-sts@3.565.0(@aws-sdk/client-sso-oidc@3.569.0))(encoding@0.1.13)(typanion@3.14.0)
+        specifier: ^37.340.8
+        version: 37.340.8(@aws-sdk/client-sso-oidc@3.569.0)(@aws-sdk/client-sts@3.565.0(@aws-sdk/client-sso-oidc@3.569.0))(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -4166,8 +4166,8 @@ packages:
   remark@13.0.0:
     resolution: {integrity: sha512-HDz1+IKGtOyWN+QgBiAT0kn+2s6ovOxHyPAFGKVE81VSzJ+mq7RwHFledEvB5F1p4iJvOah/LOKdFuzvRnNLCA==}
 
-  renovate@37.340.5:
-    resolution: {integrity: sha512-Ar1f5JmofV4U6Jn6iPM2B2+dAkm6ico9MsHo9wZ/IMnAarnmcxpQi69p6SibWzvGWlvQaV1rs/tQauLQkONeCw==}
+  renovate@37.340.8:
+    resolution: {integrity: sha512-u+/o5fdDuW89qI9SJT7um0CS/vQ3MLC8H2+kCe7tKaWOg9EOjly58y/CnLaDSCnPVon3ZVvQ1CrGjfsc4B5sBw==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^9.0.0}
     hasBin: true
 
@@ -7673,7 +7673,7 @@ snapshots:
       '@types/treeify': 1.0.3
       '@yarnpkg/fslib': 3.0.2
       '@yarnpkg/libzip': 3.0.1(@yarnpkg/fslib@3.0.2)
-      '@yarnpkg/parsers': 3.0.0
+      '@yarnpkg/parsers': 3.0.2
       '@yarnpkg/shell': 4.0.2(typanion@3.14.0)
       camelcase: 5.3.1
       chalk: 3.0.0
@@ -10601,7 +10601,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@37.340.5(@aws-sdk/client-sso-oidc@3.569.0)(@aws-sdk/client-sts@3.565.0(@aws-sdk/client-sso-oidc@3.569.0))(encoding@0.1.13)(typanion@3.14.0):
+  renovate@37.340.8(@aws-sdk/client-sso-oidc@3.569.0)(@aws-sdk/client-sts@3.565.0(@aws-sdk/client-sso-oidc@3.569.0))(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.565.0(@aws-sdk/client-sso-oidc@3.569.0)(@aws-sdk/client-sts@3.565.0(@aws-sdk/client-sso-oidc@3.569.0))
       '@aws-sdk/client-ec2': 3.565.0(@aws-sdk/client-sso-oidc@3.569.0)(@aws-sdk/client-sts@3.565.0(@aws-sdk/client-sso-oidc@3.569.0))
