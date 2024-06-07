@@ -24,8 +24,8 @@ importers:
         specifier: ^8.2.1
         version: 8.2.1
       renovate:
-        specifier: ^37.395.0
-        version: 37.395.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(encoding@0.1.13)(typanion@3.14.0)
+        specifier: ^37.399.0
+        version: 37.399.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -4068,8 +4068,8 @@ packages:
   remark@13.0.0:
     resolution: {integrity: sha512-HDz1+IKGtOyWN+QgBiAT0kn+2s6ovOxHyPAFGKVE81VSzJ+mq7RwHFledEvB5F1p4iJvOah/LOKdFuzvRnNLCA==}
 
-  renovate@37.395.0:
-    resolution: {integrity: sha512-9PuZkOn9n40xbHStTI42aqlJVhykyPo3OKFecpACAFt2n3FDBP7DXi2329JHKNH7IQN1I7X9GwfbZmsdDzpRtw==}
+  renovate@37.399.0:
+    resolution: {integrity: sha512-uZNP5+/41wB0RFpgEq/Fdh5uXjKwpdQYHVcCANEu+lN94FqEFWCYvL3D8QFVMJgmJw1QvDcsIhLC2EpbSFlZGg==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^9.0.0}
     hasBin: true
 
@@ -5079,7 +5079,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.0
       '@smithy/util-retry': 3.0.0
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.2
+      tslib: 2.6.3
       uuid: 9.0.1
     transitivePeerDependencies:
       - aws-crt
@@ -5174,7 +5174,7 @@ snapshots:
       '@smithy/util-retry': 3.0.0
       '@smithy/util-utf8': 3.0.0
       '@smithy/util-waiter': 3.0.0
-      tslib: 2.6.2
+      tslib: 2.6.3
       uuid: 9.0.1
     transitivePeerDependencies:
       - aws-crt
@@ -5222,7 +5222,7 @@ snapshots:
       '@smithy/util-retry': 3.0.0
       '@smithy/util-utf8': 3.0.0
       '@smithy/util-waiter': 3.0.0
-      tslib: 2.6.2
+      tslib: 2.6.3
     transitivePeerDependencies:
       - aws-crt
 
@@ -5270,7 +5270,7 @@ snapshots:
       '@smithy/util-retry': 3.0.0
       '@smithy/util-utf8': 3.0.0
       '@smithy/util-waiter': 3.0.0
-      tslib: 2.6.2
+      tslib: 2.6.3
     transitivePeerDependencies:
       - aws-crt
 
@@ -5333,7 +5333,7 @@ snapshots:
       '@smithy/util-stream': 3.0.1
       '@smithy/util-utf8': 3.0.0
       '@smithy/util-waiter': 3.0.0
-      tslib: 2.6.2
+      tslib: 2.6.3
     transitivePeerDependencies:
       - aws-crt
 
@@ -5851,7 +5851,7 @@ snapshots:
   '@aws-sdk/credential-provider-sso@3.588.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))':
     dependencies:
       '@aws-sdk/client-sso': 3.588.0
-      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.1.0
       '@smithy/shared-ini-file-loader': 3.1.0
@@ -5864,7 +5864,7 @@ snapshots:
   '@aws-sdk/credential-provider-sso@3.592.0(@aws-sdk/client-sso-oidc@3.592.0)':
     dependencies:
       '@aws-sdk/client-sso': 3.592.0
-      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.1.0
       '@smithy/shared-ini-file-loader': 3.1.0
@@ -5907,7 +5907,7 @@ snapshots:
       '@smithy/credential-provider-imds': 3.1.0
       '@smithy/property-provider': 3.1.0
       '@smithy/types': 3.0.0
-      tslib: 2.6.2
+      tslib: 2.6.3
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -6050,7 +6050,7 @@ snapshots:
       '@smithy/types': 3.0.0
       tslib: 2.6.3
 
-  '@aws-sdk/token-providers@3.587.0(@aws-sdk/client-sso-oidc@3.592.0)':
+  '@aws-sdk/token-providers@3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))':
     dependencies:
       '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/types': 3.577.0
@@ -7546,7 +7546,7 @@ snapshots:
       tar: 6.2.1
       tinylogic: 2.0.0
       treeify: 1.1.0
-      tslib: 2.6.2
+      tslib: 2.6.3
       tunnel: 0.0.6
     transitivePeerDependencies:
       - typanion
@@ -7564,7 +7564,7 @@ snapshots:
   '@yarnpkg/parsers@3.0.2':
     dependencies:
       js-yaml: 3.14.1
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   '@yarnpkg/shell@4.0.2(typanion@3.14.0)':
     dependencies:
@@ -10441,7 +10441,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@37.395.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(encoding@0.1.13)(typanion@3.14.0):
+  renovate@37.399.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.588.0
       '@aws-sdk/client-ec2': 3.588.0
