@@ -64,8 +64,8 @@ importers:
         specifier: ^4.13.5
         version: 4.13.5(typescript@5.4.5)
       prettier:
-        specifier: ^3.3.1
-        version: 3.3.1
+        specifier: ^3.3.2
+        version: 3.3.2
       simple-git-hooks:
         specifier: ^2.11.1
         version: 2.11.1
@@ -3951,6 +3951,11 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
+  prettier@3.3.2:
+    resolution: {integrity: sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   proc-log@3.0.0:
     resolution: {integrity: sha512-++Vn7NS4Xf9NacaU9Xq3URUuqZETPsf8L4j5/ckhaRYsfPeRyzGw+iDjFhV/Jr3uNmTvvddEJFWh5R1gRgUH8A==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -5848,7 +5853,7 @@ snapshots:
   '@aws-sdk/credential-provider-sso@3.588.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))':
     dependencies:
       '@aws-sdk/client-sso': 3.588.0
-      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
+      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.1.0
       '@smithy/shared-ini-file-loader': 3.1.0
@@ -5861,7 +5866,7 @@ snapshots:
   '@aws-sdk/credential-provider-sso@3.592.0(@aws-sdk/client-sso-oidc@3.592.0)':
     dependencies:
       '@aws-sdk/client-sso': 3.592.0
-      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
+      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0)
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.1.0
       '@smithy/shared-ini-file-loader': 3.1.0
@@ -6047,7 +6052,7 @@ snapshots:
       '@smithy/types': 3.0.0
       tslib: 2.6.2
 
-  '@aws-sdk/token-providers@3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))':
+  '@aws-sdk/token-providers@3.587.0(@aws-sdk/client-sso-oidc@3.592.0)':
     dependencies:
       '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/types': 3.577.0
@@ -10288,6 +10293,8 @@ snapshots:
   prelude-ls@1.2.1: {}
 
   prettier@3.3.1: {}
+
+  prettier@3.3.2: {}
 
   proc-log@3.0.0:
     optional: true
