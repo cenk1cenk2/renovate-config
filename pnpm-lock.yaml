@@ -24,8 +24,8 @@ importers:
         specifier: ^8.2.1
         version: 8.2.1
       renovate:
-        specifier: ^37.404.1
-        version: 37.404.1(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(encoding@0.1.13)(typanion@3.14.0)
+        specifier: ^37.406.2
+        version: 37.406.2(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -4070,8 +4070,8 @@ packages:
   remark@13.0.0:
     resolution: {integrity: sha512-HDz1+IKGtOyWN+QgBiAT0kn+2s6ovOxHyPAFGKVE81VSzJ+mq7RwHFledEvB5F1p4iJvOah/LOKdFuzvRnNLCA==}
 
-  renovate@37.404.1:
-    resolution: {integrity: sha512-B8K+Sfh/6OiCRN9ahvwpXx71gxEiXTbatq58PGcuZfoFBvTNdZwlgwZflaNKpcKNBjiu9kYdhdGgNKxxjYg68A==}
+  renovate@37.406.2:
+    resolution: {integrity: sha512-rqQbnhP80yoO87Dfi7S1AWx2F5ESGQgG66+xQSmH0cx2USjRdZBV53+pyzUILsCXVdoAQqdefoY5BMOaNfi7Ww==}
     engines: {node: ^18.12.0 || >=20.0.0, pnpm: ^9.0.0}
     hasBin: true
 
@@ -5853,7 +5853,7 @@ snapshots:
   '@aws-sdk/credential-provider-sso@3.588.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))':
     dependencies:
       '@aws-sdk/client-sso': 3.588.0
-      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.1.0
       '@smithy/shared-ini-file-loader': 3.1.0
@@ -5866,7 +5866,7 @@ snapshots:
   '@aws-sdk/credential-provider-sso@3.592.0(@aws-sdk/client-sso-oidc@3.592.0)':
     dependencies:
       '@aws-sdk/client-sso': 3.592.0
-      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0)
+      '@aws-sdk/token-providers': 3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))
       '@aws-sdk/types': 3.577.0
       '@smithy/property-provider': 3.1.0
       '@smithy/shared-ini-file-loader': 3.1.0
@@ -6052,7 +6052,7 @@ snapshots:
       '@smithy/types': 3.0.0
       tslib: 2.6.3
 
-  '@aws-sdk/token-providers@3.587.0(@aws-sdk/client-sso-oidc@3.592.0)':
+  '@aws-sdk/token-providers@3.587.0(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))':
     dependencies:
       '@aws-sdk/client-sso-oidc': 3.592.0(@aws-sdk/client-sts@3.592.0)
       '@aws-sdk/types': 3.577.0
@@ -10437,7 +10437,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@37.404.1(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(encoding@0.1.13)(typanion@3.14.0):
+  renovate@37.406.2(@aws-sdk/client-sso-oidc@3.592.0(@aws-sdk/client-sts@3.592.0))(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.588.0
       '@aws-sdk/client-ec2': 3.588.0
