@@ -60,7 +60,7 @@
     "@swc/core": "^1.6.1",
     "@types/config": "^3.3.4",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.14.2",
+    "@types/node": "^20.14.3",
     "eslint": "^8.57.0",
     "execa": "^8.0.1",
     "globby": "^14.0.1",
