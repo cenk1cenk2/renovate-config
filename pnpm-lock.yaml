@@ -61,8 +61,8 @@ importers:
         specifier: ^15.2.7
         version: 15.2.7
       oclif:
-        specifier: ^4.13.8
-        version: 4.13.8
+        specifier: ^4.13.9
+        version: 4.13.9
       prettier:
         specifier: ^3.3.2
         version: 3.3.2
@@ -3871,8 +3871,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.13.8:
-    resolution: {integrity: sha512-A/e31wMSXgerxwqwb7MvPusPLGap9Hrgbmq6bBlVS+PnBvH/gxzDAMaUNI2Abcpi5KOVB/YyAaODtFHiIf3Szw==}
+  oclif@4.13.9:
+    resolution: {integrity: sha512-x4Z9h16vlpWrIf8xZwKwSEKfDPHF9XA/QR9MaJkLDjUQLFSU/qypbHl4YJ+yeUOlXCFgkAXCVwgfvtBrdsQNlQ==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -5069,7 +5069,7 @@ snapshots:
   '@aws-crypto/crc32@3.0.0':
     dependencies:
       '@aws-crypto/util': 3.0.0
-      '@aws-sdk/types': 3.577.0
+      '@aws-sdk/types': 3.598.0
       tslib: 1.14.1
 
   '@aws-crypto/crc32@5.2.0':
@@ -5081,7 +5081,7 @@ snapshots:
   '@aws-crypto/crc32c@3.0.0':
     dependencies:
       '@aws-crypto/util': 3.0.0
-      '@aws-sdk/types': 3.577.0
+      '@aws-sdk/types': 3.598.0
       tslib: 1.14.1
 
   '@aws-crypto/crc32c@5.2.0':
@@ -5099,7 +5099,7 @@ snapshots:
       '@aws-crypto/ie11-detection': 3.0.0
       '@aws-crypto/supports-web-crypto': 3.0.0
       '@aws-crypto/util': 3.0.0
-      '@aws-sdk/types': 3.577.0
+      '@aws-sdk/types': 3.598.0
       '@aws-sdk/util-locate-window': 3.568.0
       '@aws-sdk/util-utf8-browser': 3.259.0
       tslib: 1.14.1
@@ -5119,7 +5119,7 @@ snapshots:
       '@aws-crypto/sha256-js': 3.0.0
       '@aws-crypto/supports-web-crypto': 3.0.0
       '@aws-crypto/util': 3.0.0
-      '@aws-sdk/types': 3.577.0
+      '@aws-sdk/types': 3.598.0
       '@aws-sdk/util-locate-window': 3.568.0
       '@aws-sdk/util-utf8-browser': 3.259.0
       tslib: 1.14.1
@@ -5137,7 +5137,7 @@ snapshots:
   '@aws-crypto/sha256-js@3.0.0':
     dependencies:
       '@aws-crypto/util': 3.0.0
-      '@aws-sdk/types': 3.577.0
+      '@aws-sdk/types': 3.598.0
       tslib: 1.14.1
 
   '@aws-crypto/sha256-js@5.2.0':
@@ -5156,7 +5156,7 @@ snapshots:
 
   '@aws-crypto/util@3.0.0':
     dependencies:
-      '@aws-sdk/types': 3.577.0
+      '@aws-sdk/types': 3.598.0
       '@aws-sdk/util-utf8-browser': 3.259.0
       tslib: 1.14.1
 
@@ -10389,7 +10389,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.13.8:
+  oclif@4.13.9:
     dependencies:
       '@aws-sdk/client-cloudfront': 3.600.0
       '@aws-sdk/client-s3': 3.600.0
