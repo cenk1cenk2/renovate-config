@@ -34,8 +34,8 @@ importers:
         specifier: ^1.7.9
         version: 1.7.9(@types/node@20.14.8)(typescript@5.5.2)
       '@cenk1cenk2/eslint-config':
-        specifier: ^2.7.51
-        version: 2.7.51(eslint@8.57.0)(typescript@5.5.2)
+        specifier: ^2.7.52
+        version: 2.7.52(eslint@8.57.0)(typescript@5.5.2)
       '@swc/core':
         specifier: ^1.6.5
         version: 1.6.5
@@ -487,8 +487,8 @@ packages:
     resolution: {integrity: sha512-OjCHZHn6TD+cgsWahdZhlwUt+8zaEVyb5llh+Rprz1EGAbYOUmz7BUqD8C/sZbFayI788VhdNWjoihkQ7eO01A==}
     engines: {node: '>= 16'}
 
-  '@cenk1cenk2/eslint-config@2.7.51':
-    resolution: {integrity: sha512-GXEzdBJ/MPIxDAkU9bcaCGci9Lg2vJub109QCCoBXPoDRR3uOEY/LQwjm0HJDrbwyzpAWqV1XgBcrlf4ELUrtg==}
+  '@cenk1cenk2/eslint-config@2.7.52':
+    resolution: {integrity: sha512-BFkLGyY0On33c8eHmA5lej7FvTQhc7zzE0aoSAiMpxFgMHYAiyVrIE2QgRTOJcmgHhIeYqCzllnIbPOPAk6Zxw==}
     peerDependencies:
       '@nuxtjs/eslint-config': '>= 7'
       '@nuxtjs/eslint-config-typescript': '>= 7'
@@ -6502,7 +6502,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@cenk1cenk2/eslint-config@2.7.51(eslint@8.57.0)(typescript@5.5.2)':
+  '@cenk1cenk2/eslint-config@2.7.52(eslint@8.57.0)(typescript@5.5.2)':
     dependencies:
       '@typescript-eslint/eslint-plugin': 7.14.1(@typescript-eslint/parser@7.14.1(eslint@8.57.0)(typescript@5.5.2))(eslint@8.57.0)(typescript@5.5.2)
       '@typescript-eslint/parser': 7.14.1(eslint@8.57.0)(typescript@5.5.2)
