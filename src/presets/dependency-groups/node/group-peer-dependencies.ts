@@ -8,6 +8,7 @@ export default createPreset({
       matchPackagePatterns: [ '*' ],
       groupName: 'all peer dependency updates',
       groupSlug: 'all-peer',
+      enabled: false,
       ...NODE_GROUP_PEER,
       schedule: [ SCHEDULE.ANY ]
     }
