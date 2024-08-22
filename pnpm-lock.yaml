@@ -5479,7 +5479,7 @@ snapshots:
       '@aws-sdk/client-sso-oidc': 3.637.0(@aws-sdk/client-sts@3.637.0)
       '@aws-sdk/client-sts': 3.637.0
       '@aws-sdk/core': 3.635.0
-      '@aws-sdk/credential-provider-node': 3.637.0(@aws-sdk/client-sso-oidc@3.637.0(@aws-sdk/client-sts@3.637.0))(@aws-sdk/client-sts@3.637.0)
+      '@aws-sdk/credential-provider-node': 3.637.0(@aws-sdk/client-sso-oidc@3.637.0(@aws-sdk/client-sts@3.606.0))(@aws-sdk/client-sts@3.606.0)
       '@aws-sdk/middleware-bucket-endpoint': 3.620.0
       '@aws-sdk/middleware-expect-continue': 3.620.0
       '@aws-sdk/middleware-flexible-checksums': 3.620.0
