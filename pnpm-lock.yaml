@@ -37,7 +37,7 @@ importers:
         specifier: ^2.7.59
         version: 2.7.59(eslint@8.57.1)(typescript@5.6.3)
       '@swc/core':
-        specifier: ^1.7.39
+        specifier: ^1.7.42
         version: 1.7.42
       '@types/config':
         specifier: ^3.3.5
@@ -79,7 +79,7 @@ importers:
         specifier: ^0.0.14
         version: 0.0.14
       tsup:
-        specifier: ^8.3.4
+        specifier: ^8.3.5
         version: 8.3.5(@swc/core@1.7.42)(jiti@1.21.6)(typescript@5.6.3)(yaml@2.5.1)
       typescript:
         specifier: ^5.6.3
