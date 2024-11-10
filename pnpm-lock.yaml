@@ -61,8 +61,8 @@ importers:
         specifier: ^15.2.10
         version: 15.2.10
       oclif:
-        specifier: ^4.15.21
-        version: 4.15.21(@types/node@20.17.6)
+        specifier: ^4.15.22
+        version: 4.15.22(@types/node@20.17.6)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -3994,8 +3994,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.15.21:
-    resolution: {integrity: sha512-QECuwwAATeMgR7GLv9OUN+lf81ADxGfwd5aYWQofOQ5xk2OTsl1w3kdZNslYkSyTPxg/oS9Avk8ua2sYsL8bxg==}
+  oclif@4.15.22:
+    resolution: {integrity: sha512-jqtIiPVnLQlNL29Vs+5fFz+q6O5+ENGGngmTugRs+V/bAtZY84AxcdSHftm0hfs/TIULgZ3F5q6CtaylXPY3DA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -6061,7 +6061,7 @@ snapshots:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
 
-  '@aws-sdk/credential-provider-ini@3.687.0(@aws-sdk/client-sso-oidc@3.687.0(@aws-sdk/client-sts@3.687.0))(@aws-sdk/client-sts@3.687.0)':
+  '@aws-sdk/credential-provider-ini@3.687.0(@aws-sdk/client-sso-oidc@3.687.0(@aws-sdk/client-sts@3.606.0))(@aws-sdk/client-sts@3.687.0)':
     dependencies:
       '@aws-sdk/client-sts': 3.687.0
       '@aws-sdk/core': 3.686.0
@@ -6122,7 +6122,7 @@ snapshots:
     dependencies:
       '@aws-sdk/credential-provider-env': 3.686.0
       '@aws-sdk/credential-provider-http': 3.686.0
-      '@aws-sdk/credential-provider-ini': 3.687.0(@aws-sdk/client-sso-oidc@3.687.0(@aws-sdk/client-sts@3.687.0))(@aws-sdk/client-sts@3.687.0)
+      '@aws-sdk/credential-provider-ini': 3.687.0(@aws-sdk/client-sso-oidc@3.687.0(@aws-sdk/client-sts@3.606.0))(@aws-sdk/client-sts@3.687.0)
       '@aws-sdk/credential-provider-process': 3.686.0
       '@aws-sdk/credential-provider-sso': 3.687.0(@aws-sdk/client-sso-oidc@3.687.0(@aws-sdk/client-sts@3.606.0))
       '@aws-sdk/credential-provider-web-identity': 3.686.0(@aws-sdk/client-sts@3.687.0)
@@ -10669,7 +10669,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.15.21(@types/node@20.17.6):
+  oclif@4.15.22(@types/node@20.17.6):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.687.0
       '@aws-sdk/client-s3': 3.688.0
