@@ -56,8 +56,8 @@
   },
   "devDependencies": {
     "@cenk1cenk2/cz-cc": "^1.7.12",
-    "@cenk1cenk2/eslint-config": "^2.7.59",
-    "@swc/core": "^1.7.42",
+    "@cenk1cenk2/eslint-config": "^2.7.60",
+    "@swc/core": "^1.9.2",
     "@types/config": "^3.3.5",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.17.6",
