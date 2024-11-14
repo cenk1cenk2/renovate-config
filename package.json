@@ -46,9 +46,9 @@
     "default": "run"
   },
   "dependencies": {
-    "@cenk1cenk2/oclif-common": "^6.3.21",
+    "@cenk1cenk2/oclif-common": "^6.3.22",
     "@listr2/manager": "^2.0.13",
-    "@oclif/core": "^4.0.31",
+    "@oclif/core": "^4.0.32",
     "fs-extra": "^11.2.0",
     "listr2": "^8.2.5",
     "renovate": "^37.440.7",
