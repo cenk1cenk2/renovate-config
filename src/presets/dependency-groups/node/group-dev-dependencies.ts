@@ -1,4 +1,4 @@
-import { NODE_GROUP_BUILD, NODE_GROUP_DEV, NODE_GROUP_DOCS, SCHEDULE } from '@constants'
+import { NODE_GROUP_BUILD, NODE_GROUP_DEV, NODE_GROUP_DOCS, NODE_GROUP_PACKAGE_MANAGER, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({
@@ -26,6 +26,13 @@ export default createPreset({
       groupName: 'all docs dependency updates',
       groupSlug: 'all-docs',
       ...NODE_GROUP_DOCS,
+      schedule: [SCHEDULE.ANY]
+    },
+
+    {
+      groupName: 'all package manager',
+      groupSlug: 'all-package-manager',
+      ...NODE_GROUP_PACKAGE_MANAGER,
       schedule: [SCHEDULE.ANY]
     }
   ]

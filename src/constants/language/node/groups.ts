@@ -56,3 +56,12 @@ export const NODE_GROUP_ENGINES: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepTypes: ['engines']
 }
+
+export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
+  matchManagers: [Managers.NODE],
+  matchDepTypes: ['packageManager'],
+  rangeStrategy: 'widen',
+  labels: ['renovate', 'engines', 'automerge'],
+  commitMessageSuffix: '[skip ci]',
+  autoMerge: true
+}
