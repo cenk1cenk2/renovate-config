@@ -1,4 +1,4 @@
-import { RenovateConfig } from 'renovate/dist/config/types.js'
+import type { RenovateConfig } from 'renovate/dist/config/types.js'
 
 export type Presets = Record<Preset, Promise<RenovateConfig>>
 

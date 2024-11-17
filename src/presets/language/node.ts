@@ -1,10 +1,9 @@
+import { Managers } from '@constants'
 import { createPreset, createScopes } from '@lib'
 import { Preset } from '@presets'
 
-import { Managers } from '@constants'
-
 export default createPreset({
-  enabledManagers: [ Managers.NODE ],
+  enabledManagers: [Managers.NODE],
   extends: createScopes(
     Preset.NODE_NO_RING,
     Preset.NODE_SLOW_RING,

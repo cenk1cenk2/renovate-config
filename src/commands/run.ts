@@ -1,27 +1,18 @@
-import { PRESETS, Preset, Presets } from '@presets'
+import type { Listr } from 'listr2'
 import { join } from 'path'
 
-import {
-  CliModuleOptions,
-  Command,
-  ConfigService,
-  DynamicModule,
-  JsonParser,
-  LockerModule,
-  LockerService,
-  MergeStrategy,
-  ParserService,
-  RegisterHook,
-  ShouldRunBeforeHook
-} from '@cenk1cenk2/oclif-common'
+import type { CliModuleOptions, DynamicModule, RegisterHook, ShouldRunBeforeHook } from '@cenk1cenk2/oclif-common'
+import { Command, ConfigService, JsonParser, LockerModule, LockerService, MergeStrategy, ParserService } from '@cenk1cenk2/oclif-common'
 import { File } from '@constants'
+import { PRESETS, Preset } from '@presets'
+import type { Presets } from '@presets'
 
 export default class Run extends Command<typeof Run, any> implements ShouldRunBeforeHook, RegisterHook {
   private cs: ConfigService
   private parser: ParserService
   private locker: LockerService<Presets>
 
-  public register (cli: DynamicModule, options: CliModuleOptions): DynamicModule {
+  public register(cli: DynamicModule, options: CliModuleOptions): DynamicModule {
     cli.imports.push(
       LockerModule.forFeature({
         file: join(options.config.oclif.root, File.OUTPUT),
@@ -32,7 +23,7 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
     return cli
   }
 
-  public async shouldRunBefore (): Promise<void> {
+  public async shouldRunBefore(): Promise<void> {
     this.cs = this.app.get(ConfigService)
     this.parser = this.app.get(ParserService)
     this.locker = this.app.get(LockerService)
@@ -43,14 +34,14 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
     }
   }
 
-  public async run (): Promise<void> {
+  public async run(): Promise<void> {
     this.tasks.add([
       {
-        task: (_, task) =>
+        task: (_, task): Listr =>
           task.newListr(
             Object.values(Preset).map((name) => {
               return {
-                task: async (): Promise<void> => {
+                task: async(): Promise<void> => {
                   this.logger.info('Processing preset: %s', name)
                   this.locker.addLock<Partial<Presets>>({ data: { [name]: await PRESETS[name] }, merge: MergeStrategy.EXTEND })
                 }
@@ -64,13 +55,13 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
       },
       {
         enabled: (): boolean => this.cs.isDebug,
-        task: async (): Promise<void> => {
+        task: async(): Promise<void> => {
           this.logger.warn('Debug mode does not output to file: %s -> %o', File.OUTPUT, await this.locker.applyAll({} as Presets))
         }
       },
       {
         skip: (): boolean => this.cs.isDebug,
-        task: async (): Promise<void> => {
+        task: async(): Promise<void> => {
           this.logger.info('Writing preset: %s', File.OUTPUT)
           await this.locker.tryRemove()
           await this.locker.all()

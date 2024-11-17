@@ -1,1 +1,1 @@
-export const ASSIGNEES = [ 'cenk1cenk2' ]
+export const ASSIGNEES = ['cenk1cenk2']

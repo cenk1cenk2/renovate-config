@@ -1,6 +1,5 @@
-import { createPreset } from '@lib'
-
 import { GO_FAST_RING_PACKAGES, GO_GROUP_MINOR, RingSlug, SCHEDULE } from '@constants'
+import { createPreset } from '@lib'
 
 export default createPreset({
   packageRules: [
@@ -9,7 +8,7 @@ export default createPreset({
       groupName: 'all fast ring minor dependencies',
       groupSlug: RingSlug.FAST_RING,
       ...GO_GROUP_MINOR,
-      schedule: [ SCHEDULE.ANY ]
+      schedule: [SCHEDULE.ANY]
     }
   ]
 })

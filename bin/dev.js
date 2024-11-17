@@ -1,4 +1,5 @@
 #!/usr/bin/env -S node --loader ts-node/esm --no-warnings=ExperimentalWarning
+/* eslint-disable no-underscore-dangle */
 
 import oclif from '@oclif/core'
 import { join, dirname } from 'path'

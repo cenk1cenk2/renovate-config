@@ -1,5 +1,5 @@
-import { RenovateConfig } from 'renovate/dist/config/types.js'
+import type { RenovateConfig } from 'renovate/dist/config/types.js'
 
-export function createPreset (config: RenovateConfig): RenovateConfig {
+export function createPreset(config: RenovateConfig): RenovateConfig {
   return config
 }
