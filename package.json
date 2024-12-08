@@ -62,7 +62,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.10.1",
     "eslint": "9.16.0",
-    "execa": "^9.5.1",
+    "execa": "^9.5.2",
     "globby": "^14.0.2",
     "lint-staged": "^15.2.10",
     "oclif": "^4.16.0",
