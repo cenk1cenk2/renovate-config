@@ -61,8 +61,8 @@ importers:
         specifier: ^15.2.10
         version: 15.2.10
       oclif:
-        specifier: ^4.16.1
-        version: 4.16.1(@types/node@22.10.1)
+        specifier: ^4.16.2
+        version: 4.16.2(@types/node@22.10.1)
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -814,6 +814,10 @@ packages:
 
   '@oclif/core@4.0.34':
     resolution: {integrity: sha512-jHww7lIqyifamynDSjDNNjNOwFTQdKYeOSYaxUaoWhqXnRwacZ+pfUN4Y0L9lqSN4MQtlWM9mwnBD7FvlT9kPw==}
+    engines: {node: '>=18.0.0'}
+
+  '@oclif/core@4.0.36':
+    resolution: {integrity: sha512-Dk0bK2Abl/AJ3Fn6ountX037lbXGJY/xcTnBJs2SKDqex9wMcgkbnkKd6xXC/zJnRlfA+jE+niC3FnbxgTRcHg==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-help@6.2.18':
@@ -2290,6 +2294,15 @@ packages:
 
   debug@4.3.7:
     resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
+  debug@4.4.0:
+    resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -3952,8 +3965,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.16.1:
-    resolution: {integrity: sha512-cD+CtdyPMG6Ti/V71sYS26A2Rk8D2MisJSFMVUgipZXijQzRyqlxbQjcZUHnnbJM9YiNU9r1QbtF7WRXYxAdpA==}
+  oclif@4.16.2:
+    resolution: {integrity: sha512-nJbvmjiPJ55TS+AKYLwSD8EneqFrltaj6wlaJBKChs1pw6nWHSc1p1vJTcvIKFOmexwSQLTP/ofuHCl57Bg1ZA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -6683,14 +6696,35 @@ snapshots:
       wordwrap: 1.0.0
       wrap-ansi: 7.0.0
 
+  '@oclif/core@4.0.36':
+    dependencies:
+      ansi-escapes: 4.3.2
+      ansis: 3.3.2
+      clean-stack: 3.0.1
+      cli-spinners: 2.9.2
+      debug: 4.4.0(supports-color@8.1.1)
+      ejs: 3.1.10
+      get-package-type: 0.1.0
+      globby: 11.1.0
+      indent-string: 4.0.0
+      is-wsl: 2.2.0
+      lilconfig: 3.1.3
+      minimatch: 9.0.5
+      semver: 7.6.3
+      string-width: 4.2.3
+      supports-color: 8.1.1
+      widest-line: 3.1.0
+      wordwrap: 1.0.0
+      wrap-ansi: 7.0.0
+
   '@oclif/plugin-help@6.2.18':
     dependencies:
-      '@oclif/core': 4.0.34
+      '@oclif/core': 4.0.36
 
   '@oclif/plugin-not-found@3.2.29(@types/node@22.10.1)':
     dependencies:
       '@inquirer/prompts': 7.1.0(@types/node@22.10.1)
-      '@oclif/core': 4.0.34
+      '@oclif/core': 4.0.36
       ansis: 3.3.2
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
@@ -6698,9 +6732,9 @@ snapshots:
 
   '@oclif/plugin-warn-if-update-available@3.1.24':
     dependencies:
-      '@oclif/core': 4.0.34
+      '@oclif/core': 4.0.36
       ansis: 3.3.2
-      debug: 4.3.7(supports-color@8.1.1)
+      debug: 4.4.0(supports-color@8.1.1)
       http-call: 5.3.0
       lodash: 4.17.21
       registry-auth-token: 5.0.3
@@ -8406,6 +8440,12 @@ snapshots:
     optionalDependencies:
       supports-color: 8.1.1
 
+  debug@4.4.0(supports-color@8.1.1):
+    dependencies:
+      ms: 2.1.3
+    optionalDependencies:
+      supports-color: 8.1.1
+
   decamelize-keys@1.1.1:
     dependencies:
       decamelize: 1.2.0
@@ -9341,7 +9381,7 @@ snapshots:
   http-call@5.3.0:
     dependencies:
       content-type: 1.0.5
-      debug: 4.3.7(supports-color@8.1.1)
+      debug: 4.4.0(supports-color@8.1.1)
       is-retry-allowed: 1.2.0
       is-stream: 2.0.1
       parse-json: 4.0.0
@@ -10281,21 +10321,21 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.16.1(@types/node@22.10.1):
+  oclif@4.16.2(@types/node@22.10.1):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.699.0
       '@aws-sdk/client-s3': 3.705.0
       '@inquirer/confirm': 3.2.0
       '@inquirer/input': 2.3.0
       '@inquirer/select': 2.5.0
-      '@oclif/core': 4.0.34
+      '@oclif/core': 4.0.36
       '@oclif/plugin-help': 6.2.18
       '@oclif/plugin-not-found': 3.2.29(@types/node@22.10.1)
       '@oclif/plugin-warn-if-update-available': 3.1.24
       async-retry: 1.3.3
       chalk: 4.1.2
       change-case: 4.1.2
-      debug: 4.3.7(supports-color@8.1.1)
+      debug: 4.4.0(supports-color@8.1.1)
       ejs: 3.1.10
       find-yarn-workspace-root: 2.0.0
       fs-extra: 8.1.0
