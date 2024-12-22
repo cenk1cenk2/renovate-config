@@ -61,8 +61,8 @@ importers:
         specifier: ^15.2.11
         version: 15.2.11
       oclif:
-        specifier: ^4.17.2
-        version: 4.17.2(@types/node@22.10.2)
+        specifier: ^4.17.3
+        version: 4.17.3(@types/node@22.10.2)
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -4271,8 +4271,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.17.2:
-    resolution: {integrity: sha512-CEg56Z2o2k+PZqMIbo0qUYrXsBl18Fj7eWCPCU6Kn1dxrkMh7/8H0Ch1GSXAOGGshf7iT4FOtzLe/3iSEr2JSw==}
+  oclif@4.17.3:
+    resolution: {integrity: sha512-J4F7gykHSSJHvZ5p6YnSJUjRKZkWKY4shPp6ag26FbJdooxuxBrLL5x9s4UFfWjEhZUWIU+eKHpsa8toImDDeg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -7441,7 +7441,7 @@ snapshots:
   '@oclif/core@4.2.0':
     dependencies:
       ansi-escapes: 4.3.2
-      ansis: 3.3.2
+      ansis: 3.4.0
       clean-stack: 3.0.1
       cli-spinners: 2.9.2
       debug: 4.4.0(supports-color@8.1.1)
@@ -7467,7 +7467,7 @@ snapshots:
     dependencies:
       '@inquirer/prompts': 7.2.0(@types/node@22.10.2)
       '@oclif/core': 4.2.0
-      ansis: 3.3.2
+      ansis: 3.4.0
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
       - '@types/node'
@@ -11381,7 +11381,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.17.2(@types/node@22.10.2):
+  oclif@4.17.3(@types/node@22.10.2):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.699.0
       '@aws-sdk/client-s3': 3.712.0
