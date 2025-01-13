@@ -61,8 +61,8 @@ importers:
         specifier: ^15.3.0
         version: 15.3.0
       oclif:
-        specifier: ^4.17.10
-        version: 4.17.10(@types/node@22.10.5)
+        specifier: ^4.17.11
+        version: 4.17.11(@types/node@22.10.5)
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -1880,10 +1880,6 @@ packages:
   ansi-styles@6.2.1:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
-
-  ansis@3.5.2:
-    resolution: {integrity: sha512-5uGcUZRbORJeEppVdWfZOSybTMz+Ou+84HepgK081Yk5+pPMMzWf/XGxiAT6bfBqCghRB4MwBtYn0CHqINRVag==}
-    engines: {node: '>=16'}
 
   ansis@3.8.1:
     resolution: {integrity: sha512-gzGUTqsBugYCegbhldz7Ox9NrizAlCSAP5Y6rRD9agN76osoyhKznznmaB4G5BAVvrqwksPOGdnYh1Q000cUqw==}
@@ -4027,8 +4023,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.17.10:
-    resolution: {integrity: sha512-QGqZi2+nA7Y2ZFQUBMsw2XODxzSlAp/tQCfnZWzSQpLpEEZUpN/RUzse7ekr4ZE6pa2bYJU4tWNX0mM8R6YFqQ==}
+  oclif@4.17.11:
+    resolution: {integrity: sha512-0Ag/sFUvRvvf3bA6XKW800PyNeBEOA7S7yVhSq9AdJCKtXAlg4nUq8/FdCsedNy05kjUxfcNXYlGwacZFtzIVw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -7056,7 +7052,7 @@ snapshots:
     dependencies:
       '@inquirer/prompts': 7.2.1(@types/node@22.10.5)
       '@oclif/core': 4.2.2
-      ansis: 3.5.2
+      ansis: 3.8.1
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
       - '@types/node'
@@ -7064,7 +7060,7 @@ snapshots:
   '@oclif/plugin-warn-if-update-available@3.1.29':
     dependencies:
       '@oclif/core': 4.2.2
-      ansis: 3.5.2
+      ansis: 3.8.1
       debug: 4.4.0(supports-color@8.1.1)
       http-call: 5.3.0
       lodash: 4.17.21
@@ -8270,8 +8266,6 @@ snapshots:
       color-convert: 2.0.1
 
   ansi-styles@6.2.1: {}
-
-  ansis@3.5.2: {}
 
   ansis@3.8.1: {}
 
@@ -10684,7 +10678,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.17.10(@types/node@22.10.5):
+  oclif@4.17.11(@types/node@22.10.5):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.716.0
       '@aws-sdk/client-s3': 3.722.0
