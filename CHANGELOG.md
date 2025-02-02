@@ -1,3 +1,10 @@
+## [3.1.28](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.1.27...v3.1.28) (2025-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to ^39.156.0 ([e0d6c5c](https://gitlab.kilic.dev/renovate/renovate-config/commit/e0d6c5cf3dbc88368ec4fa1a4693bc8371d8741c))
+
 ## [3.1.27](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.1.26...v3.1.27) (2025-02-01)
 
 
