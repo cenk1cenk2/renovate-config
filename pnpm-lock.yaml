@@ -61,8 +61,8 @@ importers:
         specifier: ^15.4.3
         version: 15.4.3
       oclif:
-        specifier: ^4.17.30
-        version: 4.17.30(@types/node@22.13.5)
+        specifier: ^4.17.31
+        version: 4.17.31(@types/node@22.13.5)
       prettier:
         specifier: ^3.5.2
         version: 3.5.2
@@ -879,6 +879,10 @@ packages:
 
   '@oclif/core@4.2.6':
     resolution: {integrity: sha512-agk1Tlm7qMemWx+qq5aNgkYwX2JCkoVP4M0ruFveJrarmdUPbKZTMW1j/eg8lNKZh1sp68ytZyKhYXYEfRPcww==}
+    engines: {node: '>=18.0.0'}
+
+  '@oclif/core@4.2.8':
+    resolution: {integrity: sha512-OWv4Va6bERxIhrYcnUGzyhGRqktc64lJO6cZ3UwkzJDpfR8ZrbCxRfKRBBah1i8kzUlOAeAXnpbMBMah3skKwA==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-help@6.2.25':
@@ -1963,6 +1967,10 @@ packages:
   ansis@3.10.0:
     resolution: {integrity: sha512-hxDKLYT7hy3Y4sF3HxI926A3urzPxi73mZBB629m9bCVF+NyKNxbwCqqm+C/YrGPtxLwnl6d8/ZASCsz6SyvJA==}
     engines: {node: '>=16'}
+
+  ansis@3.16.0:
+    resolution: {integrity: sha512-sU7d/tfZiYrsIAXbdL/CNZld5bCkruzwT5KmqmadCJYxuLxHAOBjidxD5+iLmN/6xEfjcQq1l7OpsiCBlc4LzA==}
+    engines: {node: '>=14'}
 
   any-promise@1.3.0:
     resolution: {integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==}
@@ -4104,8 +4112,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.17.30:
-    resolution: {integrity: sha512-EFsvSWfwZcEimh1B2LwsFKyMYOwGRdRfbheXNnIfWDvk46O3I6n+o66p/duobr6tZ4G+CNLVwSP0kQhhQZngQQ==}
+  oclif@4.17.31:
+    resolution: {integrity: sha512-V58OPd6f9GBndCGC4jAEFEl3zJitsjEns+B/GabpqvJ2ZEIj6swOzsJB4U+quSKVizDtVywJ1hCwgYygOjo4Eg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -7037,14 +7045,35 @@ snapshots:
       wordwrap: 1.0.0
       wrap-ansi: 7.0.0
 
+  '@oclif/core@4.2.8':
+    dependencies:
+      ansi-escapes: 4.3.2
+      ansis: 3.16.0
+      clean-stack: 3.0.1
+      cli-spinners: 2.9.2
+      debug: 4.4.0(supports-color@8.1.1)
+      ejs: 3.1.10
+      get-package-type: 0.1.0
+      globby: 11.1.0
+      indent-string: 4.0.0
+      is-wsl: 2.2.0
+      lilconfig: 3.1.3
+      minimatch: 9.0.5
+      semver: 7.7.0
+      string-width: 4.2.3
+      supports-color: 8.1.1
+      widest-line: 3.1.0
+      wordwrap: 1.0.0
+      wrap-ansi: 7.0.0
+
   '@oclif/plugin-help@6.2.25':
     dependencies:
-      '@oclif/core': 4.2.6
+      '@oclif/core': 4.2.8
 
   '@oclif/plugin-not-found@3.2.33(@types/node@22.13.5)':
     dependencies:
       '@inquirer/prompts': 7.2.1(@types/node@22.13.5)
-      '@oclif/core': 4.2.6
+      '@oclif/core': 4.2.8
       ansis: 3.10.0
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
@@ -7052,7 +7081,7 @@ snapshots:
 
   '@oclif/plugin-warn-if-update-available@3.1.31':
     dependencies:
-      '@oclif/core': 4.2.6
+      '@oclif/core': 4.2.8
       ansis: 3.10.0
       debug: 4.4.0(supports-color@8.1.1)
       http-call: 5.3.0
@@ -8360,6 +8389,8 @@ snapshots:
   ansi-styles@6.2.1: {}
 
   ansis@3.10.0: {}
+
+  ansis@3.16.0: {}
 
   any-promise@1.3.0: {}
 
@@ -10784,14 +10815,14 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.17.30(@types/node@22.13.5):
+  oclif@4.17.31(@types/node@22.13.5):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.749.0
       '@aws-sdk/client-s3': 3.749.0
       '@inquirer/confirm': 3.2.0
       '@inquirer/input': 2.3.0
       '@inquirer/select': 2.5.0
-      '@oclif/core': 4.2.6
+      '@oclif/core': 4.2.8
       '@oclif/plugin-help': 6.2.25
       '@oclif/plugin-not-found': 3.2.33(@types/node@22.13.5)
       '@oclif/plugin-warn-if-update-available': 3.1.31
