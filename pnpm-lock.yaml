@@ -61,8 +61,8 @@ importers:
         specifier: ^15.5.0
         version: 15.5.0
       oclif:
-        specifier: ^4.17.35
-        version: 4.17.35(@types/node@22.13.10)
+        specifier: ^4.17.36
+        version: 4.17.36(@types/node@22.13.10)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -113,8 +113,8 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-sdk/client-cloudfront@3.758.0':
-    resolution: {integrity: sha512-kAIMe+cwH+ZuK/rM3L8NdM8rS5cnCoFTgCbjF4GVjDnZJ8JlNm3oRIKAK55mmgtGLuqEz1h6QVLrV01/fNvYaA==}
+  '@aws-sdk/client-cloudfront@3.764.0':
+    resolution: {integrity: sha512-nXKaM9/T9viu5IXcPueTjf10VHOMX4J1FHWITDdk0s/vY2YZidGAZmeHLA0QXM0SxOQw/xga4d4k5HKdup2DSw==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/client-codecommit@3.738.0':
@@ -780,10 +780,6 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
-
-  '@inquirer/figures@1.0.10':
-    resolution: {integrity: sha512-Ey6176gZmeqZuY/W/nZiUyvmb1/qInjcpiZjXWi6nON+nxJpD1bxtSoBxNliGISae32n6OwbY+TSXPZ1CfS4bw==}
-    engines: {node: '>=18'}
 
   '@inquirer/figures@1.0.11':
     resolution: {integrity: sha512-eOg92lvrn/aRUqbxRyvpEWnrvRuTYRifixHkYVpJiygTgVSBIHDqLh0SrMQXkafvULg3ck11V7xvR+zcgvpHFw==}
@@ -4137,8 +4133,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.17.35:
-    resolution: {integrity: sha512-OhJONqakHilBEBYmaG1UchO+udb5qK3Ut6I91++MiIJYzWFtSh/HYJbBZgQPbPimpG8qjvYis8xJjPEB7SVBuQ==}
+  oclif@4.17.36:
+    resolution: {integrity: sha512-lvgnJbj0mV50It2FE7cP5u6L6oqCmBjgD4Fxk0GGDz0kPHKl5jRhQ2LOkwTcepT3r/h6uY65Jiu8287W/o/NPw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -5445,7 +5441,7 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-cloudfront@3.758.0':
+  '@aws-sdk/client-cloudfront@3.764.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
@@ -7036,7 +7032,7 @@ snapshots:
 
   '@inquirer/core@9.2.1':
     dependencies:
-      '@inquirer/figures': 1.0.10
+      '@inquirer/figures': 1.0.11
       '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
       '@types/node': 22.13.10
@@ -7064,8 +7060,6 @@ snapshots:
       yoctocolors-cjs: 2.1.2
     optionalDependencies:
       '@types/node': 22.13.10
-
-  '@inquirer/figures@1.0.10': {}
 
   '@inquirer/figures@1.0.11': {}
 
@@ -7131,7 +7125,7 @@ snapshots:
   '@inquirer/select@2.5.0':
     dependencies:
       '@inquirer/core': 9.2.1
-      '@inquirer/figures': 1.0.10
+      '@inquirer/figures': 1.0.11
       '@inquirer/type': 1.5.5
       ansi-escapes: 4.3.2
       yoctocolors-cjs: 2.1.2
@@ -7311,7 +7305,7 @@ snapshots:
   '@oclif/plugin-warn-if-update-available@3.1.31':
     dependencies:
       '@oclif/core': 4.2.8
-      ansis: 3.16.0
+      ansis: 3.17.0
       debug: 4.4.0(supports-color@8.1.1)
       http-call: 5.3.0
       lodash: 4.17.21
@@ -10905,9 +10899,9 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.17.35(@types/node@22.13.10):
+  oclif@4.17.36(@types/node@22.13.10):
     dependencies:
-      '@aws-sdk/client-cloudfront': 3.758.0
+      '@aws-sdk/client-cloudfront': 3.764.0
       '@aws-sdk/client-s3': 3.749.0
       '@inquirer/confirm': 3.2.0
       '@inquirer/input': 2.3.0
