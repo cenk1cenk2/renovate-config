@@ -61,8 +61,8 @@ importers:
         specifier: ^15.5.0
         version: 15.5.0
       oclif:
-        specifier: ^4.17.36
-        version: 4.17.36(@types/node@22.13.10)
+        specifier: ^4.17.37
+        version: 4.17.37(@types/node@22.13.10)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -4133,8 +4133,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.17.36:
-    resolution: {integrity: sha512-lvgnJbj0mV50It2FE7cP5u6L6oqCmBjgD4Fxk0GGDz0kPHKl5jRhQ2LOkwTcepT3r/h6uY65Jiu8287W/o/NPw==}
+  oclif@4.17.37:
+    resolution: {integrity: sha512-sB71e7euBGmoMgIJ9UgM49QdpMVTqp26be31ZLfO1iV6MetCR7XLL2aAL+32NuucaCbTVdH9YkgbcU9xJMfZfA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -4754,8 +4754,8 @@ packages:
   sort-object-keys@1.1.3:
     resolution: {integrity: sha512-855pvK+VkU7PaKYPc+Jjnmt4EzejQHyhhF33q31qG8x7maDzkeFhAAThdCYay11CISO+qAMwjOBP+fPZe0IPyg==}
 
-  sort-package-json@2.14.0:
-    resolution: {integrity: sha512-xBRdmMjFB/KW3l51mP31dhlaiFmqkHLfWTfZAno8prb/wbDxwBPWFpxB16GZbiPbYr3wL41H8Kx22QIDWRe8WQ==}
+  sort-package-json@2.15.1:
+    resolution: {integrity: sha512-9x9+o8krTT2saA9liI4BljNjwAbvUnWf11Wq+i/iZt8nl2UGYnf3TH5uBydE7VALmP7AGwlfszuEeL8BDyb0YA==}
     hasBin: true
 
   source-map-support@0.5.21:
@@ -10899,7 +10899,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.17.36(@types/node@22.13.10):
+  oclif@4.17.37(@types/node@22.13.10):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.764.0
       '@aws-sdk/client-s3': 3.749.0
@@ -10922,7 +10922,7 @@ snapshots:
       lodash: 4.17.21
       normalize-package-data: 6.0.2
       semver: 7.7.1
-      sort-package-json: 2.14.0
+      sort-package-json: 2.15.1
       tiny-jsonc: 1.0.1
       validate-npm-package-name: 5.0.1
     transitivePeerDependencies:
@@ -11721,7 +11721,7 @@ snapshots:
 
   sort-object-keys@1.1.3: {}
 
-  sort-package-json@2.14.0:
+  sort-package-json@2.15.1:
     dependencies:
       detect-indent: 7.0.1
       detect-newline: 4.0.1
