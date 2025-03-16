@@ -65,7 +65,7 @@
     "execa": "^9.5.2",
     "globby": "^14.1.0",
     "lint-staged": "^15.5.0",
-    "oclif": "^4.17.35",
+    "oclif": "^4.17.36",
     "prettier": "^3.5.3",
     "simple-git-hooks": "^2.11.1",
     "ts-node": "^10.9.2",
