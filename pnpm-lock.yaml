@@ -61,8 +61,8 @@ importers:
         specifier: ^15.5.0
         version: 15.5.0
       oclif:
-        specifier: ^4.17.37
-        version: 4.17.37(@types/node@22.13.11)
+        specifier: ^4.17.38
+        version: 4.17.38(@types/node@22.13.11)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -1049,8 +1049,8 @@ packages:
     resolution: {integrity: sha512-fAqcXgqkUm4v5FYy7qWP4w1HaOlVSVJveah+yVTo5Nm5kTiXhmD5mQQ7+knGeBaStyrtQy6WardoC2xSic9rlQ==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-help@6.2.25':
-    resolution: {integrity: sha512-1WPSzSvlYaIFlGGKbefldpx49uTAtsOFuHTbjeBuzSR/MLmooQGHzluvwm2W5/vyoi4AGG+PdiDJFH/b+h+BGA==}
+  '@oclif/plugin-help@6.2.27':
+    resolution: {integrity: sha512-RWSWtCFVObRmCwgxVOye3lsYbPHTnB7G4He5LEAg2tf600Sil5yXEOL/ULx1TqL/XOQxKqRvmLn/rLQOMT85YA==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-not-found@3.2.47':
@@ -4189,8 +4189,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.17.37:
-    resolution: {integrity: sha512-sB71e7euBGmoMgIJ9UgM49QdpMVTqp26be31ZLfO1iV6MetCR7XLL2aAL+32NuucaCbTVdH9YkgbcU9xJMfZfA==}
+  oclif@4.17.38:
+    resolution: {integrity: sha512-jNJtVHOWjO51fNbEJxFhxaaDftN3/Kjy1T0JD+W7HnLArIPCauhSEKrvoob5VtaU7pQ58N1AlQpdpUsYvt9y6Q==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -7607,7 +7607,7 @@ snapshots:
       wordwrap: 1.0.0
       wrap-ansi: 7.0.0
 
-  '@oclif/plugin-help@6.2.25':
+  '@oclif/plugin-help@6.2.27':
     dependencies:
       '@oclif/core': 4.2.10
 
@@ -11211,7 +11211,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.17.37(@types/node@22.13.11):
+  oclif@4.17.38(@types/node@22.13.11):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.764.0
       '@aws-sdk/client-s3': 3.749.0
@@ -11219,7 +11219,7 @@ snapshots:
       '@inquirer/input': 2.3.0
       '@inquirer/select': 2.5.0
       '@oclif/core': 4.2.10
-      '@oclif/plugin-help': 6.2.25
+      '@oclif/plugin-help': 6.2.27
       '@oclif/plugin-not-found': 3.2.47(@types/node@22.13.11)
       '@oclif/plugin-warn-if-update-available': 3.1.31
       async-retry: 1.3.3
