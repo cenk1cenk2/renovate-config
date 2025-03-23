@@ -61,8 +61,8 @@ importers:
         specifier: ^15.5.0
         version: 15.5.0
       oclif:
-        specifier: ^4.17.39
-        version: 4.17.39(@types/node@22.13.11)
+        specifier: ^4.17.40
+        version: 4.17.40(@types/node@22.13.11)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -4164,8 +4164,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.17.39:
-    resolution: {integrity: sha512-J5RwVQ85Qdw0GDTN3o3QpThHAh3fnsywHJsFsBLWDZqw6Z7Sqh0Z2HWis+a68HhzWF927PfvHovzIXXnaJCXIQ==}
+  oclif@4.17.40:
+    resolution: {integrity: sha512-lS7tsZD0KJaKpwZe/7uC3awNRfFTJEKMAPlu18S0KfJWtdPf9sn4eIcwo+Vyd13rfmpHNx82rP+PtUUJ2n1nEw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -4960,8 +4960,8 @@ packages:
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
-  tiny-jsonc@1.0.1:
-    resolution: {integrity: sha512-ik6BCxzva9DoiEfDX/li0L2cWKPPENYvixUprFdl3YPi4bZZUhDnNI9YUkacrv+uIG90dnxR5mNqaoD6UhD6Bw==}
+  tiny-jsonc@1.0.2:
+    resolution: {integrity: sha512-f5QDAfLq6zIVSyCZQZhhyl0QS6MvAyTxgz4X4x3+EoCktNWEYJ6PeoEA97fyb98njpBNNi88ybpD7m+BDFXaCw==}
 
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
@@ -11131,7 +11131,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.17.39(@types/node@22.13.11):
+  oclif@4.17.40(@types/node@22.13.11):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.764.0
       '@aws-sdk/client-s3': 3.772.0
@@ -11155,7 +11155,7 @@ snapshots:
       normalize-package-data: 6.0.2
       semver: 7.7.1
       sort-package-json: 2.15.1
-      tiny-jsonc: 1.0.1
+      tiny-jsonc: 1.0.2
       validate-npm-package-name: 5.0.1
     transitivePeerDependencies:
       - '@types/node'
@@ -12168,7 +12168,7 @@ snapshots:
 
   through@2.3.8: {}
 
-  tiny-jsonc@1.0.1: {}
+  tiny-jsonc@1.0.2: {}
 
   tinyexec@0.3.2: {}
 
