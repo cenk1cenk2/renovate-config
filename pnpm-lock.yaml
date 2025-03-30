@@ -61,8 +61,8 @@ importers:
         specifier: ^15.5.0
         version: 15.5.0
       oclif:
-        specifier: ^4.17.41
-        version: 4.17.41(@types/node@22.13.14)
+        specifier: ^4.17.42
+        version: 4.17.42(@types/node@22.13.14)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -1028,8 +1028,8 @@ packages:
     resolution: {integrity: sha512-RWSWtCFVObRmCwgxVOye3lsYbPHTnB7G4He5LEAg2tf600Sil5yXEOL/ULx1TqL/XOQxKqRvmLn/rLQOMT85YA==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-not-found@3.2.47':
-    resolution: {integrity: sha512-7Zk10TQhPOd5kkS4wiLDBqtR2MRM8FBiSrZDmSsgME1kXt4eYQLAFc9c5WJzkpglNb6g5/iD1LvbhTNd5oLe1g==}
+  '@oclif/plugin-not-found@3.2.48':
+    resolution: {integrity: sha512-H2y3PtiU/MYZXvvWUR0vr4PCoSSsN8inGDlLgLxQ4q+osAlJ256RxKCVMsSJG9fWt+Pg/+wrLzpx0OsbyVOi9g==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-warn-if-update-available@3.1.31':
@@ -4148,8 +4148,8 @@ packages:
     resolution: {integrity: sha512-yBYjY9QX2hnRmZHAjG/f13MzmBzxzYgQhFrke06TTyKY5zSTEqkOeukBzIdVA3j3ulu8Qa3MbVFShV7T2RmGtQ==}
     engines: {node: '>= 0.4'}
 
-  oclif@4.17.41:
-    resolution: {integrity: sha512-l1VlcXDOXXpMmClGmxJSyas/vMbq1XdyZsCGG7s83oNAIcEdZZFe5NPmxO2ZPRCPFhKy+zoV8f5/NpUuoc4H8Q==}
+  oclif@4.17.42:
+    resolution: {integrity: sha512-a20QxwQ9zqejl4Qgo8l7oTa0Z3oi04gpAohRySblzu7J6J+Wi3FY03yY9rAyY1GEIw8j0fQ4PC9K8CKsZoOt4Q==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -7515,7 +7515,7 @@ snapshots:
     dependencies:
       '@oclif/core': 4.2.10
 
-  '@oclif/plugin-not-found@3.2.47(@types/node@22.13.14)':
+  '@oclif/plugin-not-found@3.2.48(@types/node@22.13.14)':
     dependencies:
       '@inquirer/prompts': 7.4.0(@types/node@22.13.14)
       '@oclif/core': 4.2.10
@@ -11098,7 +11098,7 @@ snapshots:
       define-properties: 1.2.1
       es-object-atoms: 1.0.0
 
-  oclif@4.17.41(@types/node@22.13.14):
+  oclif@4.17.42(@types/node@22.13.14):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.764.0
       '@aws-sdk/client-s3': 3.772.0
@@ -11107,7 +11107,7 @@ snapshots:
       '@inquirer/select': 2.5.0
       '@oclif/core': 4.2.10
       '@oclif/plugin-help': 6.2.27
-      '@oclif/plugin-not-found': 3.2.47(@types/node@22.13.14)
+      '@oclif/plugin-not-found': 3.2.48(@types/node@22.13.14)
       '@oclif/plugin-warn-if-update-available': 3.1.31
       async-retry: 1.3.3
       chalk: 4.1.2
