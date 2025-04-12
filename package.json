@@ -55,7 +55,7 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@cenk1cenk2/cz-cc": "^1.8.0",
+    "@cenk1cenk2/cz-cc": "^1.8.1",
     "@cenk1cenk2/eslint-config": "^3.1.34",
     "@swc/core": "^1.11.20",
     "@types/config": "^3.3.5",
