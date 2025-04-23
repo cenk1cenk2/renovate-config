@@ -24,8 +24,8 @@ importers:
         specifier: ^8.3.2
         version: 8.3.2
       renovate:
-        specifier: ^39.252.0
-        version: 39.252.0(encoding@0.1.13)(typanion@3.14.0)
+        specifier: ^39.257.2
+        version: 39.257.2(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -1829,8 +1829,8 @@ packages:
     resolution: {integrity: sha512-QcGHmlRHWOl93o64ZUMNewCdwKGU6WItOU52H0djgNmn1EOrhVudrDzXz4OycCRSCPwFCDrE2iIt5vmuUdHxuQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@yarnpkg/core@4.4.0':
-    resolution: {integrity: sha512-ZT+dPniRDJEyH+z0oOXS+nNkrssJ2jsmqoKDP5y8wQpbHlG+bxqEq8Ri1uDQGLh+43LkEh1Brih9QMs9p3f5/A==}
+  '@yarnpkg/core@4.4.1':
+    resolution: {integrity: sha512-iWCcc7BVN2SPZahM55FoOL36NvfOnw8j90G5PqOyjBwfCJngj7jTeT16cj27fFfHYlq+gwuu4I/tkHYzZ2mplQ==}
     engines: {node: '>=18.12.0'}
 
   '@yarnpkg/fslib@3.1.2':
@@ -4329,8 +4329,8 @@ packages:
   proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
 
-  protobufjs@7.4.0:
-    resolution: {integrity: sha512-mRUWCc3KUU4w1jU8sGxICXH/gNS94DvI1gxqDvBzhj1JpcsimQkYiOJfwsPUykUI5ZaspFbSgmBLER8IrQ3tqw==}
+  protobufjs@7.5.0:
+    resolution: {integrity: sha512-Z2E/kOY1QjoMlCytmexzYfDm/w5fKAiRwpSzGtdnXW1zC88Z2yXazHHrOtwCzn+7wSxyE8PYM4rvVcMphF9sOA==}
     engines: {node: '>=12.0.0'}
 
   protocols@2.0.1:
@@ -4433,8 +4433,8 @@ packages:
   remark@13.0.0:
     resolution: {integrity: sha512-HDz1+IKGtOyWN+QgBiAT0kn+2s6ovOxHyPAFGKVE81VSzJ+mq7RwHFledEvB5F1p4iJvOah/LOKdFuzvRnNLCA==}
 
-  renovate@39.252.0:
-    resolution: {integrity: sha512-b0KazOYynirDsPZ7bgNsBNw+IkEmAIT9JLxKrvLgu5KOVv9/9rCYRqPnlTWD0lSG3+L9sKkZYSF4EtNwSk1Y7w==}
+  renovate@39.257.2:
+    resolution: {integrity: sha512-MLwunafCP9xRYTt3ThGBabV1mmI9bvdb9v3uLCnRG9KLzsC0SR0TSfdActLSQMFGDKYudTuq8pokQ5M99oci8A==}
     engines: {node: ^20.15.1 || ^22.11.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -7073,7 +7073,7 @@ snapshots:
       '@opentelemetry/sdk-logs': 0.200.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-metrics': 2.0.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 2.0.0(@opentelemetry/api@1.9.0)
-      protobufjs: 7.4.0
+      protobufjs: 7.5.0
 
   '@opentelemetry/resource-detector-aws@2.0.0(@opentelemetry/api@1.9.0)':
     dependencies:
@@ -8046,7 +8046,7 @@ snapshots:
       '@typescript-eslint/types': 8.31.0
       eslint-visitor-keys: 4.2.0
 
-  '@yarnpkg/core@4.4.0(typanion@3.14.0)':
+  '@yarnpkg/core@4.4.1(typanion@3.14.0)':
     dependencies:
       '@arcanis/slice-ansi': 1.1.1
       '@types/semver': 7.5.8
@@ -10873,7 +10873,7 @@ snapshots:
 
   proto-list@1.2.4: {}
 
-  protobufjs@7.4.0:
+  protobufjs@7.5.0:
     dependencies:
       '@protobufjs/aspromise': 1.1.2
       '@protobufjs/base64': 1.1.2
@@ -11027,7 +11027,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@39.252.0(encoding@0.1.13)(typanion@3.14.0):
+  renovate@39.257.2(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.777.0
       '@aws-sdk/client-ec2': 3.779.0
@@ -11061,7 +11061,7 @@ snapshots:
       '@renovatebot/pep440': 4.1.0
       '@renovatebot/ruby-semver': 4.0.0
       '@sindresorhus/is': 4.6.0
-      '@yarnpkg/core': 4.4.0(typanion@3.14.0)
+      '@yarnpkg/core': 4.4.1(typanion@3.14.0)
       '@yarnpkg/parsers': 3.0.3
       agentkeepalive: 4.6.0
       aggregate-error: 3.1.0
@@ -11123,7 +11123,7 @@ snapshots:
       p-throttle: 4.1.1
       parse-link-header: 2.0.0
       prettier: 3.5.3
-      protobufjs: 7.4.0
+      protobufjs: 7.5.0
       punycode: 2.3.1
       redis: 4.7.0
       remark: 13.0.0
