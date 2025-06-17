@@ -1,3 +1,10 @@
+## [3.1.45](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.1.44...v3.1.45) (2025-06-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @oclif/core to ^4.4.0 ([336651a](https://gitlab.kilic.dev/renovate/renovate-config/commit/336651a8d9a6c31cce50f979ebef01e7e52c1b96))
+
 ## [3.1.44](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.1.43...v3.1.44) (2025-06-09)
 
 
