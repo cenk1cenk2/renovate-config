@@ -7279,7 +7279,7 @@ snapshots:
 
   '@npmcli/fs@3.1.1':
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.1
     optional: true
 
   '@npmcli/fs@4.0.0':
@@ -8665,7 +8665,7 @@ snapshots:
 
   builtins@5.1.0:
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.1
 
   bundle-require@5.1.0(esbuild@0.25.5):
     dependencies:
@@ -10879,7 +10879,7 @@ snapshots:
 
   node-abi@3.75.0:
     dependencies:
-      semver: 7.7.2
+      semver: 7.7.1
     optional: true
 
   node-fetch@2.7.0(encoding@0.1.13):
@@ -10925,7 +10925,7 @@ snapshots:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.16.1
-      semver: 7.7.2
+      semver: 7.7.1
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@6.0.2:
