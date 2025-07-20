@@ -1,5 +1,4 @@
 #!/usr/bin/env -S node --loader ts-node/esm --no-warnings=ExperimentalWarning
-/* eslint-disable no-underscore-dangle */
 
 import oclif from '@oclif/core'
 import { join, dirname } from 'path'
@@ -13,12 +12,11 @@ async function main() {
 
   // In dev mode -> use ts-node and dev plugins
   process.env.NODE_ENV = 'development'
-  process.env.LOG_LEVEL = 'debug'
 
   tsNode.register({ project })
   tsConfigPaths.register({
     baseUrl: dirname(project),
-    paths: await import(project, { assert: { type: 'json' } }).then((json) => {
+    paths: await import(project, { assert: { type: 'json' }, with: { type: 'json' } }).then((json) => {
       return json.default.compilerOptions.paths
     })
   })

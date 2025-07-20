@@ -12,7 +12,7 @@ export default createPreset({
     },
 
     {
-      matchPackageNames: ['typescript', 'tsup', 'prettier', 'eslint', '@cenk1cenk2/eslint-config', '@swc/core', '@types/jest', 'jest', 'ts-jest'],
+      matchPackageNames: ['typescript', 'tsup', 'tsdown', 'prettier', 'eslint', '@cenk1cenk2/eslint-config', '@swc/core', '@types/jest', 'jest', 'ts-jest'],
       matchPackagePatterns: ['^eslint-plugin-', '^jest'],
       groupName: 'all build dependency updates',
       groupSlug: 'all-build',

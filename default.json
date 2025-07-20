@@ -260,6 +260,7 @@
         "matchPackageNames": [
           "typescript",
           "tsup",
+          "tsdown",
           "prettier",
           "eslint",
           "@cenk1cenk2/eslint-config",
