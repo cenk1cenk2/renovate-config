@@ -1,3 +1,10 @@
+## [3.1.49](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.1.48...v3.1.49) (2025-07-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @listr2/manager to v3 ([b7488f3](https://gitlab.kilic.dev/renovate/renovate-config/commit/b7488f3e820ecd153cd5a91e9c62b6114bdaf84a))
+
 ## [3.1.48](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.1.47...v3.1.48) (2025-07-17)
 
 
