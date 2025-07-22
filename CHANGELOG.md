@@ -1,3 +1,11 @@
+# [3.2.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.1.49...v3.2.0) (2025-07-22)
+
+
+### Features
+
+* updat build mech ([a2579b6](https://gitlab.kilic.dev/renovate/renovate-config/commit/a2579b69cacc4ed620032a1ae1fc972ce87dd19c))
+* update dependencies for major version ([9cd11ad](https://gitlab.kilic.dev/renovate/renovate-config/commit/9cd11ad13f63db0fef71db51f23501c93cda17fc))
+
 ## [3.1.49](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.1.48...v3.1.49) (2025-07-21)
 
 ### Bug Fixes
