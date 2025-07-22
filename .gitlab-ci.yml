@@ -6,6 +6,7 @@ stages:
 
 variables:
   NODE_VERSION: 22-alpine
+  SKIP_SIMPLE_GIT_HOOKS: '1'
 
 include:
   - project: devops/pipes
