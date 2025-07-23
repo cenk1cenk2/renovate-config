@@ -48,11 +48,11 @@
   "dependencies": {
     "@cenk1cenk2/oclif-common": "^6.4.0",
     "@listr2/manager": "^3.0.1",
-    "@oclif/core": "^4.5.1",
+    "@oclif/core": "^4.5.2",
     "@oxc-project/runtime": "^0.77.3",
     "fs-extra": "^11.3.0",
     "listr2": "^9.0.1",
-    "renovate": "^41.42.9",
+    "renovate": "^41.43.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {

@@ -15,7 +15,7 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       '@oclif/core':
-        specifier: ^4.5.1
+        specifier: ^4.5.2
         version: 4.5.2
       '@oxc-project/runtime':
         specifier: ^0.77.3
@@ -27,7 +27,7 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       renovate:
-        specifier: ^41.42.9
+        specifier: ^41.43.0
         version: 41.43.0(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
