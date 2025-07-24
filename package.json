@@ -46,13 +46,13 @@
     "default": "run"
   },
   "dependencies": {
-    "@cenk1cenk2/oclif-common": "^6.4.0",
+    "@cenk1cenk2/oclif-common": "^6.4.1",
     "@listr2/manager": "^3.0.1",
     "@oclif/core": "^4.5.2",
-    "@oxc-project/runtime": "^0.77.3",
+    "@oxc-project/runtime": "^0.78.0",
     "fs-extra": "^11.3.0",
     "listr2": "^9.0.1",
-    "renovate": "^41.43.0",
+    "renovate": "^41.43.1",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
