@@ -27,7 +27,7 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       renovate:
-        specifier: ^41.43.1
+        specifier: ^41.43.3
         version: 41.43.3(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
