@@ -52,7 +52,7 @@
     "@oxc-project/runtime": "^0.78.0",
     "fs-extra": "^11.3.0",
     "listr2": "^9.0.1",
-    "renovate": "^41.43.5",
+    "renovate": "^41.43.7",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
