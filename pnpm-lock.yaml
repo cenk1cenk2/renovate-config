@@ -18,8 +18,8 @@ importers:
         specifier: ^4.5.2
         version: 4.5.2
       '@oxc-project/runtime':
-        specifier: ^0.78.0
-        version: 0.78.0
+        specifier: ^0.79.0
+        version: 0.79.0
       fs-extra:
         specifier: ^11.3.0
         version: 11.3.0
@@ -27,7 +27,7 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
       renovate:
-        specifier: ^41.45.0
+        specifier: ^41.46.3
         version: 41.46.3(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
