@@ -58,7 +58,7 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0
       lint-staged:
-        specifier: ^16.1.3
+        specifier: ^16.1.4
         version: 16.1.4
       oclif:
         specifier: ^4.22.5
