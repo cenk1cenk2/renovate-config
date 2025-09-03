@@ -1,3 +1,17 @@
+# [3.4.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.3.0...v3.4.0) (2025-09-03)
+
+
+### Bug Fixes
+
+* add terraform to default ([9237353](https://gitlab.kilic.dev/renovate/renovate-config/commit/9237353f263b09b2080ae42c1f311679eab6b093))
+* add terraform to default ([9edec72](https://gitlab.kilic.dev/renovate/renovate-config/commit/9edec72a7e24bfde7aa8fa000420a31daba60030))
+* update language grouping ([162def8](https://gitlab.kilic.dev/renovate/renovate-config/commit/162def8f08aa8a426a8f91dd8bdc1d5633ec3908))
+
+
+### Features
+
+* add terraform as a package manager ([13f3bd3](https://gitlab.kilic.dev/renovate/renovate-config/commit/13f3bd360cdcd4e1928b40f8da9fa2dd860575bf))
+
 # [3.3.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.2.9...v3.3.0) (2025-09-03)
 
 

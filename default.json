@@ -12,7 +12,8 @@
       "local>renovate/renovate-config:default/no-tests",
       "local>renovate/renovate-config:default/node",
       "local>renovate/renovate-config:default/go",
-      "local>renovate/renovate-config:default/kubernetes"
+      "local>renovate/renovate-config:default/kubernetes",
+      "local>renovate/renovate-config:default/terraform"
     ]
   },
   "base": {
