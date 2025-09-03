@@ -5,7 +5,7 @@ stages:
   - publish
 
 variables:
-  NODE_VERSION: 22-alpine
+  NODE_VERSION: 24-alpine
   SKIP_SIMPLE_GIT_HOOKS: '1'
 
 include:
@@ -31,7 +31,7 @@ generate:
   extends: .node-run
   stage: generate
   variables:
-    NODE_COMMAND_SCRIPT: start
+    NODE_COMMAND_SCRIPT: start run
   artifacts:
     paths:
       - default.json
