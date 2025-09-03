@@ -3,6 +3,6 @@ import { createPreset, createScopes } from '@lib'
 import { Preset } from '@presets'
 
 export default createPreset({
-  enabledManagers: [Managers.KUBERNETES],
-  extends: createScopes(Preset.KUBERNETES_GROUP_MINOR_DEPENDENCIES)
+  enabledManagers: [Managers.TERRAFORM],
+  extends: createScopes(Preset.TERRAFORM_GROUP_MINOR_DEPENDENCIES)
 })
