@@ -33,13 +33,9 @@ export enum Preset {
 
   KUBERNETES = 'kubernetes',
 
-  KUBERNETES_GROUP_MINOR_DEPENDENCIES = 'kubernetes-group-minor-dependencies',
-
   // language: terraform
 
-  TERRAFORM = 'terraform',
-
-  TERRAFORM_GROUP_MINOR_DEPENDENCIES = 'terraform-group-minor-dependencies'
+  TERRAFORM = 'terraform'
 }
 
 export const PRESETS: Presets = {
@@ -81,10 +77,8 @@ export const PRESETS: Presets = {
   // language: kubernetes
 
   [Preset.KUBERNETES]: import('./language/kubernetes.js').then((m) => m.default),
-  [Preset.KUBERNETES_GROUP_MINOR_DEPENDENCIES]: import('./dependency-groups/kubernetes/group-minor-dependencies.js').then((m) => m.default),
 
   // language: terraform
 
-  [Preset.TERRAFORM]: import('./language/terraform.js').then((m) => m.default),
-  [Preset.TERRAFORM_GROUP_MINOR_DEPENDENCIES]: import('./dependency-groups/terraform/group-minor-dependencies.js').then((m) => m.default)
+  [Preset.TERRAFORM]: import('./language/terraform.js').then((m) => m.default)
 }

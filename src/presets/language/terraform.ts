@@ -1,8 +1,6 @@
 import { Managers } from '@constants'
-import { createPreset, createScopes } from '@lib'
-import { Preset } from '@presets'
+import { createPreset } from '@lib'
 
 export default createPreset({
-  enabledManagers: [Managers.TERRAFORM],
-  extends: createScopes(Preset.TERRAFORM_GROUP_MINOR_DEPENDENCIES)
+  enabledManagers: [Managers.TERRAFORM]
 })
