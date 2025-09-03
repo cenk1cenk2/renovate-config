@@ -10,6 +10,7 @@ export default createPreset({
     createScope(Preset.NO_TESTS),
     createScope(Preset.NODE),
     createScope(Preset.GO),
-    createScope(Preset.KUBERNETES)
+    createScope(Preset.KUBERNETES),
+    createScope(Preset.TERRAFORM)
   ]
 })
