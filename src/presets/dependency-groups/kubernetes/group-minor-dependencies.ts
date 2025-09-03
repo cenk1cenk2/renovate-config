@@ -1,4 +1,5 @@
-import { KUBERNETES_GROUP_MINOR, SCHEDULE } from '@constants'
+import { KUBERNETES_GROUP_MINOR } from './groups.js'
+import { SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({

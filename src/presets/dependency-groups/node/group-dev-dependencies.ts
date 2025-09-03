@@ -1,4 +1,5 @@
-import { NODE_GROUP_BUILD, NODE_GROUP_DEV, NODE_GROUP_DOCS, NODE_GROUP_PACKAGE_MANAGER, SCHEDULE } from '@constants'
+import { NODE_GROUP_DEV, NODE_GROUP_BUILD, NODE_GROUP_DOCS, NODE_GROUP_PACKAGE_MANAGER } from './groups.js'
+import { SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({

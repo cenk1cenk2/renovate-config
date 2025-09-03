@@ -1,4 +1,5 @@
-import { NODE_GROUP_PEER, SCHEDULE } from '@constants'
+import { NODE_GROUP_PEER } from './groups.js'
+import { SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({

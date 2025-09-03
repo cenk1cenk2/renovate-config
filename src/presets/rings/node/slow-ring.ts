@@ -1,4 +1,5 @@
-import { Managers, NODE_SLOW_RING_PACKAGES, RingSlug, SCHEDULE } from '@constants'
+import { NODE_SLOW_RING_PACKAGES } from './rings.js'
+import { RingSlug, SCHEDULE, Managers } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({

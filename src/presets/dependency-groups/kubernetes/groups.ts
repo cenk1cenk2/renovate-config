@@ -1,6 +1,6 @@
 import type { PackageRule } from 'renovate/dist/config/types.js'
 
-import { Managers } from '../../managers.js'
+import { Managers } from '@constants'
 
 export const KUBERNETES_GROUP_MINOR: PackageRule = {
   matchUpdateTypes: ['minor', 'patch', 'digest'],

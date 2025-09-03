@@ -1,4 +1,3 @@
-export * from './language/index.js'
 export * from './constants.js'
 export * from './files.js'
 export * from './managers.js'

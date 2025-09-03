@@ -1,4 +1,7 @@
-import { NODE_FAST_RING_PACKAGES, NODE_GROUP_DEV, NODE_GROUP_MINOR, NODE_GROUP_PEER, RingSlug, SCHEDULE } from '@constants'
+import { NODE_GROUP_MINOR, NODE_GROUP_DEV, NODE_GROUP_PEER } from 'presets/dependency-groups/node/groups.js'
+
+import { NODE_FAST_RING_PACKAGES } from './rings.js'
+import { RingSlug, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({
