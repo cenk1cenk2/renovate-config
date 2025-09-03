@@ -1,3 +1,16 @@
+# [3.3.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.2.9...v3.3.0) (2025-09-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to ^41.76.0 ([06bf16f](https://gitlab.kilic.dev/renovate/renovate-config/commit/06bf16f75087100ec30f41bab56ed7f80dece446))
+* problems with the current structure ([be9d25d](https://gitlab.kilic.dev/renovate/renovate-config/commit/be9d25d89ec1a30e86a6837ca7787f1ffa07a3b5))
+
+
+### Features
+
+* add kubernetes as a package manager ([7f8cb6c](https://gitlab.kilic.dev/renovate/renovate-config/commit/7f8cb6c10fab91ce100963e9c4a04337f3aaaebd))
+
 ## [3.2.9](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.2.8...v3.2.9) (2025-08-16)
 
 ### Bug Fixes
