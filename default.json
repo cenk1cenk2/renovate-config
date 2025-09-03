@@ -516,71 +516,11 @@
   "kubernetes": {
     "enabledManagers": [
       "kubernetes"
-    ],
-    "extends": [
-      "local>renovate/renovate-config:default/kubernetes-group-minor-dependencies"
-    ]
-  },
-  "kubernetes-group-minor-dependencies": {
-    "packageRules": [
-      {
-        "matchPackagePatterns": [
-          "*"
-        ],
-        "groupName": "all minor dependency updates",
-        "groupSlug": "all",
-        "matchUpdateTypes": [
-          "minor",
-          "patch",
-          "digest"
-        ],
-        "labels": [
-          "renovate",
-          "minor"
-        ],
-        "automerge": false,
-        "matchManagers": [
-          "kubernetes"
-        ],
-        "schedule": [
-          "before 1am"
-        ]
-      }
     ]
   },
   "terraform": {
     "enabledManagers": [
       "terraform"
-    ],
-    "extends": [
-      "local>renovate/renovate-config:default/terraform-group-minor-dependencies"
-    ]
-  },
-  "terraform-group-minor-dependencies": {
-    "packageRules": [
-      {
-        "matchPackagePatterns": [
-          "*"
-        ],
-        "groupName": "all minor dependency updates",
-        "groupSlug": "all",
-        "matchUpdateTypes": [
-          "minor",
-          "patch",
-          "digest"
-        ],
-        "labels": [
-          "renovate",
-          "minor"
-        ],
-        "automerge": false,
-        "matchManagers": [
-          "terraform"
-        ],
-        "schedule": [
-          "before 1am"
-        ]
-      }
     ]
   }
 }

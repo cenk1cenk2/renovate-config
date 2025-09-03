@@ -1,3 +1,10 @@
+## [3.4.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.0...v3.4.1) (2025-09-03)
+
+
+### Bug Fixes
+
+* remove grouping minor deps from kubernetes ([df49b2a](https://gitlab.kilic.dev/renovate/renovate-config/commit/df49b2a9534eab510946f6e93dd2291fadb4870d))
+
 # [3.4.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.3.0...v3.4.0) (2025-09-03)
 
 
