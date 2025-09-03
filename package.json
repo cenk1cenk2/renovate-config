@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "./bin/dev.js",
     "start": "./bin/run.js",
-    "build": "tsdown src/",
+    "build": "tsdown",
     "dev:start": "tsdown --watch src/",
     "format": "prettier --log-level warn --write ./ && eslint --fix ./src",
     "lint": "eslint ./src",
