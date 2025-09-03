@@ -27,7 +27,12 @@ export enum Preset {
 
   GO_GROUP_MINOR_DEPENDENCIES = 'go-group-minor-dependencies',
   GO_SLOW_RING_PACKAGES = 'go-slow-ring-packages',
-  GO_FAST_RING_PACKAGES = 'go-fast-ring-packages'
+  GO_FAST_RING_PACKAGES = 'go-fast-ring-packages',
+
+  // language: kubernetes
+
+  KUBERNETES = 'kubernetes',
+  KUBERNETES_GROUP_MINOR_DEPENDENCIES = 'kubernetes-group-minor-dependencies'
 }
 
 export const PRESETS: Presets = {
@@ -64,5 +69,10 @@ export const PRESETS: Presets = {
 
   [Preset.GO_GROUP_MINOR_DEPENDENCIES]: import('./dependency-groups/go/group-minor-dependencies.js').then((m) => m.default),
   [Preset.GO_SLOW_RING_PACKAGES]: import('./rings/go/slow-ring.js').then((m) => m.default),
-  [Preset.GO_FAST_RING_PACKAGES]: import('./rings/go/fast-ring.js').then((m) => m.default)
+  [Preset.GO_FAST_RING_PACKAGES]: import('./rings/go/fast-ring.js').then((m) => m.default),
+
+  // language: kubernetes
+
+  [Preset.KUBERNETES]: import('./language/kubernetes.js').then((m) => m.default),
+  [Preset.KUBERNETES_GROUP_MINOR_DEPENDENCIES]: import('./dependency-groups/kubernetes/group-minor-dependencies.js').then((m) => m.default)
 }

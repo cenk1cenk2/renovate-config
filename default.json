@@ -1,6 +1,6 @@
 {
   "default": {
-    "enabledManagers": ["npm", "gomod"],
+    "enabledManagers": ["npm", "gomod", "kubernetes"],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
@@ -144,7 +144,7 @@
         "schedule": ["at any time"]
       },
       {
-        "matchPackageNames": ["typescript", "tsup", "prettier", "eslint", "@cenk1cenk2/eslint-config", "@swc/core", "@types/jest", "jest", "ts-jest"],
+        "matchPackageNames": ["typescript", "tsup", "tsdown", "prettier", "eslint", "@cenk1cenk2/eslint-config", "@swc/core", "@types/jest", "jest", "ts-jest"],
         "matchPackagePatterns": ["^eslint-plugin-", "^jest"],
         "groupName": "all build dependency updates",
         "groupSlug": "all-build",
@@ -264,6 +264,24 @@
         "automerge": true,
         "matchManagers": ["gomod"],
         "schedule": ["at any time"]
+      }
+    ]
+  },
+  "kubernetes": {
+    "enabledManagers": ["kubernetes"],
+    "extends": ["local>renovate/renovate-config:default/go-group-minor-dependencies"]
+  },
+  "kubernetes-group-minor-dependencies": {
+    "packageRules": [
+      {
+        "matchPackagePatterns": ["*"],
+        "groupName": "all minor dependency updates",
+        "groupSlug": "all",
+        "matchUpdateTypes": ["minor", "patch", "digest"],
+        "labels": ["renovate", "minor"],
+        "automerge": false,
+        "matchManagers": ["kubernetes"],
+        "schedule": ["before 1am"]
       }
     ]
   }
