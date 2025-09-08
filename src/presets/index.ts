@@ -35,7 +35,11 @@ export enum Preset {
 
   // language: terraform
 
-  TERRAFORM = 'terraform'
+  TERRAFORM = 'terraform',
+
+  TERRAFORM_MINOR_HELM_RELEASES = 'terraform-minor-helm-releases',
+  TERRAFORM_GROUP_MINOR_MODULES = 'terraform-group-minor-modules',
+  TERRAFORM_GROUP_MINOR_PROVIDERS = 'terraform-group-minor-providers'
 }
 
 export const PRESETS: Presets = {
@@ -80,5 +84,9 @@ export const PRESETS: Presets = {
 
   // language: terraform
 
-  [Preset.TERRAFORM]: import('./language/terraform.js').then((m) => m.default)
+  [Preset.TERRAFORM]: import('./language/terraform.js').then((m) => m.default),
+
+  [Preset.TERRAFORM_MINOR_HELM_RELEASES]: import('./dependency-groups/terraform/group-minor-helm-releases.js').then((m) => m.default),
+  [Preset.TERRAFORM_GROUP_MINOR_MODULES]: import('./dependency-groups/terraform/group-minor-modules.js').then((m) => m.default),
+  [Preset.TERRAFORM_GROUP_MINOR_PROVIDERS]: import('./dependency-groups/terraform/group-minor-providers.js').then((m) => m.default)
 }

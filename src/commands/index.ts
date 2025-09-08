@@ -57,9 +57,7 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
       },
       {
         task: async(): Promise<void> => {
-          const formatter = new Formatter()
-
-          const difference = formatter.format(diff(await this.locker.applyLockAll({} as Presets), await this.locker.read()))
+          const difference = new Formatter().format(diff(await this.locker.applyLockAll({} as Presets), await this.locker.read()))
 
           if (!difference) {
             this.logger.warn('No difference!')
