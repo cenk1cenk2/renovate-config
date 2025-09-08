@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --loader ts-node/esm --no-warnings=ExperimentalWarning
+#!/usr/bin/env node
 
 import oclif from '@oclif/core'
 import { join, dirname } from 'path'
@@ -7,8 +7,7 @@ import tsConfigPaths from 'tsconfig-paths'
 import { fileURLToPath } from 'url'
 
 async function main() {
-  const __dirname = dirname(fileURLToPath(import.meta.url))
-  const project = join(__dirname, '..', 'tsconfig.json')
+  const project = join(dirname(fileURLToPath(import.meta.url)), '..', 'tsconfig.json')
 
   // In dev mode -> use ts-node and dev plugins
   process.env.NODE_ENV = 'development'

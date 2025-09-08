@@ -31,7 +31,7 @@ generate:
   extends: .node-run
   stage: generate
   variables:
-    NODE_COMMAND_SCRIPT: start run
+    NODE_COMMAND_SCRIPT: start
   artifacts:
     paths:
       - default.json

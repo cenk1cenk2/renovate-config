@@ -39,20 +39,22 @@
   "oclif": {
     "bin": "renovate-config-generator",
     "dirname": "renovate-config-generator",
-    "commands": "./dist/commands",
+    "commands": {
+      "strategy": "single",
+      "target": "./dist/commands/index.js"
+    },
     "plugins": [],
-    "hooks": {},
-    "topicSeparator": " ",
-    "default": "run"
+    "hooks": {}
   },
   "dependencies": {
     "@cenk1cenk2/oclif-common": "^6.4.12",
     "@listr2/manager": "^3.0.3",
-    "@oclif/core": "^4.5.2",
-    "@oxc-project/runtime": "^0.86.0",
+    "@oclif/core": "^4.5.3",
+    "@oxc-project/runtime": "^0.87.0",
     "fs-extra": "^11.3.1",
+    "jsondiffpatch": "^0.7.3",
     "listr2": "^9.0.3",
-    "renovate": "^41.97.9",
+    "renovate": "^41.98.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {

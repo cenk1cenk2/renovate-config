@@ -3,3 +3,4 @@ CHANGELOG.md
 **/docs/**
 pnpm-lock.yaml
 package.json
+/default.json

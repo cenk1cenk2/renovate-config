@@ -1,3 +1,5 @@
+import { diff } from 'jsondiffpatch'
+import Formatter from 'jsondiffpatch/formatters/console'
 import type { Listr } from 'listr2'
 import { join } from 'path'
 
@@ -54,13 +56,29 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
           )
       },
       {
-        enabled: (): boolean => this.cs.isDebug,
         task: async(): Promise<void> => {
-          this.logger.warn('Debug mode does not output to file: %s -> %o', File.OUTPUT, await this.locker.applyAll({} as Presets))
+          const formatter = new Formatter()
+
+          const difference = formatter.format(diff(await this.locker.applyLockAll({} as Presets), await this.locker.read()))
+
+          if (!difference) {
+            this.logger.warn('No difference!')
+          }
+
+          // eslint-disable-next-line no-console
+          console.log(difference)
         }
       },
       {
-        skip: (): boolean => this.cs.isDebug,
+        skip: (): boolean => {
+          const skip = this.cs.isDebug
+
+          if (skip) {
+            this.logger.warn('Debug mode is enabled, skipping outputting to a file: %s', File.OUTPUT)
+          }
+
+          return skip
+        },
         task: async(): Promise<void> => {
           this.logger.info('Writing preset: %s', File.OUTPUT)
           await this.locker.tryRemove()
