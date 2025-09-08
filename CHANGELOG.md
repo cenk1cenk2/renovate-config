@@ -1,3 +1,10 @@
+## [3.4.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.4...v3.4.5) (2025-09-08)
+
+
+### Bug Fixes
+
+* add mechanism to diff the changes ([dbdd992](https://gitlab.kilic.dev/renovate/renovate-config/commit/dbdd99252c63e6ca3ff44863beb9ebbbac55acf1))
+
 ## [3.4.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.3...v3.4.4) (2025-09-07)
 
 
