@@ -1,3 +1,12 @@
+## [3.4.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.5...v3.4.6) (2025-09-08)
+
+
+### Bug Fixes
+
+* add terraform configuration ([2ca0643](https://gitlab.kilic.dev/renovate/renovate-config/commit/2ca06432a63e40fb55de161017488ff078c40096))
+* update configuration ([7b31cae](https://gitlab.kilic.dev/renovate/renovate-config/commit/7b31cae091ae62fc7ab5e4a726b4aed485de5b4f))
+* update terraform groups ([019127f](https://gitlab.kilic.dev/renovate/renovate-config/commit/019127f080dce3516a9c66795f11396a582a91d3))
+
 ## [3.4.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.4...v3.4.5) (2025-09-08)
 
 
