@@ -284,7 +284,7 @@
         "rangeStrategy": "auto",
         "labels": ["renovate", "minor"],
         "automerge": false,
-        "commitMessagePrefix": "fix",
+        "extends": [":semanticCommitTypeAll(fix)"],
         "matchDepTypes": ["helm_release"],
         "matchManagers": ["terraform"],
         "schedule": ["at any time"]
@@ -299,6 +299,7 @@
         "rangeStrategy": "auto",
         "labels": ["renovate", "minor"],
         "automerge": false,
+        "extends": [":semanticCommitTypeAll(fix)"],
         "matchDepTypes": ["module"],
         "matchManagers": ["terraform"],
         "schedule": ["at any time"]
@@ -313,7 +314,7 @@
         "rangeStrategy": "auto",
         "labels": ["renovate", "minor"],
         "automerge": false,
-        "commitMessagePrefix": "fix",
+        "extends": [":semanticCommitTypeAll(fix)"],
         "matchDepTypes": ["provider", "required_provider"],
         "matchManagers": ["terraform"],
         "schedule": ["at any time"]

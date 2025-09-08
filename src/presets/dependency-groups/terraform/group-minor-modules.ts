@@ -9,6 +9,7 @@ export default createPreset({
       rangeStrategy: 'auto',
       labels: ['renovate', 'minor'],
       automerge: false,
+      extends: [':semanticCommitTypeAll(fix)'],
       matchDepTypes: ['module'],
       matchManagers: [Managers.TERRAFORM],
       schedule: [SCHEDULE.ANY]

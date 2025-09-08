@@ -9,7 +9,7 @@ export default createPreset({
       rangeStrategy: 'auto',
       labels: ['renovate', 'minor'],
       automerge: false,
-      commitMessagePrefix: 'fix',
+      extends: [':semanticCommitTypeAll(fix)'],
       matchDepTypes: ['helm_release'],
       matchManagers: [Managers.TERRAFORM],
       schedule: [SCHEDULE.ANY]
