@@ -60,9 +60,13 @@ export enum Preset {
   TERRAFORM_GROUP_MINOR_MODULES = 'terraform-group-minor-modules',
   TERRAFORM_GROUP_MINOR_PROVIDERS = 'terraform-group-minor-providers',
 
-  // manager: 'ansible-galaxy'
+  // manager: ansible-galaxy
 
-  ANSIBLE_GALAXY = 'ansible-galaxy'
+  ANSIBLE_GALAXY = 'ansible-galaxy',
+
+  // manager: dockerfile
+
+  DOCKERFILE = 'dockerfile'
 }
 
 export const PRESETS: Presets = {
@@ -129,5 +133,8 @@ export const PRESETS: Presets = {
 
   // manager: ansible-galaxy
 
-  [Preset.ANSIBLE_GALAXY]: import('./managers/ansible-galaxy/manager.js').then((m) => m.default)
+  [Preset.ANSIBLE_GALAXY]: import('./managers/ansible-galaxy/manager.js').then((m) => m.default),
+
+  // manager: dockerfile
+  [Preset.DOCKERFILE]: import('./managers/dockerfile/manager.js').then((m) => m.default)
 }

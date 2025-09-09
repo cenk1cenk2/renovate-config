@@ -1,6 +1,6 @@
 {
   "default": {
-    "enabledManagers": ["ansible-galaxy", "gomod", "helm", "helm-values", "kustomize", "npm", "pep621", "cargo", "terraform"],
+    "enabledManagers": ["ansible-galaxy", "gomod", "dockerfile", "helm", "helm-values", "kustomize", "npm", "pep621", "cargo", "terraform"],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
@@ -358,5 +358,8 @@
   },
   "ansible-galaxy": {
     "enabledManagers": ["ansible-galaxy"]
+  },
+  "dockerfile": {
+    "enabledManagers": ["dockerfile"]
   }
 }
