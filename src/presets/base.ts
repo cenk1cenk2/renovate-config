@@ -2,7 +2,7 @@ import { ASSIGNEES, TIMEZONE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({
-  extends: ['config:base', ':masterIssue', ':prHourlyLimitNone', ':prConcurrentLimitNone'],
+  extends: ['config:recommended', ':configMigration', ':dependencyDashboard', ':dependencyDashboardApproval', ':masterIssue', ':disableRateLimiting'],
   timezone: TIMEZONE,
   semanticCommits: 'enabled',
   assignees: ASSIGNEES,
