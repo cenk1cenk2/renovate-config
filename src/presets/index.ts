@@ -91,7 +91,7 @@ export const PRESETS: Presets = {
 
   // language: python
 
-  [Preset.PYTHON]: import('./managers/python/manager.js').then((m) => m.default),
+  [Preset.PYTHON]: import('./managers/python-pep621/manager.js').then((m) => m.default),
 
   // language: kubernetes
 
