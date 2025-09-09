@@ -1,5 +1,4 @@
-import { GO_GROUP_MINOR } from 'presets/dependency-groups/go/groups.js'
-
+import { GO_GROUP_MINOR } from './groups.js'
 import { GO_FAST_RING_PACKAGES } from './rings.js'
 import { RingSlug, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'

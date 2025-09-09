@@ -1,6 +1,6 @@
 export enum Managers {
   NODE = 'npm',
   GO = 'gomod',
-  KUBERNETES = 'kubernetes',
+  KUSTOMIZE = 'kustomize',
   TERRAFORM = 'terraform'
 }

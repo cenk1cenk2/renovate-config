@@ -1,13 +1,13 @@
 {
   "default": {
-    "enabledManagers": ["npm", "gomod", "kubernetes", "terraform"],
+    "enabledManagers": ["npm", "gomod", "kustomize", "terraform"],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
       "local>renovate/renovate-config:default/no-tests",
       "local>renovate/renovate-config:default/node",
       "local>renovate/renovate-config:default/go",
-      "local>renovate/renovate-config:default/kubernetes",
+      "local>renovate/renovate-config:default/kustomize",
       "local>renovate/renovate-config:default/terraform"
     ]
   },
@@ -269,8 +269,8 @@
       }
     ]
   },
-  "kubernetes": {
-    "enabledManagers": ["kubernetes"]
+  "kustomize": {
+    "enabledManagers": ["kustomize"]
   },
   "terraform": {
     "enabledManagers": ["terraform"],

@@ -6,11 +6,16 @@ export enum Preset {
   DEFAULT = 'default',
   BASE = 'base',
   LOCK_FILE = 'lock-file',
+
+  // tests
+
   NO_TESTS = 'no-tests',
+
+  // branches
   BRANCH_DEVELOP = 'branch-develop',
   BRANCH_BETA = 'branch-beta',
 
-  // language: node
+  // manager: node
 
   NODE = 'node',
 
@@ -21,7 +26,7 @@ export enum Preset {
   NODE_GROUP_MINOR_DEPENDENCIES = 'node-group-minor-dependencies',
   NODE_GROUP_PEER_DEPENDENCIES = 'node-group-peer-dependencies',
 
-  // language: go
+  // manager: go
 
   GO = 'go',
 
@@ -29,11 +34,11 @@ export enum Preset {
   GO_SLOW_RING_PACKAGES = 'go-slow-ring-packages',
   GO_FAST_RING_PACKAGES = 'go-fast-ring-packages',
 
-  // language: kubernetes
+  // manager: kubernetes
 
-  KUBERNETES = 'kubernetes',
+  KUSTOMIZE = 'kustomize',
 
-  // language: terraform
+  // manager: terraform
 
   TERRAFORM = 'terraform',
 
@@ -48,7 +53,7 @@ export const PRESETS: Presets = {
   // generic
 
   [Preset.BASE]: import('./base.js').then((m) => m.default),
-  [Preset.LOCK_FILE]: import('./dependency-groups/lock-file.js').then((m) => m.default),
+  [Preset.LOCK_FILE]: import('./lock-file.js').then((m) => m.default),
 
   // branches
 
@@ -61,32 +66,32 @@ export const PRESETS: Presets = {
 
   // language: node
 
-  [Preset.NODE]: import('./language/node.js').then((m) => m.default),
+  [Preset.NODE]: import('./managers/node.js').then((m) => m.default),
 
-  [Preset.NODE_NO_RING]: import('./rings/node/no-ring.js').then((m) => m.default),
-  [Preset.NODE_SLOW_RING]: import('./rings/node/slow-ring.js').then((m) => m.default),
-  [Preset.NODE_FAST_RING]: import('./rings/node/fast-ring.js').then((m) => m.default),
-  [Preset.NODE_GROUP_DEV_DEPENDENCIES]: import('./dependency-groups/node/group-dev-dependencies.js').then((m) => m.default),
-  [Preset.NODE_GROUP_MINOR_DEPENDENCIES]: import('./dependency-groups/node/group-minor-dependencies.js').then((m) => m.default),
-  [Preset.NODE_GROUP_PEER_DEPENDENCIES]: import('./dependency-groups/node/group-peer-dependencies.js').then((m) => m.default),
+  [Preset.NODE_NO_RING]: import('./managers/node/ring-none.js').then((m) => m.default),
+  [Preset.NODE_SLOW_RING]: import('./managers/node/ring-slow.js').then((m) => m.default),
+  [Preset.NODE_FAST_RING]: import('./managers/node/ring-fast.js').then((m) => m.default),
+  [Preset.NODE_GROUP_DEV_DEPENDENCIES]: import('./managers/node/group-dev-dependencies.js').then((m) => m.default),
+  [Preset.NODE_GROUP_MINOR_DEPENDENCIES]: import('./managers/node/group-minor-dependencies.js').then((m) => m.default),
+  [Preset.NODE_GROUP_PEER_DEPENDENCIES]: import('./managers/node/group-peer-dependencies.js').then((m) => m.default),
 
   // language: go
 
-  [Preset.GO]: import('./language/go.js').then((m) => m.default),
+  [Preset.GO]: import('./managers/go.js').then((m) => m.default),
 
-  [Preset.GO_GROUP_MINOR_DEPENDENCIES]: import('./dependency-groups/go/group-minor-dependencies.js').then((m) => m.default),
-  [Preset.GO_SLOW_RING_PACKAGES]: import('./rings/go/slow-ring.js').then((m) => m.default),
-  [Preset.GO_FAST_RING_PACKAGES]: import('./rings/go/fast-ring.js').then((m) => m.default),
+  [Preset.GO_GROUP_MINOR_DEPENDENCIES]: import('./managers/go/group-minor-dependencies.js').then((m) => m.default),
+  [Preset.GO_SLOW_RING_PACKAGES]: import('./managers/go/ring-slow.js').then((m) => m.default),
+  [Preset.GO_FAST_RING_PACKAGES]: import('./managers/go/ring-fast.js').then((m) => m.default),
 
   // language: kubernetes
 
-  [Preset.KUBERNETES]: import('./language/kubernetes.js').then((m) => m.default),
+  [Preset.KUSTOMIZE]: import('./managers/kustomize.js').then((m) => m.default),
 
   // language: terraform
 
-  [Preset.TERRAFORM]: import('./language/terraform.js').then((m) => m.default),
+  [Preset.TERRAFORM]: import('./managers/terraform.js').then((m) => m.default),
 
-  [Preset.TERRAFORM_MINOR_HELM_RELEASES]: import('./dependency-groups/terraform/group-minor-helm-releases.js').then((m) => m.default),
-  [Preset.TERRAFORM_GROUP_MINOR_MODULES]: import('./dependency-groups/terraform/group-minor-modules.js').then((m) => m.default),
-  [Preset.TERRAFORM_GROUP_MINOR_PROVIDERS]: import('./dependency-groups/terraform/group-minor-providers.js').then((m) => m.default)
+  [Preset.TERRAFORM_MINOR_HELM_RELEASES]: import('./managers/terraform/group-minor-helm-releases.js').then((m) => m.default),
+  [Preset.TERRAFORM_GROUP_MINOR_MODULES]: import('./managers/terraform/group-minor-modules.js').then((m) => m.default),
+  [Preset.TERRAFORM_GROUP_MINOR_PROVIDERS]: import('./managers/terraform/group-minor-providers.js').then((m) => m.default)
 }
