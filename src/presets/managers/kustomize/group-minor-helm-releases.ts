@@ -10,7 +10,7 @@ export default createPreset({
       labels: ['renovate', 'minor'],
       automerge: false,
       extends: [':semanticCommitTypeAll(fix)'],
-      matchDepTypes: ['helm'],
+      matchDepTypes: ['HelmChart'],
       matchManagers: [Managers.KUSTOMIZE],
       schedule: [SCHEDULE.ANY]
     }
