@@ -1,3 +1,10 @@
+## [3.6.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.2...v3.6.3) (2025-09-09)
+
+
+### Bug Fixes
+
+* issue with key for package managers ([b0245a4](https://gitlab.kilic.dev/renovate/renovate-config/commit/b0245a4c9a646d953f8e8d10621ba5655ee823f0))
+
 ## [3.6.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.1...v3.6.2) (2025-09-09)
 
 ### Bug Fixes
