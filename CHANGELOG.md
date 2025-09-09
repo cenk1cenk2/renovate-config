@@ -1,3 +1,15 @@
+# [3.5.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.7...v3.5.0) (2025-09-09)
+
+
+### Bug Fixes
+
+* update defaults ([20020a4](https://gitlab.kilic.dev/renovate/renovate-config/commit/20020a4f8ee64ca678181254a5d42c77d8f71674))
+
+
+### Features
+
+* restructure presets by package manager ([3fb2ad2](https://gitlab.kilic.dev/renovate/renovate-config/commit/3fb2ad215cc9f4a315f29b965965e85d42d30ac3))
+
 ## [3.4.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.6...v3.4.7) (2025-09-09)
 
 ### Bug Fixes
