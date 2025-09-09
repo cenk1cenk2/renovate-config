@@ -1,7 +1,9 @@
+import { Managers } from '@constants'
 import { createPreset, createScopes } from '@lib'
 import { Preset } from '@presets'
 
 export default createPreset({
+  enabledManagers: Object.values(Managers),
   extends: createScopes(
     Preset.BASE,
     Preset.LOCK_FILE,
