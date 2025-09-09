@@ -1,6 +1,6 @@
 {
   "default": {
-    "enabledManagers": ["gomod", "kustomize", "npm", "pep621", "terraform"],
+    "enabledManagers": ["gomod", "kustomize", "npm", "pep621", "cargo", "terraform"],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
@@ -281,6 +281,9 @@
   },
   "python": {
     "enabledManagers": ["pep621"]
+  },
+  "rust": {
+    "enabledManagers": ["cargo"]
   },
   "kustomize": {
     "enabledManagers": ["kustomize"],

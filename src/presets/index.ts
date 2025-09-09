@@ -38,6 +38,10 @@ export enum Preset {
 
   PYTHON = 'python',
 
+  // manager: rust
+
+  RUST = 'rust',
+
   // manager: kubernetes
 
   KUSTOMIZE = 'kustomize',
@@ -92,6 +96,10 @@ export const PRESETS: Presets = {
   // language: python
 
   [Preset.PYTHON]: import('./managers/python-pep621/manager.js').then((m) => m.default),
+
+  // language: rust
+
+  [Preset.RUST]: import('./managers/rust-cargo/manager.js').then((m) => m.default),
 
   // language: kubernetes
 
