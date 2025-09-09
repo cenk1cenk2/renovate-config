@@ -1,3 +1,19 @@
+# [3.6.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.2...v3.6.0) (2025-09-09)
+
+
+### Bug Fixes
+
+* add ansible galaxy as manager ([b3efb40](https://gitlab.kilic.dev/renovate/renovate-config/commit/b3efb40dd3add3e4ad1302b96d4014af9b5c78a1))
+* add dockerfile manager ([557ec2c](https://gitlab.kilic.dev/renovate/renovate-config/commit/557ec2c37707dacf8677c0c1f959654aaffcc8f5))
+* add helm as a manager ([96b12aa](https://gitlab.kilic.dev/renovate/renovate-config/commit/96b12aa682df78e9154785e21f004468c5cbda38))
+* add helm-values as a manager ([ae5251a](https://gitlab.kilic.dev/renovate/renovate-config/commit/ae5251a3ca8c849d9ff053c5abeb123534dd041c))
+* dont enable managers by default ([3f0abe1](https://gitlab.kilic.dev/renovate/renovate-config/commit/3f0abe176f7019d77cd927798f9886ba6d97b966))
+
+
+### Features
+
+* enable all package managers as defaults ([288ec10](https://gitlab.kilic.dev/renovate/renovate-config/commit/288ec10eb16c5a2a8d4cc265b477fc1c170203ba))
+
 ## [3.5.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.1...v3.5.2) (2025-09-09)
 
 ### Bug Fixes
