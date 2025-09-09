@@ -48,6 +48,10 @@ export enum Preset {
 
   KUSTOMIZE_MINOR_HELM_RELEASES = 'kustomize-minor-helm-releases',
 
+  // manager: helm
+
+  HELM = 'helm',
+
   // manager: terraform
 
   TERRAFORM = 'terraform',
@@ -74,7 +78,7 @@ export const PRESETS: Presets = {
 
   [Preset.NO_TESTS]: import('./tests/no-tests.js').then((m) => m.default),
 
-  // language: node
+  // manager: node
 
   [Preset.NODE]: import('./managers/node/manager.js').then((m) => m.default),
 
@@ -85,7 +89,7 @@ export const PRESETS: Presets = {
   [Preset.NODE_GROUP_MINOR_DEPENDENCIES]: import('./managers/node/group-minor-dependencies.js').then((m) => m.default),
   [Preset.NODE_GROUP_PEER_DEPENDENCIES]: import('./managers/node/group-peer-dependencies.js').then((m) => m.default),
 
-  // language: go
+  // manager: go
 
   [Preset.GO]: import('./managers/go/manager.js').then((m) => m.default),
 
@@ -93,21 +97,25 @@ export const PRESETS: Presets = {
   [Preset.GO_SLOW_RING_PACKAGES]: import('./managers/go/ring-slow.js').then((m) => m.default),
   [Preset.GO_FAST_RING_PACKAGES]: import('./managers/go/ring-fast.js').then((m) => m.default),
 
-  // language: python
+  // manager: python
 
   [Preset.PYTHON]: import('./managers/python-pep621/manager.js').then((m) => m.default),
 
-  // language: rust
+  // manager: rust
 
   [Preset.RUST]: import('./managers/rust-cargo/manager.js').then((m) => m.default),
 
-  // language: kubernetes
+  // manager: kubernetes
 
   [Preset.KUSTOMIZE]: import('./managers/kustomize/manager.js').then((m) => m.default),
 
   [Preset.KUSTOMIZE_MINOR_HELM_RELEASES]: import('./managers/kustomize/group-minor-helm-releases.js').then((m) => m.default),
 
-  // language: terraform
+  // manager: helm
+
+  [Preset.HELM]: import('./managers/helm/manager.js').then((m) => m.default),
+
+  // manager: terraform
 
   [Preset.TERRAFORM]: import('./managers/terraform/manager.js').then((m) => m.default),
 

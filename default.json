@@ -1,6 +1,6 @@
 {
   "default": {
-    "enabledManagers": ["gomod", "kustomize", "npm", "pep621", "cargo", "terraform"],
+    "enabledManagers": ["gomod", "helm", "kustomize", "npm", "pep621", "cargo", "terraform"],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
@@ -303,6 +303,9 @@
         "schedule": ["at any time"]
       }
     ]
+  },
+  "helm": {
+    "enabledManagers": ["helm"]
   },
   "terraform": {
     "enabledManagers": ["terraform"],
