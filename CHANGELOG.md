@@ -1,73 +1,70 @@
-## [3.4.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.5...v3.4.6) (2025-09-08)
-
+## [3.4.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.6...v3.4.7) (2025-09-09)
 
 ### Bug Fixes
 
-* add terraform configuration ([2ca0643](https://gitlab.kilic.dev/renovate/renovate-config/commit/2ca06432a63e40fb55de161017488ff078c40096))
-* update configuration ([7b31cae](https://gitlab.kilic.dev/renovate/renovate-config/commit/7b31cae091ae62fc7ab5e4a726b4aed485de5b4f))
-* update terraform groups ([019127f](https://gitlab.kilic.dev/renovate/renovate-config/commit/019127f080dce3516a9c66795f11396a582a91d3))
+- **deps:** update dependency renovate to ^41.98.1 ([5c98ed7](https://gitlab.kilic.dev/renovate/renovate-config/commit/5c98ed7552ea57ce9708071e32f8f8d0305dfda5))
+- update base preset ([ecae193](https://gitlab.kilic.dev/renovate/renovate-config/commit/ecae1931e5d995e0ef51edb5d91f8dae05443ea3))
+
+## [3.4.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.5...v3.4.6) (2025-09-08)
+
+### Bug Fixes
+
+- add terraform configuration ([2ca0643](https://gitlab.kilic.dev/renovate/renovate-config/commit/2ca06432a63e40fb55de161017488ff078c40096))
+- update configuration ([7b31cae](https://gitlab.kilic.dev/renovate/renovate-config/commit/7b31cae091ae62fc7ab5e4a726b4aed485de5b4f))
+- update terraform groups ([019127f](https://gitlab.kilic.dev/renovate/renovate-config/commit/019127f080dce3516a9c66795f11396a582a91d3))
 
 ## [3.4.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.4...v3.4.5) (2025-09-08)
 
-
 ### Bug Fixes
 
-* add mechanism to diff the changes ([dbdd992](https://gitlab.kilic.dev/renovate/renovate-config/commit/dbdd99252c63e6ca3ff44863beb9ebbbac55acf1))
+- add mechanism to diff the changes ([dbdd992](https://gitlab.kilic.dev/renovate/renovate-config/commit/dbdd99252c63e6ca3ff44863beb9ebbbac55acf1))
 
 ## [3.4.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.3...v3.4.4) (2025-09-07)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency renovate to ^41.97.9 ([b1a5669](https://gitlab.kilic.dev/renovate/renovate-config/commit/b1a5669c66d01d0907a1edb40466bedfcca68b3a))
+- **deps:** update dependency renovate to ^41.97.9 ([b1a5669](https://gitlab.kilic.dev/renovate/renovate-config/commit/b1a5669c66d01d0907a1edb40466bedfcca68b3a))
 
 ## [3.4.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.2...v3.4.3) (2025-09-07)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency renovate to ^41.97.7 ([a43c74e](https://gitlab.kilic.dev/renovate/renovate-config/commit/a43c74ee573fc11fe2cab44db00c9de969017aa9))
+- **deps:** update dependency renovate to ^41.97.7 ([a43c74e](https://gitlab.kilic.dev/renovate/renovate-config/commit/a43c74ee573fc11fe2cab44db00c9de969017aa9))
 
 ## [3.4.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.1...v3.4.2) (2025-09-03)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency renovate to ^41.95.2 ([a03cf1f](https://gitlab.kilic.dev/renovate/renovate-config/commit/a03cf1f368cdbbecd534e449a6690275348d896c))
+- **deps:** update dependency renovate to ^41.95.2 ([a03cf1f](https://gitlab.kilic.dev/renovate/renovate-config/commit/a03cf1f368cdbbecd534e449a6690275348d896c))
 
 ## [3.4.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.0...v3.4.1) (2025-09-03)
 
-
 ### Bug Fixes
 
-* remove grouping minor deps from kubernetes ([df49b2a](https://gitlab.kilic.dev/renovate/renovate-config/commit/df49b2a9534eab510946f6e93dd2291fadb4870d))
+- remove grouping minor deps from kubernetes ([df49b2a](https://gitlab.kilic.dev/renovate/renovate-config/commit/df49b2a9534eab510946f6e93dd2291fadb4870d))
 
 # [3.4.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.3.0...v3.4.0) (2025-09-03)
 
-
 ### Bug Fixes
 
-* add terraform to default ([9237353](https://gitlab.kilic.dev/renovate/renovate-config/commit/9237353f263b09b2080ae42c1f311679eab6b093))
-* add terraform to default ([9edec72](https://gitlab.kilic.dev/renovate/renovate-config/commit/9edec72a7e24bfde7aa8fa000420a31daba60030))
-* update language grouping ([162def8](https://gitlab.kilic.dev/renovate/renovate-config/commit/162def8f08aa8a426a8f91dd8bdc1d5633ec3908))
-
+- add terraform to default ([9237353](https://gitlab.kilic.dev/renovate/renovate-config/commit/9237353f263b09b2080ae42c1f311679eab6b093))
+- add terraform to default ([9edec72](https://gitlab.kilic.dev/renovate/renovate-config/commit/9edec72a7e24bfde7aa8fa000420a31daba60030))
+- update language grouping ([162def8](https://gitlab.kilic.dev/renovate/renovate-config/commit/162def8f08aa8a426a8f91dd8bdc1d5633ec3908))
 
 ### Features
 
-* add terraform as a package manager ([13f3bd3](https://gitlab.kilic.dev/renovate/renovate-config/commit/13f3bd360cdcd4e1928b40f8da9fa2dd860575bf))
+- add terraform as a package manager ([13f3bd3](https://gitlab.kilic.dev/renovate/renovate-config/commit/13f3bd360cdcd4e1928b40f8da9fa2dd860575bf))
 
 # [3.3.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.2.9...v3.3.0) (2025-09-03)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency renovate to ^41.76.0 ([06bf16f](https://gitlab.kilic.dev/renovate/renovate-config/commit/06bf16f75087100ec30f41bab56ed7f80dece446))
-* problems with the current structure ([be9d25d](https://gitlab.kilic.dev/renovate/renovate-config/commit/be9d25d89ec1a30e86a6837ca7787f1ffa07a3b5))
-
+- **deps:** update dependency renovate to ^41.76.0 ([06bf16f](https://gitlab.kilic.dev/renovate/renovate-config/commit/06bf16f75087100ec30f41bab56ed7f80dece446))
+- problems with the current structure ([be9d25d](https://gitlab.kilic.dev/renovate/renovate-config/commit/be9d25d89ec1a30e86a6837ca7787f1ffa07a3b5))
 
 ### Features
 
-* add kubernetes as a package manager ([7f8cb6c](https://gitlab.kilic.dev/renovate/renovate-config/commit/7f8cb6c10fab91ce100963e9c4a04337f3aaaebd))
+- add kubernetes as a package manager ([7f8cb6c](https://gitlab.kilic.dev/renovate/renovate-config/commit/7f8cb6c10fab91ce100963e9c4a04337f3aaaebd))
 
 ## [3.2.9](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.2.8...v3.2.9) (2025-08-16)
 
