@@ -66,7 +66,10 @@ export enum Preset {
 
   // manager: dockerfile
 
-  DOCKERFILE = 'dockerfile'
+  DOCKERFILE = 'dockerfile',
+
+  // manager: gitlab-ci
+  GITLAB_CI = 'gitlab-ci'
 }
 
 export const PRESETS: Presets = {
@@ -136,5 +139,10 @@ export const PRESETS: Presets = {
   [Preset.ANSIBLE_GALAXY]: import('./managers/ansible-galaxy/manager.js').then((m) => m.default),
 
   // manager: dockerfile
-  [Preset.DOCKERFILE]: import('./managers/dockerfile/manager.js').then((m) => m.default)
+
+  [Preset.DOCKERFILE]: import('./managers/dockerfile/manager.js').then((m) => m.default),
+
+  // manager: gitlab-ci
+
+  [Preset.GITLAB_CI]: import('./managers/gitlab-ci/manager.js').then((m) => m.default)
 }

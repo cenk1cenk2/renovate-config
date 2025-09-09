@@ -1,13 +1,19 @@
 {
   "default": {
-    "enabledManagers": ["ansible-galaxy", "gomod", "dockerfile", "helm", "helm-values", "kustomize", "npm", "pep621", "cargo", "terraform"],
+    "enabledManagers": ["ansible-galaxy", "dockerfile", "gitlab-ci", "gomod", "helm", "helm-values", "kustomize", "npm", "pep621", "cargo", "terraform"],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
       "local>renovate/renovate-config:default/no-tests",
-      "local>renovate/renovate-config:default/node",
+      "local>renovate/renovate-config:default/ansible-galaxy",
+      "local>renovate/renovate-config:default/dockerfile",
+      "local>renovate/renovate-config:default/gitlab-ci",
       "local>renovate/renovate-config:default/go",
+      "local>renovate/renovate-config:default/helm",
       "local>renovate/renovate-config:default/kustomize",
+      "local>renovate/renovate-config:default/node",
+      "local>renovate/renovate-config:default/python",
+      "local>renovate/renovate-config:default/rust",
       "local>renovate/renovate-config:default/terraform"
     ]
   },
@@ -361,5 +367,8 @@
   },
   "dockerfile": {
     "enabledManagers": ["dockerfile"]
+  },
+  "gitlab-ci": {
+    "enabledManagers": ["gitlab-ci"]
   }
 }

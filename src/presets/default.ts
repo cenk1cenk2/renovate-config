@@ -1,16 +1,23 @@
 import { Managers } from '@constants'
-import { createPreset, createScope } from '@lib'
+import { createPreset, createScopes } from '@lib'
 import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: Object.values(Managers),
-  extends: [
-    createScope(Preset.BASE),
-    createScope(Preset.LOCK_FILE),
-    createScope(Preset.NO_TESTS),
-    createScope(Preset.NODE),
-    createScope(Preset.GO),
-    createScope(Preset.KUSTOMIZE),
-    createScope(Preset.TERRAFORM)
-  ]
+  extends: createScopes(
+    Preset.BASE,
+    Preset.LOCK_FILE,
+    Preset.NO_TESTS,
+    // managers
+    Preset.ANSIBLE_GALAXY,
+    Preset.DOCKERFILE,
+    Preset.GITLAB_CI,
+    Preset.GO,
+    Preset.HELM,
+    Preset.KUSTOMIZE,
+    Preset.NODE,
+    Preset.PYTHON,
+    Preset.RUST,
+    Preset.TERRAFORM
+  )
 })
