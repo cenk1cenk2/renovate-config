@@ -1,3 +1,11 @@
+## [3.4.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.6...v3.4.7) (2025-09-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to ^41.98.1 ([5c98ed7](https://gitlab.kilic.dev/renovate/renovate-config/commit/5c98ed7552ea57ce9708071e32f8f8d0305dfda5))
+* update base preset ([ecae193](https://gitlab.kilic.dev/renovate/renovate-config/commit/ecae1931e5d995e0ef51edb5d91f8dae05443ea3))
+
 ## [3.4.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.5...v3.4.6) (2025-09-08)
 
 
