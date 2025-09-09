@@ -63,5 +63,5 @@ export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   rangeStrategy: 'widen',
   labels: ['renovate', 'engines', 'automerge'],
   commitMessageSuffix: '[skip ci]',
-  autoMerge: true
+  automerge: true
 }
