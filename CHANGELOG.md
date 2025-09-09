@@ -1,3 +1,12 @@
+## [3.5.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.1...v3.5.2) (2025-09-09)
+
+
+### Bug Fixes
+
+* add cargo ([e549a91](https://gitlab.kilic.dev/renovate/renovate-config/commit/e549a91a6502a55e9924e6c4f12b9eecb78133d9))
+* add python as a package manager ([3321d34](https://gitlab.kilic.dev/renovate/renovate-config/commit/3321d34d4fe8db6987d794aaa50eda6a3572f42e))
+* python manager name ([829dd56](https://gitlab.kilic.dev/renovate/renovate-config/commit/829dd5661fa173084e96396e905ae1269dd3d3f5))
+
 ## [3.5.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.0...v3.5.1) (2025-09-09)
 
 
