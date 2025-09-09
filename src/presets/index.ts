@@ -38,6 +38,8 @@ export enum Preset {
 
   KUSTOMIZE = 'kustomize',
 
+  KUSTOMIZE_MINOR_HELM_RELEASES = 'kustomize-minor-helm-releases',
+
   // manager: terraform
 
   TERRAFORM = 'terraform',
@@ -66,7 +68,7 @@ export const PRESETS: Presets = {
 
   // language: node
 
-  [Preset.NODE]: import('./managers/node.js').then((m) => m.default),
+  [Preset.NODE]: import('./managers/node/manager.js').then((m) => m.default),
 
   [Preset.NODE_NO_RING]: import('./managers/node/ring-none.js').then((m) => m.default),
   [Preset.NODE_SLOW_RING]: import('./managers/node/ring-slow.js').then((m) => m.default),
@@ -77,7 +79,7 @@ export const PRESETS: Presets = {
 
   // language: go
 
-  [Preset.GO]: import('./managers/go.js').then((m) => m.default),
+  [Preset.GO]: import('./managers/go/manager.js').then((m) => m.default),
 
   [Preset.GO_GROUP_MINOR_DEPENDENCIES]: import('./managers/go/group-minor-dependencies.js').then((m) => m.default),
   [Preset.GO_SLOW_RING_PACKAGES]: import('./managers/go/ring-slow.js').then((m) => m.default),
@@ -85,11 +87,13 @@ export const PRESETS: Presets = {
 
   // language: kubernetes
 
-  [Preset.KUSTOMIZE]: import('./managers/kustomize.js').then((m) => m.default),
+  [Preset.KUSTOMIZE]: import('./managers/kustomize/manager.js').then((m) => m.default),
+
+  [Preset.KUSTOMIZE_MINOR_HELM_RELEASES]: import('./managers/kustomize/group-minor-helm-releases.js').then((m) => m.default),
 
   // language: terraform
 
-  [Preset.TERRAFORM]: import('./managers/terraform.js').then((m) => m.default),
+  [Preset.TERRAFORM]: import('./managers/terraform/manager.js').then((m) => m.default),
 
   [Preset.TERRAFORM_MINOR_HELM_RELEASES]: import('./managers/terraform/group-minor-helm-releases.js').then((m) => m.default),
   [Preset.TERRAFORM_GROUP_MINOR_MODULES]: import('./managers/terraform/group-minor-modules.js').then((m) => m.default),
