@@ -1,3 +1,11 @@
+## [3.6.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.0...v3.6.1) (2025-09-09)
+
+
+### Bug Fixes
+
+* add defaults? ([b1914f7](https://gitlab.kilic.dev/renovate/renovate-config/commit/b1914f78bf4d816b96ed0840c880e35eb227250d))
+* update dependency type ([be36196](https://gitlab.kilic.dev/renovate/renovate-config/commit/be36196bf6c9f9f0144a167e7a040ed0d6bd4028))
+
 # [3.6.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.2...v3.6.0) (2025-09-09)
 
 
