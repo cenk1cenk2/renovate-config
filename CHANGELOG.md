@@ -1,3 +1,11 @@
+## [3.5.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.0...v3.5.1) (2025-09-09)
+
+
+### Bug Fixes
+
+* commit changes without the publish ([4848614](https://gitlab.kilic.dev/renovate/renovate-config/commit/4848614f6303ca2dd88e58a5a811335e7f3bb154))
+* update kustomize ([170d306](https://gitlab.kilic.dev/renovate/renovate-config/commit/170d306b021efec1b2eb6efc7c7785eda7d14930))
+
 # [3.5.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.7...v3.5.0) (2025-09-09)
 
 
