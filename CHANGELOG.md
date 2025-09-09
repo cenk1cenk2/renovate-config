@@ -1,22 +1,27 @@
-## [3.5.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.0...v3.5.1) (2025-09-09)
-
+## [3.5.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.1...v3.5.2) (2025-09-09)
 
 ### Bug Fixes
 
-* commit changes without the publish ([4848614](https://gitlab.kilic.dev/renovate/renovate-config/commit/4848614f6303ca2dd88e58a5a811335e7f3bb154))
-* update kustomize ([170d306](https://gitlab.kilic.dev/renovate/renovate-config/commit/170d306b021efec1b2eb6efc7c7785eda7d14930))
+- add cargo ([e549a91](https://gitlab.kilic.dev/renovate/renovate-config/commit/e549a91a6502a55e9924e6c4f12b9eecb78133d9))
+- add python as a package manager ([3321d34](https://gitlab.kilic.dev/renovate/renovate-config/commit/3321d34d4fe8db6987d794aaa50eda6a3572f42e))
+- python manager name ([829dd56](https://gitlab.kilic.dev/renovate/renovate-config/commit/829dd5661fa173084e96396e905ae1269dd3d3f5))
+
+## [3.5.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.5.0...v3.5.1) (2025-09-09)
+
+### Bug Fixes
+
+- commit changes without the publish ([4848614](https://gitlab.kilic.dev/renovate/renovate-config/commit/4848614f6303ca2dd88e58a5a811335e7f3bb154))
+- update kustomize ([170d306](https://gitlab.kilic.dev/renovate/renovate-config/commit/170d306b021efec1b2eb6efc7c7785eda7d14930))
 
 # [3.5.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.7...v3.5.0) (2025-09-09)
 
-
 ### Bug Fixes
 
-* update defaults ([20020a4](https://gitlab.kilic.dev/renovate/renovate-config/commit/20020a4f8ee64ca678181254a5d42c77d8f71674))
-
+- update defaults ([20020a4](https://gitlab.kilic.dev/renovate/renovate-config/commit/20020a4f8ee64ca678181254a5d42c77d8f71674))
 
 ### Features
 
-* restructure presets by package manager ([3fb2ad2](https://gitlab.kilic.dev/renovate/renovate-config/commit/3fb2ad215cc9f4a315f29b965965e85d42d30ac3))
+- restructure presets by package manager ([3fb2ad2](https://gitlab.kilic.dev/renovate/renovate-config/commit/3fb2ad215cc9f4a315f29b965965e85d42d30ac3))
 
 ## [3.4.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.4.6...v3.4.7) (2025-09-09)
 
