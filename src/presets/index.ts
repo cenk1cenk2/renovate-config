@@ -34,6 +34,10 @@ export enum Preset {
   GO_SLOW_RING_PACKAGES = 'go-slow-ring-packages',
   GO_FAST_RING_PACKAGES = 'go-fast-ring-packages',
 
+  // manager: python
+
+  PYTHON = 'python',
+
   // manager: kubernetes
 
   KUSTOMIZE = 'kustomize',
@@ -84,6 +88,10 @@ export const PRESETS: Presets = {
   [Preset.GO_GROUP_MINOR_DEPENDENCIES]: import('./managers/go/group-minor-dependencies.js').then((m) => m.default),
   [Preset.GO_SLOW_RING_PACKAGES]: import('./managers/go/ring-slow.js').then((m) => m.default),
   [Preset.GO_FAST_RING_PACKAGES]: import('./managers/go/ring-fast.js').then((m) => m.default),
+
+  // language: python
+
+  [Preset.PYTHON]: import('./managers/python/manager.js').then((m) => m.default),
 
   // language: kubernetes
 
