@@ -1,3 +1,10 @@
+## [3.6.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.1...v3.6.2) (2025-09-09)
+
+
+### Bug Fixes
+
+* reenable managers in the default ([d873bca](https://gitlab.kilic.dev/renovate/renovate-config/commit/d873bcac88a3d6146091bd22d97fc7d8d0f18cdf))
+
 ## [3.6.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.0...v3.6.1) (2025-09-09)
 
 
