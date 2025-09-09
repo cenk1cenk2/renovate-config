@@ -58,7 +58,11 @@ export enum Preset {
 
   TERRAFORM_MINOR_HELM_RELEASES = 'terraform-minor-helm-releases',
   TERRAFORM_GROUP_MINOR_MODULES = 'terraform-group-minor-modules',
-  TERRAFORM_GROUP_MINOR_PROVIDERS = 'terraform-group-minor-providers'
+  TERRAFORM_GROUP_MINOR_PROVIDERS = 'terraform-group-minor-providers',
+
+  // manager: 'ansible-galaxy'
+
+  ANSIBLE_GALAXY = 'ansible-galaxy'
 }
 
 export const PRESETS: Presets = {
@@ -121,5 +125,9 @@ export const PRESETS: Presets = {
 
   [Preset.TERRAFORM_MINOR_HELM_RELEASES]: import('./managers/terraform/group-minor-helm-releases.js').then((m) => m.default),
   [Preset.TERRAFORM_GROUP_MINOR_MODULES]: import('./managers/terraform/group-minor-modules.js').then((m) => m.default),
-  [Preset.TERRAFORM_GROUP_MINOR_PROVIDERS]: import('./managers/terraform/group-minor-providers.js').then((m) => m.default)
+  [Preset.TERRAFORM_GROUP_MINOR_PROVIDERS]: import('./managers/terraform/group-minor-providers.js').then((m) => m.default),
+
+  // manager: ansible-galaxy
+
+  [Preset.ANSIBLE_GALAXY]: import('./managers/ansible-galaxy/manager.js').then((m) => m.default)
 }

@@ -1,4 +1,5 @@
 export enum Managers {
+  ANSIBLE_GALAXY = 'ansible-galaxy',
   GO = 'gomod',
   HELM = 'helm',
   KUSTOMIZE = 'kustomize',

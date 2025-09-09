@@ -1,6 +1,6 @@
 {
   "default": {
-    "enabledManagers": ["gomod", "helm", "kustomize", "npm", "pep621", "cargo", "terraform"],
+    "enabledManagers": ["ansible-galaxy", "gomod", "helm", "kustomize", "npm", "pep621", "cargo", "terraform"],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
@@ -355,5 +355,8 @@
         "schedule": ["at any time"]
       }
     ]
+  },
+  "ansible-galaxy": {
+    "enabledManagers": ["ansible-galaxy"]
   }
 }
