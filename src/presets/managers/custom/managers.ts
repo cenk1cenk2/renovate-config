@@ -6,7 +6,7 @@ export default createPreset({
   customManagers: [
     {
       customType: 'regex',
-      managerFilePatterns: ['.*.tf', '/\\.gitlab-ci\\.ya?ml$/'],
+      managerFilePatterns: ['/\\.gitlab-ci\\.ya?ml$/'],
       matchStrings: ['project: [\'"](?<depName>[^/]+/[^/]+)[\'"]\n.*ref: (?<packageName>[^@]+)@(?<currentValue>[^"\\s]+)'],
       datasourceTemplate: 'git-tags',
       registryUrlTemplate: 'https://gitlab.kilic.dev',

@@ -804,7 +804,6 @@
       {
         "customType": "regex",
         "managerFilePatterns": [
-          ".*.tf",
           "/\\.gitlab-ci\\.ya?ml$/"
         ],
         "matchStrings": [
