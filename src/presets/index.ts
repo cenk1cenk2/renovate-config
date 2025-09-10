@@ -74,7 +74,11 @@ export enum Preset {
 
   GITLAB_CI = 'gitlab-ci',
 
-  GITLAB_CI_MINOR_UPDATES = 'gitlab-ci-minor-updates'
+  GITLAB_CI_MINOR_UPDATES = 'gitlab-ci-minor-updates',
+
+  // manager: custom
+
+  CUSTOM_MANAGERS = 'custom-managers'
 }
 
 export const PRESETS: Presets = {
@@ -153,5 +157,9 @@ export const PRESETS: Presets = {
 
   [Preset.GITLAB_CI]: import('./managers/gitlab-ci/manager.js').then((m) => m.default),
 
-  [Preset.GITLAB_CI_MINOR_UPDATES]: import('./managers/gitlab-ci/group-minor-updates.js').then((m) => m.default)
+  [Preset.GITLAB_CI_MINOR_UPDATES]: import('./managers/gitlab-ci/group-minor-updates.js').then((m) => m.default),
+
+  // manager: custom
+
+  [Preset.CUSTOM_MANAGERS]: import('./managers/custom/managers.js').then((m) => m.default)
 }
