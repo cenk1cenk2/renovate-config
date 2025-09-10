@@ -17,7 +17,6 @@ export default createPreset({
   semanticCommits: 'enabled',
   assignees: ASSIGNEES,
   labels: ['renovate'],
-  rangeStrategy: 'bump',
   major: {
     stabilityDays: 3
   },
