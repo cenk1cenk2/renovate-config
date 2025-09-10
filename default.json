@@ -398,7 +398,7 @@
   },
   "gitlab-ci": {
     "enabledManagers": ["gitlabci-include", "gitlabci"],
-    "extends": ["gitlab-ci-minor-updates"]
+    "extends": ["local>renovate/renovate-config:default/gitlab-ci-minor-updates"]
   },
   "gitlab-ci-minor-updates": {
     "packageRules": [
