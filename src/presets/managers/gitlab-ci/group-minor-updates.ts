@@ -5,15 +5,14 @@ export default createPreset({
   packageRules: [
     {
       matchPackagePatterns: ['*'],
-      groupName: 'all minor dependency updates',
+      groupName: 'all minor dependency updates for pipelines',
       groupSlug: 'all',
-      matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       rangeStrategy: 'bump',
       commitMessageSuffix: '[skip ci]',
       labels: ['renovate', 'minor', 'automerge'],
       automerge: true,
-      matchManagers: [Managers.GITLAB_CI],
+      matchManagers: [Managers.GITLAB_CI_INCLUDE],
       schedule: [SCHEDULE.ANY]
     }
   ]

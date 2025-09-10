@@ -1,7 +1,8 @@
 export enum Managers {
   ANSIBLE_GALAXY = 'ansible-galaxy',
   DOCKERFILE = 'dockerfile',
-  GITLAB_CI = 'gitlab-ci',
+  GITLAB_CI = 'gitlabci',
+  GITLAB_CI_INCLUDE = 'gitlabci-include',
   GO = 'gomod',
   HELM = 'helm',
   HELM_VALUES = 'helm-values',

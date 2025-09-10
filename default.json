@@ -1,6 +1,6 @@
 {
   "default": {
-    "enabledManagers": ["ansible-galaxy", "dockerfile", "gitlab-ci", "gomod", "helm", "helm-values", "kustomize", "npm", "pep621", "cargo", "terraform"],
+    "enabledManagers": ["ansible-galaxy", "dockerfile", "gitlabci", "gitlabci-include", "gomod", "helm", "helm-values", "kustomize", "npm", "pep621", "cargo", "terraform"],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
@@ -397,21 +397,20 @@
     "enabledManagers": ["dockerfile"]
   },
   "gitlab-ci": {
-    "enabledManagers": ["gitlab-ci"]
+    "enabledManagers": ["gitlabci-include", "gitlabci"]
   },
   "gitlab-ci-minor-updates": {
     "packageRules": [
       {
         "matchPackagePatterns": ["*"],
-        "groupName": "all minor dependency updates",
+        "groupName": "all minor dependency updates for pipelines",
         "groupSlug": "all",
-        "matchDepTypes": ["collections", "roles"],
         "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
         "rangeStrategy": "bump",
         "commitMessageSuffix": "[skip ci]",
         "labels": ["renovate", "minor", "automerge"],
         "automerge": true,
-        "matchManagers": ["gitlab-ci"],
+        "matchManagers": ["gitlabci-include"],
         "schedule": ["at any time"]
       }
     ]
