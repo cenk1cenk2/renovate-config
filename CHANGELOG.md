@@ -1,3 +1,17 @@
+# [3.7.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.6...v3.7.0) (2025-09-10)
+
+### Bug Fixes
+
+- gitlab issues ([a78a818](https://gitlab.kilic.dev/renovate/renovate-config/commit/a78a818641463cd82c6b081128d3a0aa72bf05e1))
+- pdate preset ([5a193e4](https://gitlab.kilic.dev/renovate/renovate-config/commit/5a193e481ed3da17451b60c3725000d81dbca963))
+- preset ([3012787](https://gitlab.kilic.dev/renovate/renovate-config/commit/3012787626394981fe5613d1874770af5f14ce48))
+- update default preset ([9ea62b7](https://gitlab.kilic.dev/renovate/renovate-config/commit/9ea62b760376699d26aa1698fca9845291bbc14f))
+- update for gitlab ([3c42daa](https://gitlab.kilic.dev/renovate/renovate-config/commit/3c42daa06fae18e9689278c513c174229c312dc5))
+
+### Features
+
+- immedeately merge pipelines ([c4a8135](https://gitlab.kilic.dev/renovate/renovate-config/commit/c4a8135cb122c96ad705eb20f6d6d8011034c3ea))
+
 ## [3.6.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.5...v3.6.6) (2025-09-10)
 
 ### Bug Fixes
