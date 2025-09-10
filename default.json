@@ -397,9 +397,10 @@
     "enabledManagers": ["dockerfile"]
   },
   "gitlab-ci": {
-    "enabledManagers": ["gitlabci-include", "gitlabci"]
+    "enabledManagers": ["gitlabci-include", "gitlabci"],
+    "extends": ["gitlab-ci-includes-minor-updates"]
   },
-  "gitlab-ci-minor-updates": {
+  "gitlab-ci-includes-minor-updates": {
     "packageRules": [
       {
         "matchPackagePatterns": ["*"],
