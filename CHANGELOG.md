@@ -1,3 +1,9 @@
+## [3.6.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.4...v3.6.5) (2025-09-10)
+
+### Bug Fixes
+
+- **terraform:** update provider configuration ([c6ffaa5](https://gitlab.kilic.dev/renovate/renovate-config/commit/c6ffaa5447409e4e43e2d35b9010e8004edb20f5))
+
 ## [3.6.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.3...v3.6.4) (2025-09-09)
 
 ### Bug Fixes
