@@ -14,7 +14,8 @@
       "local>renovate/renovate-config:default/node",
       "local>renovate/renovate-config:default/python",
       "local>renovate/renovate-config:default/rust",
-      "local>renovate/renovate-config:default/terraform"
+      "local>renovate/renovate-config:default/terraform",
+      "local>renovate/renovate-config:default/custom-managers"
     ]
   },
   "base": {
