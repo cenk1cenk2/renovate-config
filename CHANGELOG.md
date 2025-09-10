@@ -1,3 +1,10 @@
+## [3.6.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.5...v3.6.6) (2025-09-10)
+
+### Bug Fixes
+
+- s [skip ci] ([a1205b4](https://gitlab.kilic.dev/renovate/renovate-config/commit/a1205b41ccf27e78277980a809d872a72d11f180))
+- update ansible package rules ([a4640cc](https://gitlab.kilic.dev/renovate/renovate-config/commit/a4640ccfde42353a57ddbe9a4cd93c4bebb10ad9))
+
 ## [3.6.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.4...v3.6.5) (2025-09-10)
 
 ### Bug Fixes
