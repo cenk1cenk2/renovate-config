@@ -412,7 +412,7 @@
         "labels": ["renovate", "minor", "automerge"],
         "automerge": true,
         "matchManagers": ["gitlab-ci"],
-        "schedule": ["before 1am"]
+        "schedule": ["at any time"]
       }
     ]
   }

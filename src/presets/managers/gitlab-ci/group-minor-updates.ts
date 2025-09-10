@@ -14,7 +14,7 @@ export default createPreset({
       labels: ['renovate', 'minor', 'automerge'],
       automerge: true,
       matchManagers: [Managers.GITLAB_CI],
-      schedule: [SCHEDULE.DAILY]
+      schedule: [SCHEDULE.ANY]
     }
   ]
 })
