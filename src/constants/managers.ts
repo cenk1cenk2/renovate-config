@@ -9,6 +9,7 @@ export enum Managers {
   KUSTOMIZE = 'kustomize',
   NODE = 'npm',
   PYTHON_PEP621 = 'pep621',
+  REGEX = 'regex',
   RUST_CARGO = 'cargo',
   TERRAFORM = 'terraform'
 }

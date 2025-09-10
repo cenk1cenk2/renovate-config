@@ -12,7 +12,7 @@ export default createPreset({
       commitMessageSuffix: '[skip ci]',
       labels: ['renovate', 'minor', 'automerge'],
       automerge: true,
-      matchManagers: [Managers.GITLAB_CI_INCLUDE, 'regex'],
+      matchManagers: [Managers.GITLAB_CI_INCLUDE, Managers.REGEX],
       schedule: [SCHEDULE.ANY]
     }
   ]
