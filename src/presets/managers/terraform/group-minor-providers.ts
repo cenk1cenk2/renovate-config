@@ -17,7 +17,7 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
-      rangeStrategy: 'widen',
+      rangeStrategy: 'replace',
       labels: ['renovate', 'minor'],
       automerge: false,
       extends: [':semanticCommitTypeAll(fix)'],
