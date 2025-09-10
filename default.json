@@ -356,7 +356,18 @@
         "labels": ["renovate", "minor"],
         "automerge": false,
         "extends": [":semanticCommitTypeAll(fix)"],
-        "matchDepTypes": ["provider", "required_provider"],
+        "matchDepTypes": ["provider"],
+        "matchManagers": ["terraform"],
+        "schedule": ["at any time"]
+      },
+      {
+        "enabled": true,
+        "matchUpdateTypes": ["minor", "patch"],
+        "rangeStrategy": "widen",
+        "labels": ["renovate", "minor"],
+        "automerge": false,
+        "extends": [":semanticCommitTypeAll(fix)"],
+        "matchDepTypes": ["required_provider"],
         "matchManagers": ["terraform"],
         "schedule": ["at any time"]
       }

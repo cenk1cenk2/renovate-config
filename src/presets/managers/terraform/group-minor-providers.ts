@@ -10,7 +10,18 @@ export default createPreset({
       labels: ['renovate', 'minor'],
       automerge: false,
       extends: [':semanticCommitTypeAll(fix)'],
-      matchDepTypes: ['provider', 'required_provider'],
+      matchDepTypes: ['provider'],
+      matchManagers: [Managers.TERRAFORM],
+      schedule: [SCHEDULE.ANY]
+    },
+    {
+      enabled: true,
+      matchUpdateTypes: ['minor', 'patch'],
+      rangeStrategy: 'widen',
+      labels: ['renovate', 'minor'],
+      automerge: false,
+      extends: [':semanticCommitTypeAll(fix)'],
+      matchDepTypes: ['required_provider'],
       matchManagers: [Managers.TERRAFORM],
       schedule: [SCHEDULE.ANY]
     }
