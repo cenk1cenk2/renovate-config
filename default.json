@@ -398,9 +398,9 @@
   },
   "gitlab-ci": {
     "enabledManagers": ["gitlabci-include", "gitlabci"],
-    "extends": ["gitlab-ci-includes-minor-updates"]
+    "extends": ["gitlab-ci-minor-updates"]
   },
-  "gitlab-ci-includes-minor-updates": {
+  "gitlab-ci-minor-updates": {
     "packageRules": [
       {
         "matchPackagePatterns": ["*"],
