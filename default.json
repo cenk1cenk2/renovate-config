@@ -373,7 +373,25 @@
     ]
   },
   "ansible-galaxy": {
-    "enabledManagers": ["ansible-galaxy"]
+    "enabledManagers": ["ansible-galaxy"],
+    "extends": ["local>renovate/renovate-config:default/ansible-galaxy-group-minor-roles"]
+  },
+  "ansible-galaxy-group-minor-roles": {
+    "packageRules": [
+      {
+        "matchPackagePatterns": ["*"],
+        "groupName": "all minor dependency updates",
+        "groupSlug": "all",
+        "matchDepTypes": ["collections", "roles"],
+        "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+        "rangeStrategy": "bump",
+        "commitMessageSuffix": "[skip ci]",
+        "labels": ["renovate", "minor", "automerge"],
+        "automerge": true,
+        "matchManagers": ["ansible-galaxy"],
+        "schedule": ["before 1am"]
+      }
+    ]
   },
   "dockerfile": {
     "enabledManagers": ["dockerfile"]

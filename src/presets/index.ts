@@ -64,6 +64,8 @@ export enum Preset {
 
   ANSIBLE_GALAXY = 'ansible-galaxy',
 
+  ANSIBLE_GALAXY_GROUP_MINOR_ROLES = 'ansible-galaxy-group-minor-roles',
+
   // manager: dockerfile
 
   DOCKERFILE = 'dockerfile',
@@ -137,6 +139,8 @@ export const PRESETS: Presets = {
   // manager: ansible-galaxy
 
   [Preset.ANSIBLE_GALAXY]: import('./managers/ansible-galaxy/manager.js').then((m) => m.default),
+
+  [Preset.ANSIBLE_GALAXY_GROUP_MINOR_ROLES]: import('./managers/ansible-galaxy/group-minor-roles.js').then((m) => m.default),
 
   // manager: dockerfile
 
