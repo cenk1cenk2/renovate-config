@@ -1,3 +1,10 @@
+## [3.8.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.4...v3.8.5) (2025-09-11)
+
+
+### Bug Fixes
+
+* pipeline updates ([b71ca95](https://gitlab.kilic.dev/renovate/renovate-config/commit/b71ca95b3fe4e5457fc9234433c3b59e9b05fe2c))
+
 ## [3.8.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.3...v3.8.4) (2025-09-11)
 
 
