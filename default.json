@@ -593,7 +593,8 @@
     "extends": [
       "local>renovate/renovate-config:default/terraform-custom-manager",
       "local>renovate/renovate-config:default/terraform-minor-helm-releases",
-      "local>renovate/renovate-config:default/terraform-group-minor-providers"
+      "local>renovate/renovate-config:default/terraform-group-minor-providers",
+      "local>renovate/renovate-config:default/terraform-group-minor-modules"
     ]
   },
   "terraform-custom-manager": {
