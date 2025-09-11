@@ -1,3 +1,10 @@
+# [3.9.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.5...v3.9.0) (2025-09-11)
+
+
+### Features
+
+* finalize some managers ([c5b6d91](https://gitlab.kilic.dev/renovate/renovate-config/commit/c5b6d912bf310e15bd25bc08073348b73c1d32c0))
+
 ## [3.8.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.4...v3.8.5) (2025-09-11)
 
 ### Bug Fixes
