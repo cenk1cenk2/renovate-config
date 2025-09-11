@@ -9,7 +9,7 @@ export default createPreset({
       customType: 'regex',
       managerFilePatterns: ['/\\.tf$/'],
       matchStringsStrategy: 'combination',
-      matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>.*)\/\/.*\?ref=(?<depName>.*)@(?<currentValue>[^"]+)"/.source],
+      matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\.git)?\/\/.*\?ref=(?<depName>.*)@(?<currentValue>[^"]+)"/.source],
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
       datasourceTemplate: 'gitlab-tags',
       versioningTemplate: 'semver'
