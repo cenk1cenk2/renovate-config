@@ -1,3 +1,11 @@
+## [3.8.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.3...v3.8.4) (2025-09-11)
+
+
+### Bug Fixes
+
+* update template [skip ci] ([f24a1ea](https://gitlab.kilic.dev/renovate/renovate-config/commit/f24a1eaca2adc6d5430c17175f000c8692f83c7c))
+* update template [skip ci] ([d9771c1](https://gitlab.kilic.dev/renovate/renovate-config/commit/d9771c1e57318584e4e3268d908199b374c208a9))
+
 ## [3.8.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.2...v3.8.3) (2025-09-11)
 
 
