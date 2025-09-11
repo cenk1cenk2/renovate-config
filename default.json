@@ -602,7 +602,7 @@
         "depTypeTemplate": "gitlab-ci-custom-manager-pipelines",
         "customType": "regex",
         "managerFilePatterns": [
-          "\\.tf$"
+          "/\\.tf$/"
         ],
         "matchStringsStrategy": "combination",
         "matchStrings": [
@@ -792,7 +792,7 @@
         "depTypeTemplate": "gitlab-ci-manager-git-monorepo",
         "customType": "regex",
         "managerFilePatterns": [
-          "\\.gitlab-ci\\.ya?ml$"
+          "/\\.gitlab-ci\\.ya?ml$/"
         ],
         "matchStringsStrategy": "combination",
         "matchStrings": [

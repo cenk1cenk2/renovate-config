@@ -7,7 +7,7 @@ export default createPreset({
     {
       depTypeTemplate: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO,
       customType: 'regex',
-      managerFilePatterns: [/\.tf$/.source],
+      managerFilePatterns: ['/\\.tf$/'],
       matchStringsStrategy: 'combination',
       matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>.*)\/\/.*\?ref=(?<depName>.*)@(?<currentValue>[^"]+)"/.source],
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
