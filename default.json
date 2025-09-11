@@ -599,7 +599,7 @@
   "terraform-custom-manager": {
     "customManagers": [
       {
-        "depTypeTemplate": "gitlab-ci-custom-manager-pipelines",
+        "depTypeTemplate": "terraform-manager-git-monorepo",
         "customType": "regex",
         "managerFilePatterns": [
           "/\\.tf$/"

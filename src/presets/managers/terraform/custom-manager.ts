@@ -1,6 +1,6 @@
 import { createPreset } from '@lib'
 
-export const DEP_TYPE_TERRAFORM_MANAGER_MONOREPO = 'gitlab-ci-custom-manager-pipelines'
+export const DEP_TYPE_TERRAFORM_MANAGER_MONOREPO = 'terraform-manager-git-monorepo'
 
 export default createPreset({
   customManagers: [
