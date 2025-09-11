@@ -1,17 +1,21 @@
-## [3.8.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.3...v3.8.4) (2025-09-11)
-
+## [3.8.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.4...v3.8.5) (2025-09-11)
 
 ### Bug Fixes
 
-* update template [skip ci] ([f24a1ea](https://gitlab.kilic.dev/renovate/renovate-config/commit/f24a1eaca2adc6d5430c17175f000c8692f83c7c))
-* update template [skip ci] ([d9771c1](https://gitlab.kilic.dev/renovate/renovate-config/commit/d9771c1e57318584e4e3268d908199b374c208a9))
+- pipeline updates ([b71ca95](https://gitlab.kilic.dev/renovate/renovate-config/commit/b71ca95b3fe4e5457fc9234433c3b59e9b05fe2c))
+
+## [3.8.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.3...v3.8.4) (2025-09-11)
+
+### Bug Fixes
+
+- update template [skip ci] ([f24a1ea](https://gitlab.kilic.dev/renovate/renovate-config/commit/f24a1eaca2adc6d5430c17175f000c8692f83c7c))
+- update template [skip ci] ([d9771c1](https://gitlab.kilic.dev/renovate/renovate-config/commit/d9771c1e57318584e4e3268d908199b374c208a9))
 
 ## [3.8.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.2...v3.8.3) (2025-09-11)
 
-
 ### Bug Fixes
 
-* update regular exporession ([232adc4](https://gitlab.kilic.dev/renovate/renovate-config/commit/232adc4c9f779a928031fd08705da910ed640221))
+- update regular exporession ([232adc4](https://gitlab.kilic.dev/renovate/renovate-config/commit/232adc4c9f779a928031fd08705da910ed640221))
 
 ## [3.8.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.1...v3.8.2) (2025-09-11)
 
