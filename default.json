@@ -609,6 +609,7 @@
           "\"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\\.git)?\\/\\/.*\\?ref=(?<depName>.*)@(?<currentValue>[^\"]+)\""
         ],
         "extractVersionTemplate": "^{{{depName}}}@(?<version>.*)$",
+        "registryUrlTemplate": "https://{{{registryUrl}}}",
         "datasourceTemplate": "gitlab-tags",
         "versioningTemplate": "semver"
       }
