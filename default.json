@@ -818,7 +818,6 @@
           "digest"
         ],
         "rangeStrategy": "bump",
-        "commitMessageSuffix": "[skip ci]",
         "labels": [
           "renovate",
           "minor",
@@ -827,6 +826,37 @@
         "automerge": true,
         "matchManagers": [
           "gitlabci-include"
+        ],
+        "matchDepTypes": [],
+        "schedule": [
+          "at any time"
+        ]
+      },
+      {
+        "matchPackagePatterns": [
+          "*"
+        ],
+        "groupName": "all minor dependency updates for pipelines",
+        "groupSlug": "all",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "rangeStrategy": "bump",
+        "commitMessageSuffix": "[skip ci]",
+        "labels": [
+          "renovate",
+          "minor",
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "regex"
+        ],
+        "matchDepTypes": [
+          "gitlab-ci-custom-manager-pipelines"
         ],
         "schedule": [
           "at any time"

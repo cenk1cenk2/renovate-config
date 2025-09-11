@@ -1,9 +1,11 @@
 import { createPreset } from '@lib'
 
+export const DEP_TYPE_GITLAB_CI_CUSTOM_MANAGER_PIPELINES = 'gitlab-ci-custom-manager-pipelines'
+
 export default createPreset({
   customManagers: [
     {
-      depTypeTemplate: 'gitlab-ci-custom-manager-pipelines',
+      depTypeTemplate: DEP_TYPE_GITLAB_CI_CUSTOM_MANAGER_PIPELINES,
       customType: 'regex',
       managerFilePatterns: ['/\\.gitlab-ci\\.ya?ml$/'],
       matchStringsStrategy: 'combination',
