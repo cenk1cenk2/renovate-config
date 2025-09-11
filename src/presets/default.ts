@@ -18,7 +18,6 @@ export default createPreset({
     Preset.NODE,
     Preset.PYTHON,
     Preset.RUST,
-    Preset.TERRAFORM,
-    Preset.CUSTOM_MANAGERS
+    Preset.TERRAFORM
   )
 })

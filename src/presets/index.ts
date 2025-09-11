@@ -55,6 +55,7 @@ export enum Preset {
   // manager: terraform
 
   TERRAFORM = 'terraform',
+  TERRAFORM_CUSTOM_MANAGER = 'terraform-custom-manager',
 
   TERRAFORM_MINOR_HELM_RELEASES = 'terraform-minor-helm-releases',
   TERRAFORM_GROUP_MINOR_MODULES = 'terraform-group-minor-modules',
@@ -73,12 +74,9 @@ export enum Preset {
   // manager: gitlab-ci
 
   GITLAB_CI = 'gitlab-ci',
+  GITLAB_CI_CUSTOM_MANAGER = 'gitlab-ci-custom-manager',
 
-  GITLAB_CI_MINOR_UPDATES = 'gitlab-ci-minor-updates',
-
-  // manager: custom
-
-  CUSTOM_MANAGERS = 'custom-managers'
+  GITLAB_CI_MINOR_UPDATES = 'gitlab-ci-minor-updates'
 }
 
 export const PRESETS: Presets = {
@@ -138,6 +136,7 @@ export const PRESETS: Presets = {
   // manager: terraform
 
   [Preset.TERRAFORM]: import('./managers/terraform/manager.js').then((m) => m.default),
+  [Preset.TERRAFORM_CUSTOM_MANAGER]: import('./managers/terraform/custom-manager.js').then((m) => m.default),
 
   [Preset.TERRAFORM_MINOR_HELM_RELEASES]: import('./managers/terraform/group-minor-helm-releases.js').then((m) => m.default),
   [Preset.TERRAFORM_GROUP_MINOR_MODULES]: import('./managers/terraform/group-minor-modules.js').then((m) => m.default),
@@ -156,10 +155,7 @@ export const PRESETS: Presets = {
   // manager: gitlab-ci
 
   [Preset.GITLAB_CI]: import('./managers/gitlab-ci/manager.js').then((m) => m.default),
+  [Preset.GITLAB_CI_CUSTOM_MANAGER]: import('./managers/gitlab-ci/custom-manager.js').then((m) => m.default),
 
-  [Preset.GITLAB_CI_MINOR_UPDATES]: import('./managers/gitlab-ci/group-minor-updates.js').then((m) => m.default),
-
-  // manager: custom
-
-  [Preset.CUSTOM_MANAGERS]: import('./managers/custom/managers.js').then((m) => m.default)
+  [Preset.GITLAB_CI_MINOR_UPDATES]: import('./managers/gitlab-ci/group-minor-updates.js').then((m) => m.default)
 }
