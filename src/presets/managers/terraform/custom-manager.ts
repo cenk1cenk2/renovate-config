@@ -1,15 +1,18 @@
 import { createPreset } from '@lib'
 
+export const DEP_TYPE_TERRAFORM_MANAGER_MONOREPO = 'gitlab-ci-custom-manager-pipelines'
+
 export default createPreset({
   customManagers: [
     {
+      depTypeTemplate: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO,
       customType: 'regex',
-      managerFilePatterns: ['/\\.gitlab-ci\\.ya?ml$/'],
-      matchStrings: ['project: [\'"](?<depName>[^/]+/[^/]+)[\'"]\n.*ref: (?<packageName>[^@]+)@(?<currentValue>[^"\\s]+)'],
+      managerFilePatterns: [/\.tf$/.source],
+      matchStringsStrategy: 'combination',
+      matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>.*)\/\/.*\?ref=(?<depName>.*)@(?<currentValue>[^"]+)"/.source],
+      extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
       datasourceTemplate: 'gitlab-tags',
-      registryUrlTemplate: 'https://gitlab.kilic.dev',
-      packageNameTemplate: '{{{depName}}}',
-      extractVersionTemplate: '^{{{packageName}}}@v?(?<version>.*)$'
+      versioningTemplate: 'semver'
     }
   ]
 })
