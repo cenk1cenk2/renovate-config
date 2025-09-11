@@ -1,3 +1,11 @@
+## [3.8.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.0...v3.8.1) (2025-09-11)
+
+
+### Bug Fixes
+
+* move managers ([3968268](https://gitlab.kilic.dev/renovate/renovate-config/commit/3968268427bf11b5a49981f085a81502b49af216))
+* update tags ([5583e66](https://gitlab.kilic.dev/renovate/renovate-config/commit/5583e666ae50eb5a8696431ea959fe8e54ef0b11))
+
 # [3.8.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.7.0...v3.8.0) (2025-09-11)
 
 
