@@ -1,22 +1,25 @@
-## [3.8.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.0...v3.8.1) (2025-09-11)
-
+## [3.8.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.1...v3.8.2) (2025-09-11)
 
 ### Bug Fixes
 
-* move managers ([3968268](https://gitlab.kilic.dev/renovate/renovate-config/commit/3968268427bf11b5a49981f085a81502b49af216))
-* update tags ([5583e66](https://gitlab.kilic.dev/renovate/renovate-config/commit/5583e666ae50eb5a8696431ea959fe8e54ef0b11))
+- update defaults ([82d6afa](https://gitlab.kilic.dev/renovate/renovate-config/commit/82d6afa33e7fc76a97081b4d408e3194f4b8fd6f))
+
+## [3.8.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.0...v3.8.1) (2025-09-11)
+
+### Bug Fixes
+
+- move managers ([3968268](https://gitlab.kilic.dev/renovate/renovate-config/commit/3968268427bf11b5a49981f085a81502b49af216))
+- update tags ([5583e66](https://gitlab.kilic.dev/renovate/renovate-config/commit/5583e666ae50eb5a8696431ea959fe8e54ef0b11))
 
 # [3.8.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.7.0...v3.8.0) (2025-09-11)
 
-
 ### Bug Fixes
 
-* do a custom manager for gitlab ([4951888](https://gitlab.kilic.dev/renovate/renovate-config/commit/4951888c8893741027c156d56866da804faae6f5))
-
+- do a custom manager for gitlab ([4951888](https://gitlab.kilic.dev/renovate/renovate-config/commit/4951888c8893741027c156d56866da804faae6f5))
 
 ### Features
 
-* add custom manager ([e374c4d](https://gitlab.kilic.dev/renovate/renovate-config/commit/e374c4d0c39b3f770c29364e3162b4dbc0c7b1d7))
+- add custom manager ([e374c4d](https://gitlab.kilic.dev/renovate/renovate-config/commit/e374c4d0c39b3f770c29364e3162b4dbc0c7b1d7))
 
 # [3.7.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.6.6...v3.7.0) (2025-09-10)
 
