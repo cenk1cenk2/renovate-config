@@ -787,6 +787,7 @@
   "gitlab-ci-custom-manager": {
     "customManagers": [
       {
+        "depTypeTemplate": "gitlab-ci-custom-manager-pipelines",
         "customType": "regex",
         "managerFilePatterns": [
           "/\\.gitlab-ci\\.ya?ml$/"
@@ -796,9 +797,8 @@
           "project:\\s+['\"]?(?<registryUrl>[^'\"\\s]+)['\"]?\\s*ref:\\s+['\"]?(?<packageName>[^@]+)@(?<currentValue>[^'\"\\s]+)['\"]?"
         ],
         "registryUrlTemplate": "https://gitlab.kilic.dev/{{{registryUrl}}}",
-        "extractVersionTemplate": "^{{{packageName}}}@v?(?<version>.*)$",
-        "datasourceTemplate": "gitlab-tags",
-        "versioningTemplate": "gitlab-tags"
+        "extractVersionTemplate": "^{{{packageName}}}@(?<version>.*)$",
+        "datasourceTemplate": "gitlab-tags"
       }
     ]
   },
