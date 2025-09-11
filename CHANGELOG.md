@@ -1,3 +1,10 @@
+## [3.8.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.1...v3.8.2) (2025-09-11)
+
+
+### Bug Fixes
+
+* update defaults ([82d6afa](https://gitlab.kilic.dev/renovate/renovate-config/commit/82d6afa33e7fc76a97081b4d408e3194f4b8fd6f))
+
 ## [3.8.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.0...v3.8.1) (2025-09-11)
 
 
