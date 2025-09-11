@@ -796,10 +796,10 @@
         ],
         "matchStringsStrategy": "combination",
         "matchStrings": [
-          "project:\\s+['\"]?(?<packageName>[^'\"\\s]+)['\"]?\\s*ref:\\s+['\"]?(?<subpackageName>[^@]+)@(?<currentValue>[^'\"\\s]+)['\"]?"
+          "project:\\s+['\"]?(?<packageName>[^'\"\\s]+)['\"]?\\s*ref:\\s+['\"]?(?<depName>[^@]+)@(?<currentValue>[^'\"\\s]+)['\"]?"
         ],
         "registryUrlTemplate": "https://gitlab.kilic.dev/",
-        "extractVersionTemplate": "^{{{subpackageName}}}@(?<version>.*)$",
+        "extractVersionTemplate": "^{{{depName}}}@(?<version>.*)$",
         "datasourceTemplate": "gitlab-tags",
         "versioningTemplate": "semver"
       }
