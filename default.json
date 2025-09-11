@@ -437,7 +437,7 @@
         "customType": "regex",
         "managerFilePatterns": ["/\\.gitlab-ci\\.ya?ml$/"],
         "matchStringsStrategy": "combination",
-        "matchStrings": ["project:\\s+['\"]?(?<registryUrl>[^'\"]+)['\"]?\\s*ref:\\s+['\"]?(?<packageName>[^@]+)@(?<currentValue>[^'\"]+)['\"]?"],
+        "matchStrings": ["project:\\s+['\"]?(?<depName>[^'\"\\s]+)['\"]?\\s*ref:\\s+['\"]?(?<packageName>[^@]+)@(?<currentValue>[^'\"\\s]+)['\"]?"],
         "registryUrlTemplate": "https://gitlab.kilic.dev/{{{registryUrl}}}",
         "extractVersionTemplate": "^{{{packageName}}}@v?(?<version>.*)$",
         "datasourceTemplate": "gitlab-tags",
