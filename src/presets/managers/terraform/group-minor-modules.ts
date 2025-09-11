@@ -1,3 +1,4 @@
+import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO } from './custom-manager.js'
 import { Managers, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
@@ -12,6 +13,17 @@ export default createPreset({
       extends: [':semanticCommitTypeAll(fix)'],
       matchDepTypes: ['module'],
       matchManagers: [Managers.TERRAFORM],
+      schedule: [SCHEDULE.ANY]
+    },
+    {
+      enabled: true,
+      matchUpdateTypes: ['minor', 'patch'],
+      rangeStrategy: 'auto',
+      labels: ['renovate', 'minor'],
+      automerge: false,
+      extends: [':semanticCommitTypeAll(feat)'],
+      matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
+      matchManagers: [Managers.REGEX],
       schedule: [SCHEDULE.ANY]
     }
   ]

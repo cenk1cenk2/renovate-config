@@ -670,6 +670,31 @@
         "schedule": [
           "at any time"
         ]
+      },
+      {
+        "enabled": true,
+        "matchUpdateTypes": [
+          "minor",
+          "patch"
+        ],
+        "rangeStrategy": "auto",
+        "labels": [
+          "renovate",
+          "minor"
+        ],
+        "automerge": false,
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
+        "matchDepTypes": [
+          "terraform-manager-git-monorepo"
+        ],
+        "matchManagers": [
+          "regex"
+        ],
+        "schedule": [
+          "at any time"
+        ]
       }
     ]
   },
