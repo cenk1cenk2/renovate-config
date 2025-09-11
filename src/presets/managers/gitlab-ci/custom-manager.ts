@@ -7,10 +7,11 @@ export default createPreset({
       customType: 'regex',
       managerFilePatterns: ['/\\.gitlab-ci\\.ya?ml$/'],
       matchStringsStrategy: 'combination',
-      matchStrings: [/project:\s+['"]?(?<registryUrl>[^'"\s]+)['"]?\s*ref:\s+['"]?(?<packageName>[^@]+)@(?<currentValue>[^'"\s]+)['"]?/.source],
-      registryUrlTemplate: 'https://gitlab.kilic.dev/{{{registryUrl}}}',
-      extractVersionTemplate: '^{{{packageName}}}@(?<version>.*)$',
-      datasourceTemplate: 'gitlab-tags'
+      matchStrings: [/project:\s+['"]?(?<packageName>[^'"\s]+)['"]?\s*ref:\s+['"]?(?<subpackageName>[^@]+)@(?<currentValue>[^'"\s]+)['"]?/.source],
+      registryUrlTemplate: 'https://gitlab.kilic.dev/',
+      extractVersionTemplate: '^{{{subpackageName}}}@(?<version>.*)$',
+      datasourceTemplate: 'gitlab-tags',
+      versioningTemplate: 'semver'
     }
   ]
 })
