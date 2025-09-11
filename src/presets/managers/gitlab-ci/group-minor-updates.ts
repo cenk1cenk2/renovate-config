@@ -8,17 +8,15 @@ export default createPreset({
     {
       ...GITLAB_CI_MINOR_UPDATES,
       rangeStrategy: 'bump',
-      labels: ['renovate', 'minor', 'automerge'],
+      labels: ['renovate', 'minor', 'automerge', 'pipelines'],
       automerge: true,
       matchManagers: [Managers.GITLAB_CI_INCLUDE],
-      matchDepTypes: [],
       schedule: [SCHEDULE.ANY]
     },
     {
       ...GITLAB_CI_MINOR_UPDATES,
       rangeStrategy: 'bump',
-      commitMessageSuffix: '[skip ci]',
-      labels: ['renovate', 'minor', 'automerge'],
+      labels: ['renovate', 'minor', 'automerge', 'pipelines'],
       automerge: true,
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_GITLAB_CI_CUSTOM_MANAGER_PIPELINES],

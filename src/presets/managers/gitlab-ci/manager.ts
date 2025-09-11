@@ -4,5 +4,5 @@ import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: [Managers.GITLAB_CI_INCLUDE, Managers.GITLAB_CI, Managers.REGEX],
-  extends: createScopes(Preset.GITLAB_CI_CUSTOM_MANAGER, Preset.GITLAB_CI_MINOR_UPDATES)
+  extends: [...createScopes(Preset.GITLAB_CI_CUSTOM_MANAGER, Preset.GITLAB_CI_MINOR_UPDATES), ':semanticCommitTypeAll(ci)']
 })
