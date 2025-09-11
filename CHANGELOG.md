@@ -1,3 +1,10 @@
+## [3.8.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.2...v3.8.3) (2025-09-11)
+
+
+### Bug Fixes
+
+* update regular exporession ([232adc4](https://gitlab.kilic.dev/renovate/renovate-config/commit/232adc4c9f779a928031fd08705da910ed640221))
+
 ## [3.8.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.1...v3.8.2) (2025-09-11)
 
 ### Bug Fixes
