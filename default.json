@@ -626,7 +626,8 @@
         "rangeStrategy": "auto",
         "labels": [
           "renovate",
-          "minor"
+          "minor",
+          "infrastructure"
         ],
         "automerge": false,
         "extends": [
@@ -655,7 +656,8 @@
         "rangeStrategy": "auto",
         "labels": [
           "renovate",
-          "minor"
+          "minor",
+          "infrastructure"
         ],
         "automerge": false,
         "extends": [
@@ -680,7 +682,8 @@
         "rangeStrategy": "auto",
         "labels": [
           "renovate",
-          "minor"
+          "minor",
+          "infrastructure"
         ],
         "automerge": false,
         "extends": [
@@ -709,7 +712,8 @@
         "rangeStrategy": "auto",
         "labels": [
           "renovate",
-          "minor"
+          "minor",
+          "infrastructure"
         ],
         "automerge": false,
         "extends": [
@@ -734,7 +738,8 @@
         "rangeStrategy": "replace",
         "labels": [
           "renovate",
-          "minor"
+          "minor",
+          "infrastructure"
         ],
         "automerge": false,
         "extends": [
@@ -808,8 +813,7 @@
     ],
     "extends": [
       "local>renovate/renovate-config:default/gitlab-ci-custom-manager",
-      "local>renovate/renovate-config:default/gitlab-ci-minor-updates",
-      ":semanticCommitTypeAll(ci)"
+      "local>renovate/renovate-config:default/gitlab-ci-minor-updates"
     ]
   },
   "gitlab-ci-custom-manager": {
@@ -858,6 +862,9 @@
         ],
         "schedule": [
           "at any time"
+        ],
+        "extends": [
+          ":semanticCommitTypeAll(ci)"
         ]
       },
       {
@@ -888,6 +895,9 @@
         ],
         "schedule": [
           "at any time"
+        ],
+        "extends": [
+          ":semanticCommitTypeAll(ci)"
         ]
       }
     ]

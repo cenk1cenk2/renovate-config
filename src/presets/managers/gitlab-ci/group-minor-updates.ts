@@ -11,7 +11,8 @@ export default createPreset({
       labels: ['renovate', 'minor', 'automerge', 'pipelines'],
       automerge: true,
       matchManagers: [Managers.GITLAB_CI_INCLUDE],
-      schedule: [SCHEDULE.ANY]
+      schedule: [SCHEDULE.ANY],
+      extends: [':semanticCommitTypeAll(ci)']
     },
     {
       ...GITLAB_CI_MINOR_UPDATES,
@@ -20,7 +21,8 @@ export default createPreset({
       automerge: true,
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO],
-      schedule: [SCHEDULE.ANY]
+      schedule: [SCHEDULE.ANY],
+      extends: [':semanticCommitTypeAll(ci)']
     }
   ]
 })

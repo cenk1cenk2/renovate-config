@@ -7,7 +7,7 @@ export default createPreset({
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
       rangeStrategy: 'auto',
-      labels: ['renovate', 'minor'],
+      labels: ['renovate', 'minor', 'infrastructure'],
       automerge: false,
       extends: [':semanticCommitTypeAll(fix)'],
       matchDepTypes: ['helm_release'],
