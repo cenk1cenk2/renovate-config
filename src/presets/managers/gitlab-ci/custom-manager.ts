@@ -5,7 +5,8 @@ export default createPreset({
     {
       customType: 'regex',
       managerFilePatterns: ['/\\.gitlab-ci\\.ya?ml$/'],
-      matchStrings: ['project: [\'"](?<depName>[^/]+/[^/]+)[\'"]\n.*ref: (?<packageName>[^@]+)@(?<currentValue>[^"\\s]+)'],
+      // eslint-disable-next-line stylistic/quotes
+      matchStrings: [`project: ['"]?(?<depName>[^/]+/[^/]+)['"]?\n.*ref: (?<packageName>[^@]+)@(?<currentValue>[^"\\s]+)`],
       datasourceTemplate: 'gitlab-tags',
       registryUrlTemplate: 'https://gitlab.kilic.dev',
       packageNameTemplate: '{{{depName}}}',
