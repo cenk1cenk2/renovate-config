@@ -8,7 +8,7 @@ export default createPreset({
       depTypeTemplate: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO,
       customType: 'regex',
       managerFilePatterns: ['/\\.tf$/'],
-      matchStringsStrategy: 'combination',
+      matchStringsStrategy: 'any',
       // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader?ref=reloader@1.0.6"
       matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\.git)?\/\/.*\?ref=(?<depName>.*)@(?<currentValue>[^"]+)"/.source],
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
