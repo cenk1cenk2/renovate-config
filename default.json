@@ -354,7 +354,7 @@
         "managerFilePatterns": ["/\\.tf$/"],
         "matchStringsStrategy": "any",
         "matchStrings": ["\"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\\.git)?\\/\\/(?<depName>[^\"]+)\""],
-        "currentValueTemplate": "0.0.0",
+        "currentValueTemplate": "0.0.1",
         "autoReplaceStringTemplate": "\"git::git@{{{registryUrl}}}:{{{packageName}}}.git//{{{depName}}}?ref={{{depName}}}@{{{newVersion}}}\"",
         "extractVersionTemplate": "^{{{depName}}}@(?<version>.*)$",
         "registryUrlTemplate": "https://{{{registryUrl}}}",
