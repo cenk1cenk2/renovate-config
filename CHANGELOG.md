@@ -1,3 +1,10 @@
+## [3.9.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.0...v3.9.1) (2025-09-11)
+
+
+### Bug Fixes
+
+* strategy ([04cb760](https://gitlab.kilic.dev/renovate/renovate-config/commit/04cb760f6057a26767d5c38ac51762cd2068205d))
+
 # [3.9.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.8.5...v3.9.0) (2025-09-11)
 
 
