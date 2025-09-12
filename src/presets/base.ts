@@ -10,8 +10,8 @@ export default createPreset({
     ':masterIssue',
     ':disableRateLimiting',
     ':updateNotScheduled',
-    ':enableVulnerabilityAlerts',
-    ':approveMajorUpdates'
+    ':enableVulnerabilityAlerts'
+    // ':approveMajorUpdates'
   ],
   timezone: TIMEZONE,
   semanticCommits: 'enabled',
