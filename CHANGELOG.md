@@ -1,3 +1,16 @@
+## [3.9.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.1...v3.9.2) (2025-09-12)
+
+
+### Bug Fixes
+
+* add autoversion to tf packages ([c48823d](https://gitlab.kilic.dev/renovate/renovate-config/commit/c48823dfab382eab92a0bcafb1d802fdda8a66c3))
+* remove major approval ([c8f2492](https://gitlab.kilic.dev/renovate/renovate-config/commit/c8f2492a9dc17f2f9b7856d141794c749b817cbf))
+* update ([fe642fc](https://gitlab.kilic.dev/renovate/renovate-config/commit/fe642fc1cb282c096041083298332034bf1708e7))
+* update cm ([0e1d7fb](https://gitlab.kilic.dev/renovate/renovate-config/commit/0e1d7fbf0eb9fa42e07dea27c0d1d3f1c7d768b4))
+* update configuration for terraform ([2e7d755](https://gitlab.kilic.dev/renovate/renovate-config/commit/2e7d75560bf23e399f27cd454101930d4d94e434))
+* update major rules ([dca3168](https://gitlab.kilic.dev/renovate/renovate-config/commit/dca3168fe5bef013f3869491708cb28c8fdfb77c))
+* update template ([00a2e2d](https://gitlab.kilic.dev/renovate/renovate-config/commit/00a2e2d9472853060d7c503acc934c05335293ec))
+
 ## [3.9.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.0...v3.9.1) (2025-09-11)
 
 
