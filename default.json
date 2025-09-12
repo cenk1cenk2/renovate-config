@@ -347,6 +347,19 @@
         "registryUrlTemplate": "https://{{{registryUrl}}}",
         "datasourceTemplate": "gitlab-tags",
         "versioningTemplate": "semver"
+      },
+      {
+        "depTypeTemplate": "terraform-manager-git-monorepo",
+        "customType": "regex",
+        "managerFilePatterns": ["/\\.tf$/"],
+        "matchStringsStrategy": "any",
+        "matchStrings": ["\"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\\.git)?\\/\\/(?<depName>.*)[^\"]\""],
+        "currentValueTemplate": "0.0.0",
+        "autoReplaceStringTemplate": "\"git::git@{{{registryUrl}}}:{{{packageName}}}.git//{{{depName}}}?ref={{{depName}}}@{{{newVersion}}}\"",
+        "extractVersionTemplate": "^{{{depName}}}@(?<version>.*)$",
+        "registryUrlTemplate": "https://{{{registryUrl}}}",
+        "datasourceTemplate": "gitlab-tags",
+        "versioningTemplate": "semver"
       }
     ]
   },
