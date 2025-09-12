@@ -32,16 +32,7 @@
     ]
   },
   "base": {
-    "extends": [
-      "config:recommended",
-      ":configMigration",
-      ":dependencyDashboard",
-      ":separateMultipleMajorReleases",
-      ":masterIssue",
-      ":disableRateLimiting",
-      ":updateNotScheduled",
-      ":enableVulnerabilityAlerts"
-    ],
+    "extends": ["config:recommended", ":configMigration", ":dependencyDashboard", ":masterIssue", ":disableRateLimiting", ":updateNotScheduled", ":enableVulnerabilityAlerts"],
     "timezone": "Europe/Vienna",
     "semanticCommits": "enabled",
     "assignees": ["cenk1cenk2"],
