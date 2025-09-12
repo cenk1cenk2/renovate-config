@@ -22,7 +22,7 @@ export default createPreset({
       managerFilePatterns: ['/\\.tf$/'],
       matchStringsStrategy: 'any',
       // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader"
-      matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\.git)?\/\/(?<depName>.*)[^"]"/.source],
+      matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\.git)?\/\/(?<depName>[^"]+)"/.source],
       currentValueTemplate: '0.0.0',
       autoReplaceStringTemplate: '"git::git@{{{registryUrl}}}:{{{packageName}}}.git//{{{depName}}}?ref={{{depName}}}@{{{newVersion}}}"',
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
