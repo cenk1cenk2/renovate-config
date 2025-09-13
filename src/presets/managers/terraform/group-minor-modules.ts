@@ -27,7 +27,7 @@ export default createPreset({
       matchUpdateTypes: ['minor', 'patch'],
       rangeStrategy: 'auto',
       labels: ['renovate', 'minor', 'infrastructure'],
-      additionalBranchPrefix: 'terraform-monorepo-module-',
+      groupSlug: 'terraform-monorepo',
       automerge: false,
       registryUrls: ['gitlab.kilic.dev'],
       extends: [':semanticCommitTypeAll(feat)'],
