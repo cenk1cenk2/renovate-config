@@ -6,7 +6,7 @@ export default createPreset({
     {
       matchPackagePatterns: ['*'],
       groupName: 'all minor dependency updates',
-      groupSlug: 'all',
+      groupSlug: 'ansible-galaxy-minor',
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       rangeStrategy: 'bump',

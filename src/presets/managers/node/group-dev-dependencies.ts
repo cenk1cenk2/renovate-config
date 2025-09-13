@@ -7,7 +7,7 @@ export default createPreset({
     {
       matchPackagePatterns: ['*'],
       groupName: 'all development dependency updates',
-      groupSlug: 'all-dev',
+      groupSlug: 'node-dev',
       ...NODE_GROUP_DEV,
       schedule: [SCHEDULE.ANY]
     },
@@ -16,7 +16,7 @@ export default createPreset({
       matchPackageNames: ['typescript', 'tsup', 'tsdown', 'prettier', 'eslint', '@cenk1cenk2/eslint-config', '@swc/core', '@types/jest', 'jest', 'ts-jest'],
       matchPackagePatterns: ['^eslint-plugin-', '^jest'],
       groupName: 'all build dependency updates',
-      groupSlug: 'all-build',
+      groupSlug: 'node-build',
       ...NODE_GROUP_BUILD,
       schedule: [SCHEDULE.ANY]
     },
@@ -25,14 +25,14 @@ export default createPreset({
       matchPackageNames: ['typedoc', 'typedoc-plugin-markdown'],
       matchPackagePatterns: ['^vitepress', '^markdown-it'],
       groupName: 'all docs dependency updates',
-      groupSlug: 'all-docs',
+      groupSlug: 'node-docs',
       ...NODE_GROUP_DOCS,
       schedule: [SCHEDULE.ANY]
     },
 
     {
       groupName: 'all package manager',
-      groupSlug: 'all-package-manager',
+      groupSlug: 'node-package-manager',
       ...NODE_GROUP_PACKAGE_MANAGER,
       schedule: [SCHEDULE.ANY]
     }

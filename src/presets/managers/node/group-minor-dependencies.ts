@@ -7,7 +7,7 @@ export default createPreset({
     {
       matchPackagePatterns: ['*'],
       groupName: 'all minor dependency updates',
-      groupSlug: 'all',
+      groupSlug: 'node-minor',
       ...NODE_GROUP_MINOR,
       schedule: [SCHEDULE.DAILY]
     }
