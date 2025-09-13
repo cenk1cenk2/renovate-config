@@ -346,7 +346,7 @@
         "matchStringsStrategy": "any",
         "matchStrings": ["\"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\\.git)?\\/\\/(?<depName>[^\"]+)\""],
         "currentValueTemplate": "0.0.0",
-        "depNameTemplate": "{{{depName}}}?ref={{{depName}}}@{{{newVersion}}}",
+        "autoReplaceStringTemplate": "\"git::git@{{{registryUrl}}}:{{{packageName}}}.git//{{{depName}}}?ref={{{depName}}}@{{{newVersion}}}\"",
         "extractVersionTemplate": "^{{{depName}}}@(?<version>.*)$",
         "registryUrlTemplate": "https://{{{registryUrl}}}",
         "datasourceTemplate": "gitlab-tags",
