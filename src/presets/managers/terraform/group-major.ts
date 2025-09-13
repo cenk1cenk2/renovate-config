@@ -22,6 +22,7 @@ export default createPreset({
       labels: ['renovate', 'major', 'infrastructure'],
       automerge: false,
       extends: [':semanticCommitTypeAll(perf)'],
+      registryUrls: ['gitlab.kilic.dev'],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
       matchManagers: [Managers.REGEX],
       schedule: [SCHEDULE.ANY]

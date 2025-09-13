@@ -13,13 +13,8 @@ export default createPreset({
       extends: [':semanticCommitTypeAll(fix)'],
       matchDepTypes: ['module'],
       matchManagers: [Managers.TERRAFORM],
+      registryUrls: ['github.com', 'registry.terraform.io'],
       schedule: [SCHEDULE.ANY]
-    },
-    {
-      enabled: false,
-      matchDepTypes: ['module'],
-      matchManagers: [Managers.TERRAFORM],
-      registryUrls: ['gitlab.kilic.dev']
     },
     {
       enabled: true,
@@ -27,8 +22,8 @@ export default createPreset({
       rangeStrategy: 'auto',
       labels: ['renovate', 'minor', 'infrastructure'],
       automerge: false,
-      registryUrls: ['gitlab.kilic.dev'],
       extends: [':semanticCommitTypeAll(feat)'],
+      registryUrls: ['gitlab.kilic.dev'],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
       matchManagers: [Managers.REGEX],
       schedule: [SCHEDULE.ANY]

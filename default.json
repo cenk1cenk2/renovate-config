@@ -380,13 +380,8 @@
         "extends": [":semanticCommitTypeAll(fix)"],
         "matchDepTypes": ["module"],
         "matchManagers": ["terraform"],
+        "registryUrls": ["github.com", "registry.terraform.io"],
         "schedule": ["at any time"]
-      },
-      {
-        "enabled": false,
-        "matchDepTypes": ["module"],
-        "matchManagers": ["terraform"],
-        "registryUrls": ["gitlab.kilic.dev"]
       },
       {
         "enabled": true,
@@ -394,8 +389,8 @@
         "rangeStrategy": "auto",
         "labels": ["renovate", "minor", "infrastructure"],
         "automerge": false,
-        "registryUrls": ["gitlab.kilic.dev"],
         "extends": [":semanticCommitTypeAll(feat)"],
+        "registryUrls": ["gitlab.kilic.dev"],
         "matchDepTypes": ["terraform-manager-git-monorepo"],
         "matchManagers": ["regex"],
         "schedule": ["at any time"]
@@ -448,6 +443,7 @@
         "labels": ["renovate", "major", "infrastructure"],
         "automerge": false,
         "extends": [":semanticCommitTypeAll(perf)"],
+        "registryUrls": ["gitlab.kilic.dev"],
         "matchDepTypes": ["terraform-manager-git-monorepo"],
         "matchManagers": ["regex"],
         "schedule": ["at any time"]
