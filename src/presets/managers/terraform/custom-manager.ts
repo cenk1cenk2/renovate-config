@@ -25,9 +25,11 @@ export default createPreset({
       matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\.git)?\/\/(?<depName>[^"]+)"/.source],
       currentValueTemplate: '0.0.0',
       autoReplaceStringTemplate: '"git::git@{{{registryUrl}}}:{{{packageName}}}.git//{{{depName}}}?ref={{{depName}}}@{{{newVersion}}}"',
+      depNameTemplate: '{{{ depName }}}',
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
       registryUrlTemplate: 'https://{{{registryUrl}}}',
-      datasourceTemplate: 'gitlab-tags'
+      datasourceTemplate: 'gitlab-tags',
+      versioningTemplate: 'semver'
     }
   ]
 })
