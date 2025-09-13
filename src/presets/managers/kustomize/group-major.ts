@@ -8,6 +8,7 @@ export default createPreset({
       matchUpdateTypes: ['major'],
       rangeStrategy: 'auto',
       labels: ['renovate', 'major', 'infrastructure'],
+      additionalBranchPrefix: 'kustomize-',
       automerge: false,
       extends: [':semanticCommitTypeAll(perf)'],
       matchDepTypes: ['HelmChart'],

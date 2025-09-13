@@ -8,6 +8,7 @@ export default createPreset({
       matchUpdateTypes: ['minor', 'patch'],
       rangeStrategy: 'auto',
       labels: ['renovate', 'minor', 'infrastructure'],
+      additionalBranchPrefix: 'terraform-',
       automerge: false,
       extends: [':semanticCommitTypeAll(fix)'],
       matchDepTypes: ['helm_release'],
