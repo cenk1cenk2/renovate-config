@@ -309,7 +309,7 @@
   },
   "kustomize": {
     "enabledManagers": ["kustomize"],
-    "extends": ["local>renovate/renovate-config:default/kustomize-minor-helm-releases"]
+    "extends": ["local>renovate/renovate-config:default/kustomize-minor-helm-releases", "local>renovate/renovate-config:default/kustomize-major-helm-releases"]
   },
   "kustomize-minor-helm-releases": {
     "packageRules": [
@@ -320,6 +320,21 @@
         "labels": ["renovate", "minor"],
         "automerge": false,
         "extends": [":semanticCommitTypeAll(fix)"],
+        "matchDepTypes": ["HelmChart"],
+        "matchManagers": ["kustomize"],
+        "schedule": ["at any time"]
+      }
+    ]
+  },
+  "kustomize-major-helm-releases": {
+    "packageRules": [
+      {
+        "enabled": true,
+        "matchUpdateTypes": ["major"],
+        "rangeStrategy": "auto",
+        "labels": ["renovate", "major", "infrastructure"],
+        "automerge": false,
+        "extends": [":semanticCommitTypeAll(perf)"],
         "matchDepTypes": ["HelmChart"],
         "matchManagers": ["kustomize"],
         "schedule": ["at any time"]

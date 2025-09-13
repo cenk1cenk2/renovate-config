@@ -4,5 +4,5 @@ import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: [Managers.KUSTOMIZE],
-  extends: createScopes(Preset.KUSTOMIZE_MINOR_HELM_RELEASES)
+  extends: createScopes(Preset.KUSTOMIZE_MINOR_HELM_RELEASES, Preset.KUSTOMIZE_MAJOR_HELM_RELEASES)
 })

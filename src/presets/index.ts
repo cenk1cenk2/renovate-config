@@ -51,6 +51,7 @@ export enum Preset {
   KUSTOMIZE = 'kustomize',
 
   KUSTOMIZE_MINOR_HELM_RELEASES = 'kustomize-minor-helm-releases',
+  KUSTOMIZE_MAJOR_HELM_RELEASES = 'kustomize-major-helm-releases',
 
   // manager: helm
 
@@ -136,6 +137,7 @@ export const PRESETS: Presets = {
   [Preset.KUSTOMIZE]: import('./managers/kustomize/manager.js').then((m) => m.default),
 
   [Preset.KUSTOMIZE_MINOR_HELM_RELEASES]: import('./managers/kustomize/group-minor-helm-releases.js').then((m) => m.default),
+  [Preset.KUSTOMIZE_MAJOR_HELM_RELEASES]: import('./managers/kustomize/group-major.js').then((m) => m.default),
 
   // manager: helm
 
