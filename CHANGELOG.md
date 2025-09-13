@@ -1,3 +1,28 @@
+## [3.9.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.4...v3.9.5) (2025-09-13)
+
+
+### Bug Fixes
+
+* add kubernetes manager ([4cff4ee](https://gitlab.kilic.dev/renovate/renovate-config/commit/4cff4ee65407f87bf672db201917227196491b1a))
+* add negated ([eb59451](https://gitlab.kilic.dev/renovate/renovate-config/commit/eb5945118b895e111e077caffc05c0ef710ad56a))
+* rollback template ([520f977](https://gitlab.kilic.dev/renovate/renovate-config/commit/520f977473b34945a17fe25ccd22b44fb5383030))
+* try ([7fd1f93](https://gitlab.kilic.dev/renovate/renovate-config/commit/7fd1f93a0c09a97fc346b1bf374cfdbdb30f49c7))
+* try simpler regex ([7fe623e](https://gitlab.kilic.dev/renovate/renovate-config/commit/7fe623eba14ad4ad3477b4c18e5dced0b7c208cc))
+* update ([7f73d12](https://gitlab.kilic.dev/renovate/renovate-config/commit/7f73d12b699ca333a3ebd1189a784adc67c1d5a5))
+* update ([2b626e9](https://gitlab.kilic.dev/renovate/renovate-config/commit/2b626e90fc3ed02d4f29af3142b67f3260d7ee61))
+* update configuration ([86e8b67](https://gitlab.kilic.dev/renovate/renovate-config/commit/86e8b67a35b109722da96c74b9e6240e820db4de))
+* update configuration ([febc182](https://gitlab.kilic.dev/renovate/renovate-config/commit/febc1827b7a98dd49b0e15abcecdb4b20d23264c))
+* update kubernetes template ([ee9c9fe](https://gitlab.kilic.dev/renovate/renovate-config/commit/ee9c9fe3e2c7d810b22ea54cabb08e14b10ea216))
+* update patterns ([1813385](https://gitlab.kilic.dev/renovate/renovate-config/commit/1813385adf762bc0fc7d339abd44d1e618822084))
+* update patterns ([7e5bc59](https://gitlab.kilic.dev/renovate/renovate-config/commit/7e5bc594b6b8e9eab91f6c63db0a432ea08eae93))
+* update preset ([fe8a336](https://gitlab.kilic.dev/renovate/renovate-config/commit/fe8a336d05bc2de464f030add37290a57d592eb5))
+* update preset ([76a1513](https://gitlab.kilic.dev/renovate/renovate-config/commit/76a151339864a914fb73fed945d3d3cbe1790f32))
+* update preset ([24b2078](https://gitlab.kilic.dev/renovate/renovate-config/commit/24b2078b36f75e8e153e2103148c1df566217fbe))
+* update templatess ([10580e2](https://gitlab.kilic.dev/renovate/renovate-config/commit/10580e2fee56cfbd32cd2e64ca9c660cbe9dd67f))
+* update terraform ([4fe2f9b](https://gitlab.kilic.dev/renovate/renovate-config/commit/4fe2f9b8efa78b759b9c88eb394d4b621527d3a1))
+* update terraform config ([c71c8ee](https://gitlab.kilic.dev/renovate/renovate-config/commit/c71c8ee92f0000d4dfaac7d6a9d65e95ca06093f))
+* update with registry url ([f91e109](https://gitlab.kilic.dev/renovate/renovate-config/commit/f91e1096cbdce137a9a1d85be05e7f02be3b6def))
+
 ## [3.9.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.3...v3.9.4) (2025-09-13)
 
 ### Bug Fixes
