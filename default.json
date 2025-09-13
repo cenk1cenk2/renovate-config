@@ -380,8 +380,13 @@
         "extends": [":semanticCommitTypeAll(fix)"],
         "matchDepTypes": ["module"],
         "matchManagers": ["terraform"],
-        "registryUrls": ["!gitlab.kilic.dev"],
         "schedule": ["at any time"]
+      },
+      {
+        "enabled": false,
+        "matchDepTypes": ["module"],
+        "matchManagers": ["terraform"],
+        "registryUrls": ["gitlab.kilic.dev"]
       },
       {
         "enabled": true,
