@@ -546,22 +546,13 @@
     "enabledManagers": [
       "kubernetes"
     ],
-    "extends": [
-      "local>renovate/renovate-config:default/kubernetes-file-patterns"
-    ]
-  },
-  "kubernetes-file-patterns": {
-    "packageRules": [
-      {
-        "enabled": true,
-        "matchManagers": [
-          "kubernetes"
-        ],
+    "managers": {
+      "kubernetes": {
         "managerFilePatterns": [
           "/^\\.deploy\\/**\\/*\\.ya?ml$/"
         ]
       }
-    ]
+    }
   },
   "kustomize": {
     "enabledManagers": [
