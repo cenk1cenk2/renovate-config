@@ -298,15 +298,7 @@
   },
   "kubernetes": {
     "enabledManagers": ["kubernetes"],
-    "managerFilePatterns": [
-      "/^\\.deploy\\/**\\/*\\.ya?ml$/",
-      "/^!\\.deploy\\/**\\/kustomization\\.ya?ml$/",
-      "/^!\\.deploy\\/**\\/templates\\//",
-      "/^!\\.deploy\\/**\\/files\\//",
-      "/^!\\.deploy\\/**\\/values\\//",
-      "/^!\\.deploy\\/**\\/values\\.ya?ml$/",
-      "/^!\\.deploy\\/**\\/chart\\.ya?ml$/"
-    ]
+    "managerFilePatterns": ["/^\\.deploy\\/**\\/*\\.ya?ml$/"]
   },
   "kustomize": {
     "enabledManagers": ["kustomize"],
