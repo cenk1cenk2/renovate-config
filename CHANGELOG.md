@@ -1,3 +1,10 @@
+## [3.9.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.2...v3.9.3) (2025-09-13)
+
+
+### Bug Fixes
+
+* add unmatch repository ([96a511b](https://gitlab.kilic.dev/renovate/renovate-config/commit/96a511b61b93b1956dc6586576ccba14a9f2b2d4))
+
 ## [3.9.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.1...v3.9.2) (2025-09-12)
 
 
