@@ -15,7 +15,7 @@ export default createPreset({
         // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader"
         /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/(?<depName>[^?"]+)"/.source
       ],
-      autoReplaceStringTemplate: '"git::git@{{{ replace registryUrl \'https://\' \'\' }}}:{{{ packageName }}}.git//{{{ depName }}}?ref={{{ depName }}}@{{{ newValue }}}"',
+      autoReplaceStringTemplate: '{{{ depName }}}?ref={{{ depName }}}@{{{ newValue }}}',
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
       currentValueTemplate: '{{#if currentValue }}{{{ currentValue }}}{{else}}0.0.0{{/if}}',
       registryUrlTemplate: 'https://{{{registryUrl}}}',
