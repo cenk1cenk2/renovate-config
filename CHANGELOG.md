@@ -1,3 +1,10 @@
+## [3.9.8](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.7...v3.9.8) (2025-09-13)
+
+
+### Bug Fixes
+
+* group dependencies instead ([eccea8b](https://gitlab.kilic.dev/renovate/renovate-config/commit/eccea8be26a09dbfa442487998342c650bf37b47))
+
 ## [3.9.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.6...v3.9.7) (2025-09-13)
 
 
