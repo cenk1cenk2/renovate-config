@@ -1,3 +1,10 @@
+## [3.9.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.6...v3.9.7) (2025-09-13)
+
+
+### Bug Fixes
+
+* give up on versioning automatically ([0a6ba73](https://gitlab.kilic.dev/renovate/renovate-config/commit/0a6ba73d7f1c2e0e424ebe9be76344f453122389))
+
 ## [3.9.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.5...v3.9.6) (2025-09-13)
 
 
