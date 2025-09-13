@@ -548,7 +548,7 @@
     ],
     "kubernetes": {
       "managerFilePatterns": [
-        "/^\\.deploy\\/**\\/*\\.ya?ml$/"
+        "/\\.deploy\\/**\\/*\\.ya?ml/"
       ]
     }
   },
