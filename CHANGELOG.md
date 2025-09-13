@@ -1,3 +1,16 @@
+## [3.9.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.5...v3.9.6) (2025-09-13)
+
+
+### Bug Fixes
+
+* add autoreplace ([c813324](https://gitlab.kilic.dev/renovate/renovate-config/commit/c8133243d057ef87e22354240fd8c25ccf3d87e5))
+* problems with regex ([e50adc5](https://gitlab.kilic.dev/renovate/renovate-config/commit/e50adc5f30a5b9e894f55f0f70ff8a038171d2a7))
+* update branch names ([f389a75](https://gitlab.kilic.dev/renovate/renovate-config/commit/f389a7553ae8c27b509f5508b9f8b3a012632890))
+* update expression ([9507405](https://gitlab.kilic.dev/renovate/renovate-config/commit/9507405fdfc7733f64d269f1452291519b562220))
+* update patterns ([fb47f3e](https://gitlab.kilic.dev/renovate/renovate-config/commit/fb47f3ea457dd1ed2eb33daf759b08552122df13))
+* update patterns ([8bbb7ad](https://gitlab.kilic.dev/renovate/renovate-config/commit/8bbb7ad2d652858eacdded90ae7b8efe250a92e7))
+* update rules ([4acddb5](https://gitlab.kilic.dev/renovate/renovate-config/commit/4acddb5266c08337a219ef62636296742564ae84))
+
 ## [3.9.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.4...v3.9.5) (2025-09-13)
 
 
