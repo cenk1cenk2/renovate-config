@@ -19,7 +19,7 @@ export default createPreset({
       enabled: false,
       matchDepTypes: ['module'],
       matchManagers: [Managers.TERRAFORM],
-      matchPackageNames: ['terraform/tf-modules']
+      registryUrls: ['gitlab.kilic.dev']
     },
     {
       enabled: true,
@@ -27,6 +27,7 @@ export default createPreset({
       rangeStrategy: 'auto',
       labels: ['renovate', 'minor', 'infrastructure'],
       automerge: false,
+      branchPrefix: 'terraform-manager-monorepo-',
       extends: [':semanticCommitTypeAll(feat)'],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
       matchManagers: [Managers.REGEX],
