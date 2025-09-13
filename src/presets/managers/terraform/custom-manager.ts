@@ -16,7 +16,7 @@ export default createPreset({
       ],
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
       currentValueTemplate: '{{#if currentValue }}{{{ currentValue }}}{{else}}0.0.0{{/if}}',
-      registryUrlTemplate: 'https://{{{registryUrl}}}',
+      // registryUrlTemplate: 'https://{{{registryUrl}}}',
       datasourceTemplate: 'gitlab-tags',
       versioningTemplate: 'semver'
     }
