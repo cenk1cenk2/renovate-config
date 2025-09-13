@@ -14,6 +14,7 @@ export default createPreset({
     Preset.GITLAB_CI,
     Preset.GO,
     Preset.HELM,
+    Preset.KUBERNETES,
     Preset.KUSTOMIZE,
     Preset.NODE,
     Preset.PYTHON,

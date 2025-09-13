@@ -25,6 +25,7 @@
       "local>renovate/renovate-config:default/gitlab-ci",
       "local>renovate/renovate-config:default/go",
       "local>renovate/renovate-config:default/helm",
+      "local>renovate/renovate-config:default/kubernetes",
       "local>renovate/renovate-config:default/kustomize",
       "local>renovate/renovate-config:default/node",
       "local>renovate/renovate-config:default/python",
@@ -297,7 +298,15 @@
   },
   "kubernetes": {
     "enabledManagers": ["kubernetes"],
-    "managerFilePatterns": ["/^\\.deploy\\/**\\/*\\.ya?ml$/"]
+    "managerFilePatterns": [
+      "/^\\.deploy\\/**\\/*\\.ya?ml$/",
+      "/^!\\.deploy\\/**\\/kustomization\\.ya?ml$/",
+      "/^!\\.deploy\\/**\\/templates\\//",
+      "/^!\\.deploy\\/**\\/files\\//",
+      "/^!\\.deploy\\/**\\/values\\//",
+      "/^!\\.deploy\\/**\\/values\\.ya?ml$/",
+      "/^!\\.deploy\\/**\\/chart\\.ya?ml$/"
+    ]
   },
   "kustomize": {
     "enabledManagers": ["kustomize"],
