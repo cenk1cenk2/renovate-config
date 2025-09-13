@@ -5,7 +5,7 @@ export default createPreset({
   enabledManagers: [Managers.KUBERNETES],
   [Managers.KUBERNETES]: {
     managerFilePatterns: [
-      '/\\.deploy\\/**\\/*\\.ya?ml/'
+      '/\\.deploy\\/**\\/.*\\.ya?ml/'
       // '/^!\\.deploy\\/**\\/kustomization\\.ya?ml$/',
       // '/^!\\.deploy\\/**\\/templates\\//',
       // '/^!\\.deploy\\/**\\/files\\//',
