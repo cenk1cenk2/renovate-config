@@ -8,6 +8,7 @@
       "gomod",
       "helm",
       "helm-values",
+      "kubernetes",
       "kustomize",
       "npm",
       "pep621",
@@ -293,6 +294,18 @@
   },
   "rust": {
     "enabledManagers": ["cargo"]
+  },
+  "kubernetes": {
+    "enabledManagers": ["kubernetes"],
+    "managerFilePatterns": [
+      ".deploy/*/**.yaml",
+      "!.deploy/**/kustomization.yaml",
+      "!.deploy/**/templates",
+      "!.deploy/**/files",
+      "!.deploy/**/values",
+      "!.deploy/**/values.yaml",
+      "!.deploy/**/chart.yaml"
+    ]
   },
   "kustomize": {
     "enabledManagers": ["kustomize"],

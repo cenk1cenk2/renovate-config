@@ -44,6 +44,10 @@ export enum Preset {
 
   // manager: kubernetes
 
+  KUBERNETES = 'kubernetes',
+
+  // manager: kubernetes
+
   KUSTOMIZE = 'kustomize',
 
   KUSTOMIZE_MINOR_HELM_RELEASES = 'kustomize-minor-helm-releases',
@@ -123,6 +127,9 @@ export const PRESETS: Presets = {
   // manager: rust
 
   [Preset.RUST]: import('./managers/rust-cargo/manager.js').then((m) => m.default),
+
+  // manager: kubernetes
+  [Preset.KUBERNETES]: import('./managers/kubernetes/manager.js').then((m) => m.default),
 
   // manager: kubernetes
 

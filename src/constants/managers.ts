@@ -6,6 +6,7 @@ export enum Managers {
   GO = 'gomod',
   HELM = 'helm',
   HELM_VALUES = 'helm-values',
+  KUBERNETES = 'kubernetes',
   KUSTOMIZE = 'kustomize',
   NODE = 'npm',
   PYTHON_PEP621 = 'pep621',
