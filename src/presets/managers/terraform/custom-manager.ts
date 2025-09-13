@@ -10,22 +10,12 @@ export default createPreset({
       managerFilePatterns: ['/\\.tf$/'],
       matchStringsStrategy: 'any',
       // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader?ref=reloader@1.0.6"
-      matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\.git)?\/\/.*\?ref=(?<depName>.*)@(?<currentValue>[^"]+)"/.source],
+      matchStrings: [
+        /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/.*\?ref=(?<depName>.+)@(?<currentValue>[^"]+)"/.source,
+        /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/(?<depName>[^?"]+)"/.source
+      ],
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
-      registryUrlTemplate: 'https://{{{registryUrl}}}',
-      datasourceTemplate: 'gitlab-tags',
-      versioningTemplate: 'semver'
-    },
-    {
-      depTypeTemplate: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO,
-      customType: 'regex',
-      managerFilePatterns: ['/\\.tf$/'],
-      matchStringsStrategy: 'any',
-      // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader"
-      matchStrings: [/"git::git@(?<registryUrl>[^:]*):(?<packageName>[^.]*)(\.git)?\/\/(?<depName>[^?"]+)"/.source],
-      currentValueTemplate: '0.0.0',
-      // autoReplaceStringTemplate: '"git::git@{{{registryUrl}}}:{{{packageName}}}.git//{{{depName}}}?ref={{{depName}}}@{{{newVersion}}}"',
-      extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
+      currentValueTemplate: '{{#if currentValue }}{{{ currentValue }}}{{else}}0.0.0{{/if}}',
       registryUrlTemplate: 'https://{{{registryUrl}}}',
       datasourceTemplate: 'gitlab-tags',
       versioningTemplate: 'semver'
