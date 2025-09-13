@@ -45,6 +45,7 @@ export enum Preset {
   // manager: kubernetes
 
   KUBERNETES = 'kubernetes',
+  KUBERNETES_FILE_PATTERNS = 'kubernetes-file-patterns',
 
   // manager: kubernetes
 
@@ -131,6 +132,8 @@ export const PRESETS: Presets = {
 
   // manager: kubernetes
   [Preset.KUBERNETES]: import('./managers/kubernetes/manager.js').then((m) => m.default),
+
+  [Preset.KUBERNETES_FILE_PATTERNS]: import('./managers/kubernetes/file-patterns.js').then((m) => m.default),
 
   // manager: kubernetes
 
