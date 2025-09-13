@@ -19,7 +19,7 @@ export default createPreset({
       enabled: false,
       matchDepTypes: ['module'],
       matchManagers: [Managers.TERRAFORM],
-      registryUrls: ['gitlab.kilic.dev']
+      matchPackageNames: ['terraform/tf-modules']
     },
     {
       enabled: true,

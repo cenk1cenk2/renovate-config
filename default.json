@@ -386,7 +386,7 @@
         "enabled": false,
         "matchDepTypes": ["module"],
         "matchManagers": ["terraform"],
-        "registryUrls": ["gitlab.kilic.dev"]
+        "matchPackageNames": ["terraform/tf-modules"]
       },
       {
         "enabled": true,
