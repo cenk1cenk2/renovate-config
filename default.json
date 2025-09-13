@@ -553,7 +553,7 @@
   "kubernetes-file-patterns": {
     "packageRules": [
       {
-        "enabledManagers": [
+        "matchManagers": [
           "kubernetes"
         ],
         "managerFilePatterns": [

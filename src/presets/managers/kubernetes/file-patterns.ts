@@ -4,7 +4,7 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
-      enabledManagers: [Managers.KUBERNETES],
+      matchManagers: [Managers.KUBERNETES],
       managerFilePatterns: [
         '/^\\.deploy\\/**\\/*\\.ya?ml$/',
         '/^!\\.deploy\\/**\\/kustomization\\.ya?ml$/',
