@@ -9,9 +9,10 @@ export default createPreset({
       customType: 'regex',
       managerFilePatterns: ['/\\.tf$/'],
       matchStringsStrategy: 'any',
-      // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader?ref=reloader@1.0.6"
       matchStrings: [
+        // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader?ref=reloader@1.0.6"
         /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/.*\?ref=(?<depName>.+)@(?<currentValue>[^"]+)"/.source,
+        // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader"
         /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/(?<depName>[^?"]+)"/.source
       ],
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
