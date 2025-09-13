@@ -11,13 +11,11 @@ export default createPreset({
       matchStringsStrategy: 'any',
       matchStrings: [
         // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader?ref=reloader@1.0.6"
-        /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/.*\?ref=(?<depName>.+)@(?<currentValue>[^"]+)"/.source,
+        /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/.*\?ref=(?<depName>.+)@(?<currentValue>[^"]+)"/.source
         // source = "git::git@gitlab.kilic.dev:terraform/tf-modules.git//reloader"
-        /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/(?<depName>[^?"]+)"/.source
+        // /"git::git@(?<registryUrl>[^:]+):(?<packageName>[^.]+)(\.git)?\/\/(?<depName>[^?"]+)"/.source
       ],
-      autoReplaceStringTemplate: '{{{ depName }}}?ref={{{ depName }}}@{{{ newValue }}}',
       extractVersionTemplate: '^{{{depName}}}@(?<version>.*)$',
-      currentValueTemplate: '{{#if currentValue }}{{{ currentValue }}}{{else}}0.0.0{{/if}}',
       registryUrlTemplate: 'https://{{{registryUrl}}}',
       datasourceTemplate: 'gitlab-tags',
       versioningTemplate: 'semver'
