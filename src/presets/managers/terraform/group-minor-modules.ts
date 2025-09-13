@@ -13,6 +13,7 @@ export default createPreset({
       extends: [':semanticCommitTypeAll(fix)'],
       matchDepTypes: ['module'],
       matchManagers: [Managers.TERRAFORM],
+      matchRepositories: ['!gitlab.kilic.dev'],
       schedule: [SCHEDULE.ANY]
     },
     {
