@@ -139,7 +139,7 @@
           "^cz-conventional-changelog$",
           "^simple-git-hooks$"
         ],
-        "groupName": "[node] slow ring",
+        "groupName": "node slow ring",
         "groupSlug": "slow-ring-weekly",
         "schedule": [
           "before 1am on Monday"
@@ -159,7 +159,7 @@
           "^@cenk1cenk2-.*/",
           "^@kilic.dev/"
         ],
-        "groupName": "[node] fast ring minor dependencies",
+        "groupName": "node fast ring minor dependencies",
         "groupSlug": "fast-ring",
         "matchDepTypes": [
           "dependencies"
@@ -191,7 +191,7 @@
           "^@cenk1cenk2-.*/",
           "^@kilic.dev/"
         ],
-        "groupName": "[node] fast ring dev dependencies",
+        "groupName": "node fast ring dev dependencies",
         "groupSlug": "fast-ring-dev",
         "matchDepTypes": [
           "devDependencies"
@@ -224,7 +224,7 @@
           "^@cenk1cenk2-.*/",
           "^@kilic.dev/"
         ],
-        "groupName": "[node] fast ring peer dependencies",
+        "groupName": "node fast ring peer dependencies",
         "groupSlug": "fast-ring-peer",
         "matchDepTypes": [
           "peerDependencies",
@@ -253,7 +253,7 @@
         "matchPackagePatterns": [
           "*"
         ],
-        "groupName": "[node] all development dependency updates",
+        "groupName": "node all development dependency updates",
         "groupSlug": "node-dev",
         "matchDepTypes": [
           "devDependencies"
@@ -296,7 +296,7 @@
           "^eslint-plugin-",
           "^jest"
         ],
-        "groupName": "[node] all build dependency updates",
+        "groupName": "node all build dependency updates",
         "groupSlug": "node-build",
         "matchDepTypes": [
           "devDependencies"
@@ -332,7 +332,7 @@
           "^vitepress",
           "^markdown-it"
         ],
-        "groupName": "[node] all docs dependency updates",
+        "groupName": "node all docs dependency updates",
         "groupSlug": "node-docs",
         "matchDepTypes": [
           "devDependencies"
@@ -360,7 +360,7 @@
         ]
       },
       {
-        "groupName": "[node] all package manager",
+        "groupName": "node all package manager",
         "groupSlug": "node-package-manager",
         "matchManagers": [
           "npm"
@@ -388,7 +388,7 @@
         "matchPackagePatterns": [
           "*"
         ],
-        "groupName": "[node] all minor dependency updates",
+        "groupName": "node all minor dependency updates",
         "groupSlug": "node-minor",
         "matchDepTypes": [
           "dependencies"
@@ -421,7 +421,7 @@
         "matchPackagePatterns": [
           "*"
         ],
-        "groupName": "[node] all peer dependency updates",
+        "groupName": "node all peer dependency updates",
         "groupSlug": "node-peer",
         "enabled": false,
         "matchDepTypes": [
@@ -465,7 +465,7 @@
         "matchPackagePatterns": [
           "*"
         ],
-        "groupName": "[go] all minor dependency updates",
+        "groupName": "go all minor dependency updates",
         "groupSlug": "go-minor",
         "matchUpdateTypes": [
           "minor",
@@ -493,7 +493,7 @@
         "matchPackagePatterns": [
           "^golang.org/x/"
         ],
-        "groupName": "[go] slow ring",
+        "groupName": "go slow ring",
         "groupSlug": "slow-ring-weekly",
         "schedule": [
           "before 1am on Monday"
@@ -510,7 +510,7 @@
         "matchPackagePatterns": [
           "^gitlab.kilic.dev/"
         ],
-        "groupName": "[go] fast ring minor dependencies",
+        "groupName": "go fast ring minor dependencies",
         "groupSlug": "fast-ring",
         "matchUpdateTypes": [
           "minor",
@@ -749,7 +749,7 @@
           "minor",
           "infrastructure"
         ],
-        "groupName": "[terraform-monorepo] all minor dependency updates",
+        "groupName": "terraform-monorepo all minor dependency updates",
         "groupSlug": "terraform-monorepo",
         "automerge": false,
         "registryUrls": [
@@ -904,7 +904,7 @@
         "matchPackagePatterns": [
           "*"
         ],
-        "groupName": "[ansible-galaxy] all minor dependency updates",
+        "groupName": "ansible-galaxy all minor dependency updates",
         "groupSlug": "ansible-galaxy-minor",
         "labels": [
           "renovate",
@@ -974,7 +974,7 @@
         "matchPackagePatterns": [
           "*"
         ],
-        "groupName": "[gitlab-ci] all minor dependency updates",
+        "groupName": "gitlab-ci all minor dependency updates",
         "groupSlug": "gitlab-ci-minor",
         "matchUpdateTypes": [
           "minor",
@@ -1004,7 +1004,7 @@
         "matchPackagePatterns": [
           "*"
         ],
-        "groupName": "[gitlab-ci] all minor dependency updates",
+        "groupName": "gitlab-ci all minor dependency updates",
         "groupSlug": "gitlab-ci-minor",
         "matchUpdateTypes": [
           "minor",

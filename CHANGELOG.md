@@ -1,3 +1,10 @@
+## [3.9.10](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.9...v3.9.10) (2025-09-14)
+
+
+### Bug Fixes
+
+* update package names ([36196f0](https://gitlab.kilic.dev/renovate/renovate-config/commit/36196f0288e7c5c5d686aadd8a5d7e00fdcbd85d))
+
 ## [3.9.9](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.8...v3.9.9) (2025-09-14)
 
 
