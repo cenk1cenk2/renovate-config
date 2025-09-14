@@ -5,7 +5,7 @@ export default createPreset({
   packageRules: [
     {
       matchPackagePatterns: ['*'],
-      groupName: '[ansible-galaxy] all minor dependency updates',
+      groupName: 'ansible-galaxy all minor dependency updates',
       groupSlug: 'ansible-galaxy-minor',
       labels: ['renovate', 'minor', 'automerge'],
       automerge: true,

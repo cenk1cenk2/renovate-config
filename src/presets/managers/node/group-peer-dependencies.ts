@@ -6,7 +6,7 @@ export default createPreset({
   packageRules: [
     {
       matchPackagePatterns: ['*'],
-      groupName: '[node] all peer dependency updates',
+      groupName: 'node all peer dependency updates',
       groupSlug: 'node-peer',
       enabled: false,
       ...NODE_GROUP_PEER,

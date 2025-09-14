@@ -7,7 +7,7 @@ export default createPreset({
   packageRules: [
     {
       matchPackagePatterns: GO_FAST_RING_PACKAGES,
-      groupName: '[go] fast ring minor dependencies',
+      groupName: 'go fast ring minor dependencies',
       groupSlug: RingSlug.FAST_RING,
       ...GO_GROUP_MINOR,
       schedule: [SCHEDULE.ANY]

@@ -6,7 +6,7 @@ export default createPreset({
   packageRules: [
     {
       matchPackagePatterns: ['*'],
-      groupName: '[node] all minor dependency updates',
+      groupName: 'node all minor dependency updates',
       groupSlug: 'node-minor',
       ...NODE_GROUP_MINOR,
       schedule: [SCHEDULE.DAILY]

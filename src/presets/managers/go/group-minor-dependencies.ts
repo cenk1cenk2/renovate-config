@@ -6,7 +6,7 @@ export default createPreset({
   packageRules: [
     {
       matchPackagePatterns: ['*'],
-      groupName: '[go] all minor dependency updates',
+      groupName: 'go all minor dependency updates',
       groupSlug: 'go-minor',
       ...GO_GROUP_MINOR,
       schedule: [SCHEDULE.DAILY]
