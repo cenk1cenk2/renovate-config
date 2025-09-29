@@ -11,6 +11,7 @@
       "kubernetes",
       "kustomize",
       "npm",
+      "ocb",
       "pep621",
       "regex",
       "cargo",
