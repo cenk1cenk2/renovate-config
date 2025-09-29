@@ -1,3 +1,10 @@
+## [3.9.16](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.15...v3.9.16) (2025-09-29)
+
+
+### Bug Fixes
+
+* update rules ([7da0c05](https://gitlab.kilic.dev/renovate/renovate-config/commit/7da0c05ad59bbe98c7b45789c49fb98c6ee99d47))
+
 ## [3.9.15](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.14...v3.9.15) (2025-09-29)
 
 
