@@ -9,6 +9,7 @@ export enum Managers {
   KUBERNETES = 'kubernetes',
   KUSTOMIZE = 'kustomize',
   NODE = 'npm',
+  OPENTELEMETRY_COLLECTOR_BUILDER = 'ocb',
   PYTHON_PEP621 = 'pep621',
   REGEX = 'regex',
   RUST_CARGO = 'cargo',
