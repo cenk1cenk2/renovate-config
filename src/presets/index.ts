@@ -82,7 +82,11 @@ export enum Preset {
   GITLAB_CI = 'gitlab-ci',
   GITLAB_CI_CUSTOM_MANAGER = 'gitlab-ci-custom-manager',
 
-  GITLAB_CI_MINOR_UPDATES = 'gitlab-ci-minor-updates'
+  GITLAB_CI_MINOR_UPDATES = 'gitlab-ci-minor-updates',
+
+  // manager: otel-builder
+
+  OPENTELEMETRY_COLLECTOR_BUILDER = 'opentelemetry-collector-builder'
 }
 
 export const PRESETS: Presets = {
@@ -168,5 +172,9 @@ export const PRESETS: Presets = {
   [Preset.GITLAB_CI]: import('./managers/gitlab-ci/manager.js').then((m) => m.default),
   [Preset.GITLAB_CI_CUSTOM_MANAGER]: import('./managers/gitlab-ci/custom-manager.js').then((m) => m.default),
 
-  [Preset.GITLAB_CI_MINOR_UPDATES]: import('./managers/gitlab-ci/group-minor-updates.js').then((m) => m.default)
+  [Preset.GITLAB_CI_MINOR_UPDATES]: import('./managers/gitlab-ci/group-minor-updates.js').then((m) => m.default),
+
+  // manager: otel-builder
+
+  [Preset.OPENTELEMETRY_COLLECTOR_BUILDER]: import('./managers/otel-builder/manager.js').then((m) => m.default)
 }

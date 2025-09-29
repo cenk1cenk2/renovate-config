@@ -17,6 +17,7 @@ export default createPreset({
     Preset.KUBERNETES,
     Preset.KUSTOMIZE,
     Preset.NODE,
+    Preset.OPENTELEMETRY_COLLECTOR_BUILDER,
     Preset.PYTHON,
     Preset.RUST,
     Preset.TERRAFORM
