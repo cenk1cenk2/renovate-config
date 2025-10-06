@@ -1,3 +1,10 @@
+## [3.9.17](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.16...v3.9.17) (2025-10-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @oxc-project/runtime to ^0.94.0 ([c122177](https://gitlab.kilic.dev/renovate/renovate-config/commit/c122177b66ec28e7bf41c0bc31d19c86e8cf16ec))
+
 ## [3.9.16](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.15...v3.9.16) (2025-09-29)
 
 
