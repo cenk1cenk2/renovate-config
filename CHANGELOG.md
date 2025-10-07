@@ -1,3 +1,11 @@
+## [3.9.18](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.17...v3.9.18) (2025-10-07)
+
+
+### Bug Fixes
+
+* configure as global ([0f76d36](https://gitlab.kilic.dev/renovate/renovate-config/commit/0f76d3629f503572d175787d0705af9c82d14b4d))
+* update conf ([419b3e2](https://gitlab.kilic.dev/renovate/renovate-config/commit/419b3e2ef06c66e4c1b8fdd3aaf227aef500cb2b))
+
 ## [3.9.17](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.16...v3.9.17) (2025-10-06)
 
 
