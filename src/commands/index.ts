@@ -63,7 +63,7 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
           this.logger.info('Validating config...')
           await Promise.all(
             Object.entries(current).map(async([preset, value]) => {
-              const result = await validateConfig('repo', await value, true)
+              const result = await validateConfig('global', await value, true)
 
               if (result.warnings.length > 0) {
                 for (const warning of result.warnings) {
