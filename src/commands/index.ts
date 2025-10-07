@@ -2,6 +2,7 @@ import { diff } from 'jsondiffpatch'
 import Formatter from 'jsondiffpatch/formatters/console'
 import type { Listr } from 'listr2'
 import { join } from 'path'
+import { validateConfig } from 'renovate/dist/config/validation.js'
 
 import type { CliModuleOptions, DynamicModule, RegisterHook, ShouldRunBeforeHook } from '@cenk1cenk2/oclif-common'
 import { Command, ConfigService, JsonParser, LockerModule, LockerService, MergeStrategy, ParserService } from '@cenk1cenk2/oclif-common'
@@ -57,10 +58,33 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
       },
       {
         task: async(): Promise<void> => {
-          const difference = new Formatter().format(diff(await this.locker.read(), await this.locker.applyLockAll({} as Presets)))
+          const current = await this.locker.applyLockAll({} as Presets)
+
+          this.logger.info('Validating config...')
+          await Promise.all(
+            Object.entries(current).map(async([preset, value]) => {
+              const result = await validateConfig('repo', await value, true)
+
+              if (result.warnings.length > 0) {
+                for (const warning of result.warnings) {
+                  this.logger.warn('[%s] [%s] %s', preset, warning.topic, warning.message)
+                }
+              }
+
+              if (result.errors.length > 0) {
+                for (const error of result.errors) {
+                  this.logger.error('[%s] [%s] %s', preset, error.topic, error.message)
+                }
+              }
+            })
+          )
+
+          const difference = new Formatter().format(diff(await this.locker.read(), current))
 
           if (!difference) {
             this.logger.warn('No difference!')
+          } else {
+            this.logger.info('Difference found!')
           }
 
           // eslint-disable-next-line no-console

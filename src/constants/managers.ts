@@ -4,7 +4,7 @@ export enum Managers {
   GITLAB_CI = 'gitlabci',
   GITLAB_CI_INCLUDE = 'gitlabci-include',
   GO = 'gomod',
-  HELM = 'helm',
+  HELM = 'helmv3',
   HELM_VALUES = 'helm-values',
   KUBERNETES = 'kubernetes',
   KUSTOMIZE = 'kustomize',
