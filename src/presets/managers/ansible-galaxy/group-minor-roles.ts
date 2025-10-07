@@ -4,7 +4,7 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
-      matchPackagePatterns: ['*'],
+      matchPackageNames: ['*'],
       groupName: 'ansible-galaxy all minor dependency updates',
       groupSlug: 'ansible-galaxy-minor',
       labels: ['renovate', 'minor', 'automerge'],

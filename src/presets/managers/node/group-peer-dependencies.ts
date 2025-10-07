@@ -5,7 +5,7 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
-      matchPackagePatterns: ['*'],
+      matchPackageNames: ['*'],
       groupName: 'node all peer dependency updates',
       groupSlug: 'node-peer',
       enabled: false,

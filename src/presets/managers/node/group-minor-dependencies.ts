@@ -5,7 +5,7 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
-      matchPackagePatterns: ['*'],
+      matchPackageNames: ['*'],
       groupName: 'node all minor dependency updates',
       groupSlug: 'node-minor',
       ...NODE_GROUP_MINOR,

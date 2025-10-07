@@ -11,7 +11,7 @@ export enum Managers {
   NODE = 'npm',
   OPENTELEMETRY_COLLECTOR_BUILDER = 'ocb',
   PYTHON_PEP621 = 'pep621',
-  REGEX = 'regex',
+  REGEX = 'custom.regex',
   RUST_CARGO = 'cargo',
   TERRAFORM = 'terraform'
 }

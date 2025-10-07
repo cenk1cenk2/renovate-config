@@ -5,7 +5,7 @@ export default createPreset({
   enabledManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
   packageRules: [
     {
-      matchPackagePatterns: ['*'],
+      matchPackageNames: ['*'],
       groupName: 'otel-builder all minor dependency updates',
       groupSlug: 'otel-builder-minor',
       matchUpdateTypes: ['minor', 'patch', 'digest'],

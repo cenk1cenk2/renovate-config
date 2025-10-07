@@ -5,7 +5,7 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
-      matchPackagePatterns: ['*'],
+      matchPackageNames: ['*'],
       groupName: 'go all minor dependency updates',
       groupSlug: 'go-minor',
       ...GO_GROUP_MINOR,

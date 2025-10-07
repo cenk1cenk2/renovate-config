@@ -2,6 +2,7 @@ import { diff } from 'jsondiffpatch'
 import Formatter from 'jsondiffpatch/formatters/console'
 import type { Listr } from 'listr2'
 import { join } from 'path'
+import { migrateConfig } from 'renovate/dist/config/migration.js'
 import { validateConfig } from 'renovate/dist/config/validation.js'
 
 import type { CliModuleOptions, DynamicModule, RegisterHook, ShouldRunBeforeHook } from '@cenk1cenk2/oclif-common'
@@ -63,6 +64,16 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
           this.logger.info('Validating config...')
           await Promise.all(
             Object.entries(current).map(async([preset, value]) => {
+              const migration = migrateConfig(await value)
+
+              if (migration.isMigrated) {
+                this.logger.warn('Preset %s needs migration, showing difference between current and migrated config:', preset)
+                const difference = new Formatter().format(diff(value, migration.migratedConfig))
+
+                // eslint-disable-next-line no-console
+                console.log(difference)
+              }
+
               const result = await validateConfig('global', await value, true)
 
               if (result.warnings.length > 0) {

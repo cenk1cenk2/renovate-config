@@ -6,7 +6,7 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
-      matchPackagePatterns: NODE_FAST_RING_PACKAGES,
+      matchPackageNames: NODE_FAST_RING_PACKAGES,
       groupName: 'node fast ring minor dependencies',
       groupSlug: RingSlug.FAST_RING,
       ...NODE_GROUP_MINOR,
@@ -14,7 +14,7 @@ export default createPreset({
     },
 
     {
-      matchPackagePatterns: NODE_FAST_RING_PACKAGES,
+      matchPackageNames: NODE_FAST_RING_PACKAGES,
       groupName: 'node fast ring dev dependencies',
       groupSlug: RingSlug.FAST_RING_DEV,
       ...NODE_GROUP_DEV,
@@ -22,7 +22,7 @@ export default createPreset({
     },
 
     {
-      matchPackagePatterns: NODE_FAST_RING_PACKAGES,
+      matchPackageNames: NODE_FAST_RING_PACKAGES,
       groupName: 'node fast ring peer dependencies',
       groupSlug: RingSlug.FAST_RING_PEER,
       ...NODE_GROUP_PEER,

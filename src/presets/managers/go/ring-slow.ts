@@ -5,7 +5,7 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
-      matchPackagePatterns: GO_SLOW_RING_PACKAGES,
+      matchPackageNames: GO_SLOW_RING_PACKAGES,
       groupName: 'go slow ring',
       groupSlug: RingSlug.SLOW_RING_WEEKLY,
       schedule: [SCHEDULE.WEEKLY],

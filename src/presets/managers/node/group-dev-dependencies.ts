@@ -5,7 +5,7 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
-      matchPackagePatterns: ['*'],
+      matchPackageNames: ['*'],
       groupName: 'node all development dependency updates',
       groupSlug: 'node-dev',
       ...NODE_GROUP_DEV,
@@ -13,8 +13,20 @@ export default createPreset({
     },
 
     {
-      matchPackageNames: ['typescript', 'tsup', 'tsdown', 'prettier', 'eslint', '@cenk1cenk2/eslint-config', '@swc/core', '@types/jest', 'jest', 'ts-jest'],
-      matchPackagePatterns: ['^eslint-plugin-', '^jest'],
+      matchPackageNames: [
+        'typescript',
+        'tsup',
+        'tsdown',
+        'prettier',
+        'eslint',
+        '@cenk1cenk2/eslint-config',
+        '@swc/core',
+        '@types/jest',
+        'jest',
+        'ts-jest',
+        '/^eslint-plugin-/',
+        '/^jest/'
+      ],
       groupName: 'node all build dependency updates',
       groupSlug: 'node-build',
       ...NODE_GROUP_BUILD,
@@ -22,8 +34,7 @@ export default createPreset({
     },
 
     {
-      matchPackageNames: ['typedoc', 'typedoc-plugin-markdown'],
-      matchPackagePatterns: ['^vitepress', '^markdown-it'],
+      matchPackageNames: ['typedoc', 'typedoc-plugin-markdown', '/^vitepress/', '/^markdown-it/'],
       groupName: 'node all docs dependency updates',
       groupSlug: 'node-docs',
       ...NODE_GROUP_DOCS,
