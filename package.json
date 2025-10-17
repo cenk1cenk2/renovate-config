@@ -64,7 +64,7 @@
     "@types/config": "^3.3.5",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.3.1",
-    "eslint": "9.37.0",
+    "eslint": "9.38.0",
     "execa": "^9.6.0",
     "globby": "^15.0.0",
     "lint-staged": "^16.1.6",
