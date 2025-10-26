@@ -1,3 +1,10 @@
+# [3.10.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.20...v3.10.0) (2025-10-26)
+
+
+### Features
+
+* update configuration for ehlm ([0f0ca67](https://gitlab.kilic.dev/renovate/renovate-config/commit/0f0ca67757236fbeaf44dc9e0df2d21ef8f4c54d))
+
 ## [3.9.20](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.19...v3.9.20) (2025-10-17)
 
 
