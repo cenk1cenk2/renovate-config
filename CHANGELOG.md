@@ -1,3 +1,10 @@
+## [3.10.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.10.0...v3.10.1) (2025-10-26)
+
+
+### Bug Fixes
+
+* group ([d80c3eb](https://gitlab.kilic.dev/renovate/renovate-config/commit/d80c3ebac28b5d6aaeadd6893e6ed1327721b1a2))
+
 # [3.10.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.20...v3.10.0) (2025-10-26)
 
 ### Features
