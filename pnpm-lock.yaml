@@ -31,7 +31,7 @@ importers:
         version: 9.0.5
       renovate:
         specifier: ^41.99.2
-        version: 41.159.2(encoding@0.1.13)(typanion@3.14.0)
+        version: 41.159.4(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -2358,6 +2358,10 @@ packages:
     resolution: {integrity: sha512-2JkV3gUZUVrbNA+1sjBOYLsMZ5cEEl8GTFP2a4AVz5hvasAMCQ1D2l2le/cX+pV4N6ZU17zjUahLpIXRrnWL8A==}
     engines: {node: '>=20'}
 
+  commander@14.0.2:
+    resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
+    engines: {node: '>=20'}
+
   commitizen@4.3.1:
     resolution: {integrity: sha512-gwAPAVTy/j5YcOOebcCRIijn+mSjWJC+IYKivTu6aG8Ei/scoXgfsMRnuAk6b0GRste2J4NGxVdMN3ZpfNaVaw==}
     engines: {node: '>= 12'}
@@ -4633,8 +4637,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@41.159.2:
-    resolution: {integrity: sha512-iPehXr9tDtu1FlapKM6XA09y5zLdm+Y7VLOR8GGZi/gl34yylMH/0RzTYYE9jesIl8a6cXyWGyzRIv0Ow2YM9Q==}
+  renovate@41.159.4:
+    resolution: {integrity: sha512-3c8AlclJE/T+RZMNQl6fnYFcJzBrag0zcCei7dUiudvksA9TZP999MZzBSA9o3zjcR7/WXI00vQocjpQwRym4Q==}
     engines: {node: ^22.13.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -5559,20 +5563,20 @@ snapshots:
   '@aws-crypto/crc32@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.914.0
+      '@aws-sdk/types': 3.893.0
       tslib: 2.8.1
 
   '@aws-crypto/crc32c@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.914.0
+      '@aws-sdk/types': 3.893.0
       tslib: 2.8.1
 
   '@aws-crypto/sha1-browser@5.2.0':
     dependencies:
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.914.0
+      '@aws-sdk/types': 3.893.0
       '@aws-sdk/util-locate-window': 3.893.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
@@ -5582,7 +5586,7 @@ snapshots:
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.914.0
+      '@aws-sdk/types': 3.893.0
       '@aws-sdk/util-locate-window': 3.893.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
@@ -5590,7 +5594,7 @@ snapshots:
   '@aws-crypto/sha256-js@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.914.0
+      '@aws-sdk/types': 3.893.0
       tslib: 2.8.1
 
   '@aws-crypto/supports-web-crypto@5.2.0':
@@ -5599,7 +5603,7 @@ snapshots:
 
   '@aws-crypto/util@5.2.0':
     dependencies:
-      '@aws-sdk/types': 3.914.0
+      '@aws-sdk/types': 3.893.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
@@ -8972,6 +8976,8 @@ snapshots:
 
   commander@14.0.1: {}
 
+  commander@14.0.2: {}
+
   commitizen@4.3.1(@types/node@24.9.1)(typescript@5.9.3):
     dependencies:
       cachedir: 2.3.0
@@ -10549,7 +10555,7 @@ snapshots:
 
   lint-staged@16.2.6:
     dependencies:
-      commander: 14.0.1
+      commander: 14.0.2
       listr2: 9.0.5
       micromatch: 4.0.8
       nano-spawn: 2.0.0
@@ -11735,7 +11741,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@41.159.2(encoding@0.1.13)(typanion@3.14.0):
+  renovate@41.159.4(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.899.0
       '@aws-sdk/client-ec2': 3.899.0
