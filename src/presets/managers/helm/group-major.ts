@@ -7,11 +7,9 @@ export default createPreset({
       enabled: true,
       matchUpdateTypes: ['major'],
       labels: ['renovate', 'major', 'infrastructure'],
-      additionalBranchPrefix: 'kustomize-',
       automerge: false,
       extends: [':semanticCommitTypeAll(perf)'],
-      matchDepTypes: ['HelmChart'],
-      matchManagers: [Managers.KUSTOMIZE],
+      matchManagers: [Managers.HELM],
       schedule: [SCHEDULE.ANY]
     }
   ]

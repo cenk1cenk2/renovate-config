@@ -7,7 +7,6 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['major'],
-      rangeStrategy: 'auto',
       labels: ['renovate', 'major', 'infrastructure'],
       additionalBranchPrefix: 'terraform-',
       automerge: false,
@@ -19,7 +18,6 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['major'],
-      rangeStrategy: 'auto',
       labels: ['renovate', 'major', 'infrastructure'],
       additionalBranchPrefix: 'terraform-monorepo-',
       automerge: false,

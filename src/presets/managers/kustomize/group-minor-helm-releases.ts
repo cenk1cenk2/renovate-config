@@ -6,7 +6,6 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
-      rangeStrategy: 'auto',
       labels: ['renovate', 'minor'],
       additionalBranchPrefix: 'kustomize-',
       automerge: false,

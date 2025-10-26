@@ -7,7 +7,6 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
-      rangeStrategy: 'auto',
       labels: ['renovate', 'minor', 'infrastructure'],
       additionalBranchPrefix: 'terraform-module-',
       automerge: false,
@@ -25,7 +24,6 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
-      rangeStrategy: 'auto',
       labels: ['renovate', 'minor', 'infrastructure'],
       groupName: 'terraform-monorepo all minor dependency updates',
       groupSlug: 'terraform-monorepo',

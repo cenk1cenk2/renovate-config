@@ -57,6 +57,9 @@ export enum Preset {
 
   HELM = 'helm',
 
+  HELM_GROUP_MINOR = 'helm-group-minor',
+  HELM_GROUP_MAJOR = 'helm-group-major',
+
   // manager: terraform
 
   TERRAFORM = 'terraform',
@@ -146,6 +149,8 @@ export const PRESETS: Presets = {
   // manager: helm
 
   [Preset.HELM]: import('./managers/helm/manager.js').then((m) => m.default),
+  [Preset.HELM_GROUP_MINOR]: import('./managers/helm/group-minor.js').then((m) => m.default),
+  [Preset.HELM_GROUP_MAJOR]: import('./managers/helm/group-major.js').then((m) => m.default),
 
   // manager: terraform
 

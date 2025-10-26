@@ -7,11 +7,11 @@ export default createPreset({
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
       labels: ['renovate', 'minor', 'infrastructure'],
-      additionalBranchPrefix: 'terraform-',
+      groupName: 'helm all minor dependency updates',
+      groupSlug: 'helm-minor',
       automerge: false,
-      extends: [':semanticCommitTypeAll(fix)'],
-      matchDepTypes: ['helm_release'],
-      matchManagers: [Managers.TERRAFORM],
+      extends: [':semanticCommitTypeAll(feat)'],
+      matchManagers: [Managers.HELM],
       schedule: [SCHEDULE.ANY]
     }
   ]

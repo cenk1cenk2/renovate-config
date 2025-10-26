@@ -7,7 +7,7 @@ export default createPreset({
     {
       depTypeTemplate: DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO,
       customType: 'regex',
-      managerFilePatterns: ['/\\.gitlab-ci\\.ya?ml$/'],
+      managerFilePatterns: ['/\\.gitlab-ci\\.ya?ml$/', '/\\.gitlab-ci\\..*\\.ya?ml$/'],
       matchStringsStrategy: 'any',
       matchStrings: [/project:\s+['"]?(?<packageName>[^'"\s]+)['"]?\s*ref:\s+['"]?(?<depName>[^@]+)@(?<currentValue>[^'"\s]+)['"]?/.source],
       registryUrlTemplate: 'https://gitlab.kilic.dev/',
