@@ -1,140 +1,130 @@
-## [3.9.20](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.19...v3.9.20) (2025-10-17)
+# [3.10.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.20...v3.10.0) (2025-10-26)
 
+### Features
+
+- update configuration for ehlm ([0f0ca67](https://gitlab.kilic.dev/renovate/renovate-config/commit/0f0ca67757236fbeaf44dc9e0df2d21ef8f4c54d))
+
+## [3.9.20](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.19...v3.9.20) (2025-10-17)
 
 ### Bug Fixes
 
-* **deps:** update dependency @oxc-project/runtime to ^0.95.0 ([3693186](https://gitlab.kilic.dev/renovate/renovate-config/commit/3693186c9977419334f6c5a59ea36ff44b064c2d))
+- **deps:** update dependency @oxc-project/runtime to ^0.95.0 ([3693186](https://gitlab.kilic.dev/renovate/renovate-config/commit/3693186c9977419334f6c5a59ea36ff44b064c2d))
 
 ## [3.9.19](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.18...v3.9.19) (2025-10-07)
 
-
 ### Bug Fixes
 
-* update validation ([b9b55a5](https://gitlab.kilic.dev/renovate/renovate-config/commit/b9b55a50c46dec9079595ae41691b468eba085fe))
+- update validation ([b9b55a5](https://gitlab.kilic.dev/renovate/renovate-config/commit/b9b55a50c46dec9079595ae41691b468eba085fe))
 
 ## [3.9.18](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.17...v3.9.18) (2025-10-07)
 
-
 ### Bug Fixes
 
-* configure as global ([0f76d36](https://gitlab.kilic.dev/renovate/renovate-config/commit/0f76d3629f503572d175787d0705af9c82d14b4d))
-* update conf ([419b3e2](https://gitlab.kilic.dev/renovate/renovate-config/commit/419b3e2ef06c66e4c1b8fdd3aaf227aef500cb2b))
+- configure as global ([0f76d36](https://gitlab.kilic.dev/renovate/renovate-config/commit/0f76d3629f503572d175787d0705af9c82d14b4d))
+- update conf ([419b3e2](https://gitlab.kilic.dev/renovate/renovate-config/commit/419b3e2ef06c66e4c1b8fdd3aaf227aef500cb2b))
 
 ## [3.9.17](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.16...v3.9.17) (2025-10-06)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency @oxc-project/runtime to ^0.94.0 ([c122177](https://gitlab.kilic.dev/renovate/renovate-config/commit/c122177b66ec28e7bf41c0bc31d19c86e8cf16ec))
+- **deps:** update dependency @oxc-project/runtime to ^0.94.0 ([c122177](https://gitlab.kilic.dev/renovate/renovate-config/commit/c122177b66ec28e7bf41c0bc31d19c86e8cf16ec))
 
 ## [3.9.16](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.15...v3.9.16) (2025-09-29)
 
-
 ### Bug Fixes
 
-* update rules ([7da0c05](https://gitlab.kilic.dev/renovate/renovate-config/commit/7da0c05ad59bbe98c7b45789c49fb98c6ee99d47))
+- update rules ([7da0c05](https://gitlab.kilic.dev/renovate/renovate-config/commit/7da0c05ad59bbe98c7b45789c49fb98c6ee99d47))
 
 ## [3.9.15](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.14...v3.9.15) (2025-09-29)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency @oxc-project/runtime to ^0.93.0 ([58ce1cf](https://gitlab.kilic.dev/renovate/renovate-config/commit/58ce1cf13ae7ad523c59f58d502e9118e7237070))
-* update managers ([9995fec](https://gitlab.kilic.dev/renovate/renovate-config/commit/9995fec731a5b667bcaf001e912e729750126e4e))
+- **deps:** update dependency @oxc-project/runtime to ^0.93.0 ([58ce1cf](https://gitlab.kilic.dev/renovate/renovate-config/commit/58ce1cf13ae7ad523c59f58d502e9118e7237070))
+- update managers ([9995fec](https://gitlab.kilic.dev/renovate/renovate-config/commit/9995fec731a5b667bcaf001e912e729750126e4e))
 
 ## [3.9.14](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.13...v3.9.14) (2025-09-27)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency @oxc-project/runtime to ^0.92.0 ([6f061bf](https://gitlab.kilic.dev/renovate/renovate-config/commit/6f061bfd16e2c74f9ae4c9864f60e3d66dd9f715))
+- **deps:** update dependency @oxc-project/runtime to ^0.92.0 ([6f061bf](https://gitlab.kilic.dev/renovate/renovate-config/commit/6f061bfd16e2c74f9ae4c9864f60e3d66dd9f715))
 
 ## [3.9.13](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.12...v3.9.13) (2025-09-21)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency @oxc-project/runtime to ^0.91.0 ([d8d85bd](https://gitlab.kilic.dev/renovate/renovate-config/commit/d8d85bd8c8663122c3b52c3bae8479445ba93090))
+- **deps:** update dependency @oxc-project/runtime to ^0.91.0 ([d8d85bd](https://gitlab.kilic.dev/renovate/renovate-config/commit/d8d85bd8c8663122c3b52c3bae8479445ba93090))
 
 ## [3.9.12](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.11...v3.9.12) (2025-09-18)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency @oxc-project/runtime to ^0.90.0 ([63b41e3](https://gitlab.kilic.dev/renovate/renovate-config/commit/63b41e36e12359a33f458b9ecfea92bb0d15998a))
+- **deps:** update dependency @oxc-project/runtime to ^0.90.0 ([63b41e3](https://gitlab.kilic.dev/renovate/renovate-config/commit/63b41e36e12359a33f458b9ecfea92bb0d15998a))
 
 ## [3.9.11](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.10...v3.9.11) (2025-09-15)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency @oxc-project/runtime to ^0.89.0 ([568e114](https://gitlab.kilic.dev/renovate/renovate-config/commit/568e11464a51b5e225dea9d2ea849b1743afac9b))
+- **deps:** update dependency @oxc-project/runtime to ^0.89.0 ([568e114](https://gitlab.kilic.dev/renovate/renovate-config/commit/568e11464a51b5e225dea9d2ea849b1743afac9b))
 
 ## [3.9.10](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.9...v3.9.10) (2025-09-14)
 
-
 ### Bug Fixes
 
-* update package names ([36196f0](https://gitlab.kilic.dev/renovate/renovate-config/commit/36196f0288e7c5c5d686aadd8a5d7e00fdcbd85d))
+- update package names ([36196f0](https://gitlab.kilic.dev/renovate/renovate-config/commit/36196f0288e7c5c5d686aadd8a5d7e00fdcbd85d))
 
 ## [3.9.9](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.8...v3.9.9) (2025-09-14)
 
-
 ### Bug Fixes
 
-* update grouping ([e656376](https://gitlab.kilic.dev/renovate/renovate-config/commit/e656376d558daee0f7c49ba818ece95802744f84))
+- update grouping ([e656376](https://gitlab.kilic.dev/renovate/renovate-config/commit/e656376d558daee0f7c49ba818ece95802744f84))
 
 ## [3.9.8](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.7...v3.9.8) (2025-09-13)
 
-
 ### Bug Fixes
 
-* group dependencies instead ([eccea8b](https://gitlab.kilic.dev/renovate/renovate-config/commit/eccea8be26a09dbfa442487998342c650bf37b47))
+- group dependencies instead ([eccea8b](https://gitlab.kilic.dev/renovate/renovate-config/commit/eccea8be26a09dbfa442487998342c650bf37b47))
 
 ## [3.9.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.6...v3.9.7) (2025-09-13)
 
-
 ### Bug Fixes
 
-* give up on versioning automatically ([0a6ba73](https://gitlab.kilic.dev/renovate/renovate-config/commit/0a6ba73d7f1c2e0e424ebe9be76344f453122389))
+- give up on versioning automatically ([0a6ba73](https://gitlab.kilic.dev/renovate/renovate-config/commit/0a6ba73d7f1c2e0e424ebe9be76344f453122389))
 
 ## [3.9.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.5...v3.9.6) (2025-09-13)
 
-
 ### Bug Fixes
 
-* add autoreplace ([c813324](https://gitlab.kilic.dev/renovate/renovate-config/commit/c8133243d057ef87e22354240fd8c25ccf3d87e5))
-* problems with regex ([e50adc5](https://gitlab.kilic.dev/renovate/renovate-config/commit/e50adc5f30a5b9e894f55f0f70ff8a038171d2a7))
-* update branch names ([f389a75](https://gitlab.kilic.dev/renovate/renovate-config/commit/f389a7553ae8c27b509f5508b9f8b3a012632890))
-* update expression ([9507405](https://gitlab.kilic.dev/renovate/renovate-config/commit/9507405fdfc7733f64d269f1452291519b562220))
-* update patterns ([fb47f3e](https://gitlab.kilic.dev/renovate/renovate-config/commit/fb47f3ea457dd1ed2eb33daf759b08552122df13))
-* update patterns ([8bbb7ad](https://gitlab.kilic.dev/renovate/renovate-config/commit/8bbb7ad2d652858eacdded90ae7b8efe250a92e7))
-* update rules ([4acddb5](https://gitlab.kilic.dev/renovate/renovate-config/commit/4acddb5266c08337a219ef62636296742564ae84))
+- add autoreplace ([c813324](https://gitlab.kilic.dev/renovate/renovate-config/commit/c8133243d057ef87e22354240fd8c25ccf3d87e5))
+- problems with regex ([e50adc5](https://gitlab.kilic.dev/renovate/renovate-config/commit/e50adc5f30a5b9e894f55f0f70ff8a038171d2a7))
+- update branch names ([f389a75](https://gitlab.kilic.dev/renovate/renovate-config/commit/f389a7553ae8c27b509f5508b9f8b3a012632890))
+- update expression ([9507405](https://gitlab.kilic.dev/renovate/renovate-config/commit/9507405fdfc7733f64d269f1452291519b562220))
+- update patterns ([fb47f3e](https://gitlab.kilic.dev/renovate/renovate-config/commit/fb47f3ea457dd1ed2eb33daf759b08552122df13))
+- update patterns ([8bbb7ad](https://gitlab.kilic.dev/renovate/renovate-config/commit/8bbb7ad2d652858eacdded90ae7b8efe250a92e7))
+- update rules ([4acddb5](https://gitlab.kilic.dev/renovate/renovate-config/commit/4acddb5266c08337a219ef62636296742564ae84))
 
 ## [3.9.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.4...v3.9.5) (2025-09-13)
 
-
 ### Bug Fixes
 
-* add kubernetes manager ([4cff4ee](https://gitlab.kilic.dev/renovate/renovate-config/commit/4cff4ee65407f87bf672db201917227196491b1a))
-* add negated ([eb59451](https://gitlab.kilic.dev/renovate/renovate-config/commit/eb5945118b895e111e077caffc05c0ef710ad56a))
-* rollback template ([520f977](https://gitlab.kilic.dev/renovate/renovate-config/commit/520f977473b34945a17fe25ccd22b44fb5383030))
-* try ([7fd1f93](https://gitlab.kilic.dev/renovate/renovate-config/commit/7fd1f93a0c09a97fc346b1bf374cfdbdb30f49c7))
-* try simpler regex ([7fe623e](https://gitlab.kilic.dev/renovate/renovate-config/commit/7fe623eba14ad4ad3477b4c18e5dced0b7c208cc))
-* update ([7f73d12](https://gitlab.kilic.dev/renovate/renovate-config/commit/7f73d12b699ca333a3ebd1189a784adc67c1d5a5))
-* update ([2b626e9](https://gitlab.kilic.dev/renovate/renovate-config/commit/2b626e90fc3ed02d4f29af3142b67f3260d7ee61))
-* update configuration ([86e8b67](https://gitlab.kilic.dev/renovate/renovate-config/commit/86e8b67a35b109722da96c74b9e6240e820db4de))
-* update configuration ([febc182](https://gitlab.kilic.dev/renovate/renovate-config/commit/febc1827b7a98dd49b0e15abcecdb4b20d23264c))
-* update kubernetes template ([ee9c9fe](https://gitlab.kilic.dev/renovate/renovate-config/commit/ee9c9fe3e2c7d810b22ea54cabb08e14b10ea216))
-* update patterns ([1813385](https://gitlab.kilic.dev/renovate/renovate-config/commit/1813385adf762bc0fc7d339abd44d1e618822084))
-* update patterns ([7e5bc59](https://gitlab.kilic.dev/renovate/renovate-config/commit/7e5bc594b6b8e9eab91f6c63db0a432ea08eae93))
-* update preset ([fe8a336](https://gitlab.kilic.dev/renovate/renovate-config/commit/fe8a336d05bc2de464f030add37290a57d592eb5))
-* update preset ([76a1513](https://gitlab.kilic.dev/renovate/renovate-config/commit/76a151339864a914fb73fed945d3d3cbe1790f32))
-* update preset ([24b2078](https://gitlab.kilic.dev/renovate/renovate-config/commit/24b2078b36f75e8e153e2103148c1df566217fbe))
-* update templatess ([10580e2](https://gitlab.kilic.dev/renovate/renovate-config/commit/10580e2fee56cfbd32cd2e64ca9c660cbe9dd67f))
-* update terraform ([4fe2f9b](https://gitlab.kilic.dev/renovate/renovate-config/commit/4fe2f9b8efa78b759b9c88eb394d4b621527d3a1))
-* update terraform config ([c71c8ee](https://gitlab.kilic.dev/renovate/renovate-config/commit/c71c8ee92f0000d4dfaac7d6a9d65e95ca06093f))
-* update with registry url ([f91e109](https://gitlab.kilic.dev/renovate/renovate-config/commit/f91e1096cbdce137a9a1d85be05e7f02be3b6def))
+- add kubernetes manager ([4cff4ee](https://gitlab.kilic.dev/renovate/renovate-config/commit/4cff4ee65407f87bf672db201917227196491b1a))
+- add negated ([eb59451](https://gitlab.kilic.dev/renovate/renovate-config/commit/eb5945118b895e111e077caffc05c0ef710ad56a))
+- rollback template ([520f977](https://gitlab.kilic.dev/renovate/renovate-config/commit/520f977473b34945a17fe25ccd22b44fb5383030))
+- try ([7fd1f93](https://gitlab.kilic.dev/renovate/renovate-config/commit/7fd1f93a0c09a97fc346b1bf374cfdbdb30f49c7))
+- try simpler regex ([7fe623e](https://gitlab.kilic.dev/renovate/renovate-config/commit/7fe623eba14ad4ad3477b4c18e5dced0b7c208cc))
+- update ([7f73d12](https://gitlab.kilic.dev/renovate/renovate-config/commit/7f73d12b699ca333a3ebd1189a784adc67c1d5a5))
+- update ([2b626e9](https://gitlab.kilic.dev/renovate/renovate-config/commit/2b626e90fc3ed02d4f29af3142b67f3260d7ee61))
+- update configuration ([86e8b67](https://gitlab.kilic.dev/renovate/renovate-config/commit/86e8b67a35b109722da96c74b9e6240e820db4de))
+- update configuration ([febc182](https://gitlab.kilic.dev/renovate/renovate-config/commit/febc1827b7a98dd49b0e15abcecdb4b20d23264c))
+- update kubernetes template ([ee9c9fe](https://gitlab.kilic.dev/renovate/renovate-config/commit/ee9c9fe3e2c7d810b22ea54cabb08e14b10ea216))
+- update patterns ([1813385](https://gitlab.kilic.dev/renovate/renovate-config/commit/1813385adf762bc0fc7d339abd44d1e618822084))
+- update patterns ([7e5bc59](https://gitlab.kilic.dev/renovate/renovate-config/commit/7e5bc594b6b8e9eab91f6c63db0a432ea08eae93))
+- update preset ([fe8a336](https://gitlab.kilic.dev/renovate/renovate-config/commit/fe8a336d05bc2de464f030add37290a57d592eb5))
+- update preset ([76a1513](https://gitlab.kilic.dev/renovate/renovate-config/commit/76a151339864a914fb73fed945d3d3cbe1790f32))
+- update preset ([24b2078](https://gitlab.kilic.dev/renovate/renovate-config/commit/24b2078b36f75e8e153e2103148c1df566217fbe))
+- update templatess ([10580e2](https://gitlab.kilic.dev/renovate/renovate-config/commit/10580e2fee56cfbd32cd2e64ca9c660cbe9dd67f))
+- update terraform ([4fe2f9b](https://gitlab.kilic.dev/renovate/renovate-config/commit/4fe2f9b8efa78b759b9c88eb394d4b621527d3a1))
+- update terraform config ([c71c8ee](https://gitlab.kilic.dev/renovate/renovate-config/commit/c71c8ee92f0000d4dfaac7d6a9d65e95ca06093f))
+- update with registry url ([f91e109](https://gitlab.kilic.dev/renovate/renovate-config/commit/f91e1096cbdce137a9a1d85be05e7f02be3b6def))
 
 ## [3.9.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.9.3...v3.9.4) (2025-09-13)
 
