@@ -1,3 +1,12 @@
+## [3.11.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.0...v3.11.1) (2025-10-27)
+
+
+### Bug Fixes
+
+* update argocd message ([a32921c](https://gitlab.kilic.dev/renovate/renovate-config/commit/a32921c59e72023ffe0e0f4666a197ff6d58c181))
+* update configuration ([5f5321e](https://gitlab.kilic.dev/renovate/renovate-config/commit/5f5321e63d15372f955bd11f4167a0ab1e98d63d))
+* update with package file ([7fb488f](https://gitlab.kilic.dev/renovate/renovate-config/commit/7fb488f15d91175f431347508ea2271adf49336b))
+
 # [3.11.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.10.1...v3.11.0) (2025-10-27)
 
 
