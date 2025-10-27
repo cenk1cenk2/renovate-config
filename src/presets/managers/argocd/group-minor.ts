@@ -8,6 +8,7 @@ export default createPreset({
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest', 'pinDigest'],
       labels: ['renovate', 'minor', 'infrastructure'],
       groupName: 'argocd all minor dependency updates for {{ packageFileDir }}',
+      commitMessagePrefix: '[[{{packageFileDir}}]]',
       groupSlug: 'argocd-minor-{{ packageFileDir }}',
       automerge: false,
       extends: [':semanticCommitTypeAll(feat)'],
