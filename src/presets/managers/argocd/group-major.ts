@@ -7,7 +7,7 @@ export default createPreset({
       enabled: true,
       matchUpdateTypes: ['major'],
       labels: ['renovate', 'major', 'infrastructure'],
-      commitMessagePrefix: '[[{{packageFileDir}}]]',
+      commitMessageExtra: '[{{packageFileDir}}]',
       automerge: false,
       extends: [':semanticCommitTypeAll(perf)'],
       matchManagers: [Managers.ARGOCD],
