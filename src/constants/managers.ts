@@ -1,5 +1,6 @@
 export enum Managers {
   ANSIBLE_GALAXY = 'ansible-galaxy',
+  ARGOCD = 'argocd',
   DOCKERFILE = 'dockerfile',
   GITLAB_CI = 'gitlabci',
   GITLAB_CI_INCLUDE = 'gitlabci-include',

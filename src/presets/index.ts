@@ -89,7 +89,14 @@ export enum Preset {
 
   // manager: otel-builder
 
-  OPENTELEMETRY_COLLECTOR_BUILDER = 'opentelemetry-collector-builder'
+  OPENTELEMETRY_COLLECTOR_BUILDER = 'opentelemetry-collector-builder',
+
+  // manager: argocd
+
+  ARGOCD = 'argocd',
+
+  ARGOCD_GROUP_MINOR = 'argocd-group-minor',
+  ARGOCD_GROUP_MAJOR = 'argocd-group-major'
 }
 
 export const PRESETS: Presets = {
@@ -181,5 +188,12 @@ export const PRESETS: Presets = {
 
   // manager: otel-builder
 
-  [Preset.OPENTELEMETRY_COLLECTOR_BUILDER]: import('./managers/otel-builder/manager.js').then((m) => m.default)
+  [Preset.OPENTELEMETRY_COLLECTOR_BUILDER]: import('./managers/otel-builder/manager.js').then((m) => m.default),
+
+  // manager: argocd
+
+  [Preset.ARGOCD]: import('./managers/argocd/manager.js').then((m) => m.default),
+
+  [Preset.ARGOCD_GROUP_MINOR]: import('./managers/argocd/group-minor.js').then((m) => m.default),
+  [Preset.ARGOCD_GROUP_MAJOR]: import('./managers/argocd/group-major.js').then((m) => m.default)
 }

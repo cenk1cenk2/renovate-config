@@ -10,6 +10,7 @@ export default createPreset({
     Preset.NO_TESTS,
     // managers
     Preset.ANSIBLE_GALAXY,
+    Preset.ARGOCD,
     Preset.DOCKERFILE,
     Preset.GITLAB_CI,
     Preset.GO,
