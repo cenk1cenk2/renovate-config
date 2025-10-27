@@ -2,6 +2,7 @@
   "default": {
     "enabledManagers": [
       "ansible-galaxy",
+      "argocd",
       "dockerfile",
       "gitlabci",
       "gitlabci-include",
@@ -22,6 +23,7 @@
       "local>renovate/renovate-config:default/lock-file",
       "local>renovate/renovate-config:default/no-tests",
       "local>renovate/renovate-config:default/ansible-galaxy",
+      "local>renovate/renovate-config:default/argocd",
       "local>renovate/renovate-config:default/dockerfile",
       "local>renovate/renovate-config:default/gitlab-ci",
       "local>renovate/renovate-config:default/go",
@@ -1109,6 +1111,71 @@
         ],
         "schedule": [
           "before 1am"
+        ]
+      }
+    ]
+  },
+  "argocd": {
+    "enabledManagers": [
+      "argocd"
+    ],
+    "extends": [
+      "local>renovate/renovate-config:default/argocd-group-minor",
+      "local>renovate/renovate-config:default/argocd-group-major"
+    ]
+  },
+  "argocd-group-minor": {
+    "packageRules": [
+      {
+        "enabled": true,
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest",
+          "pinDigest"
+        ],
+        "labels": [
+          "renovate",
+          "minor",
+          "infrastructure"
+        ],
+        "groupName": "argocd all minor dependency updates for {{ packageFileDir }}",
+        "groupSlug": "argocd-minor-{{ packageFileDir }}",
+        "automerge": false,
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
+        "matchManagers": [
+          "argocd"
+        ],
+        "schedule": [
+          "at any time"
+        ]
+      }
+    ]
+  },
+  "argocd-group-major": {
+    "packageRules": [
+      {
+        "enabled": true,
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "labels": [
+          "renovate",
+          "major",
+          "infrastructure"
+        ],
+        "automerge": false,
+        "extends": [
+          ":semanticCommitTypeAll(perf)"
+        ],
+        "matchManagers": [
+          "argocd"
+        ],
+        "schedule": [
+          "at any time"
         ]
       }
     ]

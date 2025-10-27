@@ -1,3 +1,10 @@
+# [3.11.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.10.1...v3.11.0) (2025-10-27)
+
+
+### Features
+
+* update argocd as a manager ([f165648](https://gitlab.kilic.dev/renovate/renovate-config/commit/f1656487d8241aa81c6f58cc81fd99b333e181b6))
+
 ## [3.10.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.10.0...v3.10.1) (2025-10-26)
 
 
