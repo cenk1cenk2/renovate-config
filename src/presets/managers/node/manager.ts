@@ -11,5 +11,11 @@ export default createPreset({
     Preset.NODE_GROUP_DEV_DEPENDENCIES,
     Preset.NODE_GROUP_MINOR_DEPENDENCIES,
     Preset.NODE_GROUP_PEER_DEPENDENCIES
-  )
+  ),
+  packageRules: [
+    {
+      matchManagers: [Managers.NODE],
+      addLabels: ['node']
+    }
+  ]
 })

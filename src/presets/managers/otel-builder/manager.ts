@@ -13,6 +13,10 @@ export default createPreset({
       automerge: true,
       matchManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
       schedule: [SCHEDULE.DAILY]
+    },
+    {
+      matchManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
+      addLabels: ['otel-builder']
     }
   ]
 })

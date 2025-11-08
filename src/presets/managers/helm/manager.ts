@@ -4,5 +4,11 @@ import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: [Managers.HELM, Managers.HELM_VALUES],
-  extends: createScopes(Preset.HELM_GROUP_MINOR, Preset.HELM_GROUP_MAJOR)
+  extends: createScopes(Preset.HELM_GROUP_MINOR, Preset.HELM_GROUP_MAJOR),
+  packageRules: [
+    {
+      matchManagers: [Managers.HELM, Managers.HELM_VALUES],
+      addLabels: ['helm']
+    }
+  ]
 })

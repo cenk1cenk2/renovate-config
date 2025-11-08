@@ -4,5 +4,11 @@ import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: [Managers.ARGOCD],
-  extends: createScopes(Preset.ARGOCD_GROUP_MINOR, Preset.ARGOCD_GROUP_MAJOR)
+  extends: createScopes(Preset.ARGOCD_GROUP_MINOR, Preset.ARGOCD_GROUP_MAJOR),
+  packageRules: [
+    {
+      matchManagers: [Managers.ARGOCD],
+      addLabels: ['argocd']
+    }
+  ]
 })

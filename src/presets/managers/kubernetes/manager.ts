@@ -13,5 +13,11 @@ export default createPreset({
       '/!(^\\.deploy\\/.*\\/values\\.ya?ml$)/',
       '/!(^\\.deploy\\/.*\\/chart\\.ya?ml$)/'
     ]
-  }
+  },
+  packageRules: [
+    {
+      matchManagers: [Managers.KUBERNETES],
+      addLabels: ['kubernetes']
+    }
+  ]
 })
