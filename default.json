@@ -46,6 +46,7 @@
     "major": {
       "minimumReleaseAge": "3 days"
     },
+    "minimumReleaseAgeBehaviour": "timestamp-optional",
     "prCreation": "immediate"
   },
   "lock-file": {

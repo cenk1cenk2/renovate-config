@@ -10,5 +10,7 @@ export default createPreset({
   major: {
     minimumReleaseAge: '3 days'
   },
+  // TODO: this is because of a breaking change in renovate v42.x
+  minimumReleaseAgeBehaviour: 'timestamp-optional',
   prCreation: 'immediate'
 })
