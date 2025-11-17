@@ -18,8 +18,8 @@ importers:
         specifier: ^4.5.3
         version: 4.8.0
       '@oxc-project/runtime':
-        specifier: ^0.97.0
-        version: 0.97.0
+        specifier: ^0.98.0
+        version: 0.98.0
       fs-extra:
         specifier: ^11.3.1
         version: 11.3.2
@@ -1183,6 +1183,10 @@ packages:
 
   '@oxc-project/runtime@0.97.0':
     resolution: {integrity: sha512-yH0zw7z+jEws4dZ4IUKoix5Lh3yhqIJWF9Dc8PWvhpo7U7O+lJrv7ZZL4BeRO0la8LBQFwcCewtLBnVV7hPe/w==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+
+  '@oxc-project/runtime@0.98.0':
+    resolution: {integrity: sha512-F0ldlBv2orG2YqNL0w77deq9yCaO4zEHbanGnW/jaJxGBR8ImekvZb8x42zAHvdzr8J76psibijvHtXfSjbEIQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@oxc-project/types@0.97.0':
@@ -7553,6 +7557,8 @@ snapshots:
   '@oxc-project/runtime@0.96.0': {}
 
   '@oxc-project/runtime@0.97.0': {}
+
+  '@oxc-project/runtime@0.98.0': {}
 
   '@oxc-project/types@0.97.0': {}
 
