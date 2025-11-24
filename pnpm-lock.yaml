@@ -18,8 +18,8 @@ importers:
         specifier: ^4.5.3
         version: 4.8.0
       '@oxc-project/runtime':
-        specifier: ^0.98.0
-        version: 0.98.0
+        specifier: ^0.99.0
+        version: 0.99.0
       fs-extra:
         specifier: ^11.3.1
         version: 11.3.2
@@ -31,7 +31,7 @@ importers:
         version: 9.0.5
       renovate:
         specifier: ^42.0.0
-        version: 42.19.3(encoding@0.1.13)(typanion@3.14.0)
+        version: 42.19.7(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -1195,8 +1195,8 @@ packages:
     resolution: {integrity: sha512-34lh4o9CcSw09Hx6fKihPu85+m+4pmDlkXwJrLvN5nMq5JrcGhhihVM415zDqT8j8IixO1PYYdQZRN4SwQCncg==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
-  '@oxc-project/runtime@0.98.0':
-    resolution: {integrity: sha512-F0ldlBv2orG2YqNL0w77deq9yCaO4zEHbanGnW/jaJxGBR8ImekvZb8x42zAHvdzr8J76psibijvHtXfSjbEIQ==}
+  '@oxc-project/runtime@0.99.0':
+    resolution: {integrity: sha512-8iE5/4OK0SLHqWzRxSvI1gjFPmIH6718s8iwkuco95rBZsCZIHq+5wy4lYsASxnH+8FOhbGndiUrcwsVG5i2zw==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@oxc-project/types@0.98.0':
@@ -1357,8 +1357,8 @@ packages:
     resolution: {integrity: sha512-2FK1hF93Fuf1laSdfiEmJvSJPVIDHEUTz68D3Fi9s0IZrrpaEcj6pTFBTbYvsgC5du4ogrtf5re7yMMvrKNgkw==}
     engines: {node: ^20.9.0 || ^22.11.0 || ^24, pnpm: ^10.0.0}
 
-  '@renovatebot/pgp@1.1.1':
-    resolution: {integrity: sha512-KDXMOeO/jCWBUawIynvTL2YKXjuJ8QjWF16soH9YQOEVRnoly6e6R0m3vrdlZgKuR+fxDoWSw1OXcqTyWapObQ==}
+  '@renovatebot/pgp@1.2.0':
+    resolution: {integrity: sha512-RCmU57Elj5sVpfLeo5Y3l7mKzEvqoRyPTpGu12Va0GAPNUd56GcuotiLw2EimeWF24cBVj7eWr89U6Pksv+jlw==}
     engines: {node: ^22.11.0 || >=24.10.0, pnpm: ^10.0.0}
 
   '@renovatebot/ruby-semver@4.1.2':
@@ -2169,8 +2169,8 @@ packages:
     resolution: {integrity: sha512-hdsUxulXCi5STId78vRVYEtDAjq99ICAUktLTeTYsLoTE6Z8dS0c8pWNCxwdrk9YfJeobDZc2Y186hD/5ZQgFQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  cacache@20.0.1:
-    resolution: {integrity: sha512-+7LYcYGBYoNqTp1Rv7Ny1YjUo5E0/ftkQtraH3vkfAGgVHc+ouWdC8okAwQgQR7EVIdW6JTzTmhKFwzb+4okAQ==}
+  cacache@20.0.2:
+    resolution: {integrity: sha512-rVWvqtWcgSzB22wImrVto+7PmE+lUqv5dYzRHD0QJsfpSwTkW+GIqA4ykSt/CCjQlQle8USn8CO8vcWNrIqktg==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
   cacheable-lookup@5.0.4:
@@ -4604,8 +4604,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@42.19.3:
-    resolution: {integrity: sha512-xDMJXEMYS+mMQlN9CamwygTG4+qVH+jq3Ivj4TymK01sThcCDCVvRJ9sXZsenrYuCpCKdsXeM+xrkQUaqX3HtA==}
+  renovate@42.19.7:
+    resolution: {integrity: sha512-pSxiMnhBbwpiOjxe18dQqrKlhIF3FguqA7dweEgicigQlzeoBov9hTku75gs0XpVMApjfL8H/OQCj8iMDbu/mw==}
     engines: {node: ^22.13.0 || ^24.11.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -4911,6 +4911,10 @@ packages:
   ssri@12.0.0:
     resolution: {integrity: sha512-S7iGNosepx9RadX82oimUkvr0Ct7IjJbEbs4mJcTxst8um95J3sDYU1RBEOvdu6oL1Wek2ODI5i4MAw+dZ6cAQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
+
+  ssri@13.0.0:
+    resolution: {integrity: sha512-yizwGBpbCn4YomB2lzhZqrHLJoqFGXihNbib3ozhqF/cIp5ue+xSmOQrjNasEE62hFxsCcg/V/z23t4n8jMEng==}
+    engines: {node: ^20.17.0 || >=22.9.0}
 
   stack-trace@0.0.10:
     resolution: {integrity: sha512-KGzahc7puUKkzyMt+IqAep+TVNbKP+k2Lmwhub39m1AsTSkaDutx56aDCo+HLDzf/D26BIHTJWNiTG1KAJiQCg==}
@@ -5540,7 +5544,7 @@ snapshots:
     dependencies:
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.936.0
+      '@aws-sdk/types': 3.922.0
       '@aws-sdk/util-locate-window': 3.893.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
@@ -5550,7 +5554,7 @@ snapshots:
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.936.0
+      '@aws-sdk/types': 3.922.0
       '@aws-sdk/util-locate-window': 3.893.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
@@ -5558,7 +5562,7 @@ snapshots:
   '@aws-crypto/sha256-js@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.936.0
+      '@aws-sdk/types': 3.922.0
       tslib: 2.8.1
 
   '@aws-crypto/supports-web-crypto@5.2.0':
@@ -5567,7 +5571,7 @@ snapshots:
 
   '@aws-crypto/util@5.2.0':
     dependencies:
-      '@aws-sdk/types': 3.936.0
+      '@aws-sdk/types': 3.922.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
@@ -7586,7 +7590,7 @@ snapshots:
 
   '@oxc-project/runtime@0.96.0': {}
 
-  '@oxc-project/runtime@0.98.0': {}
+  '@oxc-project/runtime@0.99.0': {}
 
   '@oxc-project/types@0.98.0': {}
 
@@ -7748,7 +7752,7 @@ snapshots:
 
   '@renovatebot/pep440@4.2.1': {}
 
-  '@renovatebot/pgp@1.1.1': {}
+  '@renovatebot/pgp@1.2.0': {}
 
   '@renovatebot/ruby-semver@4.1.2': {}
 
@@ -8737,7 +8741,7 @@ snapshots:
       unique-filename: 4.0.0
     optional: true
 
-  cacache@20.0.1:
+  cacache@20.0.2:
     dependencies:
       '@npmcli/fs': 4.0.0
       fs-minipass: 3.0.3
@@ -8748,7 +8752,7 @@ snapshots:
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
       p-map: 7.0.4
-      ssri: 12.0.0
+      ssri: 13.0.0
       unique-filename: 4.0.0
 
   cacheable-lookup@5.0.4: {}
@@ -11670,7 +11674,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@42.19.3(encoding@0.1.13)(typanion@3.14.0):
+  renovate@42.19.7(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.922.0
       '@aws-sdk/client-ec2': 3.922.0
@@ -11702,7 +11706,7 @@ snapshots:
       '@renovatebot/detect-tools': 1.2.4
       '@renovatebot/osv-offline': 1.8.0
       '@renovatebot/pep440': 4.2.1
-      '@renovatebot/pgp': 1.1.1
+      '@renovatebot/pgp': 1.2.0
       '@renovatebot/ruby-semver': 4.1.2
       '@sindresorhus/is': 7.1.1
       '@yarnpkg/core': 4.5.0(typanion@3.14.0)
@@ -11714,7 +11718,7 @@ snapshots:
       aws4: 1.13.2
       azure-devops-node-api: 15.1.1
       bunyan: 1.8.15
-      cacache: 20.0.1
+      cacache: 20.0.2
       chalk: 5.6.2
       changelog-filename-regex: 2.0.1
       clean-git-ref: 2.0.1
@@ -12142,6 +12146,11 @@ snapshots:
   sprintf-js@1.1.3: {}
 
   ssri@12.0.0:
+    dependencies:
+      minipass: 7.1.2
+    optional: true
+
+  ssri@13.0.0:
     dependencies:
       minipass: 7.1.2
 
