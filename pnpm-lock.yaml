@@ -18,8 +18,8 @@ importers:
         specifier: ^4.5.3
         version: 4.8.0
       '@oxc-project/runtime':
-        specifier: ^0.99.0
-        version: 0.99.0
+        specifier: ^0.102.0
+        version: 0.102.0
       fs-extra:
         specifier: ^11.3.1
         version: 11.3.2
@@ -31,7 +31,7 @@ importers:
         version: 9.0.5
       renovate:
         specifier: ^42.0.0
-        version: 42.40.1(encoding@0.1.13)(typanion@3.14.0)
+        version: 42.40.3(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -1148,12 +1148,12 @@ packages:
     resolution: {integrity: sha512-kocjix+/sSggfJhwXqClZ3i9Y/MI0fp7b+g7kCRm6psy2dsf8uApTRclwG18h8Avm7C9+fnt+O36PspJ/OzoWg==}
     engines: {node: '>=14'}
 
-  '@oxc-project/runtime@0.96.0':
-    resolution: {integrity: sha512-34lh4o9CcSw09Hx6fKihPu85+m+4pmDlkXwJrLvN5nMq5JrcGhhihVM415zDqT8j8IixO1PYYdQZRN4SwQCncg==}
+  '@oxc-project/runtime@0.102.0':
+    resolution: {integrity: sha512-vEDGxVIeeO+u5XCHD5+iSzWwC3DgRpEaf3lPZETC+6GnoRKHaxbxV6XqpbOhiY423RVkAbBEtfetfrjJjPWByA==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
-  '@oxc-project/runtime@0.99.0':
-    resolution: {integrity: sha512-8iE5/4OK0SLHqWzRxSvI1gjFPmIH6718s8iwkuco95rBZsCZIHq+5wy4lYsASxnH+8FOhbGndiUrcwsVG5i2zw==}
+  '@oxc-project/runtime@0.96.0':
+    resolution: {integrity: sha512-34lh4o9CcSw09Hx6fKihPu85+m+4pmDlkXwJrLvN5nMq5JrcGhhihVM415zDqT8j8IixO1PYYdQZRN4SwQCncg==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@oxc-project/types@0.101.0':
@@ -4650,8 +4650,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@42.40.1:
-    resolution: {integrity: sha512-o0dyHKyM8Y9l6+/0ovyLlrKAG3PstslnE2+4dZaxSosGrP5D5YFzzZHNv8p+VOkIX25Rwad1ZWHNmnhc3k4qIg==}
+  renovate@42.40.3:
+    resolution: {integrity: sha512-eShE9wwCZkRsts++TrVmmGSrAd3GZIoHocnWhcdTCZcgZj+ckiqBvwyuv7PMyrkGqzSwtApplnS1xPyfH+KBHw==}
     engines: {node: ^22.13.0 || ^24.11.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -7576,9 +7576,9 @@ snapshots:
 
   '@opentelemetry/semantic-conventions@1.38.0': {}
 
-  '@oxc-project/runtime@0.96.0': {}
+  '@oxc-project/runtime@0.102.0': {}
 
-  '@oxc-project/runtime@0.99.0': {}
+  '@oxc-project/runtime@0.96.0': {}
 
   '@oxc-project/types@0.101.0': {}
 
@@ -11711,7 +11711,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@42.40.1(encoding@0.1.13)(typanion@3.14.0):
+  renovate@42.40.3(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.940.0
       '@aws-sdk/client-ec2': 3.940.0
