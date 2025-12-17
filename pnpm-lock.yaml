@@ -31,7 +31,7 @@ importers:
         version: 9.0.5
       renovate:
         specifier: ^42.0.0
-        version: 42.58.3(encoding@0.1.13)(typanion@3.14.0)
+        version: 42.59.1(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -4611,8 +4611,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@42.58.3:
-    resolution: {integrity: sha512-b6SD7LsCbAMS23M7gFdtoaq3GGjMgmQMVNCgXqYTufdNvTz8zg9bHPEGn64d+ZlLOKh1uljHZCNlMi0wnq4ZZw==}
+  renovate@42.59.1:
+    resolution: {integrity: sha512-J4K8jkHuM+mqooq/2ZL/OOQieRseCnaL9SwZ5DVD21h6/JdLXd3IqI18goVfgK3lpLcEiY0mamtT3MB7xg9mcA==}
     engines: {node: ^22.13.0 || ^24.11.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -5546,20 +5546,20 @@ snapshots:
   '@aws-crypto/crc32@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.953.0
+      '@aws-sdk/types': 3.936.0
       tslib: 2.8.1
 
   '@aws-crypto/crc32c@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.953.0
+      '@aws-sdk/types': 3.936.0
       tslib: 2.8.1
 
   '@aws-crypto/sha1-browser@5.2.0':
     dependencies:
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.953.0
+      '@aws-sdk/types': 3.936.0
       '@aws-sdk/util-locate-window': 3.953.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
@@ -5569,7 +5569,7 @@ snapshots:
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.953.0
+      '@aws-sdk/types': 3.936.0
       '@aws-sdk/util-locate-window': 3.953.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
@@ -5577,7 +5577,7 @@ snapshots:
   '@aws-crypto/sha256-js@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
-      '@aws-sdk/types': 3.953.0
+      '@aws-sdk/types': 3.936.0
       tslib: 2.8.1
 
   '@aws-crypto/supports-web-crypto@5.2.0':
@@ -5586,7 +5586,7 @@ snapshots:
 
   '@aws-crypto/util@5.2.0':
     dependencies:
-      '@aws-sdk/types': 3.953.0
+      '@aws-sdk/types': 3.936.0
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
@@ -11705,7 +11705,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@42.58.3(encoding@0.1.13)(typanion@3.14.0):
+  renovate@42.59.1(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.940.0
       '@aws-sdk/client-ec2': 3.940.0
