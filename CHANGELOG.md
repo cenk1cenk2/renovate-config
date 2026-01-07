@@ -1,3 +1,10 @@
+## [3.11.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.5...v3.11.6) (2026-01-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @cenk1cenk2/oclif-common to v7 ([5742fd5](https://gitlab.kilic.dev/renovate/renovate-config/commit/5742fd5647c110c01c1dd800eb61ef073924d464))
+
 ## [3.11.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.4...v3.11.5) (2026-01-05)
 
 
