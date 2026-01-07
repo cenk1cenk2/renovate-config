@@ -41,7 +41,7 @@ importers:
         version: 2.2.0(@types/node@24.10.4)(typescript@5.9.3)
       '@cenk1cenk2/eslint-config':
         specifier: ^3.1.69
-        version: 3.1.69(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+        version: 3.1.70(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@tsconfig/node24':
         specifier: ^24.0.3
         version: 24.0.3
@@ -430,8 +430,8 @@ packages:
     resolution: {integrity: sha512-lPP52cKY+ep/rlcVQsmNiMLNTfAy2bk73LcR6Z3pIVCQ/Jnxd0qeb6q7wYrYy+TMGz7lkQ6yj6uRD4aFnO0Luw==}
     engines: {node: '>= 22'}
 
-  '@cenk1cenk2/eslint-config@3.1.69':
-    resolution: {integrity: sha512-IHCfoAEQY10tX+NQvOJ6ia7C17q9/GLe7AlvGukube4zglxerkHYNloKrjByGZ/66y2TGme9K1mIZS12uEojCw==}
+  '@cenk1cenk2/eslint-config@3.1.70':
+    resolution: {integrity: sha512-Amwip43bf+pVaQNBPmOzAePY60Ey6xiT4xlkPn777Gz+gtTFroFV28q5dRW97ghinn7Ds/DkVktqCYs6zM5c3Q==}
     peerDependencies:
       '@vue/eslint-config-typescript': '>= 14.1.1'
       eslint: '>= 9'
@@ -1281,6 +1281,10 @@ packages:
   '@opentelemetry/semantic-conventions@1.38.0':
     resolution: {integrity: sha512-kocjix+/sSggfJhwXqClZ3i9Y/MI0fp7b+g7kCRm6psy2dsf8uApTRclwG18h8Avm7C9+fnt+O36PspJ/OzoWg==}
     engines: {node: '>=14'}
+
+  '@oxc-project/runtime@0.106.0':
+    resolution: {integrity: sha512-5SW18pzHX3JRVSw07MoTLEB9yZ9/VTr0C/kdMA1202647roYTGs1HP53UHsY5GOQzkExClCqV3eBURl5mHcD2A==}
+    engines: {node: ^20.19.0 || >=22.12.0}
 
   '@oxc-project/runtime@0.107.0':
     resolution: {integrity: sha512-Pkuh11dhnrlJky91CSu1T2v6LX59LMJqNEE0P5tot40DYOeEb1mlrINVYWcUi/bY0JkozCSWukmDxiaqB6wHGg==}
@@ -3324,8 +3328,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@16.5.0:
-    resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+  globals@17.0.0:
+    resolution: {integrity: sha512-gv5BeD2EssA793rlFWVPMMCqefTlpusw6/2TbAVMy0FzcG8wKJn4O+NqJ4+XWmmwrayJgw5TzrmWjFgmz1XPqw==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -6987,7 +6991,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@cenk1cenk2/eslint-config@3.1.69(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
+  '@cenk1cenk2/eslint-config@3.1.70(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
       '@eslint/js': 9.39.2
       '@stylistic/eslint-plugin': 5.6.1(eslint@9.39.2(jiti@2.6.1))
@@ -6995,7 +6999,7 @@ snapshots:
       '@typescript-eslint/parser': 8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       eslint: 9.39.2(jiti@2.6.1)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))
-      globals: 16.5.0
+      globals: 17.0.0
       load-tsconfig: 0.2.5
       typescript-eslint: 8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
     transitivePeerDependencies:
@@ -7840,6 +7844,8 @@ snapshots:
       '@opentelemetry/sdk-trace-base': 2.2.0(@opentelemetry/api@1.9.0)
 
   '@opentelemetry/semantic-conventions@1.38.0': {}
+
+  '@oxc-project/runtime@0.106.0': {}
 
   '@oxc-project/runtime@0.107.0': {}
 
@@ -10223,7 +10229,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@16.5.0: {}
+  globals@17.0.0: {}
 
   globalthis@1.0.4:
     dependencies:
