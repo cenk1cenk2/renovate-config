@@ -5,7 +5,8 @@ export default createPreset({
   extends: ['config:recommended', ':configMigration', ':dependencyDashboard', ':disableRateLimiting', ':updateNotScheduled', ':enableVulnerabilityAlerts'],
   timezone: TIMEZONE,
   semanticCommits: 'enabled',
-  assignees: ASSIGNEES,
+  // assignees: ASSIGNEES,
+  reviewers: ASSIGNEES,
   labels: ['renovate'],
   major: {
     minimumReleaseAge: '3 days'
