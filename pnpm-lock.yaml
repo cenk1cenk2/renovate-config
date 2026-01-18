@@ -38,7 +38,7 @@ importers:
     devDependencies:
       '@cenk1cenk2/cz-cc':
         specifier: ^2.1.5
-        version: 2.2.0(@types/node@24.10.9)(typescript@5.9.3)
+        version: 2.2.1(@types/node@24.10.9)(typescript@5.9.3)
       '@cenk1cenk2/eslint-config':
         specifier: ^3.1.69
         version: 3.1.70(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
@@ -481,8 +481,8 @@ packages:
   '@cdktf/hcl2json@0.21.0':
     resolution: {integrity: sha512-cwX3i/mSJI/cRrtqwEPRfawB7pXgNioriSlkvou8LWiCrrcDe9ZtTbAbu8W1tEJQpe1pnX9VEgpzf/BbM7xF8Q==}
 
-  '@cenk1cenk2/cz-cc@2.2.0':
-    resolution: {integrity: sha512-lPP52cKY+ep/rlcVQsmNiMLNTfAy2bk73LcR6Z3pIVCQ/Jnxd0qeb6q7wYrYy+TMGz7lkQ6yj6uRD4aFnO0Luw==}
+  '@cenk1cenk2/cz-cc@2.2.1':
+    resolution: {integrity: sha512-CvuobA4xzCs8RivYNufwr3wyMdDQauQ6cTiHxhF/ameP1O8CmN5JC3Z40TSwz5wg0ywQhmt9/lodGmEQnmNI/A==}
     engines: {node: '>= 22'}
 
   '@cenk1cenk2/eslint-config@3.1.70':
@@ -5324,6 +5324,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
 
   tar@7.5.3:
     resolution: {integrity: sha512-ENg5JUHUm2rDD7IvKNFGzyElLXNjachNLp6RaGf4+JOgxXHkqA+gq81ZAMCUmtMtqBsoU62lcp6S27g1LCYGGQ==}
@@ -7160,14 +7161,14 @@ snapshots:
     dependencies:
       fs-extra: 11.3.0
 
-  '@cenk1cenk2/cz-cc@2.2.0(@types/node@24.10.9)(typescript@5.9.3)':
+  '@cenk1cenk2/cz-cc@2.2.1(@types/node@24.10.9)(typescript@5.9.3)':
     dependencies:
       '@inquirer/prompts': 8.2.0(@types/node@24.10.9)
-      '@listr2/prompt-adapter-inquirer': 3.0.5(@inquirer/prompts@8.2.0(@types/node@24.10.9))(@types/node@24.10.9)(listr2@9.0.5)
+      '@listr2/prompt-adapter-inquirer': 3.0.5(@inquirer/prompts@8.2.0(@types/node@24.10.9))(@types/node@24.10.9)(listr2@10.0.0)
       commitizen: 4.3.1(@types/node@24.10.9)(typescript@5.9.3)
       conventional-commit-types: 3.0.0
       find-git-root: 1.0.4
-      listr2: 9.0.5
+      listr2: 10.0.0
     transitivePeerDependencies:
       - '@types/node'
       - typescript
@@ -7760,11 +7761,11 @@ snapshots:
     dependencies:
       listr2: 10.0.0
 
-  '@listr2/prompt-adapter-inquirer@3.0.5(@inquirer/prompts@8.2.0(@types/node@24.10.9))(@types/node@24.10.9)(listr2@9.0.5)':
+  '@listr2/prompt-adapter-inquirer@3.0.5(@inquirer/prompts@8.2.0(@types/node@24.10.9))(@types/node@24.10.9)(listr2@10.0.0)':
     dependencies:
       '@inquirer/prompts': 8.2.0(@types/node@24.10.9)
       '@inquirer/type': 3.0.10(@types/node@24.10.9)
-      listr2: 9.0.5
+      listr2: 10.0.0
     transitivePeerDependencies:
       - '@types/node'
 
