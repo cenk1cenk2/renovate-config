@@ -1,3 +1,10 @@
+## [3.11.8](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.7...v3.11.8) (2026-01-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency listr2 to v10 ([f957d48](https://gitlab.kilic.dev/renovate/renovate-config/commit/f957d483d759cc571ccdcde9fcbfea523cf9b232))
+
 ## [3.11.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.6...v3.11.7) (2026-01-14)
 
 
