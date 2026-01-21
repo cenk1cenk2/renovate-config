@@ -1,3 +1,10 @@
+## [3.11.10](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.9...v3.11.10) (2026-01-21)
+
+
+### Bug Fixes
+
+* **deps:** update node all minor dependency updates ([2091bcf](https://gitlab.kilic.dev/renovate/renovate-config/commit/2091bcf1bbeab73d369a44fbd271dc50939cc493))
+
 ## [3.11.9](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.8...v3.11.9) (2026-01-18)
 
 
