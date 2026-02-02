@@ -13,6 +13,19 @@ export default createPreset({
       extends: [':semanticCommitTypeAll(feat)'],
       matchManagers: [Managers.HELM],
       schedule: [SCHEDULE.ANY]
+    },
+    {
+      enabled: true,
+      matchUpdateTypes: ['major', 'minor', 'patch'],
+      labels: ['renovate', 'minor', 'infrastructure', 'automerge'],
+      groupName: 'helm all minor automerge dependency updates',
+      groupSlug: 'helm-minor-',
+      automerge: true,
+      extends: [':semanticCommitTypeAll(feat)'],
+      matchManagers: [Managers.HELM],
+      schedule: [SCHEDULE.ANY],
+      matchRepositories: ['https://prometheus-community.github.io/helm-charts', 'https://open-telemetry.github.io/opentelemetry-helm-charts'],
+      matchPackageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
     }
   ]
 })

@@ -7,12 +7,26 @@ export default createPreset({
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
       labels: ['renovate', 'minor'],
-      additionalBranchPrefix: 'kustomize-',
+      groupSlug: 'kustomize-',
       automerge: false,
       extends: [':semanticCommitTypeAll(fix)'],
       matchDepTypes: ['HelmChart'],
       matchManagers: [Managers.KUSTOMIZE],
       schedule: [SCHEDULE.ANY]
+    },
+    {
+      enabled: true,
+      matchUpdateTypes: ['major', 'minor', 'patch'],
+      labels: ['renovate', 'minor', 'infrastructure', 'automerge'],
+      groupName: 'helm all minor automerge dependency updates for kustomize',
+      groupSlug: 'kustomize-minor-',
+      automerge: true,
+      extends: [':semanticCommitTypeAll(feat)'],
+      matchDepTypes: ['HelmChart'],
+      matchManagers: [Managers.KUSTOMIZE],
+      schedule: [SCHEDULE.ANY],
+      matchRepositories: ['https://prometheus-community.github.io/helm-charts', 'https://open-telemetry.github.io/opentelemetry-helm-charts'],
+      matchPackageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
     }
   ]
 })
