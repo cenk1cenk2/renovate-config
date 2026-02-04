@@ -24,7 +24,7 @@ export default createPreset({
       extends: [':semanticCommitTypeAll(feat)'],
       matchManagers: [Managers.HELM],
       schedule: [SCHEDULE.ANY],
-      matchSourceUrls: ['https://prometheus-community.github.io/helm-charts', 'https://open-telemetry.github.io/opentelemetry-helm-charts'],
+      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/open-telemetry/opentelemetry-helm-charts'],
       matchPackageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
     }
   ]
