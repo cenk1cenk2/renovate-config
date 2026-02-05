@@ -1,3 +1,11 @@
+## [3.11.14](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.13...v3.11.14) (2026-02-05)
+
+
+### Bug Fixes
+
+* update datasource configuration ([1d18e6a](https://gitlab.kilic.dev/renovate/renovate-config/commit/1d18e6af514ba118cbc1c0552544edf9feb6fc88))
+* update docker configuration ([d1e2e35](https://gitlab.kilic.dev/renovate/renovate-config/commit/d1e2e3563a9cdbf7f2c58b56ce5d1869714fe643))
+
 ## [3.11.13](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.12...v3.11.13) (2026-02-04)
 
 
