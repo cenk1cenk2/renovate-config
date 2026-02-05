@@ -10,7 +10,6 @@ export default createPreset({
       groupName: 'docker datasource minor dependency updates',
       groupSlug: 'docker-minor',
       automerge: true,
-      extends: [':semanticCommitTypeAll(feat)'],
       matchDatasources: [Datasources.DOCKER],
       matchPackageNames: ['ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib'],
       schedule: [SCHEDULE.ANY]

@@ -775,7 +775,6 @@
         "groupName": "docker datasource minor dependency updates",
         "groupSlug": "docker-minor",
         "automerge": true,
-        "extends": [":semanticCommitTypeAll(feat)"],
         "matchDatasources": ["docker"],
         "matchPackageNames": ["ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib"],
         "schedule": ["at any time"]
