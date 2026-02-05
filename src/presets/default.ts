@@ -21,6 +21,8 @@ export default createPreset({
     Preset.OPENTELEMETRY_COLLECTOR_BUILDER,
     Preset.PYTHON,
     Preset.RUST,
-    Preset.TERRAFORM
+    Preset.TERRAFORM,
+
+    Preset.DATASOURCE_DOCKER
   )
 })

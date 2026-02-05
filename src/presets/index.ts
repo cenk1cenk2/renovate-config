@@ -96,7 +96,11 @@ export enum Preset {
   ARGOCD = 'argocd',
 
   ARGOCD_GROUP_MINOR = 'argocd-group-minor',
-  ARGOCD_GROUP_MAJOR = 'argocd-group-major'
+  ARGOCD_GROUP_MAJOR = 'argocd-group-major',
+
+  // datasource: docker
+
+  DATASOURCE_DOCKER = 'datasource-docker'
 }
 
 export const PRESETS: Presets = {
@@ -195,5 +199,9 @@ export const PRESETS: Presets = {
   [Preset.ARGOCD]: import('./managers/argocd/manager.js').then((m) => m.default),
 
   [Preset.ARGOCD_GROUP_MINOR]: import('./managers/argocd/group-minor.js').then((m) => m.default),
-  [Preset.ARGOCD_GROUP_MAJOR]: import('./managers/argocd/group-major.js').then((m) => m.default)
+  [Preset.ARGOCD_GROUP_MAJOR]: import('./managers/argocd/group-major.js').then((m) => m.default),
+
+  // datasource: docker
+
+  [Preset.DATASOURCE_DOCKER]: import('./datasources/docker/datasource.js').then((m) => m.default)
 }
