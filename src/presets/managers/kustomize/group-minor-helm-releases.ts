@@ -26,7 +26,7 @@ export default createPreset({
       matchManagers: [Managers.KUSTOMIZE],
       schedule: [SCHEDULE.ANY],
       matchSourceUrls: ['https://github.com/prometheus-community/helm-charts'],
-      matchPackageNames: ['blackbox-exporter']
+      matchPackageNames: ['prometheus-blackbox-exporter']
     }
   ]
 })

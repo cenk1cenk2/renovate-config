@@ -396,7 +396,7 @@
         "matchManagers": ["kustomize"],
         "schedule": ["at any time"],
         "matchSourceUrls": ["https://github.com/prometheus-community/helm-charts"],
-        "matchPackageNames": ["blackbox-exporter"]
+        "matchPackageNames": ["prometheus-blackbox-exporter"]
       }
     ]
   },
