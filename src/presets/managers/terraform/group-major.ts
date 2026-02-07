@@ -24,12 +24,8 @@ export default createPreset({
       extends: [':semanticCommitTypeAll(perf)'],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
       matchManagers: [Managers.REGEX],
-      schedule: [SCHEDULE.ANY]
-    },
-    {
-      matchManagers: [Managers.REGEX],
-      matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
-      registryUrls: ['gitlab.kilic.dev']
+      schedule: [SCHEDULE.ANY],
+      matchSourceUrls: ['https://gitlab.kilic.dev/**']
     }
   ]
 })
