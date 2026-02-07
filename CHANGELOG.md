@@ -1,3 +1,11 @@
+## [3.11.17](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.16...v3.11.17) (2026-02-07)
+
+
+### Bug Fixes
+
+* **deps:** update node all minor dependency updates ([ccf6a45](https://gitlab.kilic.dev/renovate/renovate-config/commit/ccf6a4583697b81139532ce9577281fe9405a769))
+* update terraform manager presets ([5035242](https://gitlab.kilic.dev/renovate/renovate-config/commit/503524270eafee78191c9f6c0d6309bc36e754b5))
+
 ## [3.11.16](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.15...v3.11.16) (2026-02-07)
 
 
