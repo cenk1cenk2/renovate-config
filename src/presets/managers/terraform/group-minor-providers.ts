@@ -17,7 +17,6 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
-      rangeStrategy: 'replace',
       labels: ['renovate', 'minor', 'infrastructure'],
       additionalBranchPrefix: 'terraform-',
       automerge: false,
@@ -25,6 +24,11 @@ export default createPreset({
       matchDepTypes: ['required_provider'],
       matchManagers: [Managers.TERRAFORM],
       schedule: [SCHEDULE.ANY]
+    },
+    {
+      matchManagers: [Managers.TERRAFORM],
+      matchDepTypes: ['required_provider'],
+      rangeStrategy: 'replace'
     }
   ]
 })

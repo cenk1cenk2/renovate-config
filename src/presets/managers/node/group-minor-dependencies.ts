@@ -1,5 +1,5 @@
 import { NODE_GROUP_MINOR } from './groups.js'
-import { SCHEDULE } from '@constants'
+import { Managers, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({
@@ -10,6 +10,11 @@ export default createPreset({
       groupSlug: 'node-minor',
       ...NODE_GROUP_MINOR,
       schedule: [SCHEDULE.DAILY]
+    },
+    {
+      matchManagers: [Managers.NODE],
+      matchDepTypes: ['dependencies'],
+      rangeStrategy: 'bump'
     }
   ]
 })

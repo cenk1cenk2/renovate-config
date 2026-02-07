@@ -5,7 +5,6 @@ import { Managers } from '@constants'
 export const NODE_GROUP_MINOR: PackageRule = {
   matchDepTypes: ['dependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  rangeStrategy: 'bump',
   labels: ['renovate', 'minor', 'automerge'],
   automerge: true,
   matchManagers: [Managers.NODE]
@@ -14,7 +13,6 @@ export const NODE_GROUP_MINOR: PackageRule = {
 export const NODE_GROUP_DEV: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  rangeStrategy: 'bump',
   commitMessageSuffix: '[skip ci]',
   labels: ['renovate', 'dev-deps', 'automerge'],
   automerge: true,
@@ -24,7 +22,6 @@ export const NODE_GROUP_DEV: PackageRule = {
 export const NODE_GROUP_BUILD: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  rangeStrategy: 'bump',
   semanticCommitType: 'build',
   commitMessageSuffix: '',
   labels: ['renovate', 'build-deps', 'automerge'],
@@ -35,7 +32,6 @@ export const NODE_GROUP_BUILD: PackageRule = {
 export const NODE_GROUP_DOCS: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  rangeStrategy: 'bump',
   semanticCommitType: 'docs',
   commitMessageSuffix: '',
   labels: ['renovate', 'build-deps', 'automerge'],

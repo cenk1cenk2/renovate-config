@@ -1,5 +1,5 @@
 import { NODE_GROUP_DEV, NODE_GROUP_BUILD, NODE_GROUP_DOCS, NODE_GROUP_PACKAGE_MANAGER } from './groups.js'
-import { SCHEDULE } from '@constants'
+import { Managers, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({
@@ -46,6 +46,11 @@ export default createPreset({
       groupSlug: 'node-package-manager',
       ...NODE_GROUP_PACKAGE_MANAGER,
       schedule: [SCHEDULE.ANY]
+    },
+    {
+      matchManagers: [Managers.NODE],
+      matchDepTypes: ['devDependencies'],
+      rangeStrategy: 'bump'
     }
   ]
 })

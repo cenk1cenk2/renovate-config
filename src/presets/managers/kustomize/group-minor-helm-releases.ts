@@ -25,8 +25,8 @@ export default createPreset({
       matchDepTypes: ['HelmChart'],
       matchManagers: [Managers.KUSTOMIZE],
       schedule: [SCHEDULE.ANY],
-      matchSourceUrls: ['https://prometheus-community.github.io/helm-charts', 'https://open-telemetry.github.io/opentelemetry-helm-charts'],
-      matchPackageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
+      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts'],
+      matchPackageNames: ['blackbox-exporter']
     }
   ]
 })

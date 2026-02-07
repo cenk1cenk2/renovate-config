@@ -4,6 +4,7 @@ import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: [Managers.HELM, Managers.HELM_VALUES],
+  postUpdateOptions: ['helmUpdateSubChartArchives'],
   extends: createScopes(Preset.HELM_GROUP_MINOR, Preset.HELM_GROUP_MAJOR),
   packageRules: [
     {

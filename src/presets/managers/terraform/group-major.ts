@@ -22,10 +22,14 @@ export default createPreset({
       additionalBranchPrefix: 'terraform-monorepo-',
       automerge: false,
       extends: [':semanticCommitTypeAll(perf)'],
-      registryUrls: ['gitlab.kilic.dev'],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
       matchManagers: [Managers.REGEX],
       schedule: [SCHEDULE.ANY]
+    },
+    {
+      matchManagers: [Managers.REGEX],
+      matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
+      registryUrls: ['gitlab.kilic.dev']
     }
   ]
 })

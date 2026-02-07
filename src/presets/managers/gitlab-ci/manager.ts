@@ -13,7 +13,8 @@ export default createPreset({
     },
     {
       matchManagers: [Managers.REGEX],
-      matchDepTypes: [DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO]
+      matchDepTypes: [DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO],
+      addLabels: ['gitlab-ci']
     }
   ]
 })

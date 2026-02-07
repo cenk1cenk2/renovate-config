@@ -28,11 +28,15 @@ export default createPreset({
       groupName: 'terraform-monorepo all minor dependency updates',
       groupSlug: 'terraform-monorepo',
       automerge: false,
-      registryUrls: ['gitlab.kilic.dev'],
       extends: [':semanticCommitTypeAll(feat)'],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
       matchManagers: [Managers.REGEX],
       schedule: [SCHEDULE.ANY]
+    },
+    {
+      matchManagers: [Managers.REGEX],
+      matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
+      registryUrls: ['gitlab.kilic.dev']
     }
   ]
 })

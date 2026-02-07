@@ -11,10 +11,14 @@ export default createPreset({
       automerge: true,
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      rangeStrategy: 'bump',
       commitMessageSuffix: '[skip ci]',
       matchManagers: [Managers.ANSIBLE_GALAXY],
       schedule: [SCHEDULE.DAILY]
+    },
+    {
+      matchManagers: [Managers.ANSIBLE_GALAXY],
+      matchDepTypes: ['collections', 'roles'],
+      rangeStrategy: 'bump'
     }
   ]
 })
