@@ -31,7 +31,7 @@ importers:
         version: 10.1.0
       renovate:
         specifier: ^43.0.0
-        version: 43.4.1(encoding@0.1.13)(typanion@3.14.0)
+        version: 43.4.2(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -41,7 +41,7 @@ importers:
         version: 2.2.2(@types/node@24.10.11)(typescript@5.9.3)
       '@cenk1cenk2/eslint-config':
         specifier: ^3.1.71
-        version: 3.1.71(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+        version: 3.1.72(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@tsconfig/node24':
         specifier: ^24.0.4
         version: 24.0.4
@@ -373,8 +373,8 @@ packages:
     resolution: {integrity: sha512-Q5NDYoSv9zSxeFnJITM7xfAPHIPNP+9NFz4+ynS/rTmKFM5N5VhlrCu2w3rsTrChzjeKnumDIOcisH3mx937pw==}
     engines: {node: '>= 22'}
 
-  '@cenk1cenk2/eslint-config@3.1.71':
-    resolution: {integrity: sha512-hsVWDUigUy60WIwQ8Ebto/6utqkuSxQVuEEicgKMTrZPKNYIQUe5Rzo1dj0o9JElfYSzpbpTemxwe0IkZkc0PA==}
+  '@cenk1cenk2/eslint-config@3.1.72':
+    resolution: {integrity: sha512-G0bQgi7xvvWmYl7aEj9EokwGEOsUffQn2ztj1uJP+Q4HRvrSuNFrsEfHZwI7N5iYnd18yDkEE2f54pbCfZeQLg==}
     peerDependencies:
       '@vue/eslint-config-typescript': '>= 14.1.1'
       eslint: '>= 9'
@@ -2379,10 +2379,6 @@ packages:
 
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
-
-  commander@14.0.2:
-    resolution: {integrity: sha512-TywoWNNRbhoD0BXs1P3ZEScW8W5iKrnbithIl0YH+uCmBd0QpPOA8yc82DS3BIE5Ma6FnBVUsJ7wVUDz4dvOWQ==}
-    engines: {node: '>=20'}
 
   commander@14.0.3:
     resolution: {integrity: sha512-H+y0Jo/T1RZ9qPP4Eh1pkcQcLRglraJaSLoyOtHxu6AapkjWVCy2Sit1QQ4x3Dng8qDlSsZEet7g5Pq06MvTgw==}
@@ -4662,8 +4658,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@43.4.1:
-    resolution: {integrity: sha512-YLTBxmGA+g9sLAC7MW6qxww+07udMEZgyG36IqWS+NehKpr2N2KfCpEMNbSiR2MBTiX7buKnmcb/cY56gn3iBQ==}
+  renovate@43.4.2:
+    resolution: {integrity: sha512-h6P5SAbwj7GXJ442wMA6R0WcQuP3AA/FppHQO071D+xXU2hNazieQ4hlSMUbNKO7/ojT6vlAye8AT7JPdug5jA==}
     engines: {node: ^24.11.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -6628,7 +6624,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@cenk1cenk2/eslint-config@3.1.71(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
+  '@cenk1cenk2/eslint-config@3.1.72(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)':
     dependencies:
       '@eslint/js': 9.39.2
       '@stylistic/eslint-plugin': 5.7.1(eslint@9.39.2(jiti@2.6.1))
@@ -7284,7 +7280,7 @@ snapshots:
 
   '@npmcli/fs@5.0.0':
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.2
 
   '@nuxt/opencollective@0.4.1':
     dependencies:
@@ -8343,7 +8339,7 @@ snapshots:
       hpagent: 1.2.0
       micromatch: 4.0.8
       p-limit: 2.3.0
-      semver: 7.7.4
+      semver: 7.7.2
       strip-ansi: 6.0.1
       tar: 6.2.1
       tinylogic: 2.0.0
@@ -8604,7 +8600,7 @@ snapshots:
 
   builtins@5.1.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.2
 
   bunyan@1.8.15:
     optionalDependencies:
@@ -8814,8 +8810,6 @@ snapshots:
       color-string: 2.1.4
 
   colorette@2.0.20: {}
-
-  commander@14.0.2: {}
 
   commander@14.0.3: {}
 
@@ -9087,7 +9081,7 @@ snapshots:
       '@one-ini/wasm': 0.2.0
       commander: 14.0.3
       minimatch: 10.0.1
-      semver: 7.7.4
+      semver: 7.7.2
 
   ejs@3.1.10:
     dependencies:
@@ -9798,7 +9792,7 @@ snapshots:
       es6-error: 4.1.1
       matcher: 3.0.0
       roarr: 2.15.4
-      semver: 7.7.4
+      semver: 7.7.2
       serialize-error: 7.0.1
 
   global-directory@4.0.1:
@@ -10069,7 +10063,7 @@ snapshots:
       cli-width: 3.0.0
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.23
+      lodash: 4.17.21
       mute-stream: 0.0.8
       ora: 5.4.1
       run-async: 2.4.1
@@ -11023,7 +11017,7 @@ snapshots:
 
   node-abi@3.87.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.2
     optional: true
 
   node-domexception@1.0.0: {}
@@ -11048,7 +11042,7 @@ snapshots:
       make-fetch-happen: 15.0.3
       nopt: 9.0.0
       proc-log: 6.1.0
-      semver: 7.7.4
+      semver: 7.7.2
       tar: 7.5.7
       tinyglobby: 0.2.15
       which: 6.0.0
@@ -11077,7 +11071,7 @@ snapshots:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.16.1
-      semver: 7.7.4
+      semver: 7.7.2
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@6.0.2:
@@ -11578,7 +11572,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@43.4.1(encoding@0.1.13)(typanion@3.14.0):
+  renovate@43.4.2(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.980.0
       '@aws-sdk/client-ec2': 3.980.0
@@ -11626,7 +11620,7 @@ snapshots:
       cacache: 20.0.3
       changelog-filename-regex: 2.0.1
       clean-git-ref: 2.0.1
-      commander: 14.0.2
+      commander: 14.0.3
       conventional-commits-detector: 1.0.3
       croner: 9.1.0
       cronstrue: 3.11.0
