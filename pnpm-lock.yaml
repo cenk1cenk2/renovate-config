@@ -37,7 +37,7 @@ importers:
         version: 0.5.21
     devDependencies:
       '@cenk1cenk2/cz-cc':
-        specifier: ^2.2.2
+        specifier: ^2.2.3
         version: 2.2.3(@types/node@24.10.11)(typescript@5.9.3)
       '@cenk1cenk2/eslint-config':
         specifier: ^3.1.72
@@ -10063,7 +10063,7 @@ snapshots:
       cli-width: 3.0.0
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.21
+      lodash: 4.17.23
       mute-stream: 0.0.8
       ora: 5.4.1
       run-async: 2.4.1
