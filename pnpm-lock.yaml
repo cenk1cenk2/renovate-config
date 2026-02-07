@@ -38,7 +38,7 @@ importers:
     devDependencies:
       '@cenk1cenk2/cz-cc':
         specifier: ^2.2.2
-        version: 2.2.2(@types/node@24.10.11)(typescript@5.9.3)
+        version: 2.2.3(@types/node@24.10.11)(typescript@5.9.3)
       '@cenk1cenk2/eslint-config':
         specifier: ^3.1.72
         version: 3.1.72(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
@@ -369,8 +369,8 @@ packages:
   '@cdktf/hcl2json@0.21.0':
     resolution: {integrity: sha512-cwX3i/mSJI/cRrtqwEPRfawB7pXgNioriSlkvou8LWiCrrcDe9ZtTbAbu8W1tEJQpe1pnX9VEgpzf/BbM7xF8Q==}
 
-  '@cenk1cenk2/cz-cc@2.2.2':
-    resolution: {integrity: sha512-Q5NDYoSv9zSxeFnJITM7xfAPHIPNP+9NFz4+ynS/rTmKFM5N5VhlrCu2w3rsTrChzjeKnumDIOcisH3mx937pw==}
+  '@cenk1cenk2/cz-cc@2.2.3':
+    resolution: {integrity: sha512-5haKAyT7xPogxIHuJXt9xSNxunidDlq4y/ZYZjxwaQHr+8p3EOrJQNAaFm07tG6cpl3mlJxMK07tPMBRAQ51Eg==}
     engines: {node: '>= 22'}
 
   '@cenk1cenk2/eslint-config@3.1.72':
@@ -6612,7 +6612,7 @@ snapshots:
     dependencies:
       fs-extra: 11.3.0
 
-  '@cenk1cenk2/cz-cc@2.2.2(@types/node@24.10.11)(typescript@5.9.3)':
+  '@cenk1cenk2/cz-cc@2.2.3(@types/node@24.10.11)(typescript@5.9.3)':
     dependencies:
       '@inquirer/prompts': 8.2.0(@types/node@24.10.11)
       '@listr2/prompt-adapter-inquirer': 4.1.0(@inquirer/prompts@8.2.0(@types/node@24.10.11))(@types/node@24.10.11)(listr2@10.1.0)
@@ -7280,7 +7280,7 @@ snapshots:
 
   '@npmcli/fs@5.0.0':
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.2
 
   '@nuxt/opencollective@0.4.1':
     dependencies:
@@ -8339,7 +8339,7 @@ snapshots:
       hpagent: 1.2.0
       micromatch: 4.0.8
       p-limit: 2.3.0
-      semver: 7.7.4
+      semver: 7.7.2
       strip-ansi: 6.0.1
       tar: 6.2.1
       tinylogic: 2.0.0
@@ -8600,7 +8600,7 @@ snapshots:
 
   builtins@5.1.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.2
 
   bunyan@1.8.15:
     optionalDependencies:
@@ -9081,7 +9081,7 @@ snapshots:
       '@one-ini/wasm': 0.2.0
       commander: 14.0.3
       minimatch: 10.0.1
-      semver: 7.7.4
+      semver: 7.7.2
 
   ejs@3.1.10:
     dependencies:
@@ -9792,7 +9792,7 @@ snapshots:
       es6-error: 4.1.1
       matcher: 3.0.0
       roarr: 2.15.4
-      semver: 7.7.4
+      semver: 7.7.2
       serialize-error: 7.0.1
 
   global-directory@4.0.1:
@@ -11017,7 +11017,7 @@ snapshots:
 
   node-abi@3.87.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.2
     optional: true
 
   node-domexception@1.0.0: {}
@@ -11042,7 +11042,7 @@ snapshots:
       make-fetch-happen: 15.0.3
       nopt: 9.0.0
       proc-log: 6.1.0
-      semver: 7.7.4
+      semver: 7.7.2
       tar: 7.5.7
       tinyglobby: 0.2.15
       which: 6.0.0
@@ -11071,7 +11071,7 @@ snapshots:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.16.1
-      semver: 7.7.4
+      semver: 7.7.2
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@6.0.2:
