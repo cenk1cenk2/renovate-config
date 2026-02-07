@@ -1,3 +1,10 @@
+## [3.11.15](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.14...v3.11.15) (2026-02-07)
+
+
+### Bug Fixes
+
+* update errors and migrations ([b313761](https://gitlab.kilic.dev/renovate/renovate-config/commit/b3137613a7394bc3f2f54a9f3d5dc8c2c3984f80))
+
 ## [3.11.14](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.13...v3.11.14) (2026-02-05)
 
 
