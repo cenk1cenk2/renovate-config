@@ -54,7 +54,7 @@
     "fs-extra": "^11.3.3",
     "jsondiffpatch": "^0.7.3",
     "listr2": "^10.1.0",
-    "renovate": "^43.4.2",
+    "renovate": "^43.4.3",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
