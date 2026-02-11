@@ -7297,7 +7297,7 @@ snapshots:
 
   '@npmcli/fs@5.0.0':
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.3
 
   '@nuxt/opencollective@0.4.1':
     dependencies:
@@ -8358,7 +8358,7 @@ snapshots:
       hpagent: 1.2.0
       micromatch: 4.0.8
       p-limit: 2.3.0
-      semver: 7.7.4
+      semver: 7.7.3
       strip-ansi: 6.0.1
       tar: 6.2.1
       tinylogic: 2.0.0
@@ -8619,7 +8619,7 @@ snapshots:
 
   builtins@5.1.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.3
 
   bunyan@1.8.15:
     optionalDependencies:
@@ -9100,7 +9100,7 @@ snapshots:
       '@one-ini/wasm': 0.2.0
       commander: 14.0.3
       minimatch: 10.0.1
-      semver: 7.7.4
+      semver: 7.7.3
 
   ejs@3.1.10:
     dependencies:
@@ -9811,7 +9811,7 @@ snapshots:
       es6-error: 4.1.1
       matcher: 3.0.0
       roarr: 2.15.4
-      semver: 7.7.4
+      semver: 7.7.3
       serialize-error: 7.0.1
 
   global-directory@4.0.1:
@@ -11036,7 +11036,7 @@ snapshots:
 
   node-abi@3.87.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.7.3
     optional: true
 
   node-domexception@1.0.0: {}
@@ -11061,7 +11061,7 @@ snapshots:
       make-fetch-happen: 15.0.3
       nopt: 9.0.0
       proc-log: 6.1.0
-      semver: 7.7.4
+      semver: 7.7.3
       tar: 7.5.7
       tinyglobby: 0.2.15
       which: 6.0.1
@@ -11090,7 +11090,7 @@ snapshots:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.16.1
-      semver: 7.7.4
+      semver: 7.7.3
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@6.0.2:
