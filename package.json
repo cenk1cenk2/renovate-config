@@ -50,11 +50,11 @@
     "@cenk1cenk2/oclif-common": "^7.0.7",
     "@listr2/manager": "^4.1.0",
     "@oclif/core": "^4.8.0",
-    "@oxc-project/runtime": "^0.113.0",
+    "@oxc-project/runtime": "^0.114.0",
     "fs-extra": "^11.3.3",
     "jsondiffpatch": "^0.7.3",
     "listr2": "^10.1.0",
-    "renovate": "^43.15.1",
+    "renovate": "^43.19.2",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
