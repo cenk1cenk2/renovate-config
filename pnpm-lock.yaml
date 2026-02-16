@@ -18,8 +18,8 @@ importers:
         specifier: ^4.8.0
         version: 4.8.0
       '@oxc-project/runtime':
-        specifier: ^0.113.0
-        version: 0.113.0
+        specifier: ^0.114.0
+        version: 0.114.0
       fs-extra:
         specifier: ^11.3.3
         version: 11.3.3
@@ -30,7 +30,7 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
       renovate:
-        specifier: ^43.15.1
+        specifier: ^43.19.2
         version: 43.19.2(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
@@ -1244,8 +1244,8 @@ packages:
     resolution: {integrity: sha512-4vYtWXMnXM6EaweCxbJ6bISAhkNHeN33SihvuX3wrpqaSJA4ZEoW35i9mSvE74+GDf1yTeVE+aEHA+WBpjDk/g==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
-  '@oxc-project/runtime@0.113.0':
-    resolution: {integrity: sha512-apRWH/gXeAsl/sQiblIZnLu7f8P/C9S2fJIicuHV9KOK9J7Hv1JPyTwB8WAcOrDBfjs+cbzjMOGe9UR2ue4ZQg==}
+  '@oxc-project/runtime@0.114.0':
+    resolution: {integrity: sha512-mVGQvr/uFJGQ3hsvgQ1sJfh79t5owyZZZtw+VaH+WhtvsmtgjT6imznB9sz2Q67Q0/4obM9mOOtQscU4aJteSg==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@oxc-project/types@0.112.0':
@@ -7525,7 +7525,7 @@ snapshots:
 
   '@oxc-project/runtime@0.112.0': {}
 
-  '@oxc-project/runtime@0.113.0': {}
+  '@oxc-project/runtime@0.114.0': {}
 
   '@oxc-project/types@0.112.0': {}
 
@@ -9839,7 +9839,7 @@ snapshots:
 
   glob@13.0.1:
     dependencies:
-      minimatch: 10.1.2
+      minimatch: 10.2.0
       minipass: 7.1.2
       path-scurry: 2.0.1
 
