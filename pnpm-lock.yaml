@@ -30,7 +30,7 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
       renovate:
-        specifier: ^43.24.2
+        specifier: ^43.25.7
         version: 43.25.7(encoding@0.1.13)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
@@ -9893,7 +9893,7 @@ snapshots:
 
   glob@13.0.2:
     dependencies:
-      minimatch: 10.1.2
+      minimatch: 10.2.1
       minipass: 7.1.2
       path-scurry: 2.0.1
 
