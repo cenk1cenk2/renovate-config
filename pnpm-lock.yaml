@@ -9893,7 +9893,7 @@ snapshots:
 
   glob@13.0.2:
     dependencies:
-      minimatch: 10.2.1
+      minimatch: 10.1.2
       minipass: 7.1.2
       path-scurry: 2.0.1
 
