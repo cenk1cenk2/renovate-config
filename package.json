@@ -47,14 +47,14 @@
     "hooks": {}
   },
   "dependencies": {
-    "@cenk1cenk2/oclif-common": "^7.0.7",
-    "@listr2/manager": "^4.1.0",
+    "@cenk1cenk2/oclif-common": "^7.0.8",
+    "@listr2/manager": "^4.1.1",
     "@oclif/core": "^4.8.1",
-    "@oxc-project/runtime": "^0.114.0",
+    "@oxc-project/runtime": "^0.115.0",
     "fs-extra": "^11.3.3",
     "jsondiffpatch": "^0.7.3",
-    "listr2": "^10.1.0",
-    "renovate": "^43.31.1",
+    "listr2": "^10.1.1",
+    "renovate": "^43.31.7",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
