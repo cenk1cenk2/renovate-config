@@ -9,7 +9,7 @@ export default createPreset({
       labels: ['renovate', 'minor', 'infrastructure'],
       additionalBranchPrefix: 'terraform-',
       automerge: false,
-      extends: [':semanticCommitTypeAll(fix)'],
+      extends: [':semanticCommitTypeAll(feat)'],
       matchDepTypes: ['provider'],
       matchManagers: [Managers.TERRAFORM],
       schedule: [SCHEDULE.ANY]
@@ -20,7 +20,7 @@ export default createPreset({
       labels: ['renovate', 'minor', 'infrastructure'],
       additionalBranchPrefix: 'terraform-',
       automerge: false,
-      extends: [':semanticCommitTypeAll(fix)'],
+      extends: [':semanticCommitTypeAll(feat)'],
       matchDepTypes: ['required_provider'],
       matchManagers: [Managers.TERRAFORM],
       schedule: [SCHEDULE.ANY]

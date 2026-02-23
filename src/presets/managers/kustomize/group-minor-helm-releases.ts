@@ -6,19 +6,19 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['minor', 'patch'],
-      labels: ['renovate', 'minor'],
+      labels: ['renovate', 'minor', 'infrastructure'],
       groupSlug: 'kustomize-',
       automerge: false,
-      extends: [':semanticCommitTypeAll(fix)'],
+      extends: [':semanticCommitTypeAll(feat)'],
       matchDepTypes: ['HelmChart'],
       matchManagers: [Managers.KUSTOMIZE],
       schedule: [SCHEDULE.ANY]
     },
     {
       enabled: true,
-      matchUpdateTypes: ['major', 'minor', 'patch'],
+      matchUpdateTypes: ['minor', 'patch'],
       labels: ['renovate', 'minor', 'infrastructure', 'automerge'],
-      groupName: 'helm all minor automerge dependency updates for kustomize',
+      groupName: 'kustomize all minor automerge dependency updates',
       groupSlug: 'kustomize-minor-',
       automerge: true,
       extends: [':semanticCommitTypeAll(feat)'],

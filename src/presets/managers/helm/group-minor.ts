@@ -16,7 +16,7 @@ export default createPreset({
     },
     {
       enabled: true,
-      matchUpdateTypes: ['major', 'minor', 'patch'],
+      matchUpdateTypes: ['minor', 'patch'],
       labels: ['renovate', 'minor', 'infrastructure', 'automerge'],
       groupName: 'helm all minor automerge dependency updates',
       groupSlug: 'helm-minor-',
@@ -24,7 +24,6 @@ export default createPreset({
       extends: [':semanticCommitTypeAll(feat)'],
       matchManagers: [Managers.HELM],
       schedule: [SCHEDULE.ANY],
-      // NOTE: we use the source urls here not the repository urls
       matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/open-telemetry/opentelemetry-helm-charts'],
       matchPackageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
     }

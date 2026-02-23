@@ -13,6 +13,19 @@ export default createPreset({
       matchDepTypes: ['HelmChart'],
       matchManagers: [Managers.KUSTOMIZE],
       schedule: [SCHEDULE.ANY]
+    },
+    {
+      enabled: true,
+      matchUpdateTypes: ['major'],
+      labels: ['renovate', 'major', 'infrastructure', 'automerge'],
+      additionalBranchPrefix: 'kustomize-',
+      automerge: true,
+      extends: [':semanticCommitTypeAll(perf)'],
+      matchDepTypes: ['HelmChart'],
+      matchManagers: [Managers.KUSTOMIZE],
+      schedule: [SCHEDULE.ANY],
+      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts'],
+      matchPackageNames: ['prometheus-blackbox-exporter']
     }
   ]
 })

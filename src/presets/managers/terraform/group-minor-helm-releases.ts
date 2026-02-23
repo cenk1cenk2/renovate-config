@@ -9,7 +9,7 @@ export default createPreset({
       labels: ['renovate', 'minor', 'infrastructure'],
       additionalBranchPrefix: 'terraform-',
       automerge: false,
-      extends: [':semanticCommitTypeAll(fix)'],
+      extends: [':semanticCommitTypeAll(feat)'],
       matchDepTypes: ['helm_release'],
       matchManagers: [Managers.TERRAFORM],
       schedule: [SCHEDULE.ANY]

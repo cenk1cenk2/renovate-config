@@ -10,7 +10,7 @@ export default createPreset({
       labels: ['renovate', 'minor', 'infrastructure'],
       additionalBranchPrefix: 'terraform-module-',
       automerge: false,
-      extends: [':semanticCommitTypeAll(fix)'],
+      extends: [':semanticCommitTypeAll(feat)'],
       matchDepTypes: ['module'],
       matchManagers: [Managers.TERRAFORM],
       schedule: [SCHEDULE.ANY]
