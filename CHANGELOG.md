@@ -1,3 +1,10 @@
+# [3.12.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.28...v3.12.0) (2026-02-23)
+
+
+### Features
+
+* update renovate configuration ([0627ec9](https://gitlab.kilic.dev/renovate/renovate-config/commit/0627ec98ded3da3a457730ab4f577a776d93b138))
+
 ## [3.11.28](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.27...v3.11.28) (2026-02-23)
 
 
