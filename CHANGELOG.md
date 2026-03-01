@@ -1,3 +1,18 @@
+## [3.12.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.0...v3.12.1) (2026-03-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to ^43.34.0 ([d0eb065](https://gitlab.kilic.dev/renovate/renovate-config/commit/d0eb06580cc89f30e081cc1db25ad1add027f0a9))
+* **deps:** update dependency renovate to ^43.35.0 ([a4d93ba](https://gitlab.kilic.dev/renovate/renovate-config/commit/a4d93ba4ebb930509fdfd6d063607d2c189f82b8))
+* **deps:** update dependency renovate to ^43.39.0 ([8fd7d95](https://gitlab.kilic.dev/renovate/renovate-config/commit/8fd7d9553df514a043a8b73dc9dface138ddadaf))
+* **deps:** update dependency renovate to ^43.39.2 ([78c2574](https://gitlab.kilic.dev/renovate/renovate-config/commit/78c2574acbc35ca8bb83ebc2b67013ff8ab27b25))
+* **deps:** update dependency renovate to ^43.43.0 ([fbba9f5](https://gitlab.kilic.dev/renovate/renovate-config/commit/fbba9f58b803b4d86004e94546bc04601651b653))
+* **deps:** update dependency renovate to ^43.46.0 ([34fcb31](https://gitlab.kilic.dev/renovate/renovate-config/commit/34fcb311a27a04cb7fc09a3baa9a244912046c96))
+* **deps:** update node all minor dependency updates ([8e338d3](https://gitlab.kilic.dev/renovate/renovate-config/commit/8e338d36436af94ff9d67bbe440cb824a8287c06))
+* **deps:** update node all minor dependency updates ([ec34666](https://gitlab.kilic.dev/renovate/renovate-config/commit/ec34666bdd330ca8baa5cf1917a18084704f21a2))
+* **deps:** update node all minor dependency updates ([1c39258](https://gitlab.kilic.dev/renovate/renovate-config/commit/1c39258b62b3aae9b040417e2d94841ddb6cd58e))
+
 # [3.12.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.11.28...v3.12.0) (2026-02-23)
 
 
