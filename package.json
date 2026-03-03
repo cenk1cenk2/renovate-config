@@ -51,10 +51,10 @@
     "@listr2/manager": "^4.2.1",
     "@oclif/core": "^4.8.3",
     "@oxc-project/runtime": "^0.116.0",
-    "fs-extra": "^11.3.3",
+    "fs-extra": "^11.3.4",
     "jsondiffpatch": "^0.7.3",
     "listr2": "^10.2.1",
-    "renovate": "^43.48.4",
+    "renovate": "^43.51.1",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
