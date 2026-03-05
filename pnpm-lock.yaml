@@ -30,7 +30,7 @@ importers:
         specifier: ^10.2.1
         version: 10.2.1
       renovate:
-        specifier: ^43.55.0
+        specifier: ^43.56.1
         version: 43.56.1(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
