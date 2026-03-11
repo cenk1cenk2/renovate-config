@@ -1,3 +1,10 @@
+## [3.12.16](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.15...v3.12.16) (2026-03-11)
+
+
+### Bug Fixes
+
+* update datasource ([80f6dd5](https://gitlab.kilic.dev/renovate/renovate-config/commit/80f6dd54acd4db772f41cba912990ea8e6aa0969))
+
 ## [3.12.15](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.14...v3.12.15) (2026-03-10)
 
 
