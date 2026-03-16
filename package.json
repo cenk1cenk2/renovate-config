@@ -58,7 +58,7 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@cenk1cenk2/cz-cc": "^2.2.9",
+    "@cenk1cenk2/cz-cc": "^2.2.10",
     "@cenk1cenk2/eslint-config": "^3.2.2",
     "@tsconfig/node24": "^24.0.4",
     "@types/config": "^3.3.5",
@@ -68,7 +68,7 @@
     "execa": "^9.6.1",
     "globby": "^16.1.1",
     "lint-staged": "^16.4.0",
-    "oclif": "^4.22.91",
+    "oclif": "^4.22.92",
     "prettier": "^3.8.1",
     "simple-git-hooks": "^2.13.1",
     "ts-node": "^10.9.2",
