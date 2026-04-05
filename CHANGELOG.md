@@ -1,3 +1,10 @@
+## [3.12.20](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.19...v3.12.20) (2026-04-05)
+
+
+### Bug Fixes
+
+* update package dependencies ([79816ba](https://gitlab.kilic.dev/renovate/renovate-config/commit/79816ba93dfe453c443690b78b987b9ff6327bd3))
+
 ## [3.12.19](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.18...v3.12.19) (2026-04-05)
 
 
