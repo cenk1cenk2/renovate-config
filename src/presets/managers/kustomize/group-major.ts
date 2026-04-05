@@ -24,8 +24,8 @@ export default createPreset({
       matchDepTypes: ['HelmChart'],
       matchManagers: [Managers.KUSTOMIZE],
       schedule: [SCHEDULE.ANY],
-      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts'],
-      matchPackageNames: ['prometheus-blackbox-exporter']
+      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/grafana/helm-charts'],
+      matchPackageNames: ['prometheus-blackbox-exporter', 'alloy']
     }
   ]
 })
