@@ -1,3 +1,10 @@
+## [3.12.19](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.18...v3.12.19) (2026-04-05)
+
+
+### Bug Fixes
+
+* update configuration ([1ec5ec1](https://gitlab.kilic.dev/renovate/renovate-config/commit/1ec5ec1d30d7009c68d3bdf0489964d25593b5d8))
+
 ## [3.12.18](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.17...v3.12.18) (2026-04-05)
 
 
