@@ -1,3 +1,10 @@
+## [3.12.18](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.17...v3.12.18) (2026-04-05)
+
+
+### Bug Fixes
+
+* update automerge packages ([4878478](https://gitlab.kilic.dev/renovate/renovate-config/commit/48784786481398a96a6279fc7259e8929dcd2fb4))
+
 ## [3.12.17](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.16...v3.12.17) (2026-03-18)
 
 
