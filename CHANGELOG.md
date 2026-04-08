@@ -1,3 +1,10 @@
+## [3.12.22](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.21...v3.12.22) (2026-04-08)
+
+
+### Bug Fixes
+
+* update grouping ([aaa555a](https://gitlab.kilic.dev/renovate/renovate-config/commit/aaa555a0f3251d4b36896198fd90dfca0b1244da))
+
 ## [3.12.21](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.20...v3.12.21) (2026-04-06)
 
 
