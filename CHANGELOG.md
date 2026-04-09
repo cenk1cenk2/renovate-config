@@ -1,3 +1,10 @@
+## [3.12.23](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.22...v3.12.23) (2026-04-09)
+
+
+### Bug Fixes
+
+* update connfiguration for ([9dadb4e](https://gitlab.kilic.dev/renovate/renovate-config/commit/9dadb4e1548ab8deaffe74c3e18c2f92c6aca274))
+
 ## [3.12.22](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.21...v3.12.22) (2026-04-08)
 
 
