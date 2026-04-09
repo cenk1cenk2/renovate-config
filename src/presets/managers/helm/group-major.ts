@@ -23,7 +23,7 @@ export default createPreset({
       additionalBranchPrefix: '{{packageFileDir}}-',
       groupName: 'helm all major automerge dependency updates for {{ packageFileDir }}',
       groupSlug: 'helm-major-automerge',
-      commitMessageExtra: '[{{packageFileDir}}]',
+      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
       automerge: true,
       extends: [':semanticCommitTypeAll(perf)'],
       matchManagers: [Managers.HELM],

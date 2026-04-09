@@ -23,7 +23,7 @@ export default createPreset({
       additionalBranchPrefix: '{{packageFileDir}}-',
       groupName: 'argocd all minor automerge dependency updates for {{ packageFileDir }}',
       groupSlug: 'argocd-minor-automerge',
-      commitMessageExtra: '[{{packageFileDir}}]',
+      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
       automerge: true,
       extends: [':semanticCommitTypeAll(feat)'],
       matchManagers: [Managers.ARGOCD],

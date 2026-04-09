@@ -24,7 +24,7 @@ export default createPreset({
       additionalBranchPrefix: '{{packageFileDir}}-',
       groupName: 'kustomize all major automerge dependency updates for {{ packageFileDir }}',
       groupSlug: 'kustomize-major-automerge',
-      commitMessageExtra: '[{{packageFileDir}}]',
+      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
       automerge: true,
       extends: [':semanticCommitTypeAll(perf)'],
       matchDepTypes: ['HelmChart'],
