@@ -10,7 +10,7 @@ export default createPreset({
       additionalBranchPrefix: '{{packageFileDir}}-',
       groupName: 'helm all major dependency updates for {{ packageFileDir }}',
       groupSlug: 'helm-major',
-      commitMessageExtra: '[{{packageFileDir}}]',
+      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
       automerge: false,
       extends: [':semanticCommitTypeAll(perf)'],
       matchManagers: [Managers.HELM],

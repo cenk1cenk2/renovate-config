@@ -10,7 +10,7 @@ export default createPreset({
       additionalBranchPrefix: '{{packageFileDir}}-',
       groupName: 'argocd all major dependency updates for {{ packageFileDir }}',
       groupSlug: 'argocd-major',
-      commitMessageExtra: '[{{packageFileDir}}]',
+      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
       automerge: false,
       extends: [':semanticCommitTypeAll(perf)'],
       matchManagers: [Managers.ARGOCD],

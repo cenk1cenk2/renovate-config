@@ -10,7 +10,7 @@ export default createPreset({
       additionalBranchPrefix: '{{packageFileDir}}-',
       groupName: 'kustomize all major dependency updates for {{ packageFileDir }}',
       groupSlug: 'kustomize-major',
-      commitMessageExtra: '[{{packageFileDir}}]',
+      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
       automerge: false,
       extends: [':semanticCommitTypeAll(perf)'],
       matchDepTypes: ['HelmChart'],
