@@ -1,3 +1,10 @@
+## [3.12.24](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.23...v3.12.24) (2026-04-09)
+
+
+### Bug Fixes
+
+* update reules for package ([3285ae3](https://gitlab.kilic.dev/renovate/renovate-config/commit/3285ae36a1b07063b40799d7cd560b3d3a11eac2))
+
 ## [3.12.23](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.22...v3.12.23) (2026-04-09)
 
 
