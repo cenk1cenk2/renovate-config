@@ -74,7 +74,7 @@
     "tsconfig-paths": "^4.2.0",
     "tsdown": "^0.21.9",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "config": {
     "commitizen": {
