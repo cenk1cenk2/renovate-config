@@ -1,8 +1,8 @@
 import { NODE_FAST_RING_PACKAGES } from './rings.js'
 import { SCHEDULE } from '@constants'
-import { Rings } from '@rings'
 import { createPreset } from '@lib'
 import { NODE_GROUP_MINOR, NODE_GROUP_DEV, NODE_GROUP_PEER } from '@presets/groups/node/groups.js'
+import { Rings } from '@rings'
 
 export default createPreset({
   packageRules: [

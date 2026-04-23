@@ -1,4 +1,5 @@
 import type { PackageRule } from 'renovate/dist/config/types.js'
+
 import { Groups } from '@groups'
 
 export const GITLAB_CI_MINOR_UPDATES: PackageRule = {

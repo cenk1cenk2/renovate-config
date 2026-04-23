@@ -2,6 +2,7 @@ import type { PackageRule } from 'renovate/dist/config/types.js'
 
 import { Labels } from '@constants'
 import { Managers } from '@managers'
+
 export const NODE_GROUP_MINOR: PackageRule = {
   matchDepTypes: ['dependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],

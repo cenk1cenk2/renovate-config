@@ -1,8 +1,8 @@
 import { NODE_SLOW_RING_PACKAGES } from './rings.js'
 import { SCHEDULE } from '@constants'
+import { createPreset } from '@lib'
 import { Managers } from '@managers'
 import { Rings } from '@rings'
-import { createPreset } from '@lib'
 
 export default createPreset({
   packageRules: [

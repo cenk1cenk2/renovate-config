@@ -1,7 +1,7 @@
 import { DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO } from './custom-manager.js'
 import { Labels } from '@constants'
-import { Managers } from '@managers'
 import { createPreset, createScopes } from '@lib'
+import { Managers } from '@managers'
 import { Preset } from '@presets'
 
 export default createPreset({

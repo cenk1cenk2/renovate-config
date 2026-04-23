@@ -1,7 +1,7 @@
 import { GITLAB_CI_MINOR_UPDATES } from './groups.js'
 import { Labels, SCHEDULE } from '@constants'
-import { Managers } from '@managers'
 import { createPreset } from '@lib'
+import { Managers } from '@managers'
 import { DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO } from '@presets/managers/gitlab-ci/custom-manager.js'
 
 export default createPreset({

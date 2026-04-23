@@ -1,5 +1,5 @@
-import { Managers } from '@managers'
 import { createPreset, createScopes } from '@lib'
+import { Managers } from '@managers'
 import { Preset } from '@presets'
 
 export default createPreset({

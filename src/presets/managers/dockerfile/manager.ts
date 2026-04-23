@@ -1,6 +1,6 @@
 import { Labels } from '@constants'
-import { Managers } from '@managers'
 import { createPreset } from '@lib'
+import { Managers } from '@managers'
 
 export default createPreset({
   enabledManagers: [Managers.DOCKERFILE],

@@ -1,8 +1,8 @@
 import { NODE_GROUP_DEV, NODE_GROUP_BUILD, NODE_GROUP_DOCS, NODE_GROUP_PACKAGE_MANAGER } from './groups.js'
 import { SCHEDULE } from '@constants'
-import { Managers } from '@managers'
 import { Groups } from '@groups'
 import { createPreset } from '@lib'
+import { Managers } from '@managers'
 
 export default createPreset({
   packageRules: [

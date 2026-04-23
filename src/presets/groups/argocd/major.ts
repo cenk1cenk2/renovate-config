@@ -1,7 +1,7 @@
 import { Labels } from '@constants'
 import { Groups } from '@groups'
-import { Managers } from '@managers'
 import { createPreset } from '@lib'
+import { Managers } from '@managers'
 
 export default createPreset({
   packageRules: [
