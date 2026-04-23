@@ -41,7 +41,7 @@
     "dirname": "renovate-config-generator",
     "commands": {
       "strategy": "single",
-      "target": "./dist/commands/index.mjs"
+      "target": "./dist/commands/index.js"
     },
     "plugins": [],
     "hooks": {}

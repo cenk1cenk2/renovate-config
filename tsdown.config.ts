@@ -12,6 +12,8 @@ export default defineConfig((options) => ({
 
   format: ['esm'],
 
+  outExtensions: () => ({ js: '.js' }),
+
   sourcemap: options.watch ? true : false,
 
   unbundle: true,
