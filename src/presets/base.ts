@@ -1,4 +1,4 @@
-import { ASSIGNEES, TIMEZONE } from '@constants'
+import { ASSIGNEES, Labels, TIMEZONE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({
@@ -7,6 +7,6 @@ export default createPreset({
   semanticCommits: 'enabled',
   // assignees: ASSIGNEES,
   reviewers: ASSIGNEES,
-  labels: ['renovate'],
+  labels: [Labels.RENOVATE],
   prCreation: 'immediate'
 })

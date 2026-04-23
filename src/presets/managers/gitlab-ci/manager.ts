@@ -1,20 +1,21 @@
 import { DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO } from './custom-manager.js'
-import { Managers } from '@constants'
+import { Labels } from '@constants'
+import { Managers } from '@managers'
 import { createPreset, createScopes } from '@lib'
 import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: [Managers.GITLAB_CI_INCLUDE, Managers.GITLAB_CI, Managers.REGEX],
-  extends: [...createScopes(Preset.GITLAB_CI_CUSTOM_MANAGER, Preset.GITLAB_CI_MINOR_UPDATES)],
+  extends: [...createScopes(Preset.MANAGER_GITLAB_CI_CUSTOM, Preset.GROUP_GITLAB_CI_MINOR_UPDATES)],
   packageRules: [
     {
       matchManagers: [Managers.GITLAB_CI_INCLUDE, Managers.GITLAB_CI],
-      addLabels: ['gitlab-ci']
+      addLabels: [Labels.GITLAB_CI]
     },
     {
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO],
-      addLabels: ['gitlab-ci']
+      addLabels: [Labels.GITLAB_CI]
     }
   ]
 })

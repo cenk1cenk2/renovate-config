@@ -1,4 +1,6 @@
-import { Managers, SCHEDULE } from '@constants'
+import { Labels, SCHEDULE } from '@constants'
+import { Managers } from '@managers'
+import { Groups } from '@groups'
 import { createPreset } from '@lib'
 
 export default createPreset({
@@ -7,16 +9,16 @@ export default createPreset({
     {
       matchPackageNames: ['*'],
       groupName: 'otel-builder all minor dependency updates',
-      groupSlug: 'otel-builder-minor',
+      groupSlug: Groups.OTEL_BUILDER_MINOR,
       matchUpdateTypes: ['minor', 'patch', 'digest'],
-      labels: ['renovate', 'minor', 'automerge'],
+      labels: [Labels.RENOVATE, Labels.MINOR, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
       schedule: [SCHEDULE.DAILY]
     },
     {
       matchManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
-      addLabels: ['otel-builder']
+      addLabels: [Labels.OTEL_BUILDER]
     }
   ]
 })

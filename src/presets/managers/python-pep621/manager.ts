@@ -1,4 +1,5 @@
-import { Managers } from '@constants'
+import { Labels } from '@constants'
+import { Managers } from '@managers'
 import { createPreset } from '@lib'
 
 export default createPreset({
@@ -6,7 +7,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.PYTHON_PEP621],
-      addLabels: ['python']
+      addLabels: [Labels.PYTHON]
     }
   ]
 })

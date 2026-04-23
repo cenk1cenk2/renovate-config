@@ -3,205 +3,124 @@ import type { RenovateConfig } from 'renovate/dist/config/types.js'
 export type Presets = Record<Preset, Promise<RenovateConfig>>
 
 export enum Preset {
+  // real presets (no prefix)
   DEFAULT = 'default',
   BASE = 'base',
   LOCK_FILE = 'lock-file',
-
-  // tests
-
   NO_TESTS = 'no-tests',
 
   // branches
   BRANCH_DEVELOP = 'branch-develop',
   BRANCH_BETA = 'branch-beta',
 
-  // manager: node
+  // managers
+  MANAGER_NODE = 'manager-node',
+  MANAGER_GO = 'manager-go',
+  MANAGER_PYTHON = 'manager-python',
+  MANAGER_RUST = 'manager-rust',
+  MANAGER_KUBERNETES = 'manager-kubernetes',
+  MANAGER_KUSTOMIZE = 'manager-kustomize',
+  MANAGER_HELM = 'manager-helm',
+  MANAGER_TERRAFORM = 'manager-terraform',
+  MANAGER_TERRAFORM_CUSTOM = 'manager-terraform-custom',
+  MANAGER_ANSIBLE_GALAXY = 'manager-ansible-galaxy',
+  MANAGER_DOCKERFILE = 'manager-dockerfile',
+  MANAGER_GITLAB_CI = 'manager-gitlab-ci',
+  MANAGER_GITLAB_CI_CUSTOM = 'manager-gitlab-ci-custom',
+  MANAGER_OTEL_BUILDER = 'manager-otel-builder',
+  MANAGER_ARGOCD = 'manager-argocd',
 
-  NODE = 'node',
+  // datasources
+  DATASOURCE_DOCKER = 'datasource-docker',
 
-  NODE_NO_RING = 'node-no-ring',
-  NODE_SLOW_RING = 'node-slow-ring',
-  NODE_FAST_RING = 'node-fast-ring',
-  NODE_GROUP_DEV_DEPENDENCIES = 'node-group-dev-dependencies',
-  NODE_GROUP_MINOR_DEPENDENCIES = 'node-group-minor-dependencies',
-  NODE_GROUP_PEER_DEPENDENCIES = 'node-group-peer-dependencies',
+  // groups
+  GROUP_NODE_MINOR_DEPENDENCIES = 'group-node-minor-dependencies',
+  GROUP_NODE_DEV_DEPENDENCIES = 'group-node-dev-dependencies',
+  GROUP_NODE_PEER_DEPENDENCIES = 'group-node-peer-dependencies',
+  GROUP_GO_MINOR_DEPENDENCIES = 'group-go-minor-dependencies',
+  GROUP_KUSTOMIZE_MINOR_HELM_RELEASES = 'group-kustomize-minor-helm-releases',
+  GROUP_KUSTOMIZE_MAJOR = 'group-kustomize-major',
+  GROUP_HELM_MINOR = 'group-helm-minor',
+  GROUP_HELM_MAJOR = 'group-helm-major',
+  GROUP_TERRAFORM_MINOR_HELM_RELEASES = 'group-terraform-minor-helm-releases',
+  GROUP_TERRAFORM_MINOR_MODULES = 'group-terraform-minor-modules',
+  GROUP_TERRAFORM_MINOR_PROVIDERS = 'group-terraform-minor-providers',
+  GROUP_TERRAFORM_MAJOR = 'group-terraform-major',
+  GROUP_ANSIBLE_GALAXY_MINOR_ROLES = 'group-ansible-galaxy-minor-roles',
+  GROUP_GITLAB_CI_MINOR_UPDATES = 'group-gitlab-ci-minor-updates',
+  GROUP_ARGOCD_MINOR = 'group-argocd-minor',
+  GROUP_ARGOCD_MAJOR = 'group-argocd-major',
 
-  // manager: go
-
-  GO = 'go',
-
-  GO_GROUP_MINOR_DEPENDENCIES = 'go-group-minor-dependencies',
-  GO_SLOW_RING_PACKAGES = 'go-slow-ring-packages',
-  GO_FAST_RING_PACKAGES = 'go-fast-ring-packages',
-
-  // manager: python
-
-  PYTHON = 'python',
-
-  // manager: rust
-
-  RUST = 'rust',
-
-  // manager: kubernetes
-
-  KUBERNETES = 'kubernetes',
-
-  // manager: kubernetes
-
-  KUSTOMIZE = 'kustomize',
-
-  KUSTOMIZE_MINOR_HELM_RELEASES = 'kustomize-minor-helm-releases',
-  KUSTOMIZE_MAJOR_HELM_RELEASES = 'kustomize-major-helm-releases',
-
-  // manager: helm
-
-  HELM = 'helm',
-
-  HELM_GROUP_MINOR = 'helm-group-minor',
-  HELM_GROUP_MAJOR = 'helm-group-major',
-
-  // manager: terraform
-
-  TERRAFORM = 'terraform',
-  TERRAFORM_CUSTOM_MANAGER = 'terraform-custom-manager',
-
-  TERRAFORM_MINOR_HELM_RELEASES = 'terraform-minor-helm-releases',
-  TERRAFORM_GROUP_MINOR_MODULES = 'terraform-group-minor-modules',
-  TERRAFORM_GROUP_MINOR_PROVIDERS = 'terraform-group-minor-providers',
-  TERRAFORM_GROUP_MAJOR = 'terraform-group-major',
-
-  // manager: ansible-galaxy
-
-  ANSIBLE_GALAXY = 'ansible-galaxy',
-
-  ANSIBLE_GALAXY_GROUP_MINOR_ROLES = 'ansible-galaxy-group-minor-roles',
-
-  // manager: dockerfile
-
-  DOCKERFILE = 'dockerfile',
-
-  // manager: gitlab-ci
-
-  GITLAB_CI = 'gitlab-ci',
-  GITLAB_CI_CUSTOM_MANAGER = 'gitlab-ci-custom-manager',
-
-  GITLAB_CI_MINOR_UPDATES = 'gitlab-ci-minor-updates',
-
-  // manager: otel-builder
-
-  OPENTELEMETRY_COLLECTOR_BUILDER = 'opentelemetry-collector-builder',
-
-  // manager: argocd
-
-  ARGOCD = 'argocd',
-
-  ARGOCD_GROUP_MINOR = 'argocd-group-minor',
-  ARGOCD_GROUP_MAJOR = 'argocd-group-major',
-
-  // datasource: docker
-
-  DATASOURCE_DOCKER = 'datasource-docker'
+  // rings
+  RING_NODE_NONE = 'ring-node-none',
+  RING_NODE_SLOW = 'ring-node-slow',
+  RING_NODE_FAST = 'ring-node-fast',
+  RING_GO_SLOW = 'ring-go-slow',
+  RING_GO_FAST = 'ring-go-fast'
 }
 
 export const PRESETS: Presets = {
   [Preset.DEFAULT]: import('./default.js').then((m) => m.default),
 
-  // generic
-
   [Preset.BASE]: import('./base.js').then((m) => m.default),
   [Preset.LOCK_FILE]: import('./lock-file.js').then((m) => m.default),
+  [Preset.NO_TESTS]: import('./no-tests.js').then((m) => m.default),
 
   // branches
 
-  [Preset.BRANCH_DEVELOP]: import('./branches/branch-develop.js').then((m) => m.default),
-  [Preset.BRANCH_BETA]: import('./branches/branch-beta.js').then((m) => m.default),
+  [Preset.BRANCH_DEVELOP]: import('./branches/develop.js').then((m) => m.default),
+  [Preset.BRANCH_BETA]: import('./branches/beta.js').then((m) => m.default),
 
-  // tests
+  // managers
 
-  [Preset.NO_TESTS]: import('./tests/no-tests.js').then((m) => m.default),
+  [Preset.MANAGER_NODE]: import('./managers/node/manager.js').then((m) => m.default),
+  [Preset.MANAGER_GO]: import('./managers/go/manager.js').then((m) => m.default),
+  [Preset.MANAGER_PYTHON]: import('./managers/python-pep621/manager.js').then((m) => m.default),
+  [Preset.MANAGER_RUST]: import('./managers/rust-cargo/manager.js').then((m) => m.default),
+  [Preset.MANAGER_KUBERNETES]: import('./managers/kubernetes/manager.js').then((m) => m.default),
+  [Preset.MANAGER_KUSTOMIZE]: import('./managers/kustomize/manager.js').then((m) => m.default),
+  [Preset.MANAGER_HELM]: import('./managers/helm/manager.js').then((m) => m.default),
+  [Preset.MANAGER_TERRAFORM]: import('./managers/terraform/manager.js').then((m) => m.default),
+  [Preset.MANAGER_TERRAFORM_CUSTOM]: import('./managers/terraform/custom-manager.js').then((m) => m.default),
+  [Preset.MANAGER_ANSIBLE_GALAXY]: import('./managers/ansible-galaxy/manager.js').then((m) => m.default),
+  [Preset.MANAGER_DOCKERFILE]: import('./managers/dockerfile/manager.js').then((m) => m.default),
+  [Preset.MANAGER_GITLAB_CI]: import('./managers/gitlab-ci/manager.js').then((m) => m.default),
+  [Preset.MANAGER_GITLAB_CI_CUSTOM]: import('./managers/gitlab-ci/custom-manager.js').then((m) => m.default),
+  [Preset.MANAGER_OTEL_BUILDER]: import('./managers/otel-builder/manager.js').then((m) => m.default),
+  [Preset.MANAGER_ARGOCD]: import('./managers/argocd/manager.js').then((m) => m.default),
 
-  // manager: node
+  // datasources
 
-  [Preset.NODE]: import('./managers/node/manager.js').then((m) => m.default),
+  [Preset.DATASOURCE_DOCKER]: import('./datasources/docker/datasource.js').then((m) => m.default),
 
-  [Preset.NODE_NO_RING]: import('./managers/node/ring-none.js').then((m) => m.default),
-  [Preset.NODE_SLOW_RING]: import('./managers/node/ring-slow.js').then((m) => m.default),
-  [Preset.NODE_FAST_RING]: import('./managers/node/ring-fast.js').then((m) => m.default),
-  [Preset.NODE_GROUP_DEV_DEPENDENCIES]: import('./managers/node/group-dev-dependencies.js').then((m) => m.default),
-  [Preset.NODE_GROUP_MINOR_DEPENDENCIES]: import('./managers/node/group-minor-dependencies.js').then((m) => m.default),
-  [Preset.NODE_GROUP_PEER_DEPENDENCIES]: import('./managers/node/group-peer-dependencies.js').then((m) => m.default),
+  // groups
 
-  // manager: go
+  [Preset.GROUP_NODE_MINOR_DEPENDENCIES]: import('./groups/node/minor-dependencies.js').then((m) => m.default),
+  [Preset.GROUP_NODE_DEV_DEPENDENCIES]: import('./groups/node/dev-dependencies.js').then((m) => m.default),
+  [Preset.GROUP_NODE_PEER_DEPENDENCIES]: import('./groups/node/peer-dependencies.js').then((m) => m.default),
+  [Preset.GROUP_GO_MINOR_DEPENDENCIES]: import('./groups/go/minor-dependencies.js').then((m) => m.default),
+  [Preset.GROUP_KUSTOMIZE_MINOR_HELM_RELEASES]: import('./groups/kustomize/minor-helm-releases.js').then((m) => m.default),
+  [Preset.GROUP_KUSTOMIZE_MAJOR]: import('./groups/kustomize/major.js').then((m) => m.default),
+  [Preset.GROUP_HELM_MINOR]: import('./groups/helm/minor.js').then((m) => m.default),
+  [Preset.GROUP_HELM_MAJOR]: import('./groups/helm/major.js').then((m) => m.default),
+  [Preset.GROUP_TERRAFORM_MINOR_HELM_RELEASES]: import('./groups/terraform/minor-helm-releases.js').then((m) => m.default),
+  [Preset.GROUP_TERRAFORM_MINOR_MODULES]: import('./groups/terraform/minor-modules.js').then((m) => m.default),
+  [Preset.GROUP_TERRAFORM_MINOR_PROVIDERS]: import('./groups/terraform/minor-providers.js').then((m) => m.default),
+  [Preset.GROUP_TERRAFORM_MAJOR]: import('./groups/terraform/major.js').then((m) => m.default),
+  [Preset.GROUP_ANSIBLE_GALAXY_MINOR_ROLES]: import('./groups/ansible-galaxy/minor-roles.js').then((m) => m.default),
+  [Preset.GROUP_GITLAB_CI_MINOR_UPDATES]: import('./groups/gitlab-ci/minor-updates.js').then((m) => m.default),
+  [Preset.GROUP_ARGOCD_MINOR]: import('./groups/argocd/minor.js').then((m) => m.default),
+  [Preset.GROUP_ARGOCD_MAJOR]: import('./groups/argocd/major.js').then((m) => m.default),
 
-  [Preset.GO]: import('./managers/go/manager.js').then((m) => m.default),
+  // rings
 
-  [Preset.GO_GROUP_MINOR_DEPENDENCIES]: import('./managers/go/group-minor-dependencies.js').then((m) => m.default),
-  [Preset.GO_SLOW_RING_PACKAGES]: import('./managers/go/ring-slow.js').then((m) => m.default),
-  [Preset.GO_FAST_RING_PACKAGES]: import('./managers/go/ring-fast.js').then((m) => m.default),
+  [Preset.RING_NODE_NONE]: import('./rings/node/none.js').then((m) => m.default),
+  [Preset.RING_NODE_SLOW]: import('./rings/node/slow.js').then((m) => m.default),
+  [Preset.RING_NODE_FAST]: import('./rings/node/fast.js').then((m) => m.default),
+  [Preset.RING_GO_SLOW]: import('./rings/go/slow.js').then((m) => m.default),
+  [Preset.RING_GO_FAST]: import('./rings/go/fast.js').then((m) => m.default)
+}
 
-  // manager: python
-
-  [Preset.PYTHON]: import('./managers/python-pep621/manager.js').then((m) => m.default),
-
-  // manager: rust
-
-  [Preset.RUST]: import('./managers/rust-cargo/manager.js').then((m) => m.default),
-
-  // manager: kubernetes
-  [Preset.KUBERNETES]: import('./managers/kubernetes/manager.js').then((m) => m.default),
-
-  // manager: kubernetes
-
-  [Preset.KUSTOMIZE]: import('./managers/kustomize/manager.js').then((m) => m.default),
-
-  [Preset.KUSTOMIZE_MINOR_HELM_RELEASES]: import('./managers/kustomize/group-minor-helm-releases.js').then((m) => m.default),
-  [Preset.KUSTOMIZE_MAJOR_HELM_RELEASES]: import('./managers/kustomize/group-major.js').then((m) => m.default),
-
-  // manager: helm
-
-  [Preset.HELM]: import('./managers/helm/manager.js').then((m) => m.default),
-  [Preset.HELM_GROUP_MINOR]: import('./managers/helm/group-minor.js').then((m) => m.default),
-  [Preset.HELM_GROUP_MAJOR]: import('./managers/helm/group-major.js').then((m) => m.default),
-
-  // manager: terraform
-
-  [Preset.TERRAFORM]: import('./managers/terraform/manager.js').then((m) => m.default),
-  [Preset.TERRAFORM_CUSTOM_MANAGER]: import('./managers/terraform/custom-manager.js').then((m) => m.default),
-
-  [Preset.TERRAFORM_MINOR_HELM_RELEASES]: import('./managers/terraform/group-minor-helm-releases.js').then((m) => m.default),
-  [Preset.TERRAFORM_GROUP_MINOR_MODULES]: import('./managers/terraform/group-minor-modules.js').then((m) => m.default),
-  [Preset.TERRAFORM_GROUP_MINOR_PROVIDERS]: import('./managers/terraform/group-minor-providers.js').then((m) => m.default),
-  [Preset.TERRAFORM_GROUP_MAJOR]: import('./managers/terraform/group-major.js').then((m) => m.default),
-
-  // manager: ansible-galaxy
-
-  [Preset.ANSIBLE_GALAXY]: import('./managers/ansible-galaxy/manager.js').then((m) => m.default),
-
-  [Preset.ANSIBLE_GALAXY_GROUP_MINOR_ROLES]: import('./managers/ansible-galaxy/group-minor-roles.js').then((m) => m.default),
-
-  // manager: dockerfile
-
-  [Preset.DOCKERFILE]: import('./managers/dockerfile/manager.js').then((m) => m.default),
-
-  // manager: gitlab-ci
-
-  [Preset.GITLAB_CI]: import('./managers/gitlab-ci/manager.js').then((m) => m.default),
-  [Preset.GITLAB_CI_CUSTOM_MANAGER]: import('./managers/gitlab-ci/custom-manager.js').then((m) => m.default),
-
-  [Preset.GITLAB_CI_MINOR_UPDATES]: import('./managers/gitlab-ci/group-minor-updates.js').then((m) => m.default),
-
-  // manager: otel-builder
-
-  [Preset.OPENTELEMETRY_COLLECTOR_BUILDER]: import('./managers/otel-builder/manager.js').then((m) => m.default),
-
-  // manager: argocd
-
-  [Preset.ARGOCD]: import('./managers/argocd/manager.js').then((m) => m.default),
-
-  [Preset.ARGOCD_GROUP_MINOR]: import('./managers/argocd/group-minor.js').then((m) => m.default),
-  [Preset.ARGOCD_GROUP_MAJOR]: import('./managers/argocd/group-major.js').then((m) => m.default),
-
-  // datasource: docker
-
-  [Preset.DATASOURCE_DOCKER]: import('./datasources/docker/datasource.js').then((m) => m.default)
+export const FILES: Record<string, Preset[]> = {
+  ['default.json']: Object.values(Preset)
 }

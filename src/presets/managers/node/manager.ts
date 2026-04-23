@@ -1,21 +1,22 @@
-import { Managers } from '@constants'
+import { Labels } from '@constants'
+import { Managers } from '@managers'
 import { createPreset, createScopes } from '@lib'
 import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: [Managers.NODE],
   extends: createScopes(
-    Preset.NODE_NO_RING,
-    Preset.NODE_SLOW_RING,
-    Preset.NODE_FAST_RING,
-    Preset.NODE_GROUP_DEV_DEPENDENCIES,
-    Preset.NODE_GROUP_MINOR_DEPENDENCIES,
-    Preset.NODE_GROUP_PEER_DEPENDENCIES
+    Preset.RING_NODE_NONE,
+    Preset.RING_NODE_SLOW,
+    Preset.RING_NODE_FAST,
+    Preset.GROUP_NODE_DEV_DEPENDENCIES,
+    Preset.GROUP_NODE_MINOR_DEPENDENCIES,
+    Preset.GROUP_NODE_PEER_DEPENDENCIES
   ),
   packageRules: [
     {
       matchManagers: [Managers.NODE],
-      addLabels: ['node']
+      addLabels: [Labels.NODE]
     }
   ]
 })

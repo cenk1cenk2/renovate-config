@@ -24,7 +24,12 @@
       "@interfaces": ["./interfaces/index.js"],
       "@lib": ["./lib/index.js"],
       "@utils": ["./utils/index.js"],
-      "@presets": ["./presets/index.js"]
+      "@presets": ["./presets/index.js"],
+      "@presets/*": ["./presets/*"],
+      "@managers": ["./presets/managers/index.js"],
+      "@groups": ["./presets/groups/index.js"],
+      "@rings": ["./presets/rings/index.js"],
+      "@datasources": ["./presets/datasources/index.js"]
     }
   },
   "exclude": ["node_modules"],
