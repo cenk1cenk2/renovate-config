@@ -1,12 +1,13 @@
-import { Managers } from '@constants'
+import { Labels } from '@constants'
 import { createPreset } from '@lib'
+import { Managers } from '@managers'
 
 export default createPreset({
   enabledManagers: [Managers.DOCKERFILE],
   packageRules: [
     {
       matchManagers: [Managers.DOCKERFILE],
-      addLabels: ['dockerfile']
+      addLabels: [Labels.DOCKERFILE]
     }
   ]
 })

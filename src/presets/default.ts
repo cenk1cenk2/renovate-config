@@ -1,5 +1,5 @@
-import { Managers } from '@constants'
 import { createPreset, createScopes } from '@lib'
+import { Managers } from '@managers'
 import { Preset } from '@presets'
 
 export default createPreset({
@@ -9,19 +9,19 @@ export default createPreset({
     Preset.LOCK_FILE,
     Preset.NO_TESTS,
     // managers
-    Preset.ANSIBLE_GALAXY,
-    Preset.ARGOCD,
-    Preset.DOCKERFILE,
-    Preset.GITLAB_CI,
-    Preset.GO,
-    Preset.HELM,
-    Preset.KUBERNETES,
-    Preset.KUSTOMIZE,
-    Preset.NODE,
-    Preset.OPENTELEMETRY_COLLECTOR_BUILDER,
-    Preset.PYTHON,
-    Preset.RUST,
-    Preset.TERRAFORM,
+    Preset.MANAGER_ANSIBLE_GALAXY,
+    Preset.MANAGER_ARGOCD,
+    Preset.MANAGER_DOCKERFILE,
+    Preset.MANAGER_GITLAB_CI,
+    Preset.MANAGER_GO,
+    Preset.MANAGER_HELM,
+    Preset.MANAGER_KUBERNETES,
+    Preset.MANAGER_KUSTOMIZE,
+    Preset.MANAGER_NODE,
+    Preset.MANAGER_OTEL_BUILDER,
+    Preset.MANAGER_PYTHON,
+    Preset.MANAGER_RUST,
+    Preset.MANAGER_TERRAFORM,
 
     Preset.DATASOURCE_DOCKER
   )

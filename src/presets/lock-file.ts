@@ -1,4 +1,4 @@
-import { SCHEDULE } from '@constants'
+import { Labels, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 
 export default createPreset({
@@ -6,7 +6,7 @@ export default createPreset({
     enabled: true,
     automerge: true,
     commitMessageSuffix: '[skip ci]',
-    labels: ['renovate', 'lock'],
+    labels: [Labels.RENOVATE, Labels.LOCK],
     schedule: [SCHEDULE.DAILY]
   }
 })

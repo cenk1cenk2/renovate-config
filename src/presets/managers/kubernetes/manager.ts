@@ -1,5 +1,6 @@
-import { Managers } from '@constants'
+import { Labels } from '@constants'
 import { createPreset } from '@lib'
+import { Managers } from '@managers'
 
 export default createPreset({
   enabledManagers: [Managers.KUBERNETES],
@@ -17,7 +18,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.KUBERNETES],
-      addLabels: ['kubernetes']
+      addLabels: [Labels.KUBERNETES]
     }
   ]
 })

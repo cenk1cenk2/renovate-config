@@ -1,0 +1,27 @@
+export enum Labels {
+  RENOVATE = 'renovate',
+  MINOR = 'minor',
+  MAJOR = 'major',
+  AUTOMERGE = 'automerge',
+  INFRASTRUCTURE = 'infrastructure',
+  PIPELINES = 'pipelines',
+  LOCK = 'lock',
+  DEV_DEPS = 'dev-deps',
+  BUILD_DEPS = 'build-deps',
+  PEER_DEPS = 'peer-deps',
+  ENGINES = 'engines',
+
+  ARGOCD = 'argocd',
+  HELM = 'helm',
+  KUSTOMIZE = 'kustomize',
+  TERRAFORM = 'terraform',
+  NODE = 'node',
+  GO = 'go',
+  PYTHON = 'python',
+  RUST = 'rust',
+  KUBERNETES = 'kubernetes',
+  DOCKERFILE = 'dockerfile',
+  GITLAB_CI = 'gitlab-ci',
+  ANSIBLE = 'ansible',
+  OTEL_BUILDER = 'otel-builder'
+}
