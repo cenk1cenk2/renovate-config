@@ -8,3 +8,6 @@ export enum SCHEDULE {
   DAILY = 'before 1am',
   ANY = 'at any time'
 }
+
+// https://docs.renovatebot.com/configuration-options/#minimumreleaseage
+export const MINIMUM_RELEASE_AGE = '7 days'

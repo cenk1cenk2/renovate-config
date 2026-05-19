@@ -78,6 +78,11 @@
       {
         "matchManagers": ["npm"],
         "addLabels": ["node"]
+      },
+      {
+        "matchManagers": ["npm"],
+        "matchPackageNames": ["*", "!/^@cenk1cenk2//", "!/listr2/", "!/^@cenk1cenk2-.*//", "!/^@kilic.dev//"],
+        "minimumReleaseAge": "7 days"
       }
     ]
   },
@@ -102,6 +107,10 @@
       {
         "matchManagers": ["pep621"],
         "addLabels": ["python"]
+      },
+      {
+        "matchManagers": ["pep621"],
+        "minimumReleaseAge": "7 days"
       }
     ]
   },
