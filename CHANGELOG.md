@@ -1,3 +1,10 @@
+## [3.12.25](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.24...v3.12.25) (2026-05-28)
+
+
+### Bug Fixes
+
+* update minimum release age ([a9fdb3a](https://gitlab.kilic.dev/renovate/renovate-config/commit/a9fdb3a76d913acf0893922a6888aa695caed3f6))
+
 ## [3.12.24](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.23...v3.12.24) (2026-04-09)
 
 ### Bug Fixes
