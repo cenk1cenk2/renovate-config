@@ -1,0 +1,16 @@
+packages: []
+
+minimumReleaseAge: 1440
+
+minimumReleaseAgeExclude:
+  - '@cenk1cenk2/*'
+
+allowBuilds:
+  '@nestjs/core': false
+  better-sqlite3: false
+  core-js-pure: false
+  dtrace-provider: false
+  esbuild: false
+  protobufjs: false
+  re2: false
+  simple-git-hooks: true
