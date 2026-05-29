@@ -5,7 +5,7 @@ import { defineConfig } from 'tsdown'
 export default defineConfig((options) => ({
   name: !options.watch ? 'production' : undefined,
 
-  entry: ['src/**/*.{js,ts}'],
+  entry: ['src/**/*.{js,ts}', '!src/**/*.d.ts'],
   tsconfig: options.watch ? 'tsconfig.json' : 'tsconfig.build.json',
 
   dts: options.watch ? true : false,
