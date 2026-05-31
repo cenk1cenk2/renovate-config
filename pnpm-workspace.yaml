@@ -14,3 +14,4 @@ allowBuilds:
   protobufjs: false
   re2: false
   simple-git-hooks: true
+  unrs-resolver: true
