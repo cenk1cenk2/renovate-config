@@ -1,3 +1,10 @@
+## [3.12.26](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.25...v3.12.26) (2026-06-10)
+
+
+### Bug Fixes
+
+* update reviewers ([532b27a](https://gitlab.kilic.dev/renovate/renovate-config/commit/532b27a6cc6b6b0a5ec36447a52be6976fcc7cf4))
+
 ## [3.12.25](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.24...v3.12.25) (2026-05-28)
 
 
