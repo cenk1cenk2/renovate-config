@@ -1,3 +1,10 @@
+# [3.13.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.26...v3.13.0) (2026-06-18)
+
+
+### Features
+
+* **kustomize:** add gitlab-runner to automerge list (K-534) ([3af9935](https://gitlab.kilic.dev/renovate/renovate-config/commit/3af99354e72766a079e154f51a20c8a4ce93dbfd))
+
 ## [3.12.26](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.25...v3.12.26) (2026-06-10)
 
 
