@@ -30,8 +30,8 @@ export default createPreset({
       extends: [':semanticCommitTypeAll(feat)'],
       matchDepTypes: ['HelmChart'],
       matchManagers: [Managers.KUSTOMIZE],
-      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/grafana/helm-charts'],
-      matchPackageNames: ['prometheus-blackbox-exporter', 'alloy']
+      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/grafana/helm-charts', 'https://gitlab.com/gitlab-org/charts/gitlab-runner'],
+      matchPackageNames: ['prometheus-blackbox-exporter', 'alloy', 'gitlab-runner']
     }
   ]
 })
