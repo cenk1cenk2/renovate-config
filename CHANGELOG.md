@@ -1,3 +1,10 @@
+## [3.13.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.0...v3.13.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* **ci:** remove unnecessary rules overrides, use template defaults ([724005d](https://gitlab.kilic.dev/renovate/renovate-config/commit/724005d416343bac31e8206bb3a3ca979f37a7dd))
+
 # [3.13.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.12.26...v3.13.0) (2026-06-18)
 
 
