@@ -29,20 +29,14 @@ include:
 install:
   stage: install
   extends: .node-install
-  rules:
-    - when: on_success
 
 lint:
   stage: build
   extends: .node-lint
-  rules:
-    - when: on_success
 
 build:
   stage: build
   extends: .node-build
-  rules:
-    - when: on_success
   artifacts:
     paths:
       - dist/**
@@ -51,8 +45,6 @@ build:
 generate:
   extends: .node-run
   stage: generate
-  rules:
-    - when: on_success
   variables:
     NODE_COMMAND_SCRIPT: start
   artifacts:
