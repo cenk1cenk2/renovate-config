@@ -53,7 +53,7 @@
     "@oxc-project/runtime": "^0.127.0",
     "fs-extra": "^11.3.4",
     "jsondiffpatch": "^0.7.3",
-    "listr2": "^10.2.1",
+    "listr2": "^11.0.0",
     "renovate": "^43.139.7",
     "source-map-support": "^0.5.21"
   },
