@@ -1,3 +1,10 @@
+## [3.13.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.1...v3.13.2) (2026-07-22)
+
+
+### Bug Fixes
+
+* **deps:** bump listr2 to v11.0.0 and @listr2/manager to v4.2.3 ([8c14d08](https://gitlab.kilic.dev/renovate/renovate-config/commit/8c14d08cc714b2b1152771caeb6b98e57d8594cc))
+
 ## [3.13.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.0...v3.13.1) (2026-07-09)
 
 
