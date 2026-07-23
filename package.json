@@ -58,14 +58,14 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@cenk1cenk2/cz-cc": "^2.2.22",
+    "@cenk1cenk2/cz-cc": "^2.2.23",
     "@cenk1cenk2/eslint-config": "^3.2.6",
     "@tsconfig/node24": "^24.0.4",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^25.9.5",
     "eslint": "^10.7.0",
     "execa": "^9.6.1",
-    "globby": "^16.2.1",
+    "globby": "^16.2.2",
     "lint-staged": "^16.4.0",
     "oclif": "^4.23.27",
     "prettier": "^3.9.5",
