@@ -1,3 +1,10 @@
+## [3.13.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.2...v3.13.3) (2026-07-24)
+
+
+### Bug Fixes
+
+* **deps:** update execa to v10 and migrate from execaCommand to execa ([faaaa75](https://gitlab.kilic.dev/renovate/renovate-config/commit/faaaa759706841f7a7d96194e778b99777bd8011))
+
 ## [3.13.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.1...v3.13.2) (2026-07-22)
 
 
