@@ -1,3 +1,10 @@
+## [3.13.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.3...v3.13.4) (2026-07-28)
+
+
+### Bug Fixes
+
+* **config:** remove ignoreTests from default preset ([562bbe3](https://gitlab.kilic.dev/renovate/renovate-config/commit/562bbe361f8f992e49982247e9241e0afe0fd1d8))
+
 ## [3.13.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.2...v3.13.3) (2026-07-24)
 
 
