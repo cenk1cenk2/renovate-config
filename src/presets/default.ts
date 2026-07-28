@@ -7,7 +7,6 @@ export default createPreset({
   extends: createScopes(
     Preset.BASE,
     Preset.LOCK_FILE,
-    Preset.NO_TESTS,
     // managers
     Preset.MANAGER_ANSIBLE_GALAXY,
     Preset.MANAGER_ARGOCD,

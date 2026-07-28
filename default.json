@@ -21,7 +21,6 @@
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
-      "local>renovate/renovate-config:default/no-tests",
       "local>renovate/renovate-config:default/manager-ansible-galaxy",
       "local>renovate/renovate-config:default/manager-argocd",
       "local>renovate/renovate-config:default/manager-dockerfile",
