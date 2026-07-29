@@ -1,16 +1,12 @@
 import type { RenovateConfig } from 'renovate/dist/config/types.js'
 
-// `schedule` and `labels` are non-mergeable, so at the top level of a preset they apply globally to the
-// assembled config and the last extended preset that sets one wins for every dependency. Scope a
-// schedule to a packageRule, and add labels with `addLabels`.
-export type PresetConfig = Omit<RenovateConfig, 'schedule' | 'labels'>
+// `schedule` is non-mergeable, so at the top level of a preset it applies globally to the assembled
+// config and the last extended preset that sets one wins for every dependency. Scope a schedule to a
+// packageRule instead. `labels` is also non-mergeable but the base preset legitimately owns the umbrella
+// label, so it stays allowed here; `test/presets.test.ts` enforces that only `base` sets it — every other
+// preset adds labels with `addLabels`, which accumulates.
+export type PresetConfig = Omit<RenovateConfig, 'schedule'>
 
 export function createPreset(config: PresetConfig): RenovateConfig {
-  return config
-}
-
-// Only the base preset may declare the umbrella label and it has no schedule — every other preset
-// composes on top of it.
-export function createBasePreset(config: RenovateConfig): RenovateConfig {
   return config
 }
