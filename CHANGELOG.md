@@ -1,3 +1,38 @@
+# [4.0.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.4...v4.0.0) (2026-07-29)
+
+
+* feat(labels)!: namespaced additive label taxonomy ([5768893](https://gitlab.kilic.dev/renovate/renovate-config/commit/5768893351a97a53f7432ed6a84590f37fe56235))
+* fix(automerge)!: never automerge a breaking update ([b1dc905](https://gitlab.kilic.dev/renovate/renovate-config/commit/b1dc905e674a188fd971a88c92fd1d8014a36f13))
+
+
+### Bug Fixes
+
+* **cli:** fail generation on renovate validation errors ([aa3ef89](https://gitlab.kilic.dev/renovate/renovate-config/commit/aa3ef89946fa921ebb78644d10b1b864e41e2135))
+* **labels:** close gaps found in review ([df602c4](https://gitlab.kilic.dev/renovate/renovate-config/commit/df602c443fe62af9e3282cb62eaee615a88443a6))
+* **labels:** keep the dep axis mutually exclusive ([09965c8](https://gitlab.kilic.dev/renovate/renovate-config/commit/09965c8b4b37c2836f087ea2a35450df7fd50a39))
+* **labels:** let the manager own the area axis ([1e794ab](https://gitlab.kilic.dev/renovate/renovate-config/commit/1e794ab730b86d2d04b908b8805e1cc8ae15f5f9))
+* **node:** drop the redundant wildcard from the dev catch-all ([a187e7c](https://gitlab.kilic.dev/renovate/renovate-config/commit/a187e7c11b6d0f1f5f3431b8bc4cdb2aeafa7e8e))
+* **node:** keep peer dependencies disabled across every update type ([61a0dcf](https://gitlab.kilic.dev/renovate/renovate-config/commit/61a0dcf41bea174cae0c09e47cb597c0b09970ac))
+
+
+### Features
+
+* **labels:** settle area coverage per manager ([4ea7043](https://gitlab.kilic.dev/renovate/renovate-config/commit/4ea7043667672e5c0d29defc895e027bd633acb4))
+
+
+### BREAKING CHANGES
+
+* major updates of kube-prometheus-stack, blackbox-exporter,
+opentelemetry-operator, prometheus-blackbox-exporter, alloy, gitlab-runner and
+the prometheus/opentelemetry operator charts no longer automerge and need a
+human. Major peer-dependency and package-manager updates likewise.
+* every label is renamed. `minor` becomes `update:minor`,
+`helm` becomes `manager:helm`, `infrastructure` becomes `area:infrastructure`,
+`dev-deps` becomes `dep:dev`, `lock` becomes `dep:lock`; `renovate` and
+`automerge` are unchanged. Consuming repositories keep their old labels on
+already-open merge requests and pick up the new ones on the next run, and the
+ring slug rename causes renovate to recreate open ring merge requests.
+
 ## [3.13.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v3.13.3...v3.13.4) (2026-07-28)
 
 
