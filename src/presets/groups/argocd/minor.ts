@@ -10,15 +10,15 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'argocd',
-      updateType: 'minor',
       matchUpdateTypes: [...MATCH_UPDATE_TYPES],
+      commitType: 'feat',
       groupSlug: Groups.ARGOCD_MINOR,
       matchManagers: [Managers.ARGOCD]
     }),
     createMultiDirectoryGroupRule({
       name: 'argocd',
-      updateType: 'minor',
       matchUpdateTypes: [...MATCH_UPDATE_TYPES],
+      commitType: 'feat',
       groupSlug: Groups.ARGOCD_MINOR_AUTOMERGE,
       matchManagers: [Managers.ARGOCD],
       automerge: true,

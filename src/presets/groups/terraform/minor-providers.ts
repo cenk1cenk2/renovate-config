@@ -6,7 +6,8 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'terraform',
-      updateType: 'minor',
+      matchUpdateTypes: ['minor', 'patch'],
+      commitType: 'feat',
       groupSlug: Groups.TERRAFORM_MINOR,
       matchManagers: [Managers.TERRAFORM],
       matchDepTypes: ['provider', 'required_provider']

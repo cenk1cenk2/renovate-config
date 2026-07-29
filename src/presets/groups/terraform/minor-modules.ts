@@ -7,7 +7,8 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'terraform',
-      updateType: 'minor',
+      matchUpdateTypes: ['minor', 'patch'],
+      commitType: 'feat',
       groupSlug: Groups.TERRAFORM_MINOR,
       matchManagers: [Managers.TERRAFORM],
       matchDepTypes: ['module']
@@ -21,7 +22,8 @@ export default createPreset({
     },
     createMultiDirectoryGroupRule({
       name: 'terraform-monorepo',
-      updateType: 'minor',
+      matchUpdateTypes: ['minor', 'patch'],
+      commitType: 'feat',
       groupSlug: Groups.TERRAFORM_MONOREPO_MINOR,
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],

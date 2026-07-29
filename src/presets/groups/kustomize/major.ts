@@ -7,7 +7,8 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'kustomize',
-      updateType: 'major',
+      matchUpdateTypes: ['major'],
+      commitType: 'perf',
       groupSlug: Groups.KUSTOMIZE_MAJOR,
       matchManagers: [Managers.KUSTOMIZE],
       matchDepTypes: ['HelmChart']

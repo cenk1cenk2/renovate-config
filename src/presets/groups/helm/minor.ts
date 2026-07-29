@@ -6,13 +6,15 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'helm',
-      updateType: 'minor',
+      matchUpdateTypes: ['minor', 'patch'],
+      commitType: 'feat',
       groupSlug: Groups.HELM_MINOR,
       matchManagers: [Managers.HELM]
     }),
     createMultiDirectoryGroupRule({
       name: 'helm',
-      updateType: 'minor',
+      matchUpdateTypes: ['minor', 'patch'],
+      commitType: 'feat',
       groupSlug: Groups.HELM_MINOR_AUTOMERGE,
       matchManagers: [Managers.HELM],
       automerge: true,

@@ -7,7 +7,8 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'argocd',
-      updateType: 'major',
+      matchUpdateTypes: ['major'],
+      commitType: 'perf',
       groupSlug: Groups.ARGOCD_MAJOR,
       matchManagers: [Managers.ARGOCD]
     })

@@ -7,7 +7,8 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'helm',
-      updateType: 'major',
+      matchUpdateTypes: ['major'],
+      commitType: 'perf',
       groupSlug: Groups.HELM_MAJOR,
       matchManagers: [Managers.HELM]
     })

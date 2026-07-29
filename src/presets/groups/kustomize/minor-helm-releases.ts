@@ -6,14 +6,16 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'kustomize',
-      updateType: 'minor',
+      matchUpdateTypes: ['minor', 'patch'],
+      commitType: 'feat',
       groupSlug: Groups.KUSTOMIZE_MINOR,
       matchManagers: [Managers.KUSTOMIZE],
       matchDepTypes: ['HelmChart']
     }),
     createMultiDirectoryGroupRule({
       name: 'kustomize',
-      updateType: 'minor',
+      matchUpdateTypes: ['minor', 'patch'],
+      commitType: 'feat',
       groupSlug: Groups.KUSTOMIZE_MINOR_AUTOMERGE,
       matchManagers: [Managers.KUSTOMIZE],
       matchDepTypes: ['HelmChart'],

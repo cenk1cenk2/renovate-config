@@ -7,14 +7,16 @@ export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
       name: 'terraform',
-      updateType: 'major',
+      matchUpdateTypes: ['major'],
+      commitType: 'perf',
       groupSlug: Groups.TERRAFORM_MAJOR,
       matchManagers: [Managers.TERRAFORM],
       matchDepTypes: ['helm_release', 'provider', 'required_provider', 'module']
     }),
     createMultiDirectoryGroupRule({
       name: 'terraform-monorepo',
-      updateType: 'major',
+      matchUpdateTypes: ['major'],
+      commitType: 'perf',
       groupSlug: Groups.TERRAFORM_MONOREPO_MAJOR,
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
