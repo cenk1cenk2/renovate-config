@@ -78,6 +78,7 @@
     "tsdown": "^0.22.13",
     "tsx": "^4.23.1",
     "typescript": "^6.0.3",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.10"
   },
   "config": {
