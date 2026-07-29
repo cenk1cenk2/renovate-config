@@ -17,7 +17,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.NODE],
-      addLabels: [Labels.MANAGER_NODE]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_NODE]
     },
     {
       matchManagers: [Managers.NODE],

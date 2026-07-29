@@ -15,7 +15,7 @@ export enum Labels {
   DEP_BUILD = 'dep:build',
   DEP_DOCS = 'dep:docs',
   DEP_PEER = 'dep:peer',
-  DEP_ENGINES = 'dep:engines',
+  DEP_PACKAGE_MANAGER = 'dep:package-manager',
   DEP_LOCK = 'dep:lock',
 
   MANAGER_ANSIBLE_GALAXY = 'manager:ansible-galaxy',

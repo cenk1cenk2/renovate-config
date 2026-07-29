@@ -7,7 +7,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.DOCKERFILE],
-      addLabels: [Labels.MANAGER_DOCKERFILE, Labels.AREA_INFRASTRUCTURE]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_DOCKERFILE, Labels.AREA_INFRASTRUCTURE]
     }
   ]
 })

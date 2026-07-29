@@ -144,6 +144,18 @@ describe('identity labels', () => {
   })
 })
 
+describe('standalone consumption', () => {
+  // Each preset ships as its own key in default.json, so a repository can extend `default/manager-helm`
+  // without `base`. Those presets have to carry the umbrella themselves or such a repo gets no labels.
+  const standalone = entries.filter(([name]) => name.startsWith('manager-') || name.startsWith('datasource-')).filter(([, preset]) => rules(preset).some((rule) => rule.addLabels))
+
+  for (const [name, preset] of standalone) {
+    it(`carries the umbrella label in ${name}`, () => {
+      assert.ok(rules(preset).some((rule) => rule.addLabels?.includes(Labels.RENOVATE)))
+    })
+  }
+})
+
 describe('grouping', () => {
   const known = new Set<string>([...Object.values(Groups), ...Object.values(Rings)])
 

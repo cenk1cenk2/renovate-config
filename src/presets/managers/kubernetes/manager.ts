@@ -22,7 +22,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.KUBERNETES],
-      addLabels: [Labels.MANAGER_KUBERNETES, Labels.AREA_INFRASTRUCTURE]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_KUBERNETES, Labels.AREA_INFRASTRUCTURE]
     }
   ]
 } as RenovateConfig)

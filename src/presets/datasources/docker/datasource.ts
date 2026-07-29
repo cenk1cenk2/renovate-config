@@ -7,7 +7,7 @@ export default createPreset({
   packageRules: [
     {
       matchDatasources: [Datasources.DOCKER],
-      addLabels: [Labels.DATASOURCE_DOCKER]
+      addLabels: [Labels.RENOVATE, Labels.DATASOURCE_DOCKER, Labels.AREA_INFRASTRUCTURE]
     },
     {
       enabled: true,

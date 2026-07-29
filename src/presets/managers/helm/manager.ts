@@ -10,7 +10,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.HELM, Managers.HELM_VALUES],
-      addLabels: [Labels.MANAGER_HELM, Labels.AREA_INFRASTRUCTURE],
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_HELM, Labels.AREA_INFRASTRUCTURE],
       schedule: [SCHEDULE.ANY]
     }
   ]

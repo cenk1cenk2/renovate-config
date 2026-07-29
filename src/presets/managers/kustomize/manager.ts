@@ -9,7 +9,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.KUSTOMIZE],
-      addLabels: [Labels.MANAGER_KUSTOMIZE, Labels.AREA_INFRASTRUCTURE],
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_KUSTOMIZE, Labels.AREA_INFRASTRUCTURE],
       schedule: [SCHEDULE.ANY]
     }
   ]

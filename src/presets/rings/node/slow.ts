@@ -7,10 +7,14 @@ import { Rings } from '@rings'
 export default createPreset({
   packageRules: [
     {
+      matchManagers: [Managers.NODE],
+      matchPackageNames: NODE_SLOW_RING_PACKAGES,
+      addLabels: [Labels.RING_SLOW]
+    },
+    {
       matchPackageNames: NODE_SLOW_RING_PACKAGES,
       groupName: 'node slow ring',
       groupSlug: Rings.NODE_SLOW,
-      addLabels: [Labels.RING_SLOW],
       schedule: [SCHEDULE.WEEKLY],
       matchManagers: [Managers.NODE]
     }

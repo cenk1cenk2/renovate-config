@@ -127,6 +127,7 @@
           "npm"
         ],
         "addLabels": [
+          "renovate",
           "manager:node"
         ]
       },
@@ -164,6 +165,7 @@
           "gomod"
         ],
         "addLabels": [
+          "renovate",
           "manager:go"
         ]
       }
@@ -179,6 +181,7 @@
           "pep621"
         ],
         "addLabels": [
+          "renovate",
           "manager:python"
         ]
       },
@@ -200,6 +203,7 @@
           "cargo"
         ],
         "addLabels": [
+          "renovate",
           "manager:rust"
         ]
       }
@@ -226,6 +230,7 @@
           "kubernetes"
         ],
         "addLabels": [
+          "renovate",
           "manager:kubernetes",
           "area:infrastructure"
         ]
@@ -246,6 +251,7 @@
           "kustomize"
         ],
         "addLabels": [
+          "renovate",
           "manager:kustomize",
           "area:infrastructure"
         ],
@@ -274,6 +280,7 @@
           "helm-values"
         ],
         "addLabels": [
+          "renovate",
           "manager:helm",
           "area:infrastructure"
         ],
@@ -301,6 +308,7 @@
           "terraform"
         ],
         "addLabels": [
+          "renovate",
           "manager:terraform",
           "area:infrastructure"
         ],
@@ -316,6 +324,7 @@
           "terraform-manager-git-monorepo"
         ],
         "addLabels": [
+          "renovate",
           "manager:terraform",
           "area:infrastructure"
         ],
@@ -357,6 +366,7 @@
           "ansible-galaxy"
         ],
         "addLabels": [
+          "renovate",
           "manager:ansible-galaxy"
         ]
       }
@@ -372,6 +382,7 @@
           "dockerfile"
         ],
         "addLabels": [
+          "renovate",
           "manager:dockerfile",
           "area:infrastructure"
         ]
@@ -395,6 +406,7 @@
           "gitlabci"
         ],
         "addLabels": [
+          "renovate",
           "manager:gitlab-ci",
           "area:pipelines"
         ]
@@ -407,6 +419,7 @@
           "gitlab-ci-manager-git-monorepo"
         ],
         "addLabels": [
+          "renovate",
           "manager:gitlab-ci",
           "area:pipelines"
         ]
@@ -465,6 +478,7 @@
           "ocb"
         ],
         "addLabels": [
+          "renovate",
           "manager:otel-builder"
         ]
       }
@@ -484,6 +498,7 @@
           "argocd"
         ],
         "addLabels": [
+          "renovate",
           "manager:argocd",
           "area:infrastructure"
         ],
@@ -500,7 +515,9 @@
           "docker"
         ],
         "addLabels": [
-          "datasource:docker"
+          "renovate",
+          "datasource:docker",
+          "area:infrastructure"
         ]
       },
       {
@@ -683,7 +700,7 @@
           "bun"
         ],
         "addLabels": [
-          "dep:engines",
+          "dep:package-manager",
           "automerge"
         ],
         "commitMessageSuffix": "[skip ci]",
@@ -1394,6 +1411,26 @@
   "ring-node-slow": {
     "packageRules": [
       {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchPackageNames": [
+          "/^@typescript-eslint//",
+          "/jest/",
+          "/@types/jest/",
+          "/^@types/node$/",
+          "/^eslint$/",
+          "/^husky$/",
+          "/^prettier$/",
+          "/^lint-staged$/",
+          "/^cz-conventional-changelog$/",
+          "/^simple-git-hooks$/"
+        ],
+        "addLabels": [
+          "ring:slow"
+        ]
+      },
+      {
         "matchPackageNames": [
           "/^@typescript-eslint//",
           "/jest/",
@@ -1408,9 +1445,6 @@
         ],
         "groupName": "node slow ring",
         "groupSlug": "node-slow-ring",
-        "addLabels": [
-          "ring:slow"
-        ],
         "schedule": [
           "before 1am on Monday"
         ],
@@ -1528,14 +1562,22 @@
   "ring-go-slow": {
     "packageRules": [
       {
+        "matchManagers": [
+          "gomod"
+        ],
+        "matchPackageNames": [
+          "/^golang.org/x//"
+        ],
+        "addLabels": [
+          "ring:slow"
+        ]
+      },
+      {
         "matchPackageNames": [
           "/^golang.org/x//"
         ],
         "groupName": "go slow ring",
         "groupSlug": "go-slow-ring",
-        "addLabels": [
-          "ring:slow"
-        ],
         "schedule": [
           "before 1am on Monday"
         ],

@@ -16,13 +16,13 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.TERRAFORM],
-      addLabels: [Labels.MANAGER_TERRAFORM, Labels.AREA_INFRASTRUCTURE],
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_TERRAFORM, Labels.AREA_INFRASTRUCTURE],
       schedule: [SCHEDULE.ANY]
     },
     {
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
-      addLabels: [Labels.MANAGER_TERRAFORM, Labels.AREA_INFRASTRUCTURE],
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_TERRAFORM, Labels.AREA_INFRASTRUCTURE],
       schedule: [SCHEDULE.ANY]
     }
   ]

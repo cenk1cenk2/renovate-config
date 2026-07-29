@@ -18,7 +18,7 @@ export default createPreset({
     },
     {
       matchManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
-      addLabels: [Labels.MANAGER_OTEL_BUILDER]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_OTEL_BUILDER]
     }
   ]
 })

@@ -56,16 +56,16 @@ To enable automerge for a new package, add its source URL to `matchSourceUrls` a
 
 Labels compose **additively** across six namespaced axes plus two flat values. Every axis is contributed by the layer that owns it, so a rule only ever declares what it itself adds.
 
-| Axis       | Owner                                                | Values                                                                    |
-| ---------- | ---------------------------------------------------- | ------------------------------------------------------------------------- |
-| umbrella   | `base.ts` `labels:` — the only `labels:` in the repo | `renovate`                                                                |
-| update     | two `matchUpdateTypes` rules in `base.ts`            | `update:minor`, `update:major`                                            |
-| manager    | the manager preset's `matchManagers` rule            | `manager:helm`, `manager:node`, …                                         |
-| area       | the same manager rule                                | `area:infrastructure`, `area:pipelines`                                   |
-| dep        | the node group constants, `lock-file.ts`             | `dep:dev`, `dep:build`, `dep:docs`, `dep:peer`, `dep:engines`, `dep:lock` |
-| datasource | the datasource preset's `matchDatasources` rule      | `datasource:docker`                                                       |
-| ring       | the ring preset's identity rule                      | `ring:fast`, `ring:slow`                                                  |
-| flag       | automerge rules                                      | `automerge`                                                               |
+| Axis       | Owner                                                | Values                                                                            |
+| ---------- | ---------------------------------------------------- | --------------------------------------------------------------------------------- |
+| umbrella   | `base.ts` `labels:` — the only `labels:` in the repo | `renovate`                                                                        |
+| update     | two `matchUpdateTypes` rules in `base.ts`            | `update:minor`, `update:major`                                                    |
+| manager    | the manager preset's `matchManagers` rule            | `manager:helm`, `manager:node`, …                                                 |
+| area       | the same manager rule                                | `area:infrastructure`, `area:pipelines`                                           |
+| dep        | the node group constants, `lock-file.ts`             | `dep:dev`, `dep:build`, `dep:docs`, `dep:peer`, `dep:package-manager`, `dep:lock` |
+| datasource | the datasource preset's `matchDatasources` rule      | `datasource:docker`                                                               |
+| ring       | the ring preset's identity rule                      | `ring:fast`, `ring:slow`                                                          |
+| flag       | automerge rules                                      | `automerge`                                                                       |
 
 Mechanics, verified against the installed renovate source — **do not re-derive**:
 
@@ -76,7 +76,11 @@ Mechanics, verified against the installed renovate source — **do not re-derive
 
 `update:*` deliberately does not cover `rollback` — `rollbackPrs` defaults to `false` and this config never enables it. `lockFileMaintenance` is not a matchable update type; it carries `dep:lock` from `lock-file.ts`. `rings/node/none.ts` gets no ring label because every rule in it is `enabled: false`.
 
-Adding a manager means adding its `manager:<name>` label and wiring the identity rule — `test/presets.test.ts` fails if you forget.
+Every manager, datasource and ring preset carries an **identity rule** — a `matchManagers` / `matchDatasources` / package-set rule whose only job is `addLabels`. Keep identity separate from behaviour: never hang the identity label off a group rule, or it stops applying to updates that rule does not match.
+
+Manager and datasource identity rules also re-add `Labels.RENOVATE`. Each preset ships as its own key in `default.json`, so a repository can extend `default/manager-helm` without `base` — without the umbrella there it would get no labels at all. The duplicate is free because renovate dedupes the final set.
+
+Adding a manager means adding its `manager:<name>` label, wiring the identity rule and including the umbrella — `test/presets.test.ts` fails if you forget any of the three.
 
 ## Renovate Documentation References
 

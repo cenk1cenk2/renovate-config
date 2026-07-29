@@ -9,7 +9,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.ARGOCD],
-      addLabels: [Labels.MANAGER_ARGOCD, Labels.AREA_INFRASTRUCTURE],
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_ARGOCD, Labels.AREA_INFRASTRUCTURE],
       schedule: [SCHEDULE.ANY]
     }
   ]

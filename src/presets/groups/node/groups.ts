@@ -58,7 +58,7 @@ export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   rangeStrategy: 'widen',
   matchDepNames: ['pnpm', 'yarn', 'npm', 'bun'],
-  addLabels: [Labels.DEP_ENGINES, Labels.AUTOMERGE],
+  addLabels: [Labels.DEP_PACKAGE_MANAGER, Labels.AUTOMERGE],
   commitMessageSuffix: '[skip ci]',
   automerge: true
 }
