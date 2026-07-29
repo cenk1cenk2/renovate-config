@@ -39,6 +39,10 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 
 ## Automerge Pattern
 
+**A breaking update never automerges.** No rule may set `automerge: true` while matching `major` or `replacement`, and no automerge rule may omit `matchUpdateTypes` — an unbounded rule catches majors too. The major group presets therefore have no automerge twin. `lockFileMaintenance` is the one exemption: it is its own update type and carries no version bump. `test/presets.test.ts` enforces both rules.
+
+Note that renovate rejects any rule setting both `matchUpdateTypes` and `rangeStrategy` — the range strategy is resolved before the update type is known. Bounding an automerge rule by update type therefore means moving its `rangeStrategy` into a separate rule, as the node dependency, devDependency, peer and package-manager groups all do.
+
 Every manager that supports automerge follows the same two-rule pattern in its group files:
 
 1. **Catch-all rule** — matches all packages for the manager/update-type, `automerge: false`
@@ -140,5 +144,5 @@ After any change run `pnpm start` and verify `default.json` includes the expecte
 - **`renovate/dist/config/migration.js` and `validation.js` have no shipped types** — ambient declarations live in `src/types/renovate-modules.d.ts`.
 - **`default.json` is prettier-ignored.** It is generated, and prettier's formatting disagrees with the generator's. Without the ignore entry the `lint-staged` pre-commit hook rewrites the file on every commit and the CI freshness gate then fails on every pipeline.
 - **`lint` is ESLint-only** (`eslint ./src`), not tsc. Type errors do not fail lint — `pnpm typecheck` is a separate script and a separate CI job.
-- **`createPreset()` takes exactly `RenovateConfig`**, which is what makes excess-property checking catch misspelled renovate fields. Do not widen it back to `RenovateConfig & Record<PropertyKey, any>` — that silently disables the check for every preset.
+- **`createPreset()` takes `Omit<RenovateConfig, 'schedule' | 'labels'>`**, so excess-property checking catches misspelled renovate fields AND the two non-mergeable fields that must never appear at a preset's top level. `base.ts` uses `createBasePreset` for the umbrella label. Do not widen either back to `RenovateConfig & Record<PropertyKey, any>` — that silently disables the check for every preset.
 - **Kubernetes per-manager config** (`[Managers.KUBERNETES]: {...}` in `managers/kubernetes/manager.ts`) is cast with `as RenovateConfig` — the shape is valid at runtime but absent from the public type. This is the only cast in `src/`; if another preset needs one, prefer fixing the type augmentation.
