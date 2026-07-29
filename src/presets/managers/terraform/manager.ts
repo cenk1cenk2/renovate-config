@@ -1,4 +1,5 @@
-import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO, Labels, SCHEDULE } from '@constants'
+import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO } from './custom-manager.js'
+import { Labels, SCHEDULE } from '@constants'
 import { createPreset, createScopes } from '@lib'
 import { Managers } from '@managers'
 import { Preset } from '@presets'

@@ -9,7 +9,7 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 - **Build:** `tsdown` (`pnpm build`), run with `pnpm start` to generate `default.json`
 - **Package Manager:** pnpm
 - **Key directories:**
-  - `src/constants/` — schedules, scope, users, `Labels` enum, custom-manager `depType` names
+  - `src/constants/` — schedules, scope, users, `Labels` enum. Cross-cutting only: a custom manager's `depType` name stays next to the custom manager that emits it, not here.
   - `src/lib/` — `createPreset()`, `createScopes()` and `createMultiDirectoryGroupRule()` factories
   - `test/` — invariant tests over the assembled presets (`pnpm test`)
   - `src/presets/index.ts` — `Preset` enum, `PRESETS` record, `FILES` output mapping
