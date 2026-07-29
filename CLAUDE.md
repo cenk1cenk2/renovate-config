@@ -76,6 +76,9 @@ So the catch-all-then-override pattern that works everywhere else in this repo *
 Therefore every `addLabels` axis must be **exactly scoped up front**, and exactly one kind of rule may contribute a given axis:
 
 - `manager:*` and `area:*` — owned by the manager identity rule. The manager is what determines the area.
+  - `area:infrastructure` — argocd, helm, kubernetes, kustomize, terraform, ansible-galaxy, otel-builder.
+  - `area:pipelines` — gitlab-ci.
+  - **No area** — node, go, python, rust (application by absence) and dockerfile, which cannot tell an application image from an infrastructure one. Adding an area later is always possible; removing a wrong one is not, so an undetermined manager asserts nothing.
 - `datasource:*` — owned by the datasource identity rule, which must **never** add an area: 36 managers emit docker deps alone, spanning pipelines and infrastructure.
 - `dep:*` — owned by the dep-type group constants.
 - `ring:*` — owned by the ring identity rule.

@@ -367,7 +367,8 @@
         ],
         "addLabels": [
           "renovate",
-          "manager:ansible-galaxy"
+          "manager:ansible-galaxy",
+          "area:infrastructure"
         ]
       }
     ]
@@ -383,8 +384,7 @@
         ],
         "addLabels": [
           "renovate",
-          "manager:dockerfile",
-          "area:infrastructure"
+          "manager:dockerfile"
         ]
       }
     ]
@@ -479,7 +479,8 @@
         ],
         "addLabels": [
           "renovate",
-          "manager:otel-builder"
+          "manager:otel-builder",
+          "area:infrastructure"
         ]
       }
     ]

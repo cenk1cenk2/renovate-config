@@ -7,7 +7,9 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.DOCKERFILE],
-      addLabels: [Labels.RENOVATE, Labels.MANAGER_DOCKERFILE, Labels.AREA_INFRASTRUCTURE]
+      // No area: a Dockerfile can build an application or an infrastructure image, and the manager
+      // cannot tell which. Labels only ever accumulate, so asserting nothing is the recoverable choice.
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_DOCKERFILE]
     }
   ]
 })
