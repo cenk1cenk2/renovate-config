@@ -64,6 +64,30 @@ export const NODE_GROUP_ENGINES: PackageRule = {
 
 export const PACKAGE_MANAGERS = ['pnpm', 'yarn', 'npm', 'bun']
 
+export const NODE_BUILD_PACKAGES = [
+  'typescript',
+  'tsup',
+  'tsdown',
+  'prettier',
+  'eslint',
+  '@cenk1cenk2/eslint-config',
+  '@swc/core',
+  '@types/jest',
+  'jest',
+  'ts-jest',
+  '/^eslint-plugin-/',
+  '/^jest/'
+]
+
+export const NODE_DOCS_PACKAGES = ['typedoc', 'typedoc-plugin-markdown', '/^vitepress/', '/^markdown-it/']
+
+// The dev group is the catch-all for devDependencies, so it has to exclude everything the more specific
+// dep groups claim. `addLabels` accumulates and cannot be unset, so overlapping here would put two
+// `dep:` values on one merge request permanently.
+export const NODE_DEV_CLAIMED_PACKAGES = [...NODE_BUILD_PACKAGES, ...NODE_DOCS_PACKAGES, ...PACKAGE_MANAGERS]
+
+export const NODE_DEV_PACKAGES = ['*', ...NODE_DEV_CLAIMED_PACKAGES.map((name) => `!${name}`)]
+
 export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],

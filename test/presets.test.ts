@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest'
 
 import { Labels, SCHEDULE, SCOPE } from '@constants'
 import { Groups } from '@groups'
+import { NODE_BUILD_PACKAGES, NODE_DOCS_PACKAGES, PACKAGE_MANAGERS } from '@presets/groups/node/groups.js'
 import { Managers } from '@managers'
 import { PRESETS, Preset } from '@presets'
 import { Rings } from '@rings'
@@ -26,7 +27,9 @@ function rules(preset: RenovateConfig): PackageRule[] {
     if (value && typeof value === 'object') {
       const record = value as Record<string, unknown>
 
-      if ('labels' in record || 'addLabels' in record || 'groupSlug' in record) {
+      // `automerge` is in the predicate so the policy checks below cannot be dodged by a rule that
+      // carries no labels and no group at all.
+      if ('labels' in record || 'addLabels' in record || 'groupSlug' in record || 'automerge' in record) {
         found.push(record as PackageRule)
       }
 
@@ -118,6 +121,19 @@ describe('axis ownership', () => {
     expect(adding('datasource:').filter(([, rule]) => !rule.matchDatasources).map(([name]) => name)).toEqual([])
   })
 
+  // Two rules can each be well-formed and still stack two values of one axis onto the same dependency,
+  // because `addLabels` accumulates. The dep groups are the case where that actually overlaps.
+  it('keeps the dep axis mutually exclusive', () => {
+    const claimed = [...NODE_BUILD_PACKAGES, ...NODE_DOCS_PACKAGES, ...PACKAGE_MANAGERS]
+    const catchAll = allPackageRules.find(([, rule]) => rule.groupSlug === Groups.NODE_DEV)?.[1]
+
+    expect(catchAll, 'the node dev catch-all should exist').toBeDefined()
+
+    for (const name of claimed) {
+      expect(catchAll.matchPackageNames, `dev catch-all must exclude ${name}, which another dep group claims`).toContain(`!${name}`)
+    }
+  })
+
   it('never adds an area from a datasource rule', () => {
     const offenders = allRules.filter(([, rule]) => rule.matchDatasources && !rule.matchManagers && rule.addLabels?.some((label) => label.startsWith('area:'))).map(([name]) => name)
 
@@ -159,9 +175,29 @@ describe('renovate merge model', () => {
 })
 
 describe('rule validity', () => {
-  it('never combines matchUpdateTypes with rangeStrategy', () => {
-    // renovate rejects this outright — the range strategy is resolved before the update type is known.
-    expect(allPackageRules.filter(([, rule]) => rule.matchUpdateTypes && rule.rangeStrategy).map(([name]) => name)).toEqual([])
+  it('never combines matchUpdateTypes with a pre-lookup option', () => {
+    // renovate rejects all of these outright — they are resolved before the update type is known.
+    // Mirrors `preLookupOptions` in renovate/dist/config/validation.js.
+    const PRE_LOOKUP = [
+      'allowedVersions',
+      'extractVersion',
+      'followTag',
+      'ignoreDeps',
+      'ignoreUnstable',
+      'rangeStrategy',
+      'registryUrls',
+      'respectLatest',
+      'rollbackPrs',
+      'separateMajorMinor',
+      'separateMinorPatch',
+      'separateMultipleMajor',
+      'separateMultipleMinor',
+      'versioning'
+    ] as const
+
+    const offenders = allPackageRules.flatMap(([name, rule]) => (rule.matchUpdateTypes ? PRE_LOOKUP.filter((option) => rule[option] !== undefined).map((option) => `${name}.${option}`) : []))
+
+    expect(offenders).toEqual([])
   })
 
   it('never writes an empty matcher array', () => {

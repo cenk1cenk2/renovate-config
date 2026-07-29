@@ -24,8 +24,9 @@ const SEMANTIC_COMMIT_TYPES: Record<MultiDirectoryGroupRule['updateType'], strin
 export function createMultiDirectoryGroupRule({ name, updateType, ...rule }: MultiDirectoryGroupRule): PackageRule {
   const addLabels = [...(rule.automerge ? [Labels.AUTOMERGE] : []), ...(rule.addLabels ?? [])]
 
+  // No `enabled: true` default. It is last-match-wins, so emitting it would silently re-enable
+  // dependencies that an earlier, more specific rule deliberately disabled.
   return {
-    enabled: true,
     automerge: false,
     matchUpdateTypes: MATCH_UPDATE_TYPES[updateType],
     additionalBranchPrefix: '{{packageFileDir}}-',

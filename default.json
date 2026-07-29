@@ -608,7 +608,27 @@
           "npm"
         ],
         "matchPackageNames": [
-          "*"
+          "*",
+          "!typescript",
+          "!tsup",
+          "!tsdown",
+          "!prettier",
+          "!eslint",
+          "!@cenk1cenk2/eslint-config",
+          "!@swc/core",
+          "!@types/jest",
+          "!jest",
+          "!ts-jest",
+          "!/^eslint-plugin-/",
+          "!/^jest/",
+          "!typedoc",
+          "!typedoc-plugin-markdown",
+          "!/^vitepress/",
+          "!/^markdown-it/",
+          "!pnpm",
+          "!yarn",
+          "!npm",
+          "!bun"
         ],
         "groupName": "node all development dependency updates",
         "groupSlug": "node-dev",
@@ -812,7 +832,6 @@
   "group-kustomize-minor-helm-releases": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "minor",
@@ -833,7 +852,6 @@
         ]
       },
       {
-        "enabled": true,
         "automerge": true,
         "matchUpdateTypes": [
           "minor",
@@ -871,7 +889,6 @@
   "group-kustomize-major": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "major"
@@ -895,7 +912,6 @@
   "group-helm-minor": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "minor",
@@ -913,7 +929,6 @@
         ]
       },
       {
-        "enabled": true,
         "automerge": true,
         "matchUpdateTypes": [
           "minor",
@@ -947,7 +962,6 @@
   "group-helm-major": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "major"
@@ -968,7 +982,6 @@
   "group-terraform-minor-helm-releases": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "minor",
@@ -993,7 +1006,6 @@
   "group-terraform-minor-modules": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "minor",
@@ -1026,7 +1038,6 @@
         ]
       },
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "minor",
@@ -1054,7 +1065,6 @@
   "group-terraform-minor-providers": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "minor",
@@ -1089,7 +1099,6 @@
   "group-terraform-major": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "major"
@@ -1112,7 +1121,6 @@
         ]
       },
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "major"
@@ -1255,7 +1263,6 @@
   "group-argocd-minor": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "minor",
@@ -1276,7 +1283,6 @@
         ]
       },
       {
-        "enabled": true,
         "automerge": true,
         "matchUpdateTypes": [
           "minor",
@@ -1308,7 +1314,6 @@
   "group-argocd-major": {
     "packageRules": [
       {
-        "enabled": true,
         "automerge": false,
         "matchUpdateTypes": [
           "major"

@@ -1,4 +1,13 @@
-import { NODE_GROUP_DEV, NODE_GROUP_BUILD, NODE_GROUP_DOCS, NODE_GROUP_PACKAGE_MANAGER, NODE_RANGE_PACKAGE_MANAGER } from './groups.js'
+import {
+  NODE_GROUP_DEV,
+  NODE_GROUP_BUILD,
+  NODE_GROUP_DOCS,
+  NODE_GROUP_PACKAGE_MANAGER,
+  NODE_RANGE_PACKAGE_MANAGER,
+  NODE_BUILD_PACKAGES,
+  NODE_DOCS_PACKAGES,
+  NODE_DEV_PACKAGES
+} from './groups.js'
 import { SCHEDULE } from '@constants'
 import { Groups } from '@groups'
 import { createPreset } from '@lib'
@@ -8,7 +17,7 @@ export default createPreset({
   packageRules: [
     {
       ...NODE_GROUP_DEV,
-      matchPackageNames: ['*'],
+      matchPackageNames: NODE_DEV_PACKAGES,
       groupName: 'node all development dependency updates',
       groupSlug: Groups.NODE_DEV,
       schedule: [SCHEDULE.ANY]
@@ -16,20 +25,7 @@ export default createPreset({
 
     {
       ...NODE_GROUP_BUILD,
-      matchPackageNames: [
-        'typescript',
-        'tsup',
-        'tsdown',
-        'prettier',
-        'eslint',
-        '@cenk1cenk2/eslint-config',
-        '@swc/core',
-        '@types/jest',
-        'jest',
-        'ts-jest',
-        '/^eslint-plugin-/',
-        '/^jest/'
-      ],
+      matchPackageNames: NODE_BUILD_PACKAGES,
       groupName: 'node all build dependency updates',
       groupSlug: Groups.NODE_BUILD,
       schedule: [SCHEDULE.ANY]
@@ -37,7 +33,7 @@ export default createPreset({
 
     {
       ...NODE_GROUP_DOCS,
-      matchPackageNames: ['typedoc', 'typedoc-plugin-markdown', '/^vitepress/', '/^markdown-it/'],
+      matchPackageNames: NODE_DOCS_PACKAGES,
       groupName: 'node all docs dependency updates',
       groupSlug: Groups.NODE_DOCS,
       schedule: [SCHEDULE.ANY]

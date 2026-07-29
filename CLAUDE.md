@@ -33,7 +33,7 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 - Conventional commits: `feat` for features, `fix` for fixes, `build(deps)` for dependency updates
 - **Object spreads go first, explicit keys after** — `{ ...NODE_GROUP_DEV, groupName, groupSlug, schedule }`. A shared constant must never be able to silently clobber a local key.
 - **Field patterns** — two shapes:
-  - **Pattern M** (multi-directory: argocd, helm, kustomize, terraform): produced by `createMultiDirectoryGroupRule()` from `@lib`, which derives `additionalBranchPrefix: '{{packageFileDir}}-'`, `commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]'`, the `groupName`, the semantic commit type and the automerge label. Do not hand-write these rules — pass `name` and `updateType`; everything else is an ordinary `PackageRule` spread straight through, so call sites use renovate's own field names (`matchManagers`, `matchDepTypes`, `groupSlug`) and can override any derived field by passing it. `schedule` lives on the manager preset's own `matchManagers` rule.
+  - **Pattern M** (multi-directory: argocd, helm, kustomize, terraform): produced by `createMultiDirectoryGroupRule()` from `@lib`, which derives `additionalBranchPrefix: '{{packageFileDir}}-'`, `commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]'`, the `groupName`, the semantic commit type and the automerge label. The factory deliberately emits no `enabled: true` — `enabled` is last-match-wins, so a default would silently re-enable dependencies an earlier, more specific rule disabled. Do not hand-write these rules — pass `name` and `updateType`; everything else is an ordinary `PackageRule` spread straight through, so call sites use renovate's own field names (`matchManagers`, `matchDepTypes`, `groupSlug`) and can override any derived field by passing it. `schedule` lives on the manager preset's own `matchManagers` rule.
   - **Pattern S** (single-directory: node, go, gitlab-ci, ansible-galaxy, otel-builder, docker-datasource): no `additionalBranchPrefix`, no `commitMessageExtra`; per-rule `schedule`.
 - **Never put `schedule` at the top level of a preset.** Top-level fields are non-mergeable and apply globally to the assembled config — the last extended preset that sets one wins for every dependency. Scope it to a `packageRules` entry instead.
 
@@ -41,7 +41,7 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 
 **A breaking update never automerges.** No rule may set `automerge: true` while matching `major` or `replacement`, and no automerge rule may omit `matchUpdateTypes` — an unbounded rule catches majors too. The major group presets therefore have no automerge twin. `lockFileMaintenance` is the one exemption: it is its own update type and carries no version bump. `test/presets.test.ts` enforces both rules.
 
-Note that renovate rejects any rule setting both `matchUpdateTypes` and `rangeStrategy` — the range strategy is resolved before the update type is known. Bounding an automerge rule by update type therefore means moving its `rangeStrategy` into a separate rule, as the node dependency, devDependency, peer and package-manager groups all do.
+Note that renovate rejects any rule setting `matchUpdateTypes` together with one of its 15 `preLookupOptions` — `rangeStrategy`, `versioning`, `registryUrls`, `allowedVersions`, `separateMajorMinor` and the rest — because those are resolved before the update type is known. Bounding an automerge rule by update type therefore means moving its `rangeStrategy` into a separate rule, as the node dependency, devDependency, peer and package-manager groups all do.
 
 Every manager that supports automerge follows the same two-rule pattern in its group files:
 
@@ -89,15 +89,17 @@ Therefore every `addLabels` axis must be **exactly scoped up front**, and exactl
 
 `test/presets.test.ts` enforces this ownership.
 
-If an axis ever does need exceptions, carve them out in the broad rule rather than overriding afterwards. All six matchers (`matchPackageNames`, `matchDepTypes`, `matchManagers`, `matchDatasources`, `matchFileNames`, `matchRepositories`) accept `!`-prefixed globs and regexes via `matchRegexOrGlobList` (`dist/util/string-match.js:17-28`); a list of only negatives means "everything except". `matchFileNames` matches the dependency's `packageFile` path, which is the way to tell a docker image in a `Dockerfile` from one in a helm values file.
+If an axis ever does need exceptions, carve them out in the broad rule rather than overriding afterwards. All six matchers (`matchPackageNames`, `matchDepTypes`, `matchManagers`, `matchDatasources`, `matchFileNames`, `matchRepositories`) accept `!`-prefixed globs and regexes via `matchRegexOrGlobList` (`dist/util/string-match.js:17-28`); a list of only negatives means "everything except". `matchFileNames` matches the dependency's `packageFile` path (and its `lockFiles`), which is the way to tell a docker image in a `Dockerfile` from one in a helm values file.
+
+**Overlapping matchers stack labels.** Two rules can each be well-formed and still put two values of one axis on the same dependency. The node `dep:` groups are where this actually bites: the dev group is the catch-all for `devDependencies`, so it negates every package the build, docs and package-manager groups claim (`NODE_DEV_PACKAGES` in `groups/node/groups.ts`). Add a package to one of those lists and the catch-all excludes it automatically.
 
 Mechanics, verified against the installed renovate source — **do not re-derive**:
 
 - `labels` is **non-mergeable**: each matching packageRule overwrites the previous value entirely, last match wins (`dist/config/options/index.js`, `dist/config/utils.js`).
 - `addLabels` is `mergeable: true`: it concatenates across the top-level config **and** every matching packageRule.
 - The final PR label set is `[...new Set([...labels, ...addLabels])].sort()` (`dist/workers/repository/update/pr/labels.js`) — deduped and alphabetically sorted, so declaration order never affects output.
-- Renovate's own docs recommend `addLabels` over `labels` in shareable presets for exactly this reason.
-- Only five options used here are `mergeable: true` — `addLabels`, `packageRules`, `ignoreDeps`, `postUpdateOptions` and the `match*` list matchers. Everything else is last-match-wins, including `automerge`, `enabled`, `groupName`, `groupSlug`, `rangeStrategy`, `semanticCommitType`, `minimumReleaseAge` and the `commitMessage*` family — those are safe to broad-then-override.
+- The docs state the mergeability contrast between `labels` and `addLabels`; the "use `addLabels` in shareable presets" conclusion is ours, drawn from it.
+- The options used here that are `mergeable: true` are `addLabels`, `packageRules`, `customManagers`, `lockFileMaintenance`, `ignoreDeps`, `postUpdateOptions` and the `match*` list matchers. Note `lockFileMaintenance` merging means `lock-file.ts` composes with `config:recommended`'s block rather than replacing it. Everything else is last-match-wins, including `automerge`, `enabled`, `groupName`, `groupSlug`, `rangeStrategy`, `semanticCommitType`, `minimumReleaseAge` and the `commitMessage*` family — those are safe to broad-then-override.
 - `schedule` is an array but **not** mergeable, so a per-rule `schedule` silently discards a hoisted one instead of adding to it.
 - `packageRules` order across presets is positional: `P1 → P2 → P3 → the extending config's own rules`. Preset identity does not matter, only position in `extends`.
 
@@ -107,7 +109,7 @@ Every manager, datasource and ring preset carries an **identity rule** — a `ma
 
 Manager and datasource identity rules also re-add `Labels.RENOVATE`. Each preset ships as its own key in `default.json`, so a repository can extend `default/manager-helm` without `base` — without the umbrella there it would get no labels at all. The duplicate is free because renovate dedupes the final set.
 
-Adding a manager means adding its `manager:<name>` label, wiring the identity rule and including the umbrella — `test/presets.test.ts` fails if you forget any of the three.
+Adding a manager means adding its `manager:<name>` label, wiring the identity rule and including the umbrella. `test/presets.test.ts` catches a missing umbrella and an orphaned label, but its manager table is opt-in — add the new manager to it, or that manager is unchecked.
 
 ## Renovate Documentation References
 
