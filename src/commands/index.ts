@@ -73,7 +73,7 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
                   const current = await locker.applyLockAll({} as Presets)
 
                   this.logger.info('Validating config for file: %s', file)
-                  await Promise.all(
+                  const errorCounts = await Promise.all(
                     Object.entries(current).map(async([preset, value]) => {
                       const migration = migrateConfig(await value)
 
@@ -98,8 +98,16 @@ export default class Run extends Command<typeof Run, any> implements ShouldRunBe
                           this.logger.error('[%s] [%s] [%s] %s', file, preset, error.topic, error.message)
                         }
                       }
+
+                      return result.errors.length
                     })
                   )
+
+                  const errorCount = errorCounts.reduce((total, count) => total + count, 0)
+
+                  if (errorCount > 0) {
+                    throw new Error(`Validation failed for file: ${file} with ${errorCount} error(s)`)
+                  }
 
                   const difference = new Formatter().format(diff(await locker.read(), current))
 
