@@ -10,7 +10,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.GO],
-      addLabels: [Labels.GO]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_GO]
     }
   ]
 })

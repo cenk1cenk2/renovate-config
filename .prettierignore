@@ -1,8 +1,9 @@
 .git/
 .vscode
 build/
-dist/
 coverage/
+default.json
+dist/
 LICENSE.md
 modules/
 node_modules/

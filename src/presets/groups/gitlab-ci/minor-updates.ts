@@ -8,7 +8,7 @@ export default createPreset({
   packageRules: [
     {
       ...GITLAB_CI_MINOR_UPDATES,
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.AUTOMERGE, Labels.PIPELINES],
+      addLabels: [Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.GITLAB_CI_INCLUDE],
       schedule: [SCHEDULE.ANY],
@@ -20,7 +20,7 @@ export default createPreset({
     },
     {
       ...GITLAB_CI_MINOR_UPDATES,
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.AUTOMERGE, Labels.PIPELINES],
+      addLabels: [Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO],

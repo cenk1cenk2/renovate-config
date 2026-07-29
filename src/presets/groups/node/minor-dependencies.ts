@@ -7,10 +7,10 @@ import { Managers } from '@managers'
 export default createPreset({
   packageRules: [
     {
+      ...NODE_GROUP_MINOR,
       matchPackageNames: ['*'],
       groupName: 'node all minor dependency updates',
       groupSlug: Groups.NODE_MINOR,
-      ...NODE_GROUP_MINOR,
       schedule: [SCHEDULE.DAILY]
     },
     {

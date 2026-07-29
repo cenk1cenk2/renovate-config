@@ -7,7 +7,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.PYTHON_PEP621],
-      addLabels: [Labels.PYTHON]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_PYTHON]
     },
     {
       matchManagers: [Managers.PYTHON_PEP621],

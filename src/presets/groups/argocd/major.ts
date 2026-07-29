@@ -1,34 +1,16 @@
-import { Labels } from '@constants'
 import { Groups } from '@groups'
-import { createPreset } from '@lib'
+import { createMultiDirectoryGroupRule, createPreset } from '@lib'
 import { Managers } from '@managers'
 
+// No automerge rule here, by policy: a major bump is a breaking change and needs a human.
 export default createPreset({
   packageRules: [
-    {
-      enabled: true,
+    createMultiDirectoryGroupRule({
+      name: 'argocd',
       matchUpdateTypes: ['major'],
-      labels: [Labels.RENOVATE, Labels.MAJOR, Labels.INFRASTRUCTURE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'argocd all major dependency updates',
+      commitType: 'perf',
       groupSlug: Groups.ARGOCD_MAJOR,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-      automerge: false,
-      extends: [':semanticCommitTypeAll(perf)'],
       matchManagers: [Managers.ARGOCD]
-    },
-    {
-      enabled: true,
-      matchUpdateTypes: ['major'],
-      labels: [Labels.RENOVATE, Labels.MAJOR, Labels.INFRASTRUCTURE, Labels.AUTOMERGE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'argocd all major automerge dependency updates',
-      groupSlug: Groups.ARGOCD_MAJOR_AUTOMERGE,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-      automerge: true,
-      extends: [':semanticCommitTypeAll(perf)'],
-      matchManagers: [Managers.ARGOCD],
-      matchPackageNames: ['git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git']
-    }
+    })
   ]
 })

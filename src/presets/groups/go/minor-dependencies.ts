@@ -6,10 +6,10 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
+      ...GO_GROUP_MINOR,
       matchPackageNames: ['*'],
       groupName: 'go all minor dependency updates',
       groupSlug: Groups.GO_MINOR,
-      ...GO_GROUP_MINOR,
       schedule: [SCHEDULE.DAILY]
     }
   ]

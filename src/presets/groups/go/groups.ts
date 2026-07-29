@@ -5,7 +5,7 @@ import { Managers } from '@managers'
 
 export const GO_GROUP_MINOR: PackageRule = {
   matchUpdateTypes: ['minor', 'patch', 'digest'],
-  labels: [Labels.RENOVATE, Labels.MINOR, Labels.AUTOMERGE],
+  addLabels: [Labels.AUTOMERGE],
   automerge: true,
   matchManagers: [Managers.GO]
 }

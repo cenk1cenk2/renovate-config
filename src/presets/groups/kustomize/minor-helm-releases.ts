@@ -1,37 +1,27 @@
-import { Labels } from '@constants'
 import { Groups } from '@groups'
-import { createPreset } from '@lib'
+import { createMultiDirectoryGroupRule, createPreset } from '@lib'
 import { Managers } from '@managers'
 
 export default createPreset({
   packageRules: [
-    {
-      enabled: true,
+    createMultiDirectoryGroupRule({
+      name: 'kustomize',
       matchUpdateTypes: ['minor', 'patch'],
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.INFRASTRUCTURE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'kustomize all minor dependency updates',
+      commitType: 'feat',
       groupSlug: Groups.KUSTOMIZE_MINOR,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-      automerge: false,
-      extends: [':semanticCommitTypeAll(feat)'],
-      matchDepTypes: ['HelmChart'],
-      matchManagers: [Managers.KUSTOMIZE]
-    },
-    {
-      enabled: true,
-      matchUpdateTypes: ['minor', 'patch'],
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.INFRASTRUCTURE, Labels.AUTOMERGE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'kustomize all minor automerge dependency updates',
-      groupSlug: Groups.KUSTOMIZE_MINOR_AUTOMERGE,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-      automerge: true,
-      extends: [':semanticCommitTypeAll(feat)'],
-      matchDepTypes: ['HelmChart'],
       matchManagers: [Managers.KUSTOMIZE],
+      matchDepTypes: ['HelmChart']
+    }),
+    createMultiDirectoryGroupRule({
+      name: 'kustomize',
+      matchUpdateTypes: ['minor', 'patch'],
+      commitType: 'feat',
+      groupSlug: Groups.KUSTOMIZE_MINOR_AUTOMERGE,
+      matchManagers: [Managers.KUSTOMIZE],
+      matchDepTypes: ['HelmChart'],
+      automerge: true,
       matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/grafana/helm-charts', 'https://gitlab.com/gitlab-org/charts/gitlab-runner'],
       matchPackageNames: ['prometheus-blackbox-exporter', 'alloy', 'gitlab-runner']
-    }
+    })
   ]
 })

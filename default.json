@@ -55,16 +55,40 @@
     "labels": [
       "renovate"
     ],
-    "prCreation": "immediate"
+    "prCreation": "immediate",
+    "packageRules": [
+      {
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest",
+          "pinDigest",
+          "bump"
+        ],
+        "addLabels": [
+          "update:minor"
+        ]
+      },
+      {
+        "matchUpdateTypes": [
+          "major",
+          "replacement"
+        ],
+        "addLabels": [
+          "update:major"
+        ]
+      }
+    ]
   },
   "lock-file": {
     "lockFileMaintenance": {
       "enabled": true,
       "automerge": true,
       "commitMessageSuffix": "[skip ci]",
-      "labels": [
-        "renovate",
-        "lock"
+      "addLabels": [
+        "dep:lock",
+        "automerge"
       ],
       "schedule": [
         "before 1am"
@@ -102,7 +126,8 @@
           "npm"
         ],
         "addLabels": [
-          "node"
+          "renovate",
+          "manager:node"
         ]
       },
       {
@@ -139,7 +164,8 @@
           "gomod"
         ],
         "addLabels": [
-          "go"
+          "renovate",
+          "manager:go"
         ]
       }
     ]
@@ -154,7 +180,8 @@
           "pep621"
         ],
         "addLabels": [
-          "python"
+          "renovate",
+          "manager:python"
         ]
       },
       {
@@ -175,7 +202,8 @@
           "cargo"
         ],
         "addLabels": [
-          "rust"
+          "renovate",
+          "manager:rust"
         ]
       }
     ]
@@ -201,7 +229,9 @@
           "kubernetes"
         ],
         "addLabels": [
-          "kubernetes"
+          "renovate",
+          "manager:kubernetes",
+          "area:infrastructure"
         ]
       }
     ]
@@ -214,16 +244,18 @@
       "local>renovate/renovate-config:default/group-kustomize-minor-helm-releases",
       "local>renovate/renovate-config:default/group-kustomize-major"
     ],
-    "schedule": [
-      "at any time"
-    ],
     "packageRules": [
       {
         "matchManagers": [
           "kustomize"
         ],
         "addLabels": [
-          "kustomize"
+          "renovate",
+          "manager:kustomize",
+          "area:infrastructure"
+        ],
+        "schedule": [
+          "at any time"
         ]
       }
     ]
@@ -240,9 +272,6 @@
       "local>renovate/renovate-config:default/group-helm-minor",
       "local>renovate/renovate-config:default/group-helm-major"
     ],
-    "schedule": [
-      "at any time"
-    ],
     "packageRules": [
       {
         "matchManagers": [
@@ -250,7 +279,12 @@
           "helm-values"
         ],
         "addLabels": [
-          "helm"
+          "renovate",
+          "manager:helm",
+          "area:infrastructure"
+        ],
+        "schedule": [
+          "at any time"
         ]
       }
     ]
@@ -267,16 +301,18 @@
       "local>renovate/renovate-config:default/group-terraform-minor-modules",
       "local>renovate/renovate-config:default/group-terraform-major"
     ],
-    "schedule": [
-      "at any time"
-    ],
     "packageRules": [
       {
         "matchManagers": [
           "terraform"
         ],
         "addLabels": [
-          "terraform"
+          "renovate",
+          "manager:terraform",
+          "area:infrastructure"
+        ],
+        "schedule": [
+          "at any time"
         ]
       },
       {
@@ -287,7 +323,12 @@
           "terraform-manager-git-monorepo"
         ],
         "addLabels": [
-          "terraform"
+          "renovate",
+          "manager:terraform",
+          "area:infrastructure"
+        ],
+        "schedule": [
+          "at any time"
         ]
       }
     ]
@@ -324,7 +365,9 @@
           "ansible-galaxy"
         ],
         "addLabels": [
-          "ansible"
+          "renovate",
+          "manager:ansible-galaxy",
+          "area:infrastructure"
         ]
       }
     ]
@@ -339,7 +382,8 @@
           "dockerfile"
         ],
         "addLabels": [
-          "dockerfile"
+          "renovate",
+          "manager:dockerfile"
         ]
       }
     ]
@@ -361,7 +405,9 @@
           "gitlabci"
         ],
         "addLabels": [
-          "gitlab-ci"
+          "renovate",
+          "manager:gitlab-ci",
+          "area:pipelines"
         ]
       },
       {
@@ -372,7 +418,9 @@
           "gitlab-ci-manager-git-monorepo"
         ],
         "addLabels": [
-          "gitlab-ci"
+          "renovate",
+          "manager:gitlab-ci",
+          "area:pipelines"
         ]
       }
     ]
@@ -413,9 +461,7 @@
           "patch",
           "digest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
+        "addLabels": [
           "automerge"
         ],
         "automerge": true,
@@ -431,7 +477,9 @@
           "ocb"
         ],
         "addLabels": [
-          "otel-builder"
+          "renovate",
+          "manager:otel-builder",
+          "area:infrastructure"
         ]
       }
     ]
@@ -444,22 +492,33 @@
       "local>renovate/renovate-config:default/group-argocd-minor",
       "local>renovate/renovate-config:default/group-argocd-major"
     ],
-    "schedule": [
-      "at any time"
-    ],
     "packageRules": [
       {
         "matchManagers": [
           "argocd"
         ],
         "addLabels": [
-          "argocd"
+          "renovate",
+          "manager:argocd",
+          "area:infrastructure"
+        ],
+        "schedule": [
+          "at any time"
         ]
       }
     ]
   },
   "datasource-docker": {
     "packageRules": [
+      {
+        "matchDatasources": [
+          "docker"
+        ],
+        "addLabels": [
+          "renovate",
+          "datasource:docker"
+        ]
+      },
       {
         "enabled": true,
         "matchUpdateTypes": [
@@ -468,10 +527,7 @@
           "pin",
           "digest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure",
+        "addLabels": [
           "automerge"
         ],
         "groupName": "docker datasource minor dependency updates",
@@ -493,11 +549,6 @@
   "group-node-minor-dependencies": {
     "packageRules": [
       {
-        "matchPackageNames": [
-          "*"
-        ],
-        "groupName": "node all minor dependency updates",
-        "groupSlug": "node-minor",
         "matchDepTypes": [
           "dependencies"
         ],
@@ -507,15 +558,18 @@
           "pin",
           "digest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
+        "addLabels": [
           "automerge"
         ],
         "automerge": true,
         "matchManagers": [
           "npm"
         ],
+        "matchPackageNames": [
+          "*"
+        ],
+        "groupName": "node all minor dependency updates",
+        "groupSlug": "node-minor",
         "schedule": [
           "before 1am"
         ]
@@ -534,11 +588,6 @@
   "group-node-dev-dependencies": {
     "packageRules": [
       {
-        "matchPackageNames": [
-          "*"
-        ],
-        "groupName": "node all development dependency updates",
-        "groupSlug": "node-dev",
         "matchDepTypes": [
           "devDependencies"
         ],
@@ -549,20 +598,62 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
-        "labels": [
-          "renovate",
-          "dev-deps",
+        "addLabels": [
+          "dep:dev",
           "automerge"
         ],
         "automerge": true,
         "matchManagers": [
           "npm"
         ],
+        "matchPackageNames": [
+          "!typescript",
+          "!tsup",
+          "!tsdown",
+          "!prettier",
+          "!eslint",
+          "!@cenk1cenk2/eslint-config",
+          "!@swc/core",
+          "!@types/jest",
+          "!jest",
+          "!ts-jest",
+          "!/^eslint-plugin-/",
+          "!/^jest/",
+          "!typedoc",
+          "!typedoc-plugin-markdown",
+          "!/^vitepress/",
+          "!/^markdown-it/",
+          "!pnpm",
+          "!yarn",
+          "!npm",
+          "!bun"
+        ],
+        "groupName": "node all development dependency updates",
+        "groupSlug": "node-dev",
         "schedule": [
           "at any time"
         ]
       },
       {
+        "matchDepTypes": [
+          "devDependencies"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "semanticCommitType": "build",
+        "commitMessageSuffix": "",
+        "addLabels": [
+          "dep:build",
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "npm"
+        ],
         "matchPackageNames": [
           "typescript",
           "tsup",
@@ -579,39 +670,11 @@
         ],
         "groupName": "node all build dependency updates",
         "groupSlug": "node-build",
-        "matchDepTypes": [
-          "devDependencies"
-        ],
-        "matchUpdateTypes": [
-          "minor",
-          "patch",
-          "pin",
-          "digest"
-        ],
-        "semanticCommitType": "build",
-        "commitMessageSuffix": "",
-        "labels": [
-          "renovate",
-          "build-deps",
-          "automerge"
-        ],
-        "automerge": true,
-        "matchManagers": [
-          "npm"
-        ],
         "schedule": [
           "at any time"
         ]
       },
       {
-        "matchPackageNames": [
-          "typedoc",
-          "typedoc-plugin-markdown",
-          "/^vitepress/",
-          "/^markdown-it/"
-        ],
-        "groupName": "node all docs dependency updates",
-        "groupSlug": "node-docs",
         "matchDepTypes": [
           "devDependencies"
         ],
@@ -623,42 +686,79 @@
         ],
         "semanticCommitType": "docs",
         "commitMessageSuffix": "",
-        "labels": [
-          "renovate",
-          "build-deps",
+        "addLabels": [
+          "dep:docs",
           "automerge"
         ],
         "automerge": true,
         "matchManagers": [
           "npm"
         ],
+        "matchPackageNames": [
+          "typedoc",
+          "typedoc-plugin-markdown",
+          "/^vitepress/",
+          "/^markdown-it/"
+        ],
+        "groupName": "node all docs dependency updates",
+        "groupSlug": "node-docs",
         "schedule": [
           "at any time"
         ]
       },
       {
-        "groupName": "node all package manager",
-        "groupSlug": "node-package-manager",
         "matchManagers": [
           "npm"
         ],
-        "rangeStrategy": "widen",
         "matchDepNames": [
           "pnpm",
           "yarn",
           "npm",
           "bun"
         ],
-        "labels": [
-          "renovate",
-          "engines",
-          "automerge"
+        "addLabels": [
+          "dep:package-manager"
         ],
         "commitMessageSuffix": "[skip ci]",
-        "automerge": true,
+        "automerge": false,
+        "groupName": "node all package manager",
+        "groupSlug": "node-package-manager",
         "schedule": [
           "at any time"
         ]
+      },
+      {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchDepNames": [
+          "pnpm",
+          "yarn",
+          "npm",
+          "bun"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "addLabels": [
+          "automerge"
+        ],
+        "automerge": true
+      },
+      {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchDepNames": [
+          "pnpm",
+          "yarn",
+          "npm",
+          "bun"
+        ],
+        "rangeStrategy": "widen"
       },
       {
         "matchManagers": [
@@ -674,55 +774,67 @@
   "group-node-peer-dependencies": {
     "packageRules": [
       {
-        "matchPackageNames": [
-          "*"
-        ],
-        "groupName": "node all peer dependency updates",
-        "groupSlug": "node-peer",
-        "enabled": false,
         "matchDepTypes": [
           "peerDependencies",
           "optionalDependencies"
         ],
-        "rangeStrategy": "widen",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
         "commitMessageSuffix": "[skip ci]",
-        "labels": [
-          "renovate",
-          "peer-deps",
+        "addLabels": [
+          "dep:peer",
           "automerge"
         ],
         "automerge": true,
         "matchManagers": [
           "npm"
         ],
+        "matchPackageNames": [
+          "*"
+        ],
+        "groupName": "node all peer dependency updates",
+        "groupSlug": "node-peer",
         "schedule": [
           "at any time"
         ]
+      },
+      {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchDepTypes": [
+          "peerDependencies",
+          "optionalDependencies"
+        ],
+        "rangeStrategy": "widen",
+        "enabled": false
       }
     ]
   },
   "group-go-minor-dependencies": {
     "packageRules": [
       {
-        "matchPackageNames": [
-          "*"
-        ],
-        "groupName": "go all minor dependency updates",
-        "groupSlug": "go-minor",
         "matchUpdateTypes": [
           "minor",
           "patch",
           "digest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
+        "addLabels": [
           "automerge"
         ],
         "automerge": true,
         "matchManagers": [
           "gomod"
         ],
+        "matchPackageNames": [
+          "*"
+        ],
+        "groupName": "go all minor dependency updates",
+        "groupSlug": "go-minor",
         "schedule": [
           "before 1am"
         ]
@@ -732,56 +844,43 @@
   "group-kustomize-minor-helm-releases": {
     "packageRules": [
       {
-        "enabled": true,
+        "automerge": false,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "kustomize all minor dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "kustomize all minor dependency updates",
         "groupSlug": "kustomize-minor",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
+        "matchManagers": [
+          "kustomize"
         ],
         "matchDepTypes": [
           "HelmChart"
-        ],
-        "matchManagers": [
-          "kustomize"
         ]
       },
       {
-        "enabled": true,
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "kustomize all minor automerge dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure",
-          "automerge"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "kustomize all minor automerge dependency updates",
         "groupSlug": "kustomize-minor-automerge",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
+        "matchManagers": [
+          "kustomize"
         ],
         "matchDepTypes": [
           "HelmChart"
-        ],
-        "matchManagers": [
-          "kustomize"
         ],
         "matchSourceUrls": [
           "https://github.com/prometheus-community/helm-charts",
@@ -792,6 +891,9 @@
           "prometheus-blackbox-exporter",
           "alloy",
           "gitlab-runner"
+        ],
+        "addLabels": [
+          "automerge"
         ]
       }
     ]
@@ -799,64 +901,22 @@
   "group-kustomize-major": {
     "packageRules": [
       {
-        "enabled": true,
-        "matchUpdateTypes": [
-          "major"
-        ],
-        "labels": [
-          "renovate",
-          "major",
-          "infrastructure"
-        ],
+        "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "kustomize all major dependency updates",
-        "groupSlug": "kustomize-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
-        "matchDepTypes": [
-          "HelmChart"
-        ],
-        "matchManagers": [
-          "kustomize"
-        ]
-      },
-      {
-        "enabled": true,
         "matchUpdateTypes": [
           "major"
         ],
-        "labels": [
-          "renovate",
-          "major",
-          "infrastructure",
-          "automerge"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "kustomize all major automerge dependency updates",
-        "groupSlug": "kustomize-major-automerge",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
-        "extends": [
-          ":semanticCommitTypeAll(perf)"
-        ],
-        "matchDepTypes": [
-          "HelmChart"
-        ],
+        "groupSlug": "kustomize-major",
         "matchManagers": [
           "kustomize"
         ],
-        "matchSourceUrls": [
-          "https://github.com/prometheus-community/helm-charts",
-          "https://github.com/grafana/helm-charts",
-          "https://gitlab.com/gitlab-org/charts/gitlab-runner"
-        ],
-        "matchPackageNames": [
-          "prometheus-blackbox-exporter",
-          "alloy",
-          "gitlab-runner"
+        "matchDepTypes": [
+          "HelmChart"
         ]
       }
     ]
@@ -864,48 +924,35 @@
   "group-helm-minor": {
     "packageRules": [
       {
-        "enabled": true,
+        "automerge": false,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "helm all minor dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "helm all minor dependency updates",
         "groupSlug": "helm-minor",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
-        ],
         "matchManagers": [
           "helmv3"
         ]
       },
       {
-        "enabled": true,
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "helm all minor automerge dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure",
-          "automerge"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "helm all minor automerge dependency updates",
         "groupSlug": "helm-minor-automerge",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
-        ],
         "matchManagers": [
           "helmv3"
         ],
@@ -917,6 +964,9 @@
           "kube-prometheus-stack",
           "blackbox-exporter",
           "opentelemetry-operator"
+        ],
+        "addLabels": [
+          "automerge"
         ]
       }
     ]
@@ -924,57 +974,19 @@
   "group-helm-major": {
     "packageRules": [
       {
-        "enabled": true,
-        "matchUpdateTypes": [
-          "major"
-        ],
-        "labels": [
-          "renovate",
-          "major",
-          "infrastructure"
-        ],
+        "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "helm all major dependency updates",
-        "groupSlug": "helm-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
-        "matchManagers": [
-          "helmv3"
-        ]
-      },
-      {
-        "enabled": true,
         "matchUpdateTypes": [
           "major"
         ],
-        "labels": [
-          "renovate",
-          "major",
-          "infrastructure",
-          "automerge"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "helm all major automerge dependency updates",
-        "groupSlug": "helm-major-automerge",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
-        "extends": [
-          ":semanticCommitTypeAll(perf)"
-        ],
+        "groupSlug": "helm-major",
         "matchManagers": [
           "helmv3"
-        ],
-        "matchSourceUrls": [
-          "https://github.com/prometheus-community/helm-charts",
-          "https://github.com/open-telemetry/opentelemetry-helm-charts"
-        ],
-        "matchPackageNames": [
-          "kube-prometheus-stack",
-          "blackbox-exporter",
-          "opentelemetry-operator"
         ]
       }
     ]
@@ -982,29 +994,23 @@
   "group-terraform-minor-helm-releases": {
     "packageRules": [
       {
-        "enabled": true,
+        "automerge": false,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "terraform all minor dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all minor dependency updates",
         "groupSlug": "terraform-minor",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
+        "matchManagers": [
+          "terraform"
         ],
         "matchDepTypes": [
           "helm_release"
-        ],
-        "matchManagers": [
-          "terraform"
         ]
       }
     ]
@@ -1012,29 +1018,23 @@
   "group-terraform-minor-modules": {
     "packageRules": [
       {
-        "enabled": true,
+        "automerge": false,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "terraform all minor dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all minor dependency updates",
         "groupSlug": "terraform-minor",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
+        "matchManagers": [
+          "terraform"
         ],
         "matchDepTypes": [
           "module"
-        ],
-        "matchManagers": [
-          "terraform"
         ]
       },
       {
@@ -1050,29 +1050,23 @@
         ]
       },
       {
-        "enabled": true,
+        "automerge": false,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "terraform-monorepo all minor dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform-monorepo all minor dependency updates",
         "groupSlug": "terraform-monorepo-minor",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
+        "matchManagers": [
+          "custom.regex"
         ],
         "matchDepTypes": [
           "terraform-manager-git-monorepo"
-        ],
-        "matchManagers": [
-          "custom.regex"
         ],
         "matchSourceUrls": [
           "https://gitlab.kilic.dev/**"
@@ -1083,55 +1077,24 @@
   "group-terraform-minor-providers": {
     "packageRules": [
       {
-        "enabled": true,
+        "automerge": false,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "terraform all minor dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all minor dependency updates",
         "groupSlug": "terraform-minor",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
-        ],
-        "matchDepTypes": [
-          "provider"
-        ],
         "matchManagers": [
           "terraform"
-        ]
-      },
-      {
-        "enabled": true,
-        "matchUpdateTypes": [
-          "minor",
-          "patch"
-        ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all minor dependency updates",
-        "groupSlug": "terraform-minor",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
         ],
         "matchDepTypes": [
+          "provider",
           "required_provider"
-        ],
-        "matchManagers": [
-          "terraform"
         ]
       },
       {
@@ -1148,56 +1111,44 @@
   "group-terraform-major": {
     "packageRules": [
       {
-        "enabled": true,
+        "automerge": false,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "terraform all major dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(perf)"
+        ],
         "matchUpdateTypes": [
           "major"
         ],
-        "labels": [
-          "renovate",
-          "major",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all major dependency updates",
         "groupSlug": "terraform-major",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(perf)"
+        "matchManagers": [
+          "terraform"
         ],
         "matchDepTypes": [
           "helm_release",
           "provider",
           "required_provider",
           "module"
-        ],
-        "matchManagers": [
-          "terraform"
         ]
       },
       {
-        "enabled": true,
-        "matchUpdateTypes": [
-          "major"
-        ],
-        "labels": [
-          "renovate",
-          "major",
-          "infrastructure"
-        ],
+        "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "terraform-monorepo all major dependency updates",
-        "groupSlug": "terraform-monorepo-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
-        "matchDepTypes": [
-          "terraform-manager-git-monorepo"
+        "matchUpdateTypes": [
+          "major"
         ],
+        "groupSlug": "terraform-monorepo-major",
         "matchManagers": [
           "custom.regex"
+        ],
+        "matchDepTypes": [
+          "terraform-manager-git-monorepo"
         ],
         "matchSourceUrls": [
           "https://gitlab.kilic.dev/**"
@@ -1213,9 +1164,7 @@
         ],
         "groupName": "ansible-galaxy all minor dependency updates",
         "groupSlug": "ansible-galaxy-minor",
-        "labels": [
-          "renovate",
-          "minor",
+        "addLabels": [
           "automerge"
         ],
         "automerge": true,
@@ -1263,11 +1212,8 @@
           "pin",
           "digest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "automerge",
-          "pipelines"
+        "addLabels": [
+          "automerge"
         ],
         "automerge": true,
         "matchManagers": [
@@ -1298,11 +1244,8 @@
           "pin",
           "digest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "automerge",
-          "pipelines"
+        "addLabels": [
+          "automerge"
         ],
         "automerge": true,
         "matchManagers": [
@@ -1332,7 +1275,13 @@
   "group-argocd-minor": {
     "packageRules": [
       {
-        "enabled": true,
+        "automerge": false,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "argocd all minor dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch",
@@ -1340,25 +1289,19 @@
           "digest",
           "pinDigest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "argocd all minor dependency updates",
         "groupSlug": "argocd-minor",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
-        ],
         "matchManagers": [
           "argocd"
         ]
       },
       {
-        "enabled": true,
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "argocd all minor automerge dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
         "matchUpdateTypes": [
           "minor",
           "patch",
@@ -1366,26 +1309,16 @@
           "digest",
           "pinDigest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
-          "infrastructure",
-          "automerge"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "argocd all minor automerge dependency updates",
         "groupSlug": "argocd-minor-automerge",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
-        "extends": [
-          ":semanticCommitTypeAll(feat)"
-        ],
         "matchManagers": [
           "argocd"
         ],
         "matchPackageNames": [
           "git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git",
           "git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git"
+        ],
+        "addLabels": [
+          "automerge"
         ]
       }
     ]
@@ -1393,52 +1326,19 @@
   "group-argocd-major": {
     "packageRules": [
       {
-        "enabled": true,
-        "matchUpdateTypes": [
-          "major"
-        ],
-        "labels": [
-          "renovate",
-          "major",
-          "infrastructure"
-        ],
+        "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "argocd all major dependency updates",
-        "groupSlug": "argocd-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
-        "matchManagers": [
-          "argocd"
-        ]
-      },
-      {
-        "enabled": true,
         "matchUpdateTypes": [
           "major"
         ],
-        "labels": [
-          "renovate",
-          "major",
-          "infrastructure",
-          "automerge"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "argocd all major automerge dependency updates",
-        "groupSlug": "argocd-major-automerge",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
-        "extends": [
-          ":semanticCommitTypeAll(perf)"
-        ],
+        "groupSlug": "argocd-major",
         "matchManagers": [
           "argocd"
-        ],
-        "matchPackageNames": [
-          "git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git",
-          "git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git"
         ]
       }
     ]
@@ -1455,17 +1355,17 @@
         ]
       },
       {
-        "matchPackageNames": [
-          "node",
-          "npm",
-          "pnpm",
-          "yarn"
-        ],
         "matchManagers": [
           "npm"
         ],
         "matchDepTypes": [
           "engines"
+        ],
+        "matchPackageNames": [
+          "node",
+          "npm",
+          "pnpm",
+          "yarn"
         ],
         "enabled": false
       }
@@ -1473,6 +1373,26 @@
   },
   "ring-node-slow": {
     "packageRules": [
+      {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchPackageNames": [
+          "/^@typescript-eslint//",
+          "/jest/",
+          "/@types/jest/",
+          "/^@types/node$/",
+          "/^eslint$/",
+          "/^husky$/",
+          "/^prettier$/",
+          "/^lint-staged$/",
+          "/^cz-conventional-changelog$/",
+          "/^simple-git-hooks$/"
+        ],
+        "addLabels": [
+          "ring:slow"
+        ]
+      },
       {
         "matchPackageNames": [
           "/^@typescript-eslint//",
@@ -1487,7 +1407,7 @@
           "/^simple-git-hooks$/"
         ],
         "groupName": "node slow ring",
-        "groupSlug": "slow-ring-weekly",
+        "groupSlug": "node-slow-ring",
         "schedule": [
           "before 1am on Monday"
         ],
@@ -1500,14 +1420,20 @@
   "ring-node-fast": {
     "packageRules": [
       {
+        "matchManagers": [
+          "npm"
+        ],
         "matchPackageNames": [
           "/^@cenk1cenk2//",
           "/listr2/",
           "/^@cenk1cenk2-.*//",
           "/^@kilic.dev//"
         ],
-        "groupName": "node fast ring minor dependencies",
-        "groupSlug": "fast-ring",
+        "addLabels": [
+          "ring:fast"
+        ]
+      },
+      {
         "matchDepTypes": [
           "dependencies"
         ],
@@ -1517,28 +1443,26 @@
           "pin",
           "digest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
+        "addLabels": [
           "automerge"
         ],
         "automerge": true,
         "matchManagers": [
           "npm"
         ],
-        "schedule": [
-          "at any time"
-        ]
-      },
-      {
         "matchPackageNames": [
           "/^@cenk1cenk2//",
           "/listr2/",
           "/^@cenk1cenk2-.*//",
           "/^@kilic.dev//"
         ],
-        "groupName": "node fast ring dev dependencies",
-        "groupSlug": "fast-ring-dev",
+        "groupName": "node fast ring minor dependencies",
+        "groupSlug": "node-fast-ring",
+        "schedule": [
+          "at any time"
+        ]
+      },
+      {
         "matchDepTypes": [
           "devDependencies"
         ],
@@ -1549,20 +1473,46 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
-        "labels": [
-          "renovate",
-          "dev-deps",
+        "addLabels": [
+          "dep:dev",
           "automerge"
         ],
         "automerge": true,
         "matchManagers": [
           "npm"
         ],
+        "matchPackageNames": [
+          "/^@cenk1cenk2//",
+          "/listr2/",
+          "/^@cenk1cenk2-.*//",
+          "/^@kilic.dev//"
+        ],
+        "groupName": "node fast ring dev dependencies",
+        "groupSlug": "node-fast-ring-dev",
         "schedule": [
           "at any time"
         ]
       },
       {
+        "matchDepTypes": [
+          "peerDependencies",
+          "optionalDependencies"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "commitMessageSuffix": "[skip ci]",
+        "addLabels": [
+          "dep:peer",
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "npm"
+        ],
         "matchPackageNames": [
           "/^@cenk1cenk2//",
           "/listr2/",
@@ -1570,22 +1520,7 @@
           "/^@kilic.dev//"
         ],
         "groupName": "node fast ring peer dependencies",
-        "groupSlug": "fast-ring-peer",
-        "matchDepTypes": [
-          "peerDependencies",
-          "optionalDependencies"
-        ],
-        "rangeStrategy": "widen",
-        "commitMessageSuffix": "[skip ci]",
-        "labels": [
-          "renovate",
-          "peer-deps",
-          "automerge"
-        ],
-        "automerge": true,
-        "matchManagers": [
-          "npm"
-        ],
+        "groupSlug": "node-fast-ring-peer",
         "schedule": [
           "at any time"
         ]
@@ -1595,11 +1530,22 @@
   "ring-go-slow": {
     "packageRules": [
       {
+        "matchManagers": [
+          "gomod"
+        ],
+        "matchPackageNames": [
+          "/^golang.org/x//"
+        ],
+        "addLabels": [
+          "ring:slow"
+        ]
+      },
+      {
         "matchPackageNames": [
           "/^golang.org/x//"
         ],
         "groupName": "go slow ring",
-        "groupSlug": "slow-ring-weekly",
+        "groupSlug": "go-slow-ring",
         "schedule": [
           "before 1am on Monday"
         ],
@@ -1612,25 +1558,34 @@
   "ring-go-fast": {
     "packageRules": [
       {
+        "matchManagers": [
+          "gomod"
+        ],
         "matchPackageNames": [
           "/^gitlab.kilic.dev//"
         ],
-        "groupName": "go fast ring minor dependencies",
-        "groupSlug": "fast-ring",
+        "addLabels": [
+          "ring:fast"
+        ]
+      },
+      {
         "matchUpdateTypes": [
           "minor",
           "patch",
           "digest"
         ],
-        "labels": [
-          "renovate",
-          "minor",
+        "addLabels": [
           "automerge"
         ],
         "automerge": true,
         "matchManagers": [
           "gomod"
         ],
+        "matchPackageNames": [
+          "/^gitlab.kilic.dev//"
+        ],
+        "groupName": "go fast ring minor dependencies",
+        "groupSlug": "go-fast-ring",
         "schedule": [
           "at any time"
         ]

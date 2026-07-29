@@ -1,7 +1,11 @@
+import type { RenovateConfig } from 'renovate/dist/config/types.js'
+
 import { Labels } from '@constants'
 import { createPreset } from '@lib'
 import { Managers } from '@managers'
 
+// Per-manager config blocks are keyed by manager name and are valid at runtime, but renovate does not
+// surface that shape on the public `RenovateConfig` type — hence the cast.
 export default createPreset({
   enabledManagers: [Managers.KUBERNETES],
   [Managers.KUBERNETES]: {
@@ -18,7 +22,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.KUBERNETES],
-      addLabels: [Labels.KUBERNETES]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_KUBERNETES, Labels.AREA_INFRASTRUCTURE]
     }
   ]
-})
+} as RenovateConfig)

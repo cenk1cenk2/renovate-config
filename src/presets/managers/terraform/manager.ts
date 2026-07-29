@@ -13,16 +13,17 @@ export default createPreset({
     Preset.GROUP_TERRAFORM_MINOR_MODULES,
     Preset.GROUP_TERRAFORM_MAJOR
   ),
-  schedule: [SCHEDULE.ANY],
   packageRules: [
     {
       matchManagers: [Managers.TERRAFORM],
-      addLabels: [Labels.TERRAFORM]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_TERRAFORM, Labels.AREA_INFRASTRUCTURE],
+      schedule: [SCHEDULE.ANY]
     },
     {
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
-      addLabels: [Labels.TERRAFORM]
+      addLabels: [Labels.RENOVATE, Labels.MANAGER_TERRAFORM, Labels.AREA_INFRASTRUCTURE],
+      schedule: [SCHEDULE.ANY]
     }
   ]
 })
