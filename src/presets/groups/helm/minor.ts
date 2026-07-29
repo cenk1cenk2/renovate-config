@@ -7,17 +7,17 @@ export default createPreset({
     createMultiDirectoryGroupRule({
       name: 'helm',
       updateType: 'minor',
-      slug: Groups.HELM_MINOR,
-      managers: [Managers.HELM]
+      groupSlug: Groups.HELM_MINOR,
+      matchManagers: [Managers.HELM]
     }),
     createMultiDirectoryGroupRule({
       name: 'helm',
       updateType: 'minor',
-      slug: Groups.HELM_MINOR_AUTOMERGE,
-      managers: [Managers.HELM],
+      groupSlug: Groups.HELM_MINOR_AUTOMERGE,
+      matchManagers: [Managers.HELM],
       automerge: true,
-      sourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/open-telemetry/opentelemetry-helm-charts'],
-      packageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
+      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/open-telemetry/opentelemetry-helm-charts'],
+      matchPackageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
     })
   ]
 })

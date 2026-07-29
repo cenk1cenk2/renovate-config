@@ -7,16 +7,16 @@ export default createPreset({
     createMultiDirectoryGroupRule({
       name: 'argocd',
       updateType: 'major',
-      slug: Groups.ARGOCD_MAJOR,
-      managers: [Managers.ARGOCD]
+      groupSlug: Groups.ARGOCD_MAJOR,
+      matchManagers: [Managers.ARGOCD]
     }),
     createMultiDirectoryGroupRule({
       name: 'argocd',
       updateType: 'major',
-      slug: Groups.ARGOCD_MAJOR_AUTOMERGE,
-      managers: [Managers.ARGOCD],
+      groupSlug: Groups.ARGOCD_MAJOR_AUTOMERGE,
+      matchManagers: [Managers.ARGOCD],
       automerge: true,
-      packageNames: ['git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git']
+      matchPackageNames: ['git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git']
     })
   ]
 })

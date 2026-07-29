@@ -781,18 +781,18 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "kustomize all minor dependency updates",
-        "groupSlug": "kustomize-minor",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "kustomize-minor",
         "matchManagers": [
           "kustomize"
         ],
@@ -802,18 +802,18 @@
       },
       {
         "enabled": true,
+        "automerge": true,
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "kustomize all minor automerge dependency updates",
-        "groupSlug": "kustomize-minor-automerge",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "kustomize-minor-automerge",
         "matchManagers": [
           "kustomize"
         ],
@@ -840,17 +840,17 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "major"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "kustomize all major dependency updates",
-        "groupSlug": "kustomize-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
+        "groupSlug": "kustomize-major",
         "matchManagers": [
           "kustomize"
         ],
@@ -860,17 +860,17 @@
       },
       {
         "enabled": true,
+        "automerge": true,
         "matchUpdateTypes": [
           "major"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "kustomize all major automerge dependency updates",
-        "groupSlug": "kustomize-major-automerge",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
+        "groupSlug": "kustomize-major-automerge",
         "matchManagers": [
           "kustomize"
         ],
@@ -897,36 +897,36 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "helm all minor dependency updates",
-        "groupSlug": "helm-minor",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "helm-minor",
         "matchManagers": [
           "helmv3"
         ]
       },
       {
         "enabled": true,
+        "automerge": true,
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "helm all minor automerge dependency updates",
-        "groupSlug": "helm-minor-automerge",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "helm-minor-automerge",
         "matchManagers": [
           "helmv3"
         ],
@@ -949,34 +949,34 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "major"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "helm all major dependency updates",
-        "groupSlug": "helm-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
+        "groupSlug": "helm-major",
         "matchManagers": [
           "helmv3"
         ]
       },
       {
         "enabled": true,
+        "automerge": true,
         "matchUpdateTypes": [
           "major"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "helm all major automerge dependency updates",
-        "groupSlug": "helm-major-automerge",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
+        "groupSlug": "helm-major-automerge",
         "matchManagers": [
           "helmv3"
         ],
@@ -999,18 +999,18 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "terraform all minor dependency updates",
-        "groupSlug": "terraform-minor",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "terraform-minor",
         "matchManagers": [
           "terraform"
         ],
@@ -1024,18 +1024,18 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "terraform all minor dependency updates",
-        "groupSlug": "terraform-minor",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "terraform-minor",
         "matchManagers": [
           "terraform"
         ],
@@ -1057,18 +1057,18 @@
       },
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "terraform-monorepo all minor dependency updates",
-        "groupSlug": "terraform-monorepo-minor",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "terraform-monorepo-minor",
         "matchManagers": [
           "custom.regex"
         ],
@@ -1085,18 +1085,18 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "minor",
           "patch"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "terraform all minor dependency updates",
-        "groupSlug": "terraform-minor",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "terraform-minor",
         "matchManagers": [
           "terraform"
         ],
@@ -1120,17 +1120,17 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "major"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "terraform all major dependency updates",
-        "groupSlug": "terraform-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
+        "groupSlug": "terraform-major",
         "matchManagers": [
           "terraform"
         ],
@@ -1143,17 +1143,17 @@
       },
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "major"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "terraform-monorepo all major dependency updates",
-        "groupSlug": "terraform-monorepo-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
+        "groupSlug": "terraform-monorepo-major",
         "matchManagers": [
           "custom.regex"
         ],
@@ -1286,6 +1286,7 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "minor",
           "patch",
@@ -1295,18 +1296,18 @@
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "argocd all minor dependency updates",
-        "groupSlug": "argocd-minor",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "argocd-minor",
         "matchManagers": [
           "argocd"
         ]
       },
       {
         "enabled": true,
+        "automerge": true,
         "matchUpdateTypes": [
           "minor",
           "patch",
@@ -1316,12 +1317,11 @@
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "argocd all minor automerge dependency updates",
-        "groupSlug": "argocd-minor-automerge",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
+        "groupSlug": "argocd-minor-automerge",
         "matchManagers": [
           "argocd"
         ],
@@ -1339,34 +1339,34 @@
     "packageRules": [
       {
         "enabled": true,
+        "automerge": false,
         "matchUpdateTypes": [
           "major"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "argocd all major dependency updates",
-        "groupSlug": "argocd-major",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": false,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
+        "groupSlug": "argocd-major",
         "matchManagers": [
           "argocd"
         ]
       },
       {
         "enabled": true,
+        "automerge": true,
         "matchUpdateTypes": [
           "major"
         ],
         "additionalBranchPrefix": "{{packageFileDir}}-",
         "groupName": "argocd all major automerge dependency updates",
-        "groupSlug": "argocd-major-automerge",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "automerge": true,
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
+        "groupSlug": "argocd-major-automerge",
         "matchManagers": [
           "argocd"
         ],

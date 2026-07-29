@@ -8,9 +8,9 @@ export default createPreset({
     createMultiDirectoryGroupRule({
       name: 'terraform',
       updateType: 'minor',
-      slug: Groups.TERRAFORM_MINOR,
-      managers: [Managers.TERRAFORM],
-      depTypes: ['module']
+      groupSlug: Groups.TERRAFORM_MINOR,
+      matchManagers: [Managers.TERRAFORM],
+      matchDepTypes: ['module']
     }),
     // In-house modules are resolved through the custom manager below, not the terraform manager.
     {
@@ -22,10 +22,10 @@ export default createPreset({
     createMultiDirectoryGroupRule({
       name: 'terraform-monorepo',
       updateType: 'minor',
-      slug: Groups.TERRAFORM_MONOREPO_MINOR,
-      managers: [Managers.REGEX],
-      depTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
-      sourceUrls: ['https://gitlab.kilic.dev/**']
+      groupSlug: Groups.TERRAFORM_MONOREPO_MINOR,
+      matchManagers: [Managers.REGEX],
+      matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
+      matchSourceUrls: ['https://gitlab.kilic.dev/**']
     })
   ]
 })

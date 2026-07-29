@@ -7,9 +7,9 @@ export default createPreset({
     createMultiDirectoryGroupRule({
       name: 'terraform',
       updateType: 'minor',
-      slug: Groups.TERRAFORM_MINOR,
-      managers: [Managers.TERRAFORM],
-      depTypes: ['provider', 'required_provider']
+      groupSlug: Groups.TERRAFORM_MINOR,
+      matchManagers: [Managers.TERRAFORM],
+      matchDepTypes: ['provider', 'required_provider']
     }),
     {
       matchManagers: [Managers.TERRAFORM],

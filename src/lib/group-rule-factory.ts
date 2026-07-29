@@ -1,20 +1,10 @@
 import type { PackageRule } from 'renovate/dist/config/types.js'
 
 import { Labels } from '@constants'
-import type { Groups } from '@groups'
-import type { Managers } from '@managers'
 
-export interface MultiDirectoryGroupRule {
+export interface MultiDirectoryGroupRule extends PackageRule {
   name: string
   updateType: 'minor' | 'major'
-  slug: Groups
-  managers: Managers[]
-  automerge?: boolean
-  updateTypes?: PackageRule['matchUpdateTypes']
-  depTypes?: string[]
-  sourceUrls?: string[]
-  packageNames?: string[]
-  labels?: Labels[]
 }
 
 const MATCH_UPDATE_TYPES: Record<MultiDirectoryGroupRule['updateType'], PackageRule['matchUpdateTypes']> = {
@@ -29,23 +19,20 @@ const SEMANTIC_COMMIT_TYPES: Record<MultiDirectoryGroupRule['updateType'], strin
 
 // Multi-directory managers (argocd, helm, kustomize, terraform) resolve the same dependency once per
 // package file, so every rule has to disambiguate the branch and the commit message by directory.
-export function createMultiDirectoryGroupRule(rule: MultiDirectoryGroupRule): PackageRule {
-  const { name, updateType, slug, managers, automerge = false, updateTypes, depTypes, sourceUrls, packageNames, labels = [] } = rule
-  const addLabels = [...(automerge ? [Labels.AUTOMERGE] : []), ...labels]
+// Everything past `name` and `updateType` is an ordinary PackageRule and passes straight through, so
+// callers keep renovate's own vocabulary and can override any derived field.
+export function createMultiDirectoryGroupRule({ name, updateType, ...rule }: MultiDirectoryGroupRule): PackageRule {
+  const addLabels = [...(rule.automerge ? [Labels.AUTOMERGE] : []), ...(rule.addLabels ?? [])]
 
   return {
     enabled: true,
-    matchUpdateTypes: updateTypes ?? MATCH_UPDATE_TYPES[updateType],
+    automerge: false,
+    matchUpdateTypes: MATCH_UPDATE_TYPES[updateType],
     additionalBranchPrefix: '{{packageFileDir}}-',
-    groupName: `${name} all ${updateType}${automerge ? ' automerge' : ''} dependency updates`,
-    groupSlug: slug,
+    groupName: `${name} all ${updateType}${rule.automerge ? ' automerge' : ''} dependency updates`,
     commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-    automerge,
     extends: [`:semanticCommitTypeAll(${SEMANTIC_COMMIT_TYPES[updateType]})`],
-    matchManagers: managers,
-    ...(depTypes && { matchDepTypes: depTypes }),
-    ...(sourceUrls && { matchSourceUrls: sourceUrls }),
-    ...(packageNames && { matchPackageNames: packageNames }),
+    ...rule,
     ...(addLabels.length > 0 && { addLabels })
   }
 }

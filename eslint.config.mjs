@@ -5,6 +5,6 @@ export default [
   ...configs['typescript-dynamic'],
   ...utils.configImportGroup({ tsconfigDir: import.meta.dirname, tsconfig: 'tsconfig.json' }),
   {
-    ignores: ['tsdown.config.ts', '/bin/**']
+    ignores: ['tsdown.config.ts', 'vitest.config.ts', '/bin/**']
   }
 ]
