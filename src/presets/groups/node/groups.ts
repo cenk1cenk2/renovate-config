@@ -89,7 +89,9 @@ export const NODE_DOCS_PACKAGES = ['typedoc', 'typedoc-plugin-markdown', '/^vite
 // `dep:` values on one merge request permanently.
 export const NODE_DEV_CLAIMED_PACKAGES = [...NODE_BUILD_PACKAGES, ...NODE_DOCS_PACKAGES, ...PACKAGE_MANAGERS]
 
-export const NODE_DEV_PACKAGES = ['*', ...NODE_DEV_CLAIMED_PACKAGES.map((name) => `!${name}`)]
+// A list of only `!`-negations already means "everything except" in renovate's `matchRegexOrGlobList`
+// (an empty positive set matches all), so a leading `*` would be redundant.
+export const NODE_DEV_PACKAGES = NODE_DEV_CLAIMED_PACKAGES.map((name) => `!${name}`)
 
 // Unbounded so a major bump still lands in the group; the automerge rule below re-enables merging for
 // the non-breaking update types only.

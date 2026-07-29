@@ -607,7 +607,6 @@
           "npm"
         ],
         "matchPackageNames": [
-          "*",
           "!typescript",
           "!tsup",
           "!tsdown",
