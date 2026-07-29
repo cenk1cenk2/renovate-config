@@ -64,8 +64,7 @@
           "pin",
           "digest",
           "pinDigest",
-          "bump",
-          "lockfileUpdate"
+          "bump"
         ],
         "addLabels": [
           "update:minor"
@@ -712,12 +711,6 @@
         "matchManagers": [
           "npm"
         ],
-        "matchUpdateTypes": [
-          "minor",
-          "patch",
-          "pin",
-          "digest"
-        ],
         "matchDepNames": [
           "pnpm",
           "yarn",
@@ -725,16 +718,36 @@
           "bun"
         ],
         "addLabels": [
-          "dep:package-manager",
-          "automerge"
+          "dep:package-manager"
         ],
         "commitMessageSuffix": "[skip ci]",
-        "automerge": true,
+        "automerge": false,
         "groupName": "node all package manager",
         "groupSlug": "node-package-manager",
         "schedule": [
           "at any time"
         ]
+      },
+      {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchDepNames": [
+          "pnpm",
+          "yarn",
+          "npm",
+          "bun"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "addLabels": [
+          "automerge"
+        ],
+        "automerge": true
       },
       {
         "matchManagers": [
@@ -786,7 +799,6 @@
         ],
         "groupName": "node all peer dependency updates",
         "groupSlug": "node-peer",
-        "enabled": false,
         "schedule": [
           "at any time"
         ]
@@ -799,7 +811,8 @@
           "peerDependencies",
           "optionalDependencies"
         ],
-        "rangeStrategy": "widen"
+        "rangeStrategy": "widen",
+        "enabled": false
       }
     ]
   },

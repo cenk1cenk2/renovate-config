@@ -10,9 +10,13 @@ export default createPreset({
       matchPackageNames: ['*'],
       groupName: 'node all peer dependency updates',
       groupSlug: Groups.NODE_PEER,
-      enabled: false,
       schedule: [SCHEDULE.ANY]
     },
-    NODE_RANGE_PEER
+    // The disable rides on the unbounded rule so it also covers major updates and the pre-lookup stage,
+    // where `updateType` is undefined and an update-type-bounded rule would not match.
+    {
+      ...NODE_RANGE_PEER,
+      enabled: false
+    }
   ]
 })

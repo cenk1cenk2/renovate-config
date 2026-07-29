@@ -86,7 +86,9 @@ describe('update axis', () => {
   }
 
   // `rollback` is intentionally absent: `rollbackPrs` defaults to false and is never enabled here.
-  for (const updateType of ['minor', 'patch', 'pin', 'digest', 'pinDigest', 'bump', 'lockfileUpdate']) {
+  // `lockfileUpdate` is absent too — it exists in renovate's internal UpdateType union but not in the
+  // `allowedValues` for `matchUpdateTypes`, so matching on it is dead config.
+  for (const updateType of ['minor', 'patch', 'pin', 'digest', 'pinDigest', 'bump']) {
     it(`labels ${updateType} as a minor update`, () => {
       expect(labelFor(updateType)).toEqual([Labels.UPDATE_MINOR])
     })
@@ -198,6 +200,24 @@ describe('rule validity', () => {
     const offenders = allPackageRules.flatMap(([name, rule]) => (rule.matchUpdateTypes ? PRE_LOOKUP.filter((option) => rule[option] !== undefined).map((option) => `${name}.${option}`) : []))
 
     expect(offenders).toEqual([])
+  })
+
+  it('never bounds a disable by update type', () => {
+    // A rule that disables while matching update types leaves every other update type enabled, and does
+    // not match at all at the pre-lookup stage where `updateType` is still undefined.
+    const offenders = allPackageRules.filter(([, rule]) => rule.enabled === false && rule.matchUpdateTypes).map(([name]) => name)
+
+    expect(offenders).toEqual([])
+  })
+
+  it('keeps peer and optional dependencies disabled', () => {
+    const disables = allPackageRules.filter(([, rule]) => rule.enabled === false && rule.matchDepTypes?.includes('peerDependencies'))
+
+    expect(disables.length, 'peer dependencies must be disabled by an unbounded rule').toBeGreaterThan(0)
+
+    for (const [name, rule] of disables) {
+      expect(rule.matchDepTypes, name).toContain('optionalDependencies')
+    }
   })
 
   it('never writes an empty matcher array', () => {

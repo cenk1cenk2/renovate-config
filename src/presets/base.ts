@@ -13,7 +13,7 @@ export default createBasePreset({
     // The update axis is assigned once here so no downstream rule has to restate it. `rollback` is left
     // uncovered on purpose: `rollbackPrs` defaults to false and this config never enables it.
     {
-      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest', 'pinDigest', 'bump', 'lockfileUpdate'],
+      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest', 'pinDigest', 'bump'],
       addLabels: [Labels.UPDATE_MINOR]
     },
     {

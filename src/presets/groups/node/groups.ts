@@ -51,6 +51,9 @@ export const NODE_GROUP_PEER: PackageRule = {
   matchManagers: [Managers.NODE]
 }
 
+// Deliberately unbounded by update type. A rule carrying `matchUpdateTypes` does not match at the
+// pre-lookup stage, where `updateType` is still undefined and `rangeStrategy` is consumed — and it
+// would leave major updates un-disabled.
 export const NODE_RANGE_PEER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepTypes: ['peerDependencies', 'optionalDependencies'],
@@ -88,12 +91,21 @@ export const NODE_DEV_CLAIMED_PACKAGES = [...NODE_BUILD_PACKAGES, ...NODE_DOCS_P
 
 export const NODE_DEV_PACKAGES = ['*', ...NODE_DEV_CLAIMED_PACKAGES.map((name) => `!${name}`)]
 
+// Unbounded so a major bump still lands in the group; the automerge rule below re-enables merging for
+// the non-breaking update types only.
 export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
-  matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   matchDepNames: PACKAGE_MANAGERS,
-  addLabels: [Labels.DEP_PACKAGE_MANAGER, Labels.AUTOMERGE],
+  addLabels: [Labels.DEP_PACKAGE_MANAGER],
   commitMessageSuffix: '[skip ci]',
+  automerge: false
+}
+
+export const NODE_AUTOMERGE_PACKAGE_MANAGER: PackageRule = {
+  matchManagers: [Managers.NODE],
+  matchDepNames: PACKAGE_MANAGERS,
+  matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
+  addLabels: [Labels.AUTOMERGE],
   automerge: true
 }
 
