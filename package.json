@@ -22,6 +22,8 @@
     "dev:start": "tsdown --watch src/",
     "format": "prettier --log-level warn --write ./ && eslint --fix ./src",
     "lint": "eslint ./src",
+    "typecheck": "tsc --noEmit -p tsconfig.test.json",
+    "test": "tsx --test test/**/*.test.ts",
     "manifest": "oclif manifest"
   },
   "simple-git-hooks": {

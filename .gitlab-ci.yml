@@ -42,11 +42,26 @@ build:
       - dist/**
       - oclif.manifest.json
 
+typecheck:
+  stage: build
+  extends: .node-run
+  variables:
+    NODE_COMMAND_SCRIPT: typecheck
+
+test:
+  stage: build
+  extends: .node-run
+  variables:
+    NODE_COMMAND_SCRIPT: test
+
 generate:
   extends: .node-run
   stage: generate
   variables:
     NODE_COMMAND_SCRIPT: start
+  script:
+    - pipe run
+    - git diff --exit-code default.json
   artifacts:
     paths:
       - default.json
