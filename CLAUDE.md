@@ -33,7 +33,7 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 - Conventional commits: `feat` for features, `fix` for fixes, `build(deps)` for dependency updates
 - **Object spreads go first, explicit keys after** — `{ ...NODE_GROUP_DEV, groupName, groupSlug, schedule }`. A shared constant must never be able to silently clobber a local key.
 - **Field patterns** — two shapes:
-  - **Pattern M** (multi-directory: argocd, helm, kustomize, terraform): produced by `createMultiDirectoryGroupRule()` from `@lib`, which derives `additionalBranchPrefix: '{{packageFileDir}}-'`, `commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]'`, the `groupName`, the semantic commit type and the automerge label. Do not hand-write these rules — pass `name` / `updateType` / `slug` / `managers` and the optional matchers to the factory. `schedule` lives on the manager preset's own `matchManagers` rule.
+  - **Pattern M** (multi-directory: argocd, helm, kustomize, terraform): produced by `createMultiDirectoryGroupRule()` from `@lib`, which derives `additionalBranchPrefix: '{{packageFileDir}}-'`, `commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]'`, the `groupName`, the semantic commit type and the automerge label. Do not hand-write these rules — pass `name` and `updateType`; everything else is an ordinary `PackageRule` spread straight through, so call sites use renovate's own field names (`matchManagers`, `matchDepTypes`, `groupSlug`) and can override any derived field by passing it. `schedule` lives on the manager preset's own `matchManagers` rule.
   - **Pattern S** (single-directory: node, go, gitlab-ci, ansible-galaxy, otel-builder, docker-datasource): no `additionalBranchPrefix`, no `commitMessageExtra`; per-rule `schedule`.
 - **Never put `schedule` at the top level of a preset.** Top-level fields are non-mergeable and apply globally to the assembled config — the last extended preset that sets one wins for every dependency. Scope it to a `packageRules` entry instead.
 
@@ -48,7 +48,7 @@ Every manager that supports automerge follows the same two-rule pattern in its g
 1. **Catch-all rule** — matches all packages for the manager/update-type, `automerge: false`
 2. **Automerge rule** — matches specific packages via `matchSourceUrls` and/or `matchPackageNames`, `automerge: true`. For Pattern M the factory attaches `Labels.AUTOMERGE` automatically whenever `automerge: true`; Pattern S rules add it by hand.
 
-To enable automerge for a new package, add its source URL to `matchSourceUrls` and package name to `matchPackageNames` in the automerge rule of both the minor and major group files for the relevant manager.
+To enable automerge for a new package, add its source URL to `matchSourceUrls` and package name to `matchPackageNames` in the automerge rule of the **minor** group file for the relevant manager. There is no major equivalent, by policy.
 
 **Managers with automerge rules:**
 
