@@ -1,5 +1,4 @@
-import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO } from './custom-manager.js'
-import { Labels, SCHEDULE } from '@constants'
+import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO, Labels, SCHEDULE } from '@constants'
 import { createPreset, createScopes } from '@lib'
 import { Managers } from '@managers'
 import { Preset } from '@presets'
@@ -13,16 +12,17 @@ export default createPreset({
     Preset.GROUP_TERRAFORM_MINOR_MODULES,
     Preset.GROUP_TERRAFORM_MAJOR
   ),
-  schedule: [SCHEDULE.ANY],
   packageRules: [
     {
       matchManagers: [Managers.TERRAFORM],
-      addLabels: [Labels.TERRAFORM]
+      addLabels: [Labels.MANAGER_TERRAFORM, Labels.AREA_INFRASTRUCTURE],
+      schedule: [SCHEDULE.ANY]
     },
     {
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
-      addLabels: [Labels.TERRAFORM]
+      addLabels: [Labels.MANAGER_TERRAFORM, Labels.AREA_INFRASTRUCTURE],
+      schedule: [SCHEDULE.ANY]
     }
   ]
 })

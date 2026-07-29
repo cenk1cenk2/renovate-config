@@ -1,37 +1,25 @@
-import { Labels } from '@constants'
 import { Groups } from '@groups'
-import { createPreset } from '@lib'
+import { createMultiDirectoryGroupRule, createPreset } from '@lib'
 import { Managers } from '@managers'
 
 export default createPreset({
   packageRules: [
-    {
-      enabled: true,
-      matchUpdateTypes: ['major'],
-      labels: [Labels.RENOVATE, Labels.MAJOR, Labels.INFRASTRUCTURE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'kustomize all major dependency updates',
-      groupSlug: Groups.KUSTOMIZE_MAJOR,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-      automerge: false,
-      extends: [':semanticCommitTypeAll(perf)'],
-      matchDepTypes: ['HelmChart'],
-      matchManagers: [Managers.KUSTOMIZE]
-    },
-    {
-      enabled: true,
-      matchUpdateTypes: ['major'],
-      labels: [Labels.RENOVATE, Labels.MAJOR, Labels.INFRASTRUCTURE, Labels.AUTOMERGE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'kustomize all major automerge dependency updates',
-      groupSlug: Groups.KUSTOMIZE_MAJOR_AUTOMERGE,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
+    createMultiDirectoryGroupRule({
+      name: 'kustomize',
+      updateType: 'major',
+      slug: Groups.KUSTOMIZE_MAJOR,
+      managers: [Managers.KUSTOMIZE],
+      depTypes: ['HelmChart']
+    }),
+    createMultiDirectoryGroupRule({
+      name: 'kustomize',
+      updateType: 'major',
+      slug: Groups.KUSTOMIZE_MAJOR_AUTOMERGE,
+      managers: [Managers.KUSTOMIZE],
       automerge: true,
-      extends: [':semanticCommitTypeAll(perf)'],
-      matchDepTypes: ['HelmChart'],
-      matchManagers: [Managers.KUSTOMIZE],
-      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/grafana/helm-charts', 'https://gitlab.com/gitlab-org/charts/gitlab-runner'],
-      matchPackageNames: ['prometheus-blackbox-exporter', 'alloy', 'gitlab-runner']
-    }
+      depTypes: ['HelmChart'],
+      sourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/grafana/helm-charts', 'https://gitlab.com/gitlab-org/charts/gitlab-runner'],
+      packageNames: ['prometheus-blackbox-exporter', 'alloy', 'gitlab-runner']
+    })
   ]
 })

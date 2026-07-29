@@ -1,4 +1,5 @@
 export * from './constants.js'
+export * from './custom-managers.js'
 export * from './labels.js'
 export * from './renovate.js'
 export * from './scope.js'

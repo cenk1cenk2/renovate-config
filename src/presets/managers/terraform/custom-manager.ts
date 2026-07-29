@@ -1,6 +1,5 @@
+import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO } from '@constants'
 import { createPreset } from '@lib'
-
-export const DEP_TYPE_TERRAFORM_MANAGER_MONOREPO = 'terraform-manager-git-monorepo'
 
 export default createPreset({
   customManagers: [

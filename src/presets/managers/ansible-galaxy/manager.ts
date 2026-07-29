@@ -9,7 +9,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.ANSIBLE_GALAXY],
-      addLabels: [Labels.ANSIBLE]
+      addLabels: [Labels.MANAGER_ANSIBLE_GALAXY]
     }
   ]
 })

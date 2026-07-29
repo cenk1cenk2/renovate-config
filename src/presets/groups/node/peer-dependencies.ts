@@ -6,11 +6,11 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
+      ...NODE_GROUP_PEER,
       matchPackageNames: ['*'],
       groupName: 'node all peer dependency updates',
       groupSlug: Groups.NODE_PEER,
       enabled: false,
-      ...NODE_GROUP_PEER,
       schedule: [SCHEDULE.ANY]
     }
   ]

@@ -7,14 +7,15 @@ import { Managers } from '@managers'
 export default createPreset({
   packageRules: [
     {
+      ...NODE_GROUP_DEV,
       matchPackageNames: ['*'],
       groupName: 'node all development dependency updates',
       groupSlug: Groups.NODE_DEV,
-      ...NODE_GROUP_DEV,
       schedule: [SCHEDULE.ANY]
     },
 
     {
+      ...NODE_GROUP_BUILD,
       matchPackageNames: [
         'typescript',
         'tsup',
@@ -31,22 +32,21 @@ export default createPreset({
       ],
       groupName: 'node all build dependency updates',
       groupSlug: Groups.NODE_BUILD,
-      ...NODE_GROUP_BUILD,
       schedule: [SCHEDULE.ANY]
     },
 
     {
+      ...NODE_GROUP_DOCS,
       matchPackageNames: ['typedoc', 'typedoc-plugin-markdown', '/^vitepress/', '/^markdown-it/'],
       groupName: 'node all docs dependency updates',
       groupSlug: Groups.NODE_DOCS,
-      ...NODE_GROUP_DOCS,
       schedule: [SCHEDULE.ANY]
     },
 
     {
+      ...NODE_GROUP_PACKAGE_MANAGER,
       groupName: 'node all package manager',
       groupSlug: Groups.NODE_PACKAGE_MANAGER,
-      ...NODE_GROUP_PACKAGE_MANAGER,
       schedule: [SCHEDULE.ANY]
     },
     {

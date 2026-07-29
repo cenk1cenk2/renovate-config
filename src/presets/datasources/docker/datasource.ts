@@ -6,9 +6,13 @@ import { createPreset } from '@lib'
 export default createPreset({
   packageRules: [
     {
+      matchDatasources: [Datasources.DOCKER],
+      addLabels: [Labels.DATASOURCE_DOCKER]
+    },
+    {
       enabled: true,
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.INFRASTRUCTURE, Labels.AUTOMERGE],
+      addLabels: [Labels.AUTOMERGE],
       groupName: 'docker datasource minor dependency updates',
       groupSlug: Groups.DOCKER_MINOR,
       automerge: true,

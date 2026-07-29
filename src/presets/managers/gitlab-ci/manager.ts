@@ -1,5 +1,4 @@
-import { DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO } from './custom-manager.js'
-import { Labels } from '@constants'
+import { DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO, Labels } from '@constants'
 import { createPreset, createScopes } from '@lib'
 import { Managers } from '@managers'
 import { Preset } from '@presets'
@@ -10,12 +9,12 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.GITLAB_CI_INCLUDE, Managers.GITLAB_CI],
-      addLabels: [Labels.GITLAB_CI]
+      addLabels: [Labels.MANAGER_GITLAB_CI, Labels.AREA_PIPELINES]
     },
     {
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO],
-      addLabels: [Labels.GITLAB_CI]
+      addLabels: [Labels.MANAGER_GITLAB_CI, Labels.AREA_PIPELINES]
     }
   ]
 })

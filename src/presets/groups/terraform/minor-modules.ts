@@ -1,43 +1,31 @@
-import { Labels } from '@constants'
+import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO } from '@constants'
 import { Groups } from '@groups'
-import { createPreset } from '@lib'
+import { createMultiDirectoryGroupRule, createPreset } from '@lib'
 import { Managers } from '@managers'
-import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO } from '@presets/managers/terraform/custom-manager.js'
 
 export default createPreset({
   packageRules: [
-    {
-      enabled: true,
-      matchUpdateTypes: ['minor', 'patch'],
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.INFRASTRUCTURE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'terraform all minor dependency updates',
-      groupSlug: Groups.TERRAFORM_MINOR,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-      automerge: false,
-      extends: [':semanticCommitTypeAll(feat)'],
-      matchDepTypes: ['module'],
-      matchManagers: [Managers.TERRAFORM]
-    },
+    createMultiDirectoryGroupRule({
+      name: 'terraform',
+      updateType: 'minor',
+      slug: Groups.TERRAFORM_MINOR,
+      managers: [Managers.TERRAFORM],
+      depTypes: ['module']
+    }),
+    // In-house modules are resolved through the custom manager below, not the terraform manager.
     {
       enabled: false,
       matchDepTypes: ['module'],
       matchManagers: [Managers.TERRAFORM],
       matchSourceUrls: ['https://gitlab.kilic.dev/**']
     },
-    {
-      enabled: true,
-      matchUpdateTypes: ['minor', 'patch'],
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.INFRASTRUCTURE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'terraform-monorepo all minor dependency updates',
-      groupSlug: Groups.TERRAFORM_MONOREPO_MINOR,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-      automerge: false,
-      extends: [':semanticCommitTypeAll(feat)'],
-      matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
-      matchManagers: [Managers.REGEX],
-      matchSourceUrls: ['https://gitlab.kilic.dev/**']
-    }
+    createMultiDirectoryGroupRule({
+      name: 'terraform-monorepo',
+      updateType: 'minor',
+      slug: Groups.TERRAFORM_MONOREPO_MINOR,
+      managers: [Managers.REGEX],
+      depTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
+      sourceUrls: ['https://gitlab.kilic.dev/**']
+    })
   ]
 })

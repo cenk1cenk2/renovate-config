@@ -11,14 +11,14 @@ export default createPreset({
       groupName: 'otel-builder all minor dependency updates',
       groupSlug: Groups.OTEL_BUILDER_MINOR,
       matchUpdateTypes: ['minor', 'patch', 'digest'],
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.AUTOMERGE],
+      addLabels: [Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
       schedule: [SCHEDULE.DAILY]
     },
     {
       matchManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
-      addLabels: [Labels.OTEL_BUILDER]
+      addLabels: [Labels.MANAGER_OTEL_BUILDER]
     }
   ]
 })

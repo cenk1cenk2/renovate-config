@@ -1,5 +1,5 @@
 import { NODE_SLOW_RING_PACKAGES } from './rings.js'
-import { SCHEDULE } from '@constants'
+import { Labels, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 import { Managers } from '@managers'
 import { Rings } from '@rings'
@@ -9,7 +9,8 @@ export default createPreset({
     {
       matchPackageNames: NODE_SLOW_RING_PACKAGES,
       groupName: 'node slow ring',
-      groupSlug: Rings.SLOW_RING_WEEKLY,
+      groupSlug: Rings.NODE_SLOW,
+      addLabels: [Labels.RING_SLOW],
       schedule: [SCHEDULE.WEEKLY],
       matchManagers: [Managers.NODE]
     }

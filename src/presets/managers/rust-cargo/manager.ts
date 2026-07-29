@@ -7,7 +7,7 @@ export default createPreset({
   packageRules: [
     {
       matchManagers: [Managers.RUST_CARGO],
-      addLabels: [Labels.RUST]
+      addLabels: [Labels.MANAGER_RUST]
     }
   ]
 })

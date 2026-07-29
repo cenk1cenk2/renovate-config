@@ -9,7 +9,7 @@ export default createPreset({
       matchPackageNames: ['*'],
       groupName: 'ansible-galaxy all minor dependency updates',
       groupSlug: Groups.ANSIBLE_GALAXY_MINOR,
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.AUTOMERGE],
+      addLabels: [Labels.AUTOMERGE],
       automerge: true,
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],

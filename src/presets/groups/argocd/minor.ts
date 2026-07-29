@@ -1,34 +1,29 @@
-import { Labels } from '@constants'
 import { Groups } from '@groups'
-import { createPreset } from '@lib'
+import type { MultiDirectoryGroupRule } from '@lib'
+import { createMultiDirectoryGroupRule, createPreset } from '@lib'
 import { Managers } from '@managers'
+
+// argocd resolves git refs, so pinned digests are in scope here where the other multi-directory
+// managers only ever see semver ranges.
+const UPDATE_TYPES: MultiDirectoryGroupRule['updateTypes'] = ['minor', 'patch', 'pin', 'digest', 'pinDigest']
 
 export default createPreset({
   packageRules: [
-    {
-      enabled: true,
-      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest', 'pinDigest'],
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.INFRASTRUCTURE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'argocd all minor dependency updates',
-      groupSlug: Groups.ARGOCD_MINOR,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
-      automerge: false,
-      extends: [':semanticCommitTypeAll(feat)'],
-      matchManagers: [Managers.ARGOCD]
-    },
-    {
-      enabled: true,
-      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest', 'pinDigest'],
-      labels: [Labels.RENOVATE, Labels.MINOR, Labels.INFRASTRUCTURE, Labels.AUTOMERGE],
-      additionalBranchPrefix: '{{packageFileDir}}-',
-      groupName: 'argocd all minor automerge dependency updates',
-      groupSlug: Groups.ARGOCD_MINOR_AUTOMERGE,
-      commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
+    createMultiDirectoryGroupRule({
+      name: 'argocd',
+      updateType: 'minor',
+      updateTypes: UPDATE_TYPES,
+      slug: Groups.ARGOCD_MINOR,
+      managers: [Managers.ARGOCD]
+    }),
+    createMultiDirectoryGroupRule({
+      name: 'argocd',
+      updateType: 'minor',
+      updateTypes: UPDATE_TYPES,
+      slug: Groups.ARGOCD_MINOR_AUTOMERGE,
+      managers: [Managers.ARGOCD],
       automerge: true,
-      extends: [':semanticCommitTypeAll(feat)'],
-      matchManagers: [Managers.ARGOCD],
-      matchPackageNames: ['git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git']
-    }
+      packageNames: ['git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git']
+    })
   ]
 })

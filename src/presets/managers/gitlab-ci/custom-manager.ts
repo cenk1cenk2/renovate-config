@@ -1,6 +1,5 @@
+import { DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO } from '@constants'
 import { createPreset } from '@lib'
-
-export const DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO = 'gitlab-ci-manager-git-monorepo'
 
 export default createPreset({
   customManagers: [
