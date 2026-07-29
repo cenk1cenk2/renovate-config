@@ -172,7 +172,12 @@ describe('renovate merge model', () => {
   })
 
   it.each(['labels', 'schedule', 'automerge', 'groupSlug', 'enabled'])('does not merge %s', (name) => {
-    expect(options.get(name)?.mergeable).toBeFalsy()
+    const option = options.get(name)
+
+    // Assert the option still exists first — `options.get(name)?.mergeable` would read `undefined` and
+    // pass `toBeFalsy` vacuously if renovate ever renamed or dropped it, silently retiring this guard.
+    expect(option, `renovate no longer defines the \`${name}\` option — this guard has gone stale`).toBeDefined()
+    expect(option?.mergeable, `\`${name}\` is now mergeable — the taxonomy relies on it being last-match-wins`).toBeFalsy()
   })
 })
 
