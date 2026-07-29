@@ -1,4 +1,4 @@
-import { NODE_GROUP_DEV, NODE_GROUP_BUILD, NODE_GROUP_DOCS, NODE_GROUP_PACKAGE_MANAGER } from './groups.js'
+import { NODE_GROUP_DEV, NODE_GROUP_BUILD, NODE_GROUP_DOCS, NODE_GROUP_PACKAGE_MANAGER, NODE_RANGE_PACKAGE_MANAGER } from './groups.js'
 import { SCHEDULE } from '@constants'
 import { Groups } from '@groups'
 import { createPreset } from '@lib'
@@ -49,6 +49,7 @@ export default createPreset({
       groupSlug: Groups.NODE_PACKAGE_MANAGER,
       schedule: [SCHEDULE.ANY]
     },
+    NODE_RANGE_PACKAGE_MANAGER,
     {
       matchManagers: [Managers.NODE],
       matchDepTypes: ['devDependencies'],

@@ -1,7 +1,8 @@
+import { getOptions } from 'renovate/dist/config/options/index.js'
 import type { PackageRule, RenovateConfig } from 'renovate/dist/config/types.js'
 import { describe, expect, it } from 'vitest'
 
-import { Labels } from '@constants'
+import { Labels, SCHEDULE, SCOPE } from '@constants'
 import { Groups } from '@groups'
 import { Managers } from '@managers'
 import { PRESETS, Preset } from '@presets'
@@ -38,7 +39,9 @@ function rules(preset: RenovateConfig): PackageRule[] {
   return found
 }
 
+// Two views: every labelled object anywhere in a preset, and just the declared `packageRules`.
 const allRules = entries.flatMap(([name, preset]) => rules(preset).map((rule) => [name, rule] as const))
+const allPackageRules = entries.flatMap(([name, preset]) => (preset.packageRules ?? []).map((rule) => [name, rule] as const))
 
 describe('preset registry', () => {
   it('registers every enum member exactly once', () => {
@@ -122,6 +125,59 @@ describe('axis ownership', () => {
   })
 })
 
+describe('automerge policy', () => {
+  const BREAKING: string[] = ['major', 'replacement']
+
+  it('never automerges a breaking update', () => {
+    const offenders = allRules
+      .filter(([, rule]) => rule.automerge === true && rule.matchUpdateTypes?.some((updateType) => BREAKING.includes(updateType)))
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+
+    expect(offenders, 'a major or replacement update is a breaking change and must be merged by a human').toEqual([])
+  })
+
+  it('never leaves a breaking update unbounded by an update-type matcher', () => {
+    // `lock-file` is exempt: lockFileMaintenance is its own update type and never carries a version bump.
+    const offenders = allRules.filter(([name, rule]) => name !== Preset.LOCK_FILE && rule.automerge === true && !rule.matchUpdateTypes).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+
+    expect(offenders, 'an automerge rule without matchUpdateTypes also catches major updates').toEqual([])
+  })
+})
+
+// The whole taxonomy rests on renovate's mergeability flags. A renovate bump that flipped one of these
+// would silently invalidate the design, so pin them here rather than trusting the docs.
+describe('renovate merge model', () => {
+  const options = new Map(getOptions().map((option) => [option.name, option]))
+
+  it('accumulates addLabels', () => {
+    expect(options.get('addLabels')?.mergeable).toBe(true)
+  })
+
+  it.each(['labels', 'schedule', 'automerge', 'groupSlug', 'enabled'])('does not merge %s', (name) => {
+    expect(options.get(name)?.mergeable).toBeFalsy()
+  })
+})
+
+describe('rule validity', () => {
+  it('never combines matchUpdateTypes with rangeStrategy', () => {
+    // renovate rejects this outright — the range strategy is resolved before the update type is known.
+    expect(allPackageRules.filter(([, rule]) => rule.matchUpdateTypes && rule.rangeStrategy).map(([name]) => name)).toEqual([])
+  })
+
+  it('never writes an empty matcher array', () => {
+    const matchers = ['matchManagers', 'matchUpdateTypes', 'matchDepTypes', 'matchPackageNames', 'matchDatasources', 'matchSourceUrls', 'matchDepNames'] as const
+    const offenders = allPackageRules.flatMap(([name, rule]) => matchers.filter((matcher) => Array.isArray(rule[matcher]) && rule[matcher].length === 0).map((matcher) => `${name}.${matcher}`))
+
+    expect(offenders, 'an empty matcher array matches nothing and silently disables the rule').toEqual([])
+  })
+
+  it('gives every rule at least one matcher', () => {
+    const offenders = allPackageRules.filter(([, rule]) => !Object.keys(rule).some((key) => key.startsWith('match'))).map(([name]) => name)
+
+    expect(offenders, 'a rule with no matcher applies to every dependency in every consuming repository').toEqual([])
+  })
+})
+
 describe('standalone consumption', () => {
   // Each preset ships as its own key in default.json, so a repository can extend `default/manager-helm`
   // without `base`. Those presets have to carry the umbrella themselves or such a repo gets no labels.
@@ -145,6 +201,123 @@ describe('grouping', () => {
 
   it('never shares a ring slug across managers', () => {
     expect(new Set(Object.values(Rings)).size).toBe(Object.values(Rings).length)
+  })
+
+  it('gives every slug exactly one name', () => {
+    const names = new Map<string, Set<string>>()
+
+    for (const [, rule] of allRules) {
+      if (rule.groupSlug && rule.groupName) {
+        names.set(rule.groupSlug, (names.get(rule.groupSlug) ?? new Set()).add(rule.groupName))
+      }
+    }
+
+    expect([...names].filter(([, set]) => set.size > 1).map(([slug]) => slug), 'one slug is one merge request, so two names for it is a copy-paste divergence').toEqual([])
+  })
+
+  it('always pairs a slug with a name', () => {
+    expect(allPackageRules.filter(([, rule]) => rule.groupSlug && !rule.groupName).map(([name]) => name)).toEqual([])
+  })
+
+  it('uses every slug the enums declare', () => {
+    const used = new Set(allRules.map(([, rule]) => rule.groupSlug))
+
+    expect([...known].filter((slug) => !used.has(slug)), 'orphan slug in an enum').toEqual([])
+  })
+})
+
+// Multi-directory managers resolve one dependency per package file, so a rule that disambiguates the
+// branch must also disambiguate the commit message, and vice versa — half of Pattern M is a bug.
+describe('pattern M', () => {
+  const multiDirectory = allPackageRules.filter(([, rule]) => rule.additionalBranchPrefix ?? rule.commitMessageExtra)
+
+  it('is applied to some rules', () => {
+    expect(multiDirectory.length).toBeGreaterThan(0)
+  })
+
+  it('always pairs the branch prefix with the commit message extra', () => {
+    expect(multiDirectory.filter(([, rule]) => !(rule.additionalBranchPrefix && rule.commitMessageExtra)).map(([name]) => name)).toEqual([])
+  })
+
+  it('scopes both to the package file directory', () => {
+    for (const [name, rule] of multiDirectory) {
+      expect(rule.additionalBranchPrefix, name).toContain('{{packageFileDir}}')
+      expect(rule.commitMessageExtra, name).toContain('{{packageFileDir}}')
+    }
+  })
+
+  it('uses feat for minor and perf for major', () => {
+    for (const [name, rule] of multiDirectory) {
+      const expected = rule.matchUpdateTypes?.includes('major') ? 'perf' : 'feat'
+
+      expect(rule.extends, name).toEqual([`:semanticCommitTypeAll(${expected})`])
+    }
+  })
+})
+
+describe('schedule', () => {
+  it('never sets a schedule at the top level of a preset', () => {
+    // A top-level schedule is non-mergeable and global — the last extended preset that sets one wins
+    // for every dependency, not just that preset's own rules.
+    expect(entries.filter(([, preset]) => preset.schedule).map(([name]) => name)).toEqual([])
+  })
+
+  it('only uses schedules from the enum', () => {
+    const known = new Set<string>(Object.values(SCHEDULE))
+    const used = allPackageRules.flatMap(([, rule]) => rule.schedule ?? [])
+
+    expect([...new Set(used)].filter((schedule) => !known.has(schedule))).toEqual([])
+  })
+})
+
+describe('wiring', () => {
+  const scoped = (preset: RenovateConfig): Preset[] => (preset.extends ?? []).filter((entry) => entry.startsWith(SCOPE)).map((entry) => entry.slice(SCOPE.length) as Preset)
+
+  // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
+  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA]
+
+  it('references every preset it emits', () => {
+    const referenced = new Set(entries.flatMap(([, preset]) => scoped(preset)))
+    const orphans = Object.values(Preset).filter((name) => !ENTRYPOINTS.includes(name) && !referenced.has(name))
+
+    expect(orphans, 'these presets are written into default.json but nothing extends them').toEqual([])
+  })
+
+  it('only references presets that exist', () => {
+    const dangling = entries.flatMap(([name, preset]) => scoped(preset).filter((target) => !(target in presets)).map((target) => `${name} -> ${target}`))
+
+    expect(dangling).toEqual([])
+  })
+
+  it('enables every manager it writes rules for', () => {
+    const enabled = new Set(presets[Preset.DEFAULT].enabledManagers)
+    const matched = new Set(allPackageRules.flatMap(([, rule]) => rule.matchManagers ?? []))
+
+    expect([...matched].filter((manager) => !enabled.has(manager)), 'a rule matches a manager that default.ts never enables, so it can never fire').toEqual([])
+  })
+
+  it('only matches managers from the enum', () => {
+    const known = new Set<string>(Object.values(Managers))
+    const used = new Set(allPackageRules.flatMap(([, rule]) => rule.matchManagers ?? []))
+
+    expect([...used].filter((manager) => !known.has(manager))).toEqual([])
+  })
+
+  it('only matches custom dep types that a custom manager emits', () => {
+    const emitted = new Set(entries.flatMap(([, preset]) => (preset.customManagers ?? []).map((manager) => manager.depTypeTemplate).filter(Boolean)))
+    const regexRules = allPackageRules.filter(([, rule]) => rule.matchManagers?.includes(Managers.REGEX))
+
+    for (const [name, rule] of regexRules) {
+      for (const depType of rule.matchDepTypes ?? []) {
+        expect(emitted, `${name} matches custom depType ${depType}`).toContain(depType)
+      }
+    }
+  })
+
+  it('scopes every custom manager rule by dep type', () => {
+    // custom.regex is shared by the terraform and gitlab-ci custom managers, so an unscoped rule
+    // would apply one manager's config to the other's dependencies.
+    expect(allPackageRules.filter(([, rule]) => rule.matchManagers?.includes(Managers.REGEX) && !rule.matchDepTypes).map(([name]) => name)).toEqual([])
   })
 })
 

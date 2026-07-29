@@ -1,4 +1,4 @@
-import { NODE_GROUP_PEER } from './groups.js'
+import { NODE_GROUP_PEER, NODE_RANGE_PEER } from './groups.js'
 import { SCHEDULE } from '@constants'
 import { Groups } from '@groups'
 import { createPreset } from '@lib'
@@ -12,6 +12,7 @@ export default createPreset({
       groupSlug: Groups.NODE_PEER,
       enabled: false,
       schedule: [SCHEDULE.ANY]
-    }
+    },
+    NODE_RANGE_PEER
   ]
 })

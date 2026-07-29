@@ -692,7 +692,12 @@
         "matchManagers": [
           "npm"
         ],
-        "rangeStrategy": "widen",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
         "matchDepNames": [
           "pnpm",
           "yarn",
@@ -715,6 +720,18 @@
         "matchManagers": [
           "npm"
         ],
+        "matchDepNames": [
+          "pnpm",
+          "yarn",
+          "npm",
+          "bun"
+        ],
+        "rangeStrategy": "widen"
+      },
+      {
+        "matchManagers": [
+          "npm"
+        ],
         "matchDepTypes": [
           "devDependencies"
         ],
@@ -729,7 +746,12 @@
           "peerDependencies",
           "optionalDependencies"
         ],
-        "rangeStrategy": "widen",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
         "commitMessageSuffix": "[skip ci]",
         "addLabels": [
           "dep:peer",
@@ -748,6 +770,16 @@
         "schedule": [
           "at any time"
         ]
+      },
+      {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchDepTypes": [
+          "peerDependencies",
+          "optionalDependencies"
+        ],
+        "rangeStrategy": "widen"
       }
     ]
   },
@@ -857,39 +889,6 @@
         "matchDepTypes": [
           "HelmChart"
         ]
-      },
-      {
-        "enabled": true,
-        "automerge": true,
-        "matchUpdateTypes": [
-          "major"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "kustomize all major automerge dependency updates",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "extends": [
-          ":semanticCommitTypeAll(perf)"
-        ],
-        "groupSlug": "kustomize-major-automerge",
-        "matchManagers": [
-          "kustomize"
-        ],
-        "matchDepTypes": [
-          "HelmChart"
-        ],
-        "matchSourceUrls": [
-          "https://github.com/prometheus-community/helm-charts",
-          "https://github.com/grafana/helm-charts",
-          "https://gitlab.com/gitlab-org/charts/gitlab-runner"
-        ],
-        "matchPackageNames": [
-          "prometheus-blackbox-exporter",
-          "alloy",
-          "gitlab-runner"
-        ],
-        "addLabels": [
-          "automerge"
-        ]
       }
     ]
   },
@@ -962,35 +961,6 @@
         "groupSlug": "helm-major",
         "matchManagers": [
           "helmv3"
-        ]
-      },
-      {
-        "enabled": true,
-        "automerge": true,
-        "matchUpdateTypes": [
-          "major"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "helm all major automerge dependency updates",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "extends": [
-          ":semanticCommitTypeAll(perf)"
-        ],
-        "groupSlug": "helm-major-automerge",
-        "matchManagers": [
-          "helmv3"
-        ],
-        "matchSourceUrls": [
-          "https://github.com/prometheus-community/helm-charts",
-          "https://github.com/open-telemetry/opentelemetry-helm-charts"
-        ],
-        "matchPackageNames": [
-          "kube-prometheus-stack",
-          "blackbox-exporter",
-          "opentelemetry-operator"
-        ],
-        "addLabels": [
-          "automerge"
         ]
       }
     ]
@@ -1353,30 +1323,6 @@
         "matchManagers": [
           "argocd"
         ]
-      },
-      {
-        "enabled": true,
-        "automerge": true,
-        "matchUpdateTypes": [
-          "major"
-        ],
-        "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "argocd all major automerge dependency updates",
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
-        "extends": [
-          ":semanticCommitTypeAll(perf)"
-        ],
-        "groupSlug": "argocd-major-automerge",
-        "matchManagers": [
-          "argocd"
-        ],
-        "matchPackageNames": [
-          "git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git",
-          "git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git"
-        ],
-        "addLabels": [
-          "automerge"
-        ]
       }
     ]
   },
@@ -1535,7 +1481,12 @@
           "peerDependencies",
           "optionalDependencies"
         ],
-        "rangeStrategy": "widen",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
         "commitMessageSuffix": "[skip ci]",
         "addLabels": [
           "dep:peer",

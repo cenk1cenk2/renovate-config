@@ -1,18 +1,16 @@
+// Major groups have no automerge twin on purpose — a breaking change is never merged unattended.
 export enum Groups {
   ARGOCD_MINOR = 'argocd-minor',
   ARGOCD_MINOR_AUTOMERGE = 'argocd-minor-automerge',
   ARGOCD_MAJOR = 'argocd-major',
-  ARGOCD_MAJOR_AUTOMERGE = 'argocd-major-automerge',
 
   HELM_MINOR = 'helm-minor',
   HELM_MINOR_AUTOMERGE = 'helm-minor-automerge',
   HELM_MAJOR = 'helm-major',
-  HELM_MAJOR_AUTOMERGE = 'helm-major-automerge',
 
   KUSTOMIZE_MINOR = 'kustomize-minor',
   KUSTOMIZE_MINOR_AUTOMERGE = 'kustomize-minor-automerge',
   KUSTOMIZE_MAJOR = 'kustomize-major',
-  KUSTOMIZE_MAJOR_AUTOMERGE = 'kustomize-major-automerge',
 
   TERRAFORM_MINOR = 'terraform-minor',
   TERRAFORM_MAJOR = 'terraform-major',

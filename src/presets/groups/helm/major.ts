@@ -2,6 +2,7 @@ import { Groups } from '@groups'
 import { createMultiDirectoryGroupRule, createPreset } from '@lib'
 import { Managers } from '@managers'
 
+// No automerge rule here, by policy: a major bump is a breaking change and needs a human.
 export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
@@ -9,15 +10,6 @@ export default createPreset({
       updateType: 'major',
       groupSlug: Groups.HELM_MAJOR,
       matchManagers: [Managers.HELM]
-    }),
-    createMultiDirectoryGroupRule({
-      name: 'helm',
-      updateType: 'major',
-      groupSlug: Groups.HELM_MAJOR_AUTOMERGE,
-      matchManagers: [Managers.HELM],
-      automerge: true,
-      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/open-telemetry/opentelemetry-helm-charts'],
-      matchPackageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
     })
   ]
 })

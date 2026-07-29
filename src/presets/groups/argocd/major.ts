@@ -2,6 +2,7 @@ import { Groups } from '@groups'
 import { createMultiDirectoryGroupRule, createPreset } from '@lib'
 import { Managers } from '@managers'
 
+// No automerge rule here, by policy: a major bump is a breaking change and needs a human.
 export default createPreset({
   packageRules: [
     createMultiDirectoryGroupRule({
@@ -9,14 +10,6 @@ export default createPreset({
       updateType: 'major',
       groupSlug: Groups.ARGOCD_MAJOR,
       matchManagers: [Managers.ARGOCD]
-    }),
-    createMultiDirectoryGroupRule({
-      name: 'argocd',
-      updateType: 'major',
-      groupSlug: Groups.ARGOCD_MAJOR_AUTOMERGE,
-      matchManagers: [Managers.ARGOCD],
-      automerge: true,
-      matchPackageNames: ['git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git']
     })
   ]
 })

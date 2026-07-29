@@ -1,7 +1,7 @@
 import { ASSIGNEES, Labels, TIMEZONE } from '@constants'
-import { createPreset } from '@lib'
+import { createBasePreset } from '@lib'
 
-export default createPreset({
+export default createBasePreset({
   extends: ['config:recommended', ':configMigration', ':dependencyDashboard', ':disableRateLimiting', ':updateNotScheduled', ':enableVulnerabilityAlerts'],
   timezone: TIMEZONE,
   semanticCommits: 'enabled',
