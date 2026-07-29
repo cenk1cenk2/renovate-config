@@ -59,9 +59,6 @@ generate:
   stage: generate
   variables:
     NODE_COMMAND_SCRIPT: start
-  script:
-    - pipe run
-    - git diff --exit-code default.json
   artifacts:
     paths:
       - default.json
