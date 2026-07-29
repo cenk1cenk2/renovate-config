@@ -67,12 +67,32 @@ Labels compose **additively** across six namespaced axes plus two flat values. E
 | ring       | the ring preset's identity rule                      | `ring:fast`, `ring:slow`                                                          |
 | flag       | automerge rules                                      | `automerge`                                                                       |
 
+### One axis, one owner
+
+`addLabels` is **append-only and irreversible**. There is no `removeLabels` config option, no negation syntax for label values, and setting `labels` in a later rule does not suppress labels already accumulated by `addLabels` — `prepareLabels` simply unions the two (`dist/workers/repository/update/pr/labels.js:15-19`).
+
+So the catch-all-then-override pattern that works everywhere else in this repo **does not work for labels**. A broad rule that adds `area:infrastructure` followed by a narrow rule adding `area:application` yields a dependency carrying both, permanently.
+
+Therefore every `addLabels` axis must be **exactly scoped up front**, and exactly one kind of rule may contribute a given axis:
+
+- `manager:*` and `area:*` — owned by the manager identity rule. The manager is what determines the area.
+- `datasource:*` — owned by the datasource identity rule, which must **never** add an area: 36 managers emit docker deps alone, spanning pipelines and infrastructure.
+- `dep:*` — owned by the dep-type group constants.
+- `ring:*` — owned by the ring identity rule.
+
+`test/presets.test.ts` enforces this ownership.
+
+If an axis ever does need exceptions, carve them out in the broad rule rather than overriding afterwards. All six matchers (`matchPackageNames`, `matchDepTypes`, `matchManagers`, `matchDatasources`, `matchFileNames`, `matchRepositories`) accept `!`-prefixed globs and regexes via `matchRegexOrGlobList` (`dist/util/string-match.js:17-28`); a list of only negatives means "everything except". `matchFileNames` matches the dependency's `packageFile` path, which is the way to tell a docker image in a `Dockerfile` from one in a helm values file.
+
 Mechanics, verified against the installed renovate source — **do not re-derive**:
 
 - `labels` is **non-mergeable**: each matching packageRule overwrites the previous value entirely, last match wins (`dist/config/options/index.js`, `dist/config/utils.js`).
 - `addLabels` is `mergeable: true`: it concatenates across the top-level config **and** every matching packageRule.
 - The final PR label set is `[...new Set([...labels, ...addLabels])].sort()` (`dist/workers/repository/update/pr/labels.js`) — deduped and alphabetically sorted, so declaration order never affects output.
 - Renovate's own docs recommend `addLabels` over `labels` in shareable presets for exactly this reason.
+- Only five options used here are `mergeable: true` — `addLabels`, `packageRules`, `ignoreDeps`, `postUpdateOptions` and the `match*` list matchers. Everything else is last-match-wins, including `automerge`, `enabled`, `groupName`, `groupSlug`, `rangeStrategy`, `semanticCommitType`, `minimumReleaseAge` and the `commitMessage*` family — those are safe to broad-then-override.
+- `schedule` is an array but **not** mergeable, so a per-rule `schedule` silently discards a hoisted one instead of adding to it.
+- `packageRules` order across presets is positional: `P1 → P2 → P3 → the extending config's own rules`. Preset identity does not matter, only position in `extends`.
 
 `update:*` deliberately does not cover `rollback` — `rollbackPrs` defaults to `false` and this config never enables it. `lockFileMaintenance` is not a matchable update type; it carries `dep:lock` from `lock-file.ts`. `rings/node/none.ts` gets no ring label because every rule in it is `enabled: false`.
 

@@ -144,6 +144,38 @@ describe('identity labels', () => {
   })
 })
 
+// `addLabels` accumulates and can never be unset, so a single-valued axis is only safe if exactly one
+// kind of rule ever contributes it. These guard that ownership rather than the label values themselves.
+describe('axis ownership', () => {
+  const all = entries.flatMap(([name, preset]) => rules(preset).map((rule) => [name, rule] as const))
+
+  function adding(prefix: string): (readonly [Preset, PackageRule])[] {
+    return all.filter(([, rule]) => rule.addLabels?.some((label) => label.startsWith(prefix)))
+  }
+
+  it('only ever adds an area from a manager-scoped rule', () => {
+    assert.deepEqual(
+      adding('area:').filter(([, rule]) => !rule.matchManagers).map(([name]) => name),
+      [],
+      'the manager owns the area axis — a rule that adds an area without matching managers can stack a second area onto the same update'
+    )
+  })
+
+  it('only ever adds a manager label from a manager-scoped rule', () => {
+    assert.deepEqual(adding('manager:').filter(([, rule]) => !rule.matchManagers).map(([name]) => name), [])
+  })
+
+  it('only ever adds a datasource label from a datasource-scoped rule', () => {
+    assert.deepEqual(adding('datasource:').filter(([, rule]) => !rule.matchDatasources).map(([name]) => name), [])
+  })
+
+  it('never adds an area from a datasource rule', () => {
+    const offenders = all.filter(([, rule]) => rule.matchDatasources && !rule.matchManagers && rule.addLabels?.some((label) => label.startsWith('area:'))).map(([name]) => name)
+
+    assert.deepEqual(offenders, [], 'a datasource spans many managers, so it cannot know the area')
+  })
+})
+
 describe('standalone consumption', () => {
   // Each preset ships as its own key in default.json, so a repository can extend `default/manager-helm`
   // without `base`. Those presets have to carry the umbrella themselves or such a repo gets no labels.

@@ -516,8 +516,7 @@
         ],
         "addLabels": [
           "renovate",
-          "datasource:docker",
-          "area:infrastructure"
+          "datasource:docker"
         ]
       },
       {
