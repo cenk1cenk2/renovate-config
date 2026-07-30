@@ -130,11 +130,10 @@ When modifying or creating package rules, always consult the official Renovate d
 ## Building & Validating
 
 ```bash
-pnpm build      # compile TypeScript
-pnpm typecheck  # tsc --noEmit over src/ and test/
-pnpm lint       # eslint ./src
-pnpm test       # invariant tests over the assembled presets
-pnpm start      # generate default.json + validate with renovate's built-in validator
+pnpm build # compile TypeScript
+pnpm lint  # eslint ./src
+pnpm test  # invariant tests over the assembled presets
+pnpm start # generate default.json + validate with renovate's built-in validator
 ```
 
 After any change run `pnpm start` and verify `default.json` includes the expected rules. `default.json` is **committed**, and the CI `generate` job regenerates it as an artifact — it no longer gates on `git diff`, because semantic-release regenerates and commits it back on release. Still regenerate and commit it with your change so the committed file stays in sync. Validation errors are fatal: `pnpm start` reports every error across every preset, then exits non-zero.
@@ -145,6 +144,5 @@ After any change run `pnpm start` and verify `default.json` includes the expecte
 - **`PackageRule` is augmented** in `src/types/renovate-augment.d.ts` because renovate 43.139 removed `additionalBranchPrefix` and `commitMessageSuffix` from its public `PackageRule` type even though both still work at runtime. Do not remove the augmentation.
 - **`renovate/dist/config/migration.js` and `validation.js` have no shipped types** — ambient declarations live in `src/types/renovate-modules.d.ts`.
 - **`default.json` is prettier-ignored.** It is generated, and prettier's formatting disagrees with the generator's. Without the ignore entry the `lint-staged` pre-commit hook rewrites the file on every commit, so the committed file would no longer match the generator output.
-- **`lint` is ESLint-only** (`eslint ./src`), not tsc. Type errors do not fail lint — `pnpm typecheck` is a separate script and a separate CI job.
 - **`createPreset()` takes `Omit<RenovateConfig, 'schedule'>`** — one factory for every preset, `base.ts` included. Excess-property checking catches misspelled renovate fields and keeps the non-mergeable `schedule` off a preset's top level. `labels` stays allowed because `base.ts` owns the umbrella label; `test/presets.test.ts` (`declares labels only in the base preset`) is what enforces that no other preset sets it. Do not widen the parameter to `RenovateConfig & Record<PropertyKey, any>` — that silently disables the check for every preset.
 - **Kubernetes per-manager config** (`[Managers.KUBERNETES]: {...}` in `managers/kubernetes/manager.ts`) is cast with `as RenovateConfig` — the shape is valid at runtime but absent from the public type. This is the only cast in `src/`; if another preset needs one, prefer fixing the type augmentation.

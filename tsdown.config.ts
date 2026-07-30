@@ -8,7 +8,7 @@ export default defineConfig((options) => ({
   entry: ['src/**/*.{js,ts}', '!src/**/*.d.ts'],
   tsconfig: options.watch ? 'tsconfig.json' : 'tsconfig.build.json',
 
-  dts: options.watch ? true : false,
+  dts: true,
 
   format: ['esm'],
 

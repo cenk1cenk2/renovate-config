@@ -42,12 +42,6 @@ build:
       - dist/**
       - oclif.manifest.json
 
-typecheck:
-  stage: build
-  extends: .node-run
-  variables:
-    NODE_COMMAND_SCRIPT: typecheck
-
 test:
   stage: build
   extends: .node-run
