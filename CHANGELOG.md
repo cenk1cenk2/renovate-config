@@ -1,3 +1,10 @@
+## [4.0.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.0.1...v4.0.2) (2026-07-30)
+
+
+### Bug Fixes
+
+* remove typecheck ([d586a19](https://gitlab.kilic.dev/renovate/renovate-config/commit/d586a19dfce5f7cdbca9939776dbbfece6cdfa04))
+
 ## [4.0.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.0.0...v4.0.1) (2026-07-30)
 
 
