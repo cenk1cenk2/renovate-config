@@ -1,3 +1,10 @@
+## [4.0.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.0.2...v4.0.3) (2026-07-30)
+
+
+### Bug Fixes
+
+* some bugs ([434a089](https://gitlab.kilic.dev/renovate/renovate-config/commit/434a08935363097051746bf4d3e84fe0a1d61690))
+
 ## [4.0.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.0.1...v4.0.2) (2026-07-30)
 
 
