@@ -794,7 +794,10 @@
           "npm"
         ],
         "matchPackageNames": [
-          "*"
+          "!pnpm",
+          "!yarn",
+          "!npm",
+          "!bun"
         ],
         "groupName": "node all peer dependency updates",
         "groupSlug": "node-peer",
@@ -1474,7 +1477,6 @@
         ],
         "commitMessageSuffix": "[skip ci]",
         "addLabels": [
-          "dep:dev",
           "automerge"
         ],
         "automerge": true,
@@ -1506,7 +1508,6 @@
         ],
         "commitMessageSuffix": "[skip ci]",
         "addLabels": [
-          "dep:peer",
           "automerge"
         ],
         "automerge": true,

@@ -130,7 +130,7 @@ When modifying or creating package rules, always consult the official Renovate d
 ## Building & Validating
 
 ```bash
-pnpm build # compile TypeScript
+pnpm build # transpile TypeScript (no type checking)
 pnpm lint  # eslint ./src
 pnpm test  # invariant tests over the assembled presets
 pnpm start # generate default.json + validate with renovate's built-in validator
@@ -140,6 +140,7 @@ After any change run `pnpm start` and verify `default.json` includes the expecte
 
 ## Gotchas
 
+- **Nothing type-checks.** `pnpm build` transpiles through Oxc, and `dts: true` emits declarations via `rolldown-plugin-dts`, which never calls `getSemanticDiagnostics`. Its only failure branch is `emitSkipped && diagnostics.length`, and those come from the `EmitResult` — declaration-emit problems (`TS4053` and friends), not type errors. Its `noEmitOnError: true` default is inert, because that flag is implemented in TypeScript's compiler driver, not in `program.emit()`. Measured: with a `string` assigned to `lockFileMaintenance.enabled`, `pnpm build` exits 0 while `tsc --noEmit -p tsconfig.test.json` exits 2. `dts: { build: true }` behaves the same — it takes the `createSolutionBuilder` path, which is for a tsconfig with `references`, and this one has none. `pnpm start` validates renovate _config_, not _types_. Run `tsc --noEmit -p tsconfig.test.json` by hand when touching `src/lib`, `src/commands`, or the type declarations.
 - **`lib` is pinned to `es2024`** in `tsconfig.json` because `@typescript-eslint/scope-manager@8.57.0` doesn't recognize `es2025.iterator` (which TS 6 resolves `ESNext.Iterator` to). Unpinning will break `pnpm lint`.
 - **`PackageRule` is augmented** in `src/types/renovate-augment.d.ts` because renovate 43.139 removed `additionalBranchPrefix` and `commitMessageSuffix` from its public `PackageRule` type even though both still work at runtime. Do not remove the augmentation.
 - **`renovate/dist/config/migration.js` and `validation.js` have no shipped types** — ambient declarations live in `src/types/renovate-modules.d.ts`.

@@ -123,6 +123,15 @@ describe('axis ownership', () => {
     expect(adding('datasource:').filter(([, rule]) => !rule.matchDatasources).map(([name]) => name)).toEqual([])
   })
 
+  // A ring rule that also claims a `dep:` value stacks a second one onto every package it shares with a
+  // dep group — and the ring patterns do overlap them, so the negations the dep groups carry cannot help.
+  it('only ever adds a dep value from a preset that owns the dep axis', () => {
+    const OWNERS: Preset[] = [Preset.GROUP_NODE_DEV_DEPENDENCIES, Preset.GROUP_NODE_PEER_DEPENDENCIES, Preset.LOCK_FILE]
+    const offenders = [...new Set(adding('dep:').filter(([name]) => !OWNERS.includes(name)).map(([name]) => name))]
+
+    expect(offenders, 'the dep groups own the dep axis — every other rule must leave it alone').toEqual([])
+  })
+
   // Two rules can each be well-formed and still stack two values of one axis onto the same dependency,
   // because `addLabels` accumulates. The dep groups are the case where that actually overlaps.
   it('keeps the dep axis mutually exclusive', () => {
