@@ -39,7 +39,7 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 
 ## Automerge Pattern
 
-**A breaking update never automerges.** No rule may set `automerge: true` while matching `major` or `replacement`, and no automerge rule may omit `matchUpdateTypes` — an unbounded rule catches majors too. The major group presets therefore have no automerge twin. `lockFileMaintenance` is the one exemption: it is its own update type and carries no version bump. `test/presets.test.ts` enforces both rules.
+**A breaking update never automerges without a bounded exact-name allowlist.** No rule may set `automerge: true` while matching `replacement`. A rule may set `automerge: true` while matching `major` only when it also carries `matchPackageNames` with exact names only — no globs, regexes, or negations; `test/presets.test.ts` enforces boundedness, not just presence. No automerge rule may omit `matchUpdateTypes` — an unbounded rule catches majors too. The major group presets now have automerge twins for a bounded set of charts whose major versions track upstream dependency bumps, not chart-level breaking changes. `lockFileMaintenance` is the one exemption: it is its own update type and carries no version bump. `test/presets.test.ts` enforces all three rules plus an effective-automerge test that resolves the rule chain for specific packages.
 
 Note that renovate rejects any rule setting `matchUpdateTypes` together with one of its 15 `preLookupOptions` — `rangeStrategy`, `versioning`, `registryUrls`, `allowedVersions`, `separateMajorMinor` and the rest — because those are resolved before the update type is known. Bounding an automerge rule by update type therefore means moving its `rangeStrategy` into a separate rule, as the node dependency, devDependency, peer and package-manager groups all do.
 
@@ -48,7 +48,7 @@ Every manager that supports automerge follows the same two-rule pattern in its g
 1. **Catch-all rule** — matches all packages for the manager/update-type, `automerge: false`
 2. **Automerge rule** — matches specific packages via `matchSourceUrls` and/or `matchPackageNames`, `automerge: true`. For Pattern M the factory attaches `Labels.AUTOMERGE` automatically whenever `automerge: true`; Pattern S rules add it by hand.
 
-To enable automerge for a new package, add its source URL to `matchSourceUrls` and package name to `matchPackageNames` in the automerge rule of the **minor** group file for the relevant manager. There is no major equivalent, by policy.
+To enable automerge for a new package, add its source URL to `matchSourceUrls` and package name to `matchPackageNames` in the automerge rule of the **minor** group file for the relevant manager. A major equivalent exists for a bounded set of charts whose major versions track upstream dependency bumps; add to the major automerge rule's `matchPackageNames` with exact names only.
 
 **Managers with automerge rules:**
 
