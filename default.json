@@ -921,6 +921,38 @@
         "matchDepTypes": [
           "HelmChart"
         ]
+      },
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "kustomize all major automerge dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(perf)"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "groupSlug": "kustomize-major-automerge",
+        "matchManagers": [
+          "kustomize"
+        ],
+        "matchDepTypes": [
+          "HelmChart"
+        ],
+        "matchSourceUrls": [
+          "https://github.com/prometheus-community/helm-charts",
+          "https://github.com/grafana/helm-charts",
+          "https://gitlab.com/gitlab-org/charts/gitlab-runner"
+        ],
+        "matchPackageNames": [
+          "prometheus-blackbox-exporter",
+          "alloy",
+          "gitlab-runner"
+        ],
+        "addLabels": [
+          "automerge"
+        ]
       }
     ]
   },
@@ -990,6 +1022,34 @@
         "groupSlug": "helm-major",
         "matchManagers": [
           "helmv3"
+        ]
+      },
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "helm all major automerge dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(perf)"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "groupSlug": "helm-major-automerge",
+        "matchManagers": [
+          "helmv3"
+        ],
+        "matchSourceUrls": [
+          "https://github.com/prometheus-community/helm-charts",
+          "https://github.com/open-telemetry/opentelemetry-helm-charts"
+        ],
+        "matchPackageNames": [
+          "kube-prometheus-stack",
+          "blackbox-exporter",
+          "opentelemetry-operator"
+        ],
+        "addLabels": [
+          "automerge"
         ]
       }
     ]
@@ -1342,6 +1402,29 @@
         "groupSlug": "argocd-major",
         "matchManagers": [
           "argocd"
+        ]
+      },
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "argocd all major automerge dependency updates",
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(perf)"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "groupSlug": "argocd-major-automerge",
+        "matchManagers": [
+          "argocd"
+        ],
+        "matchPackageNames": [
+          "git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git",
+          "git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git"
+        ],
+        "addLabels": [
+          "automerge"
         ]
       }
     ]

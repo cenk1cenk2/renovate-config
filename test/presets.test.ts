@@ -46,6 +46,16 @@ function rules(preset: RenovateConfig): PackageRule[] {
 const allRules = entries.flatMap(([name, preset]) => rules(preset).map((rule) => [name, rule] as const))
 const allPackageRules = entries.flatMap(([name, preset]) => (preset.packageRules ?? []).map((rule) => [name, rule] as const))
 
+// An exact package name carries no matcher metacharacter, so it bounds an automerge rule to a fixed set.
+// The git URLs the argocd rules match are exact by this test — they hold `@`, `:`, `/` but no glob syntax.
+const GLOB_METACHARACTERS = /[*?[\]{}()]/
+const isExactName = (n: string): boolean =>
+  typeof n === 'string'
+  && n.length > 0
+  && !n.startsWith('!')
+  && !/^\/.*\/i?$/.test(n)
+  && !GLOB_METACHARACTERS.test(n)
+
 describe('preset registry', () => {
   it('registers every enum member exactly once', () => {
     expect(Object.keys(PRESETS).sort()).toEqual(Object.values(Preset).sort())
@@ -153,14 +163,24 @@ describe('axis ownership', () => {
 })
 
 describe('automerge policy', () => {
-  const BREAKING: string[] = ['major', 'replacement']
-
-  it('never automerges a breaking update', () => {
+  it('never automerges a replacement update', () => {
     const offenders = allRules
-      .filter(([, rule]) => rule.automerge === true && rule.matchUpdateTypes?.some((updateType) => BREAKING.includes(updateType)))
+      .filter(([, rule]) => rule.automerge === true && rule.matchUpdateTypes?.includes('replacement'))
       .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
-    expect(offenders, 'a major or replacement update is a breaking change and must be merged by a human').toEqual([])
+    expect(offenders, 'a replacement update swaps one package for another and must be merged by a human').toEqual([])
+  })
+
+  it('only automerges a major update with a bounded exact-name allowlist', () => {
+    const offenders = allRules
+      .filter(([, rule]) =>
+        rule.automerge === true
+        && rule.matchUpdateTypes?.includes('major')
+        && !(Array.isArray(rule.matchPackageNames) && rule.matchPackageNames.length > 0 && rule.matchPackageNames.every(isExactName))
+      )
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+
+    expect(offenders, 'a major automerge must carry matchPackageNames with exact names only — no globs, regexes, or negations').toEqual([])
   })
 
   it('never leaves a breaking update unbounded by an update-type matcher', () => {
@@ -168,6 +188,82 @@ describe('automerge policy', () => {
     const offenders = allRules.filter(([name, rule]) => name !== Preset.LOCK_FILE && rule.automerge === true && !rule.matchUpdateTypes).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
     expect(offenders, 'an automerge rule without matchUpdateTypes also catches major updates').toEqual([])
+  })
+})
+
+// The shape assertions above cannot see ordering: a well-formed automerge rule placed BEFORE its
+// catch-all still passes them, yet the catch-all's `automerge: false` would win last. This walks each
+// preset's `packageRules` in array order and asserts the last-matching rule's `automerge` for a given
+// (manager, packageName, updateType, depType, sourceUrl) tuple. It guards intra-preset ordering only —
+// the cross-preset composition order (default.ts extends → manager extends → group files) is not
+// modelled, but the only ordering bug that could silently disable automerge is the intra-file one: the
+// catch-all's `automerge: false` winning over the automerge rule in the same file.
+describe('effective automerge', () => {
+  function effectiveAutomerge(
+    manager: string,
+    packageName: string,
+    updateType: string,
+    depType?: string,
+    sourceUrl?: string
+  ): boolean | undefined {
+    let result: boolean | undefined
+
+    for (const [, preset] of entries) {
+      for (const rule of preset.packageRules ?? []) {
+        if (rule.matchManagers && !rule.matchManagers.includes(manager)) continue
+        if (rule.matchPackageNames && !rule.matchPackageNames.includes(packageName)) continue
+        if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
+        if (rule.matchDepTypes && depType && !rule.matchDepTypes.includes(depType)) continue
+        if (rule.matchSourceUrls && sourceUrl && !rule.matchSourceUrls.includes(sourceUrl)) continue
+
+        if (rule.automerge !== undefined) result = rule.automerge
+      }
+    }
+
+    return result
+  }
+
+  it('automerges kube-prometheus-stack major under helm', () => {
+    expect(effectiveAutomerge(Managers.HELM, 'kube-prometheus-stack', 'major', undefined, 'https://github.com/prometheus-community/helm-charts')).toBe(true)
+  })
+
+  it('automerges alloy major under kustomize', () => {
+    expect(effectiveAutomerge(Managers.KUSTOMIZE, 'alloy', 'major', 'HelmChart', 'https://github.com/grafana/helm-charts')).toBe(true)
+  })
+
+  it('automerges chart-prometheus-operator git URL major under argocd', () => {
+    expect(effectiveAutomerge(Managers.ARGOCD, 'git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'major')).toBe(true)
+  })
+
+  it('does not automerge a non-allowlisted package major under helm', () => {
+    expect(effectiveAutomerge(Managers.HELM, 'some-other-chart', 'major')).toBe(false)
+  })
+})
+
+describe('isExactName', () => {
+  it.each([
+    ['exact-name', true],
+    ['@scope/pkg', true],
+    ['foo.bar-baz_1', true],
+    ['git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', true],
+    ['git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git', true],
+    ['*', false],
+    ['prometheus-*', false],
+    ['kube-*', false],
+    ['@scope/*', false],
+    ['eslint*', false],
+    ['pkg?', false],
+    ['[abc]', false],
+    ['{a,b}', false],
+    ['!foo', false],
+    ['/regex/', false],
+    ['/regex/i', false],
+    ['!/regex/', false],
+    ['', false],
+    ['+(a|b)', false],
+    ['@(a|b)', false]
+  ])('classifies %j as exact=%s', (input, expected) => {
+    expect(isExactName(input as string)).toBe(expected)
   })
 })
 
