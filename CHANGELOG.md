@@ -1,3 +1,10 @@
+# [4.2.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.1.0...v4.2.0) (2026-07-31)
+
+
+### Features
+
+* **automerge:** add docker/dockerfile to docker datasource automerge allowlist ([bd7923c](https://gitlab.kilic.dev/renovate/renovate-config/commit/bd7923cdb2fd72433e4004f61f322863c3ae9e63))
+
 # [4.1.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.0.3...v4.1.0) (2026-07-31)
 
 
