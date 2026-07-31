@@ -19,7 +19,11 @@ export default createPreset({
       groupSlug: Groups.DOCKER_MINOR,
       automerge: true,
       matchDatasources: [Datasources.DOCKER],
-      matchPackageNames: ['ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib', 'renovate/renovate'],
+      matchPackageNames: [
+        'ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib',
+        'renovate/renovate',
+        'docker/dockerfile'
+      ],
       schedule: [SCHEDULE.ANY]
     }
   ]

@@ -3,6 +3,7 @@ import type { PackageRule, RenovateConfig } from 'renovate/dist/config/types.js'
 import { describe, expect, it } from 'vitest'
 
 import { Labels, SCHEDULE, SCOPE } from '@constants'
+import { Datasources } from '@datasources'
 import { Groups } from '@groups'
 import { NODE_BUILD_PACKAGES, NODE_DOCS_PACKAGES, PACKAGE_MANAGERS } from '@presets/groups/node/groups.js'
 import { Managers } from '@managers'
@@ -200,21 +201,23 @@ describe('automerge policy', () => {
 // catch-all's `automerge: false` winning over the automerge rule in the same file.
 describe('effective automerge', () => {
   function effectiveAutomerge(
-    manager: string,
+    manager: string | undefined,
     packageName: string,
     updateType: string,
     depType?: string,
-    sourceUrl?: string
+    sourceUrl?: string,
+    datasource?: string
   ): boolean | undefined {
     let result: boolean | undefined
 
     for (const [, preset] of entries) {
       for (const rule of preset.packageRules ?? []) {
-        if (rule.matchManagers && !rule.matchManagers.includes(manager)) continue
+        if (rule.matchManagers && (!manager || !rule.matchManagers.includes(manager))) continue
         if (rule.matchPackageNames && !rule.matchPackageNames.includes(packageName)) continue
         if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
         if (rule.matchDepTypes && depType && !rule.matchDepTypes.includes(depType)) continue
         if (rule.matchSourceUrls && sourceUrl && !rule.matchSourceUrls.includes(sourceUrl)) continue
+        if (rule.matchDatasources && (!datasource || !rule.matchDatasources.includes(datasource as never))) continue
 
         if (rule.automerge !== undefined) result = rule.automerge
       }
@@ -237,6 +240,10 @@ describe('effective automerge', () => {
 
   it('does not automerge a non-allowlisted package major under helm', () => {
     expect(effectiveAutomerge(Managers.HELM, 'some-other-chart', 'major')).toBe(false)
+  })
+
+  it('automerges docker/dockerfile minor under docker datasource', () => {
+    expect(effectiveAutomerge(undefined, 'docker/dockerfile', 'minor', undefined, undefined, Datasources.DOCKER)).toBe(true)
   })
 })
 
