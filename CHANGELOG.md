@@ -1,3 +1,10 @@
+# [4.1.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.0.3...v4.1.0) (2026-07-31)
+
+
+### Features
+
+* **automerge:** allow bounded major automerge for routine chart updates ([61e1d0f](https://gitlab.kilic.dev/renovate/renovate-config/commit/61e1d0fdd9fa07e51bdf32438489e14330124331))
+
 ## [4.0.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.0.2...v4.0.3) (2026-07-30)
 
 
