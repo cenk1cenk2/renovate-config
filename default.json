@@ -538,7 +538,8 @@
         ],
         "matchPackageNames": [
           "ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib",
-          "renovate/renovate"
+          "renovate/renovate",
+          "docker/dockerfile"
         ],
         "schedule": [
           "at any time"
