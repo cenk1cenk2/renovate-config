@@ -135,7 +135,6 @@
           "npm"
         ],
         "matchPackageNames": [
-          "*",
           "!/^@cenk1cenk2//",
           "!/listr2/",
           "!/^@cenk1cenk2-.*//",
