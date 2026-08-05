@@ -1,3 +1,10 @@
+## [4.2.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.2.0...v4.2.1) (2026-08-05)
+
+
+### Bug Fixes
+
+* **managers/node:** remove '*' from matchPackageNames for v44 compat (K-880) ([606dfac](https://gitlab.kilic.dev/renovate/renovate-config/commit/606dfacbd088854d1cabd25a9c1bb284fe1c6396))
+
 # [4.2.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.1.0...v4.2.0) (2026-07-31)
 
 
