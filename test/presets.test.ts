@@ -294,6 +294,8 @@ describe('renovate merge model', () => {
 })
 
 describe('rule validity', () => {
+  const MATCHERS = ['matchManagers', 'matchUpdateTypes', 'matchDepTypes', 'matchPackageNames', 'matchDatasources', 'matchSourceUrls', 'matchDepNames'] as const
+
   it('never combines matchUpdateTypes with a pre-lookup option', () => {
     // renovate rejects all of these outright — they are resolved before the update type is known.
     // Mirrors `preLookupOptions` in renovate/dist/config/validation.js.
@@ -338,10 +340,19 @@ describe('rule validity', () => {
   })
 
   it('never writes an empty matcher array', () => {
-    const matchers = ['matchManagers', 'matchUpdateTypes', 'matchDepTypes', 'matchPackageNames', 'matchDatasources', 'matchSourceUrls', 'matchDepNames'] as const
-    const offenders = allPackageRules.flatMap(([name, rule]) => matchers.filter((matcher) => Array.isArray(rule[matcher]) && rule[matcher].length === 0).map((matcher) => `${name}.${matcher}`))
+    const offenders = allPackageRules.flatMap(([name, rule]) => MATCHERS.filter((matcher) => Array.isArray(rule[matcher]) && rule[matcher].length === 0).map((matcher) => `${name}.${matcher}`))
 
     expect(offenders, 'an empty matcher array matches nothing and silently disables the rule').toEqual([])
+  })
+
+  it('never mixes a match-all pattern with other patterns', () => {
+    // renovate rejects this outright since v43.212.4 — a negatives-only list already means
+    // "everything except", so the `*` next to it is noise the validator now refuses.
+    const offenders = allPackageRules.flatMap(([name, rule]) =>
+      MATCHERS.filter((matcher) => Array.isArray(rule[matcher]) && rule[matcher].length > 1 && rule[matcher].some((pattern) => pattern === '*' || pattern === '**')).map((matcher) => `${name}.${matcher}`)
+    )
+
+    expect(offenders, 'a match-all pattern may only stand alone').toEqual([])
   })
 
   it('gives every rule at least one matcher', () => {
