@@ -21,7 +21,7 @@ export default createPreset({
     },
     {
       matchManagers: [Managers.NODE],
-      matchPackageNames: ['*', ...NODE_FAST_RING_PACKAGES.map((p) => `!${p}`)],
+      matchPackageNames: NODE_FAST_RING_PACKAGES.map((p) => `!${p}`),
       minimumReleaseAge: MINIMUM_RELEASE_AGE
     }
   ]
