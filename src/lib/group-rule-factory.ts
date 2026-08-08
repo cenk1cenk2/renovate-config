@@ -23,7 +23,15 @@ export function createMultiDirectoryGroupRule({ name, commitType, ...rule }: Mul
   return {
     automerge: false,
     additionalBranchPrefix: '{{packageFileDir}}-',
-    groupName: `${name} all ${updateType}${rule.automerge ? ' automerge' : ''} dependency updates`,
+    // The directory has to live in `groupName`, not only in `commitMessageExtra`. Once a branch carries
+    // more than one dependency renovate switches to the group settings, whose `commitMessageTopic`
+    // defaults to `{{{groupName}}}`, and it deletes `commitMessageExtra` when the deps resolve to
+    // different versions (`dist/workers/repository/updates/generate.js`). A directory kept only in
+    // `commitMessageExtra` therefore vanishes from every grouped title, leaving one title across all
+    // directories. `groupName` is compiled per update in `dist/workers/repository/updates/branch-name.js`
+    // before grouping, so the template resolves and never leaks braces; `groupSlug` is always passed in
+    // explicitly, so branch names are unaffected.
+    groupName: `${name} all ${updateType}${rule.automerge ? ' automerge' : ''} dependency updates [{{packageFileDir}}]`,
     commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
     extends: [`:semanticCommitTypeAll(${commitType})`],
     ...rule,

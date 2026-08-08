@@ -423,10 +423,14 @@ describe('pattern M', () => {
     expect(multiDirectory.filter(([, rule]) => !(rule.additionalBranchPrefix && rule.commitMessageExtra)).map(([name]) => name)).toEqual([])
   })
 
-  it('scopes both to the package file directory', () => {
+  it('scopes the branch, the commit message and the group name to the package file directory', () => {
     for (const [name, rule] of multiDirectory) {
       expect(rule.additionalBranchPrefix, name).toContain('{{packageFileDir}}')
       expect(rule.commitMessageExtra, name).toContain('{{packageFileDir}}')
+      // `commitMessageExtra` alone is not enough. Renovate switches a multi-dependency branch to the
+      // group settings, whose commit message topic is the group name, and drops `commitMessageExtra`
+      // when the dependencies resolve to different versions — leaving one title for every directory.
+      expect(rule.groupName, name).toContain('{{packageFileDir}}')
     }
   })
 
