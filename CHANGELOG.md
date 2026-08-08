@@ -1,3 +1,10 @@
+## [4.2.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.2.2...v4.2.3) (2026-08-08)
+
+
+### Bug Fixes
+
+* **lib:** scope group names to the package file directory ([d68d884](https://gitlab.kilic.dev/renovate/renovate-config/commit/d68d8849aa152612b90a376a6f73c5eb6b060950))
+
 ## [4.2.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.2.1...v4.2.2) (2026-08-05)
 
 
