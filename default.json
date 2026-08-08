@@ -849,7 +849,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "kustomize all minor dependency updates",
+        "groupName": "kustomize all minor dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -869,7 +869,7 @@
       {
         "automerge": true,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "kustomize all minor automerge dependency updates",
+        "groupName": "kustomize all minor automerge dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -906,7 +906,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "kustomize all major dependency updates",
+        "groupName": "kustomize all major dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
@@ -925,7 +925,7 @@
       {
         "automerge": true,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "kustomize all major automerge dependency updates",
+        "groupName": "kustomize all major automerge dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
@@ -961,7 +961,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "helm all minor dependency updates",
+        "groupName": "helm all minor dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -978,7 +978,7 @@
       {
         "automerge": true,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "helm all minor automerge dependency updates",
+        "groupName": "helm all minor automerge dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -1011,7 +1011,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "helm all major dependency updates",
+        "groupName": "helm all major dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
@@ -1027,7 +1027,7 @@
       {
         "automerge": true,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "helm all major automerge dependency updates",
+        "groupName": "helm all major automerge dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
@@ -1059,7 +1059,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all minor dependency updates",
+        "groupName": "terraform all minor dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -1083,7 +1083,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all minor dependency updates",
+        "groupName": "terraform all minor dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -1115,7 +1115,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform-monorepo all minor dependency updates",
+        "groupName": "terraform-monorepo all minor dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -1142,7 +1142,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all minor dependency updates",
+        "groupName": "terraform all minor dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -1176,7 +1176,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform all major dependency updates",
+        "groupName": "terraform all major dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
@@ -1198,7 +1198,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "terraform-monorepo all major dependency updates",
+        "groupName": "terraform-monorepo all major dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
@@ -1340,7 +1340,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "argocd all minor dependency updates",
+        "groupName": "argocd all minor dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -1360,7 +1360,7 @@
       {
         "automerge": true,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "argocd all minor automerge dependency updates",
+        "groupName": "argocd all minor automerge dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
@@ -1391,7 +1391,7 @@
       {
         "automerge": false,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "argocd all major dependency updates",
+        "groupName": "argocd all major dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
@@ -1407,7 +1407,7 @@
       {
         "automerge": true,
         "additionalBranchPrefix": "{{packageFileDir}}-",
-        "groupName": "argocd all major automerge dependency updates",
+        "groupName": "argocd all major automerge dependency updates [{{packageFileDir}}]",
         "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
