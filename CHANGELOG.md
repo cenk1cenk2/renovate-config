@@ -1,3 +1,10 @@
+# [4.3.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.2.3...v4.3.0) (2026-08-10)
+
+
+### Features
+
+* **groups:** add parameterized group-by-unit preset ([4613cdf](https://gitlab.kilic.dev/renovate/renovate-config/commit/4613cdfe499aa6c49ecac379de2a073713f1d16d))
+
 ## [4.2.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.2.2...v4.2.3) (2026-08-08)
 
 
