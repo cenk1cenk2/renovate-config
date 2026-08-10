@@ -1429,6 +1429,17 @@
       }
     ]
   },
+  "group-by-unit": {
+    "packageRules": [
+      {
+        "matchFileNames": [
+          "{{arg0}}/**"
+        ],
+        "additionalBranchPrefix": "{{arg0}}-",
+        "commitMessageExtra": "to {{{newValue}}} [{{arg0}}]"
+      }
+    ]
+  },
   "ring-node-none": {
     "packageRules": [
       {
