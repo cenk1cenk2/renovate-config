@@ -413,7 +413,7 @@ describe('grouping', () => {
 // Multi-directory managers resolve one dependency per package file, so a rule that disambiguates the
 // branch must also disambiguate the commit message, and vice versa — half of Pattern M is a bug.
 describe('pattern M', () => {
-  const multiDirectory = allPackageRules.filter(([, rule]) => rule.additionalBranchPrefix ?? rule.commitMessageExtra)
+  const multiDirectory = allPackageRules.filter(([name, rule]) => name !== Preset.GROUP_BY_UNIT && (rule.additionalBranchPrefix ?? rule.commitMessageExtra))
 
   it('is applied to some rules', () => {
     expect(multiDirectory.length).toBeGreaterThan(0)
@@ -443,6 +443,32 @@ describe('pattern M', () => {
   })
 })
 
+describe('group-by-unit', () => {
+  const unitRules = presets[Preset.GROUP_BY_UNIT].packageRules ?? []
+
+  it('has at least one rule', () => {
+    expect(unitRules.length).toBeGreaterThan(0)
+  })
+
+  it('scopes the branch, the commit message and the file match to the unit argument', () => {
+    for (const rule of unitRules) {
+      expect(rule.matchFileNames).toEqual(['{{arg0}}/**'])
+      expect(rule.additionalBranchPrefix).toContain('{{arg0}}')
+      expect(rule.commitMessageExtra).toContain('{{arg0}}')
+    }
+  })
+
+  it('overrides no grouping, automerge, label or schedule fields', () => {
+    for (const rule of unitRules) {
+      expect(rule.groupName).toBeUndefined()
+      expect(rule.groupSlug).toBeUndefined()
+      expect(rule.automerge).toBeUndefined()
+      expect(rule.addLabels).toBeUndefined()
+      expect(rule.schedule).toBeUndefined()
+    }
+  })
+})
+
 describe('schedule', () => {
   it('never sets a schedule at the top level of a preset', () => {
     // A top-level schedule is non-mergeable and global — the last extended preset that sets one wins
@@ -462,7 +488,7 @@ describe('wiring', () => {
   const scoped = (preset: RenovateConfig): Preset[] => (preset.extends ?? []).filter((entry) => entry.startsWith(SCOPE)).map((entry) => entry.slice(SCOPE.length) as Preset)
 
   // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
-  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA]
+  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT]
 
   it('references every preset it emits', () => {
     const referenced = new Set(entries.flatMap(([, preset]) => scoped(preset)))

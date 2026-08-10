@@ -50,6 +50,7 @@ export enum Preset {
   GROUP_GITLAB_CI_MINOR_UPDATES = 'group-gitlab-ci-minor-updates',
   GROUP_ARGOCD_MINOR = 'group-argocd-minor',
   GROUP_ARGOCD_MAJOR = 'group-argocd-major',
+  GROUP_BY_UNIT = 'group-by-unit',
 
   // rings
   RING_NODE_NONE = 'ring-node-none',
@@ -111,6 +112,7 @@ export const PRESETS: Presets = {
   [Preset.GROUP_GITLAB_CI_MINOR_UPDATES]: import('./groups/gitlab-ci/minor-updates.js').then((m) => m.default),
   [Preset.GROUP_ARGOCD_MINOR]: import('./groups/argocd/minor.js').then((m) => m.default),
   [Preset.GROUP_ARGOCD_MAJOR]: import('./groups/argocd/major.js').then((m) => m.default),
+  [Preset.GROUP_BY_UNIT]: import('./groups/by-unit.js').then((m) => m.default),
 
   // rings
 
