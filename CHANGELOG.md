@@ -1,3 +1,10 @@
+## [4.3.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.3.0...v4.3.1) (2026-08-17)
+
+
+### Bug Fixes
+
+* **lib:** move the directory from the group name to the group topic ([c2cd44c](https://gitlab.kilic.dev/renovate/renovate-config/commit/c2cd44c972155c9f2813e2e08d4382e55781ee8a))
+
 # [4.3.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.2.3...v4.3.0) (2026-08-10)
 
 
