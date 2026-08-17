@@ -23,15 +23,16 @@ export function createMultiDirectoryGroupRule({ name, commitType, ...rule }: Mul
   return {
     automerge: false,
     additionalBranchPrefix: '{{packageFileDir}}-',
-    // The directory has to live in `groupName`, not only in `commitMessageExtra`. Once a branch carries
-    // more than one dependency renovate switches to the group settings, whose `commitMessageTopic`
-    // defaults to `{{{groupName}}}`, and it deletes `commitMessageExtra` when the deps resolve to
-    // different versions (`dist/workers/repository/updates/generate.js`). A directory kept only in
-    // `commitMessageExtra` therefore vanishes from every grouped title, leaving one title across all
-    // directories. `groupName` is compiled per update in `dist/workers/repository/updates/branch-name.js`
-    // before grouping, so the template resolves and never leaks braces; `groupSlug` is always passed in
-    // explicitly, so branch names are unaffected.
-    groupName: `${name} all ${updateType}${rule.automerge ? ' automerge' : ''} dependency updates [{{packageFileDir}}]`,
+    groupName: `${name} all ${updateType}${rule.automerge ? ' automerge' : ''} dependency updates`,
+    // The directory has to reach the grouped title too, not only `commitMessageExtra`. Once a branch
+    // carries more than one dependency renovate switches to the group settings and deletes
+    // `commitMessageExtra` when the deps resolve to different versions
+    // (`dist/workers/repository/updates/generate.js`), leaving one title across all directories.
+    // It rides `group.commitMessageTopic` — which defaults to `{{{groupName}}}` — rather than
+    // `groupName` itself, because `group` is `mergeable: true`: a later rule can swap the token
+    // without knowing the manager, where last-match-wins `groupName` would have to be rewritten whole.
+    // `groupSlug` is always passed in explicitly, so branch names never depend on either field.
+    group: { commitMessageTopic: '{{{groupName}}} [{{packageFileDir}}]' },
     commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
     extends: [`:semanticCommitTypeAll(${commitType})`],
     ...rule,

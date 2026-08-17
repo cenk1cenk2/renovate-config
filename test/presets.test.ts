@@ -423,14 +423,22 @@ describe('pattern M', () => {
     expect(multiDirectory.filter(([, rule]) => !(rule.additionalBranchPrefix && rule.commitMessageExtra)).map(([name]) => name)).toEqual([])
   })
 
-  it('scopes the branch, the commit message and the group name to the package file directory', () => {
+  it('scopes the branch, the commit message and the group topic to the package file directory', () => {
     for (const [name, rule] of multiDirectory) {
       expect(rule.additionalBranchPrefix, name).toContain('{{packageFileDir}}')
       expect(rule.commitMessageExtra, name).toContain('{{packageFileDir}}')
       // `commitMessageExtra` alone is not enough. Renovate switches a multi-dependency branch to the
-      // group settings, whose commit message topic is the group name, and drops `commitMessageExtra`
-      // when the dependencies resolve to different versions — leaving one title for every directory.
-      expect(rule.groupName, name).toContain('{{packageFileDir}}')
+      // group settings and drops `commitMessageExtra` when the dependencies resolve to different
+      // versions — leaving one title for every directory.
+      expect(rule.group?.commitMessageTopic, name).toContain('{{packageFileDir}}')
+    }
+  })
+
+  it('keeps the package file directory out of the group name', () => {
+    // `groupName` is last-match-wins, so a directory baked into it cannot be re-scoped by
+    // `group-by-unit` without restating every manager's name.
+    for (const [name, rule] of multiDirectory) {
+      expect(rule.groupName, name).not.toContain('{{packageFileDir}}')
     }
   })
 
@@ -450,11 +458,13 @@ describe('group-by-unit', () => {
     expect(unitRules.length).toBeGreaterThan(0)
   })
 
-  it('scopes the branch, the commit message and the file match to the unit argument', () => {
+  it('scopes the branch, the commit message, the group topic and the file match to the unit argument', () => {
     for (const rule of unitRules) {
       expect(rule.matchFileNames).toEqual(['{{arg0}}/**'])
       expect(rule.additionalBranchPrefix).toContain('{{arg0}}')
       expect(rule.commitMessageExtra).toContain('{{arg0}}')
+      expect(rule.group?.commitMessageTopic).toContain('{{arg0}}')
+      expect(rule.group?.commitMessageTopic).not.toContain('{{packageFileDir}}')
     }
   })
 
