@@ -20,15 +20,15 @@ export default createPreset({
       schedule: [SCHEDULE.ANY]
     },
 
-    // The empty `addLabels` drops the `dep:` value the spread carries — it is not leftovers. The ring
-    // patterns overlap the build and docs lists — `@cenk1cenk2/eslint-config` is in both — so claiming a
-    // dep value here would stack a second one onto the overlap. The dep axis stays with the dep groups.
+    // These override the `dep:` value the spread carries. The ring patterns overlap the build and docs
+    // lists — `@cenk1cenk2/eslint-config` is in both — so claiming a dep value here would stack a second
+    // one onto the overlap. The dep axis stays with the dep groups.
     {
       ...NODE_GROUP_DEV,
       matchPackageNames: NODE_FAST_RING_PACKAGES,
       groupName: 'node fast ring dev dependencies',
       groupSlug: Rings.NODE_FAST_DEV,
-      addLabels: [],
+      addLabels: [Labels.AUTOMERGE],
       schedule: [SCHEDULE.ANY]
     },
 
@@ -37,7 +37,7 @@ export default createPreset({
       matchPackageNames: NODE_FAST_RING_PACKAGES,
       groupName: 'node fast ring peer dependencies',
       groupSlug: Rings.NODE_FAST_PEER,
-      addLabels: [],
+      addLabels: [Labels.AUTOMERGE],
       schedule: [SCHEDULE.ANY]
     }
   ]

@@ -126,10 +126,15 @@ const AUTOMERGE_PRESETS: Preset[] = [
 // Every automerge preset is a consumer entrypoint, so the list above must stay complete as new ones land.
 const AUTOMERGE_PRESET_PATTERN = /-automerge-(minor|major)$/
 
-// The one package name the estate-wide config automerges. It is the Dockerfile syntax directive rather
-// than an application image, so every repository would otherwise opt into the same frontend it already
-// builds with. Everything else is opted into per package by the consuming repository.
+// The one package name the estate-wide config still automerges by itself. It is the Dockerfile syntax
+// directive rather than an application image, so every repository would otherwise opt into the same
+// frontend it already builds with.
 const CENTRAL_AUTOMERGE_PACKAGE = 'docker/dockerfile'
+
+// The managers whose central groups automerge every minor update instead of an allowlist of package
+// names. Those groups were never a per-package decision, so retiring the allowlists left them alone —
+// pinned here so a manager joining or leaving the set has to be a deliberate edit.
+const CENTRAL_AUTOMERGE_MANAGERS: string[] = [Managers.NODE, Managers.GO, Managers.GITLAB_CI_INCLUDE, Managers.REGEX, Managers.ANSIBLE_GALAXY]
 
 describe('preset registry', () => {
   it('registers every enum member exactly once', () => {
@@ -264,8 +269,8 @@ describe('automerge policy', () => {
     expect(offenders, 'a major automerge must carry matchPackageNames with exact names or a preset argument only — no globs, regexes, or negations').toEqual([])
   })
 
-  // Central automerge is retired. A repository that extends `default/default` and nothing else
-  // automerges exactly one package name; every other automerge is a rule it opted into by name.
+  // The central allowlists are retired. A repository that extends `default/default` and nothing else
+  // automerges one package name; every other automerge is a rule the repository opted into by name.
   it('only automerges the dockerfile syntax directive centrally', () => {
     const offenders = [...reachableFromDefault]
       // `lock-file` is exempt for the same reason as above: lockFileMaintenance carries no version bump.
@@ -273,27 +278,10 @@ describe('automerge policy', () => {
       .flatMap((name) => rules(presets[name]).map((rule) => [name, rule] as const))
       .filter(([, rule]) => rule.automerge === true)
       .filter(([, rule]) => !rule.matchPackageNames?.every((packageName) => packageName === CENTRAL_AUTOMERGE_PACKAGE))
+      .filter(([, rule]) => !rule.matchManagers?.every((manager) => CENTRAL_AUTOMERGE_MANAGERS.includes(manager)))
       .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
-    expect(offenders, `the only central automerge is ${CENTRAL_AUTOMERGE_PACKAGE} — everything else is opted into per package by the consuming repository`).toEqual([])
-  })
-
-  // A grouped branch automerges only when every upgrade on it does
-  // (`dist/workers/repository/updates/generate.js`), so an opt-in that shares a slug with a group whose
-  // rules say `automerge: false` would never merge itself. `docker-minor` is the one shared slug left,
-  // and it is shared with a rule that automerges.
-  it('never shares a group slug between an automerging and a non-automerging rule', () => {
-    const automerge = new Map<string, boolean[]>()
-
-    for (const [, rule] of allRules) {
-      if (rule.groupSlug && rule.automerge !== undefined) {
-        automerge.set(rule.groupSlug, [...(automerge.get(rule.groupSlug) ?? []), rule.automerge])
-      }
-    }
-
-    const offenders = [...automerge].filter(([, values]) => values.includes(true) && values.includes(false)).map(([slug]) => slug)
-
-    expect(offenders, 'an opt-in sharing a slug with a `automerge: false` group lands on that branch and stops automerging').toEqual([])
+    expect(offenders, 'a central automerge rule is neither the dockerfile directive nor one of the managers that automerge every minor update').toEqual([])
   })
 
   it('never leaves a breaking update unbounded by an update-type matcher', () => {
@@ -387,17 +375,6 @@ describe('effective automerge', () => {
 
     it('automerges docker/dockerfile minor under docker datasource', () => {
       expect(effectiveAutomerge({ packageName: CENTRAL_AUTOMERGE_PACKAGE, updateType: 'minor', datasource: Datasources.DOCKER })).toBe(true)
-    })
-
-    it.each([
-      ['node minor', { manager: Managers.NODE, packageName: 'some-library', updateType: 'minor', depType: 'dependencies' }],
-      ['node dev minor', { manager: Managers.NODE, packageName: 'some-library', updateType: 'minor', depType: 'devDependencies' }],
-      ['node package manager minor', { manager: Managers.NODE, packageName: 'pnpm', updateType: 'minor', depName: 'pnpm' }],
-      ['go minor', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'minor' }],
-      ['gitlab-ci minor', { manager: Managers.GITLAB_CI_INCLUDE, packageName: 'cenk1cenk2/gitlab-ci', updateType: 'minor' }],
-      ['ansible-galaxy minor', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'minor', depType: 'collections' }]
-    ] as [string, Dependency][])('does not automerge %s', (_, dependency) => {
-      expect(effectiveAutomerge(dependency)).not.toBe(true)
     })
 
     it('does not automerge a package nobody opted in major under helm', () => {

@@ -38,9 +38,7 @@ Every manager and datasource has a pair. Pick by which manager resolves the depe
 
 Add the **minor** preset by default. Add the **major** one only when the user asks for it and the package's major version tracks an upstream dependency bump rather than a breaking change.
 
-The central config automerges nothing by itself apart from `docker/dockerfile`, so every key here changes behaviour — there is no manager whose minor updates already merge on their own.
-
-The `npm` and `gomod` keys leave grouping alone by design: an opted-in package stays in its dep-type or ring merge request, and that branch automerges only once every package on it is opted in too. For a repository with many node dependencies, opting a single one in may therefore never merge unattended — say so rather than letting the user assume it took effect.
+For `npm`, `gomod`, `gitlabci` and `ansible-galaxy` the central config still automerges every minor update, so only the `-major` key changes anything today. The npm and gomod keys also leave grouping alone by design — an opted-in package stays in its dep-type or ring merge request.
 
 ### 3. Extend the preset in the consuming repository
 

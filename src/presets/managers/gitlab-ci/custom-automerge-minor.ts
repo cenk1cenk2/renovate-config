@@ -10,8 +10,8 @@ export default createPreset({
   packageRules: [
     {
       matchPackageNames: ['{{arg0}}'],
-      groupName: 'gitlab-ci all minor automerge dependency updates',
-      groupSlug: Groups.GITLAB_CI_MINOR_AUTOMERGE,
+      groupName: 'gitlab-ci all minor dependency updates',
+      groupSlug: Groups.GITLAB_CI_MINOR,
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
       automerge: true,
