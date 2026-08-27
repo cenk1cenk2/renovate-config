@@ -126,11 +126,6 @@ const AUTOMERGE_PRESETS: Preset[] = [
 // Every automerge preset is a consumer entrypoint, so the list above must stay complete as new ones land.
 const AUTOMERGE_PRESET_PATTERN = /-automerge-(minor|major)$/
 
-// The one package name the estate-wide config automerges by name. It is the Dockerfile syntax directive
-// rather than an application image — generic to every repository that builds one, so it stays central
-// where the chart and image allowlists moved out to the per-repository presets.
-const CENTRAL_AUTOMERGE_PACKAGE = 'docker/dockerfile'
-
 // Every central automerge, keyed `<preset>:<groupSlug>`. These are the generic manager-wide and
 // datasource-wide groups: they automerge a whole manager's minor updates, never a list of package names.
 // Pinned so that adding a central automerge — or losing one to a refactor — has to be a deliberate edit.
@@ -156,8 +151,7 @@ const CENTRAL_AUTOMERGE: string[] = [
   `${Preset.GROUP_PYTHON_MINOR_DEPENDENCIES}:${Groups.PYTHON_MINOR}`,
   `${Preset.GROUP_GITLAB_CI_MINOR_UPDATES}:${Groups.GITLAB_CI_MINOR}`,
   `${Preset.GROUP_ANSIBLE_GALAXY_MINOR_ROLES}:${Groups.ANSIBLE_GALAXY_MINOR}`,
-  `${Preset.MANAGER_OTEL_BUILDER}:${Groups.OTEL_BUILDER_MINOR}`,
-  `${Preset.DATASOURCE_DOCKER}:${Groups.DOCKER_MINOR}`
+  `${Preset.MANAGER_OTEL_BUILDER}:${Groups.OTEL_BUILDER_MINOR}`
 ]
 
 describe('preset registry', () => {
@@ -309,14 +303,14 @@ describe('automerge policy', () => {
   })
 
   // The point of the migration: a central rule automerges a manager, never a hand-picked list of
-  // packages. `docker/dockerfile` is the one exception, and it is generic to every repository.
+  // packages — no exceptions any more.
   it('never automerges a central package-name allowlist', () => {
     const offenders = centralAutomerge
       .filter(([, rule]) => !CENTRAL_PACKAGE_ROUTING_SLUGS.includes(rule.groupSlug))
-      .filter(([, rule]) => rule.matchPackageNames?.some((packageName) => isExactName(packageName) && packageName !== CENTRAL_AUTOMERGE_PACKAGE))
+      .filter(([, rule]) => rule.matchPackageNames?.some((packageName) => isExactName(packageName)))
       .map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
 
-    expect(offenders, `a central automerge names specific packages — that decision belongs in the consuming repository, not here (${CENTRAL_AUTOMERGE_PACKAGE} excepted)`).toEqual([])
+    expect(offenders, 'a central automerge names specific packages — that decision belongs in the consuming repository, not here').toEqual([])
   })
 
   // A grouped branch automerges only when every upgrade on it does
@@ -421,7 +415,8 @@ describe('effective automerge', () => {
 
     it.each([
       ['the opentelemetry collector image', 'ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib'],
-      ['the renovate image', 'renovate/renovate']
+      ['the renovate image', 'renovate/renovate'],
+      ['the docker/dockerfile syntax directive', 'docker/dockerfile']
     ])('does not automerge %s under the docker datasource', (_, packageName) => {
       expect(effectiveAutomerge({ packageName, updateType: 'minor', datasource: Datasources.DOCKER })).not.toBe(true)
     })
@@ -430,10 +425,6 @@ describe('effective automerge', () => {
     // group names its packages to route them into a `build:` merge request.
     it('automerges a node build dependency minor', () => {
       expect(effectiveAutomerge({ manager: Managers.NODE, packageName: 'typescript', updateType: 'minor', depType: 'devDependencies' })).toBe(true)
-    })
-
-    it('automerges docker/dockerfile minor under docker datasource', () => {
-      expect(effectiveAutomerge({ packageName: CENTRAL_AUTOMERGE_PACKAGE, updateType: 'minor', datasource: Datasources.DOCKER })).toBe(true)
     })
 
     it('does not automerge a package nobody opted in major under helm', () => {

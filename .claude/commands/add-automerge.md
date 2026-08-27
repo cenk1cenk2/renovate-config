@@ -62,7 +62,7 @@ Order matters: the preset carries `automerge: true` and has to land after the gr
 
 ### 4. Nothing to change in this repository
 
-Do not add the package to a `matchSourceUrls` or `matchPackageNames` allowlist in `src/presets/groups/`. Those central allowlists are gone: `docker/dockerfile` is the only package name a central rule automerges, and `test/presets.test.ts` (`never automerges a central package-name allowlist`) fails on a new one. The generic manager-wide groups are a separate thing and stay — never widen one to cover a single package. Do not extend an automerge preset from `default.ts` or any `manager.ts` either; the same file fails if one becomes reachable from `default`.
+Do not add the package to a `matchSourceUrls` or `matchPackageNames` allowlist in `src/presets/groups/`. Those central allowlists are gone entirely — no central rule automerges a package by name any more — and `test/presets.test.ts` (`never automerges a central package-name allowlist`) fails on a new one. The generic manager-wide groups are a separate thing and stay — never widen one to cover a single package. Do not extend an automerge preset from `default.ts` or any `manager.ts` either; the same file fails if one becomes reachable from `default`.
 
 ### 5. Commit in the consuming repository
 
