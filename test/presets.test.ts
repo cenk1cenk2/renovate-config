@@ -5,6 +5,8 @@ import { describe, expect, it } from 'vitest'
 import { Labels, SCHEDULE, SCOPE } from '@constants'
 import { Datasources } from '@datasources'
 import { Groups } from '@groups'
+import { DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO } from '@presets/managers/gitlab-ci/custom-manager.js'
+import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO } from '@presets/managers/terraform/custom-manager.js'
 import { NODE_BUILD_PACKAGES, NODE_DOCS_PACKAGES, PACKAGE_MANAGERS } from '@presets/groups/node/groups.js'
 import { Managers } from '@managers'
 import { PRESETS, Preset } from '@presets'
@@ -74,13 +76,44 @@ const AUTOMERGE_PRESETS: Preset[] = [
   Preset.MANAGER_ARGOCD_AUTOMERGE_MAJOR,
   Preset.MANAGER_OTEL_BUILDER_AUTOMERGE_MINOR,
   Preset.MANAGER_OTEL_BUILDER_AUTOMERGE_MAJOR,
+  Preset.MANAGER_TERRAFORM_AUTOMERGE_MINOR,
+  Preset.MANAGER_TERRAFORM_AUTOMERGE_MAJOR,
+  Preset.MANAGER_TERRAFORM_CUSTOM_AUTOMERGE_MINOR,
+  Preset.MANAGER_TERRAFORM_CUSTOM_AUTOMERGE_MAJOR,
+  Preset.MANAGER_NODE_AUTOMERGE_MINOR,
+  Preset.MANAGER_NODE_AUTOMERGE_MAJOR,
+  Preset.MANAGER_GO_AUTOMERGE_MINOR,
+  Preset.MANAGER_GO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_PYTHON_AUTOMERGE_MINOR,
+  Preset.MANAGER_PYTHON_AUTOMERGE_MAJOR,
+  Preset.MANAGER_RUST_AUTOMERGE_MINOR,
+  Preset.MANAGER_RUST_AUTOMERGE_MAJOR,
+  Preset.MANAGER_KUBERNETES_AUTOMERGE_MINOR,
+  Preset.MANAGER_KUBERNETES_AUTOMERGE_MAJOR,
+  Preset.MANAGER_DOCKERFILE_AUTOMERGE_MINOR,
+  Preset.MANAGER_DOCKERFILE_AUTOMERGE_MAJOR,
+  Preset.MANAGER_ANSIBLE_GALAXY_AUTOMERGE_MINOR,
+  Preset.MANAGER_ANSIBLE_GALAXY_AUTOMERGE_MAJOR,
+  Preset.MANAGER_GITLAB_CI_AUTOMERGE_MINOR,
+  Preset.MANAGER_GITLAB_CI_AUTOMERGE_MAJOR,
+  Preset.MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MINOR,
+  Preset.MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MAJOR,
   Preset.DATASOURCE_DOCKER_AUTOMERGE_MINOR,
   Preset.DATASOURCE_DOCKER_AUTOMERGE_MAJOR
 ]
 
+// Every automerge preset is a consumer entrypoint, so the list above must stay complete as new ones land.
+const AUTOMERGE_PRESET_PATTERN = /-automerge-(minor|major)$/
+
 describe('preset registry', () => {
   it('registers every enum member exactly once', () => {
     expect(Object.keys(PRESETS).sort()).toEqual(Object.values(Preset).sort())
+  })
+
+  it('lists every automerge preset as a consumer entrypoint', () => {
+    const named = Object.values(Preset).filter((name) => AUTOMERGE_PRESET_PATTERN.test(name))
+
+    expect(named.filter((name) => !AUTOMERGE_PRESETS.includes(name)), 'a new automerge preset must join AUTOMERGE_PRESETS, or it escapes the reachability and entrypoint guards').toEqual([])
   })
 })
 
@@ -228,13 +261,16 @@ describe('effective automerge', () => {
     depType?: string
     sourceUrl?: string
     datasource?: string
+    // Defaults to `packageName`. The node package-manager rules match on `matchDepNames`, so without it
+    // every node query would pick up their `automerge: true` and mask what the rule chain really says.
+    depName?: string
     // The argument the consuming repository passes to a parameterized preset. Left unset, every rule
     // that carries an unsubstituted placeholder is skipped — which is what a repository that never
     // opted in sees.
     argument?: string
   }
 
-  function effectiveAutomerge({ manager, packageName, updateType, depType, sourceUrl, datasource, argument }: Dependency): boolean | undefined {
+  function effectiveAutomerge({ manager, packageName, updateType, depType, sourceUrl, datasource, depName, argument }: Dependency): boolean | undefined {
     // Renovate substitutes preset arguments before the rule is evaluated, so mirror that here rather
     // than teaching the matcher about placeholders.
     const substitute = (patterns: string[]): string[] | undefined => {
@@ -252,6 +288,7 @@ describe('effective automerge', () => {
         const names = rule.matchPackageNames && substitute(rule.matchPackageNames)
 
         if (rule.matchPackageNames && !names?.includes(packageName)) continue
+        if (rule.matchDepNames && !rule.matchDepNames.includes(depName ?? packageName)) continue
         if (rule.matchManagers && (!manager || !rule.matchManagers.includes(manager))) continue
         if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
         if (rule.matchDepTypes && depType && !rule.matchDepTypes.includes(depType)) continue
@@ -302,7 +339,29 @@ describe('effective automerge', () => {
       ['otel-builder minor', { manager: Managers.OPENTELEMETRY_COLLECTOR_BUILDER, packageName: 'go.opentelemetry.io/collector', updateType: 'minor' }],
       ['otel-builder major', { manager: Managers.OPENTELEMETRY_COLLECTOR_BUILDER, packageName: 'go.opentelemetry.io/collector', updateType: 'major' }],
       ['docker minor', { packageName: 'grafana/grafana', updateType: 'minor', datasource: Datasources.DOCKER }],
-      ['docker major', { packageName: 'grafana/grafana', updateType: 'major', datasource: Datasources.DOCKER }]
+      ['docker major', { packageName: 'grafana/grafana', updateType: 'major', datasource: Datasources.DOCKER }],
+      ['terraform minor', { manager: Managers.TERRAFORM, packageName: 'hashicorp/aws', updateType: 'minor', depType: 'provider' }],
+      ['terraform major', { manager: Managers.TERRAFORM, packageName: 'hashicorp/aws', updateType: 'major', depType: 'provider' }],
+      ['terraform-monorepo minor', { manager: Managers.REGEX, packageName: 'terraform/tf-modules', updateType: 'minor', depType: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO }],
+      ['terraform-monorepo major', { manager: Managers.REGEX, packageName: 'terraform/tf-modules', updateType: 'major', depType: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO }],
+      ['node minor', { manager: Managers.NODE, packageName: 'some-library', updateType: 'minor', depType: 'dependencies' }],
+      ['node major', { manager: Managers.NODE, packageName: 'some-library', updateType: 'major', depType: 'dependencies' }],
+      ['go minor', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'minor' }],
+      ['go major', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'major' }],
+      ['python minor', { manager: Managers.PYTHON_PEP621, packageName: 'pydantic', updateType: 'minor' }],
+      ['python major', { manager: Managers.PYTHON_PEP621, packageName: 'pydantic', updateType: 'major' }],
+      ['rust minor', { manager: Managers.RUST_CARGO, packageName: 'serde', updateType: 'minor' }],
+      ['rust major', { manager: Managers.RUST_CARGO, packageName: 'serde', updateType: 'major' }],
+      ['kubernetes minor', { manager: Managers.KUBERNETES, packageName: 'nginx', updateType: 'minor' }],
+      ['kubernetes major', { manager: Managers.KUBERNETES, packageName: 'nginx', updateType: 'major' }],
+      ['dockerfile minor', { manager: Managers.DOCKERFILE, packageName: 'node', updateType: 'minor' }],
+      ['dockerfile major', { manager: Managers.DOCKERFILE, packageName: 'node', updateType: 'major' }],
+      ['ansible-galaxy minor', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'minor', depType: 'collections' }],
+      ['ansible-galaxy major', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'major', depType: 'collections' }],
+      ['gitlab-ci minor', { manager: Managers.GITLAB_CI_INCLUDE, packageName: 'cenk1cenk2/gitlab-ci', updateType: 'minor' }],
+      ['gitlab-ci major', { manager: Managers.GITLAB_CI_INCLUDE, packageName: 'cenk1cenk2/gitlab-ci', updateType: 'major' }],
+      ['gitlab-ci-monorepo minor', { manager: Managers.REGEX, packageName: 'cenk1cenk2/pipelines', updateType: 'minor', depType: DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO }],
+      ['gitlab-ci-monorepo major', { manager: Managers.REGEX, packageName: 'cenk1cenk2/pipelines', updateType: 'major', depType: DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO }]
     ]
 
     it.each(CASES)('automerges %s once the package is passed as the argument', (_, dependency) => {

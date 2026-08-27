@@ -2,6 +2,10 @@
 // carries a hardcoded exact-name allowlist, and the parameterized `*-automerge-*` preset a consuming
 // repository extends once per package. Sharing the slug keeps both on one branch during the migration —
 // see the automerge policy in CLAUDE.md.
+//
+// There are no node or go slugs for the opt-in presets. Those managers already group by dep type and by
+// ring, and `groupSlug` is last-match-wins, so an opt-in that named a group would pull the package out of
+// the merge request it belongs to. Their presets flip `automerge` and leave grouping alone.
 export enum Groups {
   ARGOCD_MINOR = 'argocd-minor',
   ARGOCD_MINOR_AUTOMERGE = 'argocd-minor-automerge',
@@ -19,9 +23,13 @@ export enum Groups {
   KUSTOMIZE_MAJOR_AUTOMERGE = 'kustomize-major-automerge',
 
   TERRAFORM_MINOR = 'terraform-minor',
+  TERRAFORM_MINOR_AUTOMERGE = 'terraform-minor-automerge',
   TERRAFORM_MAJOR = 'terraform-major',
+  TERRAFORM_MAJOR_AUTOMERGE = 'terraform-major-automerge',
   TERRAFORM_MONOREPO_MINOR = 'terraform-monorepo-minor',
+  TERRAFORM_MONOREPO_MINOR_AUTOMERGE = 'terraform-monorepo-minor-automerge',
   TERRAFORM_MONOREPO_MAJOR = 'terraform-monorepo-major',
+  TERRAFORM_MONOREPO_MAJOR_AUTOMERGE = 'terraform-monorepo-major-automerge',
 
   NODE_MINOR = 'node-minor',
   NODE_DEV = 'node-dev',
@@ -33,8 +41,22 @@ export enum Groups {
   GO_MINOR = 'go-minor',
 
   GITLAB_CI_MINOR = 'gitlab-ci-minor',
+  GITLAB_CI_MAJOR = 'gitlab-ci-major',
 
   ANSIBLE_GALAXY_MINOR = 'ansible-galaxy-minor',
+  ANSIBLE_GALAXY_MAJOR = 'ansible-galaxy-major',
+
+  KUBERNETES_MINOR_AUTOMERGE = 'kubernetes-minor-automerge',
+  KUBERNETES_MAJOR_AUTOMERGE = 'kubernetes-major-automerge',
+
+  DOCKERFILE_MINOR_AUTOMERGE = 'dockerfile-minor-automerge',
+  DOCKERFILE_MAJOR_AUTOMERGE = 'dockerfile-major-automerge',
+
+  PYTHON_MINOR_AUTOMERGE = 'python-minor-automerge',
+  PYTHON_MAJOR_AUTOMERGE = 'python-major-automerge',
+
+  RUST_MINOR_AUTOMERGE = 'rust-minor-automerge',
+  RUST_MAJOR_AUTOMERGE = 'rust-major-automerge',
 
   OTEL_BUILDER_MINOR = 'otel-builder-minor',
   OTEL_BUILDER_MAJOR = 'otel-builder-major',
