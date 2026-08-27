@@ -49,6 +49,27 @@ function rules(preset: RenovateConfig): PackageRule[] {
 const allRules = entries.flatMap(([name, preset]) => rules(preset).map((rule) => [name, rule] as const))
 const allPackageRules = entries.flatMap(([name, preset]) => (preset.packageRules ?? []).map((rule) => [name, rule] as const))
 
+const scoped = (preset: RenovateConfig): Preset[] => (preset.extends ?? []).filter((entry) => entry.startsWith(SCOPE)).map((entry) => entry.slice(SCOPE.length) as Preset)
+
+// Everything a repository inherits from `default/default` alone — the estate-wide config, before the
+// per-package opt-in presets it extends for itself.
+const reachableFromDefault = ((): Set<Preset> => {
+  const seen = new Set<Preset>()
+
+  function walk(name: Preset): void {
+    if (seen.has(name)) {
+      return
+    }
+
+    seen.add(name)
+    scoped(presets[name]).forEach(walk)
+  }
+
+  walk(Preset.DEFAULT)
+
+  return seen
+})()
+
 // An exact package name carries no matcher metacharacter, so it bounds an automerge rule to a fixed set.
 // The git URLs the argocd rules match are exact by this test — they hold `@`, `:`, `/` but no glob syntax.
 const GLOB_METACHARACTERS = /[*?[\]{}()]/
@@ -104,6 +125,40 @@ const AUTOMERGE_PRESETS: Preset[] = [
 
 // Every automerge preset is a consumer entrypoint, so the list above must stay complete as new ones land.
 const AUTOMERGE_PRESET_PATTERN = /-automerge-(minor|major)$/
+
+// The one package name the estate-wide config automerges by name. It is the Dockerfile syntax directive
+// rather than an application image — generic to every repository that builds one, so it stays central
+// where the chart and image allowlists moved out to the per-repository presets.
+const CENTRAL_AUTOMERGE_PACKAGE = 'docker/dockerfile'
+
+// Every central automerge, keyed `<preset>:<groupSlug>`. These are the generic manager-wide and
+// datasource-wide groups: they automerge a whole manager's minor updates, never a list of package names.
+// Pinned so that adding a central automerge — or losing one to a refactor — has to be a deliberate edit.
+// The node build and docs groups name packages, but not to decide automerge: every devDependency
+// automerges centrally either way, and these lists only route them into a `build:` or `docs:` merge
+// request. Exempt from the allowlist check below, which is about automerge being granted by name.
+const CENTRAL_PACKAGE_ROUTING_SLUGS: string[] = [Groups.NODE_BUILD, Groups.NODE_DOCS]
+
+const CENTRAL_AUTOMERGE: string[] = [
+  `${Preset.GROUP_NODE_MINOR_DEPENDENCIES}:${Groups.NODE_MINOR}`,
+  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_DEV}`,
+  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_BUILD}`,
+  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_DOCS}`,
+  // The package-manager automerge rule carries no slug of its own: it re-enables merging on top of the
+  // unbounded `node-package-manager` group, which has to stay unbounded to catch majors.
+  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:no-slug`,
+  `${Preset.GROUP_NODE_PEER_DEPENDENCIES}:${Groups.NODE_PEER}`,
+  `${Preset.RING_NODE_FAST}:${Rings.NODE_FAST}`,
+  `${Preset.RING_NODE_FAST}:${Rings.NODE_FAST_DEV}`,
+  `${Preset.RING_NODE_FAST}:${Rings.NODE_FAST_PEER}`,
+  `${Preset.GROUP_GO_MINOR_DEPENDENCIES}:${Groups.GO_MINOR}`,
+  `${Preset.RING_GO_FAST}:${Rings.GO_FAST}`,
+  `${Preset.GROUP_PYTHON_MINOR_DEPENDENCIES}:${Groups.PYTHON_MINOR}`,
+  `${Preset.GROUP_GITLAB_CI_MINOR_UPDATES}:${Groups.GITLAB_CI_MINOR}`,
+  `${Preset.GROUP_ANSIBLE_GALAXY_MINOR_ROLES}:${Groups.ANSIBLE_GALAXY_MINOR}`,
+  `${Preset.MANAGER_OTEL_BUILDER}:${Groups.OTEL_BUILDER_MINOR}`,
+  `${Preset.DATASOURCE_DOCKER}:${Groups.DOCKER_MINOR}`
+]
 
 describe('preset registry', () => {
   it('registers every enum member exactly once', () => {
@@ -238,6 +293,50 @@ describe('automerge policy', () => {
     expect(offenders, 'a major automerge must carry matchPackageNames with exact names or a preset argument only — no globs, regexes, or negations').toEqual([])
   })
 
+  // What a repository inherits from `default/default` alone, with nothing opted in. Every entry is a
+  // generic group over a whole manager; the package-name allowlists that used to sit beside them moved
+  // out to the parameterized presets.
+  const centralAutomerge = [...reachableFromDefault]
+    // `lock-file` is exempt for the same reason as above: lockFileMaintenance carries no version bump.
+    .filter((name) => name !== Preset.LOCK_FILE)
+    .flatMap((name) => rules(presets[name]).map((rule) => [name, rule] as const))
+    .filter(([, rule]) => rule.automerge === true)
+
+  it('automerges centrally only where the inventory says so', () => {
+    const keys = centralAutomerge.map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
+
+    expect([...new Set(keys)].sort(), 'a central automerge appeared or disappeared — update CENTRAL_AUTOMERGE if that was intended').toEqual([...new Set(CENTRAL_AUTOMERGE)].sort())
+  })
+
+  // The point of the migration: a central rule automerges a manager, never a hand-picked list of
+  // packages. `docker/dockerfile` is the one exception, and it is generic to every repository.
+  it('never automerges a central package-name allowlist', () => {
+    const offenders = centralAutomerge
+      .filter(([, rule]) => !CENTRAL_PACKAGE_ROUTING_SLUGS.includes(rule.groupSlug))
+      .filter(([, rule]) => rule.matchPackageNames?.some((packageName) => isExactName(packageName) && packageName !== CENTRAL_AUTOMERGE_PACKAGE))
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
+
+    expect(offenders, `a central automerge names specific packages — that decision belongs in the consuming repository, not here (${CENTRAL_AUTOMERGE_PACKAGE} excepted)`).toEqual([])
+  })
+
+  // A grouped branch automerges only when every upgrade on it does
+  // (`dist/workers/repository/updates/generate.js`), so an opt-in that shares a slug with a group whose
+  // rules say `automerge: false` would never merge itself. Opt-ins reuse a central slug only where the
+  // central group automerges too.
+  it('never shares a group slug between an automerging and a non-automerging rule', () => {
+    const automerge = new Map<string, boolean[]>()
+
+    for (const [, rule] of allRules) {
+      if (rule.groupSlug && rule.automerge !== undefined) {
+        automerge.set(rule.groupSlug, [...(automerge.get(rule.groupSlug) ?? []), rule.automerge])
+      }
+    }
+
+    const offenders = [...automerge].filter(([, values]) => values.includes(true) && values.includes(false)).map(([slug]) => slug)
+
+    expect(offenders, 'an opt-in sharing a slug with an `automerge: false` group lands on that branch and stops automerging').toEqual([])
+  })
+
   it('never leaves a breaking update unbounded by an update-type matcher', () => {
     // `lock-file` is exempt: lockFileMaintenance is its own update type and never carries a version bump.
     const offenders = allRules.filter(([name, rule]) => name !== Preset.LOCK_FILE && rule.automerge === true && !rule.matchUpdateTypes).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
@@ -302,28 +401,42 @@ describe('effective automerge', () => {
     return result
   }
 
-  // The central allowlists still exist and are removed in a follow-up once every consumer has migrated,
-  // so both halves have to hold at once: the hardcoded names keep automerging without an argument, and
-  // an arbitrary name automerges once it is passed as one.
-  describe('central allowlist', () => {
-    it('automerges kube-prometheus-stack major under helm', () => {
-      expect(effectiveAutomerge({ manager: Managers.HELM, packageName: 'kube-prometheus-stack', updateType: 'major', sourceUrl: 'https://github.com/prometheus-community/helm-charts' })).toBe(true)
+  // The package-name allowlists are gone: the charts and images they carried now resolve like any other
+  // dependency, and the repositories that wanted them automerged pass them as preset arguments instead.
+  // The generic manager-wide groups are untouched and still automerge — they match `['*']`, which this
+  // matcher compares literally, so the `automerges centrally only where the inventory says so` test
+  // above is what proves they survived rather than a case here.
+  describe('central automerge', () => {
+    it('does not automerge kube-prometheus-stack major under helm', () => {
+      expect(effectiveAutomerge({ manager: Managers.HELM, packageName: 'kube-prometheus-stack', updateType: 'major', sourceUrl: 'https://github.com/prometheus-community/helm-charts' })).toBe(false)
     })
 
-    it('automerges alloy major under kustomize', () => {
-      expect(effectiveAutomerge({ manager: Managers.KUSTOMIZE, packageName: 'alloy', updateType: 'major', depType: 'HelmChart', sourceUrl: 'https://github.com/grafana/helm-charts' })).toBe(true)
+    it('does not automerge alloy major under kustomize', () => {
+      expect(effectiveAutomerge({ manager: Managers.KUSTOMIZE, packageName: 'alloy', updateType: 'major', depType: 'HelmChart', sourceUrl: 'https://github.com/grafana/helm-charts' })).toBe(false)
     })
 
-    it('automerges chart-prometheus-operator git URL major under argocd', () => {
-      expect(effectiveAutomerge({ manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', updateType: 'major' })).toBe(true)
+    it('does not automerge chart-prometheus-operator git URL major under argocd', () => {
+      expect(effectiveAutomerge({ manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', updateType: 'major' })).toBe(false)
+    })
+
+    it.each([
+      ['the opentelemetry collector image', 'ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib'],
+      ['the renovate image', 'renovate/renovate']
+    ])('does not automerge %s under the docker datasource', (_, packageName) => {
+      expect(effectiveAutomerge({ packageName, updateType: 'minor', datasource: Datasources.DOCKER })).not.toBe(true)
+    })
+
+    // The generic groups are still here. This is the one the matcher can see, because the node build
+    // group names its packages to route them into a `build:` merge request.
+    it('automerges a node build dependency minor', () => {
+      expect(effectiveAutomerge({ manager: Managers.NODE, packageName: 'typescript', updateType: 'minor', depType: 'devDependencies' })).toBe(true)
     })
 
     it('automerges docker/dockerfile minor under docker datasource', () => {
-      expect(effectiveAutomerge({ packageName: 'docker/dockerfile', updateType: 'minor', datasource: Datasources.DOCKER })).toBe(true)
+      expect(effectiveAutomerge({ packageName: CENTRAL_AUTOMERGE_PACKAGE, updateType: 'minor', datasource: Datasources.DOCKER })).toBe(true)
     })
 
-    // Still a guard that the catch-all's `automerge: false` is what a package nobody opted in gets.
-    it('does not automerge a non-allowlisted package major under helm', () => {
+    it('does not automerge a package nobody opted in major under helm', () => {
       expect(effectiveAutomerge({ manager: Managers.HELM, packageName: 'some-other-chart', updateType: 'major' })).toBe(false)
     })
   })
@@ -642,8 +755,6 @@ describe('schedule', () => {
 })
 
 describe('wiring', () => {
-  const scoped = (preset: RenovateConfig): Preset[] => (preset.extends ?? []).filter((entry) => entry.startsWith(SCOPE)).map((entry) => entry.slice(SCOPE.length) as Preset)
-
   // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
   const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, ...AUTOMERGE_PRESETS]
 
@@ -651,20 +762,7 @@ describe('wiring', () => {
     // Automerge is opt-in per package: a repository extends one of these itself, after `default`, and
     // passes the package name. Extending one from inside the graph would automerge it everywhere, and
     // would land before the group catch-all that says `automerge: false` rather than after it.
-    const seen = new Set<Preset>()
-
-    function walk(name: Preset): void {
-      if (seen.has(name)) {
-        return
-      }
-
-      seen.add(name)
-      scoped(presets[name]).forEach(walk)
-    }
-
-    walk(Preset.DEFAULT)
-
-    expect(AUTOMERGE_PRESETS.filter((name) => seen.has(name)), 'an automerge preset is reachable from `default`').toEqual([])
+    expect(AUTOMERGE_PRESETS.filter((name) => reachableFromDefault.has(name)), 'an automerge preset is reachable from `default`').toEqual([])
   })
 
   it('references every preset it emits', () => {

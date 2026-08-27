@@ -11,17 +11,6 @@ export default createPreset({
       groupSlug: Groups.KUSTOMIZE_MINOR,
       matchManagers: [Managers.KUSTOMIZE],
       matchDepTypes: ['HelmChart']
-    }),
-    createMultiDirectoryGroupRule({
-      name: 'kustomize',
-      matchUpdateTypes: ['minor', 'patch'],
-      commitType: 'feat',
-      groupSlug: Groups.KUSTOMIZE_MINOR_AUTOMERGE,
-      matchManagers: [Managers.KUSTOMIZE],
-      matchDepTypes: ['HelmChart'],
-      automerge: true,
-      matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/grafana/helm-charts', 'https://gitlab.com/gitlab-org/charts/gitlab-runner'],
-      matchPackageNames: ['prometheus-blackbox-exporter', 'alloy', 'gitlab-runner']
     })
   ]
 })
