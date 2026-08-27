@@ -48,10 +48,12 @@ Note that renovate rejects any rule setting `matchUpdateTypes` together with one
 
 Two shapes, and which one a manager has is the whole policy:
 
-1. **Generic group, automerges** — one rule over the manager's whole minor/patch surface (`matchPackageNames: ['*']`, a dep-type split, or a ring), `automerge: true`. node, go, python, gitlab-ci, ansible-galaxy, otel-builder and the docker datasource work this way. The decision is "this manager's non-breaking updates are safe unattended", which is the same call in every repository, so it stays central.
+1. **Generic group, automerges** — one rule over the manager's whole minor/patch surface (`matchPackageNames: ['*']`, a dep-type split, or a ring), `automerge: true`. node, go, python, gitlab-ci, ansible-galaxy and otel-builder work this way. The decision is "this manager's non-breaking updates are safe unattended", which is the same call in every repository, so it stays central.
 2. **Catch-all, does not automerge** — the multi-directory managers (helm, kustomize, argocd, terraform) plus kubernetes, dockerfile and rust. Their group rule says `automerge: false`, and the `automerge: true` rule lives in the parameterized preset the consuming repository extends, which renovate appends after the whole central config and which therefore wins on last-match.
 
 What no central rule may do any more is **automerge a hand-picked list of package names**. That was the old hack in the helm, kustomize, argocd and docker groups; it moved out to the per-repository presets. `docker/dockerfile` is the single exception and is generic in the same sense as row 1.
+
+The docker datasource fits neither row cleanly, so do not read row 1 as covering it. Its one automerge rule is `automerge: true` but bounded to `docker/dockerfile`; every other image matches no automerge rule at all, which is unmatched rather than matched-and-denied. `datasource-docker-automerge-minor(<image>)` therefore does change behaviour for every image but that one.
 
 For Pattern M the factory attaches `Labels.AUTOMERGE` automatically whenever `automerge: true`; Pattern S rules add it by hand.
 
@@ -78,7 +80,7 @@ Each row is a `-minor` / `-major` pair; the major twin always matches `['major']
 | `manager-gitlab-ci-automerge-*`          | `managers/gitlab-ci/`         | `minor`, `patch`, `pin`, `digest`              | S       | `gitlab-ci-{minor,major}`               | matches `gitlabci` and `gitlabci-include`, `ANY`             |
 | `manager-gitlab-ci-custom-automerge-*`   | `managers/gitlab-ci/custom-`  | `minor`, `patch`, `pin`, `digest`              | S       | `gitlab-ci-{minor,major}`               | `custom.regex` scoped by the gitlab-ci monorepo dep type     |
 | `manager-otel-builder-automerge-*`       | `managers/otel-builder/`      | `minor`, `patch`, `digest`                     | S       | `otel-builder-{minor,major}`            | `DAILY`; minor reuses the central group's slug               |
-| `datasource-docker-automerge-*`          | `datasources/docker/`         | `minor`, `patch`, `pin`, `digest`              | S       | `docker-{minor,major}`                  | `matchDatasources: ['docker']`, `ANY`                        |
+| `datasource-docker-automerge-*`          | `datasources/docker/`         | `minor`, `patch`, `pin`, `digest`              | S       | `docker-{minor,major}`                  | `matchDatasources: ['docker']`, `ANY`; minor reuses the central slug, which automerges only `docker/dockerfile` |
 
 ```json
 {
