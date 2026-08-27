@@ -1,3 +1,10 @@
+# [4.4.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.3.1...v4.4.0) (2026-08-27)
+
+
+### Features
+
+* **presets:** add parameterized automerge preset family ([dbb4947](https://gitlab.kilic.dev/renovate/renovate-config/commit/dbb49472014b103cc4d7523f4ed6ab8f0c5440a1))
+
 ## [4.3.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.3.0...v4.3.1) (2026-08-17)
 
 
