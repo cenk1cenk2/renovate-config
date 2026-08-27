@@ -22,7 +22,7 @@ export default createPreset({
       matchManagers: [Managers.HELM],
       automerge: true,
       matchSourceUrls: ['https://github.com/prometheus-community/helm-charts', 'https://github.com/open-telemetry/opentelemetry-helm-charts'],
-      matchPackageNames: ['kube-prometheus-stack', 'blackbox-exporter', 'opentelemetry-operator']
+      matchPackageNames: ['kube-prometheus-stack', 'opentelemetry-operator']
     })
   ]
 })
