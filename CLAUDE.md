@@ -24,11 +24,11 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 ## Conventions
 
 - Each manager has a `manager.ts` that enables the manager and composes group presets via `createScopes()`
-- Group files define `packageRules` arrays — typically a catch-all rule (`automerge: false`) followed by specific automerge rules matching `matchSourceUrls` + `matchPackageNames`
+- Group files define `packageRules` arrays — typically a catch-all rule (`automerge: false`) followed by specific automerge rules matching `matchSourceUrls` + `matchPackageNames`. Automerge is being moved out of these central allowlists into the parameterized `*-automerge-*` presets; see the Automerge Pattern section.
 - Minor/patch updates use `extends: [':semanticCommitTypeAll(feat)']`, major updates use `perf`
 - **Labels are additive — see the Labels section below.** `base.ts` holds the only `labels:` in the repo; everything else uses `addLabels`. Values always come from the `Labels` enum (`@constants`), never raw strings.
 - `groupSlug` values come from the `Groups` enum (`@groups`). `Rings` enum (`@rings`) provides ring group slugs, which are **manager-qualified** (`node-fast-ring`, `go-fast-ring`) because renovate derives the branch name from the slug — a shared slug merges go and node updates of a polyglot repo into one MR.
-- The `Preset` enum in `src/presets/index.ts` uses category prefixes: **real presets** (`default`, `base`, `lock-file`, `no-tests`, `branch-*`) no prefix; **managers** `manager-*`; **groups** `group-*`; **rings** `ring-*`; **datasources** `datasource-*`. New files must be registered in both the enum and the `PRESETS` record.
+- The `Preset` enum in `src/presets/index.ts` uses category prefixes: **real presets** (`default`, `base`, `lock-file`, `no-tests`, `branch-*`) no prefix; **managers** `manager-*`; **groups** `group-*`; **rings** `ring-*`; **datasources** `datasource-*`. New files must be registered in both the enum and the `PRESETS` record. The `manager-*-automerge-*` and `datasource-docker-automerge-*` presets are group-shaped but keep the manager/datasource prefix on purpose — consumers hardcode the name, and the prefix says which manager the argument is scoped to.
 - `SCOPE` prefix (`local>renovate/renovate-config:default/`) is prepended to all preset references via `createScopes(Preset.X, ...)`.
 - Conventional commits: `feat` for features, `fix` for fixes, `build(deps)` for dependency updates
 - **Object spreads go first, explicit keys after** — `{ ...NODE_GROUP_DEV, groupName, groupSlug, schedule }`. A shared constant must never be able to silently clobber a local key.
@@ -40,7 +40,9 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 
 ## Automerge Pattern
 
-**A breaking update never automerges without a bounded exact-name allowlist.** No rule may set `automerge: true` while matching `replacement`. A rule may set `automerge: true` while matching `major` only when it also carries `matchPackageNames` with exact names only — no globs, regexes, or negations; `test/presets.test.ts` enforces boundedness, not just presence. No automerge rule may omit `matchUpdateTypes` — an unbounded rule catches majors too. The major group presets now have automerge twins for a bounded set of charts whose major versions track upstream dependency bumps, not chart-level breaking changes. `lockFileMaintenance` is the one exemption: it is its own update type and carries no version bump. `test/presets.test.ts` enforces all three rules plus an effective-automerge test that resolves the rule chain for specific packages.
+**A breaking update never automerges without a bounded exact-name allowlist.** No rule may set `automerge: true` while matching `replacement`. A rule may set `automerge: true` while matching `major` only when it also carries `matchPackageNames` with exact names or a single `{{argN}}` preset argument — no globs, regexes, or negations; `test/presets.test.ts` enforces boundedness, not just presence. No automerge rule may omit `matchUpdateTypes` — an unbounded rule catches majors too. `lockFileMaintenance` is the one exemption: it is its own update type and carries no version bump. `test/presets.test.ts` enforces all three rules plus an effective-automerge test that resolves the rule chain for specific packages, with and without a substituted argument.
+
+An argument satisfies boundedness by construction: renovate substitutes it with the consumer's literal package name before the rule is ever evaluated, so the braces are not minimatch brace expansion. This repo cannot see the substituted value — a consumer that passes a glob widens the rule, and keeping the argument a literal name is the consuming repository's contract.
 
 Note that renovate rejects any rule setting `matchUpdateTypes` together with one of its 15 `preLookupOptions` — `rangeStrategy`, `versioning`, `registryUrls`, `allowedVersions`, `separateMajorMinor` and the rest — because those are resolved before the update type is known. Bounding an automerge rule by update type therefore means moving its `rangeStrategy` into a separate rule, as the node dependency, devDependency, peer and package-manager groups all do.
 
@@ -49,13 +51,62 @@ Every manager that supports automerge follows the same two-rule pattern in its g
 1. **Catch-all rule** — matches all packages for the manager/update-type, `automerge: false`
 2. **Automerge rule** — matches specific packages via `matchSourceUrls` and/or `matchPackageNames`, `automerge: true`. For Pattern M the factory attaches `Labels.AUTOMERGE` automatically whenever `automerge: true`; Pattern S rules add it by hand.
 
-To enable automerge for a new package, add its source URL to `matchSourceUrls` and package name to `matchPackageNames` in the automerge rule of the **minor** group file for the relevant manager. A major equivalent exists for a bounded set of charts whose major versions track upstream dependency bumps; add to the major automerge rule's `matchPackageNames` with exact names only.
+### Parameterized automerge presets
 
-**Managers with automerge rules:**
+**Automerge is opt-in per package, declared by the consuming repository — not by an allowlist here.** Every manager and datasource the central config handles has a minor and a major preset — 32 keys — each taking the package name as `{{arg0}}` via `matchPackageNames: ['{{arg0}}']`. A repository extends one of them once per package, after `default/default`:
+
+Each row is a `-minor` / `-major` pair; the major twin always matches `['major']` alone and shares the minor twin's matchers.
+
+| Preset key pair                          | Directory                     | Minor update types                             | Pattern | Group slug                              | Notes                                                        |
+| ---------------------------------------- | ----------------------------- | ---------------------------------------------- | ------- | --------------------------------------- | ------------------------------------------------------------ |
+| `manager-helm-automerge-*`               | `managers/helm/`              | `minor`, `patch`                               | M       | `helm-{minor,major}-automerge`          | reuses the central twin's slug                               |
+| `manager-kustomize-automerge-*`          | `managers/kustomize/`         | `minor`, `patch`                               | M       | `kustomize-{minor,major}-automerge`     | `matchDepTypes: ['HelmChart']` on both levels                |
+| `manager-argocd-automerge-*`             | `managers/argocd/`            | `minor`, `patch`, `pin`, `digest`, `pinDigest` | M       | `argocd-{minor,major}-automerge`        | argument is a git URL, not a chart name                      |
+| `manager-terraform-automerge-*`          | `managers/terraform/`         | `minor`, `patch`                               | M       | `terraform-{minor,major}-automerge`     | covers `module`, `provider`, `required_provider`, `helm_release` |
+| `manager-terraform-custom-automerge-*`   | `managers/terraform/custom-`  | `minor`, `patch`                               | M       | `terraform-monorepo-{minor,major}-automerge` | `custom.regex` scoped by the terraform monorepo dep type |
+| `manager-node-automerge-*`               | `managers/node/`              | `minor`, `patch`, `pin`, `digest`              | S       | none — see below                        | no `schedule` either                                         |
+| `manager-go-automerge-*`                 | `managers/go/`                | `minor`, `patch`, `digest`                     | S       | none — see below                        | no `schedule` either                                         |
+| `manager-python-automerge-*`             | `managers/python-pep621/`     | `minor`, `patch`, `pin`                        | S       | `python-{minor,major}-automerge`        | no `digest`: pypi has none                                   |
+| `manager-rust-automerge-*`               | `managers/rust-cargo/`        | `minor`, `patch`, `pin`                        | S       | `rust-{minor,major}-automerge`          | no `digest`: crates.io has none                              |
+| `manager-kubernetes-automerge-*`         | `managers/kubernetes/`        | `minor`, `patch`, `pin`, `digest`              | S       | `kubernetes-{minor,major}-automerge`    | argument is an image reference                               |
+| `manager-dockerfile-automerge-*`         | `managers/dockerfile/`        | `minor`, `patch`, `pin`, `digest`              | S       | `dockerfile-{minor,major}-automerge`    | only images declared in a Dockerfile                         |
+| `manager-ansible-galaxy-automerge-*`     | `managers/ansible-galaxy/`    | `minor`, `patch`, `pin`, `digest`              | S       | `ansible-galaxy-{minor,major}`          | `matchDepTypes: ['collections', 'roles']`, `DAILY`; minor keeps the twin's `[skip ci]`, major does not |
+| `manager-gitlab-ci-automerge-*`          | `managers/gitlab-ci/`         | `minor`, `patch`, `pin`, `digest`              | S       | `gitlab-ci-{minor,major}`               | matches `gitlabci` and `gitlabci-include`, `ANY`             |
+| `manager-gitlab-ci-custom-automerge-*`   | `managers/gitlab-ci/custom-`  | `minor`, `patch`, `pin`, `digest`              | S       | `gitlab-ci-{minor,major}`               | `custom.regex` scoped by the gitlab-ci monorepo dep type     |
+| `manager-otel-builder-automerge-*`       | `managers/otel-builder/`      | `minor`, `patch`, `digest`                     | S       | `otel-builder-{minor,major}`            | `DAILY`                                                      |
+| `datasource-docker-automerge-*`          | `datasources/docker/`         | `minor`, `patch`, `pin`, `digest`              | S       | `docker-{minor,major}`                  | `matchDatasources: ['docker']`, `ANY`                        |
+
+```json
+{
+  "extends": [
+    "local>renovate/renovate-config:default/default",
+    "local>renovate/renovate-config:default/manager-helm-automerge-minor(kube-prometheus-stack)",
+    "local>renovate/renovate-config:default/manager-helm-automerge-major(kube-prometheus-stack)"
+  ]
+}
+```
+
+Five invariants hold these together, all enforced by `test/presets.test.ts`:
+
+- **Nothing in this repo may extend one.** They are consumer entrypoints. Extending one from `default.ts` or a `manager.ts` would automerge that package everywhere, and would place the rule *before* the group catch-all that says `automerge: false` instead of after it.
+- **They are registered last** in the `Preset` enum and the `PRESETS` record, which models the position a consumer puts them in.
+- **They reuse the central twin's group slug wherever that twin already automerges** — the `*_AUTOMERGE` slugs for helm, kustomize and argocd, and `otel-builder-minor`, `docker-minor`, `ansible-galaxy-minor`, `gitlab-ci-minor` for the Pattern S ones. An early opt-in then shares a branch with the twin rather than opening a second MR. One slug is one name, so the `groupName` must match the twin's exactly. Where the central group is a catch-all that says `automerge: false` (terraform), the opt-in gets its own `*-automerge` slug instead — joining that branch would mix automerged and non-automerged dependencies into one MR.
+- **`manager-node-automerge-*` and `manager-go-automerge-*` carry no `groupSlug` and no `schedule`.** Node groups by dep type (`dev`, `build`, `docs`, `peer`, `package-manager`) and both node and go group by ring. `groupSlug`, `groupName` and `schedule` are all last-match-wins, so an opt-in that named a group would pull the package out of the MR it belongs in and discard its ring schedule. Those two presets flip `automerge` and nothing else.
+- **No Pattern S opt-in sets a commit type.** `semanticCommitType` is last-match-wins, and the node build and docs groups own it (`build`, `docs`) — a `feat` on an opt-in rule would clobber it for those packages. Pattern M opt-ins do carry `feat` / `perf`, because the factory requires a `commitType` and no Pattern M manager assigns a per-group type.
+
+Each one adds `Labels.RENOVATE` alongside `Labels.AUTOMERGE`: a repository may extend it without `base`, and without the umbrella there it would get no labels at all.
+
+A new `-automerge-minor` / `-automerge-major` key must be added to `AUTOMERGE_PRESETS` in `test/presets.test.ts`; a registry test fails if the name matches the pattern and the list does not carry it.
+
+**None of them carries `matchSourceUrls`**, where the central helm and kustomize twins do. A chart that happens to share a name with an opted-in one, published from a different upstream repository, therefore matches too. Accepted: the argument is scoped to one repository's config, which is where the chart's origin is already known.
+
+**The central allowlists still exist** in the group files below, and are removed in a follow-up MR once every consumer has migrated. Until then both paths are live and both are tested.
 
 - `kustomize` — `groups/kustomize/minor-helm-releases.ts`, `groups/kustomize/major.ts` (matches `HelmChart` dep type)
 - `helm` — `groups/helm/minor.ts`, `groups/helm/major.ts`
 - `argocd` — `groups/argocd/minor.ts`, `groups/argocd/major.ts` (matches git URLs as package names)
+- `otel-builder` — `managers/otel-builder/manager.ts` (a `matchPackageNames: ['*']` minor rule, not an allowlist)
+- `docker` — `datasources/docker/datasource.ts`
 
 ## Labels
 
@@ -118,7 +169,7 @@ When modifying or creating package rules, always consult the official Renovate d
 
 - **packageRules:** https://docs.renovatebot.com/configuration-options/#packagerules — the core mechanism this repo uses. Rules are evaluated **in order** and **all matching rules are applied** (not just the first match). Later rules override earlier ones for the same field, so **order matters**: place broad catch-all rules first, then specific overrides (like automerge) after. This is why each group file has the catch-all `automerge: false` rule before the specific `automerge: true` rule.
 - **matchSourceUrls:** https://docs.renovatebot.com/configuration-options/#matchsourceurls — matches the upstream source repository URL of a dependency.
-- **matchPackageNames:** https://docs.renovatebot.com/configuration-options/#matchpackagenames — supports exact names, globs, and regex. In this repo we use exact names.
+- **matchPackageNames:** https://docs.renovatebot.com/configuration-options/#matchpackagenames — supports exact names, globs, and regex. In this repo we use exact names, or a single `{{arg0}}` preset argument that resolves to one.
 - **matchManagers:** https://docs.renovatebot.com/configuration-options/#matchmanagers — scopes a rule to specific package managers (e.g., `kustomize`, `helmv3`, `argocd`).
 - **matchUpdateTypes:** https://docs.renovatebot.com/configuration-options/#matchupdatetypes — `major`, `minor`, `patch`, `pin`, `digest`, etc.
 - **matchDepTypes:** https://docs.renovatebot.com/configuration-options/#matchdeptypes — e.g., `HelmChart` for kustomize helm chart dependencies.
