@@ -8,22 +8,37 @@ The user wants to enable Renovate automerge for a specific package. **Automerge 
 
 From the user's input, determine:
 
-- **Manager:** which Renovate manager handles the dependency (`helm`, `kustomize`, `argocd`, `otel-builder`) or whether it is a `docker` datasource dependency
+- **Manager:** which Renovate manager handles the dependency, or whether it is a `docker` datasource dependency. The MR description names it.
 - **Package name:** the exact name as Renovate sees it — a chart name (`kube-prometheus-stack`), a git URL for argocd (`git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git`), or an image name for docker (`renovate/renovate`)
 
 If either is unclear, the existing Renovate MR for the package shows the manager and the package name in its description. Ask the user for the MR URL if needed.
 
 ### 2. Pick the preset keys
 
-| Manager / datasource | Minor preset                            | Major preset                            |
-| -------------------- | --------------------------------------- | --------------------------------------- |
-| `helm`               | `manager-helm-automerge-minor`          | `manager-helm-automerge-major`          |
-| `kustomize`          | `manager-kustomize-automerge-minor`     | `manager-kustomize-automerge-major`     |
-| `argocd`             | `manager-argocd-automerge-minor`        | `manager-argocd-automerge-major`        |
-| `otel-builder`       | `manager-otel-builder-automerge-minor`  | `manager-otel-builder-automerge-major`  |
-| `docker` datasource  | `datasource-docker-automerge-minor`     | `datasource-docker-automerge-major`     |
+Every manager and datasource has a pair. Pick by which manager resolves the dependency:
 
-Add the **minor** preset by default. Add the **major** one only when the user asks for it and the package's major version tracks an upstream dependency bump rather than a chart-level breaking change.
+| Manager / datasource        | Preset key pair (append `-minor` or `-major`) |
+| --------------------------- | --------------------------------------------- |
+| `helmv3`                    | `manager-helm-automerge-*`                    |
+| `kustomize`                 | `manager-kustomize-automerge-*`               |
+| `argocd`                    | `manager-argocd-automerge-*`                  |
+| `terraform`                 | `manager-terraform-automerge-*`               |
+| `custom.regex` in `.tf`     | `manager-terraform-custom-automerge-*`        |
+| `npm`                       | `manager-node-automerge-*`                    |
+| `gomod`                     | `manager-go-automerge-*`                      |
+| `pep621`                    | `manager-python-automerge-*`                  |
+| `cargo`                     | `manager-rust-automerge-*`                    |
+| `kubernetes`                | `manager-kubernetes-automerge-*`              |
+| `dockerfile`                | `manager-dockerfile-automerge-*`              |
+| `ansible-galaxy`            | `manager-ansible-galaxy-automerge-*`          |
+| `gitlabci`, `gitlabci-include` | `manager-gitlab-ci-automerge-*`            |
+| `custom.regex` in `.gitlab-ci.yml` | `manager-gitlab-ci-custom-automerge-*` |
+| `ocb`                       | `manager-otel-builder-automerge-*`            |
+| `docker` datasource         | `datasource-docker-automerge-*`               |
+
+Add the **minor** preset by default. Add the **major** one only when the user asks for it and the package's major version tracks an upstream dependency bump rather than a breaking change.
+
+For `npm` and `gomod` the central config already automerges every minor update, so only the `-major` key changes anything today. Those two keys also leave grouping alone by design — an opted-in package stays in its dep-type or ring merge request.
 
 ### 3. Extend the preset in the consuming repository
 

@@ -53,20 +53,28 @@ Every manager that supports automerge follows the same two-rule pattern in its g
 
 ### Parameterized automerge presets
 
-**Automerge is opt-in per package, declared by the consuming repository — not by an allowlist here.** Ten presets take the package name as `{{arg0}}` via `matchPackageNames: ['{{arg0}}']`, and a repository extends one of them once per package, after `default/default`:
+**Automerge is opt-in per package, declared by the consuming repository — not by an allowlist here.** Every manager and datasource the central config handles has a minor and a major preset — 32 keys — each taking the package name as `{{arg0}}` via `matchPackageNames: ['{{arg0}}']`. A repository extends one of them once per package, after `default/default`:
 
-| Preset key                              | File                                              | Update types                                | Notes                                            |
-| --------------------------------------- | ------------------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
-| `manager-helm-automerge-minor`          | `managers/helm/automerge-minor.ts`                | `minor`, `patch`                            | Pattern M                                        |
-| `manager-helm-automerge-major`          | `managers/helm/automerge-major.ts`                | `major`                                     | Pattern M                                        |
-| `manager-kustomize-automerge-minor`     | `managers/kustomize/automerge-minor.ts`           | `minor`, `patch`                            | Pattern M, `matchDepTypes: ['HelmChart']`        |
-| `manager-kustomize-automerge-major`     | `managers/kustomize/automerge-major.ts`           | `major`                                     | Pattern M, `matchDepTypes: ['HelmChart']`        |
-| `manager-argocd-automerge-minor`        | `managers/argocd/automerge-minor.ts`              | `minor`, `patch`, `pin`, `digest`, `pinDigest` | Pattern M, argument is a git URL              |
-| `manager-argocd-automerge-major`        | `managers/argocd/automerge-major.ts`              | `major`                                     | Pattern M, argument is a git URL                 |
-| `manager-otel-builder-automerge-minor`  | `managers/otel-builder/automerge-minor.ts`        | `minor`, `patch`, `digest`                  | Pattern S                                        |
-| `manager-otel-builder-automerge-major`  | `managers/otel-builder/automerge-major.ts`        | `major`                                     | Pattern S                                        |
-| `datasource-docker-automerge-minor`     | `datasources/docker/automerge-minor.ts`           | `minor`, `patch`, `pin`, `digest`           | Pattern S, `matchDatasources: ['docker']`        |
-| `datasource-docker-automerge-major`     | `datasources/docker/automerge-major.ts`           | `major`                                     | Pattern S, `matchDatasources: ['docker']`        |
+Each row is a `-minor` / `-major` pair; the major twin always matches `['major']` alone and shares the minor twin's matchers.
+
+| Preset key pair                          | Directory                     | Minor update types                             | Pattern | Group slug                              | Notes                                                        |
+| ---------------------------------------- | ----------------------------- | ---------------------------------------------- | ------- | --------------------------------------- | ------------------------------------------------------------ |
+| `manager-helm-automerge-*`               | `managers/helm/`              | `minor`, `patch`                               | M       | `helm-{minor,major}-automerge`          | reuses the central twin's slug                               |
+| `manager-kustomize-automerge-*`          | `managers/kustomize/`         | `minor`, `patch`                               | M       | `kustomize-{minor,major}-automerge`     | `matchDepTypes: ['HelmChart']` on both levels                |
+| `manager-argocd-automerge-*`             | `managers/argocd/`            | `minor`, `patch`, `pin`, `digest`, `pinDigest` | M       | `argocd-{minor,major}-automerge`        | argument is a git URL, not a chart name                      |
+| `manager-terraform-automerge-*`          | `managers/terraform/`         | `minor`, `patch`                               | M       | `terraform-{minor,major}-automerge`     | covers `module`, `provider`, `required_provider`, `helm_release` |
+| `manager-terraform-custom-automerge-*`   | `managers/terraform/custom-`  | `minor`, `patch`                               | M       | `terraform-monorepo-{minor,major}-automerge` | `custom.regex` scoped by the terraform monorepo dep type |
+| `manager-node-automerge-*`               | `managers/node/`              | `minor`, `patch`, `pin`, `digest`              | S       | none — see below                        | no `schedule` either                                         |
+| `manager-go-automerge-*`                 | `managers/go/`                | `minor`, `patch`, `digest`                     | S       | none — see below                        | no `schedule` either                                         |
+| `manager-python-automerge-*`             | `managers/python-pep621/`     | `minor`, `patch`, `pin`                        | S       | `python-{minor,major}-automerge`        | no `digest`: pypi has none                                   |
+| `manager-rust-automerge-*`               | `managers/rust-cargo/`        | `minor`, `patch`, `pin`                        | S       | `rust-{minor,major}-automerge`          | no `digest`: crates.io has none                              |
+| `manager-kubernetes-automerge-*`         | `managers/kubernetes/`        | `minor`, `patch`, `pin`, `digest`              | S       | `kubernetes-{minor,major}-automerge`    | argument is an image reference                               |
+| `manager-dockerfile-automerge-*`         | `managers/dockerfile/`        | `minor`, `patch`, `pin`, `digest`              | S       | `dockerfile-{minor,major}-automerge`    | only images declared in a Dockerfile                         |
+| `manager-ansible-galaxy-automerge-*`     | `managers/ansible-galaxy/`    | `minor`, `patch`, `pin`, `digest`              | S       | `ansible-galaxy-{minor,major}`          | `matchDepTypes: ['collections', 'roles']`, `DAILY`; minor keeps the twin's `[skip ci]`, major does not |
+| `manager-gitlab-ci-automerge-*`          | `managers/gitlab-ci/`         | `minor`, `patch`, `pin`, `digest`              | S       | `gitlab-ci-{minor,major}`               | matches `gitlabci` and `gitlabci-include`, `ANY`             |
+| `manager-gitlab-ci-custom-automerge-*`   | `managers/gitlab-ci/custom-`  | `minor`, `patch`, `pin`, `digest`              | S       | `gitlab-ci-{minor,major}`               | `custom.regex` scoped by the gitlab-ci monorepo dep type     |
+| `manager-otel-builder-automerge-*`       | `managers/otel-builder/`      | `minor`, `patch`, `digest`                     | S       | `otel-builder-{minor,major}`            | `DAILY`                                                      |
+| `datasource-docker-automerge-*`          | `datasources/docker/`         | `minor`, `patch`, `pin`, `digest`              | S       | `docker-{minor,major}`                  | `matchDatasources: ['docker']`, `ANY`                        |
 
 ```json
 {
@@ -78,13 +86,17 @@ Every manager that supports automerge follows the same two-rule pattern in its g
 }
 ```
 
-Three invariants hold these together, all enforced by `test/presets.test.ts`:
+Five invariants hold these together, all enforced by `test/presets.test.ts`:
 
 - **Nothing in this repo may extend one.** They are consumer entrypoints. Extending one from `default.ts` or a `manager.ts` would automerge that package everywhere, and would place the rule *before* the group catch-all that says `automerge: false` instead of after it.
 - **They are registered last** in the `Preset` enum and the `PRESETS` record, which models the position a consumer puts them in.
-- **They reuse the existing `*_AUTOMERGE` group slugs** (plus the new `otel-builder-major` and `docker-major`), so an early opt-in shares a branch with the central twin rather than opening a second MR. One slug is one name — the `groupName` must match the twin's exactly.
+- **They reuse the central twin's group slug wherever that twin already automerges** — the `*_AUTOMERGE` slugs for helm, kustomize and argocd, and `otel-builder-minor`, `docker-minor`, `ansible-galaxy-minor`, `gitlab-ci-minor` for the Pattern S ones. An early opt-in then shares a branch with the twin rather than opening a second MR. One slug is one name, so the `groupName` must match the twin's exactly. Where the central group is a catch-all that says `automerge: false` (terraform), the opt-in gets its own `*-automerge` slug instead — joining that branch would mix automerged and non-automerged dependencies into one MR.
+- **`manager-node-automerge-*` and `manager-go-automerge-*` carry no `groupSlug` and no `schedule`.** Node groups by dep type (`dev`, `build`, `docs`, `peer`, `package-manager`) and both node and go group by ring. `groupSlug`, `groupName` and `schedule` are all last-match-wins, so an opt-in that named a group would pull the package out of the MR it belongs in and discard its ring schedule. Those two presets flip `automerge` and nothing else.
+- **No Pattern S opt-in sets a commit type.** `semanticCommitType` is last-match-wins, and the node build and docs groups own it (`build`, `docs`) — a `feat` on an opt-in rule would clobber it for those packages. Pattern M opt-ins do carry `feat` / `perf`, because the factory requires a `commitType` and no Pattern M manager assigns a per-group type.
 
 Each one adds `Labels.RENOVATE` alongside `Labels.AUTOMERGE`: a repository may extend it without `base`, and without the umbrella there it would get no labels at all.
+
+A new `-automerge-minor` / `-automerge-major` key must be added to `AUTOMERGE_PRESETS` in `test/presets.test.ts`; a registry test fails if the name matches the pattern and the list does not carry it.
 
 **None of them carries `matchSourceUrls`**, where the central helm and kustomize twins do. A chart that happens to share a name with an opted-in one, published from a different upstream repository, therefore matches too. Accepted: the argument is scoped to one repository's config, which is where the chart's origin is already known.
 
