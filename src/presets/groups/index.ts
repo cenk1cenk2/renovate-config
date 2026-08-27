@@ -1,9 +1,10 @@
 // A `*_AUTOMERGE` slug belongs to the parameterized `*-automerge-*` preset a consuming repository
-// extends once per package, and is deliberately separate from the central group's slug: a grouped
-// branch automerges only when every upgrade on it does
-// (`dist/workers/repository/updates/generate.js`), so an opt-in sharing a catch-all's branch would
-// never merge itself. Where the central group still automerges every minor update — gitlab-ci,
-// ansible-galaxy, docker — the opt-in reuses that slug instead. See the automerge policy in CLAUDE.md.
+// extends once per package. Where the central group automerges every minor update anyway — node, go,
+// gitlab-ci, ansible-galaxy, otel-builder, python, docker — the opt-in reuses the central slug so it
+// shares that merge request. Where the central group is a catch-all that says `automerge: false` —
+// helm, kustomize, argocd, terraform — the opt-in needs its own slug: a grouped branch automerges only
+// when every upgrade on it does (`dist/workers/repository/updates/generate.js`), so an opt-in on the
+// catch-all's branch would never merge itself. See the automerge policy in CLAUDE.md.
 //
 // There are no node or go slugs for the opt-in presets. Those managers already group by dep type and by
 // ring, and `groupSlug` is last-match-wins, so an opt-in that named a group would pull the package out of
@@ -54,14 +55,13 @@ export enum Groups {
   DOCKERFILE_MINOR_AUTOMERGE = 'dockerfile-minor-automerge',
   DOCKERFILE_MAJOR_AUTOMERGE = 'dockerfile-major-automerge',
 
-  PYTHON_MINOR_AUTOMERGE = 'python-minor-automerge',
+  PYTHON_MINOR = 'python-minor',
   PYTHON_MAJOR_AUTOMERGE = 'python-major-automerge',
 
   RUST_MINOR_AUTOMERGE = 'rust-minor-automerge',
   RUST_MAJOR_AUTOMERGE = 'rust-major-automerge',
 
   OTEL_BUILDER_MINOR = 'otel-builder-minor',
-  OTEL_BUILDER_MINOR_AUTOMERGE = 'otel-builder-minor-automerge',
   OTEL_BUILDER_MAJOR = 'otel-builder-major',
 
   DOCKER_MINOR = 'docker-minor',

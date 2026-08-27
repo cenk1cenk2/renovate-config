@@ -173,6 +173,9 @@
     "enabledManagers": [
       "pep621"
     ],
+    "extends": [
+      "local>renovate/renovate-config:default/group-python-minor-dependencies"
+    ],
     "packageRules": [
       {
         "matchManagers": [
@@ -460,7 +463,10 @@
           "patch",
           "digest"
         ],
-        "automerge": false,
+        "addLabels": [
+          "automerge"
+        ],
+        "automerge": true,
         "matchManagers": [
           "ocb"
         ],
@@ -1122,6 +1128,32 @@
       }
     ]
   },
+  "group-python-minor-dependencies": {
+    "packageRules": [
+      {
+        "matchPackageNames": [
+          "*"
+        ],
+        "groupName": "python all minor dependency updates",
+        "groupSlug": "python-minor",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin"
+        ],
+        "addLabels": [
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "pep621"
+        ],
+        "schedule": [
+          "before 1am"
+        ]
+      }
+    ]
+  },
   "group-ansible-galaxy-minor-roles": {
     "packageRules": [
       {
@@ -1747,8 +1779,8 @@
         "matchPackageNames": [
           "{{arg0}}"
         ],
-        "groupName": "otel-builder all minor automerge dependency updates",
-        "groupSlug": "otel-builder-minor-automerge",
+        "groupName": "otel-builder all minor dependency updates",
+        "groupSlug": "otel-builder-minor",
         "matchUpdateTypes": [
           "minor",
           "patch",
@@ -2024,8 +2056,8 @@
         "matchPackageNames": [
           "{{arg0}}"
         ],
-        "groupName": "python all minor automerge dependency updates",
-        "groupSlug": "python-minor-automerge",
+        "groupName": "python all minor dependency updates",
+        "groupSlug": "python-minor",
         "matchUpdateTypes": [
           "minor",
           "patch",

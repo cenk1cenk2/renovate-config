@@ -9,8 +9,8 @@ export default createPreset({
   packageRules: [
     {
       matchPackageNames: ['{{arg0}}'],
-      groupName: 'otel-builder all minor automerge dependency updates',
-      groupSlug: Groups.OTEL_BUILDER_MINOR_AUTOMERGE,
+      groupName: 'otel-builder all minor dependency updates',
+      groupSlug: Groups.OTEL_BUILDER_MINOR,
       matchUpdateTypes: ['minor', 'patch', 'digest'],
       addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
       automerge: true,
