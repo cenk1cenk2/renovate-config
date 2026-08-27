@@ -1,7 +1,9 @@
-// The `*_AUTOMERGE` slugs are shared by two rules: the central twin in the group preset, which still
-// carries a hardcoded exact-name allowlist, and the parameterized `*-automerge-*` preset a consuming
-// repository extends once per package. Sharing the slug keeps both on one branch during the migration —
-// see the automerge policy in CLAUDE.md.
+// A `*_AUTOMERGE` slug belongs to the parameterized `*-automerge-*` preset a consuming repository
+// extends once per package, and is deliberately separate from the central group's slug: a grouped
+// branch automerges only when every upgrade on it does
+// (`dist/workers/repository/updates/generate.js`), so an opt-in sharing a catch-all's branch would
+// never merge itself. Where the central group still automerges every minor update — gitlab-ci,
+// ansible-galaxy, docker — the opt-in reuses that slug instead. See the automerge policy in CLAUDE.md.
 //
 // There are no node or go slugs for the opt-in presets. Those managers already group by dep type and by
 // ring, and `groupSlug` is last-match-wins, so an opt-in that named a group would pull the package out of
@@ -59,6 +61,7 @@ export enum Groups {
   RUST_MAJOR_AUTOMERGE = 'rust-major-automerge',
 
   OTEL_BUILDER_MINOR = 'otel-builder-minor',
+  OTEL_BUILDER_MINOR_AUTOMERGE = 'otel-builder-minor-automerge',
   OTEL_BUILDER_MAJOR = 'otel-builder-major',
 
   DOCKER_MINOR = 'docker-minor',

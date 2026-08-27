@@ -12,6 +12,9 @@ export default createPreset({
       addLabels: [Labels.RENOVATE, Labels.DATASOURCE_DOCKER]
     },
     {
+      // The one package this config still automerges estate-wide. `docker/dockerfile` is the Dockerfile
+      // syntax directive, not an application image: it ships the frontend every consuming repository
+      // already builds with, so opting in per repository would be the same decision 99 times.
       enabled: true,
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       addLabels: [Labels.AUTOMERGE],
@@ -19,11 +22,7 @@ export default createPreset({
       groupSlug: Groups.DOCKER_MINOR,
       automerge: true,
       matchDatasources: [Datasources.DOCKER],
-      matchPackageNames: [
-        'ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib',
-        'renovate/renovate',
-        'docker/dockerfile'
-      ],
+      matchPackageNames: ['docker/dockerfile'],
       schedule: [SCHEDULE.ANY]
     }
   ]

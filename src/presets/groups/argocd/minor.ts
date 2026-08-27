@@ -14,15 +14,6 @@ export default createPreset({
       commitType: 'feat',
       groupSlug: Groups.ARGOCD_MINOR,
       matchManagers: [Managers.ARGOCD]
-    }),
-    createMultiDirectoryGroupRule({
-      name: 'argocd',
-      matchUpdateTypes: [...ARGOCD_MINOR_UPDATE_TYPES],
-      commitType: 'feat',
-      groupSlug: Groups.ARGOCD_MINOR_AUTOMERGE,
-      matchManagers: [Managers.ARGOCD],
-      automerge: true,
-      matchPackageNames: ['git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'git@gitlab.kilic.dev:cluster/charts/chart-opentelemetry-operator.git']
     })
   ]
 })

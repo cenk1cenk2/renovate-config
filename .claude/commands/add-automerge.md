@@ -38,7 +38,7 @@ Every manager and datasource has a pair. Pick by which manager resolves the depe
 
 Add the **minor** preset by default. Add the **major** one only when the user asks for it and the package's major version tracks an upstream dependency bump rather than a breaking change.
 
-For `npm` and `gomod` the central config already automerges every minor update, so only the `-major` key changes anything today. Those two keys also leave grouping alone by design — an opted-in package stays in its dep-type or ring merge request.
+For `npm`, `gomod`, `gitlabci` and `ansible-galaxy` the central config still automerges every minor update, so only the `-major` key changes anything today. The npm and gomod keys also leave grouping alone by design — an opted-in package stays in its dep-type or ring merge request.
 
 ### 3. Extend the preset in the consuming repository
 
@@ -60,7 +60,7 @@ Order matters: the preset carries `automerge: true` and has to land after the gr
 
 ### 4. Nothing to change in this repository
 
-Do not add the package to a `matchSourceUrls` or `matchPackageNames` allowlist in `src/presets/groups/`. Those central allowlists are the pattern being retired and are removed once every consumer has migrated. Do not extend an automerge preset from `default.ts` or any `manager.ts` — `test/presets.test.ts` fails if one becomes reachable from `default`.
+Do not add the package to a `matchSourceUrls` or `matchPackageNames` allowlist in `src/presets/groups/`. Those central allowlists are gone: `docker/dockerfile` is the only package name the central config still automerges, and `test/presets.test.ts` (`only automerges the dockerfile syntax directive centrally`) fails on a new one. Do not extend an automerge preset from `default.ts` or any `manager.ts` — the same file fails if one becomes reachable from `default`.
 
 ### 5. Commit in the consuming repository
 
