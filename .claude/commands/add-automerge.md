@@ -38,7 +38,9 @@ Every manager and datasource has a pair. Pick by which manager resolves the depe
 
 Add the **minor** preset by default. Add the **major** one only when the user asks for it and the package's major version tracks an upstream dependency bump rather than a breaking change.
 
-For `npm` and `gomod` the central config already automerges every minor update, so only the `-major` key changes anything today. Those two keys also leave grouping alone by design — an opted-in package stays in its dep-type or ring merge request.
+The central config already automerges every minor and patch update for `npm`, `gomod`, `pep621`, `gitlabci`, `ansible-galaxy`, `ocb` and the `docker` datasource, so for those the `-minor` key changes nothing and only the `-major` key does. The keys that do change a minor update are the managers whose central group says `automerge: false`: `helmv3`, `kustomize`, `argocd`, `terraform`, `kubernetes`, `dockerfile` and `cargo`.
+
+The `npm` and `gomod` keys also leave grouping alone by design — an opted-in package stays in its dep-type or ring merge request.
 
 ### 3. Extend the preset in the consuming repository
 
@@ -60,7 +62,7 @@ Order matters: the preset carries `automerge: true` and has to land after the gr
 
 ### 4. Nothing to change in this repository
 
-Do not add the package to a `matchSourceUrls` or `matchPackageNames` allowlist in `src/presets/groups/`. Those central allowlists are the pattern being retired and are removed once every consumer has migrated. Do not extend an automerge preset from `default.ts` or any `manager.ts` — `test/presets.test.ts` fails if one becomes reachable from `default`.
+Do not add the package to a `matchSourceUrls` or `matchPackageNames` allowlist in `src/presets/groups/`. Those central allowlists are gone: `docker/dockerfile` is the only package name a central rule automerges, and `test/presets.test.ts` (`never automerges a central package-name allowlist`) fails on a new one. The generic manager-wide groups are a separate thing and stay — never widen one to cover a single package. Do not extend an automerge preset from `default.ts` or any `manager.ts` either; the same file fails if one becomes reachable from `default`.
 
 ### 5. Commit in the consuming repository
 

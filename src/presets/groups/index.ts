@@ -1,7 +1,10 @@
-// The `*_AUTOMERGE` slugs are shared by two rules: the central twin in the group preset, which still
-// carries a hardcoded exact-name allowlist, and the parameterized `*-automerge-*` preset a consuming
-// repository extends once per package. Sharing the slug keeps both on one branch during the migration —
-// see the automerge policy in CLAUDE.md.
+// A `*_AUTOMERGE` slug belongs to the parameterized `*-automerge-*` preset a consuming repository
+// extends once per package. Where the central group automerges every minor update anyway — node, go,
+// gitlab-ci, ansible-galaxy, otel-builder, python, docker — the opt-in reuses the central slug so it
+// shares that merge request. Where the central group is a catch-all that says `automerge: false` —
+// helm, kustomize, argocd, terraform — the opt-in needs its own slug: a grouped branch automerges only
+// when every upgrade on it does (`dist/workers/repository/updates/generate.js`), so an opt-in on the
+// catch-all's branch would never merge itself. See the automerge policy in CLAUDE.md.
 //
 // There are no node or go slugs for the opt-in presets. Those managers already group by dep type and by
 // ring, and `groupSlug` is last-match-wins, so an opt-in that named a group would pull the package out of
@@ -52,7 +55,7 @@ export enum Groups {
   DOCKERFILE_MINOR_AUTOMERGE = 'dockerfile-minor-automerge',
   DOCKERFILE_MAJOR_AUTOMERGE = 'dockerfile-major-automerge',
 
-  PYTHON_MINOR_AUTOMERGE = 'python-minor-automerge',
+  PYTHON_MINOR = 'python-minor',
   PYTHON_MAJOR_AUTOMERGE = 'python-major-automerge',
 
   RUST_MINOR_AUTOMERGE = 'rust-minor-automerge',
