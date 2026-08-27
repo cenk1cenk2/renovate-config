@@ -1015,7 +1015,6 @@
         ],
         "matchPackageNames": [
           "kube-prometheus-stack",
-          "blackbox-exporter",
           "opentelemetry-operator"
         ],
         "addLabels": [
@@ -1069,7 +1068,6 @@
         ],
         "matchPackageNames": [
           "kube-prometheus-stack",
-          "blackbox-exporter",
           "opentelemetry-operator"
         ],
         "addLabels": [
@@ -1738,6 +1736,305 @@
         ],
         "groupName": "go fast ring minor dependencies",
         "groupSlug": "go-fast-ring",
+        "schedule": [
+          "at any time"
+        ]
+      }
+    ]
+  },
+  "manager-helm-automerge-minor": {
+    "packageRules": [
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "helm all minor automerge dependency updates",
+        "group": {
+          "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
+        },
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch"
+        ],
+        "groupSlug": "helm-minor-automerge",
+        "matchManagers": [
+          "helmv3"
+        ],
+        "addLabels": [
+          "automerge",
+          "renovate"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ]
+      }
+    ]
+  },
+  "manager-helm-automerge-major": {
+    "packageRules": [
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "helm all major automerge dependency updates",
+        "group": {
+          "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
+        },
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(perf)"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "groupSlug": "helm-major-automerge",
+        "matchManagers": [
+          "helmv3"
+        ],
+        "addLabels": [
+          "automerge",
+          "renovate"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ]
+      }
+    ]
+  },
+  "manager-kustomize-automerge-minor": {
+    "packageRules": [
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "kustomize all minor automerge dependency updates",
+        "group": {
+          "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
+        },
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch"
+        ],
+        "groupSlug": "kustomize-minor-automerge",
+        "matchManagers": [
+          "kustomize"
+        ],
+        "matchDepTypes": [
+          "HelmChart"
+        ],
+        "addLabels": [
+          "automerge",
+          "renovate"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ]
+      }
+    ]
+  },
+  "manager-kustomize-automerge-major": {
+    "packageRules": [
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "kustomize all major automerge dependency updates",
+        "group": {
+          "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
+        },
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(perf)"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "groupSlug": "kustomize-major-automerge",
+        "matchManagers": [
+          "kustomize"
+        ],
+        "matchDepTypes": [
+          "HelmChart"
+        ],
+        "addLabels": [
+          "automerge",
+          "renovate"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ]
+      }
+    ]
+  },
+  "manager-argocd-automerge-minor": {
+    "packageRules": [
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "argocd all minor automerge dependency updates",
+        "group": {
+          "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
+        },
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(feat)"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest",
+          "pinDigest"
+        ],
+        "groupSlug": "argocd-minor-automerge",
+        "matchManagers": [
+          "argocd"
+        ],
+        "addLabels": [
+          "automerge",
+          "renovate"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ]
+      }
+    ]
+  },
+  "manager-argocd-automerge-major": {
+    "packageRules": [
+      {
+        "automerge": true,
+        "additionalBranchPrefix": "{{packageFileDir}}-",
+        "groupName": "argocd all major automerge dependency updates",
+        "group": {
+          "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
+        },
+        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "extends": [
+          ":semanticCommitTypeAll(perf)"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "groupSlug": "argocd-major-automerge",
+        "matchManagers": [
+          "argocd"
+        ],
+        "addLabels": [
+          "automerge",
+          "renovate"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ]
+      }
+    ]
+  },
+  "manager-otel-builder-automerge-minor": {
+    "packageRules": [
+      {
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "groupName": "otel-builder all minor dependency updates",
+        "groupSlug": "otel-builder-minor",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "digest"
+        ],
+        "addLabels": [
+          "renovate",
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "ocb"
+        ],
+        "schedule": [
+          "before 1am"
+        ]
+      }
+    ]
+  },
+  "manager-otel-builder-automerge-major": {
+    "packageRules": [
+      {
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "groupName": "otel-builder all major dependency updates",
+        "groupSlug": "otel-builder-major",
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "addLabels": [
+          "renovate",
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "ocb"
+        ],
+        "schedule": [
+          "before 1am"
+        ]
+      }
+    ]
+  },
+  "datasource-docker-automerge-minor": {
+    "packageRules": [
+      {
+        "enabled": true,
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "addLabels": [
+          "renovate",
+          "automerge"
+        ],
+        "groupName": "docker datasource minor dependency updates",
+        "groupSlug": "docker-minor",
+        "automerge": true,
+        "matchDatasources": [
+          "docker"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "schedule": [
+          "at any time"
+        ]
+      }
+    ]
+  },
+  "datasource-docker-automerge-major": {
+    "packageRules": [
+      {
+        "enabled": true,
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "addLabels": [
+          "renovate",
+          "automerge"
+        ],
+        "groupName": "docker datasource major dependency updates",
+        "groupSlug": "docker-major",
+        "automerge": true,
+        "matchDatasources": [
+          "docker"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
         "schedule": [
           "at any time"
         ]

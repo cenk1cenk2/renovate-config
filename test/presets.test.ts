@@ -57,6 +57,27 @@ const isExactName = (n: string): boolean =>
   && !/^\/.*\/i?$/.test(n)
   && !GLOB_METACHARACTERS.test(n)
 
+// A preset argument is substituted with the consumer's literal package name before renovate ever
+// evaluates the rule, so the rule is bounded to one package by construction — the braces here are not
+// minimatch brace expansion. This repo cannot see the substituted value: passing a glob as the argument
+// would widen the rule, and that stays the consuming repository's contract to keep.
+const ARGUMENT_PLACEHOLDER = /^\{\{arg\d+\}\}$/
+const isBoundedName = (n: string): boolean => ARGUMENT_PLACEHOLDER.test(n) || isExactName(n)
+
+// The parameterized automerge presets, which no preset in this repo may extend.
+const AUTOMERGE_PRESETS: Preset[] = [
+  Preset.MANAGER_HELM_AUTOMERGE_MINOR,
+  Preset.MANAGER_HELM_AUTOMERGE_MAJOR,
+  Preset.MANAGER_KUSTOMIZE_AUTOMERGE_MINOR,
+  Preset.MANAGER_KUSTOMIZE_AUTOMERGE_MAJOR,
+  Preset.MANAGER_ARGOCD_AUTOMERGE_MINOR,
+  Preset.MANAGER_ARGOCD_AUTOMERGE_MAJOR,
+  Preset.MANAGER_OTEL_BUILDER_AUTOMERGE_MINOR,
+  Preset.MANAGER_OTEL_BUILDER_AUTOMERGE_MAJOR,
+  Preset.DATASOURCE_DOCKER_AUTOMERGE_MINOR,
+  Preset.DATASOURCE_DOCKER_AUTOMERGE_MAJOR
+]
+
 describe('preset registry', () => {
   it('registers every enum member exactly once', () => {
     expect(Object.keys(PRESETS).sort()).toEqual(Object.values(Preset).sort())
@@ -177,11 +198,11 @@ describe('automerge policy', () => {
       .filter(([, rule]) =>
         rule.automerge === true
         && rule.matchUpdateTypes?.includes('major')
-        && !(Array.isArray(rule.matchPackageNames) && rule.matchPackageNames.length > 0 && rule.matchPackageNames.every(isExactName))
+        && !(Array.isArray(rule.matchPackageNames) && rule.matchPackageNames.length > 0 && rule.matchPackageNames.every(isBoundedName))
       )
       .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
-    expect(offenders, 'a major automerge must carry matchPackageNames with exact names only — no globs, regexes, or negations').toEqual([])
+    expect(offenders, 'a major automerge must carry matchPackageNames with exact names or a preset argument only — no globs, regexes, or negations').toEqual([])
   })
 
   it('never leaves a breaking update unbounded by an update-type matcher', () => {
@@ -200,20 +221,38 @@ describe('automerge policy', () => {
 // modelled, but the only ordering bug that could silently disable automerge is the intra-file one: the
 // catch-all's `automerge: false` winning over the automerge rule in the same file.
 describe('effective automerge', () => {
-  function effectiveAutomerge(
-    manager: string | undefined,
-    packageName: string,
-    updateType: string,
-    depType?: string,
-    sourceUrl?: string,
+  interface Dependency {
+    manager?: string
+    packageName: string
+    updateType: string
+    depType?: string
+    sourceUrl?: string
     datasource?: string
-  ): boolean | undefined {
+    // The argument the consuming repository passes to a parameterized preset. Left unset, every rule
+    // that carries an unsubstituted placeholder is skipped — which is what a repository that never
+    // opted in sees.
+    argument?: string
+  }
+
+  function effectiveAutomerge({ manager, packageName, updateType, depType, sourceUrl, datasource, argument }: Dependency): boolean | undefined {
+    // Renovate substitutes preset arguments before the rule is evaluated, so mirror that here rather
+    // than teaching the matcher about placeholders.
+    const substitute = (patterns: string[]): string[] | undefined => {
+      if (!patterns.some((pattern) => pattern.includes('{{arg'))) {
+        return patterns
+      }
+
+      return argument === undefined ? undefined : patterns.map((pattern) => pattern.replaceAll('{{arg0}}', argument))
+    }
+
     let result: boolean | undefined
 
     for (const [, preset] of entries) {
       for (const rule of preset.packageRules ?? []) {
+        const names = rule.matchPackageNames && substitute(rule.matchPackageNames)
+
+        if (rule.matchPackageNames && !names?.includes(packageName)) continue
         if (rule.matchManagers && (!manager || !rule.matchManagers.includes(manager))) continue
-        if (rule.matchPackageNames && !rule.matchPackageNames.includes(packageName)) continue
         if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
         if (rule.matchDepTypes && depType && !rule.matchDepTypes.includes(depType)) continue
         if (rule.matchSourceUrls && sourceUrl && !rule.matchSourceUrls.includes(sourceUrl)) continue
@@ -226,24 +265,57 @@ describe('effective automerge', () => {
     return result
   }
 
-  it('automerges kube-prometheus-stack major under helm', () => {
-    expect(effectiveAutomerge(Managers.HELM, 'kube-prometheus-stack', 'major', undefined, 'https://github.com/prometheus-community/helm-charts')).toBe(true)
+  // The central allowlists still exist and are removed in a follow-up once every consumer has migrated,
+  // so both halves have to hold at once: the hardcoded names keep automerging without an argument, and
+  // an arbitrary name automerges once it is passed as one.
+  describe('central allowlist', () => {
+    it('automerges kube-prometheus-stack major under helm', () => {
+      expect(effectiveAutomerge({ manager: Managers.HELM, packageName: 'kube-prometheus-stack', updateType: 'major', sourceUrl: 'https://github.com/prometheus-community/helm-charts' })).toBe(true)
+    })
+
+    it('automerges alloy major under kustomize', () => {
+      expect(effectiveAutomerge({ manager: Managers.KUSTOMIZE, packageName: 'alloy', updateType: 'major', depType: 'HelmChart', sourceUrl: 'https://github.com/grafana/helm-charts' })).toBe(true)
+    })
+
+    it('automerges chart-prometheus-operator git URL major under argocd', () => {
+      expect(effectiveAutomerge({ manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', updateType: 'major' })).toBe(true)
+    })
+
+    it('automerges docker/dockerfile minor under docker datasource', () => {
+      expect(effectiveAutomerge({ packageName: 'docker/dockerfile', updateType: 'minor', datasource: Datasources.DOCKER })).toBe(true)
+    })
+
+    // Still a guard that the catch-all's `automerge: false` is what a package nobody opted in gets.
+    it('does not automerge a non-allowlisted package major under helm', () => {
+      expect(effectiveAutomerge({ manager: Managers.HELM, packageName: 'some-other-chart', updateType: 'major' })).toBe(false)
+    })
   })
 
-  it('automerges alloy major under kustomize', () => {
-    expect(effectiveAutomerge(Managers.KUSTOMIZE, 'alloy', 'major', 'HelmChart', 'https://github.com/grafana/helm-charts')).toBe(true)
-  })
+  describe('preset argument', () => {
+    const CASES: [string, Dependency][] = [
+      ['helm minor', { manager: Managers.HELM, packageName: 'some-other-chart', updateType: 'minor' }],
+      ['helm major', { manager: Managers.HELM, packageName: 'some-other-chart', updateType: 'major' }],
+      ['kustomize minor', { manager: Managers.KUSTOMIZE, packageName: 'some-other-chart', updateType: 'minor', depType: 'HelmChart' }],
+      ['kustomize major', { manager: Managers.KUSTOMIZE, packageName: 'some-other-chart', updateType: 'major', depType: 'HelmChart' }],
+      ['argocd minor', { manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-loki.git', updateType: 'minor' }],
+      ['argocd major', { manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-loki.git', updateType: 'major' }],
+      ['otel-builder minor', { manager: Managers.OPENTELEMETRY_COLLECTOR_BUILDER, packageName: 'go.opentelemetry.io/collector', updateType: 'minor' }],
+      ['otel-builder major', { manager: Managers.OPENTELEMETRY_COLLECTOR_BUILDER, packageName: 'go.opentelemetry.io/collector', updateType: 'major' }],
+      ['docker minor', { packageName: 'grafana/grafana', updateType: 'minor', datasource: Datasources.DOCKER }],
+      ['docker major', { packageName: 'grafana/grafana', updateType: 'major', datasource: Datasources.DOCKER }]
+    ]
 
-  it('automerges chart-prometheus-operator git URL major under argocd', () => {
-    expect(effectiveAutomerge(Managers.ARGOCD, 'git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git', 'major')).toBe(true)
-  })
+    it.each(CASES)('automerges %s once the package is passed as the argument', (_, dependency) => {
+      expect(effectiveAutomerge({ ...dependency, argument: dependency.packageName })).toBe(true)
+    })
 
-  it('does not automerge a non-allowlisted package major under helm', () => {
-    expect(effectiveAutomerge(Managers.HELM, 'some-other-chart', 'major')).toBe(false)
-  })
+    it.each(CASES)('does not automerge %s without the argument', (_, dependency) => {
+      expect(effectiveAutomerge(dependency)).not.toBe(true)
+    })
 
-  it('automerges docker/dockerfile minor under docker datasource', () => {
-    expect(effectiveAutomerge(undefined, 'docker/dockerfile', 'minor', undefined, undefined, Datasources.DOCKER)).toBe(true)
+    it.each(CASES)('does not automerge %s when another package is passed as the argument', (_, dependency) => {
+      expect(effectiveAutomerge({ ...dependency, argument: 'a-different-package' })).not.toBe(true)
+    })
   })
 })
 
@@ -271,6 +343,22 @@ describe('isExactName', () => {
     ['@(a|b)', false]
   ])('classifies %j as exact=%s', (input, expected) => {
     expect(isExactName(input as string)).toBe(expected)
+  })
+})
+
+describe('isBoundedName', () => {
+  it.each([
+    ['{{arg0}}', true],
+    ['{{arg1}}', true],
+    ['exact-name', true],
+    // Only a bare placeholder is bounded. Anything around it is a literal the substituted name has to
+    // sit inside, which turns the braces back into minimatch brace expansion.
+    ['prefix-{{arg0}}', false],
+    ['{{arg0}}-suffix', false],
+    ['{{args}}', false],
+    ['*', false]
+  ])('classifies %j as bounded=%s', (input, expected) => {
+    expect(isBoundedName(input as string)).toBe(expected)
   })
 })
 
@@ -498,7 +586,27 @@ describe('wiring', () => {
   const scoped = (preset: RenovateConfig): Preset[] => (preset.extends ?? []).filter((entry) => entry.startsWith(SCOPE)).map((entry) => entry.slice(SCOPE.length) as Preset)
 
   // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
-  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT]
+  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, ...AUTOMERGE_PRESETS]
+
+  it('never reaches an automerge preset from default', () => {
+    // Automerge is opt-in per package: a repository extends one of these itself, after `default`, and
+    // passes the package name. Extending one from inside the graph would automerge it everywhere, and
+    // would land before the group catch-all that says `automerge: false` rather than after it.
+    const seen = new Set<Preset>()
+
+    function walk(name: Preset): void {
+      if (seen.has(name)) {
+        return
+      }
+
+      seen.add(name)
+      scoped(presets[name]).forEach(walk)
+    }
+
+    walk(Preset.DEFAULT)
+
+    expect(AUTOMERGE_PRESETS.filter((name) => seen.has(name)), 'an automerge preset is reachable from `default`').toEqual([])
+  })
 
   it('references every preset it emits', () => {
     const referenced = new Set(entries.flatMap(([, preset]) => scoped(preset)))

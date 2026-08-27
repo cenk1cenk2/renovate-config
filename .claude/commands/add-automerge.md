@@ -2,41 +2,51 @@ Add automerge for a package: $ARGUMENTS
 
 ## Instructions
 
-The user wants to enable Renovate automerge for a specific package. Follow these steps:
+The user wants to enable Renovate automerge for a specific package. **Automerge is opt-in per package and is declared in the consuming repository, not here.** This repository only ships the parameterized presets; enabling a package means editing that repository's `renovate.json`.
 
-### 1. Identify the manager and package
+### 1. Identify the manager and the package name
 
 From the user's input, determine:
 
-- **Manager:** Which Renovate manager handles this package (kustomize, helm, argocd, terraform, etc.)
-- **Package name:** The exact package name as Renovate sees it (e.g., `alloy`, `kube-prometheus-stack`, or a git URL for argocd)
-- **Source URL:** The source repository URL (e.g., `https://github.com/grafana/helm-charts`)
+- **Manager:** which Renovate manager handles the dependency (`helm`, `kustomize`, `argocd`, `otel-builder`) or whether it is a `docker` datasource dependency
+- **Package name:** the exact name as Renovate sees it — a chart name (`kube-prometheus-stack`), a git URL for argocd (`git@gitlab.kilic.dev:cluster/charts/chart-prometheus-operator.git`), or an image name for docker (`renovate/renovate`)
 
-If any of these are unclear, check the existing Renovate MR for the package — it shows the manager, source URL, and package name in the MR description. Ask the user for the MR URL if needed.
+If either is unclear, the existing Renovate MR for the package shows the manager and the package name in its description. Ask the user for the MR URL if needed.
 
-### 2. Find the group files
+### 2. Pick the preset keys
 
-Automerge rules live in the group files under `src/presets/managers/<manager>/`. Each manager has separate files for minor and major updates:
+| Manager / datasource | Minor preset                            | Major preset                            |
+| -------------------- | --------------------------------------- | --------------------------------------- |
+| `helm`               | `manager-helm-automerge-minor`          | `manager-helm-automerge-major`          |
+| `kustomize`          | `manager-kustomize-automerge-minor`     | `manager-kustomize-automerge-major`     |
+| `argocd`             | `manager-argocd-automerge-minor`        | `manager-argocd-automerge-major`        |
+| `otel-builder`       | `manager-otel-builder-automerge-minor`  | `manager-otel-builder-automerge-major`  |
+| `docker` datasource  | `datasource-docker-automerge-minor`     | `datasource-docker-automerge-major`     |
 
-| Manager   | Minor file                     | Major file       |
-| --------- | ------------------------------ | ---------------- |
-| kustomize | `group-minor-helm-releases.ts` | `group-major.ts` |
-| helm      | `group-minor.ts`               | `group-major.ts` |
-| argocd    | `group-minor.ts`               | `group-major.ts` |
+Add the **minor** preset by default. Add the **major** one only when the user asks for it and the package's major version tracks an upstream dependency bump rather than a chart-level breaking change.
 
-### 3. Add to automerge rules
+### 3. Extend the preset in the consuming repository
 
-In **both** the minor and major group files, find the automerge rule (the one with `automerge: true`) and add:
+Append to `extends` in that repository's `renovate.json`, **after** `default/default`, once per package:
 
-- The source URL to the `matchSourceUrls` array (if not already present)
-- The package name to the `matchPackageNames` array
+```json
+{
+  "extends": [
+    "local>renovate/renovate-config:default/default",
+    "local>renovate/renovate-config:default/manager-helm-automerge-minor(kube-prometheus-stack)",
+    "local>renovate/renovate-config:default/manager-helm-automerge-major(kube-prometheus-stack)"
+  ]
+}
+```
 
-**Important:** If the source URL already exists in the array (another package from the same source is already automerged), only add the package name.
+The argument must be a literal package name. A glob passed here widens the rule silently — this repository cannot see the substituted value, so boundedness is the consuming repository's contract.
 
-### 4. Build and validate
+Order matters: the preset carries `automerge: true` and has to land after the group catch-all that says `automerge: false`.
 
-Run `pnpm build && pnpm start` to regenerate `default.json` and validate the configuration.
+### 4. Nothing to change in this repository
 
-### 5. Commit
+Do not add the package to a `matchSourceUrls` or `matchPackageNames` allowlist in `src/presets/groups/`. Those central allowlists are the pattern being retired and are removed once every consumer has migrated. Do not extend an automerge preset from `default.ts` or any `manager.ts` — `test/presets.test.ts` fails if one becomes reachable from `default`.
 
-Use conventional commit format: `fix: add <package> to <manager> automerge`
+### 5. Commit in the consuming repository
+
+Use conventional commit format: `feat: automerge <package>`.

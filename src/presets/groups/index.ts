@@ -1,6 +1,7 @@
-// Major automerge twins exist for a bounded set of charts whose major versions track upstream
-// dependency bumps, not chart-level breaking changes. Each carries a bounded exact-name
-// matchPackageNames allowlist — see the automerge policy in CLAUDE.md.
+// The `*_AUTOMERGE` slugs are shared by two rules: the central twin in the group preset, which still
+// carries a hardcoded exact-name allowlist, and the parameterized `*-automerge-*` preset a consuming
+// repository extends once per package. Sharing the slug keeps both on one branch during the migration —
+// see the automerge policy in CLAUDE.md.
 export enum Groups {
   ARGOCD_MINOR = 'argocd-minor',
   ARGOCD_MINOR_AUTOMERGE = 'argocd-minor-automerge',
@@ -36,6 +37,8 @@ export enum Groups {
   ANSIBLE_GALAXY_MINOR = 'ansible-galaxy-minor',
 
   OTEL_BUILDER_MINOR = 'otel-builder-minor',
+  OTEL_BUILDER_MAJOR = 'otel-builder-major',
 
-  DOCKER_MINOR = 'docker-minor'
+  DOCKER_MINOR = 'docker-minor',
+  DOCKER_MAJOR = 'docker-major'
 }

@@ -57,7 +57,21 @@ export enum Preset {
   RING_NODE_SLOW = 'ring-node-slow',
   RING_NODE_FAST = 'ring-node-fast',
   RING_GO_SLOW = 'ring-go-slow',
-  RING_GO_FAST = 'ring-go-fast'
+  RING_GO_FAST = 'ring-go-fast',
+
+  // automerge — parameterized, opt-in per package. Nothing here is reachable from `default`; a
+  // consuming repository extends one of these once per package, after `default`, so its `automerge: true`
+  // lands after the group catch-all that says false. They are registered last for the same reason.
+  MANAGER_HELM_AUTOMERGE_MINOR = 'manager-helm-automerge-minor',
+  MANAGER_HELM_AUTOMERGE_MAJOR = 'manager-helm-automerge-major',
+  MANAGER_KUSTOMIZE_AUTOMERGE_MINOR = 'manager-kustomize-automerge-minor',
+  MANAGER_KUSTOMIZE_AUTOMERGE_MAJOR = 'manager-kustomize-automerge-major',
+  MANAGER_ARGOCD_AUTOMERGE_MINOR = 'manager-argocd-automerge-minor',
+  MANAGER_ARGOCD_AUTOMERGE_MAJOR = 'manager-argocd-automerge-major',
+  MANAGER_OTEL_BUILDER_AUTOMERGE_MINOR = 'manager-otel-builder-automerge-minor',
+  MANAGER_OTEL_BUILDER_AUTOMERGE_MAJOR = 'manager-otel-builder-automerge-major',
+  DATASOURCE_DOCKER_AUTOMERGE_MINOR = 'datasource-docker-automerge-minor',
+  DATASOURCE_DOCKER_AUTOMERGE_MAJOR = 'datasource-docker-automerge-major'
 }
 
 export const PRESETS: Presets = {
@@ -120,7 +134,20 @@ export const PRESETS: Presets = {
   [Preset.RING_NODE_SLOW]: import('./rings/node/slow.js').then((m) => m.default),
   [Preset.RING_NODE_FAST]: import('./rings/node/fast.js').then((m) => m.default),
   [Preset.RING_GO_SLOW]: import('./rings/go/slow.js').then((m) => m.default),
-  [Preset.RING_GO_FAST]: import('./rings/go/fast.js').then((m) => m.default)
+  [Preset.RING_GO_FAST]: import('./rings/go/fast.js').then((m) => m.default),
+
+  // automerge
+
+  [Preset.MANAGER_HELM_AUTOMERGE_MINOR]: import('./managers/helm/automerge-minor.js').then((m) => m.default),
+  [Preset.MANAGER_HELM_AUTOMERGE_MAJOR]: import('./managers/helm/automerge-major.js').then((m) => m.default),
+  [Preset.MANAGER_KUSTOMIZE_AUTOMERGE_MINOR]: import('./managers/kustomize/automerge-minor.js').then((m) => m.default),
+  [Preset.MANAGER_KUSTOMIZE_AUTOMERGE_MAJOR]: import('./managers/kustomize/automerge-major.js').then((m) => m.default),
+  [Preset.MANAGER_ARGOCD_AUTOMERGE_MINOR]: import('./managers/argocd/automerge-minor.js').then((m) => m.default),
+  [Preset.MANAGER_ARGOCD_AUTOMERGE_MAJOR]: import('./managers/argocd/automerge-major.js').then((m) => m.default),
+  [Preset.MANAGER_OTEL_BUILDER_AUTOMERGE_MINOR]: import('./managers/otel-builder/automerge-minor.js').then((m) => m.default),
+  [Preset.MANAGER_OTEL_BUILDER_AUTOMERGE_MAJOR]: import('./managers/otel-builder/automerge-major.js').then((m) => m.default),
+  [Preset.DATASOURCE_DOCKER_AUTOMERGE_MINOR]: import('./datasources/docker/automerge-minor.js').then((m) => m.default),
+  [Preset.DATASOURCE_DOCKER_AUTOMERGE_MAJOR]: import('./datasources/docker/automerge-major.js').then((m) => m.default)
 }
 
 export const FILES: Record<string, Preset[]> = {
