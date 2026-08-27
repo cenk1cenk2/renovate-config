@@ -86,6 +86,8 @@ Three invariants hold these together, all enforced by `test/presets.test.ts`:
 
 Each one adds `Labels.RENOVATE` alongside `Labels.AUTOMERGE`: a repository may extend it without `base`, and without the umbrella there it would get no labels at all.
 
+**None of them carries `matchSourceUrls`**, where the central helm and kustomize twins do. A chart that happens to share a name with an opted-in one, published from a different upstream repository, therefore matches too. Accepted: the argument is scoped to one repository's config, which is where the chart's origin is already known.
+
 **The central allowlists still exist** in the group files below, and are removed in a follow-up MR once every consumer has migrated. Until then both paths are live and both are tested.
 
 - `kustomize` — `groups/kustomize/minor-helm-releases.ts`, `groups/kustomize/major.ts` (matches `HelmChart` dep type)
