@@ -1,5 +1,6 @@
 import { getOptions } from 'renovate/dist/config/options/index.js'
 import type { PackageRule, RenovateConfig } from 'renovate/dist/config/types.js'
+import { matchRegexOrGlobList } from 'renovate/dist/util/string-match.js'
 import { describe, expect, it } from 'vitest'
 
 import { Labels, SCHEDULE, SCOPE } from '@constants'
@@ -308,6 +309,22 @@ describe('automerge policy', () => {
     expect([...new Set(keys)].sort(), 'a central automerge appeared or disappeared — update CENTRAL_AUTOMERGE if that was intended').toEqual([...new Set(CENTRAL_AUTOMERGE)].sort())
   })
 
+  // A breaking update is a per-repository call, so the estate-wide config never makes it. The bounded
+  // allowlist the major check above permits belongs to the parameterized presets alone.
+  it('never automerges a major update centrally', () => {
+    const offenders = centralAutomerge.filter(([, rule]) => rule.matchUpdateTypes?.includes('major')).map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
+
+    expect(offenders, 'a major automerge belongs in a `*-automerge-major` preset the consuming repository extends per package').toEqual([])
+  })
+
+  // A generic group that keeps `automerge: true` but is switched off stays in the inventory above while
+  // merging nothing, which is the quiet way to lose one.
+  it('never disables a rule that automerges centrally', () => {
+    const offenders = centralAutomerge.filter(([, rule]) => rule.enabled === false).map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
+
+    expect(offenders, 'a disabled automerge rule is a central automerge in name only').toEqual([])
+  })
+
   // The point of the migration: a central rule automerges a manager, never a hand-picked list of
   // packages. `docker/dockerfile` is the one exception, and it is generic to every repository.
   it('never automerges a central package-name allowlist', () => {
@@ -386,8 +403,8 @@ describe('effective automerge', () => {
       for (const rule of preset.packageRules ?? []) {
         const names = rule.matchPackageNames && substitute(rule.matchPackageNames)
 
-        if (rule.matchPackageNames && !names?.includes(packageName)) continue
-        if (rule.matchDepNames && !rule.matchDepNames.includes(depName ?? packageName)) continue
+        if (rule.matchPackageNames && !(names && matchRegexOrGlobList(packageName, names))) continue
+        if (rule.matchDepNames && !matchRegexOrGlobList(depName ?? packageName, rule.matchDepNames)) continue
         if (rule.matchManagers && (!manager || !rule.matchManagers.includes(manager))) continue
         if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
         if (rule.matchDepTypes && depType && !rule.matchDepTypes.includes(depType)) continue
@@ -401,12 +418,64 @@ describe('effective automerge', () => {
     return result
   }
 
+  // One dependency per manager and datasource, none of them opted in by any repository. The third
+  // element is what `default/default` alone does with its minor update: `true` for the managers whose
+  // central group automerges the whole manager, `false` for the catch-all managers whose `automerge:
+  // true` only ever arrives with a preset argument. Both halves are asserted below, so narrowing a
+  // generic group to a package list fails here as loudly as widening a catch-all does.
+  const CASES: [string, Dependency, boolean][] = [
+    ['helm minor', { manager: Managers.HELM, packageName: 'some-other-chart', updateType: 'minor' }, false],
+    ['helm major', { manager: Managers.HELM, packageName: 'some-other-chart', updateType: 'major' }, false],
+    ['kustomize minor', { manager: Managers.KUSTOMIZE, packageName: 'some-other-chart', updateType: 'minor', depType: 'HelmChart' }, false],
+    ['kustomize major', { manager: Managers.KUSTOMIZE, packageName: 'some-other-chart', updateType: 'major', depType: 'HelmChart' }, false],
+    ['argocd minor', { manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-loki.git', updateType: 'minor' }, false],
+    ['argocd major', { manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-loki.git', updateType: 'major' }, false],
+    ['otel-builder minor', { manager: Managers.OPENTELEMETRY_COLLECTOR_BUILDER, packageName: 'go.opentelemetry.io/collector', updateType: 'minor' }, true],
+    ['otel-builder major', { manager: Managers.OPENTELEMETRY_COLLECTOR_BUILDER, packageName: 'go.opentelemetry.io/collector', updateType: 'major' }, false],
+    // Every other image needs the opt-in: the central docker rule automerges `docker/dockerfile` alone.
+    ['docker minor', { packageName: 'grafana/grafana', updateType: 'minor', datasource: Datasources.DOCKER }, false],
+    ['docker major', { packageName: 'grafana/grafana', updateType: 'major', datasource: Datasources.DOCKER }, false],
+    ['terraform minor', { manager: Managers.TERRAFORM, packageName: 'hashicorp/aws', updateType: 'minor', depType: 'provider' }, false],
+    ['terraform major', { manager: Managers.TERRAFORM, packageName: 'hashicorp/aws', updateType: 'major', depType: 'provider' }, false],
+    ['terraform-monorepo minor', { manager: Managers.REGEX, packageName: 'terraform/tf-modules', updateType: 'minor', depType: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO }, false],
+    ['terraform-monorepo major', { manager: Managers.REGEX, packageName: 'terraform/tf-modules', updateType: 'major', depType: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO }, false],
+    ['node minor', { manager: Managers.NODE, packageName: 'some-library', updateType: 'minor', depType: 'dependencies' }, true],
+    ['node major', { manager: Managers.NODE, packageName: 'some-library', updateType: 'major', depType: 'dependencies' }, false],
+    ['go minor', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'minor' }, true],
+    ['go major', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'major' }, false],
+    ['python minor', { manager: Managers.PYTHON_PEP621, packageName: 'pydantic', updateType: 'minor' }, true],
+    ['python major', { manager: Managers.PYTHON_PEP621, packageName: 'pydantic', updateType: 'major' }, false],
+    ['rust minor', { manager: Managers.RUST_CARGO, packageName: 'serde', updateType: 'minor' }, false],
+    ['rust major', { manager: Managers.RUST_CARGO, packageName: 'serde', updateType: 'major' }, false],
+    ['kubernetes minor', { manager: Managers.KUBERNETES, packageName: 'nginx', updateType: 'minor' }, false],
+    ['kubernetes major', { manager: Managers.KUBERNETES, packageName: 'nginx', updateType: 'major' }, false],
+    ['dockerfile minor', { manager: Managers.DOCKERFILE, packageName: 'node', updateType: 'minor' }, false],
+    ['dockerfile major', { manager: Managers.DOCKERFILE, packageName: 'node', updateType: 'major' }, false],
+    ['ansible-galaxy minor', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'minor', depType: 'collections' }, true],
+    ['ansible-galaxy major', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'major', depType: 'collections' }, false],
+    ['gitlab-ci minor', { manager: Managers.GITLAB_CI_INCLUDE, packageName: 'cenk1cenk2/gitlab-ci', updateType: 'minor' }, true],
+    ['gitlab-ci major', { manager: Managers.GITLAB_CI_INCLUDE, packageName: 'cenk1cenk2/gitlab-ci', updateType: 'major' }, false],
+    ['gitlab-ci-monorepo minor', { manager: Managers.REGEX, packageName: 'cenk1cenk2/pipelines', updateType: 'minor', depType: DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO }, true],
+    ['gitlab-ci-monorepo major', { manager: Managers.REGEX, packageName: 'cenk1cenk2/pipelines', updateType: 'major', depType: DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO }, false]
+  ]
+
+  const central = CASES.filter(([, , automerged]) => automerged)
+  const notCentral = CASES.filter(([, , automerged]) => !automerged)
+
   // The package-name allowlists are gone: the charts and images they carried now resolve like any other
   // dependency, and the repositories that wanted them automerged pass them as preset arguments instead.
-  // The generic manager-wide groups are untouched and still automerge — they match `['*']`, which this
-  // matcher compares literally, so the `automerges centrally only where the inventory says so` test
-  // above is what proves they survived rather than a case here.
+  // The generic manager-wide groups stayed, and the cases here are what proves it — package names run
+  // through renovate's own `matchRegexOrGlobList`, so a group's `['*']`, the dep groups' `!name`
+  // negations and the rings' `/regex/` entries resolve the way they do at runtime.
   describe('central automerge', () => {
+    it.each(central)('automerges %s with nothing opted in', (_, dependency) => {
+      expect(effectiveAutomerge(dependency), 'this manager automerges its whole minor surface centrally — a no here means the generic group was removed or narrowed').toBe(true)
+    })
+
+    it.each(notCentral)('does not automerge %s with nothing opted in', (_, dependency) => {
+      expect(effectiveAutomerge(dependency)).not.toBe(true)
+    })
+
     it('does not automerge kube-prometheus-stack major under helm', () => {
       expect(effectiveAutomerge({ manager: Managers.HELM, packageName: 'kube-prometheus-stack', updateType: 'major', sourceUrl: 'https://github.com/prometheus-community/helm-charts' })).toBe(false)
     })
@@ -426,8 +495,8 @@ describe('effective automerge', () => {
       expect(effectiveAutomerge({ packageName, updateType: 'minor', datasource: Datasources.DOCKER })).not.toBe(true)
     })
 
-    // The generic groups are still here. This is the one the matcher can see, because the node build
-    // group names its packages to route them into a `build:` merge request.
+    // The node build group names its packages only to route them into a `build:` merge request — the
+    // automerge underneath it is the generic devDependency one.
     it('automerges a node build dependency minor', () => {
       expect(effectiveAutomerge({ manager: Managers.NODE, packageName: 'typescript', updateType: 'minor', depType: 'devDependencies' })).toBe(true)
     })
@@ -442,51 +511,22 @@ describe('effective automerge', () => {
   })
 
   describe('preset argument', () => {
-    const CASES: [string, Dependency][] = [
-      ['helm minor', { manager: Managers.HELM, packageName: 'some-other-chart', updateType: 'minor' }],
-      ['helm major', { manager: Managers.HELM, packageName: 'some-other-chart', updateType: 'major' }],
-      ['kustomize minor', { manager: Managers.KUSTOMIZE, packageName: 'some-other-chart', updateType: 'minor', depType: 'HelmChart' }],
-      ['kustomize major', { manager: Managers.KUSTOMIZE, packageName: 'some-other-chart', updateType: 'major', depType: 'HelmChart' }],
-      ['argocd minor', { manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-loki.git', updateType: 'minor' }],
-      ['argocd major', { manager: Managers.ARGOCD, packageName: 'git@gitlab.kilic.dev:cluster/charts/chart-loki.git', updateType: 'major' }],
-      ['otel-builder minor', { manager: Managers.OPENTELEMETRY_COLLECTOR_BUILDER, packageName: 'go.opentelemetry.io/collector', updateType: 'minor' }],
-      ['otel-builder major', { manager: Managers.OPENTELEMETRY_COLLECTOR_BUILDER, packageName: 'go.opentelemetry.io/collector', updateType: 'major' }],
-      ['docker minor', { packageName: 'grafana/grafana', updateType: 'minor', datasource: Datasources.DOCKER }],
-      ['docker major', { packageName: 'grafana/grafana', updateType: 'major', datasource: Datasources.DOCKER }],
-      ['terraform minor', { manager: Managers.TERRAFORM, packageName: 'hashicorp/aws', updateType: 'minor', depType: 'provider' }],
-      ['terraform major', { manager: Managers.TERRAFORM, packageName: 'hashicorp/aws', updateType: 'major', depType: 'provider' }],
-      ['terraform-monorepo minor', { manager: Managers.REGEX, packageName: 'terraform/tf-modules', updateType: 'minor', depType: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO }],
-      ['terraform-monorepo major', { manager: Managers.REGEX, packageName: 'terraform/tf-modules', updateType: 'major', depType: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO }],
-      ['node minor', { manager: Managers.NODE, packageName: 'some-library', updateType: 'minor', depType: 'dependencies' }],
-      ['node major', { manager: Managers.NODE, packageName: 'some-library', updateType: 'major', depType: 'dependencies' }],
-      ['go minor', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'minor' }],
-      ['go major', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'major' }],
-      ['python minor', { manager: Managers.PYTHON_PEP621, packageName: 'pydantic', updateType: 'minor' }],
-      ['python major', { manager: Managers.PYTHON_PEP621, packageName: 'pydantic', updateType: 'major' }],
-      ['rust minor', { manager: Managers.RUST_CARGO, packageName: 'serde', updateType: 'minor' }],
-      ['rust major', { manager: Managers.RUST_CARGO, packageName: 'serde', updateType: 'major' }],
-      ['kubernetes minor', { manager: Managers.KUBERNETES, packageName: 'nginx', updateType: 'minor' }],
-      ['kubernetes major', { manager: Managers.KUBERNETES, packageName: 'nginx', updateType: 'major' }],
-      ['dockerfile minor', { manager: Managers.DOCKERFILE, packageName: 'node', updateType: 'minor' }],
-      ['dockerfile major', { manager: Managers.DOCKERFILE, packageName: 'node', updateType: 'major' }],
-      ['ansible-galaxy minor', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'minor', depType: 'collections' }],
-      ['ansible-galaxy major', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'major', depType: 'collections' }],
-      ['gitlab-ci minor', { manager: Managers.GITLAB_CI_INCLUDE, packageName: 'cenk1cenk2/gitlab-ci', updateType: 'minor' }],
-      ['gitlab-ci major', { manager: Managers.GITLAB_CI_INCLUDE, packageName: 'cenk1cenk2/gitlab-ci', updateType: 'major' }],
-      ['gitlab-ci-monorepo minor', { manager: Managers.REGEX, packageName: 'cenk1cenk2/pipelines', updateType: 'minor', depType: DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO }],
-      ['gitlab-ci-monorepo major', { manager: Managers.REGEX, packageName: 'cenk1cenk2/pipelines', updateType: 'major', depType: DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO }]
-    ]
-
     it.each(CASES)('automerges %s once the package is passed as the argument', (_, dependency) => {
       expect(effectiveAutomerge({ ...dependency, argument: dependency.packageName })).toBe(true)
     })
 
-    it.each(CASES)('does not automerge %s without the argument', (_, dependency) => {
+    it.each(notCentral)('does not automerge %s without the argument', (_, dependency) => {
       expect(effectiveAutomerge(dependency)).not.toBe(true)
     })
 
-    it.each(CASES)('does not automerge %s when another package is passed as the argument', (_, dependency) => {
+    it.each(notCentral)('does not automerge %s when another package is passed as the argument', (_, dependency) => {
       expect(effectiveAutomerge({ ...dependency, argument: 'a-different-package' })).not.toBe(true)
+    })
+
+    // An argument only ever adds a package. Somebody else's opt-in must not be able to take a manager
+    // that automerges centrally and narrow it down to the one package they named.
+    it.each(central)('keeps automerging %s when another package is passed as the argument', (_, dependency) => {
+      expect(effectiveAutomerge({ ...dependency, argument: 'a-different-package' })).toBe(true)
     })
   })
 })
