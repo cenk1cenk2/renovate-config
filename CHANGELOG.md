@@ -1,3 +1,10 @@
+## [4.4.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.0...v4.4.1) (2026-08-27)
+
+
+### Bug Fixes
+
+* **deps:** update node all minor dependency updates ([6a137d4](https://gitlab.kilic.dev/renovate/renovate-config/commit/6a137d4a0386b08ddbf03cd78fbf133163bd997c))
+
 # [4.4.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.3.1...v4.4.0) (2026-08-27)
 
 
