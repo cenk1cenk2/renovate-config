@@ -1,3 +1,10 @@
+## [4.4.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.1...v4.4.2) (2026-08-27)
+
+
+### Bug Fixes
+
+* **presets:** restore generic central automerge groups ([a21fd5d](https://gitlab.kilic.dev/renovate/renovate-config/commit/a21fd5de711f9a94d08ef1fd089a96997a774fa0))
+
 ## [4.4.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.0...v4.4.1) (2026-08-27)
 
 
