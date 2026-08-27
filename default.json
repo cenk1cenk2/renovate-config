@@ -553,10 +553,7 @@
           "pin",
           "digest"
         ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "npm"
         ],
@@ -594,10 +591,9 @@
         ],
         "commitMessageSuffix": "[skip ci]",
         "addLabels": [
-          "dep:dev",
-          "automerge"
+          "dep:dev"
         ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "npm"
         ],
@@ -642,10 +638,9 @@
         "semanticCommitType": "build",
         "commitMessageSuffix": "",
         "addLabels": [
-          "dep:build",
-          "automerge"
+          "dep:build"
         ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "npm"
         ],
@@ -682,10 +677,9 @@
         "semanticCommitType": "docs",
         "commitMessageSuffix": "",
         "addLabels": [
-          "dep:docs",
-          "automerge"
+          "dep:docs"
         ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "npm"
         ],
@@ -732,27 +726,6 @@
           "npm",
           "bun"
         ],
-        "matchUpdateTypes": [
-          "minor",
-          "patch",
-          "pin",
-          "digest"
-        ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true
-      },
-      {
-        "matchManagers": [
-          "npm"
-        ],
-        "matchDepNames": [
-          "pnpm",
-          "yarn",
-          "npm",
-          "bun"
-        ],
         "rangeStrategy": "widen"
       },
       {
@@ -781,10 +754,9 @@
         ],
         "commitMessageSuffix": "[skip ci]",
         "addLabels": [
-          "dep:peer",
-          "automerge"
+          "dep:peer"
         ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "npm"
         ],
@@ -821,10 +793,7 @@
           "patch",
           "digest"
         ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "gomod"
         ],
@@ -1130,10 +1099,7 @@
         ],
         "groupName": "ansible-galaxy all minor dependency updates",
         "groupSlug": "ansible-galaxy-minor",
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "automerge": false,
         "matchDepTypes": [
           "collections",
           "roles"
@@ -1178,10 +1144,7 @@
           "pin",
           "digest"
         ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "gitlabci-include"
         ],
@@ -1210,10 +1173,7 @@
           "pin",
           "digest"
         ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "custom.regex"
         ],
@@ -1402,10 +1362,7 @@
           "pin",
           "digest"
         ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "npm"
         ],
@@ -1432,10 +1389,8 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "addLabels": [],
+        "automerge": false,
         "matchManagers": [
           "npm"
         ],
@@ -1463,10 +1418,8 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "addLabels": [],
+        "automerge": false,
         "matchManagers": [
           "npm"
         ],
@@ -1531,10 +1484,7 @@
           "patch",
           "digest"
         ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "automerge": false,
         "matchManagers": [
           "gomod"
         ],
@@ -2210,8 +2160,8 @@
         "matchPackageNames": [
           "{{arg0}}"
         ],
-        "groupName": "ansible-galaxy all minor dependency updates",
-        "groupSlug": "ansible-galaxy-minor",
+        "groupName": "ansible-galaxy all minor automerge dependency updates",
+        "groupSlug": "ansible-galaxy-minor-automerge",
         "matchDepTypes": [
           "collections",
           "roles"
@@ -2272,8 +2222,8 @@
         "matchPackageNames": [
           "{{arg0}}"
         ],
-        "groupName": "gitlab-ci all minor dependency updates",
-        "groupSlug": "gitlab-ci-minor",
+        "groupName": "gitlab-ci all minor automerge dependency updates",
+        "groupSlug": "gitlab-ci-minor-automerge",
         "matchUpdateTypes": [
           "minor",
           "patch",
@@ -2327,8 +2277,8 @@
         "matchPackageNames": [
           "{{arg0}}"
         ],
-        "groupName": "gitlab-ci all minor dependency updates",
-        "groupSlug": "gitlab-ci-minor",
+        "groupName": "gitlab-ci all minor automerge dependency updates",
+        "groupSlug": "gitlab-ci-minor-automerge",
         "matchUpdateTypes": [
           "minor",
           "patch",

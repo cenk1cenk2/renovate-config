@@ -3,14 +3,15 @@ import { Groups } from '@groups'
 import { createPreset } from '@lib'
 import { Managers } from '@managers'
 
-// Opt-in per role or collection, argument passed by the consuming repository. Mirrors the central twin
-// down to the slug, the dep types and the skip-ci suffix, so an early opt-in shares its merge request.
+// Opt-in per role or collection, argument passed by the consuming repository. Mirrors the central group
+// down to the dep types and the skip-ci suffix, but keeps its own slug: the central group automerges
+// nothing, and a grouped branch automerges only when every upgrade on it does.
 export default createPreset({
   packageRules: [
     {
       matchPackageNames: ['{{arg0}}'],
-      groupName: 'ansible-galaxy all minor dependency updates',
-      groupSlug: Groups.ANSIBLE_GALAXY_MINOR,
+      groupName: 'ansible-galaxy all minor automerge dependency updates',
+      groupSlug: Groups.ANSIBLE_GALAXY_MINOR_AUTOMERGE,
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       commitMessageSuffix: '[skip ci]',

@@ -6,8 +6,7 @@ import { Managers } from '@managers'
 export const NODE_GROUP_MINOR: PackageRule = {
   matchDepTypes: ['dependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  addLabels: [Labels.AUTOMERGE],
-  automerge: true,
+  automerge: false,
   matchManagers: [Managers.NODE]
 }
 
@@ -15,8 +14,8 @@ export const NODE_GROUP_DEV: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   commitMessageSuffix: '[skip ci]',
-  addLabels: [Labels.DEP_DEV, Labels.AUTOMERGE],
-  automerge: true,
+  addLabels: [Labels.DEP_DEV],
+  automerge: false,
   matchManagers: [Managers.NODE]
 }
 
@@ -25,8 +24,8 @@ export const NODE_GROUP_BUILD: PackageRule = {
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   semanticCommitType: 'build',
   commitMessageSuffix: '',
-  addLabels: [Labels.DEP_BUILD, Labels.AUTOMERGE],
-  automerge: true,
+  addLabels: [Labels.DEP_BUILD],
+  automerge: false,
   matchManagers: [Managers.NODE]
 }
 
@@ -35,8 +34,8 @@ export const NODE_GROUP_DOCS: PackageRule = {
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   semanticCommitType: 'docs',
   commitMessageSuffix: '',
-  addLabels: [Labels.DEP_DOCS, Labels.AUTOMERGE],
-  automerge: true,
+  addLabels: [Labels.DEP_DOCS],
+  automerge: false,
   matchManagers: [Managers.NODE]
 }
 
@@ -46,8 +45,8 @@ export const NODE_GROUP_PEER: PackageRule = {
   matchDepTypes: ['peerDependencies', 'optionalDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   commitMessageSuffix: '[skip ci]',
-  addLabels: [Labels.DEP_PEER, Labels.AUTOMERGE],
-  automerge: true,
+  addLabels: [Labels.DEP_PEER],
+  automerge: false,
   matchManagers: [Managers.NODE]
 }
 
@@ -93,22 +92,13 @@ export const NODE_DEV_CLAIMED_PACKAGES = [...NODE_BUILD_PACKAGES, ...NODE_DOCS_P
 // (an empty positive set matches all), so a leading `*` would be redundant.
 export const NODE_DEV_PACKAGES = NODE_DEV_CLAIMED_PACKAGES.map((name) => `!${name}`)
 
-// Unbounded so a major bump still lands in the group; the automerge rule below re-enables merging for
-// the non-breaking update types only.
+// Unbounded so a major bump still lands in the group rather than opening its own merge request.
 export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
   addLabels: [Labels.DEP_PACKAGE_MANAGER],
   commitMessageSuffix: '[skip ci]',
   automerge: false
-}
-
-export const NODE_AUTOMERGE_PACKAGE_MANAGER: PackageRule = {
-  matchManagers: [Managers.NODE],
-  matchDepNames: PACKAGE_MANAGERS,
-  matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  addLabels: [Labels.AUTOMERGE],
-  automerge: true
 }
 
 export const NODE_RANGE_PACKAGE_MANAGER: PackageRule = {
