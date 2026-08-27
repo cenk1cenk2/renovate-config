@@ -38,7 +38,7 @@ Every manager and datasource has a pair. Pick by which manager resolves the depe
 
 Add the **minor** preset by default. Add the **major** one only when the user asks for it and the package's major version tracks an upstream dependency bump rather than a breaking change.
 
-The central config already automerges every minor and patch update for `npm`, `gomod`, `pep621`, `gitlabci`, `ansible-galaxy`, `ocb` and the `docker` datasource, so for those the `-minor` key changes nothing and only the `-major` key does. The keys that do change a minor update are the managers whose central group says `automerge: false`: `helmv3`, `kustomize`, `argocd`, `terraform`, `kubernetes`, `dockerfile` and `cargo`.
+The central config already automerges every minor and patch update for `npm`, `gomod`, `pep621`, `gitlabci`, `ansible-galaxy` and `ocb`, so for those the `-minor` key changes nothing and only the `-major` key does. The keys that do change a minor update are the managers whose central group says `automerge: false` — `helmv3`, `kustomize`, `argocd`, `terraform`, `kubernetes`, `dockerfile` and `cargo` — plus the `docker` datasource, whose central automerge is bounded to `docker/dockerfile`, so every other image needs the `-minor` key as well.
 
 The `npm` and `gomod` keys also leave grouping alone by design — an opted-in package stays in its dep-type or ring merge request.
 
