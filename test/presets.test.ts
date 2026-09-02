@@ -31,9 +31,9 @@ function rules(preset: RenovateConfig): PackageRule[] {
     if (value && typeof value === 'object') {
       const record = value as Record<string, unknown>
 
-      // `automerge` is in the predicate so the policy checks below cannot be dodged by a rule that
-      // carries no labels and no group at all.
-      if ('labels' in record || 'addLabels' in record || 'groupSlug' in record || 'automerge' in record) {
+      // `automerge` and `commitMessageSuffix` are in the predicate so the policy checks below cannot be
+      // dodged by a rule that carries no labels and no group at all.
+      if ('labels' in record || 'addLabels' in record || 'groupSlug' in record || 'automerge' in record || 'commitMessageSuffix' in record) {
         found.push(record as PackageRule)
       }
 
@@ -126,6 +126,9 @@ const AUTOMERGE_PRESETS: Preset[] = [
 
 // Every automerge preset is a consumer entrypoint, so the list above must stay complete as new ones land.
 const AUTOMERGE_PRESET_PATTERN = /-automerge-(minor|major)$/
+
+// The commit message suffix that tells gitlab not to run a pipeline for the branch.
+const SKIP_CI = '[skip ci]'
 
 // The one package name the estate-wide config automerges by name. It is the Dockerfile syntax directive
 // rather than an application image — generic to every repository that builds one, so it stays central
@@ -360,6 +363,34 @@ describe('automerge policy', () => {
 
     expect(offenders, 'an automerge rule without matchUpdateTypes also catches major updates').toEqual([])
   })
+
+  // `[skip ci]` means gitlab runs no pipeline, so the only check left on the branch is renovate's own
+  // `renovate/stability-days`. `getBranchStatus` returns yellow once every surviving check is an internal
+  // `renovate/` one (`dist/modules/platform/gitlab/index.js`), and yellow again when there is no check at
+  // all. `checkAutoMerge` refuses anything but green (`dist/workers/repository/update/pr/automerge.js`),
+  // so such a branch waits forever for a pipeline that will never run. `internalChecksAsSuccess` covers
+  // only the first of those two cases; `ignoreTests` is the one option that covers both.
+  it('always pairs a skip-ci suffix with ignoreTests', () => {
+    const offenders = allRules.filter(([, rule]) => rule.commitMessageSuffix === SKIP_CI && rule.ignoreTests !== true).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+
+    expect(offenders, 'a rule that skips the pipeline can never reach a green branch status, so it must also ignore tests').toEqual([])
+  })
+
+  // The other direction. `ignoreTests` waives the one gate standing between an unattended update and
+  // master, so it is scoped to rules that provably have no pipeline to wait for — never used to paper
+  // over a branch whose tests do run and are failing.
+  it('never ignores tests on a rule whose pipeline still runs', () => {
+    const offenders = allRules.filter(([, rule]) => rule.ignoreTests === true && rule.commitMessageSuffix !== SKIP_CI).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+
+    expect(offenders, 'ignoreTests belongs only on a rule that suppresses its own pipeline').toEqual([])
+  })
+
+  // `no-tests` is the repository-wide opt-out a consumer with no CI at all extends for itself. Anywhere
+  // else a top-level `ignoreTests` is non-mergeable and global, and would waive the gate for every
+  // dependency in every repository that inherits the preset.
+  it('declares a top-level ignoreTests only in the no-tests preset', () => {
+    expect(entries.filter(([name, preset]) => name !== Preset.NO_TESTS && preset.ignoreTests !== undefined).map(([name]) => name)).toEqual([])
+  })
 })
 
 // The shape assertions above cannot see ordering: a well-formed automerge rule placed BEFORE its
@@ -529,6 +560,64 @@ describe('effective automerge', () => {
       expect(effectiveAutomerge({ ...dependency, argument: 'a-different-package' })).toBe(true)
     })
   })
+})
+
+// The static guards above see one rule at a time, and the `effective automerge` walker above resolves
+// rules in registry order rather than composition order. Neither can catch a field that leaks ACROSS
+// presets, which is exactly the shape of the bug this guards: the fast ring spreads `NODE_GROUP_DEV` and
+// is extended before the dep groups, so a package in both the ring and the build list would carry the
+// ring's `ignoreTests` onto a build branch whose pipeline does run. This walks `extends` depth-first —
+// the order renovate composes presets in — and asserts the pairing survives resolution.
+describe('effective ignore tests', () => {
+  function flatten(name: Preset, acc: PackageRule[] = []): PackageRule[] {
+    scoped(presets[name]).forEach((child) => flatten(child, acc))
+    acc.push(...(presets[name].packageRules ?? []))
+
+    return acc
+  }
+
+  const composed = flatten(Preset.DEFAULT)
+
+  function resolve(packageName: string, depType: string): { suffix?: string, ignoreTests?: boolean } {
+    let suffix: string | undefined
+    let ignoreTests: boolean | undefined
+
+    for (const rule of composed) {
+      if (rule.matchPackageNames?.some((pattern) => pattern.includes('{{arg'))) continue
+      if (rule.matchPackageNames && !matchRegexOrGlobList(packageName, rule.matchPackageNames)) continue
+      if (rule.matchDepNames && !matchRegexOrGlobList(packageName, rule.matchDepNames)) continue
+      if (rule.matchManagers && !rule.matchManagers.includes(Managers.NODE)) continue
+      if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes('minor')) continue
+      if (rule.matchDepTypes && !rule.matchDepTypes.includes(depType)) continue
+
+      if (rule.commitMessageSuffix !== undefined) suffix = rule.commitMessageSuffix
+      if (rule.ignoreTests !== undefined) ignoreTests = rule.ignoreTests
+    }
+
+    return { suffix, ignoreTests }
+  }
+
+  // `@cenk1cenk2/eslint-config` is the one that actually bites: it matches the fast ring's
+  // `/^@cenk1cenk2//` and sits in `NODE_BUILD_PACKAGES`, so it passes through both rules.
+  const CASES: [string, string, string][] = [
+    ['@cenk1cenk2/eslint-config', 'devDependencies', ''],
+    ['typescript', 'devDependencies', ''],
+    ['typedoc', 'devDependencies', ''],
+    ['globby', 'devDependencies', SKIP_CI],
+    ['pnpm', 'devDependencies', SKIP_CI]
+  ]
+
+  for (const [packageName, depType, suffix] of CASES) {
+    it(`resolves ${packageName} to ${suffix === SKIP_CI ? 'a skipped' : 'a running'} pipeline`, () => {
+      expect(resolve(packageName, depType).suffix).toBe(suffix)
+    })
+
+    it(`keeps ${packageName} paired after resolution`, () => {
+      const resolved = resolve(packageName, depType)
+
+      expect(resolved.ignoreTests === true, `${packageName} resolves to suffix ${JSON.stringify(resolved.suffix)} and ignoreTests ${resolved.ignoreTests}`).toBe(resolved.suffix === SKIP_CI)
+    })
+  }
 })
 
 describe('isExactName', () => {
