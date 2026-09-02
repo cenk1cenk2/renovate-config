@@ -6,6 +6,7 @@ export default createPreset({
     enabled: true,
     automerge: true,
     commitMessageSuffix: '[skip ci]',
+    ignoreTests: true,
     addLabels: [Labels.DEP_LOCK, Labels.AUTOMERGE],
     schedule: [SCHEDULE.DAILY]
   }

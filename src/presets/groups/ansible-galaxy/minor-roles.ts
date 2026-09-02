@@ -14,6 +14,7 @@ export default createPreset({
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       commitMessageSuffix: '[skip ci]',
+      ignoreTests: true,
       matchManagers: [Managers.ANSIBLE_GALAXY],
       schedule: [SCHEDULE.DAILY]
     },
