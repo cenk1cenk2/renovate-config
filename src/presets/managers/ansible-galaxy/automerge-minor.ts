@@ -14,6 +14,7 @@ export default createPreset({
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       commitMessageSuffix: '[skip ci]',
+      ignoreTests: true,
       addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.ANSIBLE_GALAXY],

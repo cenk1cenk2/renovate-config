@@ -86,6 +86,7 @@
       "enabled": true,
       "automerge": true,
       "commitMessageSuffix": "[skip ci]",
+      "ignoreTests": true,
       "addLabels": [
         "dep:lock",
         "automerge"
@@ -599,6 +600,7 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "addLabels": [
           "dep:dev",
           "automerge"
@@ -647,6 +649,7 @@
         ],
         "semanticCommitType": "build",
         "commitMessageSuffix": "",
+        "ignoreTests": false,
         "addLabels": [
           "dep:build",
           "automerge"
@@ -687,6 +690,7 @@
         ],
         "semanticCommitType": "docs",
         "commitMessageSuffix": "",
+        "ignoreTests": false,
         "addLabels": [
           "dep:docs",
           "automerge"
@@ -721,6 +725,7 @@
           "dep:package-manager"
         ],
         "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "automerge": false,
         "groupName": "node all package manager",
         "groupSlug": "node-package-manager",
@@ -786,6 +791,7 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "addLabels": [
           "dep:peer",
           "automerge"
@@ -1177,6 +1183,7 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "matchManagers": [
           "ansible-galaxy"
         ],
@@ -1464,6 +1471,7 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "addLabels": [
           "automerge"
         ],
@@ -1495,6 +1503,7 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "addLabels": [
           "automerge"
         ],
@@ -2255,6 +2264,7 @@
           "digest"
         ],
         "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "addLabels": [
           "renovate",
           "automerge"

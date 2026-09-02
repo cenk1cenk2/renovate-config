@@ -15,16 +15,20 @@ export const NODE_GROUP_DEV: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   commitMessageSuffix: '[skip ci]',
+  ignoreTests: true,
   addLabels: [Labels.DEP_DEV, Labels.AUTOMERGE],
   automerge: true,
   matchManagers: [Managers.NODE]
 }
 
+// Both resets exist because the fast ring spreads `NODE_GROUP_DEV` and is extended before this group, so
+// its `[skip ci]` and `ignoreTests` would otherwise survive onto a build branch whose pipeline does run.
 export const NODE_GROUP_BUILD: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   semanticCommitType: 'build',
   commitMessageSuffix: '',
+  ignoreTests: false,
   addLabels: [Labels.DEP_BUILD, Labels.AUTOMERGE],
   automerge: true,
   matchManagers: [Managers.NODE]
@@ -35,6 +39,7 @@ export const NODE_GROUP_DOCS: PackageRule = {
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   semanticCommitType: 'docs',
   commitMessageSuffix: '',
+  ignoreTests: false,
   addLabels: [Labels.DEP_DOCS, Labels.AUTOMERGE],
   automerge: true,
   matchManagers: [Managers.NODE]
@@ -46,6 +51,7 @@ export const NODE_GROUP_PEER: PackageRule = {
   matchDepTypes: ['peerDependencies', 'optionalDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   commitMessageSuffix: '[skip ci]',
+  ignoreTests: true,
   addLabels: [Labels.DEP_PEER, Labels.AUTOMERGE],
   automerge: true,
   matchManagers: [Managers.NODE]
@@ -100,6 +106,7 @@ export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   matchDepNames: PACKAGE_MANAGERS,
   addLabels: [Labels.DEP_PACKAGE_MANAGER],
   commitMessageSuffix: '[skip ci]',
+  ignoreTests: true,
   automerge: false
 }
 
