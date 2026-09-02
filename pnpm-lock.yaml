@@ -37,13 +37,13 @@ importers:
         version: 0.5.21
     devDependencies:
       '@cenk1cenk2/cz-cc':
-        specifier: ^2.2.23
+        specifier: ^2.3.0
         version: 2.3.0(@types/node@25.9.5)(typescript@6.0.3)
       '@cenk1cenk2/eslint-config':
         specifier: ^3.3.0
         version: 3.3.0(@typescript-eslint/utils@8.69.0(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       '@tsconfig/node24':
-        specifier: ^24.0.4
+        specifier: ^24.0.5
         version: 24.0.5
       '@types/fs-extra':
         specifier: ^11.0.4
@@ -55,16 +55,16 @@ importers:
         specifier: ^10.9.1
         version: 10.9.1(jiti@2.6.1)(supports-color@8.1.1)
       execa:
-        specifier: ^10.0.0
+        specifier: ^10.0.1
         version: 10.0.1
       globby:
-        specifier: ^16.2.2
+        specifier: ^16.2.4
         version: 16.2.4
       lint-staged:
         specifier: ^16.4.0
         version: 16.4.0
       oclif:
-        specifier: ^4.23.28
+        specifier: ^4.24.0
         version: 4.24.0(@types/node@25.9.5)(supports-color@8.1.1)
       prettier:
         specifier: ^3.9.6
@@ -82,7 +82,7 @@ importers:
         specifier: ^0.22.14
         version: 0.22.14(tsx@4.23.13)(typescript@6.0.3)
       tsx:
-        specifier: ^4.23.1
+        specifier: ^4.23.12
         version: 4.23.13
       typescript:
         specifier: ^6.0.3
@@ -91,7 +91,7 @@ importers:
         specifier: ^6.1.1
         version: 6.1.1(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.2(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.6.1)(tsx@4.23.13)(yaml@2.9.0))
       vitest:
-        specifier: ^4.1.10
+        specifier: ^4.1.11
         version: 4.1.11(@opentelemetry/api@1.9.1)(@types/node@25.9.5)(vite@8.2.2(@types/node@25.9.5)(esbuild@0.28.2)(jiti@2.6.1)(tsx@4.23.13)(yaml@2.9.0))
 
 packages:
