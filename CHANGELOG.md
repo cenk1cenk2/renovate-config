@@ -1,3 +1,10 @@
+## [4.4.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.2...v4.4.3) (2026-09-02)
+
+
+### Bug Fixes
+
+* **automerge:** unblock merge requests that skip the pipeline ([2a21fac](https://gitlab.kilic.dev/renovate/renovate-config/commit/2a21facf7e809d6a29d0c94247eb909912cb3e7c))
+
 ## [4.4.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.1...v4.4.2) (2026-08-27)
 
 
