@@ -142,6 +142,20 @@
           "!/^@kilic.dev//"
         ],
         "minimumReleaseAge": "7 days"
+      },
+      {
+        "matchManagers": [
+          "npm"
+        ],
+        "postUpgradeTasks": {
+          "commands": [
+            "pnpm install --lockfile-only --config.minimum-release-age-strict=false"
+          ],
+          "fileFilters": [
+            "pnpm-lock.yaml"
+          ],
+          "executionMode": "branch"
+        }
       }
     ]
   },
