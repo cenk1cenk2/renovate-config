@@ -1,3 +1,10 @@
+## [4.4.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.3...v4.4.4) (2026-09-04)
+
+
+### Bug Fixes
+
+* **presets:** make the ring cadence and the schedule windows take effect ([55fc6ab](https://gitlab.kilic.dev/renovate/renovate-config/commit/55fc6abf70d2dcee2fa666c60c19a4d0b7073843))
+
 ## [4.4.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.2...v4.4.3) (2026-09-02)
 
 
