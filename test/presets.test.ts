@@ -152,11 +152,7 @@ const CENTRAL_AUTOMERGE: string[] = [
   // unbounded `node-package-manager` group, which has to stay unbounded to catch majors.
   `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:no-slug`,
   `${Preset.GROUP_NODE_PEER_DEPENDENCIES}:${Groups.NODE_PEER}`,
-  `${Preset.RING_NODE_FAST}:${Rings.NODE_FAST}`,
-  `${Preset.RING_NODE_FAST}:${Rings.NODE_FAST_DEV}`,
-  `${Preset.RING_NODE_FAST}:${Rings.NODE_FAST_PEER}`,
   `${Preset.GROUP_GO_MINOR_DEPENDENCIES}:${Groups.GO_MINOR}`,
-  `${Preset.RING_GO_FAST}:${Rings.GO_FAST}`,
   `${Preset.GROUP_PYTHON_MINOR_DEPENDENCIES}:${Groups.PYTHON_MINOR}`,
   `${Preset.GROUP_GITLAB_CI_MINOR_UPDATES}:${Groups.GITLAB_CI_MINOR}`,
   `${Preset.GROUP_ANSIBLE_GALAXY_MINOR_ROLES}:${Groups.ANSIBLE_GALAXY_MINOR}`,
@@ -564,10 +560,11 @@ describe('effective automerge', () => {
 
 // The static guards above see one rule at a time, and the `effective automerge` walker above resolves
 // rules in registry order rather than composition order. Neither can catch a field that leaks ACROSS
-// presets, which is exactly the shape of the bug this guards: the fast ring spreads `NODE_GROUP_DEV` and
-// is extended before the dep groups, so a package in both the ring and the build list would carry the
-// ring's `ignoreTests` onto a build branch whose pipeline does run. This walks `extends` depth-first —
-// the order renovate composes presets in — and asserts the pairing survives resolution.
+// presets, which is exactly the shape of the bug this guards. The rings are extended after the dep
+// groups so their grouping wins, which puts every ring rule in a position to overwrite a dep-type field
+// as well: a ring that restated `ignoreTests` would strip the pipeline from a package that is in both
+// the ring and the build list. This walks `extends` depth-first — the order renovate composes presets
+// in — and asserts the pairing survives resolution.
 describe('effective ignore tests', () => {
   function flatten(name: Preset, acc: PackageRule[] = []): PackageRule[] {
     scoped(presets[name]).forEach((child) => flatten(child, acc))
@@ -598,7 +595,8 @@ describe('effective ignore tests', () => {
   }
 
   // `@cenk1cenk2/eslint-config` is the one that actually bites: it matches the fast ring's
-  // `/^@cenk1cenk2//` and sits in `NODE_BUILD_PACKAGES`, so it passes through both rules.
+  // `/^@cenk1cenk2//` and sits in `NODE_BUILD_PACKAGES`, so it passes through both rules — the ring
+  // regroups it onto the fast cadence while the build group keeps its commit type and its pipeline.
   const CASES: [string, string, string][] = [
     ['@cenk1cenk2/eslint-config', 'devDependencies', ''],
     ['typescript', 'devDependencies', ''],

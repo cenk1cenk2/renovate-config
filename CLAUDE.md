@@ -24,10 +24,12 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 ## Conventions
 
 - Each manager has a `manager.ts` that enables the manager and composes group presets via `createScopes()`
-- Group files define `packageRules` arrays. A generic manager-wide group may automerge its own minor updates (node, go, python, gitlab-ci, ansible-galaxy, otel-builder, docker); the multi-directory managers carry a catch-all that says `automerge: false` instead. Automerging a *named* package is never done here — that is the parameterized `*-automerge-*` presets a consuming repository extends for itself; see the Automerge Pattern section.
+- Group files define `packageRules` arrays. A generic manager-wide group may automerge its own minor updates (node, go, python, gitlab-ci, ansible-galaxy, otel-builder, docker); the multi-directory managers carry a catch-all that says `automerge: false` instead. Automerging a _named_ package is never done here — that is the parameterized `*-automerge-*` presets a consuming repository extends for itself; see the Automerge Pattern section.
 - Minor/patch updates use `extends: [':semanticCommitTypeAll(feat)']`, major updates use `perf`
 - **Labels are additive — see the Labels section below.** `base.ts` holds the only `labels:` in the repo; everything else uses `addLabels`. Values always come from the `Labels` enum (`@constants`), never raw strings.
 - `groupSlug` values come from the `Groups` enum (`@groups`). `Rings` enum (`@rings`) provides ring group slugs, which are **manager-qualified** (`node-fast-ring`, `go-fast-ring`) because renovate derives the branch name from the slug — a shared slug merges go and node updates of a polyglot repo into one MR.
+- **A ring owns cadence and grouping only, and must be extended after the dep-type groups.** `groupName`, `groupSlug` and `schedule` are last-match-wins, so a `manager.ts` lists the groups first, then slow ring, then fast ring, then the `enabled: false` disables. Extended the other way round a ring silently stops applying to every update type a group also matches, and the ring's cadence is discarded. The converse binds too: because a ring rule lands last it must restate none of a group's fields — `semanticCommitType`, `commitMessageSuffix`, `ignoreTests` and `automerge` stay with the group that claimed the package, or a build dependency loses its pipeline. Ring rules therefore carry `automerge` nowhere; the groups grant it and the ring only re-scopes the branch.
+- **Ring group rules are bounded by `matchUpdateTypes`.** Unbounded, a ring batches every major of its packages into one grouped merge request and holds them for the ring's cadence; majors keep their own branch instead.
 - The `Preset` enum in `src/presets/index.ts` uses category prefixes: **real presets** (`default`, `base`, `lock-file`, `no-tests`, `branch-*`) no prefix; **managers** `manager-*`; **groups** `group-*`; **rings** `ring-*`; **datasources** `datasource-*`. New files must be registered in both the enum and the `PRESETS` record. The `manager-*-automerge-*` and `datasource-docker-automerge-*` presets are group-shaped but keep the manager/datasource prefix on purpose — consumers hardcode the name, and the prefix says which manager the argument is scoped to.
 - `SCOPE` prefix (`local>renovate/renovate-config:default/`) is prepended to all preset references via `createScopes(Preset.X, ...)`.
 - Conventional commits: `feat` for features, `fix` for fixes, `build(deps)` for dependency updates
@@ -37,6 +39,7 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
   - **Pattern S** (single-directory: node, go, gitlab-ci, ansible-galaxy, otel-builder, docker-datasource): no `additionalBranchPrefix`, no `commitMessageExtra`; per-rule `schedule`.
 - **`group-by-unit(<dir>)` re-scopes a repository from directories to units.** A parameterized preset — renovate substitutes `{{arg0}}` at preset-resolution time — that a consuming repo extends once per unit alongside `default/default`. It overrides `additionalBranchPrefix`, `commitMessageExtra` and `group.commitMessageTopic` for everything under `<dir>/**`, collapsing every directory in that unit onto one branch per group. Any new field carrying `{{packageFileDir}}` must be re-scoped here too, or the title falls back to whichever dependency renovate sorts first.
 - **Never put `schedule` at the top level of a preset.** Top-level fields are non-mergeable and apply globally to the assembled config — the last extended preset that sets one wins for every dependency. Scope it to a `packageRules` entry instead.
+- **A `SCHEDULE` hour window must be wider than the runner's cron cadence.** Renovate evaluates the window in `TIMEZONE` (Europe/Vienna) while the `renovate-runner` operator fires its `RenovateJob` crons on `time.Local`; the two only line up once `TZ` is set on the operator. A window narrower than the gap between runs can contain no run at all, and every update on it is parked in the dependency dashboard under "Awaiting Schedule" indefinitely. Nothing in this repo reports that — the symptom is silence.
 
 ## Automerge Pattern
 
@@ -63,24 +66,24 @@ For Pattern M the factory attaches `Labels.AUTOMERGE` automatically whenever `au
 
 Each row is a `-minor` / `-major` pair; the major twin always matches `['major']` alone and shares the minor twin's matchers.
 
-| Preset key pair                          | Directory                     | Minor update types                             | Pattern | Group slug                              | Notes                                                        |
-| ---------------------------------------- | ----------------------------- | ---------------------------------------------- | ------- | --------------------------------------- | ------------------------------------------------------------ |
-| `manager-helm-automerge-*`               | `managers/helm/`              | `minor`, `patch`                               | M       | `helm-{minor,major}-automerge`          | its own slug: the central helm group does not automerge      |
-| `manager-kustomize-automerge-*`          | `managers/kustomize/`         | `minor`, `patch`                               | M       | `kustomize-{minor,major}-automerge`     | `matchDepTypes: ['HelmChart']` on both levels                |
-| `manager-argocd-automerge-*`             | `managers/argocd/`            | `minor`, `patch`, `pin`, `digest`, `pinDigest` | M       | `argocd-{minor,major}-automerge`        | argument is a git URL, not a chart name                      |
-| `manager-terraform-automerge-*`          | `managers/terraform/`         | `minor`, `patch`                               | M       | `terraform-{minor,major}-automerge`     | covers `module`, `provider`, `required_provider`, `helm_release` |
-| `manager-terraform-custom-automerge-*`   | `managers/terraform/custom-`  | `minor`, `patch`                               | M       | `terraform-monorepo-{minor,major}-automerge` | `custom.regex` scoped by the terraform monorepo dep type |
-| `manager-node-automerge-*`               | `managers/node/`              | `minor`, `patch`, `pin`, `digest`              | S       | none — see below                        | no `schedule` either                                         |
-| `manager-go-automerge-*`                 | `managers/go/`                | `minor`, `patch`, `digest`                     | S       | none — see below                        | no `schedule` either                                         |
-| `manager-python-automerge-*`             | `managers/python-pep621/`     | `minor`, `patch`, `pin`                        | S       | `python-minor`, `python-major-automerge` | no `digest`: pypi has none; minor reuses the central group's slug |
-| `manager-rust-automerge-*`               | `managers/rust-cargo/`        | `minor`, `patch`, `pin`                        | S       | `rust-{minor,major}-automerge`          | no `digest`: crates.io has none                              |
-| `manager-kubernetes-automerge-*`         | `managers/kubernetes/`        | `minor`, `patch`, `pin`, `digest`              | S       | `kubernetes-{minor,major}-automerge`    | argument is an image reference                               |
-| `manager-dockerfile-automerge-*`         | `managers/dockerfile/`        | `minor`, `patch`, `pin`, `digest`              | S       | `dockerfile-{minor,major}-automerge`    | only images declared in a Dockerfile                         |
-| `manager-ansible-galaxy-automerge-*`     | `managers/ansible-galaxy/`    | `minor`, `patch`, `pin`, `digest`              | S       | `ansible-galaxy-{minor,major}`          | `matchDepTypes: ['collections', 'roles']`, `DAILY`; minor keeps the twin's `[skip ci]`, major does not |
-| `manager-gitlab-ci-automerge-*`          | `managers/gitlab-ci/`         | `minor`, `patch`, `pin`, `digest`              | S       | `gitlab-ci-{minor,major}`               | matches `gitlabci` and `gitlabci-include`, `ANY`             |
-| `manager-gitlab-ci-custom-automerge-*`   | `managers/gitlab-ci/custom-`  | `minor`, `patch`, `pin`, `digest`              | S       | `gitlab-ci-{minor,major}`               | `custom.regex` scoped by the gitlab-ci monorepo dep type     |
-| `manager-otel-builder-automerge-*`       | `managers/otel-builder/`      | `minor`, `patch`, `digest`                     | S       | `otel-builder-{minor,major}`            | `DAILY`; minor reuses the central group's slug               |
-| `datasource-docker-automerge-*`          | `datasources/docker/`         | `minor`, `patch`, `pin`, `digest`              | S       | `docker-{minor,major}`                  | `matchDatasources: ['docker']`, `ANY`; minor reuses the central slug, which automerges only `docker/dockerfile` |
+| Preset key pair | Directory | Minor update types | Pattern | Group slug | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `manager-helm-automerge-*` | `managers/helm/` | `minor`, `patch` | M | `helm-{minor,major}-automerge` | its own slug: the central helm group does not automerge |
+| `manager-kustomize-automerge-*` | `managers/kustomize/` | `minor`, `patch` | M | `kustomize-{minor,major}-automerge` | `matchDepTypes: ['HelmChart']` on both levels |
+| `manager-argocd-automerge-*` | `managers/argocd/` | `minor`, `patch`, `pin`, `digest`, `pinDigest` | M | `argocd-{minor,major}-automerge` | argument is a git URL, not a chart name |
+| `manager-terraform-automerge-*` | `managers/terraform/` | `minor`, `patch` | M | `terraform-{minor,major}-automerge` | covers `module`, `provider`, `required_provider`, `helm_release` |
+| `manager-terraform-custom-automerge-*` | `managers/terraform/custom-` | `minor`, `patch` | M | `terraform-monorepo-{minor,major}-automerge` | `custom.regex` scoped by the terraform monorepo dep type |
+| `manager-node-automerge-*` | `managers/node/` | `minor`, `patch`, `pin`, `digest` | S | none — see below | no `schedule` either |
+| `manager-go-automerge-*` | `managers/go/` | `minor`, `patch`, `digest` | S | none — see below | no `schedule` either |
+| `manager-python-automerge-*` | `managers/python-pep621/` | `minor`, `patch`, `pin` | S | `python-minor`, `python-major-automerge` | no `digest`: pypi has none; minor reuses the central group's slug |
+| `manager-rust-automerge-*` | `managers/rust-cargo/` | `minor`, `patch`, `pin` | S | `rust-{minor,major}-automerge` | no `digest`: crates.io has none |
+| `manager-kubernetes-automerge-*` | `managers/kubernetes/` | `minor`, `patch`, `pin`, `digest` | S | `kubernetes-{minor,major}-automerge` | argument is an image reference |
+| `manager-dockerfile-automerge-*` | `managers/dockerfile/` | `minor`, `patch`, `pin`, `digest` | S | `dockerfile-{minor,major}-automerge` | only images declared in a Dockerfile |
+| `manager-ansible-galaxy-automerge-*` | `managers/ansible-galaxy/` | `minor`, `patch`, `pin`, `digest` | S | `ansible-galaxy-{minor,major}` | `matchDepTypes: ['collections', 'roles']`, `DAILY`; minor keeps the twin's `[skip ci]`, major does not |
+| `manager-gitlab-ci-automerge-*` | `managers/gitlab-ci/` | `minor`, `patch`, `pin`, `digest` | S | `gitlab-ci-{minor,major}` | matches `gitlabci` and `gitlabci-include`, `ANY` |
+| `manager-gitlab-ci-custom-automerge-*` | `managers/gitlab-ci/custom-` | `minor`, `patch`, `pin`, `digest` | S | `gitlab-ci-{minor,major}` | `custom.regex` scoped by the gitlab-ci monorepo dep type |
+| `manager-otel-builder-automerge-*` | `managers/otel-builder/` | `minor`, `patch`, `digest` | S | `otel-builder-{minor,major}` | `DAILY`; minor reuses the central group's slug |
+| `datasource-docker-automerge-*` | `datasources/docker/` | `minor`, `patch`, `pin`, `digest` | S | `docker-{minor,major}` | `matchDatasources: ['docker']`, `ANY`; minor reuses the central slug, which automerges only `docker/dockerfile` |
 
 ```json
 {
@@ -94,7 +97,7 @@ Each row is a `-minor` / `-major` pair; the major twin always matches `['major']
 
 Five invariants hold these together, all enforced by `test/presets.test.ts`:
 
-- **Nothing in this repo may extend one.** They are consumer entrypoints. Extending one from `default.ts` or a `manager.ts` would automerge that package everywhere, and would place the rule *before* the group catch-all that says `automerge: false` instead of after it.
+- **Nothing in this repo may extend one.** They are consumer entrypoints. Extending one from `default.ts` or a `manager.ts` would automerge that package everywhere, and would place the rule _before_ the group catch-all that says `automerge: false` instead of after it.
 - **They are registered last** in the `Preset` enum and the `PRESETS` record, which models the position a consumer puts them in.
 - **They reuse the central group's slug wherever that group automerges** — `docker-minor`, `python-minor`, `ansible-galaxy-minor`, `gitlab-ci-minor` and `otel-builder-minor`. An opt-in then shares a branch with the central group rather than opening a second MR, and one slug is one name, so the `groupName` must match the central one exactly. Where the central group is a catch-all that says `automerge: false` — helm, kustomize, argocd, terraform — the opt-in carries its own `*-automerge` slug and is the only rule that uses it. That split is not cosmetic: renovate sets a grouped branch's `automerge` to `upgrades.every((upgrade) => upgrade.automerge)` (`dist/workers/repository/updates/generate.js:247`), so an opt-in that joined a catch-all's branch would stop automerging the moment any other dependency landed on it. `test/presets.test.ts` (`never shares a group slug between an automerging and a non-automerging rule`) enforces it.
 - **`manager-node-automerge-*` and `manager-go-automerge-*` carry no `groupSlug` and no `schedule`.** Node groups by dep type (`dev`, `build`, `docs`, `peer`, `package-manager`) and both node and go group by ring. `groupSlug`, `groupName` and `schedule` are all last-match-wins, so an opt-in that named a group would pull the package out of the MR it belongs in and discard its ring schedule. Those two presets flip `automerge` and nothing else.
@@ -110,19 +113,17 @@ A new `-automerge-minor` / `-automerge-major` key must be added to `AUTOMERGE_PR
 
 Generic minor/patch groups, one per manager, unchanged by the allowlist migration:
 
-| Manager / datasource | File | Slug |
-| -------------------- | ---- | ---- |
-| node dependencies    | `groups/node/minor-dependencies.ts` | `node-minor` |
-| node dev, build, docs, package manager | `groups/node/dev-dependencies.ts` | `node-dev`, `node-build`, `node-docs`, and a slugless rule over `node-package-manager` |
-| node peer            | `groups/node/peer-dependencies.ts` | `node-peer` |
-| node fast ring       | `rings/node/fast.ts` | `node-fast-ring`, `node-fast-ring-dev`, `node-fast-ring-peer` |
-| go                   | `groups/go/minor-dependencies.ts` | `go-minor` |
-| go fast ring         | `rings/go/fast.ts` | `go-fast-ring` |
-| python               | `groups/python/minor-dependencies.ts` | `python-minor` |
-| gitlab-ci            | `groups/gitlab-ci/minor-updates.ts` | `gitlab-ci-minor`, for the include manager and the `custom.regex` monorepo rule |
-| ansible-galaxy       | `groups/ansible-galaxy/minor-roles.ts` | `ansible-galaxy-minor` |
-| otel-builder         | `managers/otel-builder/manager.ts` | `otel-builder-minor` |
-| docker datasource    | `datasources/docker/datasource.ts` | `docker-minor` — bounded to `docker/dockerfile` |
+| Manager / datasource                   | File                                   | Slug                                                                                   |
+| -------------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------- |
+| node dependencies                      | `groups/node/minor-dependencies.ts`    | `node-minor`                                                                           |
+| node dev, build, docs, package manager | `groups/node/dev-dependencies.ts`      | `node-dev`, `node-build`, `node-docs`, and a slugless rule over `node-package-manager` |
+| node peer                              | `groups/node/peer-dependencies.ts`     | `node-peer`                                                                            |
+| go                                     | `groups/go/minor-dependencies.ts`      | `go-minor`                                                                             |
+| python                                 | `groups/python/minor-dependencies.ts`  | `python-minor`                                                                         |
+| gitlab-ci                              | `groups/gitlab-ci/minor-updates.ts`    | `gitlab-ci-minor`, for the include manager and the `custom.regex` monorepo rule        |
+| ansible-galaxy                         | `groups/ansible-galaxy/minor-roles.ts` | `ansible-galaxy-minor`                                                                 |
+| otel-builder                           | `managers/otel-builder/manager.ts`     | `otel-builder-minor`                                                                   |
+| docker datasource                      | `datasources/docker/datasource.ts`     | `docker-minor` — bounded to `docker/dockerfile`                                        |
 
 `test/presets.test.ts` pins that list in `CENTRAL_AUTOMERGE` (`automerges centrally only where the inventory says so`), so a central automerge appearing or disappearing fails the suite until the list is updated deliberately. Two more guards sit beside it: `never automerges a major update centrally` — the bounded-allowlist exception for majors belongs to the parameterized presets alone — and `never disables a rule that automerges centrally`, which catches a generic group switched off while still counted in the inventory.
 

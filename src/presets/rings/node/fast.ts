@@ -2,9 +2,12 @@ import { NODE_FAST_RING_PACKAGES } from './rings.js'
 import { Labels, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 import { Managers } from '@managers'
-import { NODE_GROUP_MINOR, NODE_GROUP_DEV, NODE_GROUP_PEER } from '@presets/groups/node/groups.js'
 import { Rings } from '@rings'
 
+// A ring owns cadence and grouping and nothing else. It is extended after the dep-type groups so its
+// `groupSlug` and `schedule` win on last-match, which is also why it must restate none of their fields:
+// the commit type, `[skip ci]`, `ignoreTests` and `automerge` belong to the group that claimed the
+// package, and a ring that spread them would strip a build dependency of its pipeline.
 export default createPreset({
   packageRules: [
     {
@@ -12,32 +15,34 @@ export default createPreset({
       matchPackageNames: NODE_FAST_RING_PACKAGES,
       addLabels: [Labels.RING_FAST]
     },
+
     {
-      ...NODE_GROUP_MINOR,
+      matchManagers: [Managers.NODE],
       matchPackageNames: NODE_FAST_RING_PACKAGES,
+      matchDepTypes: ['dependencies'],
+      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       groupName: 'node fast ring minor dependencies',
       groupSlug: Rings.NODE_FAST,
       schedule: [SCHEDULE.ANY]
     },
 
-    // These override the `dep:` value the spread carries. The ring patterns overlap the build and docs
-    // lists — `@cenk1cenk2/eslint-config` is in both — so claiming a dep value here would stack a second
-    // one onto the overlap. The dep axis stays with the dep groups.
     {
-      ...NODE_GROUP_DEV,
+      matchManagers: [Managers.NODE],
       matchPackageNames: NODE_FAST_RING_PACKAGES,
+      matchDepTypes: ['devDependencies'],
+      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       groupName: 'node fast ring dev dependencies',
       groupSlug: Rings.NODE_FAST_DEV,
-      addLabels: [Labels.AUTOMERGE],
       schedule: [SCHEDULE.ANY]
     },
 
     {
-      ...NODE_GROUP_PEER,
+      matchManagers: [Managers.NODE],
       matchPackageNames: NODE_FAST_RING_PACKAGES,
+      matchDepTypes: ['peerDependencies', 'optionalDependencies'],
+      matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       groupName: 'node fast ring peer dependencies',
       groupSlug: Rings.NODE_FAST_PEER,
-      addLabels: [Labels.AUTOMERGE],
       schedule: [SCHEDULE.ANY]
     }
   ]
