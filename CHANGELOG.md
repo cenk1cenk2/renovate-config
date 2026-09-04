@@ -1,3 +1,10 @@
+## [4.4.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.4...v4.4.5) (2026-09-04)
+
+
+### Bug Fixes
+
+* **deps:** update node fast ring minor dependencies ([fa5712f](https://gitlab.kilic.dev/renovate/renovate-config/commit/fa5712f05c93486a437cfc8a6e338b89ada2200a))
+
 ## [4.4.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.3...v4.4.4) (2026-09-04)
 
 
