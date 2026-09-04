@@ -37,8 +37,8 @@ importers:
         version: 0.5.21
     devDependencies:
       '@cenk1cenk2/cz-cc':
-        specifier: ^2.3.1
-        version: 2.3.1(@types/node@25.9.5)(typescript@6.0.3)
+        specifier: ^2.3.2
+        version: 2.3.2(@types/node@25.9.5)(typescript@6.0.3)
       '@cenk1cenk2/eslint-config':
         specifier: ^3.3.0
         version: 3.3.0(@typescript-eslint/utils@8.69.0(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
@@ -240,8 +240,8 @@ packages:
   '@cdktf/hcl2json@0.21.0':
     resolution: {integrity: sha512-cwX3i/mSJI/cRrtqwEPRfawB7pXgNioriSlkvou8LWiCrrcDe9ZtTbAbu8W1tEJQpe1pnX9VEgpzf/BbM7xF8Q==}
 
-  '@cenk1cenk2/cz-cc@2.3.1':
-    resolution: {integrity: sha512-5rI/onfjThgQ+ZwjOICLJQr7M86J1nicdvK3tfSkSbOJ5wwsHpPO24sIbsRRRpj55cuY7HegvyPZPX/zgmOfuw==}
+  '@cenk1cenk2/cz-cc@2.3.2':
+    resolution: {integrity: sha512-UDYbCM5FCMTnIVzkIP6kiVNr/TiyIHzaoSL8050UvaFOGKd21dbhN6xUJnpsfzmauO3YCQiuOJwAXQO6owDKJw==}
     engines: {node: '>= 24'}
 
   '@cenk1cenk2/eslint-config@3.3.0':
@@ -1434,6 +1434,7 @@ packages:
   '@smithy/node-http-handler@4.12.0':
     resolution: {integrity: sha512-0mq1pHadfyXCYCqm2cNpbjNIT+fbaUpNxewZb/YNr2L0IrEVMOb8gM/Fl4K6XvHCW3uSNDFwPl/+iKm0bx9jYg==}
     engines: {node: '>=18.0.0'}
+    deprecated: Depreacted due to a memory leak issue https://github.com/smithy-lang/smithy-typescript/issues/2258
 
   '@smithy/signature-v4@5.7.3':
     resolution: {integrity: sha512-7ImGm+FkHRLcBaRttIAMZ6bzJZWb2cJGoYjq46F2UjycujWzrL9GEN9h4w7eQyXJYnltrUhxbbieBAIRrdqpow==}
@@ -5480,7 +5481,7 @@ snapshots:
     dependencies:
       fs-extra: 11.3.0
 
-  '@cenk1cenk2/cz-cc@2.3.1(@types/node@25.9.5)(typescript@6.0.3)':
+  '@cenk1cenk2/cz-cc@2.3.2(@types/node@25.9.5)(typescript@6.0.3)':
     dependencies:
       '@inquirer/prompts': 8.7.0(@types/node@25.9.5)
       '@listr2/prompt-adapter-inquirer': 4.2.7(@inquirer/prompts@8.7.0(@types/node@25.9.5))(@types/node@25.9.5)(listr2@11.1.0)
