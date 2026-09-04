@@ -70,7 +70,7 @@ importers:
         specifier: ^3.9.6
         version: 3.9.6
       simple-git-hooks:
-        specifier: ^2.13.1
+        specifier: ^2.14.0
         version: 2.14.0
       ts-node:
         specifier: ^10.9.2
