@@ -2,7 +2,6 @@ import { GO_FAST_RING_PACKAGES } from './rings.js'
 import { Labels, SCHEDULE } from '@constants'
 import { createPreset } from '@lib'
 import { Managers } from '@managers'
-import { GO_GROUP_MINOR } from '@presets/groups/go/groups.js'
 import { Rings } from '@rings'
 
 export default createPreset({
@@ -12,9 +11,11 @@ export default createPreset({
       matchPackageNames: GO_FAST_RING_PACKAGES,
       addLabels: [Labels.RING_FAST]
     },
+
     {
-      ...GO_GROUP_MINOR,
+      matchManagers: [Managers.GO],
       matchPackageNames: GO_FAST_RING_PACKAGES,
+      matchUpdateTypes: ['minor', 'patch', 'digest'],
       groupName: 'go fast ring minor dependencies',
       groupSlug: Rings.GO_FAST,
       schedule: [SCHEDULE.ANY]

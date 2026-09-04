@@ -5,7 +5,7 @@ import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: [Managers.GO],
-  extends: createScopes(Preset.RING_GO_SLOW, Preset.RING_GO_FAST, Preset.GROUP_GO_MINOR_DEPENDENCIES),
+  extends: createScopes(Preset.GROUP_GO_MINOR_DEPENDENCIES, Preset.RING_GO_SLOW, Preset.RING_GO_FAST),
   postUpdateOptions: ['gomodTidy', 'gomodUpdateImportPaths'],
   packageRules: [
     {

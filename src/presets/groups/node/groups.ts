@@ -21,8 +21,9 @@ export const NODE_GROUP_DEV: PackageRule = {
   matchManagers: [Managers.NODE]
 }
 
-// Both resets exist because the fast ring spreads `NODE_GROUP_DEV` and is extended before this group, so
-// its `[skip ci]` and `ignoreTests` would otherwise survive onto a build branch whose pipeline does run.
+// `commitMessageSuffix` and `ignoreTests` are stated rather than left at their defaults because both are
+// last-match-wins across every rule that claims the package: a build bump must run its pipeline, and the
+// dev group flips both the other way. `effective ignore tests` in the suite pins the pairing.
 export const NODE_GROUP_BUILD: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],

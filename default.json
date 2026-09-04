@@ -92,7 +92,7 @@
         "automerge"
       ],
       "schedule": [
-        "before 1am"
+        "before 9am"
       ]
     }
   },
@@ -114,12 +114,12 @@
       "npm"
     ],
     "extends": [
-      "local>renovate/renovate-config:default/ring-node-none",
-      "local>renovate/renovate-config:default/ring-node-slow",
-      "local>renovate/renovate-config:default/ring-node-fast",
       "local>renovate/renovate-config:default/group-node-dev-dependencies",
       "local>renovate/renovate-config:default/group-node-minor-dependencies",
-      "local>renovate/renovate-config:default/group-node-peer-dependencies"
+      "local>renovate/renovate-config:default/group-node-peer-dependencies",
+      "local>renovate/renovate-config:default/ring-node-slow",
+      "local>renovate/renovate-config:default/ring-node-fast",
+      "local>renovate/renovate-config:default/ring-node-none"
     ],
     "packageRules": [
       {
@@ -150,9 +150,9 @@
       "gomod"
     ],
     "extends": [
+      "local>renovate/renovate-config:default/group-go-minor-dependencies",
       "local>renovate/renovate-config:default/ring-go-slow",
-      "local>renovate/renovate-config:default/ring-go-fast",
-      "local>renovate/renovate-config:default/group-go-minor-dependencies"
+      "local>renovate/renovate-config:default/ring-go-fast"
     ],
     "postUpdateOptions": [
       "gomodTidy",
@@ -472,7 +472,7 @@
           "ocb"
         ],
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       },
       {
@@ -573,7 +573,7 @@
         "groupName": "node all minor dependency updates",
         "groupSlug": "node-minor",
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       },
       {
@@ -846,7 +846,7 @@
         "groupName": "go all minor dependency updates",
         "groupSlug": "go-minor",
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       }
     ]
@@ -1155,7 +1155,7 @@
           "pep621"
         ],
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       }
     ]
@@ -1188,7 +1188,7 @@
           "ansible-galaxy"
         ],
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       },
       {
@@ -1392,6 +1392,9 @@
         ]
       },
       {
+        "matchManagers": [
+          "npm"
+        ],
         "matchPackageNames": [
           "/^@typescript-eslint//",
           "/jest/",
@@ -1404,13 +1407,16 @@
           "/^cz-conventional-changelog$/",
           "/^simple-git-hooks$/"
         ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
         "groupName": "node slow ring",
         "groupSlug": "node-slow-ring",
         "schedule": [
-          "before 1am on Monday"
-        ],
-        "matchManagers": [
-          "npm"
+          "before 9am on Monday"
         ]
       }
     ]
@@ -1432,6 +1438,15 @@
         ]
       },
       {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchPackageNames": [
+          "/^@cenk1cenk2//",
+          "/listr2/",
+          "/^@cenk1cenk2-.*//",
+          "/^@kilic.dev//"
+        ],
         "matchDepTypes": [
           "dependencies"
         ],
@@ -1441,10 +1456,13 @@
           "pin",
           "digest"
         ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "groupName": "node fast ring minor dependencies",
+        "groupSlug": "node-fast-ring",
+        "schedule": [
+          "at any time"
+        ]
+      },
+      {
         "matchManagers": [
           "npm"
         ],
@@ -1454,13 +1472,6 @@
           "/^@cenk1cenk2-.*//",
           "/^@kilic.dev//"
         ],
-        "groupName": "node fast ring minor dependencies",
-        "groupSlug": "node-fast-ring",
-        "schedule": [
-          "at any time"
-        ]
-      },
-      {
         "matchDepTypes": [
           "devDependencies"
         ],
@@ -1470,12 +1481,13 @@
           "pin",
           "digest"
         ],
-        "commitMessageSuffix": "[skip ci]",
-        "ignoreTests": true,
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
+        "groupName": "node fast ring dev dependencies",
+        "groupSlug": "node-fast-ring-dev",
+        "schedule": [
+          "at any time"
+        ]
+      },
+      {
         "matchManagers": [
           "npm"
         ],
@@ -1485,13 +1497,6 @@
           "/^@cenk1cenk2-.*//",
           "/^@kilic.dev//"
         ],
-        "groupName": "node fast ring dev dependencies",
-        "groupSlug": "node-fast-ring-dev",
-        "schedule": [
-          "at any time"
-        ]
-      },
-      {
         "matchDepTypes": [
           "peerDependencies",
           "optionalDependencies"
@@ -1501,21 +1506,6 @@
           "patch",
           "pin",
           "digest"
-        ],
-        "commitMessageSuffix": "[skip ci]",
-        "ignoreTests": true,
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
-        "matchManagers": [
-          "npm"
-        ],
-        "matchPackageNames": [
-          "/^@cenk1cenk2//",
-          "/listr2/",
-          "/^@cenk1cenk2-.*//",
-          "/^@kilic.dev//"
         ],
         "groupName": "node fast ring peer dependencies",
         "groupSlug": "node-fast-ring-peer",
@@ -1539,16 +1529,21 @@
         ]
       },
       {
+        "matchManagers": [
+          "gomod"
+        ],
         "matchPackageNames": [
           "/^golang.org/x//"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "digest"
         ],
         "groupName": "go slow ring",
         "groupSlug": "go-slow-ring",
         "schedule": [
-          "before 1am on Monday"
-        ],
-        "matchManagers": [
-          "gomod"
+          "before 9am on Monday"
         ]
       }
     ]
@@ -1567,20 +1562,16 @@
         ]
       },
       {
-        "matchUpdateTypes": [
-          "minor",
-          "patch",
-          "digest"
-        ],
-        "addLabels": [
-          "automerge"
-        ],
-        "automerge": true,
         "matchManagers": [
           "gomod"
         ],
         "matchPackageNames": [
           "/^gitlab.kilic.dev//"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "digest"
         ],
         "groupName": "go fast ring minor dependencies",
         "groupSlug": "go-fast-ring",
@@ -1804,7 +1795,7 @@
           "ocb"
         ],
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       }
     ]
@@ -1829,7 +1820,7 @@
           "ocb"
         ],
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       }
     ]
@@ -2274,7 +2265,7 @@
           "ansible-galaxy"
         ],
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       }
     ]
@@ -2303,7 +2294,7 @@
           "ansible-galaxy"
         ],
         "schedule": [
-          "before 1am"
+          "before 9am"
         ]
       }
     ]
