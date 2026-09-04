@@ -11,12 +11,14 @@ export default createPreset({
       matchPackageNames: GO_SLOW_RING_PACKAGES,
       addLabels: [Labels.RING_SLOW]
     },
+
     {
+      matchManagers: [Managers.GO],
       matchPackageNames: GO_SLOW_RING_PACKAGES,
+      matchUpdateTypes: ['minor', 'patch', 'digest'],
       groupName: 'go slow ring',
       groupSlug: Rings.GO_SLOW,
-      schedule: [SCHEDULE.WEEKLY],
-      matchManagers: [Managers.GO]
+      schedule: [SCHEDULE.WEEKLY]
     }
   ]
 })
