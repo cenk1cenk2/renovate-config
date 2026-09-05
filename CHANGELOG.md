@@ -1,3 +1,11 @@
+## [4.4.6](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.5...v4.4.6) (2026-09-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @cenk1cenk2/oclif-common to ^7.1.0 ([b0e3f68](https://gitlab.kilic.dev/renovate/renovate-config/commit/b0e3f6815fae7642c03c8580da0417d7948371f3))
+* **deps:** update node all minor dependency updates ([cabd416](https://gitlab.kilic.dev/renovate/renovate-config/commit/cabd4166508c91a58a68835ca0e5310ef79a2fd8))
+
 ## [4.4.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.4...v4.4.5) (2026-09-04)
 
 
