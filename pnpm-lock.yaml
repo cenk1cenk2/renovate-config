@@ -40,8 +40,8 @@ importers:
         specifier: ^2.3.2
         version: 2.3.2(@types/node@25.9.5)(typescript@6.0.3)
       '@cenk1cenk2/eslint-config':
-        specifier: ^3.3.0
-        version: 3.3.0(@typescript-eslint/utils@8.69.0(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
+        specifier: ^3.3.1
+        version: 3.3.1(@typescript-eslint/utils@8.69.0(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       '@tsconfig/node24':
         specifier: ^24.0.5
         version: 24.0.5
@@ -244,8 +244,8 @@ packages:
     resolution: {integrity: sha512-UDYbCM5FCMTnIVzkIP6kiVNr/TiyIHzaoSL8050UvaFOGKd21dbhN6xUJnpsfzmauO3YCQiuOJwAXQO6owDKJw==}
     engines: {node: '>= 24'}
 
-  '@cenk1cenk2/eslint-config@3.3.0':
-    resolution: {integrity: sha512-6uh90ZYY2nTmGWkdiBScQCCnLrfJY/BC1kJPqD5U6IOPX01aiUq9pdgIcydsAqxh8S7flJleVXk0Uf0gQZ1f+A==}
+  '@cenk1cenk2/eslint-config@3.3.1':
+    resolution: {integrity: sha512-6dMJPOzBC/8Sav+em2/HFELBGfS0B3Hsd+NP3Y9K0mENNPhAEXjXHkQr84mUGBhi/yVLwbY7+AZJn5EDJyVZmQ==}
     peerDependencies:
       '@vue/eslint-config-typescript': '>= 14.1.1'
       eslint: '>= 9'
@@ -5454,7 +5454,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@cenk1cenk2/eslint-config@3.3.0(@typescript-eslint/utils@8.69.0(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)':
+  '@cenk1cenk2/eslint-config@3.3.1(@typescript-eslint/utils@8.69.0(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))
       '@stylistic/eslint-plugin': 5.10.0(eslint@10.9.1(jiti@2.6.1)(supports-color@8.1.1))
