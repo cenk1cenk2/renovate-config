@@ -1,3 +1,10 @@
+## [4.4.8](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.7...v4.4.8) (2026-09-06)
+
+
+### Bug Fixes
+
+* **renovate:** gate node package manager majors on ci ([16e8779](https://gitlab.kilic.dev/renovate/renovate-config/commit/16e877917636067942e1c6fb466c145d7ab7b4a2))
+
 ## [4.4.7](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.6...v4.4.7) (2026-09-06)
 
 
