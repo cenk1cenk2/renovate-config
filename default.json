@@ -724,14 +724,7 @@
         "addLabels": [
           "dep:package-manager"
         ],
-        "commitMessageSuffix": "[skip ci]",
-        "ignoreTests": true,
-        "automerge": false,
-        "groupName": "node all package manager",
-        "groupSlug": "node-package-manager",
-        "schedule": [
-          "at any time"
-        ]
+        "automerge": false
       },
       {
         "matchManagers": [
@@ -749,10 +742,43 @@
           "pin",
           "digest"
         ],
+        "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "addLabels": [
           "automerge"
         ],
-        "automerge": true
+        "automerge": true,
+        "groupName": "node all package manager",
+        "groupSlug": "node-package-manager",
+        "schedule": [
+          "at any time"
+        ]
+      },
+      {
+        "matchManagers": [
+          "npm"
+        ],
+        "matchDepNames": [
+          "pnpm",
+          "yarn",
+          "npm",
+          "bun"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "semanticCommitType": "build",
+        "commitMessageSuffix": "",
+        "ignoreTests": false,
+        "addLabels": [
+          "automerge"
+        ],
+        "automerge": true,
+        "groupName": "node all package manager major",
+        "groupSlug": "node-package-manager-major",
+        "schedule": [
+          "at any time"
+        ]
       },
       {
         "matchManagers": [

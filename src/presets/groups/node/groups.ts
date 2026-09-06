@@ -100,14 +100,13 @@ export const NODE_DEV_CLAIMED_PACKAGES = [...NODE_BUILD_PACKAGES, ...NODE_DOCS_P
 // (an empty positive set matches all), so a leading `*` would be redundant.
 export const NODE_DEV_PACKAGES = NODE_DEV_CLAIMED_PACKAGES.map((name) => `!${name}`)
 
-// Unbounded so a major bump still lands in the group; the automerge rule below re-enables merging for
-// the non-breaking update types only.
+// Identity only. Both update-type rules below carry their own grouping, because renovate automerges a
+// grouped branch only when every upgrade on it does (`dist/workers/repository/updates/generate.js`) — a
+// slug here would put a major and a minor on one branch and let either hold the other back.
 export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
   addLabels: [Labels.DEP_PACKAGE_MANAGER],
-  commitMessageSuffix: '[skip ci]',
-  ignoreTests: true,
   automerge: false
 }
 
@@ -115,6 +114,22 @@ export const NODE_AUTOMERGE_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
+  commitMessageSuffix: '[skip ci]',
+  ignoreTests: true,
+  addLabels: [Labels.AUTOMERGE],
+  automerge: true
+}
+
+// The one major this config automerges centrally. `build` keeps semantic-release from cutting a version
+// for a bump that publishes nothing, and the empty suffix is what leaves a pipeline to gate the merge on
+// — both are stated because the minor rule sets them the other way and the field is last-match-wins.
+export const NODE_MAJOR_PACKAGE_MANAGER: PackageRule = {
+  matchManagers: [Managers.NODE],
+  matchDepNames: PACKAGE_MANAGERS,
+  matchUpdateTypes: ['major'],
+  semanticCommitType: 'build',
+  commitMessageSuffix: '',
+  ignoreTests: false,
   addLabels: [Labels.AUTOMERGE],
   automerge: true
 }
