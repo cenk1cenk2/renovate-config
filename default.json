@@ -724,8 +724,6 @@
         "addLabels": [
           "dep:package-manager"
         ],
-        "commitMessageSuffix": "[skip ci]",
-        "ignoreTests": true,
         "automerge": false,
         "groupName": "node all package manager",
         "groupSlug": "node-package-manager",
@@ -749,6 +747,8 @@
           "pin",
           "digest"
         ],
+        "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "addLabels": [
           "automerge"
         ],

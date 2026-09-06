@@ -101,20 +101,26 @@ export const NODE_DEV_CLAIMED_PACKAGES = [...NODE_BUILD_PACKAGES, ...NODE_DOCS_P
 export const NODE_DEV_PACKAGES = NODE_DEV_CLAIMED_PACKAGES.map((name) => `!${name}`)
 
 // Unbounded so a major bump still lands in the group; the automerge rule below re-enables merging for
-// the non-breaking update types only.
+// the non-breaking update types only. It touches neither `commitMessageSuffix` nor `ignoreTests`, which
+// is what leaves a major with a real pipeline: the whole set inherits `chore` from
+// `:semanticPrefixFixDepsChoreOthers` under the `packageManager` dep type, so renovate pushes a commit
+// gitlab actually builds, and `manager-node-automerge-major` merges on green rather than on nothing.
 export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
   addLabels: [Labels.DEP_PACKAGE_MANAGER],
-  commitMessageSuffix: '[skip ci]',
-  ignoreTests: true,
   automerge: false
 }
 
+// The deviation the whole set shares, bounded away from majors so it cannot reach one. A package manager
+// bump on these update types carries no source change to test, so it skips its pipeline and merges on
+// the pairing `ignoreTests` provides — a branch with no pipeline never goes green on its own.
 export const NODE_AUTOMERGE_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
+  commitMessageSuffix: '[skip ci]',
+  ignoreTests: true,
   addLabels: [Labels.AUTOMERGE],
   automerge: true
 }

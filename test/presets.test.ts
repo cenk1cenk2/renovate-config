@@ -1,4 +1,5 @@
 import { getOptions } from 'renovate/dist/config/options/index.js'
+import { resolveConfigPresets } from 'renovate/dist/config/presets/index.js'
 import type { PackageRule, RenovateConfig } from 'renovate/dist/config/types.js'
 import { matchRegexOrGlobList } from 'renovate/dist/util/string-match.js'
 import { describe, expect, it } from 'vitest'
@@ -51,6 +52,22 @@ const allRules = entries.flatMap(([name, preset]) => rules(preset).map((rule) =>
 const allPackageRules = entries.flatMap(([name, preset]) => (preset.packageRules ?? []).map((rule) => [name, rule] as const))
 
 const scoped = (preset: RenovateConfig): Preset[] => (preset.extends ?? []).filter((entry) => entry.startsWith(SCOPE)).map((entry) => entry.slice(SCOPE.length) as Preset)
+
+// `packageRules` in the order renovate composes them: a preset's `extends` resolve before its own rules,
+// so this walks depth-first and appends the parent last. Shared by the effective walkers below, which
+// each read a different field off the same chain.
+function flatten(name: Preset, acc: PackageRule[] = []): PackageRule[] {
+  scoped(presets[name]).forEach((child) => flatten(child, acc))
+  acc.push(...(presets[name].packageRules ?? []))
+
+  return acc
+}
+
+// The commit type is assigned by `:semanticPrefixFixDepsChoreOthers`, which arrives through
+// `config:recommended` in `base` — nothing local sets one for a package manager. Resolving it through
+// renovate's own resolver keeps the assertion about the mechanism the config really inherits instead of
+// a copy of it; every preset `base` extends is internal, so this stays offline.
+const inherited = (await resolveConfigPresets({ extends: presets[Preset.BASE].extends })).config.packageRules ?? []
 
 // Everything a repository inherits from `default/default` alone — the estate-wide config, before the
 // per-package opt-in presets it extends for itself.
@@ -381,6 +398,37 @@ describe('automerge policy', () => {
     expect(offenders, 'ignoreTests belongs only on a rule that suppresses its own pipeline').toEqual([])
   })
 
+  // A package manager major is the one node update a repository can take unattended through
+  // `manager-node-automerge-major`, and that opt-in merges on a green pipeline. Suppressing CI is fine on
+  // the non-breaking update types, which carry no source change to test — but a rule that does it while
+  // unbounded, or while naming `major`, drags `[skip ci]` onto the breaking bump too and leaves the
+  // opt-in merging against no pipeline at all.
+  it('never skips the pipeline for a node package manager major', () => {
+    const claiming = allRules.filter(([, rule]) => rule.matchDepNames?.some((depName) => PACKAGE_MANAGERS.includes(depName)))
+
+    expect(claiming.length, 'the node package manager rules should exist').toBeGreaterThan(0)
+
+    const offenders = claiming
+      .filter(([, rule]) => rule.commitMessageSuffix === SKIP_CI || rule.ignoreTests === true)
+      .filter(([, rule]) => !rule.matchUpdateTypes || rule.matchUpdateTypes.includes('major'))
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+
+    expect(offenders, 'a rule that skips CI for a package manager must be bounded to the non-breaking update types').toEqual([])
+  })
+
+  // `:semanticPrefixFixDepsChoreOthers` from `config:recommended` gives the whole set `chore` — the
+  // `fix` branch is scoped to the `dependencies` and `require` dep types, and a package manager is
+  // neither. That classification is what gitlab and semantic-release read off the branch, so a rule
+  // that reassigned it would change which pipeline runs for a bump nothing else here overrides.
+  it('never reclassifies a node package manager commit type', () => {
+    const offenders = allRules
+      .filter(([, rule]) => rule.matchDepNames?.some((depName) => PACKAGE_MANAGERS.includes(depName)))
+      .filter(([, rule]) => rule.semanticCommitType !== undefined || rule.extends?.some((preset) => preset.startsWith(':semanticCommitType')))
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+
+    expect(offenders, 'the package manager rules inherit `chore` and must leave the commit type alone').toEqual([])
+  })
+
   // `no-tests` is the repository-wide opt-out a consumer with no CI at all extends for itself. Anywhere
   // else a top-level `ignoreTests` is non-mergeable and global, and would waive the gate for every
   // dependency in every repository that inherits the preset.
@@ -468,6 +516,12 @@ describe('effective automerge', () => {
     ['terraform-monorepo major', { manager: Managers.REGEX, packageName: 'terraform/tf-modules', updateType: 'major', depType: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO }, false],
     ['node minor', { manager: Managers.NODE, packageName: 'some-library', updateType: 'minor', depType: 'dependencies' }, true],
     ['node major', { manager: Managers.NODE, packageName: 'some-library', updateType: 'major', depType: 'dependencies' }, false],
+    // The package manager itself, pnpm standing in for the whole set the way every other row stands in
+    // for its manager. Its minor surface automerges centrally like the rest of the manager; the major
+    // falls to the `automerge: false` catch-all, because a package manager major rewrites how every
+    // other dependency resolves and which repository takes that unattended is that repository's call.
+    ['node package-manager minor', { manager: Managers.NODE, packageName: 'pnpm', updateType: 'minor', depType: 'packageManager' }, true],
+    ['node package-manager major', { manager: Managers.NODE, packageName: 'pnpm', updateType: 'major', depType: 'packageManager' }, false],
     ['go minor', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'minor' }, true],
     ['go major', { manager: Managers.GO, packageName: 'github.com/spf13/cobra', updateType: 'major' }, false],
     ['python minor', { manager: Managers.PYTHON_PEP621, packageName: 'pydantic', updateType: 'minor' }, true],
@@ -522,6 +576,14 @@ describe('effective automerge', () => {
       expect(effectiveAutomerge({ packageName, updateType: 'minor', datasource: Datasources.DOCKER })).not.toBe(true)
     })
 
+    // One rule covers the whole package-manager set by dep name, so the pnpm rows above are not a pnpm
+    // policy: npm, yarn, bun and anything added to `PACKAGE_MANAGERS` later resolve identically, and a
+    // repository that wants a deviation adds it as a later rule instead of being special-cased here.
+    it.each(PACKAGE_MANAGERS)('gives %s the same package-manager automerge policy', (packageName) => {
+      expect(effectiveAutomerge({ manager: Managers.NODE, packageName, updateType: 'minor', depType: 'packageManager' })).toBe(true)
+      expect(effectiveAutomerge({ manager: Managers.NODE, packageName, updateType: 'major', depType: 'packageManager' })).toBe(false)
+    })
+
     // The node build group names its packages only to route them into a `build:` merge request — the
     // automerge underneath it is the generic devDependency one.
     it('automerges a node build dependency minor', () => {
@@ -566,16 +628,9 @@ describe('effective automerge', () => {
 // the ring and the build list. This walks `extends` depth-first — the order renovate composes presets
 // in — and asserts the pairing survives resolution.
 describe('effective ignore tests', () => {
-  function flatten(name: Preset, acc: PackageRule[] = []): PackageRule[] {
-    scoped(presets[name]).forEach((child) => flatten(child, acc))
-    acc.push(...(presets[name].packageRules ?? []))
-
-    return acc
-  }
-
   const composed = flatten(Preset.DEFAULT)
 
-  function resolve(packageName: string, depType: string): { suffix?: string, ignoreTests?: boolean } {
+  function resolve(packageName: string, depType: string, updateType = 'minor'): { suffix?: string, ignoreTests?: boolean } {
     let suffix: string | undefined
     let ignoreTests: boolean | undefined
 
@@ -584,7 +639,7 @@ describe('effective ignore tests', () => {
       if (rule.matchPackageNames && !matchRegexOrGlobList(packageName, rule.matchPackageNames)) continue
       if (rule.matchDepNames && !matchRegexOrGlobList(packageName, rule.matchDepNames)) continue
       if (rule.matchManagers && !rule.matchManagers.includes(Managers.NODE)) continue
-      if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes('minor')) continue
+      if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
       if (rule.matchDepTypes && !rule.matchDepTypes.includes(depType)) continue
 
       if (rule.commitMessageSuffix !== undefined) suffix = rule.commitMessageSuffix
@@ -616,6 +671,80 @@ describe('effective ignore tests', () => {
       expect(resolved.ignoreTests === true, `${packageName} resolves to suffix ${JSON.stringify(resolved.suffix)} and ignoreTests ${resolved.ignoreTests}`).toBe(resolved.suffix === SKIP_CI)
     })
   }
+
+  // The other half of the package-manager split, and the half the cases above cannot see because they
+  // resolve a minor. Only the unbounded group rule survives to a major, and it sets neither field, so
+  // the bump keeps its pipeline — which is the gate `manager-node-automerge-major` merges on. Asserted
+  // across the whole set, since one rule covers all of them by dep name.
+  it.each(PACKAGE_MANAGERS)('resolves a %s major to a running pipeline', (packageName) => {
+    const resolved = resolve(packageName, 'packageManager', 'major')
+
+    expect(resolved.suffix, 'a package manager major must reach gitlab as a buildable commit').not.toBe(SKIP_CI)
+    expect(resolved.ignoreTests, 'a package manager major must wait for its pipeline').not.toBe(true)
+  })
+})
+
+// A running pipeline is only half of what makes a package manager major automergeable — the commit has
+// to carry a type gitlab and semantic-release both accept. Nothing local assigns one, so the value comes
+// from `:semanticPrefixFixDepsChoreOthers` through `config:recommended`, and the rules it contributes are
+// resolved into the chain here rather than restated. That preset's `fix` branch is scoped to the
+// `dependencies` and `require` dep types, so a `packageManager` dep falls through to the `*` rule.
+describe('effective commit type', () => {
+  const composed = [...inherited, ...flatten(Preset.DEFAULT)]
+
+  const SEMANTIC_COMMIT_TYPE_ALL = ':semanticCommitTypeAll('
+
+  // What a node dependency resolves through. It has no preset of its own here, so it is not in the
+  // `Datasources` enum, which only names the datasources this repo ships a preset for.
+  const NPM_DATASOURCE = 'npm'
+
+  function resolve(packageName: string, depType: string, updateType: string): string | undefined {
+    let commitType: string | undefined
+
+    for (const rule of composed) {
+      if (rule.matchPackageNames?.some((pattern) => pattern.includes('{{arg'))) continue
+      if (rule.matchPackageNames && !matchRegexOrGlobList(packageName, rule.matchPackageNames)) continue
+      if (rule.matchDepNames && !matchRegexOrGlobList(packageName, rule.matchDepNames)) continue
+      if (rule.matchManagers && !rule.matchManagers.includes(Managers.NODE)) continue
+      if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
+      if (rule.matchDepTypes && !rule.matchDepTypes.includes(depType)) continue
+      // The inherited rules reach for two matchers nothing else here uses: the `fix` branch also covers
+      // maven dep types, and a jsonata rule re-asserts `chore` for lockfile updates. A package manager
+      // version bump is neither, so neither may claim it.
+      if (rule.matchDatasources && !rule.matchDatasources.includes(NPM_DATASOURCE as never)) continue
+      if (rule.matchJsonata) continue
+
+      // Both spellings assign the type, and the preset form is the one the gitlab-ci group and the
+      // Pattern M factory use — a walker blind to it would read a stale value as the effective one.
+      const all = rule.extends?.find((preset) => preset.startsWith(SEMANTIC_COMMIT_TYPE_ALL))
+
+      if (all) commitType = all.slice(SEMANTIC_COMMIT_TYPE_ALL.length, -1)
+      if (rule.semanticCommitType !== undefined) commitType = rule.semanticCommitType
+    }
+
+    return commitType
+  }
+
+  it('resolves the inherited rules that assign the type', () => {
+    expect(inherited.some((rule) => rule.semanticCommitType === 'chore'), '`config:recommended` no longer contributes the chore classification the package managers rely on').toBe(true)
+  })
+
+  // The whole set, and both halves of the split: the `[skip ci]` deviation on the minor rule must not
+  // drag the type with it, and the major must stay `chore` rather than land on `feat`, `fix` or `perf`,
+  // each of which would cut a release for a bump that changes no published code.
+  it.each(PACKAGE_MANAGERS)('resolves a %s major to a chore commit', (packageName) => {
+    expect(resolve(packageName, 'packageManager', 'major')).toBe('chore')
+  })
+
+  it.each(PACKAGE_MANAGERS)('resolves a %s minor to a chore commit', (packageName) => {
+    expect(resolve(packageName, 'packageManager', 'minor')).toBe('chore')
+  })
+
+  // The guard on the assertion above: the same walker must still see `fix` where the inherited preset
+  // assigns it, or a `chore` everywhere would pass for the wrong reason.
+  it('resolves a node dependency to the inherited fix commit', () => {
+    expect(resolve('some-library', 'dependencies', 'minor')).toBe('fix')
+  })
 })
 
 describe('isExactName', () => {
