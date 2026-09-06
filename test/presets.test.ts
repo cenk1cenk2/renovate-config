@@ -670,6 +670,16 @@ describe('effective ignore tests', () => {
     expect(resolved.suffix, 'a package manager major must reach gitlab as a buildable commit').not.toBe(SKIP_CI)
     expect(resolved.ignoreTests, 'a package manager major must wait for its pipeline').not.toBe(true)
   })
+
+  // The package-manager `[skip ci]` is bounded by dep name and by update type, so it must not reach an
+  // ordinary node major — which has never had a suffix and keeps its pipeline whether or not it is
+  // opted in.
+  it.each([['some-library', 'dependencies'], ['globby', 'devDependencies']])('resolves a %s major to a running pipeline', (packageName, depType) => {
+    const resolved = resolve(packageName, depType, 'major')
+
+    expect(resolved.suffix).not.toBe(SKIP_CI)
+    expect(resolved.ignoreTests).not.toBe(true)
+  })
 })
 
 describe('isExactName', () => {
