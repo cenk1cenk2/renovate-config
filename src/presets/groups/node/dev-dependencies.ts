@@ -40,13 +40,13 @@ export default createPreset({
       schedule: [SCHEDULE.ANY]
     },
 
+    NODE_GROUP_PACKAGE_MANAGER,
     {
-      ...NODE_GROUP_PACKAGE_MANAGER,
+      ...NODE_AUTOMERGE_PACKAGE_MANAGER,
       groupName: 'node all package manager',
       groupSlug: Groups.NODE_PACKAGE_MANAGER,
       schedule: [SCHEDULE.ANY]
     },
-    NODE_AUTOMERGE_PACKAGE_MANAGER,
     NODE_RANGE_PACKAGE_MANAGER,
     {
       matchManagers: [Managers.NODE],

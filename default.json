@@ -724,12 +724,7 @@
         "addLabels": [
           "dep:package-manager"
         ],
-        "automerge": false,
-        "groupName": "node all package manager",
-        "groupSlug": "node-package-manager",
-        "schedule": [
-          "at any time"
-        ]
+        "automerge": false
       },
       {
         "matchManagers": [
@@ -752,7 +747,12 @@
         "addLabels": [
           "automerge"
         ],
-        "automerge": true
+        "automerge": true,
+        "groupName": "node all package manager",
+        "groupSlug": "node-package-manager",
+        "schedule": [
+          "at any time"
+        ]
       },
       {
         "matchManagers": [

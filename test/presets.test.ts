@@ -148,9 +148,7 @@ const CENTRAL_AUTOMERGE: string[] = [
   `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_DEV}`,
   `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_BUILD}`,
   `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_DOCS}`,
-  // The package-manager automerge rule carries no slug of its own: it re-enables merging on top of the
-  // unbounded `node-package-manager` group, which has to stay unbounded to catch majors.
-  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:no-slug`,
+  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_PACKAGE_MANAGER}`,
   `${Preset.GROUP_NODE_PEER_DEPENDENCIES}:${Groups.NODE_PEER}`,
   `${Preset.GROUP_GO_MINOR_DEPENDENCIES}:${Groups.GO_MINOR}`,
   `${Preset.GROUP_PYTHON_MINOR_DEPENDENCIES}:${Groups.PYTHON_MINOR}`,
@@ -844,6 +842,18 @@ describe('grouping', () => {
 
   it('always pairs a slug with a name', () => {
     expect(allPackageRules.filter(([, rule]) => rule.groupSlug && !rule.groupName).map(([name]) => name)).toEqual([])
+  })
+
+  // Renovate automerges a grouped branch only when every upgrade on it does, so a package manager major
+  // sharing the group branch with another package manager's minor would never merge — which is exactly
+  // what `manager-node-automerge-major` opts into. The slug stays bounded so the major gets its own branch.
+  it('keeps a node package manager major off the shared group branch', () => {
+    const offenders = allPackageRules
+      .filter(([, rule]) => rule.groupSlug === Groups.NODE_PACKAGE_MANAGER)
+      .filter(([, rule]) => !rule.matchUpdateTypes || rule.matchUpdateTypes.includes('major'))
+      .map(([name]) => name)
+
+    expect(offenders, 'the package manager group slug must be bounded to the non-breaking update types').toEqual([])
   })
 
   it('uses every slug the enums declare', () => {

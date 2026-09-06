@@ -100,9 +100,10 @@ export const NODE_DEV_CLAIMED_PACKAGES = [...NODE_BUILD_PACKAGES, ...NODE_DOCS_P
 // (an empty positive set matches all), so a leading `*` would be redundant.
 export const NODE_DEV_PACKAGES = NODE_DEV_CLAIMED_PACKAGES.map((name) => `!${name}`)
 
-// Unbounded so a major bump still lands in the group; the automerge rule below re-enables merging for
-// the non-breaking update types only. It sets no CI field, which is what leaves a major a pipeline to be
-// gated on — `manager-node-automerge-major` merges on green and there is no green without one.
+// Identity and the central default only. The grouping, the schedule and `[skip ci]` all belong to the
+// bounded rule below: renovate automerges a grouped branch only when every upgrade on it does
+// (`dist/workers/repository/updates/generate.js`), so a `groupSlug` here would put a major on the same
+// branch as every other package manager's minor and cancel the opt-in that merges it.
 export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
@@ -110,7 +111,6 @@ export const NODE_GROUP_PACKAGE_MANAGER: PackageRule = {
   automerge: false
 }
 
-// `[skip ci]` lives here rather than on the group rule above so it cannot reach a major.
 export const NODE_AUTOMERGE_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
