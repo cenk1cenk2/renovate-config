@@ -148,9 +148,8 @@ const CENTRAL_AUTOMERGE: string[] = [
   `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_DEV}`,
   `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_BUILD}`,
   `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_DOCS}`,
-  // The package-manager automerge rule carries no slug of its own: it re-enables merging on top of the
-  // unbounded `node-package-manager` group, which has to stay unbounded to catch majors.
-  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:no-slug`,
+  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_PACKAGE_MANAGER}`,
+  `${Preset.GROUP_NODE_DEV_DEPENDENCIES}:${Groups.NODE_PACKAGE_MANAGER_MAJOR}`,
   `${Preset.GROUP_NODE_PEER_DEPENDENCIES}:${Groups.NODE_PEER}`,
   `${Preset.GROUP_GO_MINOR_DEPENDENCIES}:${Groups.GO_MINOR}`,
   `${Preset.GROUP_PYTHON_MINOR_DEPENDENCIES}:${Groups.PYTHON_MINOR}`,
@@ -283,14 +282,18 @@ describe('automerge policy', () => {
 
   it('only automerges a major update with a bounded exact-name allowlist', () => {
     const offenders = allRules
-      .filter(([, rule]) =>
-        rule.automerge === true
-        && rule.matchUpdateTypes?.includes('major')
-        && !(Array.isArray(rule.matchPackageNames) && rule.matchPackageNames.length > 0 && rule.matchPackageNames.every(isBoundedName))
-      )
+      .filter(([, rule]) => {
+        // `matchDepNames` bounds a rule to exact names just as `matchPackageNames` does; the node
+        // package-manager group uses it because a package manager is matched by its dep name.
+        const names = rule.matchPackageNames ?? rule.matchDepNames
+
+        return rule.automerge === true
+          && rule.matchUpdateTypes?.includes('major')
+          && !(Array.isArray(names) && names.length > 0 && names.every(isBoundedName))
+      })
       .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
-    expect(offenders, 'a major automerge must carry matchPackageNames with exact names or a preset argument only — no globs, regexes, or negations').toEqual([])
+    expect(offenders, 'a major automerge must carry exact names or a preset argument only — no globs, regexes, or negations').toEqual([])
   })
 
   // What a repository inherits from `default/default` alone, with nothing opted in. Every entry is a
@@ -308,10 +311,13 @@ describe('automerge policy', () => {
     expect([...new Set(keys)].sort(), 'a central automerge appeared or disappeared — update CENTRAL_AUTOMERGE if that was intended').toEqual([...new Set(CENTRAL_AUTOMERGE)].sort())
   })
 
-  // A breaking update is a per-repository call, so the estate-wide config never makes it. The bounded
-  // allowlist the major check above permits belongs to the parameterized presets alone.
-  it('never automerges a major update centrally', () => {
-    const offenders = centralAutomerge.filter(([, rule]) => rule.matchUpdateTypes?.includes('major')).map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
+  // A breaking update is a per-repository call everywhere except the node package managers, whose group
+  // runs a full pipeline and commits as `build`, so it publishes nothing and merges only on green.
+  it('never automerges a major update centrally outside the package manager group', () => {
+    const offenders = centralAutomerge
+      .filter(([, rule]) => rule.groupSlug !== Groups.NODE_PACKAGE_MANAGER_MAJOR)
+      .filter(([, rule]) => rule.matchUpdateTypes?.includes('major'))
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
 
     expect(offenders, 'a major automerge belongs in a `*-automerge-major` preset the consuming repository extends per package').toEqual([])
   })
@@ -379,6 +385,37 @@ describe('automerge policy', () => {
     const offenders = allRules.filter(([, rule]) => rule.ignoreTests === true && rule.commitMessageSuffix !== SKIP_CI).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
     expect(offenders, 'ignoreTests belongs only on a rule that suppresses its own pipeline').toEqual([])
+  })
+
+  // `manager-node-automerge-major` merges a package manager major on a green pipeline, and both guards
+  // below protect the commit that pipeline runs on.
+  const packageManagerRules = allRules.filter(([, rule]) => rule.matchDepNames?.some((depName) => PACKAGE_MANAGERS.includes(depName)))
+
+  // Suppressing CI is fine where a rule is bounded to the non-breaking update types; unbounded, it drags
+  // `[skip ci]` onto the major, which automerges centrally and so must not merge without a pipeline.
+  it('never skips the pipeline for a node package manager major', () => {
+    expect(packageManagerRules.length, 'the node package manager rules should exist').toBeGreaterThan(0)
+
+    const offenders = packageManagerRules
+      .filter(([, rule]) => rule.commitMessageSuffix === SKIP_CI || rule.ignoreTests === true)
+      .filter(([, rule]) => !rule.matchUpdateTypes || rule.matchUpdateTypes.includes('major'))
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+
+    expect(offenders, 'a rule that skips CI for a package manager must be bounded to the non-breaking update types').toEqual([])
+  })
+
+  // A package manager publishes no code, so neither half of its policy may commit a type semantic-release
+  // cuts a version for. The major group states `build`; every other package-manager rule leaves the type
+  // alone and inherits `chore`, since a `packageManager` dep is not the `dependencies` or `require` dep
+  // type that `:semanticPrefixFixDepsChoreOthers` reassigns to `fix`.
+  it('never gives a node package manager a releasing commit type', () => {
+    expect(getOptions().find((option) => option.name === 'semanticCommitType')?.default, 'renovate no longer defaults to `chore`').toBe('chore')
+
+    const assigned = packageManagerRules
+      .map(([name, rule]) => [name, rule, rule.semanticCommitType ?? rule.extends?.find((preset) => preset.startsWith(':semanticCommitType'))] as const)
+      .filter(([, , type]) => type !== undefined)
+
+    expect(assigned.map(([, rule, type]) => `${rule.groupSlug ?? '?'}:${type}`), 'only the major group assigns a type, and it assigns `build`').toEqual([`${Groups.NODE_PACKAGE_MANAGER_MAJOR}:build`])
   })
 
   // `no-tests` is the repository-wide opt-out a consumer with no CI at all extends for itself. Anywhere
@@ -522,6 +559,16 @@ describe('effective automerge', () => {
       expect(effectiveAutomerge({ packageName, updateType: 'minor', datasource: Datasources.DOCKER })).not.toBe(true)
     })
 
+    // Both halves of the package-manager policy, over the whole set rather than one package manager:
+    // the major group automerges centrally, and so does the minor group.
+    it.each(PACKAGE_MANAGERS)('automerges a %s major centrally', (packageName) => {
+      expect(effectiveAutomerge({ manager: Managers.NODE, packageName, updateType: 'major', depType: 'packageManager' })).toBe(true)
+    })
+
+    it.each(PACKAGE_MANAGERS)('automerges a %s minor centrally', (packageName) => {
+      expect(effectiveAutomerge({ manager: Managers.NODE, packageName, updateType: 'minor', depType: 'packageManager' })).toBe(true)
+    })
+
     // The node build group names its packages only to route them into a `build:` merge request — the
     // automerge underneath it is the generic devDependency one.
     it('automerges a node build dependency minor', () => {
@@ -575,7 +622,7 @@ describe('effective ignore tests', () => {
 
   const composed = flatten(Preset.DEFAULT)
 
-  function resolve(packageName: string, depType: string): { suffix?: string, ignoreTests?: boolean } {
+  function resolve(packageName: string, depType: string, updateType = 'minor'): { suffix?: string, ignoreTests?: boolean } {
     let suffix: string | undefined
     let ignoreTests: boolean | undefined
 
@@ -584,7 +631,7 @@ describe('effective ignore tests', () => {
       if (rule.matchPackageNames && !matchRegexOrGlobList(packageName, rule.matchPackageNames)) continue
       if (rule.matchDepNames && !matchRegexOrGlobList(packageName, rule.matchDepNames)) continue
       if (rule.matchManagers && !rule.matchManagers.includes(Managers.NODE)) continue
-      if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes('minor')) continue
+      if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
       if (rule.matchDepTypes && !rule.matchDepTypes.includes(depType)) continue
 
       if (rule.commitMessageSuffix !== undefined) suffix = rule.commitMessageSuffix
@@ -616,6 +663,26 @@ describe('effective ignore tests', () => {
       expect(resolved.ignoreTests === true, `${packageName} resolves to suffix ${JSON.stringify(resolved.suffix)} and ignoreTests ${resolved.ignoreTests}`).toBe(resolved.suffix === SKIP_CI)
     })
   }
+
+  // The other half of the package-manager split, and the half the cases above cannot see because they
+  // resolve a minor. The major group restates both fields against the minor group's `[skip ci]`, so the
+  // bump keeps the pipeline its central automerge waits on.
+  it.each(PACKAGE_MANAGERS)('resolves a %s major to a running pipeline', (packageName) => {
+    const resolved = resolve(packageName, 'packageManager', 'major')
+
+    expect(resolved.suffix, 'a package manager major must reach gitlab as a buildable commit').toBe('')
+    expect(resolved.ignoreTests, 'a package manager major must wait for its pipeline').toBe(false)
+  })
+
+  // The package-manager `[skip ci]` is bounded by dep name and by update type, so it must not reach an
+  // ordinary node major — which has never had a suffix and keeps its pipeline whether or not it is
+  // opted in.
+  it.each([['some-library', 'dependencies'], ['globby', 'devDependencies']])('resolves a %s major to a running pipeline', (packageName, depType) => {
+    const resolved = resolve(packageName, depType, 'major')
+
+    expect(resolved.suffix).not.toBe(SKIP_CI)
+    expect(resolved.ignoreTests).not.toBe(true)
+  })
 })
 
 describe('isExactName', () => {
@@ -788,6 +855,18 @@ describe('grouping', () => {
 
   it('always pairs a slug with a name', () => {
     expect(allPackageRules.filter(([, rule]) => rule.groupSlug && !rule.groupName).map(([name]) => name)).toEqual([])
+  })
+
+  // Renovate automerges a grouped branch only when every upgrade on it does, so a package manager major
+  // sharing the group branch with another package manager's minor would never merge — which is exactly
+  // what `manager-node-automerge-major` opts into. The slug stays bounded so the major gets its own branch.
+  it('keeps a node package manager major off the shared group branch', () => {
+    const offenders = allPackageRules
+      .filter(([, rule]) => rule.groupSlug === Groups.NODE_PACKAGE_MANAGER)
+      .filter(([, rule]) => !rule.matchUpdateTypes || rule.matchUpdateTypes.includes('major'))
+      .map(([name]) => name)
+
+    expect(offenders, 'the package manager group slug must be bounded to the non-breaking update types').toEqual([])
   })
 
   it('uses every slug the enums declare', () => {

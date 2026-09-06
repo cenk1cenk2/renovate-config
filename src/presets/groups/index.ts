@@ -41,6 +41,7 @@ export enum Groups {
   NODE_DOCS = 'node-docs',
   NODE_PEER = 'node-peer',
   NODE_PACKAGE_MANAGER = 'node-package-manager',
+  NODE_PACKAGE_MANAGER_MAJOR = 'node-package-manager-major',
 
   GO_MINOR = 'go-minor',
 
