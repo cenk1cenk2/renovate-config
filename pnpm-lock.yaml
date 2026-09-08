@@ -18,8 +18,8 @@ importers:
         specifier: ^4.14.0
         version: 4.14.0
       '@oxc-project/runtime':
-        specifier: ^0.147.0
-        version: 0.147.0
+        specifier: ^0.148.0
+        version: 0.148.0
       fs-extra:
         specifier: ^11.4.0
         version: 11.4.0
@@ -30,7 +30,7 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0
       renovate:
-        specifier: ^44.52.1
+        specifier: ^44.53.0
         version: 44.65.5(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
@@ -1145,8 +1145,8 @@ packages:
     resolution: {integrity: sha512-eSYWTm620tTk45EKSedaUL8MFYI8hW164hIXsgIHyxu3VobUB3fFCu5t0hQby6OoWRPsG1KkKUG2M5UadiLiVg==}
     engines: {node: '>=14'}
 
-  '@oxc-project/runtime@0.147.0':
-    resolution: {integrity: sha512-vAYDOvumvPwsx0GSoHj+h1qCarq2f9RmfGk3deWBJTtRUDSqvvja5x+q5bUbs7a7CgVPiQDEIx+a5fBtVIQNdA==}
+  '@oxc-project/runtime@0.148.0':
+    resolution: {integrity: sha512-0ExYgJZv8+nFuoV0T/xzX5ZyXFXwkHJFJg9LWTwhqgRLpe+IzBLirvyYKSdS8mPofTBKAjDYIA2o84xh5BHXew==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@oxc-project/types@0.148.0':
@@ -6363,7 +6363,7 @@ snapshots:
 
   '@opentelemetry/semantic-conventions@1.43.0': {}
 
-  '@oxc-project/runtime@0.147.0': {}
+  '@oxc-project/runtime@0.148.0': {}
 
   '@oxc-project/types@0.148.0': {}
 
