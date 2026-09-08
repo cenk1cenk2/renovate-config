@@ -1,3 +1,10 @@
+## [4.4.11](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.10...v4.4.11) (2026-09-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @oclif/core to v5 ([e88a61b](https://gitlab.kilic.dev/renovate/renovate-config/commit/e88a61b142552a25633e74ea7d3f15963ddeb48a))
+
 ## [4.4.10](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.9...v4.4.10) (2026-09-08)
 
 
