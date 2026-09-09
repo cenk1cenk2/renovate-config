@@ -1,3 +1,10 @@
+## [4.4.12](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.11...v4.4.12) (2026-09-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to ^44.57.1 ([ed69dc9](https://gitlab.kilic.dev/renovate/renovate-config/commit/ed69dc9af83909983b21fd5251bcd85d41ad33af))
+
 ## [4.4.11](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.10...v4.4.11) (2026-09-08)
 
 
