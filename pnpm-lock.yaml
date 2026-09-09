@@ -31,7 +31,7 @@ importers:
         version: 11.1.0
       renovate:
         specifier: ^44.53.0
-        version: 44.69.6(supports-color@8.1.1)(typanion@3.14.0)
+        version: 44.69.7(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -41,7 +41,7 @@ importers:
         version: 2.3.2(@types/node@25.9.5)(typescript@6.0.3)
       '@cenk1cenk2/eslint-config':
         specifier: ^3.3.1
-        version: 3.3.1(@typescript-eslint/utils@8.70.0(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
+        version: 3.3.2(@typescript-eslint/utils@8.70.0(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       '@tsconfig/node24':
         specifier: ^24.0.5
         version: 24.0.5
@@ -250,8 +250,8 @@ packages:
     resolution: {integrity: sha512-UDYbCM5FCMTnIVzkIP6kiVNr/TiyIHzaoSL8050UvaFOGKd21dbhN6xUJnpsfzmauO3YCQiuOJwAXQO6owDKJw==}
     engines: {node: '>= 24'}
 
-  '@cenk1cenk2/eslint-config@3.3.1':
-    resolution: {integrity: sha512-6dMJPOzBC/8Sav+em2/HFELBGfS0B3Hsd+NP3Y9K0mENNPhAEXjXHkQr84mUGBhi/yVLwbY7+AZJn5EDJyVZmQ==}
+  '@cenk1cenk2/eslint-config@3.3.2':
+    resolution: {integrity: sha512-JXSNZAwXcrX12OpnAGa4Y6LsbhQPYjZLlJQ8x33eGpMyg/Xwd2nGxtUFljzm1KWaP+UPE6fAY3ZMfe/58WVM9g==}
     peerDependencies:
       '@vue/eslint-config-typescript': '>= 14.1.1'
       eslint: '>= 9'
@@ -4261,8 +4261,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@44.69.6:
-    resolution: {integrity: sha512-9q1+dz+KpdmPwOCIVi7GcYCeyCJ+KeSQLj3RPbm5lpTGVdQYrZstLlqxoDM2cypBzIRtbz0Zdol1BpGIaw7OKQ==}
+  renovate@44.69.7:
+    resolution: {integrity: sha512-XlNVNquUTD8bEscrfdVJiM1NHhkVgcTbzNL/vfEHxGPDyuGFx1lyjNJdmu9X4F4hPlQQzKQof5batdKWoLUALw==}
     engines: {node: ^24.11.0, pnpm: ^11.0.0}
     hasBin: true
 
@@ -5486,7 +5486,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@cenk1cenk2/eslint-config@3.3.1(@typescript-eslint/utils@8.70.0(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)':
+  '@cenk1cenk2/eslint-config@3.3.2(@typescript-eslint/utils@8.70.0(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))
       '@stylistic/eslint-plugin': 5.10.0(eslint@10.10.0(jiti@2.6.1)(supports-color@8.1.1))
@@ -9663,7 +9663,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@44.69.6(supports-color@8.1.1)(typanion@3.14.0):
+  renovate@44.69.7(supports-color@8.1.1)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.1117.0
       '@aws-sdk/client-ec2': 3.1117.0
