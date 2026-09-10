@@ -1,3 +1,9 @@
+## [5.0.1](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.0.0...v5.0.1) (2026-09-10)
+
+### Bug Fixes
+
+* dont publish to npm ([68eaea8](https://gitlab.kilic.dev/renovate/renovate-config/commit/68eaea89a800193497f3fe8b361cd63479f0d008))
+
 ## [5.0.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.5.0...v5.0.0) (2026-09-10)
 
 ### ⚠ BREAKING CHANGES
