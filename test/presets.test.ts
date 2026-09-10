@@ -220,6 +220,55 @@ describe('update axis', () => {
   }
 })
 
+// Renovate assembles its own `type(scope):` prefix only while `commitMessagePrefix` is unset
+// (`dist/workers/repository/updates/generate.js`), so the conventional breaking marker has to arrive as
+// a prefix of our own — which bypasses that assembly wholesale for every rule it matches. It is a
+// single-owner field for the same reason `labels` is: one rule sets it, bounded to `major`.
+describe('breaking marker', () => {
+  const MARKER = '!:'
+  const prefixed = allPackageRules.filter(([, rule]) => rule.commitMessagePrefix !== undefined)
+
+  it('sets the prefix in exactly one rule, in the base preset', () => {
+    expect(prefixed.map(([name]) => name)).toEqual([Preset.BASE])
+  })
+
+  it('never sets a commit message prefix at the top level of a preset', () => {
+    // At the top level it is non-mergeable and global — the same trap as a top-level `schedule` — so it
+    // would mark every update type breaking in every consuming repository.
+    expect(entries.filter(([, preset]) => preset.commitMessagePrefix !== undefined).map(([name]) => name)).toEqual([])
+  })
+
+  it('bounds the prefix to major updates', () => {
+    for (const [name, rule] of prefixed) {
+      expect(rule.matchUpdateTypes, name).toEqual(['major'])
+    }
+  })
+
+  it('ends the prefix with the breaking marker', () => {
+    for (const [name, rule] of prefixed) {
+      expect(rule.commitMessagePrefix?.endsWith(MARKER), `${name} must end its prefix with ${MARKER}, or the marker lands somewhere the analyzer does not read it`).toBe(true)
+    }
+  })
+
+  it('derives the commit type and scope instead of naming them', () => {
+    // A literal `perf(deps)!:` would flatten `fix` for node dependencies, `build` and `docs` for the node
+    // dev groups, `ci` for gitlab-ci and `perf` for the Pattern M majors onto a single type.
+    for (const [name, rule] of prefixed) {
+      expect(rule.commitMessagePrefix, name).toContain('{{semanticCommitType}}')
+      expect(rule.commitMessagePrefix, name).toContain('{{semanticCommitScope}}')
+    }
+  })
+
+  it('states the action in lower case wherever it supplies a prefix', () => {
+    // Supplying a prefix skips the branch that sets renovate's internal `toLowerCase` flag, so the title
+    // is never lowercased after assembly and the default `Update` would stand out against every other
+    // update type in the log.
+    for (const [name, rule] of prefixed) {
+      expect(rule.commitMessageAction, `${name} supplies a prefix, so it has to state the action in lower case itself`).toBe('update')
+    }
+  })
+})
+
 // `addLabels` accumulates and can never be unset, so a single-valued axis is only safe if exactly one
 // kind of rule ever contributes it. These guard that ownership rather than the label values themselves.
 describe('axis ownership', () => {
