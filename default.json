@@ -78,6 +78,13 @@
         "addLabels": [
           "update:major"
         ]
+      },
+      {
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "commitMessagePrefix": "{{semanticCommitType}}{{#if semanticCommitScope}}({{semanticCommitScope}}){{/if}}!:",
+        "commitMessageAction": "update"
       }
     ]
   },
