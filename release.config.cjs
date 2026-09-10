@@ -1,35 +1,9 @@
 module.exports = {
-  branches: [
-    'main',
-    'master',
-    'next',
-    'next-major',
-    {
-      name: 'alpha',
-      prerelease: true
-    },
-    {
-      name: 'beta',
-      prerelease: true
-    },
-    {
-      name: 'rc',
-      prerelease: true
-    },
-    {
-      name: 'rc',
-      prerelease: true
-    }
-  ],
+  extends: '@cenk1cenk2/semantic-release-config',
   plugins: [
-    '@semantic-release/commit-analyzer',
-    '@semantic-release/release-notes-generator',
-    '@semantic-release/changelog',
     [
-      '@semantic-release/git',
-      {
-        assets: ['CHANGELOG.md', 'README.md', 'package.json', 'default.json']
-      }
+      '@cenk1cenk2/semantic-release-config/presets/npm',
+      { publish: 'staged', client: 'pnpm', assets: { extend: ['default.json'] } }
     ],
     '@semantic-release/gitlab'
   ]
