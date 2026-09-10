@@ -5,6 +5,14 @@ export enum Labels {
   RENOVATE = 'renovate',
   AUTOMERGE = 'automerge',
 
+  // The flag every parameterized preset carries. A repository extends one of those for itself, after
+  // `default/default`, to overrule what the estate-wide config decided for a package or a manager — so
+  // the label answers "why is this merge request behaving differently from the others" without anyone
+  // opening the repository's `renovate.json`. `group-by-unit` deliberately does not carry it: it applies
+  // to every dependency under its directory, so the label would land on every merge request in the
+  // repository and stop telling them apart.
+  OVERRIDE = 'renovate:override',
+
   UPDATE_MINOR = 'update:minor',
   UPDATE_MAJOR = 'update:major',
 
