@@ -15,7 +15,7 @@ export default createPreset({
       matchManagers: [Managers.KUSTOMIZE],
       matchDepTypes: ['HelmChart'],
       automerge: true,
-      addLabels: [Labels.RENOVATE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE],
       matchPackageNames: ['{{arg0}}']
     })
   ]

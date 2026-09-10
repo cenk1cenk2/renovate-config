@@ -14,7 +14,7 @@ export default createPreset({
       groupSlug: Groups.ARGOCD_MAJOR_AUTOMERGE,
       matchManagers: [Managers.ARGOCD],
       automerge: true,
-      addLabels: [Labels.RENOVATE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE],
       matchPackageNames: ['{{arg0}}']
     })
   ]

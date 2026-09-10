@@ -10,7 +10,7 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['major'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       groupName: 'docker datasource major dependency updates',
       groupSlug: Groups.DOCKER_MAJOR,
       automerge: true,

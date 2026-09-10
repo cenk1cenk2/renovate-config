@@ -13,7 +13,7 @@ export default createPreset({
       groupSlug: Groups.ANSIBLE_GALAXY_MAJOR,
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['major'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.ANSIBLE_GALAXY],
       schedule: [SCHEDULE.DAILY]

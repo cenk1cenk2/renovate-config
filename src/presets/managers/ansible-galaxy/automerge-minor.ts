@@ -15,7 +15,7 @@ export default createPreset({
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
       commitMessageSuffix: '[skip ci]',
       ignoreTests: true,
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.ANSIBLE_GALAXY],
       schedule: [SCHEDULE.DAILY]

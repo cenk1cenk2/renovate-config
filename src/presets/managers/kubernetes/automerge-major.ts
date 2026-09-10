@@ -12,7 +12,7 @@ export default createPreset({
       groupName: 'kubernetes all major automerge dependency updates',
       groupSlug: Groups.KUBERNETES_MAJOR_AUTOMERGE,
       matchUpdateTypes: ['major'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.KUBERNETES]
     }

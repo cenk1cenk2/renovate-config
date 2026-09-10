@@ -12,7 +12,7 @@ export default createPreset({
       groupName: 'dockerfile all major automerge dependency updates',
       groupSlug: Groups.DOCKERFILE_MAJOR_AUTOMERGE,
       matchUpdateTypes: ['major'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.DOCKERFILE]
     }

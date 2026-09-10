@@ -13,7 +13,7 @@ export default createPreset({
       groupName: 'gitlab-ci all minor dependency updates',
       groupSlug: Groups.GITLAB_CI_MINOR,
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO],

@@ -15,7 +15,7 @@ export default createPreset({
       matchManagers: [Managers.TERRAFORM],
       matchDepTypes: ['helm_release', 'provider', 'required_provider', 'module'],
       automerge: true,
-      addLabels: [Labels.RENOVATE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE],
       matchPackageNames: ['{{arg0}}']
     })
   ]

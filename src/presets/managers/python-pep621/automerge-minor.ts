@@ -13,7 +13,7 @@ export default createPreset({
       groupName: 'python all minor dependency updates',
       groupSlug: Groups.PYTHON_MINOR,
       matchUpdateTypes: ['minor', 'patch', 'pin'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.PYTHON_PEP621]
     }

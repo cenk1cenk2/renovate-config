@@ -94,7 +94,43 @@ export enum Preset {
   MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MINOR = 'manager-gitlab-ci-custom-automerge-minor',
   MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MAJOR = 'manager-gitlab-ci-custom-automerge-major',
   DATASOURCE_DOCKER_AUTOMERGE_MINOR = 'datasource-docker-automerge-minor',
-  DATASOURCE_DOCKER_AUTOMERGE_MAJOR = 'datasource-docker-automerge-major'
+  DATASOURCE_DOCKER_AUTOMERGE_MAJOR = 'datasource-docker-automerge-major',
+
+  // breaking marker — parameterized, opt-in per manager. A repository extends one of these once, after
+  // `default`, to say whether a dependency major of that manager breaks its own contract. Nothing here is
+  // reachable from `default`; they are registered last for the same reason the automerge presets are.
+  MANAGER_HELM_BREAKING_MAJOR = 'manager-helm-breaking-major',
+  MANAGER_HELM_NON_BREAKING_MAJOR = 'manager-helm-non-breaking-major',
+  MANAGER_KUSTOMIZE_BREAKING_MAJOR = 'manager-kustomize-breaking-major',
+  MANAGER_KUSTOMIZE_NON_BREAKING_MAJOR = 'manager-kustomize-non-breaking-major',
+  MANAGER_ARGOCD_BREAKING_MAJOR = 'manager-argocd-breaking-major',
+  MANAGER_ARGOCD_NON_BREAKING_MAJOR = 'manager-argocd-non-breaking-major',
+  MANAGER_TERRAFORM_BREAKING_MAJOR = 'manager-terraform-breaking-major',
+  MANAGER_TERRAFORM_NON_BREAKING_MAJOR = 'manager-terraform-non-breaking-major',
+  MANAGER_TERRAFORM_CUSTOM_BREAKING_MAJOR = 'manager-terraform-custom-breaking-major',
+  MANAGER_TERRAFORM_CUSTOM_NON_BREAKING_MAJOR = 'manager-terraform-custom-non-breaking-major',
+  MANAGER_NODE_BREAKING_MAJOR = 'manager-node-breaking-major',
+  MANAGER_NODE_NON_BREAKING_MAJOR = 'manager-node-non-breaking-major',
+  MANAGER_GO_BREAKING_MAJOR = 'manager-go-breaking-major',
+  MANAGER_GO_NON_BREAKING_MAJOR = 'manager-go-non-breaking-major',
+  MANAGER_PYTHON_BREAKING_MAJOR = 'manager-python-breaking-major',
+  MANAGER_PYTHON_NON_BREAKING_MAJOR = 'manager-python-non-breaking-major',
+  MANAGER_RUST_BREAKING_MAJOR = 'manager-rust-breaking-major',
+  MANAGER_RUST_NON_BREAKING_MAJOR = 'manager-rust-non-breaking-major',
+  MANAGER_KUBERNETES_BREAKING_MAJOR = 'manager-kubernetes-breaking-major',
+  MANAGER_KUBERNETES_NON_BREAKING_MAJOR = 'manager-kubernetes-non-breaking-major',
+  MANAGER_DOCKERFILE_BREAKING_MAJOR = 'manager-dockerfile-breaking-major',
+  MANAGER_DOCKERFILE_NON_BREAKING_MAJOR = 'manager-dockerfile-non-breaking-major',
+  MANAGER_ANSIBLE_GALAXY_BREAKING_MAJOR = 'manager-ansible-galaxy-breaking-major',
+  MANAGER_ANSIBLE_GALAXY_NON_BREAKING_MAJOR = 'manager-ansible-galaxy-non-breaking-major',
+  MANAGER_GITLAB_CI_BREAKING_MAJOR = 'manager-gitlab-ci-breaking-major',
+  MANAGER_GITLAB_CI_NON_BREAKING_MAJOR = 'manager-gitlab-ci-non-breaking-major',
+  MANAGER_GITLAB_CI_CUSTOM_BREAKING_MAJOR = 'manager-gitlab-ci-custom-breaking-major',
+  MANAGER_GITLAB_CI_CUSTOM_NON_BREAKING_MAJOR = 'manager-gitlab-ci-custom-non-breaking-major',
+  MANAGER_OTEL_BUILDER_BREAKING_MAJOR = 'manager-otel-builder-breaking-major',
+  MANAGER_OTEL_BUILDER_NON_BREAKING_MAJOR = 'manager-otel-builder-non-breaking-major',
+  DATASOURCE_DOCKER_BREAKING_MAJOR = 'datasource-docker-breaking-major',
+  DATASOURCE_DOCKER_NON_BREAKING_MAJOR = 'datasource-docker-non-breaking-major'
 }
 
 export const PRESETS: Presets = {
@@ -193,7 +229,42 @@ export const PRESETS: Presets = {
   [Preset.MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MINOR]: import('./managers/gitlab-ci/custom-automerge-minor.js').then((m) => m.default),
   [Preset.MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MAJOR]: import('./managers/gitlab-ci/custom-automerge-major.js').then((m) => m.default),
   [Preset.DATASOURCE_DOCKER_AUTOMERGE_MINOR]: import('./datasources/docker/automerge-minor.js').then((m) => m.default),
-  [Preset.DATASOURCE_DOCKER_AUTOMERGE_MAJOR]: import('./datasources/docker/automerge-major.js').then((m) => m.default)
+  [Preset.DATASOURCE_DOCKER_AUTOMERGE_MAJOR]: import('./datasources/docker/automerge-major.js').then((m) => m.default),
+
+  // breaking marker
+
+  [Preset.MANAGER_HELM_BREAKING_MAJOR]: import('./managers/helm/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_HELM_NON_BREAKING_MAJOR]: import('./managers/helm/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_KUSTOMIZE_BREAKING_MAJOR]: import('./managers/kustomize/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_KUSTOMIZE_NON_BREAKING_MAJOR]: import('./managers/kustomize/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_ARGOCD_BREAKING_MAJOR]: import('./managers/argocd/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_ARGOCD_NON_BREAKING_MAJOR]: import('./managers/argocd/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_TERRAFORM_BREAKING_MAJOR]: import('./managers/terraform/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_TERRAFORM_NON_BREAKING_MAJOR]: import('./managers/terraform/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_TERRAFORM_CUSTOM_BREAKING_MAJOR]: import('./managers/terraform/custom-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_TERRAFORM_CUSTOM_NON_BREAKING_MAJOR]: import('./managers/terraform/custom-non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_NODE_BREAKING_MAJOR]: import('./managers/node/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_NODE_NON_BREAKING_MAJOR]: import('./managers/node/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_GO_BREAKING_MAJOR]: import('./managers/go/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_GO_NON_BREAKING_MAJOR]: import('./managers/go/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_PYTHON_BREAKING_MAJOR]: import('./managers/python-pep621/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_PYTHON_NON_BREAKING_MAJOR]: import('./managers/python-pep621/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_RUST_BREAKING_MAJOR]: import('./managers/rust-cargo/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_RUST_NON_BREAKING_MAJOR]: import('./managers/rust-cargo/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_KUBERNETES_BREAKING_MAJOR]: import('./managers/kubernetes/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_KUBERNETES_NON_BREAKING_MAJOR]: import('./managers/kubernetes/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_DOCKERFILE_BREAKING_MAJOR]: import('./managers/dockerfile/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_DOCKERFILE_NON_BREAKING_MAJOR]: import('./managers/dockerfile/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_ANSIBLE_GALAXY_BREAKING_MAJOR]: import('./managers/ansible-galaxy/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_ANSIBLE_GALAXY_NON_BREAKING_MAJOR]: import('./managers/ansible-galaxy/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_GITLAB_CI_BREAKING_MAJOR]: import('./managers/gitlab-ci/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_GITLAB_CI_NON_BREAKING_MAJOR]: import('./managers/gitlab-ci/non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_GITLAB_CI_CUSTOM_BREAKING_MAJOR]: import('./managers/gitlab-ci/custom-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_GITLAB_CI_CUSTOM_NON_BREAKING_MAJOR]: import('./managers/gitlab-ci/custom-non-breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_OTEL_BUILDER_BREAKING_MAJOR]: import('./managers/otel-builder/breaking-major.js').then((m) => m.default),
+  [Preset.MANAGER_OTEL_BUILDER_NON_BREAKING_MAJOR]: import('./managers/otel-builder/non-breaking-major.js').then((m) => m.default),
+  [Preset.DATASOURCE_DOCKER_BREAKING_MAJOR]: import('./datasources/docker/breaking-major.js').then((m) => m.default),
+  [Preset.DATASOURCE_DOCKER_NON_BREAKING_MAJOR]: import('./datasources/docker/non-breaking-major.js').then((m) => m.default)
 }
 
 export const FILES: Record<string, Preset[]> = {

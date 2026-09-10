@@ -12,7 +12,7 @@ export default createPreset({
       groupName: 'dockerfile all minor automerge dependency updates',
       groupSlug: Groups.DOCKERFILE_MINOR_AUTOMERGE,
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.DOCKERFILE]
     }

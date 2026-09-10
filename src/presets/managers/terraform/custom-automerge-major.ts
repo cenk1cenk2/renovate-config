@@ -16,7 +16,7 @@ export default createPreset({
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_TERRAFORM_MANAGER_MONOREPO],
       automerge: true,
-      addLabels: [Labels.RENOVATE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE],
       matchPackageNames: ['{{arg0}}']
     })
   ]

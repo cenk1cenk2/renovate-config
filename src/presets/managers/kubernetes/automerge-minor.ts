@@ -12,7 +12,7 @@ export default createPreset({
       groupName: 'kubernetes all minor automerge dependency updates',
       groupSlug: Groups.KUBERNETES_MINOR_AUTOMERGE,
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.KUBERNETES]
     }

@@ -12,7 +12,7 @@ export default createPreset({
       groupName: 'otel-builder all major dependency updates',
       groupSlug: Groups.OTEL_BUILDER_MAJOR,
       matchUpdateTypes: ['major'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.OPENTELEMETRY_COLLECTOR_BUILDER],
       schedule: [SCHEDULE.DAILY]

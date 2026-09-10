@@ -14,7 +14,7 @@ export default createPreset({
       groupSlug: Groups.HELM_MAJOR_AUTOMERGE,
       matchManagers: [Managers.HELM],
       automerge: true,
-      addLabels: [Labels.RENOVATE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE],
       matchPackageNames: ['{{arg0}}']
     })
   ]

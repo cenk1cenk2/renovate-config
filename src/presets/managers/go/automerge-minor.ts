@@ -10,7 +10,7 @@ export default createPreset({
     {
       matchPackageNames: ['{{arg0}}'],
       matchUpdateTypes: ['minor', 'patch', 'digest'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.GO]
     }

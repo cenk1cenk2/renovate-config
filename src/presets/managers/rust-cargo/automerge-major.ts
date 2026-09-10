@@ -12,7 +12,7 @@ export default createPreset({
       groupName: 'rust all major automerge dependency updates',
       groupSlug: Groups.RUST_MAJOR_AUTOMERGE,
       matchUpdateTypes: ['major'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.RUST_CARGO]
     }

@@ -13,7 +13,7 @@ export default createPreset({
       groupName: 'gitlab-ci all major dependency updates',
       groupSlug: Groups.GITLAB_CI_MAJOR,
       matchUpdateTypes: ['major'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_GITLAB_CI_MANAGER_GIT_MONOREPO],

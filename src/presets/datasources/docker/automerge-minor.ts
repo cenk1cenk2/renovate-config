@@ -10,7 +10,7 @@ export default createPreset({
     {
       enabled: true,
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      addLabels: [Labels.RENOVATE, Labels.AUTOMERGE],
+      addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       groupName: 'docker datasource minor dependency updates',
       groupSlug: Groups.DOCKER_MINOR,
       automerge: true,
