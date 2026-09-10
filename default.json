@@ -2548,7 +2548,7 @@
       }
     ]
   },
-  "manager-helm-non-breaking-major": {
+  "manager-helm-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2587,7 +2587,7 @@
       }
     ]
   },
-  "manager-kustomize-non-breaking-major": {
+  "manager-kustomize-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2626,7 +2626,7 @@
       }
     ]
   },
-  "manager-argocd-non-breaking-major": {
+  "manager-argocd-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2668,7 +2668,7 @@
       }
     ]
   },
-  "manager-terraform-non-breaking-major": {
+  "manager-terraform-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2713,7 +2713,7 @@
       }
     ]
   },
-  "manager-terraform-custom-non-breaking-major": {
+  "manager-terraform-custom-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2752,7 +2752,7 @@
       }
     ]
   },
-  "manager-node-non-breaking-major": {
+  "manager-node-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2788,7 +2788,7 @@
       }
     ]
   },
-  "manager-go-non-breaking-major": {
+  "manager-go-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2824,7 +2824,7 @@
       }
     ]
   },
-  "manager-python-non-breaking-major": {
+  "manager-python-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2860,7 +2860,7 @@
       }
     ]
   },
-  "manager-rust-non-breaking-major": {
+  "manager-rust-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2896,7 +2896,7 @@
       }
     ]
   },
-  "manager-kubernetes-non-breaking-major": {
+  "manager-kubernetes-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2932,7 +2932,7 @@
       }
     ]
   },
-  "manager-dockerfile-non-breaking-major": {
+  "manager-dockerfile-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -2972,7 +2972,7 @@
       }
     ]
   },
-  "manager-ansible-galaxy-non-breaking-major": {
+  "manager-ansible-galaxy-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -3013,7 +3013,7 @@
       }
     ]
   },
-  "manager-gitlab-ci-non-breaking-major": {
+  "manager-gitlab-ci-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -3053,7 +3053,7 @@
       }
     ]
   },
-  "manager-gitlab-ci-custom-non-breaking-major": {
+  "manager-gitlab-ci-custom-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -3092,7 +3092,7 @@
       }
     ]
   },
-  "manager-otel-builder-non-breaking-major": {
+  "manager-otel-builder-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -3128,7 +3128,7 @@
       }
     ]
   },
-  "datasource-docker-non-breaking-major": {
+  "datasource-docker-no-breaking-major": {
     "packageRules": [
       {
         "addLabels": [
@@ -3143,6 +3143,755 @@
         ],
         "commitMessagePrefix": "",
         "commitMessageAction": "Update"
+      }
+    ]
+  },
+  "manager-helm-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch"
+        ],
+        "matchManagers": [
+          "helmv3"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-helm-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "helmv3"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-kustomize-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch"
+        ],
+        "matchManagers": [
+          "kustomize"
+        ],
+        "matchDepTypes": [
+          "HelmChart"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-kustomize-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "kustomize"
+        ],
+        "matchDepTypes": [
+          "HelmChart"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-argocd-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest",
+          "pinDigest"
+        ],
+        "matchManagers": [
+          "argocd"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-argocd-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "argocd"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-terraform-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch"
+        ],
+        "matchManagers": [
+          "terraform"
+        ],
+        "matchDepTypes": [
+          "helm_release",
+          "provider",
+          "required_provider",
+          "module"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-terraform-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "terraform"
+        ],
+        "matchDepTypes": [
+          "helm_release",
+          "provider",
+          "required_provider",
+          "module"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-terraform-custom-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch"
+        ],
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "terraform-manager-git-monorepo"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-terraform-custom-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "terraform-manager-git-monorepo"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-node-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchManagers": [
+          "npm"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-node-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "npm"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-go-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "digest"
+        ],
+        "matchManagers": [
+          "gomod"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-go-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "gomod"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-python-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin"
+        ],
+        "matchManagers": [
+          "pep621"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-python-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "pep621"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-rust-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin"
+        ],
+        "matchManagers": [
+          "cargo"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-rust-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "cargo"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-kubernetes-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchManagers": [
+          "kubernetes"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-kubernetes-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "kubernetes"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-dockerfile-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchManagers": [
+          "dockerfile"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-dockerfile-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "dockerfile"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-ansible-galaxy-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchManagers": [
+          "ansible-galaxy"
+        ],
+        "matchDepTypes": [
+          "collections",
+          "roles"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-ansible-galaxy-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "ansible-galaxy"
+        ],
+        "matchDepTypes": [
+          "collections",
+          "roles"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-gitlab-ci-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchManagers": [
+          "gitlabci-include",
+          "gitlabci"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-gitlab-ci-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "gitlabci-include",
+          "gitlabci"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-gitlab-ci-custom-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "gitlab-ci-manager-git-monorepo"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-gitlab-ci-custom-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "gitlab-ci-manager-git-monorepo"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-otel-builder-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "digest"
+        ],
+        "matchManagers": [
+          "ocb"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-otel-builder-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "ocb"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "datasource-docker-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchDatasources": [
+          "docker"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "datasource-docker-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchDatasources": [
+          "docker"
+        ],
+        "groupName": null,
+        "automerge": false
       }
     ]
   }

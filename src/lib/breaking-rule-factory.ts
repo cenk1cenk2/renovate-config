@@ -37,7 +37,7 @@ export function createBreakingMajorRule(rule: BreakingMajorRule): PackageRule {
 }
 
 // It does not — the dependency moved, the repository's own contract did not.
-export function createNonBreakingMajorRule(rule: BreakingMajorRule): PackageRule {
+export function createNoBreakingMajorRule(rule: BreakingMajorRule): PackageRule {
   return {
     ...rule,
     matchUpdateTypes: ['major'],

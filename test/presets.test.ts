@@ -126,50 +126,91 @@ const AUTOMERGE_PRESETS: Preset[] = [
 ]
 
 // Every automerge preset is a consumer entrypoint, so the list above must stay complete as new ones land.
-const AUTOMERGE_PRESET_PATTERN = /-automerge-(minor|major)$/
+// The lookbehind matters: without it this also matches `-no-automerge-minor`, and the registry guard would
+// demand the opt-out presets join AUTOMERGE_PRESETS.
+const AUTOMERGE_PRESET_PATTERN = /(?<!-no)-automerge-(minor|major)$/
+
+// The parameterized opt-outs, one per manager and datasource per level. A repository extends one to hold a
+// single package back from a group that automerges.
+const NO_AUTOMERGE_PRESETS: Preset[] = [
+  Preset.MANAGER_HELM_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_HELM_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_KUSTOMIZE_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_KUSTOMIZE_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_ARGOCD_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_ARGOCD_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_TERRAFORM_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_TERRAFORM_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_TERRAFORM_CUSTOM_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_TERRAFORM_CUSTOM_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_NODE_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_NODE_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_GO_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_GO_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_PYTHON_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_PYTHON_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_RUST_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_RUST_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_KUBERNETES_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_KUBERNETES_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_DOCKERFILE_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_DOCKERFILE_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_ANSIBLE_GALAXY_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_ANSIBLE_GALAXY_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_GITLAB_CI_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_GITLAB_CI_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_GITLAB_CI_CUSTOM_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_GITLAB_CI_CUSTOM_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MAJOR,
+  Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MINOR,
+  Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR
+]
+
+const NO_AUTOMERGE_PRESET_PATTERN = /-no-automerge-(minor|major)$/
 
 // The parameterized breaking-marker presets, which no preset in this repo may extend either. A repository
 // extends one once per manager to say whether a dependency major of that manager breaks its own contract.
 const BREAKING_PRESETS: Preset[] = [
   Preset.MANAGER_HELM_BREAKING_MAJOR,
-  Preset.MANAGER_HELM_NON_BREAKING_MAJOR,
+  Preset.MANAGER_HELM_NO_BREAKING_MAJOR,
   Preset.MANAGER_KUSTOMIZE_BREAKING_MAJOR,
-  Preset.MANAGER_KUSTOMIZE_NON_BREAKING_MAJOR,
+  Preset.MANAGER_KUSTOMIZE_NO_BREAKING_MAJOR,
   Preset.MANAGER_ARGOCD_BREAKING_MAJOR,
-  Preset.MANAGER_ARGOCD_NON_BREAKING_MAJOR,
+  Preset.MANAGER_ARGOCD_NO_BREAKING_MAJOR,
   Preset.MANAGER_TERRAFORM_BREAKING_MAJOR,
-  Preset.MANAGER_TERRAFORM_NON_BREAKING_MAJOR,
+  Preset.MANAGER_TERRAFORM_NO_BREAKING_MAJOR,
   Preset.MANAGER_TERRAFORM_CUSTOM_BREAKING_MAJOR,
-  Preset.MANAGER_TERRAFORM_CUSTOM_NON_BREAKING_MAJOR,
+  Preset.MANAGER_TERRAFORM_CUSTOM_NO_BREAKING_MAJOR,
   Preset.MANAGER_NODE_BREAKING_MAJOR,
-  Preset.MANAGER_NODE_NON_BREAKING_MAJOR,
+  Preset.MANAGER_NODE_NO_BREAKING_MAJOR,
   Preset.MANAGER_GO_BREAKING_MAJOR,
-  Preset.MANAGER_GO_NON_BREAKING_MAJOR,
+  Preset.MANAGER_GO_NO_BREAKING_MAJOR,
   Preset.MANAGER_PYTHON_BREAKING_MAJOR,
-  Preset.MANAGER_PYTHON_NON_BREAKING_MAJOR,
+  Preset.MANAGER_PYTHON_NO_BREAKING_MAJOR,
   Preset.MANAGER_RUST_BREAKING_MAJOR,
-  Preset.MANAGER_RUST_NON_BREAKING_MAJOR,
+  Preset.MANAGER_RUST_NO_BREAKING_MAJOR,
   Preset.MANAGER_KUBERNETES_BREAKING_MAJOR,
-  Preset.MANAGER_KUBERNETES_NON_BREAKING_MAJOR,
+  Preset.MANAGER_KUBERNETES_NO_BREAKING_MAJOR,
   Preset.MANAGER_DOCKERFILE_BREAKING_MAJOR,
-  Preset.MANAGER_DOCKERFILE_NON_BREAKING_MAJOR,
+  Preset.MANAGER_DOCKERFILE_NO_BREAKING_MAJOR,
   Preset.MANAGER_ANSIBLE_GALAXY_BREAKING_MAJOR,
-  Preset.MANAGER_ANSIBLE_GALAXY_NON_BREAKING_MAJOR,
+  Preset.MANAGER_ANSIBLE_GALAXY_NO_BREAKING_MAJOR,
   Preset.MANAGER_GITLAB_CI_BREAKING_MAJOR,
-  Preset.MANAGER_GITLAB_CI_NON_BREAKING_MAJOR,
+  Preset.MANAGER_GITLAB_CI_NO_BREAKING_MAJOR,
   Preset.MANAGER_GITLAB_CI_CUSTOM_BREAKING_MAJOR,
-  Preset.MANAGER_GITLAB_CI_CUSTOM_NON_BREAKING_MAJOR,
+  Preset.MANAGER_GITLAB_CI_CUSTOM_NO_BREAKING_MAJOR,
   Preset.MANAGER_OTEL_BUILDER_BREAKING_MAJOR,
-  Preset.MANAGER_OTEL_BUILDER_NON_BREAKING_MAJOR,
+  Preset.MANAGER_OTEL_BUILDER_NO_BREAKING_MAJOR,
   Preset.DATASOURCE_DOCKER_BREAKING_MAJOR,
-  Preset.DATASOURCE_DOCKER_NON_BREAKING_MAJOR
+  Preset.DATASOURCE_DOCKER_NO_BREAKING_MAJOR
 ]
 
-const BREAKING_PRESET_PATTERN = /-(non-)?breaking-major$/
+const BREAKING_PRESET_PATTERN = /-(no-)?breaking-major$/
 
 // Every preset a repository extends for itself, rather than inheriting from `default`. They are the only
 // presets that may carry `Labels.OVERRIDE`, and the only ones the reachability guard exempts.
-const PARAMETERIZED_PRESETS: Preset[] = [...AUTOMERGE_PRESETS, ...BREAKING_PRESETS]
+const PARAMETERIZED_PRESETS: Preset[] = [...AUTOMERGE_PRESETS, ...NO_AUTOMERGE_PRESETS, ...BREAKING_PRESETS]
 
 // The one manager whose majors are marked breaking by the estate-wide config, keyed `<preset>:<groupSlug>`.
 // Pinned for the same reason as CENTRAL_AUTOMERGE: a manager gaining or losing the marker changes the
@@ -219,6 +260,22 @@ describe('preset registry', () => {
     expect(named.filter((name) => !AUTOMERGE_PRESETS.includes(name)), 'a new automerge preset must join AUTOMERGE_PRESETS, or it escapes the reachability and entrypoint guards').toEqual([])
   })
 
+  it('lists every no-automerge preset as a consumer entrypoint', () => {
+    const named = Object.values(Preset).filter((name) => NO_AUTOMERGE_PRESET_PATTERN.test(name))
+
+    expect(named.filter((name) => !NO_AUTOMERGE_PRESETS.includes(name)), 'a new no-automerge preset must join NO_AUTOMERGE_PRESETS, or it escapes the reachability and entrypoint guards').toEqual([])
+  })
+
+  // Every automerge preset needs its opposite, or a repository can opt a package in and never back out.
+  it('pairs every automerge preset with a no-automerge twin', () => {
+    const missing = Object.values(Preset)
+      .filter((name) => AUTOMERGE_PRESET_PATTERN.test(name))
+      .map((name) => name.replace('-automerge-', '-no-automerge-'))
+      .filter((name) => !Object.values(Preset).includes(name as Preset))
+
+    expect(missing, 'every automerge preset needs a no-automerge twin').toEqual([])
+  })
+
   it('lists every breaking-marker preset as a consumer entrypoint', () => {
     const named = Object.values(Preset).filter((name) => BREAKING_PRESET_PATTERN.test(name))
 
@@ -230,7 +287,7 @@ describe('preset registry', () => {
   // ends up inherited by accident rather than chosen.
   it('pairs every breaking-marker preset with its opposite', () => {
     const stems = [...new Set(Object.values(Preset).filter((name) => BREAKING_PRESET_PATTERN.test(name)).map((name) => name.replace(BREAKING_PRESET_PATTERN, '')))]
-    const missing = stems.flatMap((stem) => [`${stem}-breaking-major`, `${stem}-non-breaking-major`]).filter((name) => !Object.values(Preset).includes(name as Preset))
+    const missing = stems.flatMap((stem) => [`${stem}-breaking-major`, `${stem}-no-breaking-major`]).filter((name) => !Object.values(Preset).includes(name as Preset))
 
     expect(missing, 'every manager and datasource needs both a breaking and a non-breaking preset').toEqual([])
   })
@@ -283,6 +340,53 @@ describe('update axis', () => {
       expect(labelFor(updateType)).toEqual([Labels.UPDATE_MAJOR])
     })
   }
+})
+
+// Renovate reads a branch's automerge as `config.upgrades.every((upgrade) => upgrade.automerge)`
+// (`generate.js:250`) and never reads a per-upgrade flag afterwards. So an opt-out that only said
+// `automerge: false` would keep the package on the shared branch and take automerge away from every other
+// dependency on it. `groupName: null` is what moves it off first — see `createNoAutomergeRule`.
+describe('no automerge opt-out', () => {
+  const optOuts = NO_AUTOMERGE_PRESETS.flatMap((name) => (presets[name].packageRules ?? []).map((rule) => [name, rule] as const))
+
+  it('turns automerge off in every opt-out preset', () => {
+    expect(optOuts.length, 'the no-automerge presets should exist').toBe(NO_AUTOMERGE_PRESETS.length)
+
+    for (const [name, rule] of optOuts) {
+      expect(rule.automerge, name).toBe(false)
+    }
+  })
+
+  it('ungroups the package rather than only turning automerge off', () => {
+    for (const [name, rule] of optOuts) {
+      expect('groupName' in rule, `${name} must set groupName, or the opted-out package stays on the shared branch`).toBe(true)
+      expect(rule.groupName, `${name} must ungroup with null - the string 'null' is a literal group name to renovate`).toBeNull()
+    }
+  })
+
+  it('bounds every opt-out to one package', () => {
+    for (const [name, rule] of optOuts) {
+      expect(rule.matchPackageNames, name).toEqual(['{{arg0}}'])
+    }
+  })
+
+  // The opt-out inverts one automerge preset, so it has to catch exactly what that preset catches. A
+  // wider set would hold back update types the twin never automerged; a narrower one would leave the
+  // package automerging for the difference.
+  it('mirrors the update types of the automerge preset it inverts', () => {
+    for (const name of NO_AUTOMERGE_PRESETS) {
+      const twin = name.replace('-no-automerge-', '-automerge-') as Preset
+
+      expect(presets[twin], `${name} has no automerge twin`).toBeDefined()
+      expect(presets[name].packageRules[0].matchUpdateTypes, `${name} must mirror ${twin}`).toEqual(presets[twin].packageRules[0].matchUpdateTypes)
+    }
+  })
+
+  it('never regroups or reschedules beyond the ungrouping', () => {
+    const offenders = optOuts.filter(([, rule]) => rule.groupSlug !== undefined || rule.schedule !== undefined).map(([name]) => name)
+
+    expect(offenders, 'an opt-out sets groupName to null and nothing else about grouping - a slug would put it back on a shared branch').toEqual([])
+  })
 })
 
 // The conventional breaking marker reaches semantic-release as a whole `type(scope):` prefix, because
@@ -462,6 +566,15 @@ describe('automerge policy', () => {
     .flatMap((name) => rules(presets[name]).map((rule) => [name, rule] as const))
     .filter(([, rule]) => rule.automerge === true)
 
+  // The flag axis is contributed by the rule that grants automerge, and `addLabels` can never be unset,
+  // so a rule that grants it without labelling itself loses the value for good. `createMultiDirectoryGroupRule`
+  // attaches it for Pattern M; Pattern S adds it by hand, which is the half this guards.
+  it('always labels a rule that automerges', () => {
+    const offenders = allRules.filter(([, rule]) => rule.automerge === true && !rule.addLabels?.includes(Labels.AUTOMERGE)).map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
+
+    expect(offenders, 'a rule that grants automerge owns the automerge label too').toEqual([])
+  })
+
   it('automerges centrally only where the inventory says so', () => {
     const keys = centralAutomerge.map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
 
@@ -605,9 +718,11 @@ describe('effective automerge', () => {
     // that carries an unsubstituted placeholder is skipped — which is what a repository that never
     // opted in sees.
     argument?: string
+    // Extend the `-no-automerge-*` presets as well, for the one case that checks which of the pair wins.
+    optedOut?: boolean
   }
 
-  function effectiveAutomerge({ manager, packageName, updateType, depType, sourceUrl, datasource, depName, argument }: Dependency): boolean | undefined {
+  function effectiveAutomerge({ manager, packageName, updateType, depType, sourceUrl, datasource, depName, argument, optedOut }: Dependency): boolean | undefined {
     // Renovate substitutes preset arguments before the rule is evaluated, so mirror that here rather
     // than teaching the matcher about placeholders.
     const substitute = (patterns: string[]): string[] | undefined => {
@@ -620,7 +735,12 @@ describe('effective automerge', () => {
 
     let result: boolean | undefined
 
-    for (const [, preset] of entries) {
+    for (const [name, preset] of entries) {
+      // The opt-outs are the inverse of the opt-ins and match the same `{{arg0}}`, so with an argument
+      // passed they would land last and flip every opt-in back to false. A repository extends one of the
+      // pair, never both — `optedOut` below is the case that deliberately extends both.
+      if (!optedOut && NO_AUTOMERGE_PRESETS.includes(name)) continue
+
       for (const rule of preset.packageRules ?? []) {
         const names = rule.matchPackageNames && substitute(rule.matchPackageNames)
 
@@ -758,6 +878,16 @@ describe('effective automerge', () => {
     // that automerges centrally and narrow it down to the one package they named.
     it.each(central)('keeps automerging %s when another package is passed as the argument', (_, dependency) => {
       expect(effectiveAutomerge({ ...dependency, argument: 'a-different-package' })).toBe(true)
+    })
+
+    // The two halves of a pair are alternatives, and this walker resolves them in registry order. Renovate
+    // does NOT: it concatenates packageRules in the order the consuming repository lists its `extends`
+    // (`config/presets/index.js:141-153` into `config/utils.js:25`), so a repository that names both halves
+    // gets whichever it named last. This case therefore pins the walker's model of the documented usage —
+    // opt-out after opt-in — and is not a guarantee about a repository that reverses them. Extending both
+    // is documented as unsupported for exactly that reason.
+    it.each(CASES)('resolves the opt-out over the opt-in for %s in the documented extends order', (_, dependency) => {
+      expect(effectiveAutomerge({ ...dependency, argument: dependency.packageName, optedOut: true })).toBe(false)
     })
   })
 })
@@ -1120,6 +1250,12 @@ describe('schedule', () => {
 describe('wiring', () => {
   // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
   const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, ...PARAMETERIZED_PRESETS]
+
+  it('never reaches a no-automerge preset from default', () => {
+    // Holding a package back is a per-repository call, and `groupName: null` from inside the graph would
+    // ungroup that dependency for everyone.
+    expect(NO_AUTOMERGE_PRESETS.filter((name) => reachableFromDefault.has(name)), 'a no-automerge preset is reachable from `default`').toEqual([])
+  })
 
   it('never reaches a breaking-marker preset from default', () => {
     // The marker is a per-repository call: extending one from inside the graph would mark that manager's

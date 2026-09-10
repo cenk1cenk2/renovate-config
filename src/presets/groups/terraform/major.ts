@@ -9,7 +9,7 @@ import { DEP_TYPE_TERRAFORM_MANAGER_MONOREPO } from '@presets/managers/terraform
 // leaves the call to the consuming repository via `manager-<name>-breaking-major`.
 //
 // A repository that bundles many units rather than wrapping one opts back out with
-// `manager-terraform-non-breaking-major`, which lands after `default/default` and wins on last-match.
+// `manager-terraform-no-breaking-major`, which lands after `default/default` and wins on last-match.
 export default createPreset({
   packageRules: [
     createBreakingMajorRule(

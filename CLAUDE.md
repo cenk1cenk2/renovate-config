@@ -10,10 +10,11 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
 - **Package Manager:** pnpm
 - **Key directories:**
   - `src/constants/` — schedules, scope, users, `Labels` enum. Cross-cutting only: a custom manager's `depType` name stays next to the custom manager that emits it, not here.
-  - `src/lib/` — `createPreset()`, `createScopes()`, `createMultiDirectoryGroupRule()` and the `createBreakingMajorRule()` / `createNonBreakingMajorRule()` pair
+  - `src/lib/` — `createPreset()`, `createScopes()`, `createMultiDirectoryGroupRule()`, the `createBreakingMajorRule()` / `createNoBreakingMajorRule()` pair, and `createNoAutomergeRule()`
   - `test/` — invariant tests over the assembled presets (`pnpm test`)
   - `src/presets/index.ts` — `Preset` enum, `PRESETS` record, `FILES` output mapping
   - `src/presets/managers/<name>/` — per-manager assemblers (`manager.ts`, `custom-manager.ts`). `src/presets/managers/index.ts` holds the `Managers` enum.
+  - `src/presets/<managers|datasources>/<name>/overrides/` — **every parameterized preset lives here and nothing else does.** These are the consumer entrypoints: a repository extends one for itself, after `default/default`, to overrule what the estate-wide config decided. Six per manager — `automerge-{minor,major}`, `no-automerge-{minor,major}`, `breaking-major`, `no-breaking-major` — plus a `custom-` twin of each where the manager has a `custom.regex` variant. The directory name is the same word as the `renovate:override` label they all carry and the `PARAMETERIZED_PRESETS` list in the tests, so the concept has one name everywhere. Nothing outside `overrides/` may be parameterized, and nothing inside it may be reachable from `default`.
   - `src/presets/groups/<name>/` — group presets, one directory per manager (node, go, python, gitlab-ci, ansible-galaxy, helm, kustomize, terraform, argocd). `src/presets/groups/index.ts` holds the `Groups` enum (groupSlug values).
   - `src/presets/rings/<name>/` — ring presets (node, go). `src/presets/rings/index.ts` holds the `Rings` enum.
   - `src/presets/datasources/<name>/` — datasource presets. `src/presets/datasources/index.ts` holds the `Datasources` enum.
@@ -138,6 +139,29 @@ The inventory is a list of names, so `effective automerge` asserts the behaviour
 
 **What did move out**, per manager, and now lives only in the parameterized presets: `kube-prometheus-stack` and `opentelemetry-operator` (helm, both levels); `prometheus-blackbox-exporter`, `alloy` and `gitlab-runner` (kustomize, both levels); the `chart-prometheus-operator` and `chart-opentelemetry-operator` git URLs (argocd, both levels); the opentelemetry-collector-contrib and `renovate/renovate` images (docker datasource). The `matchSourceUrls` lists that scoped the helm and kustomize entries went with them.
 
+### Opting a package back out — `no-automerge`
+
+Every `-automerge-` preset has a `-no-automerge-` twin that inverts it, mirroring its matchers and `matchUpdateTypes` exactly. A repository extends one to hold a single package back from a group that automerges. A test enforces the mirroring, so widening a central group's update types without widening its opt-out fails the suite.
+
+**`automerge: false` alone does not work, and the way it fails is silent.** Renovate resolves a branch's automerge as `config.upgrades.every((upgrade) => upgrade.automerge)` (`dist/workers/repository/updates/generate.js:250`), and nothing downstream reads a per-upgrade flag — `update/branch/index.js:721` and `update/branch/automerge.js:10` both read the branch-level one. So an opt-out that only flipped the flag would leave the package on the shared branch and take automerge away from **every other dependency on it**. Holding back one package would quietly stop the whole `node-minor` merge request from automerging.
+
+The package therefore has to leave the branch first, and `createNoAutomergeRule()` does that with **`groupName: null`**:
+
+- `null` is renovate's own default for the option (`config/options/index.js:2512`), and `generate.js:129` keys "is this a group" on `groupName !== null`.
+- `branch-name.js:42` skips the entire group block when it is falsy, so `groupSlug`, the `separate*` slug prefixes and the `group.branchTopic` override are all bypassed and the branch falls back to the per-dependency `branchTopic`.
+- `config/utils.js:14` merges child over parent with a plain object spread, so a later `null` overwrites the group's string; the mergeable loop below it is gated on truthiness, so null never reaches it.
+- `validation.js:240` skips every type check for null, and `presets/index.js:70` passes null through `replaceArgs` untouched, so it survives inside a parameterized preset.
+
+**The string `'null'` is not special anywhere in renovate** — that would be a literal group named "null".
+
+`groupName` ships as `string | undefined` even though null is its own default, and TypeScript declaration merging cannot widen an existing property, so the null arrives through a single cast inside the factory rather than one per call site.
+
+**There is deliberately no `createAutomergeRule()`.** The factories here exist to encode a mechanism that is wrong when hand-written — the `every()` trap above, and the templated commit prefix below. Granting automerge has no such trap: it is `automerge: true` plus a label. It also could not cover the ten Pattern M presets, which pass `automerge: true` _into_ `createMultiDirectoryGroupRule()`, where it derives both the `' automerge'` groupName suffix and the label — two factories claiming the same field. The real gap it would have closed, Pattern S adding `Labels.AUTOMERGE` by hand, is closed by the `always labels a rule that automerges` test instead, which covers Pattern M too.
+
+**Do not extend both halves of a pair for the same package — the outcome is the consuming repository's to control, not this repo's.** Renovate concatenates `packageRules` in the order the consumer lists its `extends` (`config/presets/index.js:141-153` into `config/utils.js:25`); the order of keys inside `default.json` is irrelevant to it. So whichever half the repository names **last** wins, and the result of naming both is worse than either alone: `automerge: true` from the opt-in lands last while `groupName: null` still applies, because only the opt-out sets it — the package then automerges by itself on its own branch, off the group merge request it was supposed to be held back from.
+
+The `registered last` ordering in the `Preset` enum **models** where a consumer is expected to put these lines. It does not cause the precedence, and `test/presets.test.ts` resolves rules in that registry order for the same reason — as a model of the documented usage, not as a guarantee about a repository that deviates from it.
+
 ## Breaking Marker
 
 **A dependency major is not a breaking change of the repository that consumes it.** `!` in a conventional commit means _this package's own contract broke_; a dependency moving to v2 says nothing about that. The estate therefore does not mark majors breaking by default, and one central rule that did was reverted — see below for what it cost.
@@ -150,9 +174,9 @@ The shared release preset pins `conventionalcommits` (`semantic-release-config/c
 
 Renovate assembles its own `type(scope):` prefix only while `commitMessagePrefix` is unset (`!upgrade.commitMessagePrefix`, `dist/workers/repository/updates/generate.js:53`), and it has no slot for the `!`. Supplying a prefix **replaces** that assembly rather than adding to it, which is why `createBreakingMajorRule()` in `@lib` rebuilds what renovate would have produced — the `if (semanticCommitScope)` branch included — and appends the marker. The type stays the template `{{semanticCommitType}}`: a literal `perf(deps)!:` would flatten `fix`, `build`, `docs`, `ci` and `perf` onto one type for every major in the estate.
 
-Supplying a prefix also skips the branch that sets renovate's internal `toLowerCase` flag (`generate.js:58`), so a marking rule states `commitMessageAction: 'update'` to keep the lower-case title every other update type gets.
+Supplying a prefix also skips the branch that sets renovate's internal `toLowerCase` flag (`generate.js:58`). That flag lowercases the **entire first line** (`generate.js:71-74`), not just the action word, so `commitMessageAction: 'update'` restores only the part the factory can reach. A manager-specific `commitMessageTopic` keeps its own capital on a marked major: terraform's `Terraform {{depName}}` (`modules/manager/terraform/index.js:32`) and cargo's `Rust crate {{depName}}` (`cargo/index.js:31`), and any mixed-case package name such as `PyYAML`. So `perf(deps): update terraform hashicorp/aws to v6` becomes `perf(deps)!: update Terraform hashicorp/aws to v6`. Cosmetic — the analyzer reads the type and the marker, not the casing — but do not expect a marked title to be byte-identical to an unmarked one beyond the prefix.
 
-`createNonBreakingMajorRule()` is the inverse and unmarks with `commitMessagePrefix: ''` — **empty rather than absent**, because the field is last-match-wins and an opt-out that merely omitted it would leave the central marker standing. `''` is falsy at `generate.js:53`, which puts renovate back on its own assembly and back on the `toLowerCase` flag, hence `commitMessageAction: 'Update'`, renovate's own default.
+`createNoBreakingMajorRule()` is the inverse and unmarks with `commitMessagePrefix: ''` — **empty rather than absent**, because the field is last-match-wins and an opt-out that merely omitted it would leave the central marker standing. `''` is falsy at `generate.js:53`, which puts renovate back on its own assembly and back on the `toLowerCase` flag, hence `commitMessageAction: 'Update'`, renovate's own default.
 
 Both factories force `matchUpdateTypes: ['major']` and withhold it, plus the two commit-message fields, from their parameter type. Unlike `createMultiDirectoryGroupRule()` the spread goes **first** and the owned fields last: they are the point of the factory, not a default a call site may override.
 
@@ -160,12 +184,22 @@ Both factories force `matchUpdateTypes: ['major']` and withhold it, plus the two
 
 | Scope | Default | How a repository changes it |
 | --- | --- | --- |
-| terraform, terraform-custom | **breaking** — a provider, module or release major moves what the repository's own state is pinned to, so the plan it produces is not the plan the previous version produced | `manager-terraform-non-breaking-major` to opt out |
+| terraform, terraform-custom | **breaking** — a provider, module or release major moves what the repository's own state is pinned to, so the plan it produces is not the plan the previous version produced | `manager-terraform-no-breaking-major` to opt out |
 | every other manager and datasource | **not breaking** | `manager-<name>-breaking-major` to opt in |
 
 Both idioms exist for all 16 managers and datasources, so a repository declares its intent rather than inheriting a default — and the declaration survives a change to the central default. `test/presets.test.ts` (`breaking marker`) pins the central set in `CENTRAL_BREAKING`, so a manager gaining or losing the marker has to be a deliberate edit.
 
 **These presets flip the commit prefix and nothing else.** `groupName`, `groupSlug` and `schedule` are last-match-wins and these land after everything, so naming a group would pull the dependency out of the merge request it belongs in and discard its cadence. A test enforces their absence.
+
+### Sharp edges
+
+Verified against renovate 44.69.13; none is a blocker, and each is invisible until it bites.
+
+- **The marker ignores `semanticCommits`.** Renovate guards its own prefix assembly with `semanticCommits === 'enabled' && !commitMessagePrefix` (`generate.js:53`); a supplied prefix carries no such guard. `base.ts` sets `semanticCommits: 'enabled'` at the top level, but that field is non-mergeable, so a consumer setting `auto` or `disabled` turns off every other prefix while a marked manager's majors still emit `chore(deps)!:` — `chore` and `deps` being the option defaults. There is no way to condition a `packageRule` on `semanticCommits`, so this is documented rather than fixed.
+- **A mixed grouped branch takes the marker from whichever dependency sorts first.** After the depName sort renovate does `config = { ...config, ...config.upgrades[0] }` (`generate.js:217-229`), and `commitMessagePrefix` is **not** reconciled across upgrades the way `automerge`, `labels` and `updateType` are (`:250-253`). Two managers sharing a `groupSlug` — `gitlabci` and its `custom.regex` twin on `gitlab-ci-major`, or the docker datasource against `dockerfile` / `kubernetes` on `docker-major` — will carry the `!` only if the marked one happens to sort first. **Extend both twins of a manager that has a `custom-` variant**, or the marker is non-deterministic on shared branches.
+- **`no-automerge` is never a no-op, even where nothing automerges.** On the catch-all managers (helm, kustomize, argocd, terraform) the central group already says `automerge: false`, but the opt-out still sets `groupName: null`, so the package leaves the grouped merge request and gets its own branch. That is a grouping change, not a no-op — reach for it there only if the separate branch is what you want.
+- **`sharedVariableName` re-groups an ungrouped dependency.** `branch-name.js:38-41` reads `if (!update.groupName && update.sharedVariableName) update.groupName = update.sharedVariableName`, so for managers that emit one — gitlab-ci `variables:`, dockerfile `ARG` — an opted-out package lands on `renovate/<variable>` rather than the per-dependency topic. The opt-out still holds: the group's other dependencies keep their string `groupName` and so a different branch, and `automerge` stays false.
+- **A future override must not set `semanticCommitType` on a Pattern M manager.** `extends: [':semanticCommitTypeAll(perf)']`, which `createMultiDirectoryGroupRule()` puts on every Pattern M rule, resolves to a **nested** `packageRules` entry that `applyPackageRules` appends after every top-level rule (`util/package-rules/index.js:55`) and evaluates on a second pass (`flatten.js:83,86`). So on argocd, helm, kustomize and terraform the group's commit type lands _after_ anything an override sets, and would silently clobber it. Harmless today — no override sets `semanticCommitType`, and the breaking marker deliberately reads the type through `{{semanticCommitType}}` rather than setting it — but the registry-order walker in the tests cannot see this, so it will not warn you.
 
 ## Labels
 
