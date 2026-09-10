@@ -1,3 +1,27 @@
+## [5.0.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.5.0...v5.0.0) (2026-09-10)
+
+### ⚠ BREAKING CHANGES
+
+* **presets:** note, and commit-analyzer's first default rule turns any
+note into a major. Every dependency major in every consuming repository
+therefore cut a major release, including the devDependency bumps under
+build and docs that released nothing at all before.
+
+The conventionalcommits migration never required this. perf and the
+other types still map to patch under it, so the marker was additive
+rather than implied by the preset switch.
+
+Reverts dff08b2940017d6e1beed38f11cbc645823e401c.
+
+### Features
+
+* **presets:** add no-automerge overrides for every manager ([9954ad0](https://gitlab.kilic.dev/renovate/renovate-config/commit/9954ad07b198033568e78ad0279fe700c053b815))
+* **presets:** make the breaking major marker opt-in per manager ([4d5fdb7](https://gitlab.kilic.dev/renovate/renovate-config/commit/4d5fdb7e0b79ba8d3d8056fae6c576eea2ebeac9))
+
+### Bug Fixes
+
+* **presets:** stop marking every dependency major as breaking ([c6e7317](https://gitlab.kilic.dev/renovate/renovate-config/commit/c6e7317e315de8f2544604723578eb6ea1c1efe8))
+
 ## [4.5.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.14...v4.5.0) (2026-09-10)
 
 ### Features
