@@ -1,3 +1,9 @@
+## [4.5.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.14...v4.5.0) (2026-09-10)
+
+### Features
+
+* **presets:** mark major updates as breaking in commit messages ([dff08b2](https://gitlab.kilic.dev/renovate/renovate-config/commit/dff08b2940017d6e1beed38f11cbc645823e401c))
+
 ## [4.4.14](https://gitlab.kilic.dev/renovate/renovate-config/compare/v4.4.13...v4.4.14) (2026-09-10)
 
 
