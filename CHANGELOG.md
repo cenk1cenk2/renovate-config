@@ -1,3 +1,9 @@
+## [5.0.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.0.2...v5.0.3) (2026-09-11)
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to ^44.61.6 ([bb36f70](https://gitlab.kilic.dev/renovate/renovate-config/commit/bb36f70d28e6f6635fdde0fa90baf345c4a07420))
+
 ## [5.0.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.0.1...v5.0.2) (2026-09-10)
 
 ### Bug Fixes
