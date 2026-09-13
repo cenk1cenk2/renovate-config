@@ -99,6 +99,14 @@
   "no-tests": {
     "ignoreTests": true
   },
+  "default-with-test-paths": {
+    "extends": [
+      "local>renovate/renovate-config:default/default"
+    ],
+    "ignorePresets": [
+      ":ignoreModulesAndTests"
+    ]
+  },
   "branch-develop": {
     "baseBranchPatterns": [
       "develop"

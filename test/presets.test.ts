@@ -1247,9 +1247,30 @@ describe('schedule', () => {
   })
 })
 
+describe('ignore paths', () => {
+  // `ignorePaths` is non-mergeable and replaces the whole list upstream `config:recommended` resolves.
+  it('never declares ignorePaths', () => {
+    expect(entries.filter(([, preset]) => preset.ignorePaths !== undefined).map(([name]) => name)).toEqual([])
+  })
+
+  // `ignorePresets` only filters below the preset that declares it, so anywhere but a wrapper around
+  // `default` it would silently filter nothing — or filter part of the central config for everyone.
+  it('declares ignorePresets only in the default-with-test-paths preset', () => {
+    expect(entries.filter(([name, preset]) => name !== Preset.DEFAULT_WITH_TEST_PATHS && preset.ignorePresets !== undefined).map(([name]) => name)).toEqual([])
+  })
+
+  it('wraps default and nothing else', () => {
+    expect(presets[Preset.DEFAULT_WITH_TEST_PATHS].extends).toEqual([`${SCOPE}${Preset.DEFAULT}`])
+  })
+
+  it('never reaches the default-with-test-paths preset from default', () => {
+    expect(reachableFromDefault.has(Preset.DEFAULT_WITH_TEST_PATHS)).toBe(false)
+  })
+})
+
 describe('wiring', () => {
   // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
-  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, ...PARAMETERIZED_PRESETS]
+  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.DEFAULT_WITH_TEST_PATHS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, ...PARAMETERIZED_PRESETS]
 
   it('never reaches a no-automerge preset from default', () => {
     // Holding a package back is a per-repository call, and `groupName: null` from inside the graph would

@@ -8,6 +8,7 @@ export enum Preset {
   BASE = 'base',
   LOCK_FILE = 'lock-file',
   NO_TESTS = 'no-tests',
+  DEFAULT_WITH_TEST_PATHS = 'default-with-test-paths',
 
   // branches
   BRANCH_DEVELOP = 'branch-develop',
@@ -175,6 +176,7 @@ export const PRESETS: Presets = {
   [Preset.BASE]: import('./base.js').then((m) => m.default),
   [Preset.LOCK_FILE]: import('./lock-file.js').then((m) => m.default),
   [Preset.NO_TESTS]: import('./no-tests.js').then((m) => m.default),
+  [Preset.DEFAULT_WITH_TEST_PATHS]: import('./default-with-test-paths.js').then((m) => m.default),
 
   // branches
 
