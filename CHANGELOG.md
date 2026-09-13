@@ -1,3 +1,9 @@
+## [5.1.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.0.5...v5.1.0) (2026-09-13)
+
+### Features
+
+* **presets:** manage test directories from the default preset ([06fd5bc](https://gitlab.kilic.dev/renovate/renovate-config/commit/06fd5bcdf35ea66d4da4d33878d44533b2abb29d))
+
 ## [5.0.5](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.0.4...v5.0.5) (2026-09-13)
 
 ### Bug Fixes
