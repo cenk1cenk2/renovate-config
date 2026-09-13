@@ -52,7 +52,7 @@ importers:
         specifier: ^25.9.5
         version: 25.9.6
       eslint:
-        specifier: ^10.9.1
+        specifier: ^10.10.0
         version: 10.10.0(jiti@2.6.1)(supports-color@8.1.1)
       execa:
         specifier: ^10.0.1
@@ -61,7 +61,7 @@ importers:
         specifier: ^16.2.4
         version: 16.2.4
       lint-staged:
-        specifier: ^17.4.1
+        specifier: ^17.5.0
         version: 17.5.1
       oclif:
         specifier: ^5.0.1
