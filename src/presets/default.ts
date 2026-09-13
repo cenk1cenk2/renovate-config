@@ -4,6 +4,10 @@ import { Preset } from '@presets'
 
 export default createPreset({
   enabledManagers: Object.values(Managers),
+  // `config:recommended`, reached through `base`, extends `:ignoreModulesAndTests`, which skips every
+  // `test`, `tests` and `__tests__` directory. `ignorePresets` only filters the presets below the one that
+  // declares it, so it has to sit above `base`; a preset extended beside this one would filter nothing.
+  ignorePresets: [':ignoreModulesAndTests'],
   extends: createScopes(
     Preset.BASE,
     Preset.LOCK_FILE,

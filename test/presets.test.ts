@@ -1247,6 +1247,23 @@ describe('schedule', () => {
   })
 })
 
+describe('ignore paths', () => {
+  // `ignorePaths` is non-mergeable and replaces the whole list upstream `config:recommended` resolves.
+  it('never declares ignorePaths', () => {
+    expect(entries.filter(([, preset]) => preset.ignorePaths !== undefined).map(([name]) => name)).toEqual([])
+  })
+
+  // `ignorePresets` only filters below the preset that declares it. `default` is the root every repository
+  // extends; anywhere lower it would miss presets extended beside it, and a sibling filters nothing.
+  it('declares ignorePresets only in the default preset', () => {
+    expect(entries.filter(([name, preset]) => name !== Preset.DEFAULT && preset.ignorePresets !== undefined).map(([name]) => name)).toEqual([])
+  })
+
+  it('drops only the modules-and-tests ignore from default', () => {
+    expect(presets[Preset.DEFAULT].ignorePresets).toEqual([':ignoreModulesAndTests'])
+  })
+})
+
 describe('wiring', () => {
   // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
   const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, ...PARAMETERIZED_PRESETS]

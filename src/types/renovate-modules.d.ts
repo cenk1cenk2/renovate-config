@@ -9,3 +9,9 @@ declare module 'renovate/dist/config/validation.js' {
 
   export function validateConfig(configType: RenovateConfigStage, config: RenovateConfig, isPreset?: boolean, parentPath?: string): Promise<ValidationResult>
 }
+
+declare module 'renovate/dist/config/presets/index.js' {
+  import type { RenovateConfig } from 'renovate/dist/config/types.js'
+
+  export function resolveConfigPresets(inputConfig: RenovateConfig): Promise<{ config: RenovateConfig }>
+}
