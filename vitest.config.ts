@@ -8,6 +8,9 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   plugins: [tsconfigPaths({ projects: ['tsconfig.test.json'] })],
   test: {
-    include: ['test/**/*.test.ts']
+    include: ['test/**/*.test.ts'],
+    // Externalized dependencies bypass `vi.mock`, and `test/resolution.test.ts` mocks a module renovate
+    // imports from inside itself.
+    server: { deps: { inline: ['renovate'] } }
   }
 })

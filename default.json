@@ -18,6 +18,9 @@
       "cargo",
       "terraform"
     ],
+    "ignorePresets": [
+      ":ignoreModulesAndTests"
+    ],
     "extends": [
       "local>renovate/renovate-config:default/base",
       "local>renovate/renovate-config:default/lock-file",
