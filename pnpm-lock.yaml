@@ -31,7 +31,7 @@ importers:
         version: 11.1.0
       renovate:
         specifier: ^44.65.5
-        version: 44.82.1(supports-color@8.1.1)(typanion@3.14.0)
+        version: 44.82.4(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -3392,8 +3392,8 @@ packages:
     resolution: {integrity: sha512-xd1uwUrKeIcJbsWhaoS3qAX4Ea8m0Mw0G5nlnAQvPT7TbZ5qaPdzBVTQia9KfyuyQm+nenfyjvzUDTRYHsC2sw==}
     engines: {node: '>= 8'}
 
-  jsonc-morph@0.3.5:
-    resolution: {integrity: sha512-48t3FzTaEcePC0xKtadykUy7iqMx9fpxzigbi0YtNdEiPXUr7CoM1rfyBUKg0HW167eaG0EENdjc8aowa1TMvQ==}
+  jsonc-morph@0.3.6:
+    resolution: {integrity: sha512-TkGcePt+6p+7wzOXXkIhwuAs/WFJ+UBwJYlnjLOhvC29z0YxKy5AhBW3YWEvpXI/yQXPxEM5oqwZpcK4Q/ouFw==}
 
   jsonc-weaver@0.3.1:
     resolution: {integrity: sha512-a6e90+Hn5e+l7i6MC2YJ57TE6nv9gDKFyCLBIVKt0Jdv48lUBEV7StnnuwC0Y+sjnux41cnPlHJl65DH4+d9eA==}
@@ -4051,8 +4051,8 @@ packages:
     resolution: {integrity: sha512-c1wmXavsHZIC4g1OLhOsafK6jZSAeMo0Ap3yivj59PUcCkpacy5YgWdgIp/dB4vp1JZrfBSsPCR0YuADB+ENLQ==}
     engines: {node: '>=20'}
 
-  p-timeout@7.0.1:
-    resolution: {integrity: sha512-AxTM2wDGORHGEkPCt8yqxOTMgpfbEHqF51f/5fJCmwFC3C/zNcGT63SymH2ttOAaiIws2zVg4+izQCjrakcwHg==}
+  p-timeout@7.0.2:
+    resolution: {integrity: sha512-prbX4Z3YszrFNgH+MW5Zoeq3baXrMtP/MQnFeET90UB/GtGcGDQ5Usg9OCy6ETjTTntOw1SL2z9fMPUppN3Guw==}
     engines: {node: '>=20'}
 
   p-try@2.2.0:
@@ -4244,8 +4244,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@44.82.1:
-    resolution: {integrity: sha512-39TZuhJA6Sphzk1MWdEwr27W+nhgorr6BzgBtrNJfLSvZsdGS8MhXofwdROu1MV25V8d/501Czou+aSJx3j0sA==}
+  renovate@44.82.4:
+    resolution: {integrity: sha512-EwhYNb7kfGEIUe/Mm6zQBs2xpCdMKMYCvc5qLRam45bdOcC0GbVahU45MKiftfPR5/5Jyg4oMh63KYa8zEr2Kg==}
     engines: {node: ^24.11.0, pnpm: ^11.0.0}
     hasBin: true
 
@@ -8600,11 +8600,11 @@ snapshots:
 
   jsonata@2.2.1: {}
 
-  jsonc-morph@0.3.5: {}
+  jsonc-morph@0.3.6: {}
 
   jsonc-weaver@0.3.1:
     dependencies:
-      jsonc-morph: 0.3.5
+      jsonc-morph: 0.3.6
 
   jsondiffpatch@0.7.6:
     dependencies:
@@ -9399,11 +9399,11 @@ snapshots:
   p-queue@9.3.3:
     dependencies:
       eventemitter3: 5.0.4
-      p-timeout: 7.0.1
+      p-timeout: 7.0.2
 
   p-throttle@8.1.0: {}
 
-  p-timeout@7.0.1: {}
+  p-timeout@7.0.2: {}
 
   p-try@2.2.0: {}
 
@@ -9619,7 +9619,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@44.82.1(supports-color@8.1.1)(typanion@3.14.0):
+  renovate@44.82.4(supports-color@8.1.1)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.1117.0
       '@aws-sdk/client-ec2': 3.1117.0
