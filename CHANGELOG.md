@@ -1,3 +1,9 @@
+## [5.1.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.1.2...v5.1.3) (2026-09-21)
+
+### Bug Fixes
+
+* **presets:** assign fix commit type to helm-values docker updates ([7547349](https://gitlab.kilic.dev/renovate/renovate-config/commit/7547349ab3ef1b88375598a01d84dfcb3bf338a8))
+
 ## [5.1.2](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.1.1...v5.1.2) (2026-09-21)
 
 ### Bug Fixes
