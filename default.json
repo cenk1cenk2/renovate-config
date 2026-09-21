@@ -292,6 +292,15 @@
         "schedule": [
           "at any time"
         ]
+      },
+      {
+        "matchManagers": [
+          "helm-values"
+        ],
+        "matchDatasources": [
+          "docker"
+        ],
+        "semanticCommitType": "fix"
       }
     ]
   },
