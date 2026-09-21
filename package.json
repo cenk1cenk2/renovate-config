@@ -60,8 +60,8 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@cenk1cenk2/cz-cc": "^3.0.0",
-    "@cenk1cenk2/eslint-config": "^3.3.5",
+    "@cenk1cenk2/cz-cc": "^3.0.1",
+    "@cenk1cenk2/eslint-config": "^3.3.6",
     "@tsconfig/node24": "^24.0.5",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^25.9.6",
