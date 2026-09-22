@@ -1,3 +1,9 @@
+## [5.1.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.1.3...v5.1.4) (2026-09-22)
+
+### Bug Fixes
+
+* **deps:** update node all minor dependency updates ([30faa25](https://gitlab.kilic.dev/renovate/renovate-config/commit/30faa25ed9797955969931e1c26536e39eb2934a))
+
 ## [5.1.3](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.1.2...v5.1.3) (2026-09-21)
 
 ### Bug Fixes
