@@ -1427,7 +1427,8 @@
           "/^prettier$/",
           "/^lint-staged$/",
           "/^cz-conventional-changelog$/",
-          "/^simple-git-hooks$/"
+          "/^simple-git-hooks$/",
+          "/^hk$/"
         ],
         "addLabels": [
           "ring:slow"
@@ -1447,7 +1448,8 @@
           "/^prettier$/",
           "/^lint-staged$/",
           "/^cz-conventional-changelog$/",
-          "/^simple-git-hooks$/"
+          "/^simple-git-hooks$/",
+          "/^hk$/"
         ],
         "matchUpdateTypes": [
           "minor",

@@ -26,18 +26,6 @@
     "manifest": "oclif manifest",
     "test:watch": "vitest"
   },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged"
-  },
-  "lint-staged": {
-    "./*.{ts,js,tsx,jsx}": [
-      "prettier --log-level warn --write",
-      "eslint --fix"
-    ],
-    "./*.{json,md}": [
-      "prettier --log-level warn --write"
-    ]
-  },
   "oclif": {
     "bin": "renovate-config-generator",
     "dirname": "renovate-config-generator",
@@ -68,10 +56,8 @@
     "eslint": "^10.10.0",
     "execa": "^10.0.1",
     "globby": "^16.2.4",
-    "lint-staged": "^17.5.1",
     "oclif": "^6.0.0",
     "prettier": "^3.9.6",
-    "simple-git-hooks": "^2.14.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsdown": "^0.23.0",

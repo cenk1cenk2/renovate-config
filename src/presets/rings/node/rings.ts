@@ -10,7 +10,8 @@ export const NODE_SLOW_RING_PACKAGES = [
   '/^prettier$/',
   '/^lint-staged$/',
   '/^cz-conventional-changelog$/',
-  '/^simple-git-hooks$/'
+  '/^simple-git-hooks$/',
+  '/^hk$/'
 ]
 
 export const NODE_DISABLED_PACKAGES = ['node']
