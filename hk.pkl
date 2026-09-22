@@ -9,9 +9,6 @@ hooks {
       ["prettier"] = (Builtins.prettier) {
         glob = List("*.ts", "*.js", "*.tsx", "*.jsx", "*.json", "*.md")
       }
-      // `pnpm lint` and the CI lint job both run eslint over `./src` only:
-      // the root config files are eslint-ignored and `test/` is outside the
-      // tsconfig project the typed config parses against.
       ["eslint"] = (Builtins.eslint) {
         glob = List("src/**/*.ts")
         depends = List("prettier")
