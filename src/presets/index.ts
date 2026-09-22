@@ -29,6 +29,7 @@ export enum Preset {
   MANAGER_GITLAB_CI_CUSTOM = 'manager-gitlab-ci-custom',
   MANAGER_OTEL_BUILDER = 'manager-otel-builder',
   MANAGER_ARGOCD = 'manager-argocd',
+  MANAGER_HK = 'manager-hk',
 
   // datasources
   DATASOURCE_DOCKER = 'datasource-docker',
@@ -198,6 +199,7 @@ export const PRESETS: Presets = {
   [Preset.MANAGER_GITLAB_CI_CUSTOM]: import('./managers/gitlab-ci/custom-manager.js').then((m) => m.default),
   [Preset.MANAGER_OTEL_BUILDER]: import('./managers/otel-builder/manager.js').then((m) => m.default),
   [Preset.MANAGER_ARGOCD]: import('./managers/argocd/manager.js').then((m) => m.default),
+  [Preset.MANAGER_HK]: import('./managers/hk/manager.js').then((m) => m.default),
 
   // datasources
 

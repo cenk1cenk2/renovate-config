@@ -14,7 +14,7 @@ import { Managers } from '@managers'
 import { PRESETS, Preset } from '@presets'
 import { Rings } from '@rings'
 
-const presets = Object.fromEntries(await Promise.all(Object.entries(PRESETS).map(async([name, preset]) => [name, await preset] as const))) as Record<Preset, RenovateConfig>
+const presets = Object.fromEntries(await Promise.all(Object.entries(PRESETS).map(async ([name, preset]) => [name, await preset] as const))) as Record<Preset, RenovateConfig>
 const entries = Object.entries(presets) as [Preset, RenovateConfig][]
 
 // Rules live both in `packageRules` and in the `lockFileMaintenance` sub-config, and both can carry
@@ -75,12 +75,7 @@ const reachableFromDefault = ((): Set<Preset> => {
 // An exact package name carries no matcher metacharacter, so it bounds an automerge rule to a fixed set.
 // The git URLs the argocd rules match are exact by this test — they hold `@`, `:`, `/` but no glob syntax.
 const GLOB_METACHARACTERS = /[*?[\]{}()]/
-const isExactName = (n: string): boolean =>
-  typeof n === 'string'
-  && n.length > 0
-  && !n.startsWith('!')
-  && !/^\/.*\/i?$/.test(n)
-  && !GLOB_METACHARACTERS.test(n)
+const isExactName = (n: string): boolean => typeof n === 'string' && n.length > 0 && !n.startsWith('!') && !/^\/.*\/i?$/.test(n) && !GLOB_METACHARACTERS.test(n)
 
 // A preset argument is substituted with the consumer's literal package name before renovate ever
 // evaluates the rule, so the rule is bounded to one package by construction — the braces here are not
@@ -246,6 +241,7 @@ const CENTRAL_AUTOMERGE: string[] = [
   `${Preset.GROUP_GITLAB_CI_MINOR_UPDATES}:${Groups.GITLAB_CI_MINOR}`,
   `${Preset.GROUP_ANSIBLE_GALAXY_MINOR_ROLES}:${Groups.ANSIBLE_GALAXY_MINOR}`,
   `${Preset.MANAGER_OTEL_BUILDER}:${Groups.OTEL_BUILDER_MINOR}`,
+  `${Preset.MANAGER_HK}:${Groups.HK_MINOR}`,
   `${Preset.DATASOURCE_DOCKER}:${Groups.DOCKER_MINOR}`
 ]
 
@@ -257,13 +253,19 @@ describe('preset registry', () => {
   it('lists every automerge preset as a consumer entrypoint', () => {
     const named = Object.values(Preset).filter((name) => AUTOMERGE_PRESET_PATTERN.test(name))
 
-    expect(named.filter((name) => !AUTOMERGE_PRESETS.includes(name)), 'a new automerge preset must join AUTOMERGE_PRESETS, or it escapes the reachability and entrypoint guards').toEqual([])
+    expect(
+      named.filter((name) => !AUTOMERGE_PRESETS.includes(name)),
+      'a new automerge preset must join AUTOMERGE_PRESETS, or it escapes the reachability and entrypoint guards'
+    ).toEqual([])
   })
 
   it('lists every no-automerge preset as a consumer entrypoint', () => {
     const named = Object.values(Preset).filter((name) => NO_AUTOMERGE_PRESET_PATTERN.test(name))
 
-    expect(named.filter((name) => !NO_AUTOMERGE_PRESETS.includes(name)), 'a new no-automerge preset must join NO_AUTOMERGE_PRESETS, or it escapes the reachability and entrypoint guards').toEqual([])
+    expect(
+      named.filter((name) => !NO_AUTOMERGE_PRESETS.includes(name)),
+      'a new no-automerge preset must join NO_AUTOMERGE_PRESETS, or it escapes the reachability and entrypoint guards'
+    ).toEqual([])
   })
 
   // Every automerge preset needs its opposite, or a repository can opt a package in and never back out.
@@ -279,14 +281,23 @@ describe('preset registry', () => {
   it('lists every breaking-marker preset as a consumer entrypoint', () => {
     const named = Object.values(Preset).filter((name) => BREAKING_PRESET_PATTERN.test(name))
 
-    expect(named.filter((name) => !BREAKING_PRESETS.includes(name)), 'a new breaking-marker preset must join BREAKING_PRESETS, or it escapes the reachability and entrypoint guards').toEqual([])
+    expect(
+      named.filter((name) => !BREAKING_PRESETS.includes(name)),
+      'a new breaking-marker preset must join BREAKING_PRESETS, or it escapes the reachability and entrypoint guards'
+    ).toEqual([])
   })
 
   // Both directions, for every manager and datasource that has a base preset. A manager with only one of
   // the pair leaves a repository able to declare one intent and not its opposite, which is how a default
   // ends up inherited by accident rather than chosen.
   it('pairs every breaking-marker preset with its opposite', () => {
-    const stems = [...new Set(Object.values(Preset).filter((name) => BREAKING_PRESET_PATTERN.test(name)).map((name) => name.replace(BREAKING_PRESET_PATTERN, '')))]
+    const stems = [
+      ...new Set(
+        Object.values(Preset)
+          .filter((name) => BREAKING_PRESET_PATTERN.test(name))
+          .map((name) => name.replace(BREAKING_PRESET_PATTERN, ''))
+      )
+    ]
     const missing = stems.flatMap((stem) => [`${stem}-breaking-major`, `${stem}-no-breaking-major`]).filter((name) => !Object.values(Preset).includes(name as Preset))
 
     expect(missing, 'every manager and datasource needs both a breaking and a non-breaking preset').toEqual([])
@@ -307,17 +318,27 @@ describe('labels', () => {
   it('only ever adds labels from the enum', () => {
     const known = new Set<string>(Object.values(Labels))
 
-    expect(allRules.flatMap(([, rule]) => rule.addLabels ?? []).filter((label) => !known.has(label)), 'raw string labels are not allowed').toEqual([])
+    expect(
+      allRules.flatMap(([, rule]) => rule.addLabels ?? []).filter((label) => !known.has(label)),
+      'raw string labels are not allowed'
+    ).toEqual([])
   })
 
   it('uses every label the enum declares', () => {
     const used = new Set(allRules.flatMap(([, rule]) => rule.addLabels ?? []))
 
-    expect(Object.values(Labels).filter((label) => label !== Labels.RENOVATE && !used.has(label)), 'orphan labels in the enum').toEqual([])
+    expect(
+      Object.values(Labels).filter((label) => label !== Labels.RENOVATE && !used.has(label)),
+      'orphan labels in the enum'
+    ).toEqual([])
   })
 
   it('namespaces every axis except the umbrella and the automerge flag', () => {
-    expect(Object.values(Labels).filter((label) => !label.includes(':')).sort()).toEqual([Labels.AUTOMERGE, Labels.RENOVATE].sort())
+    expect(
+      Object.values(Labels)
+        .filter((label) => !label.includes(':'))
+        .sort()
+    ).toEqual([Labels.AUTOMERGE, Labels.RENOVATE].sort())
   })
 })
 
@@ -461,7 +482,9 @@ describe('breaking marker', () => {
   it('marks breaking centrally only where the inventory says so', () => {
     const central = marked.filter(([name]) => reachableFromDefault.has(name)).map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
 
-    expect([...new Set(central)].sort(), 'a central breaking marker appeared or disappeared — update CENTRAL_BREAKING if that was intended').toEqual([...new Set(CENTRAL_BREAKING)].sort())
+    expect([...new Set(central)].sort(), 'a central breaking marker appeared or disappeared — update CENTRAL_BREAKING if that was intended').toEqual(
+      [...new Set(CENTRAL_BREAKING)].sort()
+    )
   })
 })
 
@@ -474,17 +497,27 @@ describe('axis ownership', () => {
 
   it('only ever adds an area from a manager-scoped rule', () => {
     expect(
-      adding('area:').filter(([, rule]) => !rule.matchManagers).map(([name]) => name),
+      adding('area:')
+        .filter(([, rule]) => !rule.matchManagers)
+        .map(([name]) => name),
       'the manager owns the area axis — a rule that adds an area without matching managers can stack a second area onto the same update'
     ).toEqual([])
   })
 
   it('only ever adds a manager label from a manager-scoped rule', () => {
-    expect(adding('manager:').filter(([, rule]) => !rule.matchManagers).map(([name]) => name)).toEqual([])
+    expect(
+      adding('manager:')
+        .filter(([, rule]) => !rule.matchManagers)
+        .map(([name]) => name)
+    ).toEqual([])
   })
 
   it('only ever adds a datasource label from a datasource-scoped rule', () => {
-    expect(adding('datasource:').filter(([, rule]) => !rule.matchDatasources).map(([name]) => name)).toEqual([])
+    expect(
+      adding('datasource:')
+        .filter(([, rule]) => !rule.matchDatasources)
+        .map(([name]) => name)
+    ).toEqual([])
   })
 
   // The override flag says a repository overruled the estate-wide config for this package or manager, so
@@ -492,7 +525,9 @@ describe('axis ownership', () => {
   // it would land on every merge request and stop telling them apart — which is also why `group-by-unit`,
   // parameterized though it is, deliberately does not carry it.
   it('only ever adds the override flag from a parameterized preset', () => {
-    const offenders = [...new Set(allRules.filter(([, rule]) => rule.addLabels?.includes(Labels.OVERRIDE)).map(([name]) => name))].filter((name) => !PARAMETERIZED_PRESETS.includes(name))
+    const offenders = [...new Set(allRules.filter(([, rule]) => rule.addLabels?.includes(Labels.OVERRIDE)).map(([name]) => name))].filter(
+      (name) => !PARAMETERIZED_PRESETS.includes(name)
+    )
 
     expect(offenders, 'the override flag belongs only to the presets a consuming repository extends for itself').toEqual([])
   })
@@ -500,14 +535,23 @@ describe('axis ownership', () => {
   it('adds the override flag from every parameterized preset', () => {
     const carrying = new Set(allRules.filter(([, rule]) => rule.addLabels?.includes(Labels.OVERRIDE)).map(([name]) => name))
 
-    expect(PARAMETERIZED_PRESETS.filter((name) => !carrying.has(name)), 'an override preset that does not label itself is invisible in the merge request list').toEqual([])
+    expect(
+      PARAMETERIZED_PRESETS.filter((name) => !carrying.has(name)),
+      'an override preset that does not label itself is invisible in the merge request list'
+    ).toEqual([])
   })
 
   // A ring rule that also claims a `dep:` value stacks a second one onto every package it shares with a
   // dep group — and the ring patterns do overlap them, so the negations the dep groups carry cannot help.
   it('only ever adds a dep value from a preset that owns the dep axis', () => {
     const OWNERS: Preset[] = [Preset.GROUP_NODE_DEV_DEPENDENCIES, Preset.GROUP_NODE_PEER_DEPENDENCIES, Preset.LOCK_FILE]
-    const offenders = [...new Set(adding('dep:').filter(([name]) => !OWNERS.includes(name)).map(([name]) => name))]
+    const offenders = [
+      ...new Set(
+        adding('dep:')
+          .filter(([name]) => !OWNERS.includes(name))
+          .map(([name]) => name)
+      )
+    ]
 
     expect(offenders, 'the dep groups own the dep axis — every other rule must leave it alone').toEqual([])
   })
@@ -526,7 +570,9 @@ describe('axis ownership', () => {
   })
 
   it('never adds an area from a datasource rule', () => {
-    const offenders = allRules.filter(([, rule]) => rule.matchDatasources && !rule.matchManagers && rule.addLabels?.some((label) => label.startsWith('area:'))).map(([name]) => name)
+    const offenders = allRules
+      .filter(([, rule]) => rule.matchDatasources && !rule.matchManagers && rule.addLabels?.some((label) => label.startsWith('area:')))
+      .map(([name]) => name)
 
     expect(offenders, 'a datasource spans many managers, so it cannot know the area').toEqual([])
   })
@@ -548,9 +594,7 @@ describe('automerge policy', () => {
         // package-manager group uses it because a package manager is matched by its dep name.
         const names = rule.matchPackageNames ?? rule.matchDepNames
 
-        return rule.automerge === true
-          && rule.matchUpdateTypes?.includes('major')
-          && !(Array.isArray(names) && names.length > 0 && names.every(isBoundedName))
+        return rule.automerge === true && rule.matchUpdateTypes?.includes('major') && !(Array.isArray(names) && names.length > 0 && names.every(isBoundedName))
       })
       .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
@@ -570,7 +614,9 @@ describe('automerge policy', () => {
   // so a rule that grants it without labelling itself loses the value for good. `createMultiDirectoryGroupRule`
   // attaches it for Pattern M; Pattern S adds it by hand, which is the half this guards.
   it('always labels a rule that automerges', () => {
-    const offenders = allRules.filter(([, rule]) => rule.automerge === true && !rule.addLabels?.includes(Labels.AUTOMERGE)).map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
+    const offenders = allRules
+      .filter(([, rule]) => rule.automerge === true && !rule.addLabels?.includes(Labels.AUTOMERGE))
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
 
     expect(offenders, 'a rule that grants automerge owns the automerge label too').toEqual([])
   })
@@ -578,7 +624,9 @@ describe('automerge policy', () => {
   it('automerges centrally only where the inventory says so', () => {
     const keys = centralAutomerge.map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
 
-    expect([...new Set(keys)].sort(), 'a central automerge appeared or disappeared — update CENTRAL_AUTOMERGE if that was intended').toEqual([...new Set(CENTRAL_AUTOMERGE)].sort())
+    expect([...new Set(keys)].sort(), 'a central automerge appeared or disappeared — update CENTRAL_AUTOMERGE if that was intended').toEqual(
+      [...new Set(CENTRAL_AUTOMERGE)].sort()
+    )
   })
 
   // A breaking update is a per-repository call everywhere except the node package managers, whose group
@@ -608,7 +656,9 @@ describe('automerge policy', () => {
       .filter(([, rule]) => rule.matchPackageNames?.some((packageName) => isExactName(packageName) && packageName !== CENTRAL_AUTOMERGE_PACKAGE))
       .map(([name, rule]) => `${name}:${rule.groupSlug ?? 'no-slug'}`)
 
-    expect(offenders, `a central automerge names specific packages — that decision belongs in the consuming repository, not here (${CENTRAL_AUTOMERGE_PACKAGE} excepted)`).toEqual([])
+    expect(offenders, `a central automerge names specific packages — that decision belongs in the consuming repository, not here (${CENTRAL_AUTOMERGE_PACKAGE} excepted)`).toEqual(
+      []
+    )
   })
 
   // A grouped branch automerges only when every upgrade on it does
@@ -631,7 +681,9 @@ describe('automerge policy', () => {
 
   it('never leaves a breaking update unbounded by an update-type matcher', () => {
     // `lock-file` is exempt: lockFileMaintenance is its own update type and never carries a version bump.
-    const offenders = allRules.filter(([name, rule]) => name !== Preset.LOCK_FILE && rule.automerge === true && !rule.matchUpdateTypes).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+    const offenders = allRules
+      .filter(([name, rule]) => name !== Preset.LOCK_FILE && rule.automerge === true && !rule.matchUpdateTypes)
+      .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
     expect(offenders, 'an automerge rule without matchUpdateTypes also catches major updates').toEqual([])
   })
@@ -685,7 +737,10 @@ describe('automerge policy', () => {
       .map(([name, rule]) => [name, rule, rule.semanticCommitType ?? rule.extends?.find((preset) => preset.startsWith(':semanticCommitType'))] as const)
       .filter(([, , type]) => type !== undefined)
 
-    expect(assigned.map(([, rule, type]) => `${rule.groupSlug ?? '?'}:${type}`), 'only the major group assigns a type, and it assigns `build`').toEqual([`${Groups.NODE_PACKAGE_MANAGER_MAJOR}:build`])
+    expect(
+      assigned.map(([, rule, type]) => `${rule.groupSlug ?? '?'}:${type}`),
+      'only the major group assigns a type, and it assigns `build`'
+    ).toEqual([`${Groups.NODE_PACKAGE_MANAGER_MAJOR}:build`])
   })
 
   // `no-tests` is the repository-wide opt-out a consumer with no CI at all extends for itself. Anywhere
@@ -818,11 +873,15 @@ describe('effective automerge', () => {
     })
 
     it('does not automerge kube-prometheus-stack major under helm', () => {
-      expect(effectiveAutomerge({ manager: Managers.HELM, packageName: 'kube-prometheus-stack', updateType: 'major', sourceUrl: 'https://github.com/prometheus-community/helm-charts' })).toBe(false)
+      expect(
+        effectiveAutomerge({ manager: Managers.HELM, packageName: 'kube-prometheus-stack', updateType: 'major', sourceUrl: 'https://github.com/prometheus-community/helm-charts' })
+      ).toBe(false)
     })
 
     it('does not automerge alloy major under kustomize', () => {
-      expect(effectiveAutomerge({ manager: Managers.KUSTOMIZE, packageName: 'alloy', updateType: 'major', depType: 'HelmChart', sourceUrl: 'https://github.com/grafana/helm-charts' })).toBe(false)
+      expect(
+        effectiveAutomerge({ manager: Managers.KUSTOMIZE, packageName: 'alloy', updateType: 'major', depType: 'HelmChart', sourceUrl: 'https://github.com/grafana/helm-charts' })
+      ).toBe(false)
     })
 
     it('does not automerge chart-prometheus-operator git URL major under argocd', () => {
@@ -909,7 +968,7 @@ describe('effective ignore tests', () => {
 
   const composed = flatten(Preset.DEFAULT)
 
-  function resolve(packageName: string, depType: string, updateType = 'minor'): { suffix?: string, ignoreTests?: boolean } {
+  function resolve(packageName: string, depType: string, updateType = 'minor'): { suffix?: string; ignoreTests?: boolean } {
     let suffix: string | undefined
     let ignoreTests: boolean | undefined
 
@@ -947,7 +1006,9 @@ describe('effective ignore tests', () => {
     it(`keeps ${packageName} paired after resolution`, () => {
       const resolved = resolve(packageName, depType)
 
-      expect(resolved.ignoreTests === true, `${packageName} resolves to suffix ${JSON.stringify(resolved.suffix)} and ignoreTests ${resolved.ignoreTests}`).toBe(resolved.suffix === SKIP_CI)
+      expect(resolved.ignoreTests === true, `${packageName} resolves to suffix ${JSON.stringify(resolved.suffix)} and ignoreTests ${resolved.ignoreTests}`).toBe(
+        resolved.suffix === SKIP_CI
+      )
     })
   }
 
@@ -964,7 +1025,10 @@ describe('effective ignore tests', () => {
   // The package-manager `[skip ci]` is bounded by dep name and by update type, so it must not reach an
   // ordinary node major — which has never had a suffix and keeps its pipeline whether or not it is
   // opted in.
-  it.each([['some-library', 'dependencies'], ['globby', 'devDependencies']])('resolves a %s major to a running pipeline', (packageName, depType) => {
+  it.each([
+    ['some-library', 'dependencies'],
+    ['globby', 'devDependencies']
+  ])('resolves a %s major to a running pipeline', (packageName, depType) => {
     const resolved = resolve(packageName, depType, 'major')
 
     expect(resolved.suffix).not.toBe(SKIP_CI)
@@ -1057,7 +1121,9 @@ describe('rule validity', () => {
       'versioning'
     ] as const
 
-    const offenders = allPackageRules.flatMap(([name, rule]) => (rule.matchUpdateTypes ? PRE_LOOKUP.filter((option) => rule[option] !== undefined).map((option) => `${name}.${option}`) : []))
+    const offenders = allPackageRules.flatMap(([name, rule]) =>
+      rule.matchUpdateTypes ? PRE_LOOKUP.filter((option) => rule[option] !== undefined).map((option) => `${name}.${option}`) : []
+    )
 
     expect(offenders).toEqual([])
   })
@@ -1081,7 +1147,9 @@ describe('rule validity', () => {
   })
 
   it('never writes an empty matcher array', () => {
-    const offenders = allPackageRules.flatMap(([name, rule]) => MATCHERS.filter((matcher) => Array.isArray(rule[matcher]) && rule[matcher].length === 0).map((matcher) => `${name}.${matcher}`))
+    const offenders = allPackageRules.flatMap(([name, rule]) =>
+      MATCHERS.filter((matcher) => Array.isArray(rule[matcher]) && rule[matcher].length === 0).map((matcher) => `${name}.${matcher}`)
+    )
 
     expect(offenders, 'an empty matcher array matches nothing and silently disables the rule').toEqual([])
   })
@@ -1090,7 +1158,9 @@ describe('rule validity', () => {
     // renovate rejects this outright since v43.212.4 — a negatives-only list already means
     // "everything except", so the `*` next to it is noise the validator now refuses.
     const offenders = allPackageRules.flatMap(([name, rule]) =>
-      MATCHERS.filter((matcher) => Array.isArray(rule[matcher]) && rule[matcher].length > 1 && rule[matcher].some((pattern) => pattern === '*' || pattern === '**')).map((matcher) => `${name}.${matcher}`)
+      MATCHERS.filter((matcher) => Array.isArray(rule[matcher]) && rule[matcher].length > 1 && rule[matcher].some((pattern) => pattern === '*' || pattern === '**')).map(
+        (matcher) => `${name}.${matcher}`
+      )
     )
 
     expect(offenders, 'a match-all pattern may only stand alone').toEqual([])
@@ -1137,7 +1207,10 @@ describe('grouping', () => {
       }
     }
 
-    expect([...names].filter(([, set]) => set.size > 1).map(([slug]) => slug), 'one slug is one merge request, so two names for it is a copy-paste divergence').toEqual([])
+    expect(
+      [...names].filter(([, set]) => set.size > 1).map(([slug]) => slug),
+      'one slug is one merge request, so two names for it is a copy-paste divergence'
+    ).toEqual([])
   })
 
   it('always pairs a slug with a name', () => {
@@ -1159,7 +1232,10 @@ describe('grouping', () => {
   it('uses every slug the enums declare', () => {
     const used = new Set(allRules.map(([, rule]) => rule.groupSlug))
 
-    expect([...known].filter((slug) => !used.has(slug)), 'orphan slug in an enum').toEqual([])
+    expect(
+      [...known].filter((slug) => !used.has(slug)),
+      'orphan slug in an enum'
+    ).toEqual([])
   })
 })
 
@@ -1271,20 +1347,29 @@ describe('wiring', () => {
   it('never reaches a no-automerge preset from default', () => {
     // Holding a package back is a per-repository call, and `groupName: null` from inside the graph would
     // ungroup that dependency for everyone.
-    expect(NO_AUTOMERGE_PRESETS.filter((name) => reachableFromDefault.has(name)), 'a no-automerge preset is reachable from `default`').toEqual([])
+    expect(
+      NO_AUTOMERGE_PRESETS.filter((name) => reachableFromDefault.has(name)),
+      'a no-automerge preset is reachable from `default`'
+    ).toEqual([])
   })
 
   it('never reaches a breaking-marker preset from default', () => {
     // The marker is a per-repository call: extending one from inside the graph would mark that manager's
     // majors breaking everywhere, and would land before the rule it is meant to overrule rather than after.
-    expect(BREAKING_PRESETS.filter((name) => reachableFromDefault.has(name)), 'a breaking-marker preset is reachable from `default`').toEqual([])
+    expect(
+      BREAKING_PRESETS.filter((name) => reachableFromDefault.has(name)),
+      'a breaking-marker preset is reachable from `default`'
+    ).toEqual([])
   })
 
   it('never reaches an automerge preset from default', () => {
     // Automerge is opt-in per package: a repository extends one of these itself, after `default`, and
     // passes the package name. Extending one from inside the graph would automerge it everywhere, and
     // would land before the group catch-all that says `automerge: false` rather than after it.
-    expect(AUTOMERGE_PRESETS.filter((name) => reachableFromDefault.has(name)), 'an automerge preset is reachable from `default`').toEqual([])
+    expect(
+      AUTOMERGE_PRESETS.filter((name) => reachableFromDefault.has(name)),
+      'an automerge preset is reachable from `default`'
+    ).toEqual([])
   })
 
   it('references every preset it emits', () => {
@@ -1295,7 +1380,11 @@ describe('wiring', () => {
   })
 
   it('only references presets that exist', () => {
-    const dangling = entries.flatMap(([name, preset]) => scoped(preset).filter((target) => !(target in presets)).map((target) => `${name} -> ${target}`))
+    const dangling = entries.flatMap(([name, preset]) =>
+      scoped(preset)
+        .filter((target) => !(target in presets))
+        .map((target) => `${name} -> ${target}`)
+    )
 
     expect(dangling).toEqual([])
   })
@@ -1304,7 +1393,10 @@ describe('wiring', () => {
     const enabled = new Set(presets[Preset.DEFAULT].enabledManagers)
     const matched = new Set(allPackageRules.flatMap(([, rule]) => rule.matchManagers ?? []))
 
-    expect([...matched].filter((manager) => !enabled.has(manager)), 'a rule matches a manager that default.ts never enables, so it can never fire').toEqual([])
+    expect(
+      [...matched].filter((manager) => !enabled.has(manager)),
+      'a rule matches a manager that default.ts never enables, so it can never fire'
+    ).toEqual([])
   })
 
   it('only matches managers from the enum', () => {
@@ -1347,6 +1439,7 @@ describe('managers', () => {
     [Managers.NODE, Labels.MANAGER_NODE],
     [Managers.OPENTELEMETRY_COLLECTOR_BUILDER, Labels.MANAGER_OTEL_BUILDER],
     [Managers.PYTHON_PEP621, Labels.MANAGER_PYTHON],
+    [Managers.REGEX, Labels.MANAGER_HK],
     [Managers.RUST_CARGO, Labels.MANAGER_RUST],
     [Managers.TERRAFORM, Labels.MANAGER_TERRAFORM]
   ]

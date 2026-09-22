@@ -51,6 +51,8 @@ export enum Groups {
   ANSIBLE_GALAXY_MINOR = 'ansible-galaxy-minor',
   ANSIBLE_GALAXY_MAJOR = 'ansible-galaxy-major',
 
+  HK_MINOR = 'hk-minor',
+
   KUBERNETES_MINOR_AUTOMERGE = 'kubernetes-minor-automerge',
   KUBERNETES_MAJOR_AUTOMERGE = 'kubernetes-major-automerge',
 

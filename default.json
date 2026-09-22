@@ -30,6 +30,7 @@
       "local>renovate/renovate-config:default/manager-gitlab-ci",
       "local>renovate/renovate-config:default/manager-go",
       "local>renovate/renovate-config:default/manager-helm",
+      "local>renovate/renovate-config:default/manager-hk",
       "local>renovate/renovate-config:default/manager-kubernetes",
       "local>renovate/renovate-config:default/manager-kustomize",
       "local>renovate/renovate-config:default/manager-node",
@@ -519,6 +520,70 @@
         ],
         "schedule": [
           "at any time"
+        ]
+      }
+    ]
+  },
+  "manager-hk": {
+    "enabledManagers": [
+      "custom.regex"
+    ],
+    "customManagers": [
+      {
+        "depTypeTemplate": "hk-pkl-schema",
+        "customType": "regex",
+        "managerFilePatterns": [
+          "/(^|\\/)hk\\.pkl$/"
+        ],
+        "matchStringsStrategy": "any",
+        "matchStrings": [
+          "package:\\/\\/github\\.com\\/jdx\\/hk\\/releases\\/download\\/v(?<currentValue>[^/\"]+)\\/",
+          "\\/hk@(?<currentValue>[^#\"]+)#\\/"
+        ],
+        "depNameTemplate": "hk",
+        "packageNameTemplate": "jdx/hk",
+        "extractVersionTemplate": "^v(?<version>.*)$",
+        "datasourceTemplate": "github-releases",
+        "versioningTemplate": "semver"
+      }
+    ],
+    "packageRules": [
+      {
+        "matchPackageNames": [
+          "*"
+        ],
+        "groupName": "hk all minor dependency updates",
+        "groupSlug": "hk-minor",
+        "addLabels": [
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "hk-pkl-schema"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "schedule": [
+          "before 9am"
+        ]
+      },
+      {
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "hk-pkl-schema"
+        ],
+        "addLabels": [
+          "renovate",
+          "manager:hk"
         ]
       }
     ]
@@ -1427,7 +1492,8 @@
           "/^prettier$/",
           "/^lint-staged$/",
           "/^cz-conventional-changelog$/",
-          "/^simple-git-hooks$/"
+          "/^simple-git-hooks$/",
+          "/^hk$/"
         ],
         "addLabels": [
           "ring:slow"
@@ -1447,7 +1513,8 @@
           "/^prettier$/",
           "/^lint-staged$/",
           "/^cz-conventional-changelog$/",
-          "/^simple-git-hooks$/"
+          "/^simple-git-hooks$/",
+          "/^hk$/"
         ],
         "matchUpdateTypes": [
           "minor",
