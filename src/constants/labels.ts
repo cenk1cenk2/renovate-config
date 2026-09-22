@@ -32,6 +32,7 @@ export enum Labels {
   MANAGER_GITLAB_CI = 'manager:gitlab-ci',
   MANAGER_GO = 'manager:go',
   MANAGER_HELM = 'manager:helm',
+  MANAGER_HK = 'manager:hk',
   MANAGER_KUBERNETES = 'manager:kubernetes',
   MANAGER_KUSTOMIZE = 'manager:kustomize',
   MANAGER_NODE = 'manager:node',

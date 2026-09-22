@@ -18,6 +18,7 @@ export default createPreset({
     Preset.MANAGER_GITLAB_CI,
     Preset.MANAGER_GO,
     Preset.MANAGER_HELM,
+    Preset.MANAGER_HK,
     Preset.MANAGER_KUBERNETES,
     Preset.MANAGER_KUSTOMIZE,
     Preset.MANAGER_NODE,
