@@ -31,7 +31,7 @@ importers:
         version: 11.1.0
       renovate:
         specifier: ^44.85.0
-        version: 44.104.0(supports-color@8.1.1)(typanion@3.14.0)
+        version: 44.104.2(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -1270,8 +1270,8 @@ packages:
       '@opentelemetry/api':
         optional: true
 
-  '@renovatebot/detect-tools@4.0.19':
-    resolution: {integrity: sha512-FEQQQwSq1wQcySnanelF8g89QAjnhC9OqZcuICTrq31jywJBZGbWBFoeQArewc6vQFNl6K0DimGU1VkTxgFo7Q==}
+  '@renovatebot/detect-tools@4.0.20':
+    resolution: {integrity: sha512-hPIbS6EyL/Sy9Bcv3nO6szMDNWsdkCtbaZpJN4EtL93CiRp3N+6DJmNkr6wm6UnNuyaI1CpUzFjPeeTp2jMx5A==}
     engines: {node: '>=22.12.0', pnpm: '>=10.0.0'}
 
   '@renovatebot/good-enough-parser@2.0.1':
@@ -4249,8 +4249,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@44.104.0:
-    resolution: {integrity: sha512-5c6RwxWDPbCld5Idac9gReDRSCwQd0MAGdSbRV5BX1jmabo1IowsM5V3KbqDxH2CR8xBfiJMMy0JiBCMwF1NCQ==}
+  renovate@44.104.2:
+    resolution: {integrity: sha512-3PdPKY+O8A/OhQdbkmqDQMmUbfoJiVH1zqLnReAVLkFdZkYnO0ZfzPHMWhSlMHYHqRij+EWaFRU52VibVSBiaQ==}
     engines: {node: ^24.11.0, pnpm: ^11.0.0}
     hasBin: true
 
@@ -5025,8 +5025,8 @@ packages:
   wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
 
-  wrap-ansi@10.0.1:
-    resolution: {integrity: sha512-M0N4xzyzosiIok3svYlEo1sdLZts/8FPgYH/GPC3wvlmPoRvnoManGMrE54waYj3tISA8w6lsdesfVv67qSr8Q==}
+  wrap-ansi@10.0.2:
+    resolution: {integrity: sha512-6OLRNZqRntVGBm26ghZ5eZhCuWWyOkRCSn8XsOIuq5stpCE/tjLbdozd93naILZig0lmD8ANfRwnhn0DLeXGlg==}
     engines: {node: '>=20'}
 
   wrap-ansi@6.2.0:
@@ -5124,8 +5124,8 @@ packages:
   yuku-parser@0.10.2:
     resolution: {integrity: sha512-CgaU0/PPjCAIEZ3WQroosOxTY3eeKldAN3h+vk8pMNz4+jl1CZzBR4pW+K/rRPF112VooCL5FdjJoiMNjDrL2A==}
 
-  zod@4.6.4:
-    resolution: {integrity: sha512-AXSD6hvGdvRjajG/l1cC+d6IrhH+sjmPKtYeQdJIK8MFJl3LyClzS+o/YsVC+zQZPupAaeH5skwwm8YqYH7BqA==}
+  zod@4.6.5:
+    resolution: {integrity: sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -6458,12 +6458,12 @@ snapshots:
     optionalDependencies:
       '@opentelemetry/api': 1.9.1
 
-  '@renovatebot/detect-tools@4.0.19':
+  '@renovatebot/detect-tools@4.0.20':
     dependencies:
       fs-extra: 11.4.0
       toml-eslint-parser: 1.0.3
       upath: 3.0.8
-      zod: 4.6.4
+      zod: 4.6.5
 
   '@renovatebot/good-enough-parser@2.0.1':
     dependencies:
@@ -8720,7 +8720,7 @@ snapshots:
     dependencies:
       cli-truncate: 6.1.1
       log-update: 8.0.0
-      wrap-ansi: 10.0.1
+      wrap-ansi: 10.0.2
 
   load-esm@1.0.3: {}
 
@@ -8752,7 +8752,7 @@ snapshots:
       slice-ansi: 9.0.1
       string-width: 8.2.2
       strip-ansi: 7.2.0
-      wrap-ansi: 10.0.1
+      wrap-ansi: 10.0.2
 
   logform@2.7.0:
     dependencies:
@@ -9624,7 +9624,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@44.104.0(supports-color@8.1.1)(typanion@3.14.0):
+  renovate@44.104.2(supports-color@8.1.1)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.1117.0
       '@aws-sdk/client-ec2': 3.1117.0
@@ -9657,7 +9657,7 @@ snapshots:
       '@pnpm/parse-overrides': 1001.0.4
       '@qnighy/marshal': 0.1.3
       '@redis/client': 6.2.1(@opentelemetry/api@1.9.1)
-      '@renovatebot/detect-tools': 4.0.19
+      '@renovatebot/detect-tools': 4.0.20
       '@renovatebot/good-enough-parser': 2.0.1
       '@renovatebot/osv-offline': 3.0.11(supports-color@8.1.1)
       '@renovatebot/pep440': 5.0.1
@@ -9748,7 +9748,7 @@ snapshots:
       xmldoc: 3.0.0
       yaml: 2.9.1
       yauzl: 3.4.0
-      zod: 4.6.4
+      zod: 4.6.5
     optionalDependencies:
       openpgp: 6.3.1
       re2: 1.26.1
@@ -10480,7 +10480,7 @@ snapshots:
 
   wordwrap@1.0.0: {}
 
-  wrap-ansi@10.0.1:
+  wrap-ansi@10.0.2:
     dependencies:
       ansi-styles: 6.2.3
       string-width: 8.2.2
@@ -10606,6 +10606,6 @@ snapshots:
       '@yuku-parser/binding-win32-arm64': 0.10.2
       '@yuku-parser/binding-win32-x64': 0.10.2
 
-  zod@4.6.4: {}
+  zod@4.6.5: {}
 
   zwitch@2.0.4: {}
