@@ -1,3 +1,9 @@
+## [5.3.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.2.0...v5.3.0) (2026-09-23)
+
+### Features
+
+* **presets:** skip ci and tests for hk pkl schema updates ([ac3dfda](https://gitlab.kilic.dev/renovate/renovate-config/commit/ac3dfdab8b6a4ab0647d1e10d8ce1eba08d65351))
+
 ## [5.2.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.1.4...v5.2.0) (2026-09-23)
 
 ### Features
