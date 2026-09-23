@@ -1,3 +1,13 @@
+## [5.2.0](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.1.4...v5.2.0) (2026-09-23)
+
+### Features
+
+* **presets:** add hk pkl schema manager with automerge ([6c715dc](https://gitlab.kilic.dev/renovate/renovate-config/commit/6c715dc53e0b1f008f9db0190251631231f75eb5))
+
+### Bug Fixes
+
+* **deps:** update dependency renovate to ^44.93.5 ([8396ccf](https://gitlab.kilic.dev/renovate/renovate-config/commit/8396ccfe364c0fe58a16fe5a374e6bd4a8c4a897))
+
 ## [5.1.4](https://gitlab.kilic.dev/renovate/renovate-config/compare/v5.1.3...v5.1.4) (2026-09-22)
 
 ### Bug Fixes
