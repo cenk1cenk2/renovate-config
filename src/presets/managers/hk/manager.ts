@@ -37,6 +37,8 @@ export default createPreset({
       matchManagers: [Managers.REGEX],
       matchDepTypes: [DEP_TYPE_HK_PKL_SCHEMA],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
+      commitMessageSuffix: '[skip ci]',
+      ignoreTests: true,
       schedule: [SCHEDULE.DAILY]
     },
     {

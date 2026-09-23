@@ -570,6 +570,8 @@
           "pin",
           "digest"
         ],
+        "commitMessageSuffix": "[skip ci]",
+        "ignoreTests": true,
         "schedule": [
           "before 9am"
         ]
