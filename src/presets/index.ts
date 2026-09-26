@@ -167,7 +167,26 @@ export enum Preset {
   MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MINOR = 'manager-otel-builder-no-automerge-minor',
   MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MAJOR = 'manager-otel-builder-no-automerge-major',
   DATASOURCE_DOCKER_NO_AUTOMERGE_MINOR = 'datasource-docker-no-automerge-minor',
-  DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR = 'datasource-docker-no-automerge-major'
+  DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR = 'datasource-docker-no-automerge-major',
+
+  // disable — parameterized, opt-in per package. A repository extends one to stop renovate updating a single
+  // package of one manager or datasource, rather than disabling that name across every manager at once.
+  MANAGER_HELM_DISABLE = 'manager-helm-disable',
+  MANAGER_KUSTOMIZE_DISABLE = 'manager-kustomize-disable',
+  MANAGER_ARGOCD_DISABLE = 'manager-argocd-disable',
+  MANAGER_TERRAFORM_DISABLE = 'manager-terraform-disable',
+  MANAGER_TERRAFORM_CUSTOM_DISABLE = 'manager-terraform-custom-disable',
+  MANAGER_NODE_DISABLE = 'manager-node-disable',
+  MANAGER_GO_DISABLE = 'manager-go-disable',
+  MANAGER_PYTHON_DISABLE = 'manager-python-disable',
+  MANAGER_RUST_DISABLE = 'manager-rust-disable',
+  MANAGER_KUBERNETES_DISABLE = 'manager-kubernetes-disable',
+  MANAGER_DOCKERFILE_DISABLE = 'manager-dockerfile-disable',
+  MANAGER_ANSIBLE_GALAXY_DISABLE = 'manager-ansible-galaxy-disable',
+  MANAGER_GITLAB_CI_DISABLE = 'manager-gitlab-ci-disable',
+  MANAGER_GITLAB_CI_CUSTOM_DISABLE = 'manager-gitlab-ci-custom-disable',
+  MANAGER_OTEL_BUILDER_DISABLE = 'manager-otel-builder-disable',
+  DATASOURCE_DOCKER_DISABLE = 'datasource-docker-disable'
 }
 
 export const PRESETS: Presets = {
@@ -337,7 +356,26 @@ export const PRESETS: Presets = {
   [Preset.MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MINOR]: import('./managers/otel-builder/overrides/no-automerge-minor.js').then((m) => m.default),
   [Preset.MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MAJOR]: import('./managers/otel-builder/overrides/no-automerge-major.js').then((m) => m.default),
   [Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MINOR]: import('./datasources/docker/overrides/no-automerge-minor.js').then((m) => m.default),
-  [Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR]: import('./datasources/docker/overrides/no-automerge-major.js').then((m) => m.default)
+  [Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR]: import('./datasources/docker/overrides/no-automerge-major.js').then((m) => m.default),
+
+  // disable
+
+  [Preset.MANAGER_HELM_DISABLE]: import('./managers/helm/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_KUSTOMIZE_DISABLE]: import('./managers/kustomize/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_ARGOCD_DISABLE]: import('./managers/argocd/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_TERRAFORM_DISABLE]: import('./managers/terraform/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_TERRAFORM_CUSTOM_DISABLE]: import('./managers/terraform/overrides/custom-disable.js').then((m) => m.default),
+  [Preset.MANAGER_NODE_DISABLE]: import('./managers/node/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_GO_DISABLE]: import('./managers/go/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_PYTHON_DISABLE]: import('./managers/python-pep621/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_RUST_DISABLE]: import('./managers/rust-cargo/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_KUBERNETES_DISABLE]: import('./managers/kubernetes/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_DOCKERFILE_DISABLE]: import('./managers/dockerfile/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_ANSIBLE_GALAXY_DISABLE]: import('./managers/ansible-galaxy/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_GITLAB_CI_DISABLE]: import('./managers/gitlab-ci/overrides/disable.js').then((m) => m.default),
+  [Preset.MANAGER_GITLAB_CI_CUSTOM_DISABLE]: import('./managers/gitlab-ci/overrides/custom-disable.js').then((m) => m.default),
+  [Preset.MANAGER_OTEL_BUILDER_DISABLE]: import('./managers/otel-builder/overrides/disable.js').then((m) => m.default),
+  [Preset.DATASOURCE_DOCKER_DISABLE]: import('./datasources/docker/overrides/disable.js').then((m) => m.default)
 }
 
 export const FILES: Record<string, Preset[]> = {
