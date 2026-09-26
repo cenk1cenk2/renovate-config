@@ -3975,5 +3975,297 @@
         "automerge": false
       }
     ]
+  },
+  "manager-helm-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "helmv3"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-kustomize-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "kustomize"
+        ],
+        "matchDepTypes": [
+          "HelmChart"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-argocd-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "argocd"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-terraform-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "terraform"
+        ],
+        "matchDepTypes": [
+          "helm_release",
+          "provider",
+          "required_provider",
+          "module"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-terraform-custom-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "terraform-manager-git-monorepo"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-node-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "npm"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-go-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "gomod"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-python-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "pep621"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-rust-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "cargo"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-kubernetes-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "kubernetes"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-dockerfile-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "dockerfile"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-ansible-galaxy-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "ansible-galaxy"
+        ],
+        "matchDepTypes": [
+          "collections",
+          "roles"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-gitlab-ci-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "gitlabci-include",
+          "gitlabci"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-gitlab-ci-custom-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "gitlab-ci-manager-git-monorepo"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-otel-builder-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "ocb"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "datasource-docker-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchDatasources": [
+          "docker"
+        ],
+        "enabled": false
+      }
+    ]
   }
 }

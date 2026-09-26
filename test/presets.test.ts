@@ -203,9 +203,32 @@ const BREAKING_PRESETS: Preset[] = [
 
 const BREAKING_PRESET_PATTERN = /-(no-)?breaking-major$/
 
+// The parameterized disables, one per manager and datasource. A repository extends one to freeze a single
+// package of that manager, where a bare `matchPackageNames` rule would freeze the name in every manager.
+const DISABLE_PRESETS: Preset[] = [
+  Preset.MANAGER_HELM_DISABLE,
+  Preset.MANAGER_KUSTOMIZE_DISABLE,
+  Preset.MANAGER_ARGOCD_DISABLE,
+  Preset.MANAGER_TERRAFORM_DISABLE,
+  Preset.MANAGER_TERRAFORM_CUSTOM_DISABLE,
+  Preset.MANAGER_NODE_DISABLE,
+  Preset.MANAGER_GO_DISABLE,
+  Preset.MANAGER_PYTHON_DISABLE,
+  Preset.MANAGER_RUST_DISABLE,
+  Preset.MANAGER_KUBERNETES_DISABLE,
+  Preset.MANAGER_DOCKERFILE_DISABLE,
+  Preset.MANAGER_ANSIBLE_GALAXY_DISABLE,
+  Preset.MANAGER_GITLAB_CI_DISABLE,
+  Preset.MANAGER_GITLAB_CI_CUSTOM_DISABLE,
+  Preset.MANAGER_OTEL_BUILDER_DISABLE,
+  Preset.DATASOURCE_DOCKER_DISABLE
+]
+
+const DISABLE_PRESET_PATTERN = /-disable$/
+
 // Every preset a repository extends for itself, rather than inheriting from `default`. They are the only
 // presets that may carry `Labels.OVERRIDE`, and the only ones the reachability guard exempts.
-const PARAMETERIZED_PRESETS: Preset[] = [...AUTOMERGE_PRESETS, ...NO_AUTOMERGE_PRESETS, ...BREAKING_PRESETS]
+const PARAMETERIZED_PRESETS: Preset[] = [...AUTOMERGE_PRESETS, ...NO_AUTOMERGE_PRESETS, ...BREAKING_PRESETS, ...DISABLE_PRESETS]
 
 // The one manager whose majors are marked breaking by the estate-wide config, keyed `<preset>:<groupSlug>`.
 // Pinned for the same reason as CENTRAL_AUTOMERGE: a manager gaining or losing the marker changes the
@@ -250,6 +273,18 @@ describe('preset registry', () => {
     expect(Object.keys(PRESETS).sort()).toEqual(Object.values(Preset).sort())
   })
 
+  // Models where a consumer extends them: after `default/default`, so after every central rule.
+  it('registers every parameterized preset last', () => {
+    for (const order of [Object.values(Preset), Object.keys(PRESETS) as Preset[]]) {
+      const first = order.findIndex((name) => PARAMETERIZED_PRESETS.includes(name))
+
+      expect(
+        order.slice(first).filter((name) => !PARAMETERIZED_PRESETS.includes(name)),
+        'a central preset is registered after a parameterized one'
+      ).toEqual([])
+    }
+  })
+
   it('lists every automerge preset as a consumer entrypoint', () => {
     const named = Object.values(Preset).filter((name) => AUTOMERGE_PRESET_PATTERN.test(name))
 
@@ -276,6 +311,25 @@ describe('preset registry', () => {
       .filter((name) => !Object.values(Preset).includes(name as Preset))
 
     expect(missing, 'every automerge preset needs a no-automerge twin').toEqual([])
+  })
+
+  it('lists every disable preset as a consumer entrypoint', () => {
+    const named = Object.values(Preset).filter((name) => DISABLE_PRESET_PATTERN.test(name))
+
+    expect(
+      named.filter((name) => !DISABLE_PRESETS.includes(name)),
+      'a new disable preset must join DISABLE_PRESETS, or it escapes the reachability and entrypoint guards'
+    ).toEqual([])
+  })
+
+  // Anything a repository can opt in to automerge, it can also freeze outright.
+  it('pairs every automerge preset with a disable preset', () => {
+    const missing = Object.values(Preset)
+      .filter((name) => AUTOMERGE_PRESET_PATTERN.test(name) && name.endsWith('-automerge-minor'))
+      .map((name) => name.replace('-automerge-minor', '-disable'))
+      .filter((name) => !Object.values(Preset).includes(name as Preset))
+
+    expect(missing, 'every manager and datasource with an automerge preset needs a disable preset').toEqual([])
   })
 
   it('lists every breaking-marker preset as a consumer entrypoint', () => {
@@ -407,6 +461,64 @@ describe('no automerge opt-out', () => {
     const offenders = optOuts.filter(([, rule]) => rule.groupSlug !== undefined || rule.schedule !== undefined).map(([name]) => name)
 
     expect(offenders, 'an opt-out sets groupName to null and nothing else about grouping - a slug would put it back on a shared branch').toEqual([])
+  })
+})
+
+// A bare `matchPackageNames` disable freezes that name in every manager and datasource at once, which is what
+// these exist to replace. Each is scoped exactly as the no-automerge opt-out of the same manager, so the two
+// families agree on what one manager's package is.
+describe('disable', () => {
+  const disables = DISABLE_PRESETS.flatMap((name) => (presets[name].packageRules ?? []).map((rule) => [name, rule] as const))
+
+  it('disables in every disable preset', () => {
+    expect(disables.length, 'the disable presets should exist').toBe(DISABLE_PRESETS.length)
+
+    for (const [name, rule] of disables) {
+      expect(rule.enabled, name).toBe(false)
+    }
+  })
+
+  it('bounds every disable to one package', () => {
+    for (const [name, rule] of disables) {
+      expect(rule.matchPackageNames, name).toEqual(['{{arg0}}'])
+    }
+  })
+
+  it('scopes every disable to its manager or datasource', () => {
+    for (const [name, rule] of disables) {
+      expect(rule.matchManagers ?? rule.matchDatasources, `${name} would disable the name in every manager`).toBeDefined()
+    }
+  })
+
+  it('mirrors the scope of the no-automerge preset of the same manager', () => {
+    const SCOPE = ['matchManagers', 'matchDepTypes', 'matchDatasources'] as const
+
+    for (const name of DISABLE_PRESETS) {
+      const twin = name.replace(DISABLE_PRESET_PATTERN, '-no-automerge-minor') as Preset
+
+      expect(presets[twin], `${name} has no no-automerge twin`).toBeDefined()
+
+      for (const matcher of SCOPE) {
+        expect(presets[name].packageRules[0][matcher], `${name}.${matcher} must mirror ${twin}`).toEqual(presets[twin].packageRules[0][matcher])
+      }
+    }
+  })
+
+  it('touches nothing beyond disabling', () => {
+    const offenders = disables
+      .filter(
+        ([, rule]) =>
+          rule.automerge !== undefined ||
+          rule.groupName !== undefined ||
+          rule.groupSlug !== undefined ||
+          rule.schedule !== undefined ||
+          rule.commitMessagePrefix !== undefined ||
+          rule.semanticCommitType !== undefined ||
+          rule.addLabels?.includes(Labels.AUTOMERGE)
+      )
+      .map(([name]) => name)
+
+    expect(offenders, 'a disable preset only sets `enabled: false`').toEqual([])
   })
 })
 
@@ -1359,6 +1471,15 @@ describe('wiring', () => {
     expect(
       BREAKING_PRESETS.filter((name) => reachableFromDefault.has(name)),
       'a breaking-marker preset is reachable from `default`'
+    ).toEqual([])
+  })
+
+  it('never reaches a disable preset from default', () => {
+    // Freezing a package is a per-repository call: extended from inside the graph it would freeze that
+    // package in every repository.
+    expect(
+      DISABLE_PRESETS.filter((name) => reachableFromDefault.has(name)),
+      'a disable preset is reachable from `default`'
     ).toEqual([])
   })
 

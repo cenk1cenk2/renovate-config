@@ -14,7 +14,7 @@ Renovate configuration generator. Produces a `default.json` preset file consumed
   - `test/` — invariant tests over the assembled presets (`pnpm test`)
   - `src/presets/index.ts` — `Preset` enum, `PRESETS` record, `FILES` output mapping
   - `src/presets/managers/<name>/` — per-manager assemblers (`manager.ts`, `custom-manager.ts`). `src/presets/managers/index.ts` holds the `Managers` enum.
-  - `src/presets/<managers|datasources>/<name>/overrides/` — **every parameterized preset lives here and nothing else does.** These are the consumer entrypoints: a repository extends one for itself, after `default/default`, to overrule what the estate-wide config decided. Six per manager — `automerge-{minor,major}`, `no-automerge-{minor,major}`, `breaking-major`, `no-breaking-major` — plus a `custom-` twin of each where the manager has a `custom.regex` variant. The directory name is the same word as the `renovate:override` label they all carry and the `PARAMETERIZED_PRESETS` list in the tests, so the concept has one name everywhere. Nothing outside `overrides/` may be parameterized, and nothing inside it may be reachable from `default`.
+  - `src/presets/<managers|datasources>/<name>/overrides/` — **every parameterized preset lives here and nothing else does.** These are the consumer entrypoints: a repository extends one for itself, after `default/default`, to overrule what the estate-wide config decided. Seven per manager — `automerge-{minor,major}`, `no-automerge-{minor,major}`, `breaking-major`, `no-breaking-major`, `disable` — plus a `custom-` twin of each where the manager has a `custom.regex` variant. The directory name is the same word as the `renovate:override` label they all carry and the `PARAMETERIZED_PRESETS` list in the tests, so the concept has one name everywhere. Nothing outside `overrides/` may be parameterized, and nothing inside it may be reachable from `default`.
   - `src/presets/groups/<name>/` — group presets, one directory per manager (node, go, python, gitlab-ci, ansible-galaxy, helm, kustomize, terraform, argocd). `src/presets/groups/index.ts` holds the `Groups` enum (groupSlug values).
   - `src/presets/rings/<name>/` — ring presets (node, go). `src/presets/rings/index.ts` holds the `Rings` enum.
   - `src/presets/datasources/<name>/` — datasource presets. `src/presets/datasources/index.ts` holds the `Datasources` enum.
@@ -108,7 +108,7 @@ Five invariants hold these together, all enforced by `test/presets.test.ts`:
 
 Each one adds `Labels.RENOVATE` alongside `Labels.AUTOMERGE`: a repository may extend it without `base`, and without the umbrella there it would get no labels at all.
 
-**Every parameterized preset also adds `Labels.OVERRIDE` (`renovate:override`)** — the automerge pair and the breaking pair alike, 64 keys. A repository extends one of these to overrule what the estate-wide config decided, so the label answers "why is this merge request behaving differently from the others" without anyone opening that repository's `renovate.json`. `group-by-unit` is parameterized but deliberately does **not** carry it: it applies to every dependency under its directory, so the label would land on every merge request in the repository and stop telling them apart. `test/presets.test.ts` enforces both halves — only a parameterized preset may add it, and every one of them must.
+**Every parameterized preset also adds `Labels.OVERRIDE` (`renovate:override`)** — the automerge, no-automerge and breaking pairs and the disables alike, 112 keys. A repository extends one of these to overrule what the estate-wide config decided, so the label answers "why is this merge request behaving differently from the others" without anyone opening that repository's `renovate.json`. `group-by-unit` is parameterized but deliberately does **not** carry it: it applies to every dependency under its directory, so the label would land on every merge request in the repository and stop telling them apart. `test/presets.test.ts` enforces both halves — only a parameterized preset may add it, and every one of them must.
 
 A new `-automerge-minor` / `-automerge-major` key must be added to `AUTOMERGE_PRESETS` in `test/presets.test.ts`; a registry test fails if the name matches the pattern and the list does not carry it.
 
@@ -163,6 +163,41 @@ The package therefore has to leave the branch first, and `createNoAutomergeRule(
 **Do not extend both halves of a pair for the same package — the outcome is the consuming repository's to control, not this repo's.** Renovate concatenates `packageRules` in the order the consumer lists its `extends` (`config/presets/index.js:141-153` into `config/utils.js:25`); the order of keys inside `default.json` is irrelevant to it. So whichever half the repository names **last** wins, and the result of naming both is worse than either alone: `automerge: true` from the opt-in lands last while `groupName: null` still applies, because only the opt-out sets it — the package then automerges by itself on its own branch, off the group merge request it was supposed to be held back from.
 
 The `registered last` ordering in the `Preset` enum **models** where a consumer is expected to put these lines. It does not cause the precedence, and `test/presets.test.ts` resolves rules in that registry order for the same reason — as a model of the documented usage, not as a guarantee about a repository that deviates from it.
+
+### Freezing a package — `disable`
+
+**Freezing one package is opt-in per package and per manager, declared by the consuming repository.** Every manager and datasource that has an automerge pair also has one `disable` preset — 16 keys, a single key each rather than a minor/major pair — taking the package name as `{{arg0}}` and setting `enabled: false`. It replaces the inline rule a repository used to write, `{ "matchPackageNames": ["x"], "enabled": false }`, which freezes that name in **every** manager and datasource at once.
+
+| Preset key                         | Directory                    | Scope                                                                     |
+| ---------------------------------- | ---------------------------- | ------------------------------------------------------------------------- |
+| `manager-helm-disable`             | `managers/helm/`             | `matchManagers: ['helmv3']`                                               |
+| `manager-kustomize-disable`        | `managers/kustomize/`        | `kustomize`, `matchDepTypes: ['HelmChart']`                               |
+| `manager-argocd-disable`           | `managers/argocd/`           | `argocd`; argument is a git URL                                           |
+| `manager-terraform-disable`        | `managers/terraform/`        | `terraform`, `module` / `provider` / `required_provider` / `helm_release` |
+| `manager-terraform-custom-disable` | `managers/terraform/custom-` | `custom.regex` scoped by the terraform monorepo dep type                  |
+| `manager-node-disable`             | `managers/node/`             | `npm`                                                                     |
+| `manager-go-disable`               | `managers/go/`               | `gomod`                                                                   |
+| `manager-python-disable`           | `managers/python-pep621/`    | `pep621`                                                                  |
+| `manager-rust-disable`             | `managers/rust-cargo/`       | `cargo`                                                                   |
+| `manager-kubernetes-disable`       | `managers/kubernetes/`       | `kubernetes`; argument is an image reference                              |
+| `manager-dockerfile-disable`       | `managers/dockerfile/`       | `dockerfile`                                                              |
+| `manager-ansible-galaxy-disable`   | `managers/ansible-galaxy/`   | `ansible-galaxy`, `matchDepTypes: ['collections', 'roles']`               |
+| `manager-gitlab-ci-disable`        | `managers/gitlab-ci/`        | `gitlabci` and `gitlabci-include`                                         |
+| `manager-gitlab-ci-custom-disable` | `managers/gitlab-ci/custom-` | `custom.regex` scoped by the gitlab-ci monorepo dep type                  |
+| `manager-otel-builder-disable`     | `managers/otel-builder/`     | `ocb`                                                                     |
+| `datasource-docker-disable`        | `datasources/docker/`        | `matchDatasources: ['docker']`, every manager that emits an image         |
+
+```json
+{
+  "extends": ["local>renovate/renovate-config:default/default", "local>renovate/renovate-config:default/manager-helm-disable(kube-prometheus-stack)"]
+}
+```
+
+- **Unbounded by update type, on purpose.** Renovate reads `enabled: false` twice: at the pre-lookup stage (`dist/workers/repository/process/fetch.js`), where the dependency is skipped with `skipReason: disabled` before any registry lookup, and per update when flattening (`dist/workers/repository/updates/flatten.js`). `updateType` is undefined at pre-lookup, so a rule carrying `matchUpdateTypes` only reaches the second pass — it filters those updates out but still looks the dependency up. A disable freezes the package outright, so it carries no `matchUpdateTypes`, and the boundedness rule of the Automerge Pattern does not apply: nothing here automerges.
+- **Scope mirrors the no-automerge twin.** `matchManagers`, `matchDepTypes` and `matchDatasources` equal those of the same manager's `no-automerge-minor`, so both families agree on what one manager's package is. A test enforces the mirroring.
+- **It sets `enabled: false` and nothing else** — no `groupName`, `groupSlug`, `schedule`, `automerge` or commit fields. A test enforces it.
+- It shares the invariants of every parameterized preset: never reachable from `default`, registered last, `Labels.RENOVATE` plus `Labels.OVERRIDE`. A new `-disable` key must be added to `DISABLE_PRESETS` in `test/presets.test.ts`, and a manager gaining an automerge pair without a disable fails the registry suite.
+- **`datasource-docker-disable` and a manager disable overlap.** An image in a Dockerfile is matched by both `manager-dockerfile-disable` and `datasource-docker-disable`; either freezes it. Reach for the datasource one to freeze an image everywhere in the repository, the manager one to freeze it in one kind of file.
 
 ## Breaking Marker
 
