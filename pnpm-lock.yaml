@@ -31,7 +31,7 @@ importers:
         version: 11.1.0
       renovate:
         specifier: ^44.103.1
-        version: 44.115.0(supports-color@8.1.1)(typanion@3.14.0)
+        version: 44.115.2(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
@@ -4151,8 +4151,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.9.7:
-    resolution: {integrity: sha512-T3mF5P7HFzZVLDQuCUNtJj6WK1pcpLMweMNUVwGb01bLNkH9AkKxtZvmInw8K6bnn2O3d6/5RHl6zSHiBAD0Og==}
+  prettier@3.9.8:
+    resolution: {integrity: sha512-WRFq3Wn3WId7LLROfMLdH7xaFr2jR62wU8nLO6rQUOLOxNZUviyJQs1M0iIhLexSFy+L+w0ch66wtoO2jRjG0A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4246,8 +4246,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@44.115.0:
-    resolution: {integrity: sha512-cmEoc8KLGx6HvRriVpnTq8XkRhmKaExFyFnhQkfNW+ZsbHY9fdJXQVm47L8E7OZ+tCvX8Kn9qPRD1azlDxdVAg==}
+  renovate@44.115.2:
+    resolution: {integrity: sha512-Djw3zN8XNnGH83NhqGlVEUfmhipznPPNIurUwfUFno1+STWH6TNgNYF9psQiM1XOIPWB2zKmVBgwEbG3Yeoj0g==}
     engines: {node: ^24.11.0, pnpm: ^11.0.0}
     hasBin: true
 
@@ -9488,7 +9488,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.9.7: {}
+  prettier@3.9.8: {}
 
   prettier@3.9.9: {}
 
@@ -9613,7 +9613,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@44.115.0(supports-color@8.1.1)(typanion@3.14.0):
+  renovate@44.115.2(supports-color@8.1.1)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.1117.0
       '@aws-sdk/client-ec2': 3.1117.0
@@ -9712,7 +9712,7 @@ snapshots:
       p-queue: 9.3.3
       p-throttle: 8.1.1
       parse-link-header: 2.0.0
-      prettier: 3.9.7
+      prettier: 3.9.8
       protobufjs: 8.8.0
       punycode: 2.3.1
       remark: 15.0.1(supports-color@8.1.1)
