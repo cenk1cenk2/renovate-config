@@ -38,7 +38,8 @@
       "local>renovate/renovate-config:default/manager-python",
       "local>renovate/renovate-config:default/manager-rust",
       "local>renovate/renovate-config:default/manager-terraform",
-      "local>renovate/renovate-config:default/datasource-docker"
+      "local>renovate/renovate-config:default/datasource-docker",
+      "local>renovate/renovate-config:default/datasource-github-releases"
     ]
   },
   "base": {
@@ -623,6 +624,19 @@
         ],
         "schedule": [
           "at any time"
+        ]
+      }
+    ]
+  },
+  "datasource-github-releases": {
+    "packageRules": [
+      {
+        "matchDatasources": [
+          "github-releases"
+        ],
+        "addLabels": [
+          "renovate",
+          "datasource:github-releases"
         ]
       }
     ]
@@ -2611,6 +2625,63 @@
       }
     ]
   },
+  "datasource-github-releases-automerge-minor": {
+    "packageRules": [
+      {
+        "enabled": true,
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "addLabels": [
+          "renovate",
+          "renovate:override",
+          "automerge"
+        ],
+        "groupName": "github-releases datasource minor automerge dependency updates",
+        "groupSlug": "github-releases-minor-automerge",
+        "automerge": true,
+        "matchDatasources": [
+          "github-releases"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "schedule": [
+          "at any time"
+        ]
+      }
+    ]
+  },
+  "datasource-github-releases-automerge-major": {
+    "packageRules": [
+      {
+        "enabled": true,
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "addLabels": [
+          "renovate",
+          "renovate:override",
+          "automerge"
+        ],
+        "groupName": "github-releases datasource major automerge dependency updates",
+        "groupSlug": "github-releases-major-automerge",
+        "automerge": true,
+        "matchDatasources": [
+          "github-releases"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "schedule": [
+          "at any time"
+        ]
+      }
+    ]
+  },
   "manager-helm-breaking-major": {
     "packageRules": [
       {
@@ -3218,6 +3289,42 @@
         ],
         "matchDatasources": [
           "docker"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "commitMessagePrefix": "",
+        "commitMessageAction": "Update"
+      }
+    ]
+  },
+  "datasource-github-releases-breaking-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchDatasources": [
+          "github-releases"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "commitMessagePrefix": "{{semanticCommitType}}{{#if semanticCommitScope}}({{semanticCommitScope}}){{/if}}!:",
+        "commitMessageAction": "update"
+      }
+    ]
+  },
+  "datasource-github-releases-no-breaking-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchDatasources": [
+          "github-releases"
         ],
         "matchUpdateTypes": [
           "major"
@@ -3976,6 +4083,51 @@
       }
     ]
   },
+  "datasource-github-releases-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchDatasources": [
+          "github-releases"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "datasource-github-releases-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchDatasources": [
+          "github-releases"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
   "manager-helm-disable": {
     "packageRules": [
       {
@@ -4263,6 +4415,23 @@
         ],
         "matchDatasources": [
           "docker"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "datasource-github-releases-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchDatasources": [
+          "github-releases"
         ],
         "enabled": false
       }

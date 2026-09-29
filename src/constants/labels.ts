@@ -42,6 +42,7 @@ export enum Labels {
   MANAGER_TERRAFORM = 'manager:terraform',
 
   DATASOURCE_DOCKER = 'datasource:docker',
+  DATASOURCE_GITHUB_RELEASES = 'datasource:github-releases',
 
   RING_FAST = 'ring:fast',
   RING_SLOW = 'ring:slow'

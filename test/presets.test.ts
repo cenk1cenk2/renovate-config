@@ -117,7 +117,9 @@ const AUTOMERGE_PRESETS: Preset[] = [
   Preset.MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MINOR,
   Preset.MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MAJOR,
   Preset.DATASOURCE_DOCKER_AUTOMERGE_MINOR,
-  Preset.DATASOURCE_DOCKER_AUTOMERGE_MAJOR
+  Preset.DATASOURCE_DOCKER_AUTOMERGE_MAJOR,
+  Preset.DATASOURCE_GITHUB_RELEASES_AUTOMERGE_MINOR,
+  Preset.DATASOURCE_GITHUB_RELEASES_AUTOMERGE_MAJOR
 ]
 
 // Every automerge preset is a consumer entrypoint, so the list above must stay complete as new ones land.
@@ -159,7 +161,9 @@ const NO_AUTOMERGE_PRESETS: Preset[] = [
   Preset.MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MINOR,
   Preset.MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MAJOR,
   Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MINOR,
-  Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR
+  Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR,
+  Preset.DATASOURCE_GITHUB_RELEASES_NO_AUTOMERGE_MINOR,
+  Preset.DATASOURCE_GITHUB_RELEASES_NO_AUTOMERGE_MAJOR
 ]
 
 const NO_AUTOMERGE_PRESET_PATTERN = /-no-automerge-(minor|major)$/
@@ -198,7 +202,9 @@ const BREAKING_PRESETS: Preset[] = [
   Preset.MANAGER_OTEL_BUILDER_BREAKING_MAJOR,
   Preset.MANAGER_OTEL_BUILDER_NO_BREAKING_MAJOR,
   Preset.DATASOURCE_DOCKER_BREAKING_MAJOR,
-  Preset.DATASOURCE_DOCKER_NO_BREAKING_MAJOR
+  Preset.DATASOURCE_DOCKER_NO_BREAKING_MAJOR,
+  Preset.DATASOURCE_GITHUB_RELEASES_BREAKING_MAJOR,
+  Preset.DATASOURCE_GITHUB_RELEASES_NO_BREAKING_MAJOR
 ]
 
 const BREAKING_PRESET_PATTERN = /-(no-)?breaking-major$/
@@ -221,7 +227,8 @@ const DISABLE_PRESETS: Preset[] = [
   Preset.MANAGER_GITLAB_CI_DISABLE,
   Preset.MANAGER_GITLAB_CI_CUSTOM_DISABLE,
   Preset.MANAGER_OTEL_BUILDER_DISABLE,
-  Preset.DATASOURCE_DOCKER_DISABLE
+  Preset.DATASOURCE_DOCKER_DISABLE,
+  Preset.DATASOURCE_GITHUB_RELEASES_DISABLE
 ]
 
 const DISABLE_PRESET_PATTERN = /-disable$/
@@ -915,7 +922,8 @@ describe('effective automerge', () => {
         if (rule.matchDepNames && !matchRegexOrGlobList(depName ?? packageName, rule.matchDepNames)) continue
         if (rule.matchManagers && (!manager || !rule.matchManagers.includes(manager))) continue
         if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
-        if (rule.matchDepTypes && depType && !rule.matchDepTypes.includes(depType)) continue
+        // Renovate's `DepTypesMatcher` fails a dependency that carries no dep type, as a bare `custom.regex` one does.
+        if (rule.matchDepTypes && !(depType && rule.matchDepTypes.includes(depType))) continue
         if (rule.matchSourceUrls && sourceUrl && !rule.matchSourceUrls.includes(sourceUrl)) continue
         if (rule.matchDatasources && (!datasource || !rule.matchDatasources.includes(datasource as never))) continue
 
@@ -943,6 +951,9 @@ describe('effective automerge', () => {
     // Every other image needs the opt-in: the central docker rule automerges `docker/dockerfile` alone.
     ['docker minor', { packageName: 'grafana/grafana', updateType: 'minor', datasource: Datasources.DOCKER }, false],
     ['docker major', { packageName: 'grafana/grafana', updateType: 'major', datasource: Datasources.DOCKER }, false],
+    // A `# renovate: datasource=github-releases` directive: `custom.regex`, and no dep type unless its custom manager sets one.
+    ['github-releases minor', { manager: Managers.REGEX, packageName: 'jdx/mise', updateType: 'minor', datasource: Datasources.GITHUB_RELEASES }, false],
+    ['github-releases major', { manager: Managers.REGEX, packageName: 'jdx/mise', updateType: 'major', datasource: Datasources.GITHUB_RELEASES }, false],
     ['terraform minor', { manager: Managers.TERRAFORM, packageName: 'hashicorp/aws', updateType: 'minor', depType: 'provider' }, false],
     ['terraform major', { manager: Managers.TERRAFORM, packageName: 'hashicorp/aws', updateType: 'major', depType: 'provider' }, false],
     ['terraform-monorepo minor', { manager: Managers.REGEX, packageName: 'terraform/tf-modules', updateType: 'minor', depType: DEP_TYPE_TERRAFORM_MANAGER_MONOREPO }, false],

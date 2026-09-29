@@ -69,5 +69,8 @@ export enum Groups {
   OTEL_BUILDER_MAJOR = 'otel-builder-major',
 
   DOCKER_MINOR = 'docker-minor',
-  DOCKER_MAJOR = 'docker-major'
+  DOCKER_MAJOR = 'docker-major',
+
+  GITHUB_RELEASES_MINOR_AUTOMERGE = 'github-releases-minor-automerge',
+  GITHUB_RELEASES_MAJOR_AUTOMERGE = 'github-releases-major-automerge'
 }
