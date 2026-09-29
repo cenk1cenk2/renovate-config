@@ -1,3 +1,4 @@
 export enum Datasources {
-  DOCKER = 'docker'
+  DOCKER = 'docker',
+  GITHUB_RELEASES = 'github-releases'
 }

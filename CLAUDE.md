@@ -65,7 +65,7 @@ For Pattern M the factory attaches `Labels.AUTOMERGE` automatically whenever `au
 
 ### Parameterized automerge presets
 
-**Automerge is opt-in per package, declared by the consuming repository — not by an allowlist here.** Every manager and datasource the central config handles has a minor and a major preset — 32 keys — each taking the package name as `{{arg0}}` via `matchPackageNames: ['{{arg0}}']`. A repository extends one of them once per package, after `default/default`:
+**Automerge is opt-in per package, declared by the consuming repository — not by an allowlist here.** Every manager and datasource the central config handles has a minor and a major preset — 34 keys — each taking the package name as `{{arg0}}` via `matchPackageNames: ['{{arg0}}']`. A repository extends one of them once per package, after `default/default`:
 
 Each row is a `-minor` / `-major` pair; the major twin always matches `['major']` alone and shares the minor twin's matchers.
 
@@ -87,6 +87,7 @@ Each row is a `-minor` / `-major` pair; the major twin always matches `['major']
 | `manager-gitlab-ci-custom-automerge-*` | `managers/gitlab-ci/custom-` | `minor`, `patch`, `pin`, `digest` | S | `gitlab-ci-{minor,major}` | `custom.regex` scoped by the gitlab-ci monorepo dep type |
 | `manager-otel-builder-automerge-*` | `managers/otel-builder/` | `minor`, `patch`, `digest` | S | `otel-builder-{minor,major}` | `DAILY`; minor reuses the central group's slug |
 | `datasource-docker-automerge-*` | `datasources/docker/` | `minor`, `patch`, `pin`, `digest` | S | `docker-{minor,major}` | `matchDatasources: ['docker']`, `ANY`; minor reuses the central slug, which automerges only `docker/dockerfile` |
+| `datasource-github-releases-automerge-*` | `datasources/github-releases/` | `minor`, `patch`, `pin`, `digest` | S | `github-releases-{minor,major}-automerge` | `matchDatasources: ['github-releases']`, `ANY`; covers a `custom.regex` directive that sets no dep type |
 
 ```json
 {
@@ -108,7 +109,7 @@ Five invariants hold these together, all enforced by `test/presets.test.ts`:
 
 Each one adds `Labels.RENOVATE` alongside `Labels.AUTOMERGE`: a repository may extend it without `base`, and without the umbrella there it would get no labels at all.
 
-**Every parameterized preset also adds `Labels.OVERRIDE` (`renovate:override`)** — the automerge, no-automerge and breaking pairs and the disables alike, 112 keys. A repository extends one of these to overrule what the estate-wide config decided, so the label answers "why is this merge request behaving differently from the others" without anyone opening that repository's `renovate.json`. `group-by-unit` is parameterized but deliberately does **not** carry it: it applies to every dependency under its directory, so the label would land on every merge request in the repository and stop telling them apart. `test/presets.test.ts` enforces both halves — only a parameterized preset may add it, and every one of them must.
+**Every parameterized preset also adds `Labels.OVERRIDE` (`renovate:override`)** — the automerge, no-automerge and breaking pairs and the disables alike, 119 keys. A repository extends one of these to overrule what the estate-wide config decided, so the label answers "why is this merge request behaving differently from the others" without anyone opening that repository's `renovate.json`. `group-by-unit` is parameterized but deliberately does **not** carry it: it applies to every dependency under its directory, so the label would land on every merge request in the repository and stop telling them apart. `test/presets.test.ts` enforces both halves — only a parameterized preset may add it, and every one of them must.
 
 A new `-automerge-minor` / `-automerge-major` key must be added to `AUTOMERGE_PRESETS` in `test/presets.test.ts`; a registry test fails if the name matches the pattern and the list does not carry it.
 
@@ -166,26 +167,27 @@ The `registered last` ordering in the `Preset` enum **models** where a consumer 
 
 ### Freezing a package — `disable`
 
-**Freezing one package is opt-in per package and per manager, declared by the consuming repository.** Every manager and datasource that has an automerge pair also has one `disable` preset — 16 keys, a single key each rather than a minor/major pair — taking the package name as `{{arg0}}` and setting `enabled: false`. It replaces the inline rule a repository used to write, `{ "matchPackageNames": ["x"], "enabled": false }`, which freezes that name in **every** manager and datasource at once.
+**Freezing one package is opt-in per package and per manager, declared by the consuming repository.** Every manager and datasource that has an automerge pair also has one `disable` preset — 17 keys, a single key each rather than a minor/major pair — taking the package name as `{{arg0}}` and setting `enabled: false`. It replaces the inline rule a repository used to write, `{ "matchPackageNames": ["x"], "enabled": false }`, which freezes that name in **every** manager and datasource at once.
 
-| Preset key                         | Directory                    | Scope                                                                     |
-| ---------------------------------- | ---------------------------- | ------------------------------------------------------------------------- |
-| `manager-helm-disable`             | `managers/helm/`             | `matchManagers: ['helmv3']`                                               |
-| `manager-kustomize-disable`        | `managers/kustomize/`        | `kustomize`, `matchDepTypes: ['HelmChart']`                               |
-| `manager-argocd-disable`           | `managers/argocd/`           | `argocd`; argument is a git URL                                           |
-| `manager-terraform-disable`        | `managers/terraform/`        | `terraform`, `module` / `provider` / `required_provider` / `helm_release` |
-| `manager-terraform-custom-disable` | `managers/terraform/custom-` | `custom.regex` scoped by the terraform monorepo dep type                  |
-| `manager-node-disable`             | `managers/node/`             | `npm`                                                                     |
-| `manager-go-disable`               | `managers/go/`               | `gomod`                                                                   |
-| `manager-python-disable`           | `managers/python-pep621/`    | `pep621`                                                                  |
-| `manager-rust-disable`             | `managers/rust-cargo/`       | `cargo`                                                                   |
-| `manager-kubernetes-disable`       | `managers/kubernetes/`       | `kubernetes`; argument is an image reference                              |
-| `manager-dockerfile-disable`       | `managers/dockerfile/`       | `dockerfile`                                                              |
-| `manager-ansible-galaxy-disable`   | `managers/ansible-galaxy/`   | `ansible-galaxy`, `matchDepTypes: ['collections', 'roles']`               |
-| `manager-gitlab-ci-disable`        | `managers/gitlab-ci/`        | `gitlabci` and `gitlabci-include`                                         |
-| `manager-gitlab-ci-custom-disable` | `managers/gitlab-ci/custom-` | `custom.regex` scoped by the gitlab-ci monorepo dep type                  |
-| `manager-otel-builder-disable`     | `managers/otel-builder/`     | `ocb`                                                                     |
-| `datasource-docker-disable`        | `datasources/docker/`        | `matchDatasources: ['docker']`, every manager that emits an image         |
+| Preset key                           | Directory                      | Scope                                                                     |
+| ------------------------------------ | ------------------------------ | ------------------------------------------------------------------------- |
+| `manager-helm-disable`               | `managers/helm/`               | `matchManagers: ['helmv3']`                                               |
+| `manager-kustomize-disable`          | `managers/kustomize/`          | `kustomize`, `matchDepTypes: ['HelmChart']`                               |
+| `manager-argocd-disable`             | `managers/argocd/`             | `argocd`; argument is a git URL                                           |
+| `manager-terraform-disable`          | `managers/terraform/`          | `terraform`, `module` / `provider` / `required_provider` / `helm_release` |
+| `manager-terraform-custom-disable`   | `managers/terraform/custom-`   | `custom.regex` scoped by the terraform monorepo dep type                  |
+| `manager-node-disable`               | `managers/node/`               | `npm`                                                                     |
+| `manager-go-disable`                 | `managers/go/`                 | `gomod`                                                                   |
+| `manager-python-disable`             | `managers/python-pep621/`      | `pep621`                                                                  |
+| `manager-rust-disable`               | `managers/rust-cargo/`         | `cargo`                                                                   |
+| `manager-kubernetes-disable`         | `managers/kubernetes/`         | `kubernetes`; argument is an image reference                              |
+| `manager-dockerfile-disable`         | `managers/dockerfile/`         | `dockerfile`                                                              |
+| `manager-ansible-galaxy-disable`     | `managers/ansible-galaxy/`     | `ansible-galaxy`, `matchDepTypes: ['collections', 'roles']`               |
+| `manager-gitlab-ci-disable`          | `managers/gitlab-ci/`          | `gitlabci` and `gitlabci-include`                                         |
+| `manager-gitlab-ci-custom-disable`   | `managers/gitlab-ci/custom-`   | `custom.regex` scoped by the gitlab-ci monorepo dep type                  |
+| `manager-otel-builder-disable`       | `managers/otel-builder/`       | `ocb`                                                                     |
+| `datasource-docker-disable`          | `datasources/docker/`          | `matchDatasources: ['docker']`, every manager that emits an image         |
+| `datasource-github-releases-disable` | `datasources/github-releases/` | `matchDatasources: ['github-releases']`                                   |
 
 ```json
 {
@@ -224,7 +226,7 @@ Both factories force `matchUpdateTypes: ['major']` and withhold it, plus the two
 | terraform, terraform-custom | **breaking** — a provider, module or release major moves what the repository's own state is pinned to, so the plan it produces is not the plan the previous version produced | `manager-terraform-no-breaking-major` to opt out |
 | every other manager and datasource | **not breaking** | `manager-<name>-breaking-major` to opt in |
 
-Both idioms exist for all 16 managers and datasources, so a repository declares its intent rather than inheriting a default — and the declaration survives a change to the central default. `test/presets.test.ts` (`breaking marker`) pins the central set in `CENTRAL_BREAKING`, so a manager gaining or losing the marker has to be a deliberate edit.
+Both idioms exist for all 17 managers and datasources, so a repository declares its intent rather than inheriting a default — and the declaration survives a change to the central default. `test/presets.test.ts` (`breaking marker`) pins the central set in `CENTRAL_BREAKING`, so a manager gaining or losing the marker has to be a deliberate edit.
 
 **These presets flip the commit prefix and nothing else.** `groupName`, `groupSlug` and `schedule` are last-match-wins and these land after everything, so naming a group would pull the dependency out of the merge request it belongs in and discard its cadence. A test enforces their absence.
 
@@ -249,7 +251,7 @@ Labels compose **additively** across six namespaced axes plus two flat values. E
 | manager    | the manager preset's `matchManagers` rule            | `manager:helm`, `manager:node`, …                                                 |
 | area       | the same manager rule                                | `area:infrastructure`, `area:pipelines`                                           |
 | dep        | the node group constants, `lock-file.ts`             | `dep:dev`, `dep:build`, `dep:docs`, `dep:peer`, `dep:package-manager`, `dep:lock` |
-| datasource | the datasource preset's `matchDatasources` rule      | `datasource:docker`                                                               |
+| datasource | the datasource preset's `matchDatasources` rule      | `datasource:docker`, `datasource:github-releases`                                 |
 | ring       | the ring preset's identity rule                      | `ring:fast`, `ring:slow`                                                          |
 | flag       | automerge rules                                      | `automerge`                                                                       |
 | override   | every parameterized preset                           | `renovate:override`                                                               |

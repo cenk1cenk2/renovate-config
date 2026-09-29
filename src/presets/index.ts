@@ -33,6 +33,7 @@ export enum Preset {
 
   // datasources
   DATASOURCE_DOCKER = 'datasource-docker',
+  DATASOURCE_GITHUB_RELEASES = 'datasource-github-releases',
 
   // groups
   GROUP_NODE_MINOR_DEPENDENCIES = 'group-node-minor-dependencies',
@@ -96,6 +97,8 @@ export enum Preset {
   MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MAJOR = 'manager-gitlab-ci-custom-automerge-major',
   DATASOURCE_DOCKER_AUTOMERGE_MINOR = 'datasource-docker-automerge-minor',
   DATASOURCE_DOCKER_AUTOMERGE_MAJOR = 'datasource-docker-automerge-major',
+  DATASOURCE_GITHUB_RELEASES_AUTOMERGE_MINOR = 'datasource-github-releases-automerge-minor',
+  DATASOURCE_GITHUB_RELEASES_AUTOMERGE_MAJOR = 'datasource-github-releases-automerge-major',
 
   // breaking marker — parameterized, opt-in per manager. A repository extends one of these once, after
   // `default`, to say whether a dependency major of that manager breaks its own contract. Nothing here is
@@ -132,6 +135,8 @@ export enum Preset {
   MANAGER_OTEL_BUILDER_NO_BREAKING_MAJOR = 'manager-otel-builder-no-breaking-major',
   DATASOURCE_DOCKER_BREAKING_MAJOR = 'datasource-docker-breaking-major',
   DATASOURCE_DOCKER_NO_BREAKING_MAJOR = 'datasource-docker-no-breaking-major',
+  DATASOURCE_GITHUB_RELEASES_BREAKING_MAJOR = 'datasource-github-releases-breaking-major',
+  DATASOURCE_GITHUB_RELEASES_NO_BREAKING_MAJOR = 'datasource-github-releases-no-breaking-major',
 
   // no-automerge — parameterized, opt-in per package. The inverse of the automerge pair: a repository
   // extends one to hold a single package back from a group that automerges, without taking the rest of
@@ -168,6 +173,8 @@ export enum Preset {
   MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MAJOR = 'manager-otel-builder-no-automerge-major',
   DATASOURCE_DOCKER_NO_AUTOMERGE_MINOR = 'datasource-docker-no-automerge-minor',
   DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR = 'datasource-docker-no-automerge-major',
+  DATASOURCE_GITHUB_RELEASES_NO_AUTOMERGE_MINOR = 'datasource-github-releases-no-automerge-minor',
+  DATASOURCE_GITHUB_RELEASES_NO_AUTOMERGE_MAJOR = 'datasource-github-releases-no-automerge-major',
 
   // disable — parameterized, opt-in per package. A repository extends one to stop renovate updating a single
   // package of one manager or datasource, rather than disabling that name across every manager at once.
@@ -186,7 +193,8 @@ export enum Preset {
   MANAGER_GITLAB_CI_DISABLE = 'manager-gitlab-ci-disable',
   MANAGER_GITLAB_CI_CUSTOM_DISABLE = 'manager-gitlab-ci-custom-disable',
   MANAGER_OTEL_BUILDER_DISABLE = 'manager-otel-builder-disable',
-  DATASOURCE_DOCKER_DISABLE = 'datasource-docker-disable'
+  DATASOURCE_DOCKER_DISABLE = 'datasource-docker-disable',
+  DATASOURCE_GITHUB_RELEASES_DISABLE = 'datasource-github-releases-disable'
 }
 
 export const PRESETS: Presets = {
@@ -223,6 +231,7 @@ export const PRESETS: Presets = {
   // datasources
 
   [Preset.DATASOURCE_DOCKER]: import('./datasources/docker/datasource.js').then((m) => m.default),
+  [Preset.DATASOURCE_GITHUB_RELEASES]: import('./datasources/github-releases/datasource.js').then((m) => m.default),
 
   // groups
 
@@ -287,6 +296,8 @@ export const PRESETS: Presets = {
   [Preset.MANAGER_GITLAB_CI_CUSTOM_AUTOMERGE_MAJOR]: import('./managers/gitlab-ci/overrides/custom-automerge-major.js').then((m) => m.default),
   [Preset.DATASOURCE_DOCKER_AUTOMERGE_MINOR]: import('./datasources/docker/overrides/automerge-minor.js').then((m) => m.default),
   [Preset.DATASOURCE_DOCKER_AUTOMERGE_MAJOR]: import('./datasources/docker/overrides/automerge-major.js').then((m) => m.default),
+  [Preset.DATASOURCE_GITHUB_RELEASES_AUTOMERGE_MINOR]: import('./datasources/github-releases/overrides/automerge-minor.js').then((m) => m.default),
+  [Preset.DATASOURCE_GITHUB_RELEASES_AUTOMERGE_MAJOR]: import('./datasources/github-releases/overrides/automerge-major.js').then((m) => m.default),
 
   // breaking marker
 
@@ -322,6 +333,8 @@ export const PRESETS: Presets = {
   [Preset.MANAGER_OTEL_BUILDER_NO_BREAKING_MAJOR]: import('./managers/otel-builder/overrides/no-breaking-major.js').then((m) => m.default),
   [Preset.DATASOURCE_DOCKER_BREAKING_MAJOR]: import('./datasources/docker/overrides/breaking-major.js').then((m) => m.default),
   [Preset.DATASOURCE_DOCKER_NO_BREAKING_MAJOR]: import('./datasources/docker/overrides/no-breaking-major.js').then((m) => m.default),
+  [Preset.DATASOURCE_GITHUB_RELEASES_BREAKING_MAJOR]: import('./datasources/github-releases/overrides/breaking-major.js').then((m) => m.default),
+  [Preset.DATASOURCE_GITHUB_RELEASES_NO_BREAKING_MAJOR]: import('./datasources/github-releases/overrides/no-breaking-major.js').then((m) => m.default),
 
   // no-automerge
 
@@ -357,6 +370,8 @@ export const PRESETS: Presets = {
   [Preset.MANAGER_OTEL_BUILDER_NO_AUTOMERGE_MAJOR]: import('./managers/otel-builder/overrides/no-automerge-major.js').then((m) => m.default),
   [Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MINOR]: import('./datasources/docker/overrides/no-automerge-minor.js').then((m) => m.default),
   [Preset.DATASOURCE_DOCKER_NO_AUTOMERGE_MAJOR]: import('./datasources/docker/overrides/no-automerge-major.js').then((m) => m.default),
+  [Preset.DATASOURCE_GITHUB_RELEASES_NO_AUTOMERGE_MINOR]: import('./datasources/github-releases/overrides/no-automerge-minor.js').then((m) => m.default),
+  [Preset.DATASOURCE_GITHUB_RELEASES_NO_AUTOMERGE_MAJOR]: import('./datasources/github-releases/overrides/no-automerge-major.js').then((m) => m.default),
 
   // disable
 
@@ -375,7 +390,8 @@ export const PRESETS: Presets = {
   [Preset.MANAGER_GITLAB_CI_DISABLE]: import('./managers/gitlab-ci/overrides/disable.js').then((m) => m.default),
   [Preset.MANAGER_GITLAB_CI_CUSTOM_DISABLE]: import('./managers/gitlab-ci/overrides/custom-disable.js').then((m) => m.default),
   [Preset.MANAGER_OTEL_BUILDER_DISABLE]: import('./managers/otel-builder/overrides/disable.js').then((m) => m.default),
-  [Preset.DATASOURCE_DOCKER_DISABLE]: import('./datasources/docker/overrides/disable.js').then((m) => m.default)
+  [Preset.DATASOURCE_DOCKER_DISABLE]: import('./datasources/docker/overrides/disable.js').then((m) => m.default),
+  [Preset.DATASOURCE_GITHUB_RELEASES_DISABLE]: import('./datasources/github-releases/overrides/disable.js').then((m) => m.default)
 }
 
 export const FILES: Record<string, Preset[]> = {

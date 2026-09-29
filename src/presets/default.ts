@@ -27,6 +27,7 @@ export default createPreset({
     Preset.MANAGER_RUST,
     Preset.MANAGER_TERRAFORM,
 
-    Preset.DATASOURCE_DOCKER
+    Preset.DATASOURCE_DOCKER,
+    Preset.DATASOURCE_GITHUB_RELEASES
   )
 })
