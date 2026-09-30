@@ -21,7 +21,7 @@ importers:
         specifier: ^0.151.0
         version: 0.151.0
       fs-extra:
-        specifier: ^11.4.0
+        specifier: ^11.4.1
         version: 11.4.1
       jsondiffpatch:
         specifier: ^0.7.6
@@ -30,7 +30,7 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0
       renovate:
-        specifier: ^44.106.0
+        specifier: ^44.111.0
         version: 44.117.2(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
