@@ -49,10 +49,10 @@ importers:
         specifier: ^11.0.4
         version: 11.0.4
       '@types/node':
-        specifier: ^25.9.8
+        specifier: ^25.9.9
         version: 25.9.9
       eslint:
-        specifier: ^10.11.0
+        specifier: ^10.12.0
         version: 10.12.0(jiti@2.6.1)(supports-color@8.1.1)
       execa:
         specifier: ^10.0.1
@@ -64,7 +64,7 @@ importers:
         specifier: ^6.0.2
         version: 6.0.6(@types/node@25.9.9)(supports-color@8.1.1)
       prettier:
-        specifier: ^3.9.8
+        specifier: ^3.9.9
         version: 3.9.9
       ts-node:
         specifier: ^10.9.2
