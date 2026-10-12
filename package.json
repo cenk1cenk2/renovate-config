@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@cenk1cenk2/oclif-common": "^7.1.0",
-    "@listr2/manager": "^4.2.6",
+    "@listr2/manager": "^4.3.0",
     "@oclif/core": "^5.1.2",
     "@oxc-project/runtime": "^0.152.0",
     "fs-extra": "^11.4.1",
