@@ -11,6 +11,13 @@ export default createPreset({
     {
       matchManagers: [Managers.GO],
       addLabels: [Labels.RENOVATE, Labels.MANAGER_GO]
+    },
+    // Renovate's gomod extractor already disables `// indirect` requires. Restated so that posture survives
+    // an upstream preset or default re-enabling them; it lands after the groups and rings so nothing overrides it.
+    {
+      matchManagers: [Managers.GO],
+      matchDepTypes: ['indirect'],
+      enabled: false
     }
   ]
 })

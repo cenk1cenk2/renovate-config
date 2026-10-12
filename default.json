@@ -172,6 +172,15 @@
           "renovate",
           "manager:go"
         ]
+      },
+      {
+        "matchManagers": [
+          "gomod"
+        ],
+        "matchDepTypes": [
+          "indirect"
+        ],
+        "enabled": false
       }
     ]
   },

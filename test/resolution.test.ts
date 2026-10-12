@@ -1,8 +1,9 @@
 import { resolveConfigPresets } from 'renovate/dist/config/presets/index.js'
-import type { RenovateConfig } from 'renovate/dist/config/types.js'
+import type { PackageRule, RenovateConfig } from 'renovate/dist/config/types.js'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 
 import { SCOPE } from '@constants'
+import { Managers } from '@managers'
 import { PRESETS, Preset } from '@presets'
 
 // Serves every `local>` preset from the assembled registry, so renovate's own resolver walks the same
@@ -10,7 +11,7 @@ import { PRESETS, Preset } from '@presets'
 // `config:recommended`, come from the installed renovate. `vitest.config.ts` inlines renovate, or its
 // dynamic import of the local source would bypass the mock.
 vi.mock('renovate/dist/config/presets/local/index.js', () => ({
-  getPreset: async({ presetName }: { presetName: string }): Promise<RenovateConfig> => structuredClone(await PRESETS[presetName.replace(/^default\//, '') as Preset])
+  getPreset: async ({ presetName }: { presetName: string }): Promise<RenovateConfig> => structuredClone(await PRESETS[presetName.replace(/^default\//, '') as Preset])
 }))
 
 const TEST_PATHS = ['**/__tests__/**', '**/test/**', '**/tests/**']
@@ -19,7 +20,7 @@ describe('ignore modules and tests', () => {
   let central: RenovateConfig
   let unfiltered: RenovateConfig
 
-  beforeAll(async() => {
+  beforeAll(async () => {
     central = (await resolveConfigPresets({ extends: [`${SCOPE}${Preset.DEFAULT}`] })).config
     // The same graph without the filter: `default` resolved as the repository config itself, with its
     // `ignorePresets` emptied, which is what every consumer resolved before the filter landed.
@@ -39,5 +40,27 @@ describe('ignore modules and tests', () => {
   // Filtering one nested preset must leave the rest of the graph alone, in the same order.
   it('resolves the same package rules as the unfiltered graph', () => {
     expect(central.packageRules).toEqual(unfiltered.packageRules)
+  })
+})
+
+describe('go indirect dependencies', () => {
+  let central: RenovateConfig
+
+  beforeAll(async () => {
+    central = (await resolveConfigPresets({ extends: [`${SCOPE}${Preset.DEFAULT}`] })).config
+  }, 60_000)
+
+  // `enabled` is last-match-wins, so the disable only holds while no later rule that can reach an indirect
+  // gomod dependency, served by the `go` datasource, turns it back on.
+  it('disables indirect go module dependencies through default', () => {
+    const rules = central.packageRules ?? []
+    const index = rules.findLastIndex((rule) => rule.matchManagers?.includes(Managers.GO) && rule.matchDepTypes?.includes('indirect') && rule.enabled === false)
+    const reachesIndirect = (rule: PackageRule): boolean =>
+      (!rule.matchManagers || rule.matchManagers.includes(Managers.GO)) &&
+      (!rule.matchDatasources || rule.matchDatasources.includes('go')) &&
+      (!rule.matchDepTypes || rule.matchDepTypes.includes('indirect'))
+
+    expect(index).toBeGreaterThanOrEqual(0)
+    expect(rules.slice(index + 1).filter((rule) => rule.enabled === true && reachesIndirect(rule))).toEqual([])
   })
 })
