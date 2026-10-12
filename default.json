@@ -424,6 +424,18 @@
       "local>renovate/renovate-config:default/manager-gitlab-ci-custom",
       "local>renovate/renovate-config:default/group-gitlab-ci-minor-updates"
     ],
+    "gitlabci": {
+      "managerFilePatterns": [
+        "/\\.gitlab-ci\\.ya?ml$/",
+        "/\\.gitlab-ci\\..*\\.ya?ml$/"
+      ]
+    },
+    "gitlabci-include": {
+      "managerFilePatterns": [
+        "/\\.gitlab-ci\\.ya?ml$/",
+        "/\\.gitlab-ci\\..*\\.ya?ml$/"
+      ]
+    },
     "packageRules": [
       {
         "matchManagers": [
