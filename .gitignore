@@ -248,16 +248,6 @@ dist/
 *.idb
 *.pdb
 
-# Kernel Module Compile Results
-*.mod*
-!*.module.ts
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
 #####################################################
 # C++                                               #
 # Source: https://www.gitignore.io                  #
