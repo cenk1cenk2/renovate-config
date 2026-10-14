@@ -6,6 +6,7 @@ stages:
   - install
   - build
   - generate
+  - sync
   - publish
 
 variables:
@@ -19,6 +20,11 @@ include:
       - /node/build.gitlab-ci.yml
       - /node/lint.gitlab-ci.yml
       - /node/run.gitlab-ci.yml
+
+  - project: devops/pipelines
+    ref: git@1.1.4
+    file:
+      - /git/sync.gitlab-ci.yml
 
   - project: devops/pipelines
     ref: semantic-release@2.5.2
@@ -41,6 +47,12 @@ build:
       - dist/**
       - oclif.manifest.json
 
+typecheck:
+  stage: build
+  extends: .node-run
+  variables:
+    NODE_COMMAND_SCRIPT: typecheck
+
 test:
   stage: build
   extends: .node-run
@@ -55,6 +67,17 @@ generate:
   artifacts:
     paths:
       - default.json
+
+git-sync:
+  stage: sync
+  extends: .git-sync
+  needs:
+    - generate
+    - lint
+  variables:
+    GIT_SYNC_PATHS: |
+      - source: default.json
+        destination: default.json
 
 semantic-release:
   stage: publish
