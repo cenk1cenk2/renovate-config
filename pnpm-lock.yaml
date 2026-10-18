@@ -194,7 +194,7 @@ importers:
         specifier: ^11.4.0
         version: 11.4.0
       renovate:
-        specifier: ^44.149.2
+        specifier: ^44.150.1
         version: 44.165.1(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
