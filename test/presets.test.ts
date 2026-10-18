@@ -32,9 +32,9 @@ function rules(preset: RenovateConfig): PackageRule[] {
     if (value && typeof value === 'object') {
       const record = value as Record<string, unknown>
 
-      // `automerge` and `commitMessageSuffix` are in the predicate so the policy checks below cannot be
-      // dodged by a rule that carries no labels and no group at all.
-      if ('labels' in record || 'addLabels' in record || 'groupSlug' in record || 'automerge' in record || 'commitMessageSuffix' in record) {
+      // `automerge`, `commitBody` and `commitMessageSuffix` are in the predicate so the policy checks below
+      // cannot be dodged by a rule that carries no labels and no group at all.
+      if ('labels' in record || 'addLabels' in record || 'groupSlug' in record || 'automerge' in record || 'commitBody' in record || 'commitMessageSuffix' in record) {
         found.push(record as PackageRule)
       }
 
@@ -242,8 +242,13 @@ const PARAMETERIZED_PRESETS: Preset[] = [...AUTOMERGE_PRESETS, ...NO_AUTOMERGE_P
 // release every consuming repository cuts, so it has to be a deliberate edit rather than a side effect.
 const CENTRAL_BREAKING: string[] = [`${Preset.GROUP_TERRAFORM_MAJOR}:${Groups.TERRAFORM_MAJOR}`, `${Preset.GROUP_TERRAFORM_MAJOR}:${Groups.TERRAFORM_MONOREPO_MAJOR}`]
 
-// The commit message suffix that tells gitlab not to run a pipeline for the branch.
+// The commit body that tells gitlab not to run a pipeline for the branch. It lives in the body because
+// renovate takes the merge request title from the commit's first line, and a title carrying it would skip
+// the pipeline of the merge commit on master too.
 const SKIP_CI = '[skip ci]'
+
+// Every spelling gitlab honours, so a marker cannot slip into a title under its other form.
+const SKIP_CI_MARKER = /\[(skip ci|ci skip)\]/i
 
 // The one package name the estate-wide config automerges by name. It is the Dockerfile syntax directive
 // rather than an application image — generic to every repository that builds one, so it stays central
@@ -813,8 +818,8 @@ describe('automerge policy', () => {
   // all. `checkAutoMerge` refuses anything but green (`dist/workers/repository/update/pr/automerge.js`),
   // so such a branch waits forever for a pipeline that will never run. `internalChecksAsSuccess` covers
   // only the first of those two cases; `ignoreTests` is the one option that covers both.
-  it('always pairs a skip-ci suffix with ignoreTests', () => {
-    const offenders = allRules.filter(([, rule]) => rule.commitMessageSuffix === SKIP_CI && rule.ignoreTests !== true).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+  it('always pairs a skip-ci body with ignoreTests', () => {
+    const offenders = allRules.filter(([, rule]) => rule.commitBody === SKIP_CI && rule.ignoreTests !== true).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
     expect(offenders, 'a rule that skips the pipeline can never reach a green branch status, so it must also ignore tests').toEqual([])
   })
@@ -823,9 +828,32 @@ describe('automerge policy', () => {
   // master, so it is scoped to rules that provably have no pipeline to wait for — never used to paper
   // over a branch whose tests do run and are failing.
   it('never ignores tests on a rule whose pipeline still runs', () => {
-    const offenders = allRules.filter(([, rule]) => rule.ignoreTests === true && rule.commitMessageSuffix !== SKIP_CI).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
+    const offenders = allRules.filter(([, rule]) => rule.ignoreTests === true && rule.commitBody !== SKIP_CI).map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
     expect(offenders, 'ignoreTests belongs only on a rule that suppresses its own pipeline').toEqual([])
+  })
+
+  // Renovate titles the merge request with the commit's first line, and gitlab's merge commit inherits that
+  // title, so a marker in the suffix, prefix, topic or any other subject field would skip the pipeline on
+  // master and on the release tag as well.
+  it('keeps the skip-ci marker out of every field but the commit body', () => {
+    const offenders: string[] = []
+
+    function walk(name: Preset, path: string, value: unknown): void {
+      if (typeof value === 'string') {
+        if (SKIP_CI_MARKER.test(value) && !path.endsWith('.commitBody')) offenders.push(`${name}${path}`)
+
+        return
+      }
+
+      if (value && typeof value === 'object') {
+        Object.entries(value).forEach(([key, child]) => walk(name, `${path}.${key}`, child))
+      }
+    }
+
+    entries.forEach(([name, preset]) => walk(name, '', preset))
+
+    expect(offenders, 'a skip-ci marker outside `commitBody` reaches the merge request title').toEqual([])
   })
 
   // `manager-node-automerge-major` merges a package manager major on a green pipeline, and both guards
@@ -838,7 +866,7 @@ describe('automerge policy', () => {
     expect(packageManagerRules.length, 'the node package manager rules should exist').toBeGreaterThan(0)
 
     const offenders = packageManagerRules
-      .filter(([, rule]) => rule.commitMessageSuffix === SKIP_CI || rule.ignoreTests === true)
+      .filter(([, rule]) => rule.commitBody === SKIP_CI || rule.ignoreTests === true)
       .filter(([, rule]) => !rule.matchUpdateTypes || rule.matchUpdateTypes.includes('major'))
       .map(([name, rule]) => `${name}:${rule.groupSlug ?? '?'}`)
 
@@ -1091,8 +1119,8 @@ describe('effective ignore tests', () => {
 
   const composed = flatten(Preset.DEFAULT)
 
-  function resolve(packageName: string, depType: string, updateType = 'minor'): { suffix?: string; ignoreTests?: boolean } {
-    let suffix: string | undefined
+  function resolve(packageName: string, depType: string, updateType = 'minor'): { body?: string; ignoreTests?: boolean } {
+    let body: string | undefined
     let ignoreTests: boolean | undefined
 
     for (const rule of composed) {
@@ -1103,11 +1131,11 @@ describe('effective ignore tests', () => {
       if (rule.matchUpdateTypes && !rule.matchUpdateTypes.includes(updateType as never)) continue
       if (rule.matchDepTypes && !rule.matchDepTypes.includes(depType)) continue
 
-      if (rule.commitMessageSuffix !== undefined) suffix = rule.commitMessageSuffix
+      if (rule.commitBody !== undefined) body = rule.commitBody
       if (rule.ignoreTests !== undefined) ignoreTests = rule.ignoreTests
     }
 
-    return { suffix, ignoreTests }
+    return { body, ignoreTests }
   }
 
   // `@cenk1cenk2/eslint-config` is the one that actually bites: it matches the fast ring's
@@ -1121,16 +1149,16 @@ describe('effective ignore tests', () => {
     ['pnpm', 'devDependencies', SKIP_CI]
   ]
 
-  for (const [packageName, depType, suffix] of CASES) {
-    it(`resolves ${packageName} to ${suffix === SKIP_CI ? 'a skipped' : 'a running'} pipeline`, () => {
-      expect(resolve(packageName, depType).suffix).toBe(suffix)
+  for (const [packageName, depType, body] of CASES) {
+    it(`resolves ${packageName} to ${body === SKIP_CI ? 'a skipped' : 'a running'} pipeline`, () => {
+      expect(resolve(packageName, depType).body).toBe(body)
     })
 
     it(`keeps ${packageName} paired after resolution`, () => {
       const resolved = resolve(packageName, depType)
 
-      expect(resolved.ignoreTests === true, `${packageName} resolves to suffix ${JSON.stringify(resolved.suffix)} and ignoreTests ${resolved.ignoreTests}`).toBe(
-        resolved.suffix === SKIP_CI
+      expect(resolved.ignoreTests === true, `${packageName} resolves to body ${JSON.stringify(resolved.body)} and ignoreTests ${resolved.ignoreTests}`).toBe(
+        resolved.body === SKIP_CI
       )
     })
   }
@@ -1141,12 +1169,12 @@ describe('effective ignore tests', () => {
   it.each(PACKAGE_MANAGERS)('resolves a %s major to a running pipeline', (packageName) => {
     const resolved = resolve(packageName, 'packageManager', 'major')
 
-    expect(resolved.suffix, 'a package manager major must reach gitlab as a buildable commit').toBe('')
+    expect(resolved.body, 'a package manager major must reach gitlab as a buildable commit').toBe('')
     expect(resolved.ignoreTests, 'a package manager major must wait for its pipeline').toBe(false)
   })
 
   // The package-manager `[skip ci]` is bounded by dep name and by update type, so it must not reach an
-  // ordinary node major — which has never had a suffix and keeps its pipeline whether or not it is
+  // ordinary node major — which has never had a body and keeps its pipeline whether or not it is
   // opted in.
   it.each([
     ['some-library', 'dependencies'],
@@ -1154,7 +1182,7 @@ describe('effective ignore tests', () => {
   ])('resolves a %s major to a running pipeline', (packageName, depType) => {
     const resolved = resolve(packageName, depType, 'major')
 
-    expect(resolved.suffix).not.toBe(SKIP_CI)
+    expect(resolved.body).not.toBe(SKIP_CI)
     expect(resolved.ignoreTests).not.toBe(true)
   })
 })

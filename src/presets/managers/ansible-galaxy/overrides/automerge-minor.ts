@@ -4,7 +4,7 @@ import { createPreset } from '@lib'
 import { Managers } from '@managers'
 
 // Opt-in per role or collection, argument passed by the consuming repository. Mirrors the central twin
-// down to the slug, the dep types and the skip-ci suffix, so an early opt-in shares its merge request.
+// down to the slug, the dep types and the skip-ci body, so an early opt-in shares its merge request.
 export default createPreset({
   packageRules: [
     {
@@ -13,7 +13,7 @@ export default createPreset({
       groupSlug: Groups.ANSIBLE_GALAXY_MINOR,
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      commitMessageSuffix: '[skip ci]',
+      commitBody: '[skip ci]',
       ignoreTests: true,
       addLabels: [Labels.RENOVATE, Labels.OVERRIDE, Labels.AUTOMERGE],
       automerge: true,
