@@ -90,7 +90,7 @@
     "lockFileMaintenance": {
       "enabled": true,
       "automerge": true,
-      "commitMessageSuffix": "[skip ci]",
+      "commitBody": "[skip ci]",
       "ignoreTests": true,
       "addLabels": [
         "dep:lock",
@@ -592,7 +592,7 @@
           "pin",
           "digest"
         ],
-        "commitMessageSuffix": "[skip ci]",
+        "commitBody": "[skip ci]",
         "ignoreTests": true,
         "schedule": [
           "before 9am"
@@ -713,7 +713,7 @@
           "pin",
           "digest"
         ],
-        "commitMessageSuffix": "[skip ci]",
+        "commitBody": "[skip ci]",
         "ignoreTests": true,
         "addLabels": [
           "dep:dev",
@@ -762,7 +762,7 @@
           "digest"
         ],
         "semanticCommitType": "build",
-        "commitMessageSuffix": "",
+        "commitBody": "",
         "ignoreTests": false,
         "addLabels": [
           "dep:build",
@@ -803,7 +803,7 @@
           "digest"
         ],
         "semanticCommitType": "docs",
-        "commitMessageSuffix": "",
+        "commitBody": "",
         "ignoreTests": false,
         "addLabels": [
           "dep:docs",
@@ -856,7 +856,7 @@
           "pin",
           "digest"
         ],
-        "commitMessageSuffix": "[skip ci]",
+        "commitBody": "[skip ci]",
         "ignoreTests": true,
         "addLabels": [
           "automerge"
@@ -882,7 +882,7 @@
           "major"
         ],
         "semanticCommitType": "build",
-        "commitMessageSuffix": "",
+        "commitBody": "",
         "ignoreTests": false,
         "addLabels": [
           "automerge"
@@ -930,7 +930,7 @@
           "pin",
           "digest"
         ],
-        "commitMessageSuffix": "[skip ci]",
+        "commitBody": "[skip ci]",
         "ignoreTests": true,
         "addLabels": [
           "dep:peer",
@@ -1326,7 +1326,7 @@
           "pin",
           "digest"
         ],
-        "commitMessageSuffix": "[skip ci]",
+        "commitBody": "[skip ci]",
         "ignoreTests": true,
         "matchManagers": [
           "ansible-galaxy"
@@ -2424,7 +2424,7 @@
           "pin",
           "digest"
         ],
-        "commitMessageSuffix": "[skip ci]",
+        "commitBody": "[skip ci]",
         "ignoreTests": true,
         "addLabels": [
           "renovate",

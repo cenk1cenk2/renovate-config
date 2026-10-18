@@ -14,21 +14,21 @@ export const NODE_GROUP_MINOR: PackageRule = {
 export const NODE_GROUP_DEV: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  commitMessageSuffix: '[skip ci]',
+  commitBody: '[skip ci]',
   ignoreTests: true,
   addLabels: [Labels.DEP_DEV, Labels.AUTOMERGE],
   automerge: true,
   matchManagers: [Managers.NODE]
 }
 
-// `commitMessageSuffix` and `ignoreTests` are stated rather than left at their defaults because both are
+// `commitBody` and `ignoreTests` are stated rather than left at their defaults because both are
 // last-match-wins across every rule that claims the package: a build bump must run its pipeline, and the
 // dev group flips both the other way. `effective ignore tests` in the suite pins the pairing.
 export const NODE_GROUP_BUILD: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   semanticCommitType: 'build',
-  commitMessageSuffix: '',
+  commitBody: '',
   ignoreTests: false,
   addLabels: [Labels.DEP_BUILD, Labels.AUTOMERGE],
   automerge: true,
@@ -39,7 +39,7 @@ export const NODE_GROUP_DOCS: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   semanticCommitType: 'docs',
-  commitMessageSuffix: '',
+  commitBody: '',
   ignoreTests: false,
   addLabels: [Labels.DEP_DOCS, Labels.AUTOMERGE],
   automerge: true,
@@ -51,7 +51,7 @@ export const NODE_GROUP_DOCS: PackageRule = {
 export const NODE_GROUP_PEER: PackageRule = {
   matchDepTypes: ['peerDependencies', 'optionalDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  commitMessageSuffix: '[skip ci]',
+  commitBody: '[skip ci]',
   ignoreTests: true,
   addLabels: [Labels.DEP_PEER, Labels.AUTOMERGE],
   automerge: true,
@@ -114,21 +114,21 @@ export const NODE_AUTOMERGE_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-  commitMessageSuffix: '[skip ci]',
+  commitBody: '[skip ci]',
   ignoreTests: true,
   addLabels: [Labels.AUTOMERGE],
   automerge: true
 }
 
 // The one major this config automerges centrally. `build` keeps semantic-release from cutting a version
-// for a bump that publishes nothing, and the empty suffix is what leaves a pipeline to gate the merge on
+// for a bump that publishes nothing, and the empty body is what leaves a pipeline to gate the merge on
 // — both are stated because the minor rule sets them the other way and the field is last-match-wins.
 export const NODE_MAJOR_PACKAGE_MANAGER: PackageRule = {
   matchManagers: [Managers.NODE],
   matchDepNames: PACKAGE_MANAGERS,
   matchUpdateTypes: ['major'],
   semanticCommitType: 'build',
-  commitMessageSuffix: '',
+  commitBody: '',
   ignoreTests: false,
   addLabels: [Labels.AUTOMERGE],
   automerge: true

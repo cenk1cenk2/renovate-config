@@ -26,6 +26,14 @@ declare module 'renovate/dist/modules/manager/custom/regex/index.js' {
   export function extractPackageFile(content: string, packageFile: string, config: CustomExtractConfig): (PackageFileContent & { deps: ExtractedDependency[] }) | null
 }
 
+declare module 'renovate/dist/workers/repository/updates/branchify.js' {
+  import type { RenovateConfig } from 'renovate/dist/config/types.js'
+  import type { PackageFile } from 'renovate/dist/modules/manager/types.js'
+  import type { BranchConfig } from 'renovate/dist/workers/types.js'
+
+  export function branchifyUpgrades(config: RenovateConfig, packageFiles: Record<string, PackageFile[]>): Promise<{ branches: BranchConfig[] }>
+}
+
 declare module 'renovate/dist/workers/repository/update/branch/auto-replace.js' {
   export function doAutoReplace(upgrade: Record<string, unknown>, existingContent: string, reuseExistingBranch: boolean, firstUpdate?: boolean): Promise<string>
 }

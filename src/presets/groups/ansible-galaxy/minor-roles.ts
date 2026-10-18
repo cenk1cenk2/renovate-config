@@ -13,7 +13,7 @@ export default createPreset({
       automerge: true,
       matchDepTypes: ['collections', 'roles'],
       matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
-      commitMessageSuffix: '[skip ci]',
+      commitBody: '[skip ci]',
       ignoreTests: true,
       matchManagers: [Managers.ANSIBLE_GALAXY],
       schedule: [SCHEDULE.DAILY]
