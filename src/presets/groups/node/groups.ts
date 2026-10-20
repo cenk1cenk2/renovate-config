@@ -21,15 +21,11 @@ export const NODE_GROUP_DEV: PackageRule = {
   matchManagers: [Managers.NODE]
 }
 
-// `commitBody` and `ignoreTests` are stated rather than left at their defaults because both are
-// last-match-wins across every rule that claims the package: a build bump must run its pipeline, and the
-// dev group flips both the other way. `effective ignore tests` in the suite pins the pairing.
 export const NODE_GROUP_BUILD: PackageRule = {
   matchDepTypes: ['devDependencies'],
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   semanticCommitType: 'build',
   commitBody: '',
-  ignoreTests: false,
   addLabels: [Labels.DEP_BUILD, Labels.AUTOMERGE],
   automerge: true,
   matchManagers: [Managers.NODE]
@@ -40,7 +36,6 @@ export const NODE_GROUP_DOCS: PackageRule = {
   matchUpdateTypes: ['minor', 'patch', 'pin', 'digest'],
   semanticCommitType: 'docs',
   commitBody: '',
-  ignoreTests: false,
   addLabels: [Labels.DEP_DOCS, Labels.AUTOMERGE],
   automerge: true,
   matchManagers: [Managers.NODE]
@@ -129,7 +124,6 @@ export const NODE_MAJOR_PACKAGE_MANAGER: PackageRule = {
   matchUpdateTypes: ['major'],
   semanticCommitType: 'build',
   commitBody: '',
-  ignoreTests: false,
   addLabels: [Labels.AUTOMERGE],
   automerge: true
 }

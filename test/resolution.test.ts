@@ -48,6 +48,51 @@ describe('ignore modules and tests', () => {
   })
 })
 
+describe('no-tests override', () => {
+  it.each([false, true])(
+    'resolves branch test gates with no-tests=%s',
+    async (noTests) => {
+      const { config: central } = await resolveConfigPresets({
+        extends: [`${SCOPE}${Preset.DEFAULT}`, ...(noTests ? [`${SCOPE}${Preset.NO_TESTS}`] : [])]
+      })
+      const config: RenovateConfig = { ...mergeChildConfig(getConfig(), central), errors: [], warnings: [], repoIsOnboarded: true }
+      const { branches } = await branchifyUpgrades(config, {
+        [Managers.NODE]: [
+          {
+            packageFile: 'package.json',
+            deps: [
+              ...['typescript', 'typedoc', '@cenk1cenk2/eslint-config'].map((depName) => ({
+                depName,
+                packageName: depName,
+                depType: 'devDependencies',
+                datasource: 'npm',
+                currentValue: '1.0.0',
+                currentVersion: '1.0.0',
+                updates: [{ updateType: 'minor' as const, newValue: '1.1.0', newVersion: '1.1.0' }]
+              })),
+              {
+                depName: 'pnpm',
+                packageName: 'pnpm',
+                depType: 'packageManager',
+                datasource: 'npm',
+                currentValue: '1.0.0',
+                currentVersion: '1.0.0',
+                updates: [{ updateType: 'major', newValue: '2.0.0', newVersion: '2.0.0' }]
+              }
+            ]
+          }
+        ]
+      })
+
+      expect(branches.length).toBeGreaterThan(0)
+      for (const branch of branches) {
+        expect(branch.ignoreTests, branch.branchName).toBe(noTests || branch.isLockFileMaintenance === true)
+      }
+    },
+    60_000
+  )
+})
+
 describe('go indirect dependencies', () => {
   let central: RenovateConfig
 
