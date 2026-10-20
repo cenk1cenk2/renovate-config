@@ -763,7 +763,6 @@
         ],
         "semanticCommitType": "build",
         "commitBody": "",
-        "ignoreTests": false,
         "addLabels": [
           "dep:build",
           "automerge"
@@ -804,7 +803,6 @@
         ],
         "semanticCommitType": "docs",
         "commitBody": "",
-        "ignoreTests": false,
         "addLabels": [
           "dep:docs",
           "automerge"
@@ -883,7 +881,6 @@
         ],
         "semanticCommitType": "build",
         "commitBody": "",
-        "ignoreTests": false,
         "addLabels": [
           "automerge"
         ],

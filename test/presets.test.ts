@@ -1121,7 +1121,7 @@ describe('effective ignore tests', () => {
 
   function resolve(packageName: string, depType: string, updateType = 'minor'): { body?: string; ignoreTests?: boolean } {
     let body: string | undefined
-    let ignoreTests: boolean | undefined
+    let ignoreTests = getOptions().find((option) => option.name === 'ignoreTests')?.default as boolean | undefined
 
     for (const rule of composed) {
       if (rule.matchPackageNames?.some((pattern) => pattern.includes('{{arg'))) continue
