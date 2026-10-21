@@ -1482,6 +1482,15 @@
       }
     ]
   },
+  "group": {
+    "groupName": "{{arg0}}",
+    "groupSlug": "{{arg0}}",
+    "additionalBranchPrefix": "",
+    "commitMessageExtra": "to {{{newValue}}}",
+    "group": {
+      "commitMessageTopic": "{{{groupName}}}"
+    }
+  },
   "ring-node-none": {
     "packageRules": [
       {

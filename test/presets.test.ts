@@ -1340,7 +1340,12 @@ describe('grouping', () => {
   const known = new Set<string>([...Object.values(Groups), ...Object.values(Rings)])
 
   it('only uses slugs declared in an enum', () => {
-    const used = new Set(allRules.map(([, rule]) => rule.groupSlug).filter(Boolean))
+    const used = new Set(
+      allRules
+        .filter(([name]) => name !== Preset.GROUP)
+        .map(([, rule]) => rule.groupSlug)
+        .filter(Boolean)
+    )
 
     expect([...used].filter((slug) => !known.has(slug))).toEqual([])
   })
@@ -1431,6 +1436,23 @@ describe('pattern M', () => {
   })
 })
 
+describe('generic group directive', () => {
+  it('exports only grouping fields for a consumer-scoped packageRule', () => {
+    expect(presets[Preset.GROUP]).toEqual({
+      groupName: '{{arg0}}',
+      groupSlug: '{{arg0}}',
+      additionalBranchPrefix: '',
+      commitMessageExtra: 'to {{{newValue}}}',
+      group: { commitMessageTopic: '{{{groupName}}}' }
+    })
+  })
+
+  it('is never inherited by the central graph', () => {
+    expect(reachableFromDefault.has(Preset.GROUP)).toBe(false)
+    expect(entries.flatMap(([, preset]) => scoped(preset))).not.toContain(Preset.GROUP)
+  })
+})
+
 describe('group-by-unit', () => {
   const unitRules = presets[Preset.GROUP_BY_UNIT].packageRules ?? []
 
@@ -1493,7 +1515,7 @@ describe('ignore paths', () => {
 
 describe('wiring', () => {
   // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
-  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, ...PARAMETERIZED_PRESETS]
+  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, Preset.GROUP, ...PARAMETERIZED_PRESETS]
 
   it('never reaches a no-automerge preset from default', () => {
     // Holding a package back is a per-repository call, and `groupName: null` from inside the graph would
