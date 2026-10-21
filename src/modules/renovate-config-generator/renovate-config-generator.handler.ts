@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Inject, Injectable } from '@nestjs/common'
 import { mergeWith, uniq } from 'es-toolkit'
 import { existsSync } from 'fs'
 import { diff } from 'jsondiffpatch'
@@ -17,11 +17,13 @@ import type { Presets } from '@presets'
 
 @Injectable()
 export class RenovateConfigGeneratorHandler implements CommandHandler<typeof Run> {
+  // `pnpm dev` runs the source through tsx, whose esbuild transform emits no `design:paramtypes`, so the
+  // tokens are named explicitly rather than inferred from the parameter types.
   constructor(
-    private readonly logger: LoggerService,
-    private readonly tasks: TaskManager,
-    private readonly config: ConfigService,
-    private readonly parser: ParserService
+    @Inject(LoggerService) private readonly logger: LoggerService,
+    @Inject(TaskManager) private readonly tasks: TaskManager,
+    @Inject(ConfigService) private readonly config: ConfigService,
+    @Inject(ParserService) private readonly parser: ParserService
   ) {}
 
   public async run({ oclif }: CommandContext<typeof Run>): Promise<void> {
