@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>renovate/renovate-config:default/default"],
+  "ignorePresets": [],
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["registry.k8s.io/autoscaling/vpa-admission-controller"],
+      "extends": ["local>renovate/renovate-config:default/group(vpa)"]
+    },
+    {
+      "matchManagers": ["helm-values"],
+      "matchPackageNames": ["registry.k8s.io/autoscaling/vpa-recommender"],
+      "extends": ["local>renovate/renovate-config:default/group(vpa)"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["registry.k8s.io/autoscaling/vpa-updater"],
+      "extends": ["local>renovate/renovate-config:default/group(vpa)"]
+    }
+  ]
+}

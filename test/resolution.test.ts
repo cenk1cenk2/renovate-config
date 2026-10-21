@@ -1,8 +1,11 @@
+import { readFile } from 'node:fs/promises'
+
 import { getConfig } from 'renovate/dist/config/defaults.js'
 import { resolveConfigPresets } from 'renovate/dist/config/presets/index.js'
 import type { PackageRule, RenovateConfig } from 'renovate/dist/config/types.js'
 import { mergeChildConfig } from 'renovate/dist/config/utils.js'
-import type { PackageDependency } from 'renovate/dist/modules/manager/types.js'
+import type { PackageDependency, PackageFile } from 'renovate/dist/modules/manager/types.js'
+import { validateConfig } from 'renovate/dist/config/validation.js'
 import type { BranchConfig } from 'renovate/dist/workers/types.js'
 import { branchifyUpgrades } from 'renovate/dist/workers/repository/updates/branchify.js'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
@@ -18,6 +21,189 @@ import { PRESETS, Preset } from '@presets'
 vi.mock('renovate/dist/config/presets/local/index.js', () => ({
   getPreset: async ({ presetName }: { presetName: string }): Promise<RenovateConfig> => structuredClone(await PRESETS[presetName.replace(/^default\//, '') as Preset])
 }))
+
+describe('generic group directive', () => {
+  const group = (name: string): string[] => [`${SCOPE}group(${name})`]
+  const packageRules: PackageRule[] = [
+    { matchManagers: [Managers.HELM], matchPackageNames: ['vpa'], extends: group('vpa') },
+    { matchManagers: [Managers.KUSTOMIZE], matchDepTypes: ['HelmChart'], matchPackageNames: ['vpa'], extends: group('vpa') },
+    { matchDatasources: ['docker'], matchPackageNames: ['registry.k8s.io/autoscaling/*', '!registry.k8s.io/autoscaling/excluded'], extends: group('vpa') },
+    { matchDatasources: ['github-releases'], matchPackageNames: ['kubernetes/autoscaler'], extends: group('vpa') },
+    { matchManagers: [Managers.HELM], matchPackageNames: ['metrics-server'], extends: group('metrics') }
+  ]
+  const dep = (depName: string, datasource: string, depType?: string): PackageDependency => ({
+    depName,
+    packageName: depName,
+    datasource,
+    depType,
+    currentValue: '1.0.0',
+    currentVersion: '1.0.0',
+    updates: [
+      { updateType: 'minor', newValue: datasource === 'docker' ? '1.2.0' : '1.1.0', newVersion: datasource === 'docker' ? '1.2.0' : '1.1.0', newMajor: 1 },
+      { updateType: 'major', newValue: datasource === 'docker' ? '2.2.0' : '2.0.0', newVersion: datasource === 'docker' ? '2.2.0' : '2.0.0', newMajor: 2 }
+    ]
+  })
+  const packageFiles: Record<string, PackageFile[]> = {
+    [Managers.HELM]: [
+      { packageFile: 'charts/first/Chart.yaml', deps: [dep('vpa', 'helm'), dep('metrics-server', 'helm'), dep('other-chart', 'helm')] },
+      { packageFile: 'charts/second/Chart.yaml', deps: [dep('vpa', 'helm')] }
+    ],
+    [Managers.KUSTOMIZE]: [{ packageFile: 'apps/vpa/kustomization.yaml', deps: [dep('vpa', 'helm', 'HelmChart')] }],
+    [Managers.KUBERNETES]: [
+      {
+        packageFile: 'apps/vpa/deployment.yaml',
+        deps: [dep('registry.k8s.io/autoscaling/vpa-recommender', 'docker'), dep('vpa', 'docker'), dep('registry.k8s.io/autoscaling/excluded', 'docker')]
+      }
+    ],
+    [Managers.REGEX]: [{ packageFile: 'versions.txt', deps: [dep('kubernetes/autoscaler', 'github-releases'), dep('vpa', 'github-releases')] }],
+    [Managers.NODE]: [{ packageFile: 'package.json', deps: [dep('typescript', 'npm', 'devDependencies'), dep('disabled-library', 'npm', 'peerDependencies')] }]
+  }
+  let resolved: RenovateConfig
+  let branches: BranchConfig[]
+  let baseline: BranchConfig[]
+
+  beforeAll(async () => {
+    resolved = (
+      await resolveConfigPresets({ extends: [`${SCOPE}${Preset.DEFAULT}`, `${SCOPE}${Preset.GROUP_BY_UNIT}(charts)`, `${SCOPE}${Preset.GROUP_BY_UNIT}(apps)`], packageRules })
+    ).config
+    const central = (await resolveConfigPresets({ extends: [`${SCOPE}${Preset.DEFAULT}`, `${SCOPE}${Preset.GROUP_BY_UNIT}(charts)`, `${SCOPE}${Preset.GROUP_BY_UNIT}(apps)`] }))
+      .config
+    const branchify = async (config: RenovateConfig): Promise<BranchConfig[]> =>
+      (await branchifyUpgrades({ ...mergeChildConfig(getConfig(), config), errors: [], warnings: [], repoIsOnboarded: true }, structuredClone(packageFiles))).branches.filter(
+        (branch) => !branch.isLockFileMaintenance
+      )
+
+    branches = await branchify(resolved)
+    baseline = await branchify(central)
+  }, 60_000)
+
+  it('validates the preset inside scoped native packageRules', async () => {
+    expect((await validateConfig('repository', resolved)).errors).toEqual([])
+    const { config } = await resolveConfigPresets({ packageRules })
+
+    expect((await validateConfig('repository', config)).errors).toEqual([])
+    expect(config.packageRules).toHaveLength(packageRules.length)
+    for (const rule of config.packageRules ?? []) {
+      expect(rule).not.toHaveProperty('packageRules')
+      expect(rule.groupName).toBeDefined()
+      expect(rule.groupSlug).toBe(rule.groupName)
+    }
+  }, 60_000)
+
+  it('combines separately matched managers, datasources and directories into one branch per update level', () => {
+    const grouped = branches.filter((branch) => branch.groupName === 'vpa')
+
+    expect(grouped.map((branch) => branch.branchName).sort()).toEqual(['renovate/major-vpa', 'renovate/vpa'])
+    for (const branch of grouped) {
+      expect(branch.upgrades).toHaveLength(5)
+      expect(new Set(branch.upgrades.map((upgrade) => upgrade.manager))).toEqual(new Set([Managers.HELM, Managers.KUSTOMIZE, Managers.KUBERNETES, Managers.REGEX]))
+      expect(new Set(branch.upgrades.map((upgrade) => upgrade.datasource))).toEqual(new Set(['helm', 'docker', 'github-releases']))
+      expect(new Set(branch.upgrades.map((upgrade) => upgrade.updateType)).size).toBe(1)
+      expect(branch.prTitle).toContain('vpa')
+      expect(branch.prTitle).not.toMatch(/\[(charts|apps)\//)
+    }
+  })
+
+  it('keeps different group names and native matcher exclusions separate', () => {
+    expect(
+      branches
+        .filter((branch) => branch.upgrades.some((upgrade) => upgrade.depName === 'metrics-server'))
+        .map((branch) => branch.branchName)
+        .sort()
+    ).toEqual(['renovate/major-metrics', 'renovate/metrics'])
+    const outside = branches.flatMap((branch) =>
+      branch.upgrades.filter(
+        (upgrade) =>
+          upgrade.depName === 'other-chart' ||
+          upgrade.depName === 'registry.k8s.io/autoscaling/excluded' ||
+          (upgrade.depName === 'vpa' && upgrade.manager !== Managers.HELM && upgrade.manager !== Managers.KUSTOMIZE)
+      )
+    )
+
+    expect(outside).toHaveLength(8)
+    expect(outside.every((upgrade) => upgrade.groupName !== 'vpa' && upgrade.groupName !== 'metrics')).toBe(true)
+  })
+
+  it('leaves unmatched updates and policy fields unchanged', () => {
+    const policies = (items: BranchConfig[]): unknown[] =>
+      items
+        .flatMap((branch) =>
+          branch.upgrades.map((upgrade) => ({
+            key: `${upgrade.manager}:${upgrade.packageFile}:${upgrade.depName}:${upgrade.updateType}`,
+            automerge: upgrade.automerge,
+            enabled: upgrade.enabled,
+            schedule: upgrade.schedule,
+            semanticCommitType: upgrade.semanticCommitType,
+            rangeStrategy: upgrade.rangeStrategy,
+            minimumReleaseAge: upgrade.minimumReleaseAge,
+            separateMajorMinor: upgrade.separateMajorMinor
+          }))
+        )
+        .sort((a, b) => a.key.localeCompare(b.key))
+
+    expect(policies(branches)).toEqual(policies(baseline))
+    expect(branches.flatMap((branch) => branch.upgrades).some((upgrade) => upgrade.depName === 'disabled-library')).toBe(false)
+    const untouched = (items: BranchConfig[]): unknown[] =>
+      items
+        .flatMap((branch) =>
+          branch.upgrades
+            .filter((upgrade) => ['other-chart', 'registry.k8s.io/autoscaling/excluded', 'typescript'].includes(upgrade.depName!))
+            .map((upgrade) => ({
+              key: `${upgrade.manager}:${upgrade.packageFile}:${upgrade.depName}:${upgrade.updateType}`,
+              branchName: branch.branchName,
+              groupSlug: upgrade.groupSlug,
+              additionalBranchPrefix: upgrade.additionalBranchPrefix,
+              commitMessageExtra: upgrade.commitMessageExtra,
+              group: upgrade.group
+            }))
+        )
+        .sort((a, b) => a.key.localeCompare(b.key))
+
+    expect(untouched(branches)).toEqual(untouched(baseline))
+  })
+
+  it('groups only the three component images in the vpa consumer config', async () => {
+    const consumer: RenovateConfig = JSON.parse(await readFile(new URL('./fixtures/group-vpa.json', import.meta.url), 'utf8'))
+    const { config } = await resolveConfigPresets(consumer)
+    const images = ['registry.k8s.io/autoscaling/vpa-admission-controller', 'registry.k8s.io/autoscaling/vpa-recommender', 'registry.k8s.io/autoscaling/vpa-updater']
+    const files: Record<string, PackageFile[]> = {
+      [Managers.HELM_VALUES]: [
+        {
+          packageFile: 'values.yaml',
+          deps: [...images, 'registry.k8s.io/kube-state-metrics/kube-state-metrics'].map((depName) => ({
+            depName,
+            packageName: depName,
+            datasource: 'docker',
+            currentValue: '1.8.0',
+            currentVersion: '1.8.0',
+            updates: [{ updateType: 'patch', newValue: '1.8.1', newVersion: '1.8.1', newMajor: 1 }]
+          }))
+        }
+      ],
+      [Managers.HELM]: [{ packageFile: 'Chart.yaml', deps: [dep('vpa', 'helm')] }]
+    }
+    const { branches: actual } = await branchifyUpgrades({ ...mergeChildConfig(getConfig(), config), errors: [], warnings: [], repoIsOnboarded: true }, files)
+
+    expect((await validateConfig('repository', config)).errors).toEqual([])
+    const grouped = actual.filter((branch) => branch.groupName === 'vpa')
+
+    expect(grouped).toHaveLength(1)
+    expect(grouped[0].branchName).toBe('renovate/vpa')
+    expect(grouped[0].upgrades.map((upgrade) => upgrade.depName).sort()).toEqual(images.sort())
+    expect(grouped[0].automerge).not.toBe(true)
+    expect(grouped[0].semanticCommitType).toBe('fix')
+    expect(
+      actual
+        .flatMap((branch) => branch.upgrades)
+        .filter((upgrade) => !images.includes(upgrade.depName!))
+        .every((upgrade) => upgrade.groupSlug !== 'vpa')
+    ).toBe(true)
+  }, 60_000)
+
+  it('does not introduce grouping when the consumer supplies no grouping rules', () => {
+    expect(baseline.some((branch) => branch.groupName === 'vpa' || branch.groupName === 'metrics')).toBe(false)
+  })
+})
 
 const TEST_PATHS = ['**/__tests__/**', '**/test/**', '**/tests/**']
 
