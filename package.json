@@ -59,7 +59,7 @@
     "eslint": "^10.12.0",
     "execa": "^10.2.0",
     "globby": "^16.2.4",
-    "oclif": "^6.0.9",
+    "oclif": "^6.0.10",
     "prettier": "^3.9.10",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
