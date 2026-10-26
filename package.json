@@ -47,7 +47,7 @@
     "es-toolkit": "^1.52.0",
     "jsondiffpatch": "^0.7.6",
     "listr2": "^11.4.0",
-    "renovate": "^44.166.0",
+    "renovate": "^44.167.5",
     "source-map-support": "^0.5.21",
     "yaml": "^2.9.1"
   },
