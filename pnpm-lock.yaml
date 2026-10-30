@@ -204,11 +204,11 @@ importers:
         version: 2.9.1
     devDependencies:
       '@cenk1cenk2/cz-cc':
-        specifier: ^3.0.10
-        version: 3.0.10(@types/node@26.6.5)(typescript@6.0.3)
+        specifier: ^3.0.11
+        version: 3.0.11(@types/node@26.6.5)(typescript@6.0.3)
       '@cenk1cenk2/eslint-config':
-        specifier: ^3.4.3
-        version: 3.4.3(@typescript-eslint/utils@8.72.1(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
+        specifier: ^3.4.4
+        version: 3.4.4(@typescript-eslint/utils@8.72.1(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       '@tsconfig/node24':
         specifier: ^24.0.5
         version: 24.0.5
@@ -404,12 +404,12 @@ packages:
   '@cdktf/hcl2json@0.21.0':
     resolution: {integrity: sha512-cwX3i/mSJI/cRrtqwEPRfawB7pXgNioriSlkvou8LWiCrrcDe9ZtTbAbu8W1tEJQpe1pnX9VEgpzf/BbM7xF8Q==}
 
-  '@cenk1cenk2/cz-cc@3.0.10':
-    resolution: {integrity: sha512-haJAj/U0xKHuXInNUxck7aZZ+GaB3+gHa/CkrckUykCarI5gyZEB5u/HKrhpAhY52abwF5qguphZw/XhwVH19Q==}
+  '@cenk1cenk2/cz-cc@3.0.11':
+    resolution: {integrity: sha512-pzGITwDCfjjqxuL6qdKF5NDBfSp351PBo9qPxbv2DEEtBvEDTgrOVRM5UnI1xfb6/ndeHcSlnl10yiybtq3Uxw==}
     engines: {node: '>= 24'}
 
-  '@cenk1cenk2/eslint-config@3.4.3':
-    resolution: {integrity: sha512-3bH/7rfm3LOecjrcfT5l8OTZHPMwNv05apviicBMUey19Fxxs2LsrC+LsRXRZiKChbS84TlrXeEpUfXR+BSd+A==}
+  '@cenk1cenk2/eslint-config@3.4.4':
+    resolution: {integrity: sha512-jgIDt9gwCk6mqObROcQBZyWzOtPYeRlZypUABMXKW8OAPjjuM57JAOO2SEYgdw/051lI6FjWZcpueyjstNsRyQ==}
     peerDependencies:
       '@vue/eslint-config-typescript': '>= 14.1.1'
       eslint: '>= 9'
@@ -5377,7 +5377,7 @@ snapshots:
     dependencies:
       fs-extra: 11.3.0
 
-  '@cenk1cenk2/cz-cc@3.0.10(@types/node@26.6.5)(typescript@6.0.3)':
+  '@cenk1cenk2/cz-cc@3.0.11(@types/node@26.6.5)(typescript@6.0.3)':
     dependencies:
       '@inquirer/prompts': 8.7.5(@types/node@26.6.5)
       '@listr2/prompt-adapter-inquirer': 4.3.3(@inquirer/prompts@8.7.5(@types/node@26.6.5))(@types/node@26.6.5)(listr2@11.4.0)
@@ -5389,7 +5389,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@cenk1cenk2/eslint-config@3.4.3(@typescript-eslint/utils@8.72.1(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)':
+  '@cenk1cenk2/eslint-config@3.4.4(@typescript-eslint/utils@8.72.1(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))
       '@stylistic/eslint-plugin': 5.10.0(eslint@10.13.0(jiti@2.7.0)(supports-color@8.1.1))
