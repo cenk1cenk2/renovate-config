@@ -185,7 +185,7 @@ importers:
         specifier: ^0.155.0
         version: 0.155.0
       es-toolkit:
-        specifier: ^1.52.0
+        specifier: ^1.53.0
         version: 1.53.0
       jsondiffpatch:
         specifier: ^0.7.6
@@ -194,7 +194,7 @@ importers:
         specifier: ^11.4.0
         version: 11.4.0
       renovate:
-        specifier: ^44.181.1
+        specifier: ^44.181.5
         version: 44.198.0(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
