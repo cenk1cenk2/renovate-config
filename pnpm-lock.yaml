@@ -168,7 +168,7 @@ importers:
     dependencies:
       '@cenk1cenk2/oclif-common':
         specifier: ^8.0.1
-        version: 8.0.1(@listr2/manager@4.3.3(listr2@11.4.0))(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@12.3.2(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@oclif/core@5.1.10)(listr2@11.4.0)(yaml@2.9.1)
+        version: 8.0.1(@listr2/manager@4.3.3(listr2@11.4.0))(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@12.3.2(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@oclif/core@5.1.11)(listr2@11.4.0)(yaml@2.9.1)
       '@listr2/manager':
         specifier: ^4.3.3
         version: 4.3.3(listr2@11.4.0)
@@ -180,7 +180,7 @@ importers:
         version: 12.3.2(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@oclif/core':
         specifier: ^5.1.9
-        version: 5.1.10
+        version: 5.1.11
       '@oxc-project/runtime':
         specifier: ^0.155.0
         version: 0.155.0
@@ -1102,8 +1102,8 @@ packages:
     resolution: {integrity: sha512-7OsC1gNORBEawOa5+j2pXN9vsicaIOH5cPXxoR6fJOmH6/EXpJB2CajXOu1fPRFun2m1lktEFX11+P89hqO/og==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@oclif/core@5.1.10':
-    resolution: {integrity: sha512-iO+Ga2ve3x0QDeqKVvVEYbb+YPVV7A0rbliCO+ZcUdZ/5Sfv+kHz2G247ExAw5aSAEXn9gX6H4jjON2mcJivqw==}
+  '@oclif/core@5.1.11':
+    resolution: {integrity: sha512-SIB9o3zofFA8CzjnCWbBWjdDNOKV7zYlKnDeE0V7+kHl89qzMPRNhrbAAh0+0HkUiVpiR6wIoL8yJI6QtoWsqg==}
     engines: {node: '>=22.0.0'}
 
   '@oclif/plugin-help@7.0.6':
@@ -3142,8 +3142,8 @@ packages:
     resolution: {integrity: sha512-V+23sDMr12Wnz7iTcDeJr3O6AIxlnvT/bmaAAAP/Xda35C90p9599p0F1eHR/N1KILWSoWVAiOMFjBBXaXSMxg==}
     engines: {node: '>=10.19.0'}
 
-  http2-wrapper@2.2.1:
-    resolution: {integrity: sha512-V5nVw1PAOgfI3Lmeaj2Exmeg7fenjhRUgz1lPSezy1CuhPYbgQtbQj4jZfEAEMlaL+vupsvhjqCyjzob0yxsmQ==}
+  http2-wrapper@2.2.2:
+    resolution: {integrity: sha512-rwd+LcfKZAo4u1B3FABGKqOiBTnyunawZkaNqqZfOCK3JAaQVZdBYtm61a84X46uf+AeCIcaOLM05E4PgHtr+w==}
     engines: {node: '>=10.19.0'}
 
   https-proxy-agent@7.0.6:
@@ -5392,12 +5392,12 @@ snapshots:
       - supports-color
       - typescript
 
-  '@cenk1cenk2/oclif-common@8.0.1(@listr2/manager@4.3.3(listr2@11.4.0))(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@12.3.2(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@oclif/core@5.1.10)(listr2@11.4.0)(yaml@2.9.1)':
+  '@cenk1cenk2/oclif-common@8.0.1(@listr2/manager@4.3.3(listr2@11.4.0))(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(@nestjs/core@12.3.2(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(reflect-metadata@0.2.2)(rxjs@7.8.2))(@oclif/core@5.1.11)(listr2@11.4.0)(yaml@2.9.1)':
     dependencies:
       '@listr2/manager': 4.3.3(listr2@11.4.0)
       '@nestjs/common': 12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1)
       '@nestjs/core': 12.3.2(@nestjs/common@12.3.2(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@oclif/core': 5.1.10
+      '@oclif/core': 5.1.11
       '@standard-schema/spec': 1.1.0
       cosmiconfig: 10.0.1
       dotenv: 18.0.9
@@ -5983,7 +5983,7 @@ snapshots:
     dependencies:
       semver: 7.8.5
 
-  '@oclif/core@5.1.10':
+  '@oclif/core@5.1.11':
     dependencies:
       ansi-escapes: 4.3.2
       ansis: 3.17.0
@@ -6006,12 +6006,12 @@ snapshots:
 
   '@oclif/plugin-help@7.0.6':
     dependencies:
-      '@oclif/core': 5.1.10
+      '@oclif/core': 5.1.11
 
   '@oclif/plugin-not-found@4.0.7(@types/node@26.6.6)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@26.6.6)
-      '@oclif/core': 5.1.10
+      '@oclif/core': 5.1.11
       ansis: 3.17.0
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
@@ -6019,7 +6019,7 @@ snapshots:
 
   '@oclif/plugin-warn-if-update-available@4.0.5(supports-color@8.1.1)':
     dependencies:
-      '@oclif/core': 5.1.10
+      '@oclif/core': 5.1.11
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       lodash: 4.18.1
@@ -8058,7 +8058,7 @@ snapshots:
       decompress-response: 6.0.0
       form-data-encoder: 2.1.4
       get-stream: 6.0.1
-      http2-wrapper: 2.2.1
+      http2-wrapper: 2.2.2
       lowercase-keys: 3.0.0
       p-cancelable: 3.0.0
       responselike: 3.0.0
@@ -8071,7 +8071,7 @@ snapshots:
       cacheable-request: 13.0.19
       chunk-data: 0.1.0
       decompress-response: 10.0.0
-      http2-wrapper: 2.2.1
+      http2-wrapper: 2.2.2
       keyv: 5.6.0
       lowercase-keys: 4.0.1
       responselike: 4.0.2
@@ -8154,7 +8154,7 @@ snapshots:
       quick-lru: 5.1.1
       resolve-alpn: 1.2.1
 
-  http2-wrapper@2.2.1:
+  http2-wrapper@2.2.2:
     dependencies:
       quick-lru: 5.1.1
       resolve-alpn: 1.2.1
@@ -9011,7 +9011,7 @@ snapshots:
       '@inquirer/confirm': 3.2.0
       '@inquirer/input': 2.3.0
       '@inquirer/select': 2.5.0
-      '@oclif/core': 5.1.10
+      '@oclif/core': 5.1.11
       '@oclif/plugin-help': 7.0.6
       '@oclif/plugin-not-found': 4.0.7(@types/node@26.6.6)
       '@oclif/plugin-warn-if-update-available': 4.0.5(supports-color@8.1.1)
