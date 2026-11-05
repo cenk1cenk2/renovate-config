@@ -45,9 +45,9 @@
     "@oclif/core": "^5.1.10",
     "@oxc-project/runtime": "^0.156.0",
     "es-toolkit": "^1.53.0",
-    "jsondiffpatch": "^0.7.6",
+    "jsondiffpatch": "^0.7.7",
     "listr2": "^11.4.0",
-    "renovate": "^44.193.1",
+    "renovate": "^44.198.0",
     "source-map-support": "^0.5.21",
     "yaml": "^2.9.1"
   },
