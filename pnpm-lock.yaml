@@ -179,7 +179,7 @@ importers:
         specifier: ^12.3.2
         version: 12.4.0(@nestjs/common@12.4.0(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@oclif/core':
-        specifier: ^5.1.10
+        specifier: ^5.1.11
         version: 5.1.11
       '@oxc-project/runtime':
         specifier: ^0.156.0
@@ -194,7 +194,7 @@ importers:
         specifier: ^11.4.0
         version: 11.4.0
       renovate:
-        specifier: ^44.198.3
+        specifier: ^44.199.0
         version: 44.222.0(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
