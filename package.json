@@ -38,15 +38,15 @@
     "hooks": {}
   },
   "dependencies": {
-    "@cenk1cenk2/oclif-common": "^8.0.2",
-    "@listr2/manager": "^4.3.3",
+    "@cenk1cenk2/oclif-common": "^8.0.4",
+    "@listr2/manager": "^4.3.4",
     "@nestjs/common": "^12.3.2",
     "@nestjs/core": "^12.3.2",
     "@oclif/core": "^5.1.11",
     "@oxc-project/runtime": "^0.156.0",
     "es-toolkit": "^1.53.1",
     "jsondiffpatch": "^0.7.7",
-    "listr2": "^11.4.0",
+    "listr2": "^11.4.1",
     "renovate": "^44.199.2",
     "source-map-support": "^0.5.21",
     "yaml": "^2.9.1"
