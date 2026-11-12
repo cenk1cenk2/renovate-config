@@ -37,3 +37,9 @@ declare module 'renovate/dist/workers/repository/updates/branchify.js' {
 declare module 'renovate/dist/workers/repository/update/branch/auto-replace.js' {
   export function doAutoReplace(upgrade: Record<string, unknown>, existingContent: string, reuseExistingBranch: boolean, firstUpdate?: boolean): Promise<string>
 }
+
+declare module 'renovate/dist/util/package-rules/index.js' {
+  import type { RenovateConfig } from 'renovate/dist/config/types.js'
+
+  export function applyPackageRules<T extends RenovateConfig>(inputConfig: T, stageName?: string): Promise<T>
+}

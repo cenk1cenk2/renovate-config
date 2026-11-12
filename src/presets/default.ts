@@ -29,5 +29,13 @@ export default createPreset({
 
     Preset.DATASOURCE_DOCKER,
     Preset.DATASOURCE_GITHUB_RELEASES
-  )
+  ),
+  // mise is opt-in through `manager-mise`. Disabled before lookup, so a repository that never opts in pays only
+  // for parsing its mise files.
+  packageRules: [
+    {
+      matchManagers: [Managers.MISE],
+      enabled: false
+    }
+  ]
 })
