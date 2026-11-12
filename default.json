@@ -11,6 +11,7 @@
       "helm-values",
       "kubernetes",
       "kustomize",
+      "mise",
       "npm",
       "ocb",
       "pep621",
@@ -40,6 +41,14 @@
       "local>renovate/renovate-config:default/manager-terraform",
       "local>renovate/renovate-config:default/datasource-docker",
       "local>renovate/renovate-config:default/datasource-github-releases"
+    ],
+    "packageRules": [
+      {
+        "matchManagers": [
+          "mise"
+        ],
+        "enabled": false
+      }
     ]
   },
   "base": {
@@ -608,6 +617,38 @@
         "addLabels": [
           "renovate",
           "manager:hk"
+        ]
+      }
+    ]
+  },
+  "manager-mise": {
+    "packageRules": [
+      {
+        "matchManagers": [
+          "mise"
+        ],
+        "enabled": true,
+        "minimumReleaseAge": "7 days",
+        "addLabels": [
+          "renovate",
+          "manager:mise"
+        ]
+      },
+      {
+        "matchPackageNames": [
+          "*"
+        ],
+        "groupName": "mise all minor dependency updates",
+        "groupSlug": "mise-minor",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "automerge": false,
+        "matchManagers": [
+          "mise"
         ]
       }
     ]
@@ -2412,6 +2453,55 @@
       }
     ]
   },
+  "manager-mise-automerge-minor": {
+    "packageRules": [
+      {
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "groupName": "mise all minor automerge dependency updates",
+        "groupSlug": "mise-minor-automerge",
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "addLabels": [
+          "renovate",
+          "renovate:override",
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "mise"
+        ]
+      }
+    ]
+  },
+  "manager-mise-automerge-major": {
+    "packageRules": [
+      {
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "groupName": "mise all major automerge dependency updates",
+        "groupSlug": "mise-major-automerge",
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "addLabels": [
+          "renovate",
+          "renovate:override",
+          "automerge"
+        ],
+        "automerge": true,
+        "matchManagers": [
+          "mise"
+        ]
+      }
+    ]
+  },
   "manager-ansible-galaxy-automerge-minor": {
     "packageRules": [
       {
@@ -3120,6 +3210,42 @@
         ],
         "matchManagers": [
           "dockerfile"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "commitMessagePrefix": "",
+        "commitMessageAction": "Update"
+      }
+    ]
+  },
+  "manager-mise-breaking-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchManagers": [
+          "mise"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "commitMessagePrefix": "{{semanticCommitType}}{{#if semanticCommitScope}}({{semanticCommitScope}}){{/if}}!:",
+        "commitMessageAction": "update"
+      }
+    ]
+  },
+  "manager-mise-no-breaking-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchManagers": [
+          "mise"
         ],
         "matchUpdateTypes": [
           "major"
@@ -3870,6 +3996,51 @@
       }
     ]
   },
+  "manager-mise-no-automerge-minor": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "minor",
+          "patch",
+          "pin",
+          "digest"
+        ],
+        "matchManagers": [
+          "mise"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
+  "manager-mise-no-automerge-major": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchUpdateTypes": [
+          "major"
+        ],
+        "matchManagers": [
+          "mise"
+        ],
+        "groupName": null,
+        "automerge": false
+      }
+    ]
+  },
   "manager-ansible-galaxy-no-automerge-minor": {
     "packageRules": [
       {
@@ -4349,6 +4520,23 @@
         ],
         "matchManagers": [
           "dockerfile"
+        ],
+        "enabled": false
+      }
+    ]
+  },
+  "manager-mise-disable": {
+    "packageRules": [
+      {
+        "addLabels": [
+          "renovate",
+          "renovate:override"
+        ],
+        "matchPackageNames": [
+          "{{arg0}}"
+        ],
+        "matchManagers": [
+          "mise"
         ],
         "enabled": false
       }

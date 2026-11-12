@@ -7,6 +7,7 @@ import { mergeChildConfig } from 'renovate/dist/config/utils.js'
 import type { PackageDependency, PackageFile } from 'renovate/dist/modules/manager/types.js'
 import { validateConfig } from 'renovate/dist/config/validation.js'
 import type { BranchConfig } from 'renovate/dist/workers/types.js'
+import { applyPackageRules } from 'renovate/dist/util/package-rules/index.js'
 import { branchifyUpgrades } from 'renovate/dist/workers/repository/updates/branchify.js'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 
@@ -363,4 +364,27 @@ describe('skip ci marker', () => {
     expect(commitMessage).not.toMatch(SKIP_CI)
     expect(prTitle).not.toMatch(SKIP_CI)
   })
+})
+
+// `enabledManagers` is not mergeable, so the opt-in cannot list mise itself: whichever list resolves last would
+// replace `default`'s and switch every other manager off. `default` keeps mise in its list and disables its
+// dependencies before lookup instead, and `manager-mise` re-enables them.
+describe('mise opt-in', () => {
+  const enabled = async (extendsList: Preset[], manager: Managers): Promise<{ managers: string[]; enabled: boolean }> => {
+    const { config } = await resolveConfigPresets({ extends: extendsList.map((name) => `${SCOPE}${name}`) })
+    const dep = await applyPackageRules({ ...mergeChildConfig(getConfig(), config), manager, depName: 'kubectl', packageName: 'kubectl' }, 'pre-lookup')
+
+    return { managers: config.enabledManagers ?? [], enabled: dep.enabled !== false }
+  }
+
+  it.each([
+    [[Preset.DEFAULT], false],
+    [[Preset.DEFAULT, Preset.MANAGER_MISE], true]
+  ] as [Preset[], boolean][])('with %j enables mise dependencies: %s', async (extendsList, expected) => {
+    const mise = await enabled(extendsList, Managers.MISE)
+
+    expect(mise.enabled).toBe(expected)
+    expect([...mise.managers].sort()).toEqual(Object.values(Managers).sort())
+    expect((await enabled(extendsList, Managers.DOCKERFILE)).enabled).toBe(true)
+  }, 60_000)
 })

@@ -35,6 +35,7 @@ export enum Labels {
   MANAGER_HK = 'manager:hk',
   MANAGER_KUBERNETES = 'manager:kubernetes',
   MANAGER_KUSTOMIZE = 'manager:kustomize',
+  MANAGER_MISE = 'manager:mise',
   MANAGER_NODE = 'manager:node',
   MANAGER_OTEL_BUILDER = 'manager:otel-builder',
   MANAGER_PYTHON = 'manager:python',

@@ -110,6 +110,8 @@ const AUTOMERGE_PRESETS: Preset[] = [
   Preset.MANAGER_KUBERNETES_AUTOMERGE_MAJOR,
   Preset.MANAGER_DOCKERFILE_AUTOMERGE_MINOR,
   Preset.MANAGER_DOCKERFILE_AUTOMERGE_MAJOR,
+  Preset.MANAGER_MISE_AUTOMERGE_MINOR,
+  Preset.MANAGER_MISE_AUTOMERGE_MAJOR,
   Preset.MANAGER_ANSIBLE_GALAXY_AUTOMERGE_MINOR,
   Preset.MANAGER_ANSIBLE_GALAXY_AUTOMERGE_MAJOR,
   Preset.MANAGER_GITLAB_CI_AUTOMERGE_MINOR,
@@ -152,6 +154,8 @@ const NO_AUTOMERGE_PRESETS: Preset[] = [
   Preset.MANAGER_KUBERNETES_NO_AUTOMERGE_MAJOR,
   Preset.MANAGER_DOCKERFILE_NO_AUTOMERGE_MINOR,
   Preset.MANAGER_DOCKERFILE_NO_AUTOMERGE_MAJOR,
+  Preset.MANAGER_MISE_NO_AUTOMERGE_MINOR,
+  Preset.MANAGER_MISE_NO_AUTOMERGE_MAJOR,
   Preset.MANAGER_ANSIBLE_GALAXY_NO_AUTOMERGE_MINOR,
   Preset.MANAGER_ANSIBLE_GALAXY_NO_AUTOMERGE_MAJOR,
   Preset.MANAGER_GITLAB_CI_NO_AUTOMERGE_MINOR,
@@ -193,6 +197,8 @@ const BREAKING_PRESETS: Preset[] = [
   Preset.MANAGER_KUBERNETES_NO_BREAKING_MAJOR,
   Preset.MANAGER_DOCKERFILE_BREAKING_MAJOR,
   Preset.MANAGER_DOCKERFILE_NO_BREAKING_MAJOR,
+  Preset.MANAGER_MISE_BREAKING_MAJOR,
+  Preset.MANAGER_MISE_NO_BREAKING_MAJOR,
   Preset.MANAGER_ANSIBLE_GALAXY_BREAKING_MAJOR,
   Preset.MANAGER_ANSIBLE_GALAXY_NO_BREAKING_MAJOR,
   Preset.MANAGER_GITLAB_CI_BREAKING_MAJOR,
@@ -223,6 +229,7 @@ const DISABLE_PRESETS: Preset[] = [
   Preset.MANAGER_RUST_DISABLE,
   Preset.MANAGER_KUBERNETES_DISABLE,
   Preset.MANAGER_DOCKERFILE_DISABLE,
+  Preset.MANAGER_MISE_DISABLE,
   Preset.MANAGER_ANSIBLE_GALAXY_DISABLE,
   Preset.MANAGER_GITLAB_CI_DISABLE,
   Preset.MANAGER_GITLAB_CI_CUSTOM_DISABLE,
@@ -998,6 +1005,8 @@ describe('effective automerge', () => {
     ['kubernetes major', { manager: Managers.KUBERNETES, packageName: 'nginx', updateType: 'major' }, false],
     ['dockerfile minor', { manager: Managers.DOCKERFILE, packageName: 'node', updateType: 'minor' }, false],
     ['dockerfile major', { manager: Managers.DOCKERFILE, packageName: 'node', updateType: 'major' }, false],
+    ['mise minor', { manager: Managers.MISE, packageName: 'kubectl', updateType: 'minor' }, false],
+    ['mise major', { manager: Managers.MISE, packageName: 'kubectl', updateType: 'major' }, false],
     ['ansible-galaxy minor', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'minor', depType: 'collections' }, true],
     ['ansible-galaxy major', { manager: Managers.ANSIBLE_GALAXY, packageName: 'community.general', updateType: 'major', depType: 'collections' }, false],
     ['gitlab-ci minor', { manager: Managers.GITLAB_CI_INCLUDE, packageName: 'cenk1cenk2/gitlab-ci', updateType: 'minor' }, true],
@@ -1515,7 +1524,7 @@ describe('ignore paths', () => {
 
 describe('wiring', () => {
   // Consumer-facing presets are extended by the repositories that use them, not from inside this repo.
-  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, Preset.GROUP, ...PARAMETERIZED_PRESETS]
+  const ENTRYPOINTS: Preset[] = [Preset.DEFAULT, Preset.MANAGER_MISE, Preset.NO_TESTS, Preset.BRANCH_DEVELOP, Preset.BRANCH_BETA, Preset.GROUP_BY_UNIT, Preset.GROUP, ...PARAMETERIZED_PRESETS]
 
   it('never reaches a no-automerge preset from default', () => {
     // Holding a package back is a per-repository call, and `groupName: null` from inside the graph would
@@ -1618,6 +1627,7 @@ describe('managers', () => {
     [Managers.HELM_VALUES, Labels.MANAGER_HELM],
     [Managers.KUBERNETES, Labels.MANAGER_KUBERNETES],
     [Managers.KUSTOMIZE, Labels.MANAGER_KUSTOMIZE],
+    [Managers.MISE, Labels.MANAGER_MISE],
     [Managers.NODE, Labels.MANAGER_NODE],
     [Managers.OPENTELEMETRY_COLLECTOR_BUILDER, Labels.MANAGER_OTEL_BUILDER],
     [Managers.PYTHON_PEP621, Labels.MANAGER_PYTHON],

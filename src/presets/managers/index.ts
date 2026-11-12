@@ -9,6 +9,7 @@ export enum Managers {
   HELM_VALUES = 'helm-values',
   KUBERNETES = 'kubernetes',
   KUSTOMIZE = 'kustomize',
+  MISE = 'mise',
   NODE = 'npm',
   OPENTELEMETRY_COLLECTOR_BUILDER = 'ocb',
   PYTHON_PEP621 = 'pep621',

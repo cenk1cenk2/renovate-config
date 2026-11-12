@@ -56,6 +56,10 @@ export enum Groups {
   KUBERNETES_MINOR_AUTOMERGE = 'kubernetes-minor-automerge',
   KUBERNETES_MAJOR_AUTOMERGE = 'kubernetes-major-automerge',
 
+  MISE_MINOR = 'mise-minor',
+  MISE_MINOR_AUTOMERGE = 'mise-minor-automerge',
+  MISE_MAJOR_AUTOMERGE = 'mise-major-automerge',
+
   DOCKERFILE_MINOR_AUTOMERGE = 'dockerfile-minor-automerge',
   DOCKERFILE_MAJOR_AUTOMERGE = 'dockerfile-major-automerge',
 
