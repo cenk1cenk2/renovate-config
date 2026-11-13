@@ -23,7 +23,7 @@ include:
       - /node/run.gitlab-ci.yml
 
   - project: devops/pipelines
-    ref: git@1.1.4
+    ref: git@1.1.5
     file:
       - /git/sync.gitlab-ci.yml
 
