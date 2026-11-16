@@ -1632,6 +1632,7 @@ describe('managers', () => {
     [Managers.OPENTELEMETRY_COLLECTOR_BUILDER, Labels.MANAGER_OTEL_BUILDER],
     [Managers.PYTHON_PEP621, Labels.MANAGER_PYTHON],
     [Managers.REGEX, Labels.MANAGER_HK],
+    [Managers.REGEX, Labels.MANAGER_KARGO],
     [Managers.RUST_CARGO, Labels.MANAGER_RUST],
     [Managers.TERRAFORM, Labels.MANAGER_TERRAFORM]
   ]
