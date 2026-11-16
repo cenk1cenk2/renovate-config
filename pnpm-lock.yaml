@@ -173,17 +173,17 @@ importers:
         specifier: ^4.3.4
         version: 4.3.4(listr2@11.4.1)
       '@nestjs/common':
-        specifier: ^12.4.0
+        specifier: ^12.4.2
         version: 12.5.0(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1)
       '@nestjs/core':
-        specifier: ^12.4.0
+        specifier: ^12.4.2
         version: 12.5.0(@nestjs/common@12.5.0(reflect-metadata@0.2.2)(rxjs@7.8.2)(supports-color@8.1.1))(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@oclif/core':
-        specifier: ^5.1.11
+        specifier: ^5.1.12
         version: 5.1.12
       '@oxc-project/runtime':
-        specifier: ^0.157.0
-        version: 0.157.0
+        specifier: ^0.158.0
+        version: 0.158.0
       es-toolkit:
         specifier: ^1.53.2
         version: 1.53.2
@@ -194,7 +194,7 @@ importers:
         specifier: ^11.4.1
         version: 11.4.1
       renovate:
-        specifier: ^44.222.5
+        specifier: ^44.224.2
         version: 44.239.1(supports-color@8.1.1)(typanion@3.14.0)
       source-map-support:
         specifier: ^0.5.21
@@ -1272,8 +1272,8 @@ packages:
     resolution: {integrity: sha512-aOP45mbcOKbQVvFWfQmgoOPT8R2iwbbbgl83k4CujGV9BrJhFr3qG55MFpwFs4YLabpuW3HhzUY9eQxPlDqaZw==}
     engines: {node: '>=14'}
 
-  '@oxc-project/runtime@0.157.0':
-    resolution: {integrity: sha512-srnUknwVoji5JdmU664pA4XyjBJXmgxP8rWlnZhFovzw6XQxaICGWAuScZdlLmIHI+ZRc7WgeiC2CURF4tAszQ==}
+  '@oxc-project/runtime@0.158.0':
+    resolution: {integrity: sha512-OYWBlK/wnZHyol5jkvBJadD8KTR6DJfFDRClqrU6kBDQKHd4bXNZALg3qfXk0aFl6F5loSxMT24EZurNWE4MKQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   '@oxc-project/types@0.156.0':
@@ -6279,7 +6279,7 @@ snapshots:
 
   '@opentelemetry/semantic-conventions@1.45.0': {}
 
-  '@oxc-project/runtime@0.157.0': {}
+  '@oxc-project/runtime@0.158.0': {}
 
   '@oxc-project/types@0.156.0': {}
 
