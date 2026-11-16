@@ -32,6 +32,7 @@
       "local>renovate/renovate-config:default/manager-go",
       "local>renovate/renovate-config:default/manager-helm",
       "local>renovate/renovate-config:default/manager-hk",
+      "local>renovate/renovate-config:default/manager-kargo",
       "local>renovate/renovate-config:default/manager-kubernetes",
       "local>renovate/renovate-config:default/manager-kustomize",
       "local>renovate/renovate-config:default/manager-node",
@@ -617,6 +618,82 @@
         "addLabels": [
           "renovate",
           "manager:hk"
+        ]
+      }
+    ]
+  },
+  "manager-kargo": {
+    "enabledManagers": [
+      "custom.regex"
+    ],
+    "customManagers": [
+      {
+        "depTypeTemplate": "kargo-warehouse",
+        "customType": "regex",
+        "managerFilePatterns": [
+          "/(^|\\/)\\.promote\\/.+\\.ya?ml$/"
+        ],
+        "matchStringsStrategy": "any",
+        "matchStrings": [
+          "- image:[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+repoURL:[ \\t]*[\"']?(?<depName>[^\"'\\s]+)[\"']?[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+constraint:[ \\t]*[\"']?(?<currentValue>[~^][^\"'\\s]+)[\"']?"
+        ],
+        "datasourceTemplate": "docker",
+        "versioningTemplate": "npm"
+      },
+      {
+        "depTypeTemplate": "kargo-warehouse",
+        "customType": "regex",
+        "managerFilePatterns": [
+          "/(^|\\/)\\.promote\\/.+\\.ya?ml$/"
+        ],
+        "matchStringsStrategy": "any",
+        "matchStrings": [
+          "- chart:[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+repoURL:[ \\t]*[\"']?(?<registryUrl>https?:\\/\\/[^\"'\\s]+)[\"']?[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+name:[ \\t]*[\"']?(?<depName>[^\"'\\s]+)[\"']?[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+semverConstraint:[ \\t]*[\"']?(?<currentValue>[~^][^\"'\\s]+)[\"']?",
+          "- chart:[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+repoURL:[ \\t]*[\"']?oci:\\/\\/(?<depName>[^\"'\\s]+)[\"']?[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+semverConstraint:[ \\t]*[\"']?(?<currentValue>[~^][^\"'\\s]+)[\"']?"
+        ],
+        "datasourceTemplate": "{{#if registryUrl}}helm{{else}}docker{{/if}}",
+        "versioningTemplate": "npm"
+      },
+      {
+        "depTypeTemplate": "kargo-warehouse",
+        "customType": "regex",
+        "managerFilePatterns": [
+          "/(^|\\/)\\.promote\\/.+\\.ya?ml$/"
+        ],
+        "matchStringsStrategy": "any",
+        "matchStrings": [
+          "- git:[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+repoURL:[ \\t]*[\"']?(?<url>https:\\/\\/(?<host>[^/\"'\\s]+)\\/(?<project>[^\"'\\s]+?)(?:\\.git)?)[\"']?[ \\t]*\\n(?:[ \\t]+[^\\s-][^\\n]*\\n)*?[ \\t]+semverConstraint:[ \\t]*[\"']?(?<currentValue>[~^][^\"'\\s]+)[\"']?"
+        ],
+        "depNameTemplate": "{{{project}}}",
+        "packageNameTemplate": "{{#if (equals host 'gitlab.kilic.dev')}}{{{project}}}{{else}}{{{url}}}{{/if}}",
+        "registryUrlTemplate": "https://{{{host}}}",
+        "datasourceTemplate": "{{#if (equals host 'gitlab.kilic.dev')}}gitlab-tags{{else}}git-tags{{/if}}",
+        "versioningTemplate": "npm"
+      }
+    ],
+    "packageRules": [
+      {
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "kargo-warehouse"
+        ],
+        "rangeStrategy": "replace",
+        "automerge": false,
+        "commitMessageTopic": "kargo constraint {{{depName}}}"
+      },
+      {
+        "matchManagers": [
+          "custom.regex"
+        ],
+        "matchDepTypes": [
+          "kargo-warehouse"
+        ],
+        "addLabels": [
+          "renovate",
+          "manager:kargo",
+          "area:infrastructure"
         ]
       }
     ]
@@ -4630,6 +4707,9 @@
         ],
         "matchDatasources": [
           "docker"
+        ],
+        "matchFileNames": [
+          "!**/.promote/**"
         ],
         "enabled": false
       }

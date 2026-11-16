@@ -33,6 +33,7 @@ export enum Labels {
   MANAGER_GO = 'manager:go',
   MANAGER_HELM = 'manager:helm',
   MANAGER_HK = 'manager:hk',
+  MANAGER_KARGO = 'manager:kargo',
   MANAGER_KUBERNETES = 'manager:kubernetes',
   MANAGER_KUSTOMIZE = 'manager:kustomize',
   MANAGER_MISE = 'manager:mise',

@@ -1,6 +1,7 @@
 import { Labels } from '@constants'
 import { Datasources } from '@datasources'
 import { createPreset } from '@lib'
+import { EXCLUDE_KARGO_PROMOTE_FILES } from '@presets/managers/kargo/manager.js'
 
 // Opt-in per image a repository has frozen. Scoped to the docker datasource so a package of the same name from
 // another datasource keeps updating. Unbounded by update type on purpose: renovate applies `enabled: false` at the
@@ -12,6 +13,7 @@ export default createPreset({
       addLabels: [Labels.RENOVATE, Labels.OVERRIDE],
       matchPackageNames: ['{{arg0}}'],
       matchDatasources: [Datasources.DOCKER],
+      matchFileNames: EXCLUDE_KARGO_PROMOTE_FILES,
       enabled: false
     }
   ]
