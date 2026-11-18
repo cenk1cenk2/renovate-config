@@ -58,7 +58,7 @@
       ":configMigration",
       ":dependencyDashboard",
       ":disableRateLimiting",
-      ":updateNotScheduled",
+      ":noUnscheduledUpdates",
       ":enableVulnerabilityAlerts"
     ],
     "timezone": "Europe/Vienna",
