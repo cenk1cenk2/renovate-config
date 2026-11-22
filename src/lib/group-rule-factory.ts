@@ -1,6 +1,6 @@
 import type { PackageRule } from 'renovate/dist/config/types.js'
 
-import { Labels } from '@constants'
+import { COMMIT_MESSAGE_NEW_VALUE, Labels } from '@constants'
 
 export interface MultiDirectoryGroupRule extends PackageRule {
   name: string
@@ -33,7 +33,7 @@ export function createMultiDirectoryGroupRule({ name, commitType, ...rule }: Mul
     // without knowing the manager, where last-match-wins `groupName` would have to be rewritten whole.
     // `groupSlug` is always passed in explicitly, so branch names never depend on either field.
     group: { commitMessageTopic: '{{{groupName}}} [{{packageFileDir}}]' },
-    commitMessageExtra: 'to {{{newValue}}} [{{packageFileDir}}]',
+    commitMessageExtra: `to ${COMMIT_MESSAGE_NEW_VALUE} [{{packageFileDir}}]`,
     extends: [`:semanticCommitTypeAll(${commitType})`],
     ...rule,
     ...(addLabels.length > 0 && { addLabels })

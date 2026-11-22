@@ -1115,7 +1115,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1142,7 +1142,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -1168,7 +1168,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1192,7 +1192,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -1215,7 +1215,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1242,7 +1242,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1277,7 +1277,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1307,7 +1307,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1344,7 +1344,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -1371,7 +1371,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -1545,7 +1545,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1572,7 +1572,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -1593,7 +1593,7 @@
           "{{arg0}}/**"
         ],
         "additionalBranchPrefix": "{{arg0}}-",
-        "commitMessageExtra": "to {{{newValue}}} [{{arg0}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{arg0}}]",
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{arg0}}]"
         }
@@ -1604,7 +1604,7 @@
     "groupName": "{{arg0}}",
     "groupSlug": "{{arg0}}",
     "additionalBranchPrefix": "",
-    "commitMessageExtra": "to {{{newValue}}}",
+    "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}}",
     "group": {
       "commitMessageTopic": "{{{groupName}}}"
     }
@@ -1860,7 +1860,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1892,7 +1892,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -1923,7 +1923,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -1958,7 +1958,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -1992,7 +1992,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -2027,7 +2027,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -2112,7 +2112,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -2150,7 +2150,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
@@ -2187,7 +2187,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(feat)"
         ],
@@ -2222,7 +2222,7 @@
         "group": {
           "commitMessageTopic": "{{{groupName}}} [{{packageFileDir}}]"
         },
-        "commitMessageExtra": "to {{{newValue}}} [{{packageFileDir}}]",
+        "commitMessageExtra": "to {{#if (equals updateType \"digest\")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}} [{{packageFileDir}}]",
         "extends": [
           ":semanticCommitTypeAll(perf)"
         ],
