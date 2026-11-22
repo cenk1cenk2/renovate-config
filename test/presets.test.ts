@@ -1451,7 +1451,7 @@ describe('generic group directive', () => {
       groupName: '{{arg0}}',
       groupSlug: '{{arg0}}',
       additionalBranchPrefix: '',
-      commitMessageExtra: 'to {{{newValue}}}',
+      commitMessageExtra: 'to {{#if (equals updateType "digest")}}{{#if newValue}}{{{newValue}}}@{{/if}}{{{newDigestShort}}}{{else}}{{{newValue}}}{{/if}}',
       group: { commitMessageTopic: '{{{groupName}}}' }
     })
   })
